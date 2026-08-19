@@ -13,7 +13,7 @@ import { sources, loadAllSources } from "../lib/sources/registry";
 import { loadHistory } from "../lib/output/history";
 import { groupRaw, renderHtml, renderMarkdown } from "../lib/output/render";
 import { todayKey } from "../lib/utils";
-import type { ArticleInput, BriefItem, DailyReport } from "../lib/ai/pipeline";
+import type { ArticleInput, BriefItem, DailyReport } from "../lib/types";
 
 const OUTPUT_DIR = "daily_reports";
 

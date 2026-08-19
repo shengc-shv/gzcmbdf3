@@ -3,7 +3,7 @@ import "./_env";
 import fs from "node:fs";
 import path from "node:path";
 
-import type { DailyReport, TradingSection } from "../lib/ai/pipeline";
+import type { DailyReport, TradingSection } from "../lib/types";
 import { generateTradingCommentary } from "../lib/ai/trading-commentary";
 import { validateBackendCredentials } from "../lib/ai/llm";
 import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";

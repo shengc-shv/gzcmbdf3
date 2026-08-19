@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { renderHtml, type RawByCategory } from "../lib/output/render";
-import type { DailyReport, ArticleInput } from "../lib/ai/pipeline";
+import type { DailyReport, ArticleInput } from "../lib/types";
 import { toMatchSnapshot } from "./snapshot";
 
 const emptyRaw = (): RawByCategory => ({

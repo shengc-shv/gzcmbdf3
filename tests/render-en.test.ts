@@ -7,7 +7,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import type { RawByCategory } from "../lib/output/render";
-import type { DailyReport } from "../lib/ai/pipeline";
+import type { DailyReport } from "../lib/types";
 
 test("renderHtml: en locale 输出 lang=en", async () => {
   process.env.REPORT_LOCALE = "en";

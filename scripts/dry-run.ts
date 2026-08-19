@@ -5,7 +5,7 @@ import path from "node:path";
 
 import { sources, loadAllSources } from "../lib/sources/registry";
 import { fetchSource } from "../lib/sources/dispatch";
-import type { ArticleInput } from "../lib/ai/pipeline";
+import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
 import { loadHistory, buildRolling, saveHistory } from "../lib/output/history";
 import { todayKey } from "../lib/utils";

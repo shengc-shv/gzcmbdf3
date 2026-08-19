@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { sources, loadAllSources, REPORT_LOCALE } from "../lib/sources/registry";
+import { SOURCE_ROUTE } from "../lib/sources/constants";
 import type { Category } from "../lib/sources/types";
 import { fetchSource } from "../lib/sources/dispatch";
 import {
@@ -22,7 +23,7 @@ import {
   type ArticleInput,
   type BriefItem,
   type DailyReport,
-} from "../lib/ai/pipeline";
+} from "../lib/types";
 import { getModelTag, validateBackendCredentials } from "../lib/ai/llm";
 import {
   enrichFinanceNewsSummaries,
@@ -52,16 +53,14 @@ import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";
 import { fetchCryptoGlobal } from "../lib/trading/coingecko";
 import { generateTradingCommentary } from "../lib/ai/trading-commentary";
 import { generateExecutiveSummary } from "../lib/ai/executive-summary";
-import type { TradingSection } from "../lib/ai/pipeline";
+import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
 
 const OUTPUT_DIR = "daily_reports";
 
-// 当 SKIP_AI=true 时，跳过所有 LLM 调用（凭证校验 / 分类 / 摘要富集 / 执行摘要 /
-// 交易点评），仅复用历史缓存中的 AI 摘要(applyCache)渲染报告。供 test2.yml 做
-// 「不重新触发 AI、基于已有 AI 历史重新生成并推送报告」的失败恢复流程。
-// 默认关闭，不影响正常 daily 流程。
-const SKIP_AI = process.env.SKIP_AI === "true";
+// SKIP_AI 开关已收敛到 lib/ai/mode.ts（唯一 env 读取点，行为不变；stage 维度供 M2-③ 埋点复用）。
+import { aiEnabled } from "../lib/ai/mode";
+const SKIP_AI = !aiEnabled();
 
 /**
  * Rolling 30-day article history + AI-summary cache. Loaded once in main(),
@@ -423,8 +422,8 @@ async function main() {
   if (fs.existsSync(gzPath)) {
     try {
       const raw = JSON.parse(fs.readFileSync(gzPath, 'utf8')) as CrawledArticle[];
-      // category 按注册表路由（gz-gov 已迁入宏观政策·广州政策，其余归广州商机）
-      const regCat = (id?: string) => loadAllSources().find((s) => s.id === id)?.category;
+      // category 按集中路由表判定（M3-D：SOURCE_ROUTE，不依赖 config 里的 file:// 占位源）
+      const regCat = (id?: string) => (id ? SOURCE_ROUTE[id]?.category : undefined);
       const { merged, added, skipped } = dedupeByUrl(
         articles,
         raw.map((it) => toMergeArticle(it, "gz", { gzCategory: regCat(it.sourceId) })),

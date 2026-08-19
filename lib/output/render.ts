@@ -3,7 +3,7 @@ import type {
   BriefItem,
   DailyReport,
   TradingSection,
-} from "../ai/pipeline";
+} from "../types";
 import type { WatchlistPick } from "../ai/trading-commentary";
 import { REPORT_LOCALE,loadAllSources  } from "../sources/registry";
 import { getReportTz } from "../utils";

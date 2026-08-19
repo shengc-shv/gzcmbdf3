@@ -17,8 +17,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import type { ArticleInput } from "../ai/pipeline";
+import type { ArticleInput } from "../types";
 import type { Category } from "../sources/types";
+import { SOURCE_ROUTE } from "../sources/constants";
 import { loadAllSources } from "../sources/registry";
 
 const HISTORY_PATH = path.resolve(process.cwd(), "data/article-history.json");
@@ -49,6 +50,9 @@ export interface HistoryEntry {
 export type HistoryStore = Record<string, HistoryEntry>;
 
 function subcatOf(a: ArticleInput): string | undefined {
+  // M3-D：路由元数据优先查集中表（SOURCE_ROUTE），注册表兜底
+  const route = SOURCE_ROUTE[a.sourceId];
+  if (route?.subcategory) return route.subcategory;
   const s = loadAllSources().find((x) => x.id === a.sourceId);
   return s?.subcategory;
 }

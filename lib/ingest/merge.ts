@@ -9,6 +9,13 @@
  */
 import type { SourceTier } from "../sources/tiers";
 import type { Category } from "../sources/types";
+import {
+  DEFAULT_GZ_SOURCE_ID,
+  DEFAULT_SCRAPER_SOURCE_ID,
+  REGION_GZ,
+  REGION_IPO,
+  rewriteGzPrefix,
+} from "../sources/constants";
 
 /** .mjs 爬虫产物（crawled-articles.json / crawled-gz.json 的条目）。 */
 export interface CrawledArticle {
@@ -60,11 +67,11 @@ export function routeRegion(
   opts: RouteOpts = {},
 ): { sourceId: string; category: Category } {
   if (mode === "ipo") {
-    const category = opts.region === "gz" ? "gz" : "ipo";
-    const sourceId = category === "gz" ? srcId.replace(/^gd-/, "gz-") : srcId;
+    const category = opts.region === "gz" ? REGION_GZ : REGION_IPO;
+    const sourceId = category === REGION_GZ ? rewriteGzPrefix(srcId) : srcId;
     return { sourceId, category };
   }
-  return { sourceId: srcId, category: opts.gzCategory ?? "gz" };
+  return { sourceId: srcId, category: opts.gzCategory ?? REGION_GZ };
 }
 
 /** 单条爬虫产物 → MergeArticle（含默认值映射与 tier 透传）。 */
@@ -73,7 +80,8 @@ export function toMergeArticle(
   mode: CrawlMode,
   opts: RouteOpts = {},
 ): MergeArticle {
-  const srcId = item.sourceId || (mode === "ipo" ? "gd-local-scraper" : "gz-local");
+  const srcId =
+    item.sourceId || (mode === "ipo" ? DEFAULT_SCRAPER_SOURCE_ID : DEFAULT_GZ_SOURCE_ID);
   const { sourceId, category } = routeRegion(srcId, mode, {
     gzCategory: opts.gzCategory,
     region: item.region,

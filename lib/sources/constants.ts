@@ -1,0 +1,68 @@
+/**
+ * 领域常量集中地（M3-G）：region 前缀 / 分类 / 默认源 id。
+ *
+ * 消除散落在 merge.ts / daily.ts / 配置注释里的魔法字符串
+ * （`gd-`→`gz-` 改写、'gz'/'ipo' region 分流等）。
+ */
+import type { Category } from "./types";
+
+/** 爬虫产物 sourceId 前缀：gd-（广东全省）/ gz-（广州辖区，招行广州分行重点）。 */
+export const GD_PREFIX = "gd-";
+export const GZ_PREFIX = "gz-";
+
+/** 爬虫条目缺省 sourceId（crawled-articles.json / crawled-gz.json 未带 sourceId 时）。 */
+export const DEFAULT_SCRAPER_SOURCE_ID = "gd-local-scraper";
+export const DEFAULT_GZ_SOURCE_ID = "gz-local";
+
+/** 归一化 region 分流的目标分类。 */
+export const REGION_GZ: Category = "gz";
+export const REGION_IPO: Category = "ipo";
+
+/** 分类渲染/处理顺序（与 render.ts 的分类面板顺序一致）。 */
+export const CATEGORY_ORDER: Category[] = [
+  "tech",
+  "finance",
+  "politics",
+  "gd-ipo",
+  "ipo",
+  "gz",
+];
+
+/** 把爬虫产物的 `gd-` 前缀改写为 `gz-`（仅广州辖区条目）。 */
+export function rewriteGzPrefix(sourceId: string): string {
+  return sourceId.startsWith(GD_PREFIX)
+    ? `${GZ_PREFIX}${sourceId.slice(GD_PREFIX.length)}`
+    : sourceId;
+}
+
+/**
+ * 爬虫产物源的路由元数据（M3-D/A：从 sources.config.json 的 file:// 占位源
+ * 中抽离，避免「源配置兼任路由表」的概念交叉）。
+ *
+ * 这些 sourceId 由 scripts/crawlers/*.mjs 产出（crawled-articles.json /
+ * crawled-gz.json），经 lib/ingest/merge.ts 归一化接入；category/subcategory
+ * 用于：daily.ts 的 regCat、history.ts 的 subcatOf、render groupRaw 的分组。
+ * 配置里保留同名 disabled 源仅供 groupRaw 的 knownSourceIds 白名单识别，
+ * 路由判定以本表为准。
+ */
+export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: string }> = {
+  // 广州辖区（gz- 前缀）：招行广州分行重点
+  "gz-stats": { category: "gz", subcategory: "gz-customer" },
+  "gz-gov": { category: "finance", subcategory: "gz-policy" },
+  "gz-nansha": { category: "gz", subcategory: "gz-private" },
+  "gz-sse": { category: "gz", subcategory: "gz-ipo" },
+  "gz-szse": { category: "gz", subcategory: "gz-ipo" },
+  "gz-bse": { category: "gz", subcategory: "gz-ipo" },
+  "gz-hkex": { category: "gz", subcategory: "gz-ipo" },
+  "gz-em-ipo": { category: "gz", subcategory: "gz-ipo" },
+  // 广东全省 / 全国 IPO 参考区（gd- 前缀）
+  "gd-local-scraper": { category: "gd-ipo", subcategory: "news" },
+  "gd-szse": { category: "gd-ipo", subcategory: "szse" },
+  "gd-hkex": { category: "gd-ipo", subcategory: "hkex" },
+  "gd-em-ipo": { category: "gd-ipo", subcategory: "ipo-tutoring" },
+  "gd-sse": { category: "gd-ipo", subcategory: "sse" },
+  "gd-bse": { category: "gd-ipo", subcategory: "bse" },
+};
+
+/** 爬虫产物源 id 集合（供 dispatch 白名单 / 路由判断）。 */
+export const CRAWLED_SOURCE_IDS: ReadonlySet<string> = new Set(Object.keys(SOURCE_ROUTE));

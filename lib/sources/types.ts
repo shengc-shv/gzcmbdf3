@@ -48,6 +48,12 @@ export interface SourceDef {
    */
   keywords?: string[];
   /**
+   * 源角色（M3-D）：crawled-input = 爬虫产物路由源（url 为 file:// 占位，
+   * 实际数据由 scripts/crawlers/*.mjs 产出、经 lib/ingest/merge.ts 归一化接入；
+   * 保留在 config 仅为 groupRaw 的 knownSourceIds 白名单识别）。缺省为普通源。
+   */
+  role?: "crawled-input" | string;
+  /**
    * 源等级（T6）：T1=官方一手（政府/央行/监管）、T1.5=准官方·机构一手（交易所/
    * 行业协会/官方背景机构）、T2=媒体·智库。采集层声明，归一化层透传进 RawArticle，
    * 渲染层差异化标识。缺省按 T2 处理。
