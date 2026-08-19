@@ -173,3 +173,39 @@ test("技术动态 sub-tab 计数与内容口径一致：只算当天（修复 t
   assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算当天 1 条");
   assert.ok(!html.includes('<span class="count">3</span>'), "不应把历史缓存计入 tab 计数");
 });
+
+test("财经面板「国家政策」sub-tab 计数同口径：只算当天（用户报告 cn-policy 3→1）", () => {
+  // 用户场景：finance 面板 cn-policy 子组，2 条历史缓存 + 1 条当天
+  const subs: SubGroup[] = [
+    {
+      id: "cn-policy",
+      name: "国家政策",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [
+            { ...item("https://x/p1", "今天的宏观政策", "finance"), fetchedToday: true },
+            { ...item("https://x/p2", "历史宏观政策1", "finance"), fetchedToday: false },
+            { ...item("https://x/p3", "历史宏观政策2", "finance"), fetchedToday: false },
+          ],
+        },
+      ],
+    },
+    {
+      id: "news",
+      name: "要闻",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [{ ...item("https://x/n1", "今天要闻", "finance"), fetchedToday: true }],
+        },
+      ],
+    },
+  ];
+  const html = renderRawCategoryPanel("finance", subs, "2026-08-19");
+  // cn-policy 计数应为当天 1 条（而非全量 3 条）——用户看到「有3点进去1条」的根因
+  assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算当天 1 条");
+  assert.ok(!html.includes('<span class="count">3</span>'), "不应把历史缓存计入 cn-policy 计数");
+});

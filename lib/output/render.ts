@@ -617,7 +617,7 @@ export function renderHtml(
     'gd-ipo': sumItems(raw['gd-ipo'] || []),
     ipo: sumItems(raw['ipo'] || []),
     gz: sumItems(raw['gz'] || []),
-     politics: sumItems(raw.politics),
+    politics: countItemsToday(raw.politics), // 与 tech/finance 同口径（当天）；当前顶部 tabs 未消费，保留一致
   };
 
   return `<!doctype html>
