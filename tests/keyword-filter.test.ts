@@ -41,8 +41,8 @@ test("weak 共现：消费贷款命中个人信贷；纯弱词无共现不命中
   assert.ok(hit.dimensions.includes("personal_credit"));
 
   const miss = applyKeywordFilter(art("信贷规模持续增长"), cfg);
-  assert.equal(miss.pass, false, "无共现词的弱词不应命中");
-  assert.ok(!miss.dimensions.includes("personal_credit"));
+  assert.equal(miss.pass, true, "L0-only：未命中维度也放行（宏观财经保留）");
+  assert.ok(!miss.dimensions.includes("personal_credit"), "无共现词不应打维度标签");
 });
 
 test("商机S：上市辅导备案 → listing_pipeline（需地域命中 geo_lock）", () => {
@@ -59,7 +59,9 @@ test("商机A：落户广州设立研发中心 → branch_expansion；北京被 
   assert.equal(hit.opportunities?.[0]?.tracker, "branch_expansion");
 
   const skip = applyKeywordFilter(art("某企业落户北京设立研发中心扩编500人"), cfg);
-  assert.equal(skip.pass, false, "标题含北京应被排除");
+  assert.equal(skip.pass, true, "L0-only：exclude_if_in_title 只挡商机追踪，不放行拦截");
+  assert.equal(skip.bucket, "daily", "未命中商机 → daily 兜底");
+  assert.equal((skip.opportunities ?? []).length, 0, "含北京不应命中 branch_expansion");
 });
 
 test("周报池：私行维度命中 → weekly bucket", () => {
@@ -77,10 +79,25 @@ test("多商机：一条信息同时命中 listing_pipeline 与 funding_mileston
   assert.equal(r.opportunities?.[0]?.priority, "S", "优先级 S 应排在最前");
 });
 
-test("硬过滤：与银行零售无关内容不通过", () => {
+test("L0-only：无噪声词的财经内容放行（宏观财经保留，维度未命中不丢）", () => {
   const r = applyKeywordFilter(art("某科技公司发布新款手机"), cfg);
-  assert.equal(r.pass, false);
-  assert.equal(r.bucket, "dropped");
+  assert.equal(r.pass, true, "L0-only 策略下未命中维度不再丢弃");
+  assert.equal(r.bucket, "daily");
+  assert.equal(r.dimensions.length, 0, "无维度标签");
+});
+
+test("L0-only：宏观财经（美联储/GDP/货币政策）放行——修复 finance 面板被清空", () => {
+  const macro = [
+    "美联储宣布加息25个基点，利率升至5.5%",
+    "美国非农就业数据超预期，经济保持韧性",
+    "央行发布2026年第二季度货币政策执行报告",
+    "国内生产总值上半年同比增长",
+  ];
+  for (const t of macro) {
+    const r = applyKeywordFilter(art(t), cfg);
+    assert.equal(r.pass, true, `宏观财经应放行: ${t}`);
+    assert.notEqual(r.bucket, "dropped");
+  }
 });
 
 // —— 参考区豁免（2026-08-19 修复：tech/ipo/gd-ipo/politics 不过银行零售漏斗）——
@@ -113,12 +130,15 @@ test("参考区豁免：ipo/gd-ipo/politics 同样放行", () => {
   }
 });
 
-test("参考区豁免：finance/gz 仍走完整漏斗（银行零售主战场）", () => {
+test("L0-only：finance/gz 的硬闸是 L0 噪声排除（维度不决定 pass）", () => {
+  // 无 L0 噪声 → 放行（宏观财经保留）
   for (const category of ["finance", "gz"]) {
-    const r = applyKeywordFilter(
-      { ...art("某科技公司发布新款手机"), category },
-      cfg,
-    );
-    assert.equal(r.pass, false, `${category} 应仍被银行零售漏斗硬过滤`);
+    const r = applyKeywordFilter({ ...art("美联储宣布加息25个基点"), category }, cfg);
+    assert.equal(r.pass, true, `${category} 无噪声词应放行`);
+  }
+  // L0 噪声（个股行情）→ 仍 DROP
+  for (const category of ["finance", "gz"]) {
+    const r = applyKeywordFilter({ ...art("A股今日涨停，沪指报3400点"), category }, cfg);
+    assert.equal(r.pass, false, `${category} 含 L0 噪声词应丢弃`);
   }
 });

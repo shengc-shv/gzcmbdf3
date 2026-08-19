@@ -158,7 +158,7 @@ export function applyKeywordFilter(
     };
   }
 
-  // L0 全局硬排除（仅标题，命中即丢，负向优先）
+  // L0 全局硬排除（仅标题，命中即丢，负向优先；finance/gz 主战场的唯一硬闸）
   for (const group of Object.values(config.global_exclude ?? {})) {
     if (!Array.isArray(group)) continue; // 跳过 _note 等描述字段
     for (const w of group) {
@@ -171,7 +171,10 @@ export function applyKeywordFilter(
 
   const geo = matchGeo(config, full);
 
-  // 维度命中（multi_dimension: all_hit — 允许多维度同时命中）
+  // 维度命中（multi_dimension: all_hit — 允许多维度同时命中）。
+  // L0-only 策略（用户 2026-08-19 决策）：维度仅用于打标签/排序（dimensions/score），
+  // **不再决定 pass** —— 宏观财经参考（美联储/GDP/货币政策等未命中银行零售维度）
+  // 也保留进报告，避免 finance 面板被词表清空。
   const hitDims: string[] = [];
   let dimScore = 0;
   let weekly = false;
@@ -189,13 +192,13 @@ export function applyKeywordFilter(
   // 商机追踪（多值：命中即全部收录，按 S>A>B 排序；一条信息可进多个商机池）
   const opportunities = scanOpportunities(config, full, geo.hit, matched);
 
-  let bucket: FilterResult["bucket"] = "dropped";
+  // bucket：opportunity > weekly > daily（L0-only 下未命中维度也进 daily）
+  let bucket: FilterResult["bucket"] = "daily";
   if (opportunities.length > 0) bucket = "opportunity";
   else if (weekly) bucket = "weekly";
-  else if (hitDims.length > 0) bucket = "daily";
 
   return {
-    pass: bucket !== "dropped",
+    pass: true, // 已通过 L0 噪声闸；维度未命中不再丢弃
     score: geo.score + dimScore + (opportunities.length > 0 ? 1000 : 0),
     dimensions: hitDims,
     ...(opportunities.length > 0 ? { opportunities } : {}),
