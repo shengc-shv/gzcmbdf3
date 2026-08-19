@@ -67,8 +67,6 @@ import {
 import type { ExecutiveSummary } from "../lib/ai/executive-summary";
 import { REPORTS_DIR } from "../lib/output/paths";
 
-const OUTPUT_DIR = "daily_reports";
-
 // SKIP_AI 开关已收敛到 lib/ai/mode.ts（唯一 env 读取点，行为不变；stage 维度供 M2-③ 埋点复用）。
 import { aiEnabled } from "../lib/ai/mode";
 const SKIP_AI = !aiEnabled();
@@ -656,9 +654,9 @@ async function main() {
   saveAiAssets(aiAssets);
   console.log(`[daily] AI 资产账本已更新: ${Object.keys(aiAssets).length} 键`);
 
-  // —— M2-⑤ 存储合并：双写过渡（旧发布目录 + 统一历史目录 data/history/reports/）——
-  // daily.yml 的 `ls -1d daily_reports/20*/` 还原依赖旧目录，双写期内不删；
-  // 验证发布链路无误后再停写旧目录（见整改计划 M2-⑤）。
+  // —— M2-⑤ 存储合并（去双写，2026-08-19 用户确认未上线）——
+  // data/history/reports/ 是唯一报告存储；daily_reports/（gh-pages 发布目录）
+  // 由 build-site.mjs 在构建时从唯一存储同步，daily.ts 不再写旧目录。
   const html = renderHtml(report, raw, date);
   const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(report, date) : null;
   const writeBundle = (dir: string) => {
@@ -678,9 +676,8 @@ async function main() {
     if (md) fs.writeFileSync(`${b}.md`, md, "utf8");
     return b;
   };
-  const base = writeBundle(OUTPUT_DIR);
-  writeBundle(REPORTS_DIR);
-  console.log(`[daily] wrote ${base}.{json,html${md ? ",md" : ""},articles.json} + ${REPORTS_DIR}/${date}/`);
+  const base = writeBundle(REPORTS_DIR);
+  console.log(`[daily] wrote ${base}.{json,html${md ? ",md" : ""},articles.json}（唯一存储 data/history/reports/）`);
 
   console.log(`[daily] done.`);
 }

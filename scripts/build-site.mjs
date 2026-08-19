@@ -3,11 +3,15 @@
  * Build the static site that gets published to GitHub Pages (or any static
  * host). Run AFTER `npm run daily` has produced today's report.
  *
- * Writes into daily_reports/ (already the publish dir):
- *   - index.html      copy of the latest <date>/<date>.html
- *   - archive.html    table of every <date>/<date>.html, newest first
+ * 存储模型（M2-⑤ 去双写，2026-08-19）：
+ *   data/history/reports/ 是唯一报告存储（daily.ts 只写这里）；
+ *   daily_reports/ 是 gh-pages 发布目录（daily.yml 依赖）。
+ * 本脚本负责把唯一存储同步到发布目录：
+ *   - 合并唯一存储 + 发布目录里 CI 恢复的历史（双写前的旧报告只在 gh-pages 上）
+ *   - 每个日期目录复制到 daily_reports/{date}/（唯一存储优先覆盖）
+ *   - 生成 index.html（最新报告）/ archive.html（全部日期）/ .nojekyll
  *
- * Existing per-date subdirs are left untouched. Idempotent — safe to re-run.
+ * Idempotent — safe to re-run.
  *
  * Usage:
  *   node scripts/build-site.mjs
@@ -17,42 +21,46 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = "daily_reports";
-const READ_DIRS = ["data/history/reports", "daily_reports"];
+const STORE = "data/history/reports";
 
-// M2-⑤ 存储合并：优先读统一历史目录 data/history/reports/（回退旧 daily_reports/）；
-// 输出仍写 daily_reports/（gh-pages 发布目录，daily.yml 依赖）。
-const readRoot =
-  READ_DIRS.find(
-    (d) =>
-      fs.existsSync(d) &&
-      fs.readdirSync(d).some((f) => /^\d{4}-\d{2}-\d{2}$/.test(f)),
-  ) ?? null;
+const dateDirs = (dir) =>
+  fs.existsSync(dir)
+    ? fs
+        .readdirSync(dir)
+        .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d))
+        .filter((d) => fs.existsSync(path.join(dir, d, `${d}.html`)))
+    : [];
 
-if (!readRoot) {
-  console.error(`[build-site] 找不到报告目录（${READ_DIRS.join(" / ")}）— 先跑 \`npm run daily\`。`);
-  process.exit(1);
-}
-
-// Pick up every <YYYY-MM-DD>/<YYYY-MM-DD>.html, newest first.
-const dates = fs
-  .readdirSync(readRoot)
-  .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d))
-  .filter((d) => fs.existsSync(path.join(readRoot, d, `${d}.html`)))
-  .sort((a, b) => b.localeCompare(a));
+// 合并唯一存储与发布目录（历史报告可能在发布目录里，双写前产物 / CI 恢复）
+const storeDates = new Set(dateDirs(STORE));
+const publishDates = new Set(dateDirs(ROOT));
+const dates = [...new Set([...storeDates, ...publishDates])].sort((a, b) =>
+  b.localeCompare(a),
+);
 
 if (dates.length === 0) {
-  console.error(`[build-site] no <YYYY-MM-DD>/<YYYY-MM-DD>.html found in ${readRoot}/`);
+  console.error(`[build-site] 找不到报告目录（${STORE} / ${ROOT}）— 先跑 \`npm run daily\`。`);
   process.exit(1);
 }
 
 // 输出目录（发布目录）确保存在
 fs.mkdirSync(ROOT, { recursive: true });
 
+// --- 同步每个日期目录到发布目录（唯一存储优先，覆盖旧副本）---
+let copied = 0;
+for (const d of dates) {
+  const src = storeDates.has(d) ? path.join(STORE, d) : path.join(ROOT, d);
+  const dst = path.join(ROOT, d);
+  if (!storeDates.has(d)) continue; // 发布目录已有，无需动
+  fs.cpSync(src, dst, { recursive: true, force: true });
+  copied++;
+}
+console.log(`[build-site] 同步 ${copied} 个日期目录 → ${ROOT}/（共 ${dates.length} 个报告）`);
+
 // --- index.html = latest report ---
 const latest = dates[0];
-const latestPath = path.join(readRoot, latest, `${latest}.html`);
 const latestHtml = fs
-  .readFileSync(latestPath, "utf8")
+  .readFileSync(path.join(ROOT, latest, `${latest}.html`), "utf8")
   .replace(/href="\.\.\/archive\.html"/g, 'href="./archive.html"');
 fs.writeFileSync(path.join(ROOT, "index.html"), latestHtml, "utf8");
 console.log(`[build-site] index.html  ← ${latest}/${latest}.html`);
@@ -60,7 +68,7 @@ console.log(`[build-site] index.html  ← ${latest}/${latest}.html`);
 // --- archive.html = list of all reports ---
 const rows = dates
   .map((d) => {
-    const size = (fs.statSync(path.join(readRoot, d, `${d}.html`)).size / 1024).toFixed(0);
+    const size = (fs.statSync(path.join(ROOT, d, `${d}.html`)).size / 1024).toFixed(0);
     return `      <li><a href="./${d}/${d}.html">${d}</a> <span class="size">${size} KB</span></li>`;
   })
   .join("\n");

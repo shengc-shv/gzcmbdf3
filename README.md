@@ -51,8 +51,7 @@ npm run build-site           # 生成静态站（index.html / archive.html）
 | `npm run render` | 用 sidecar 重新渲染 HTML/MD（不重抓不调 AI） |
 | `npm run sources` / `sources:check` | 查看/校验数据源配置 |
 | `npm run quota-report` | AI 调用量与花费估算（基于 `data/metrics/`） |
-| `npm run build-site` / `deploy` / `open` | 静态站构建 / 发布 / 本地打开 |
-| `npm run cleanup:legacy` | 清理旧发布目录过期报告（保留 7 天，`--apply` 才真删） |
+| `npm run build-site` / `deploy` / `open` | 静态站构建（同步唯一存储→发布目录）/ 发布 / 本地打开 |
 | `npm test` | node:test 测试套件 |
 
 ## 数据源与等级
@@ -87,10 +86,10 @@ data/
   article-history-backup.json  # 被裁条目的持久归档（去重）
   crawled-articles.json     # IPO 爬虫产物（CI 生成，不入库）
   crawled-gz.json           # 广州商机爬虫产物（同上）
-  history/reports/<date>.json   # 合并后的统一历史报告目录（M2-⑤）
+  history/reports/<date>.json   # 唯一报告存储（daily 只写这里；build-site 同步到发布目录）
   ai-assets/                # AI 付费产物账本（append-only，永不 7 天裁剪）
   metrics/ai-calls-<date>.jsonl # AI 调用埋点（backend/stage/ok/ms）
-daily_reports/              # 发布目录（{date}/ + index.html + archive.html）
+daily_reports/              # gh-pages 发布目录（build-site 从 data/history/reports 同步生成）
 ```
 
 ## AI 后端
