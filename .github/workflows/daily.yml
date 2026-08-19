@@ -2,24 +2,34 @@ name: Daily Brief
 
 # Generate a fresh daily report and publish to GitHub Pages.
 #
-# Schedule: Beijing time 09:05 / 09:25 / 09:45 — three cron triggers
-# (UTC 01:05 / 01:25 / 01:45) act as **redundant insurance** so the morning
-# run still fires even if GitHub silently drops one or two of them.
-# The "gate" job enforces **at most one build per day**:
-#   - workflow_dispatch always runs;
-#   - if another run of this workflow is still in progress, this trigger is
-#     skipped outright ("前一次没跑完，下一次直接跳过") — checked via the
-#     Actions API, because `concurrency` would QUEUE (delay) rather than skip;
-#   - if today's report already exists on gh-pages, this trigger is skipped
-#     (one build per day — the first successful morning run wins);
-#   - filters by REPORT_DAYS (default: every day).
+# Schedule: 每小时 :05 和 :35 触发（UTC）——多触发点是防 GitHub cron 静默丢失的
+# 冗余保险；真正放行由 gate 决定：
+#   - REPORT_HOUR（默认 9）过滤：只有北京时区 9 点那次通过（cron :35 触发时
+#     北京已是 13:35，hour 不匹配被 gate 跳过）
+#   - 当日报告已发布到 gh-pages 则跳过（一天最多构建一次，第一个成功的早晨跑赢）
+#   - 并发检查：同 workflow 前一 run 仍在 in_progress 则本次直接跳过
+#     （用 Actions API 而非 concurrency —— concurrency 是 QUEUE 延迟，不是 SKIP）
+# workflow_dispatch 手动触发有两个开关：
+#   - skip_ai: 跳过全部 LLM 调用（复用 data/article-history.json 里的 AI 摘要，
+#     等价原 test2 失败恢复 / 无 AI 验证，零 LLM 成本）
+#   - publish: 是否发布 gh-pages（false = 仅验证 + 上传 artifact，等价原 test1）
+# cron（schedule）触发固定为全 AI + 发布。
 
 on:
   schedule:
-    # Beijing 09:05 / 09:25 / 09:45 = UTC 01:05 / 01:25 / 01:45
+    # 每小时第 5 分 / 第 35 分（UTC），gate 过滤只放行 REPORT_HOUR 对应那次
     - cron: '5 * * * *'
     - cron: '35 * * * *'
   workflow_dispatch:
+    inputs:
+      skip_ai:
+        description: '跳过全部 LLM 调用（复用历史缓存摘要，零 AI 成本；等价原 test2/无 AI 验证）'
+        type: boolean
+        default: false
+      publish:
+        description: '发布到 gh-pages（false = 仅验证 + 上传 artifact，不发布；等价原 test1）'
+        type: boolean
+        default: true
 
 permissions:
   contents: write  # needed to push to gh-pages branch
@@ -111,8 +121,6 @@ jobs:
           fi
 
           # 每天最多构建一次：当日报告已发布到 gh-pages 则跳过本次触发。
-          # （9:05/9:25/9:45 三个触发点互为保险——GitHub cron 会静默丢触发，
-          # 多设几个确保至少一次命中；第一个成功跑的发布报告后，其余触发全部跳过。）
           # 并发跳过已在前面处理：前一次还在跑（in_progress）时本次直接跳过。
           if [ "$hour_match" = "true" ] && [ "$day_match" = "true" ]; then
             TODAY=$(TZ="$TZ_VAL" date +%Y-%m-%d)
@@ -210,8 +218,13 @@ jobs:
             data/crawled-gz.json
           retention-days: 30   # 保留30天，可调整
 
+      # 生成当日报告（全 AI 流程）。skip_ai=true（手动触发时勾选）→ 复用历史缓存摘要，
+      # 不触发任何 LLM 调用（等价原 test2 失败恢复 / test1 无 AI 验证）。
+      # schedule 触发时 inputs 为空 → SKIP_AI 为空 → 全 AI。
+      # daily 同时导出 data/fetched-articles.json（信息源抓取结果），供「预 AI 分析加载」任务拉回比对。
       - name: Generate today's report
         env:
+          SKIP_AI: ${{ inputs.skip_ai && 'true' || '' }}
           LLM_BACKEND: ${{ vars.LLM_BACKEND || 'anthropic' }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -236,7 +249,16 @@ jobs:
           REPORT_LOCALE: ${{ vars.REPORT_LOCALE || 'zh' }}
           REPORT_TZ: ${{ vars.REPORT_TZ }}
           WEB_MODE: 'true'
-        run: npm run dry-run
+        run: npm run daily
+
+      # 信息源抓取结果数据包（daily 导出），供本地「预 AI 分析加载」任务拉回比对
+      # （识别信息源新增条目，不只爬虫数据）。
+      - name: Upload fetched sources as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fetched-data
+          path: data/fetched-articles.json
+          retention-days: 30
 
       # 每日流程会重写 data/article-history.json（含当日爬虫数据 + 被重新灌入的
       # 旧缓存，可能含陈旧日期）。先裁剪到最近 N 天（默认 7），被移除数据累积写入
@@ -257,10 +279,13 @@ jobs:
             git push
           fi
 
+      # 发布步骤：schedule 固定发布；手动触发按 publish input（false = 仅验证不发布）
       - name: Build static site (index + archive)
+        if: ${{ github.event_name == 'schedule' || inputs.publish == true }}
         run: npm run build-site
 
       - name: Publish to gh-pages
+        if: ${{ github.event_name == 'schedule' || inputs.publish == true }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

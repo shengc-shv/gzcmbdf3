@@ -15,9 +15,11 @@ import {
   loadKeywordConfig,
 } from "../lib/filters/config";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
+import { REPORTS_DIR } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
 
-const OUTPUT_DIR = "daily_reports";
+// 本地验证工具（无 AI）。写盘走唯一存储 data/history/reports/，
+// 与 daily.ts 一致；build-site 会从唯一存储同步到发布目录。
 
 // 生成一个空报告（不调用 AI）
 function generateEmptyReport(articles: ArticleInput[]) {
@@ -243,7 +245,7 @@ async function main() {
   const html = renderHtml(report, raw, date);
 
   // 写入文件
-  const dateDir = path.join(OUTPUT_DIR, date);
+  const dateDir = path.join(REPORTS_DIR, date);
   fs.mkdirSync(dateDir, { recursive: true });
   const base = path.join(dateDir, date);
   fs.writeFileSync(`${base}.html`, html, "utf8");

@@ -679,6 +679,13 @@ async function main() {
   const base = writeBundle(REPORTS_DIR);
   console.log(`[daily] wrote ${base}.{json,html${md ? ",md" : ""},articles.json}（唯一存储 data/history/reports/）`);
 
+  // 导出信息源抓取结果（排除爬虫产物 gd-*/gz-*），供「预 AI 分析加载」任务拉回比对：
+  // 识别历史库中不存在的信息源新增条目 → AI 分析打标。与 dry-run 导出逻辑一致（漏斗后）。
+  const fetched = articles.filter((a) => !/^(gd-|gz-)/.test(a.sourceId || ""));
+  fs.mkdirSync("data", { recursive: true });
+  fs.writeFileSync("data/fetched-articles.json", JSON.stringify(fetched, null, 2), "utf8");
+  console.log(`[daily] 📤 信息源抓取结果导出: ${fetched.length} 条 → data/fetched-articles.json`);
+
   console.log(`[daily] done.`);
 }
 
