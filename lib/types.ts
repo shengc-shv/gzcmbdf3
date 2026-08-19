@@ -9,7 +9,7 @@ import type { RawArticle } from "./sources/types";
 import type { TickerAnalysis } from "./trading/signals";
 import type { CryptoGlobalStats } from "./trading/coingecko";
 import type { FearGreedSnapshot } from "./trading/fear-greed";
-import type { TradingCommentary } from "./ai/trading-commentary";
+import type { TradingCommentary, WatchlistPick } from "./ai/trading-commentary";
 
 export interface BriefItem {
   title: string;
@@ -34,7 +34,11 @@ export interface DailyReport {
   executive_summary?: import("./ai/executive-summary").ExecutiveSummary;
 }
 
-export interface TradingSection extends TradingCommentary {
+export interface TradingSection {
+  // SKIP_AI / LLM 失败恢复路径下以下字段可能缺失 → 全部可选
+  market_overview?: string;
+  watchlist?: WatchlistPick[];
+  risk_caveat?: string;
   generated_at: string;
   tickers: TickerAnalysis[];
   crypto_fear_greed?: FearGreedSnapshot;

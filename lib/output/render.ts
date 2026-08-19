@@ -23,6 +23,7 @@ import { TIER_COLORS, THEME_CSS } from "./render/theme";
 import { getReportTz } from "../utils";
 import type { Category, SourceDef } from "../sources/types";
 import { SOURCE_TIER_LABELS, type SourceTier } from "../sources/tiers";
+import { CATEGORY_ORDER } from "../sources/constants";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { V2EX_OFF_TOPIC_RE } from "../sources/v2ex";
@@ -354,7 +355,7 @@ export function groupRaw(
     // console.log('[groupRaw] buckets[gd-ipo] size after filling:', buckets['gd-ipo']?.size);
   }
 
-  for (const cat of Object.keys(buckets) as Category[]) {
+  for (const cat of CATEGORY_ORDER) {
     for (const [id, b] of buckets[cat].entries()) {
       if (PRESERVE_FETCH_ORDER_SOURCES.has(id)) continue;
       b.items.sort(
@@ -439,7 +440,7 @@ export function groupRaw(
   gz: [],
   };
   
-  for (const cat of Object.keys(buckets) as Category[]) {
+  for (const cat of CATEGORY_ORDER) {
     // 广东地区IPO / 全国IPO 已由各自分流逻辑（三道闸 / subcatOf）文章级分发，单独构建
     if (cat === "gd-ipo") {
       out["gd-ipo"] = buildOrderedSubs(gdSubs, "gd-ipo");
@@ -537,10 +538,11 @@ export function groupRaw(
           sources.push({ sourceId: id, sourceName: b.sourceName, items });
         }
       }
-      // 广东地区IPO / 财经要点 / 广州商机 的二级标签始终渲染，即使当天为空也保留
+      // 财经要点 / 广州商机 的二级标签始终渲染，即使当天为空也保留
       // 标签 + “暂无内容”占位，保证结构稳定可见（不折叠成单子标签）。
+      // （gd-ipo/ipo 已在循环开头 continue 单独构建，此处不可达，不重复判断）
       if (sources.length === 0) {
-        if (cat === 'gd-ipo' || cat === 'finance' || cat === 'gz') {
+        if (cat === 'finance' || cat === 'gz') {
           subs.push({ id: subId, name: SUBCATEGORY_LABELS[subId] ?? subId, sources: [] });
           continue;
         }

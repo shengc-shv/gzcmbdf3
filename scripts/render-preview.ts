@@ -93,7 +93,7 @@ function main() {
       url: e.url,
       source: e.source,
       summary: e.summary,
-      importance: (e as Record<string, unknown>).importance as number | undefined ?? 6,
+      importance: (e as unknown as Record<string, unknown>).importance as number | undefined ?? 6,
     });
   }
   const CAP: Record<string, number> = { tech: 18, finance: 18, politics: 10, "gd-ipo": 25 };

@@ -221,11 +221,11 @@ export function renderTradingPanel(trading: TradingSection): string {
   </section>
 
   ${
-    trading.watchlist.length > 0
+    (trading.watchlist ?? []).length > 0
       ? `<section class="trading-watchlist">
     <h2 class="category-title trading-section-title">${STR.tradingTodayFocus}</h2>
     <div class="trading-picks">
-      ${trading.watchlist.map(renderPickCard).join("\n")}
+      ${(trading.watchlist ?? []).map(renderPickCard).join("\n")}
     </div>
   </section>`
       : ""
