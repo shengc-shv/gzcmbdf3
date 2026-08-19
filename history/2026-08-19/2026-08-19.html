@@ -18,6 +18,7 @@
     --link: #2f4cdd;
     --accent: #1a1a1f;
     --accent-fg: #ffffff;
+    --accent-cmb: #e60012;
     --rank-high-bg: #fde8e8;
     --rank-high-fg: #c01c1c;
     --rank-mid-bg: #fdf0d9;
@@ -50,8 +51,9 @@
       --card: #15191f;
       --card-alt: #1b2027;
       --link: #8aa0ff;
-      --accent: #f3f4f6;
-      --accent-fg: #0b0d11;
+    --accent: #f3f4f6;
+    --accent-fg: #0b0d11;
+    --accent-cmb: #ff5a5f;
       --rank-high-bg: rgba(239, 68, 68, 0.16);
       --rank-high-fg: #fca5a5;
       --rank-mid-bg: rgba(245, 158, 11, 0.16);
@@ -171,36 +173,72 @@
     color: var(--fg-soft);
   }
 
-  /* ===== 执行摘要板块（今日必读 + 商机提示）===== */
+  /* ===== 执行摘要板块（今日必读 + 商机提示，移动端优先折叠）===== */
   .exec-summary {
-    margin: 1.1rem 0 0.6rem;
-    border: 1px solid color-mix(in srgb, var(--c-finance) 30%, transparent);
-    border-left: 4px solid var(--c-finance);
+    margin: 1rem 0 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    border-left: 4px solid var(--accent-cmb);
     border-radius: 14px;
-    padding: 0.9rem 1.1rem;
-    background: color-mix(in srgb, var(--c-finance) 6%, var(--bg));
-    box-shadow: var(--shadow-1);
+    padding: 0.85rem 1rem;
+    background: color-mix(in srgb, var(--accent-cmb) 5%, var(--bg));
+    box-shadow: var(--shadow-md);
   }
-  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .exec-title { margin: 0; font-size: 1.05rem; color: var(--fg); letter-spacing: 0.02em; }
-  .exec-sub { font-size: 0.75rem; color: var(--muted); }
-  .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-  @media (max-width: 760px) { .exec-grid { grid-template-columns: 1fr; } }
+  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.55rem; }
+  .exec-title { margin: 0; font-size: 1.02rem; color: var(--fg); letter-spacing: 0.02em; }
+  .exec-sub { font-size: 0.72rem; color: var(--muted); }
   .exec-col-title { margin: 0 0 0.45rem; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-  .must-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
-  .must-item { display: flex; gap: 0.5rem; align-items: baseline; }
-  .must-index {
-    flex: none; width: 1.15rem; height: 1.15rem; border-radius: 50%;
-    background: color-mix(in srgb, var(--c-finance) 18%, transparent);
-    color: var(--c-finance); font-size: 0.72rem; font-weight: 700;
-    display: inline-flex; align-items: center; justify-content: center;
+
+  /* 今日必读：横向滑动卡片（Apple News 风），桌面转为 5 列网格 */
+  .exec-must { margin-bottom: 0.5rem; }
+  .must-scroller {
+    list-style: none; margin: 0; padding: 0 0 0.4rem;
+    display: flex; gap: 0.6rem; overflow-x: auto;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .must-body { display: flex; flex-direction: column; }
-  .must-body strong { font-size: 0.86rem; color: var(--fg); font-weight: 600; }
-  .must-why { font-size: 0.76rem; color: var(--fg-soft); line-height: 1.5; }
+  .must-scroller::-webkit-scrollbar { display: none; }
+  .must-card {
+    flex: 0 0 auto; width: 80%; max-width: 16.5rem; scroll-snap-align: start;
+    display: flex; gap: 0.55rem; align-items: flex-start;
+    border: 1px solid var(--rule); border-radius: 12px;
+    padding: 0.6rem 0.75rem; background: var(--bg-elevated);
+    box-shadow: var(--shadow-sm);
+  }
+  .must-index {
+    flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%;
+    background: var(--accent-cmb); color: #fff; font-size: 0.72rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 0.05rem;
+  }
+  .must-body { display: flex; flex-direction: column; min-width: 0; }
+  .must-body strong { font-size: 0.85rem; color: var(--fg); font-weight: 600; line-height: 1.35; }
+  .must-why {
+    font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-card { width: auto; max-width: none; }
+  }
+
+  /* 商机提示：默认折叠，点击展开 */
+  .exec-insights { margin-top: 0.2rem; }
+  .insight-toggle {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 0.3rem;
+    width: 100%; box-sizing: border-box;
+    background: color-mix(in srgb, var(--accent-cmb) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    color: var(--accent-cmb); font-weight: 600; font-size: 0.84rem;
+    border-radius: 10px; padding: 0.55rem 0.8rem; cursor: pointer;
+    font-family: inherit;
+  }
+  .insight-caret { transition: transform 0.2s ease; font-size: 0.8rem; }
+  .insight-toggle[aria-expanded="true"] .insight-caret { transform: rotate(180deg); }
+  .insight-collapse { display: none; margin-top: 0.6rem; }
+  .insight-collapse.is-open { display: block; }
+
   .insight-grid { display: flex; flex-direction: column; gap: 0.5rem; }
   .insight-card {
-    border: 1px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem;
+    border: 1px solid var(--rule); border-radius: 10px; padding: 0.55rem 0.7rem;
     background: var(--bg);
   }
   .insight-topic { margin: 0 0 0.3rem; font-size: 0.85rem; color: var(--c-finance); font-weight: 700; }
@@ -824,7 +862,7 @@
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="finance">宏观政策<span class="count">42</span></button>
     
-    <button class="tab" data-tab="gz">广州商机<span class="count">27</span></button>
+    <button class="tab" data-tab="gz">广州商机<span class="count">26</span></button>
     <button class="tab tab-fold" data-tab="ipo">IPO/新股<span class="count">29</span></button>
     <button class="tab tab-fold" data-tab="tech">技术动态<span class="count">47</span></button>
   </nav>
@@ -838,7 +876,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国家政策</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 公积金提取和使用范围拓宽，9月20日起施行，利好住房消费与房贷客群，可跟进配套营销</p>
@@ -846,7 +884,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/18/ARTIPRUEiHIztmXCcoTnWgvw260818.shtml" target="_blank" rel="noopener noreferrer">及时谋划出台增量政策，国务院最新部署</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">国家政策</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 国务院部署及时出台增量政策，宏观政策加力预期升温，关注对信贷投放与消费提振的影响</p>
@@ -856,7 +894,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www.gov.cn/zhengce/content/202608/content_7078477.htm" target="_blank" rel="noopener noreferrer">国务院关于修改《住房公积金管理条例》的决定</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">国家政策</span></p>
   <p class="article-excerpt">【国务院政策】国务院关于修改《住房公积金管理条例》的决定</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 国务院修改住房公积金管理条例，全国性住房金融政策调整，对房贷与公积金客群影响重大</p>
@@ -871,7 +909,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-18/doc-ininswna3445091.shtml" target="_blank" rel="noopener noreferrer">新基金发行与上市一览：2只基金今日发行</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【财富管理】新基金发行与上市一览：2只基金今日发行</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新基金发行信息提示产品货架动态，分行可及时掌握新发基金类型与策略，结合客户需求开展营销预热和精准推荐，把握销售窗口期。</p>
@@ -879,7 +917,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-18/doc-ininsfpx9865586.shtml" target="_blank" rel="noopener noreferrer">百亿级基金经理阵营之变</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【财富管理】百亿级基金经理阵营之变</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 百亿级基金经理阵营变动影响产品业绩与口碑，需密切跟踪明星经理动向，主动与持基客户沟通，评估并调整基金代销重点产品池。</p>
@@ -887,7 +925,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260819/herald/15f6986636d0804bc94b301c10b6eb69.html" target="_blank" rel="noopener noreferrer">上半年银行业净利润微降至1.2万亿，城商行以7.4%增速领跑</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【21财经】上半年银行业净利润微降至1.2万亿，城商行以7.4%增速领跑</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 上半年银行业净利润微降至1.2万亿，城商行7.4%增速领跑，行业经营分化趋势参考</p>
@@ -895,7 +933,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260819/herald/fb79bdc5871bc59ad017255ec98e40c1.html" target="_blank" rel="noopener noreferrer">人民币国际化，行稳致远——人民币研究系列专题</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【21财经】人民币国际化，行稳致远——人民币研究系列专题</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 人民币国际化稳步推进专题，跨境金融与外币业务机会观察</p>
@@ -903,7 +941,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-08-19/doc-ininuzku8367605.shtml" target="_blank" rel="noopener noreferrer">万国黄金集团拟发行本金总额55亿港元的可换股债券</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 01:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 09:12</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【财富管理】万国黄金集团拟发行本金总额55亿港元的可换股债券</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 万国黄金拟发行55亿港元可换股债券，港股黄金板块再融资活跃，关注黄金价格行情下的企业融资需求与贵金属投资产品营销窗口。</p>
@@ -911,7 +949,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-08-19/doc-ininuzku8363345.shtml" target="_blank" rel="noopener noreferrer">赤峰黄金获小摩增持约156.01万股 每股作价约37.15港元</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 01:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 08/19 09:12</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【财富管理】赤峰黄金获小摩增持约156.01万股 每股作价约37.15港元</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 摩根大通增持赤峰黄金股份，外资看好黄金板块，贵金属行情受关注，可顺势营销黄金积存、实物金等财富管理产品。</p>
@@ -919,7 +957,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260818/herald/4840c3cfc3b822ea1757447f8cb1dd72.html" target="_blank" rel="noopener noreferrer">重磅新政来了，《住房公积金管理条例》正式公布</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 01:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 08/19 09:12</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   <p class="article-excerpt">【21财经】重磅新政来了，《住房公积金管理条例》正式公布</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 《住房公积金管理条例》正式公布，公积金制度完善利好住房消费与刚需购房，关注房贷、公积金组合贷联动营销与住房场景金融机会。</p>
@@ -927,7 +965,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininuzku8384342.shtml" target="_blank" rel="noopener noreferrer">美联储9月维持利率不变的概率为65%</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪理财保险 · 08/19 01:01</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪理财保险 · 08/19 09:01</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 市场预期美联储9月维持利率不变概率达65%，美国加息周期见顶预期强化，人民币汇率与跨境资金压力缓解，利好跨境理财与结售汇业务。</p>
@@ -935,7 +973,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260819/herald/03ebd81a5e5c7fd9a6f0f71aa24fb056.html" target="_blank" rel="noopener noreferrer">美股三连跌！长债利率创19年新高，存储芯片、光通信等AI硬件板块遭遇抛售潮，费城半导体指数重挫4.98%</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21财经 · 08/19 01:01</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21财经 · 08/19 09:01</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 美股三连跌、长债利率创19年新高，AI硬件板块遭抛售，全球风险资产回调，提示权益类与挂钩类理财产品净值波动风险，加强客户预期管理。</p>
@@ -943,7 +981,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260819/herald/0599c8c99089f4a4830363c2caaa7ce1.html" target="_blank" rel="noopener noreferrer">【环球财经】全球债券收益率走高令贵金属承压 纽约金价18日回落近2%</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21财经 · 08/19 01:01</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21财经 · 08/19 09:01</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 全球债券收益率走高令贵金属承压、纽约金价回落近2%，避险资产短期走弱，提示黄金及贵金属理财客户注意波动，理性看待配置价值。</p>
@@ -951,7 +989,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshu2684020.shtml" target="_blank" rel="noopener noreferrer">史上最大IPO，或要来了</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 市场传闻史上最大规模 IPO 临近，资本市场活跃度提升，关注新股开户与代销机会</p>
@@ -959,7 +997,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininvshv9441289.shtml" target="_blank" rel="noopener noreferrer">市场等待美联储信号，黄金技术面聚焦4300美元至4390美元区间</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 黄金技术面聚焦 4300-4390 美元区间，美联储政策预期扰动金价，对贵金属理财产品营销有参考</p>
@@ -967,7 +1005,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshv9472560.shtml" target="_blank" rel="noopener noreferrer">华润啤酒管理层谈白酒业务：努力打造成第二增长曲线，创造新思路新打法</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   
@@ -975,7 +1013,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshr7108887.shtml" target="_blank" rel="noopener noreferrer">宇树科技上市庆功照流出，“投资教父”沈南鹏露面</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   
@@ -983,7 +1021,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshn8379168.shtml" target="_blank" rel="noopener noreferrer">8个月连续完成4轮融资，魔芯科技最新一轮融资规模5亿元</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   
@@ -991,7 +1029,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIaIXdV3IwSGurrOKdrWt9260819.shtml" target="_blank" rel="noopener noreferrer">财报透视丨上市银行首份半年报出炉 平安银行营收、净利重回正增长</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 平安银行首发半年报，营收净利重回正增长，同业零售业务经营数据可对照分析</p>
@@ -999,7 +1037,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIbcdCSWiyzw2K3I4hj4vU260819.shtml" target="_blank" rel="noopener noreferrer">从“罚业务”到“罚机制”，银行“规模情结”迎重拳：监管一日三张罚单剑指考核指标</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 监管对银行考核指标开罚单，治理规模情结，银行合规经营与考核导向调整信号明确</p>
@@ -1007,7 +1045,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/18/ARTI5VoyQIZIL2y8lhLolODx260818.shtml" target="_blank" rel="noopener noreferrer">险企起诉代理人追讨百万佣金！保险销售进入“责任绑定”时代</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 险企起诉代理人追讨佣金，保险销售进入责任绑定时代，代销合规与代理人管理参考</p>
@@ -1015,7 +1053,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/18/ARTII2hdPtBYcVAOj6RpKCXq260818.shtml" target="_blank" rel="noopener noreferrer">上市公司信披违法违规密集被立案，监管强力出击释放什么信号</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 上市公司信披违法违规密集被立案，监管强监管信号，投教与合规风险提示参考</p>
@@ -1023,7 +1061,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/17/ARTISxbju4BE6p380FCRWIKV260817.shtml" target="_blank" rel="noopener noreferrer">贷款“降速提质” 居民存款仍在搬家</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 7月信贷降速、存款搬家：居民资金向理财/基金等转移，是财富管理业务与存款稳定性管理的双重信号。</p>
@@ -1038,7 +1076,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10968058.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于印发广州市政府投资管理办法的通知</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】广州市人民政府关于印发广州市政府投资管理办法的通知</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府投资管理办法：规范政府投资项目，基建与产业投资落地带动施工/供应企业开户、代发与供应链融资需求。</p>
@@ -1046,7 +1084,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10833640.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于印发广州市国民经济和社会发展第十五个五年规划纲要的通知</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】广州市人民政府关于印发广州市国民经济和社会发展第十五个五年规划纲要的通知</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州&quot;十五五&quot;规划纲要：未来五年投资与产业布局总纲，重点片区建设带来对公+零售联动（代发/按揭/经营贷）机会。</p>
@@ -1054,7 +1092,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10846972.html" target="_blank" rel="noopener noreferrer">【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1062,7 +1100,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10968061.html" target="_blank" rel="noopener noreferrer">【文字解读】《广州市政府投资管理办法》政策解读</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】【文字解读】《广州市政府投资管理办法》政策解读</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府投资管理办法：规范政府投资项目，基建与产业投资落地带动施工/供应企业开户、代发与供应链融资需求。</p>
@@ -1070,7 +1108,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10834892.html" target="_blank" rel="noopener noreferrer">【媒体解读】五年蓝图兼顾“国之大者”与三餐四季</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】【媒体解读】五年蓝图兼顾“国之大者”与三餐四季</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1078,7 +1116,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10765891.html" target="_blank" rel="noopener noreferrer">【媒体解读】广州公布23个重大行政决策事项</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】【媒体解读】广州公布23个重大行政决策事项</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1086,7 +1124,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10761623.html" target="_blank" rel="noopener noreferrer">【媒体解读】年交易总额超1.5万亿元 广州推动专业市场转型升级</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】【媒体解读】年交易总额超1.5万亿元 广州推动专业市场转型升级</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1094,7 +1132,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10685700.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《花都区新街村、大陵村城市更新单元控制性详细规划》等2项规划成果的批复</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《花都区新街村、大陵村城市更新单元控制性详细规划》等2项规划成果的批复</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 花都区城市更新单元规划获批，旧改项目推进，拆迁补偿与居民金融服务机会</p>
@@ -1102,7 +1140,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10660563.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《广州地铁八号线北延段（滘心—广州北站）工程车辆段及周边片区控制性详细规划》等2项规划成果的批复</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《广州地铁八号线北延段（滘心—广州北站）工程车辆段及周边片区控制性详细规划》等2项规划成果的批复</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州地铁八号线北延段工程规划获批，沿线基建与片区开发，项目融资与商户机会</p>
@@ -1115,83 +1153,83 @@
   <div class="source-contents">
     <div class="source-content active" data-source-content="_merged" data-sub="news" data-cat="finance">
     <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/full-truck-alliance-beats-estimates-on-revenue-growth-93CH-4866741" target="_blank" rel="noopener noreferrer">Full Truck Alliance beats estimates on revenue growth</a></h3>
+  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/moderna-merck-cancer-vaccine-shows-initial-late-stage-melanoma-data.html" target="_blank" rel="noopener noreferrer">Personalized cancer vaccine from Moderna, Merck shows promise in first late-stage melanoma trial</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 09:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 18:49</p>
+  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
+  <p class="article-excerpt">The combination regimen significantly extended the time patients lived without their melanoma returning, compared with Keytruda alone.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/target-tgt-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Target hikes outlook as sales rebound and huge tariff refund boosts bottom line</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 18:45</p>
+  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
+  <p class="article-excerpt">Target posted better-than-expected second-quarter sales and raised its full-year outlook.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/commodities-news/morning-bid-bonds-out-robots-in-4866977" target="_blank" rel="noopener noreferrer">Morning Bid: Bonds out, robots in</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:42</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/shell-trader-mansfield-resigns-after-26-years-at-oil-major" target="_blank" rel="noopener noreferrer">Shell Trader Mansfield Resigns After 26 Years at Oil Major</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/target-earnings-beat-by-178-revenue-topped-estimates-4866975" target="_blank" rel="noopener noreferrer">Target earnings beat by $1.78, revenue topped estimates</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 09:16</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Shell Plc veteran Geoffrey Mansfield has resigned from his role as global desk lead for low-carbon fuels trading, according to a person familiar with the matter.</p>
-  
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/ambea-q2-2026-slides-margins-hit-10-pipeline-surges-64-93CH-4866740" target="_blank" rel="noopener noreferrer">Ambea Q2 2026 slides: margins hit 10%, pipeline surges 64%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 09:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:41</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/weibo-shares-gain-3-as-earnings-top-estimates-93CH-4866738" target="_blank" rel="noopener noreferrer">Weibo shares gain 3% as earnings top estimates</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/analyst-ratings/needham-reiterates-hold-on-klarna-stock-after-mixed-results-93CH-4866974" target="_blank" rel="noopener noreferrer">Needham reiterates Hold on Klarna stock after mixed results</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 09:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:41</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/activeops-executive-chair-acquires-shares-through-incentive-plan-93CH-4866737" target="_blank" rel="noopener noreferrer">ActiveOps executive chair acquires shares through incentive plan</a></h3>
+  <h3 class="article-title"><a href="https://finance.yahoo.com/markets/stocks/articles/fund-sold-floor-decor-fnd-103954829.html" target="_blank" rel="noopener noreferrer">The Fund Sold Floor &amp; Decor (FND) as Housing Demand Stayed Weak</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 09:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Yahoo Finance · 08/19 18:39</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/ithaca-energy-h1-2026-slides-record-output-drives-dividend-upgrade-93CH-4866739" target="_blank" rel="noopener noreferrer">Ithaca Energy H1 2026 slides: record output drives dividend upgrade</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/target-raises-fullyear-sales-forecast-amid-ongoing-turnaround-drive-4866969" target="_blank" rel="noopener noreferrer">Target raises full-year sales forecast amid ongoing turnaround drive</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 09:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:39</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/videos/2026-08-19/copper-s-upward-trend-can-continue-blackrock-says-video" target="_blank" rel="noopener noreferrer">Copper&#39;s Upward Trend Can Continue, BlackRock Says</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/toyo-shares-edge-up-despite-q2-earnings-revenue-miss-93CH-4866955" target="_blank" rel="noopener noreferrer">Toyo shares edge up despite Q2 earnings, revenue miss</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 09:15</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:38</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">&quot;The trend is very much your friend,&quot; says Evy Hambro, head of fundamental equities thematic and sector investing at BlackRock, when asked about the rise in copper prices. &quot;We are seeing a very tight market,&quot; he tells Bloomberg Television. &quot;It&#39;s very easy to say: well, okay, it&#39;s gone up a lot and w</p>
+  
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/libyan-protests-flare-as-government-struggles-to-keep-lights-on" target="_blank" rel="noopener noreferrer">Libyan Protests Flare as Government Struggles to Keep Lights On</a></h3>
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/saudis-give-full-oil-allocations-to-at-least-three-europe-buyers" target="_blank" rel="noopener noreferrer">Saudis Give Full Oil Allocations to at Least Three Europe Buyers</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 08:56</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 18:38</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Protests broke out again in the Libyan capital after the energy-rich country suffered its third widespread blackout in two days, fueling public anger over deteriorating basic services.</p>
+  <p class="article-excerpt">Saudi Aramco has notified at least three European oil refiners that will supply full contractual crude volumes next month, easing concerns about the region’s supply concerns while crude flows from the Persian Gulf and Red Sea are disrupted.</p>
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/deoleo-takeover-battle-olive-oil-dcoop.html" target="_blank" rel="noopener noreferrer">World’s largest olive oil company pops over 17% as rivals circle in takeover battle</a></h3>
+  <h3 class="article-title"><a href="https://finance.yahoo.com/markets/stocks/articles/applied-aerospace-defense-aadx-convert-103704440.html" target="_blank" rel="noopener noreferrer">Can Applied Aerospace &amp; Defense (AADX) Convert Its Backlog Into Durable Earnings Growth?</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 08:49</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Yahoo Finance · 08/19 18:37</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Shares of Spain&#39;s Deoleo jumped nearly 16% on Wednesday morning amid an intensifying takeover battle for the world&#39;s largest olive oil bottler and marketer.</p>
   
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/egypt-bond-risk-at-2014-low-shows-decade-of-debt-distress-easing" target="_blank" rel="noopener noreferrer">Egypt Bond Risk at 2014 Low Shows Decade of Debt Distress Easing</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 08:35</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Record foreign-currency reserves and a vote of confidence from the International Monetary Fund have cut Egypt’s risk premium to the lowest since 2014.</p>
   
 </article>
   </div>
@@ -1200,15 +1238,15 @@
   </section>
   
   <section class="panel" data-panel="gz">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">4</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">7</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">4</span></button></nav>
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">5</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">4</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">7</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">4</span></button></nav>
 <div class="sub-contents"><div class="sub-content active" data-sub-content="gz-wealth" data-cat="gz">
-    <nav class="source-tabs"><button class="source-tab active" data-source="sina-finance" data-sub="gz-wealth" data-cat="gz">新浪财经<span class="count">2</span></button><button class="source-tab" data-source="cctv-finance" data-sub="gz-wealth" data-cat="gz">央视财经<span class="count">1</span></button><button class="source-tab" data-source="sina-money" data-sub="gz-wealth" data-cat="gz">新浪财经·理财保险<span class="count">2</span></button><button class="source-tab" data-source="gz-gov" data-sub="gz-wealth" data-cat="gz">广州市政府<span class="count">1</span></button></nav>
+    <nav class="source-tabs"><button class="source-tab active" data-source="sina-finance" data-sub="gz-wealth" data-cat="gz">新浪财经<span class="count">3</span></button><button class="source-tab" data-source="cctv-finance" data-sub="gz-wealth" data-cat="gz">央视财经<span class="count">1</span></button><button class="source-tab" data-source="gz-gov" data-sub="gz-wealth" data-cat="gz">广州市政府<span class="count">1</span></button></nav>
   <div class="source-contents">
     <div class="source-content active" data-source-content="sina-finance" data-sub="gz-wealth" data-cat="gz">
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininvshv9441289.shtml" target="_blank" rel="noopener noreferrer">市场等待美联储信号，黄金技术面聚焦4300美元至4390美元区间</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">财富业务</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 黄金技术面聚焦 4300-4390 美元区间，美联储政策预期扰动金价，对贵金属理财产品营销有参考</p>
@@ -1216,7 +1254,15 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininvwqk8283567.shtml" target="_blank" rel="noopener noreferrer">视频|汇添富基金重大人事调整，顶流指数基金经理过蓓蓓36天清仓卸任，481亿指数基金集体换将</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
+  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininwawh8252713.shtml" target="_blank" rel="noopener noreferrer">千元新股引爆市场！宇树科技首日暴涨456%，信托自营揽收868万，53只理财斩获近亿元浮盈</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">财富业务</span></p>
   
   
@@ -1226,35 +1272,17 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/18/ARTI5VoyQIZIL2y8lhLolODx260818.shtml" target="_blank" rel="noopener noreferrer">险企起诉代理人追讨百万佣金！保险销售进入“责任绑定”时代</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">财富业务</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 险企起诉代理人追讨佣金，保险销售进入责任绑定时代，代销合规与代理人管理参考</p>
-</article>
-  </div>
-<div class="source-content" data-source-content="sina-money" data-sub="gz-wealth" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-18/doc-ininttrs3267415.shtml" target="_blank" rel="noopener noreferrer">从518到618再到818：10余家银行系机构扎堆理财节，3家理财子首次入局券商十年 IP</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 07:42</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】从518到618再到818：10余家银行系机构扎堆理财节，3家理财子首次入局券商十年 IP</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 银行系机构扎堆举办理财节、理财子首次入局，理财营销竞争白热化，银行零售可借理财节节点强化获客与产品渗透，提升AUM。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-18/doc-inintpir7404618.shtml" target="_blank" rel="noopener noreferrer">【信托知识库】信托知识百问百答</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 10:09</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】【信托知识库】信托知识百问百答</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 信托知识科普可提升高净值客户对财富传承和家族信托的认知，建议纳入私行客户沟通素材，挖掘信托代销与综合规划服务机会。</p>
 </article>
   </div>
 <div class="source-content" data-source-content="gz-gov" data-sub="gz-wealth" data-cat="gz">
     <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10846972.html" target="_blank" rel="noopener noreferrer">【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">财富业务</span><span class="sub-chip">零售客群</span></p>
   <p class="article-excerpt">【广州市政府】【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1269,7 +1297,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 公积金提取和使用范围拓宽，9月20日起施行，利好住房消费与房贷客群，可跟进配套营销</p>
@@ -1277,7 +1305,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/17/ARTISxbju4BE6p380FCRWIKV260817.shtml" target="_blank" rel="noopener noreferrer">贷款“降速提质” 居民存款仍在搬家</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">个人信贷</span><span class="sub-chip">零售客群</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 7月信贷降速、存款搬家：居民资金向理财/基金等转移，是财富管理业务与存款稳定性管理的双重信号。</p>
@@ -1287,7 +1315,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www.gov.cn/zhengce/content/202608/content_7078477.htm" target="_blank" rel="noopener noreferrer">国务院关于修改《住房公积金管理条例》的决定</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
   <p class="article-excerpt">【国务院政策】国务院关于修改《住房公积金管理条例》的决定</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 国务院修改住房公积金管理条例，全国性住房金融政策调整，对房贷与公积金客群影响重大</p>
@@ -1297,7 +1325,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/money/forex/whqqscgd/2026-08-18/doc-ininttrp7315424.shtml" target="_blank" rel="noopener noreferrer">比中性水平低了50-75基点！旧金山联储研究表明当前利率或偏宽松</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 10:17</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 18:17</p>
   <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
   <p class="article-excerpt">【财富管理】比中性水平低了50-75基点！旧金山联储研究表明当前利率或偏宽松</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 旧金山联储研究显示当前利率或比中性水平低50-75基点，暗示未来降息空间，影响全球资金面与理财收益预期，需关注。</p>
@@ -1312,7 +1340,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshn8377507.shtml" target="_blank" rel="noopener noreferrer">沪市科创板88家公司已披露半年报 收入增三成 利润增逾一倍</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">零售客群</span></p>
   
   
@@ -1320,7 +1348,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvwqt9349483.shtml" target="_blank" rel="noopener noreferrer">直击WRC丨京东零售具身智能业务负责人郑小丹：京东已在北上广深等地推出“机器人救护车”等售后服务</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">零售客群</span></p>
   
   
@@ -1328,7 +1356,7 @@
 <article class="article">
   <h3 class="article-title"><a href="http://finance.sina.com.cn/zl/china/2026-08-18/zl-inintaua0192788.shtml" target="_blank" rel="noopener noreferrer">付一夫：县域消费再度迎来政策东风</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">零售客群</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 县域消费政策利好：下沉市场客群是消费贷/信用卡/收单的新增长点。</p>
@@ -1338,7 +1366,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/17/ARTISxbju4BE6p380FCRWIKV260817.shtml" target="_blank" rel="noopener noreferrer">贷款“降速提质” 居民存款仍在搬家</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">个人信贷</span><span class="sub-chip">零售客群</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 7月信贷降速、存款搬家：居民资金向理财/基金等转移，是财富管理业务与存款稳定性管理的双重信号。</p>
@@ -1348,7 +1376,7 @@
     <article class="article">
   <h3 class="article-title"><a href="http://tjj.gz.gov.cn/stats_newtjyw/sjfb/content/post_10954505.html" target="_blank" rel="noopener noreferrer">上半年广州服务业向新向优</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">零售客群</span></p>
   <p class="article-excerpt">【广州统计局】上半年广州服务业向新向优</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州服务业/枢纽经济数据：产业活跃度与从业客群规模相关，物流/枢纽产业链企业是代发工资与经营贷潜在对象。</p>
@@ -1356,7 +1384,7 @@
 <article class="article">
   <h3 class="article-title"><a href="http://tjj.gz.gov.cn/stats_newtjyw/sjfb/content/post_10523330.html" target="_blank" rel="noopener noreferrer">前三季度广州市交通货运业表现亮眼</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">零售客群</span></p>
   <p class="article-excerpt">【广州统计局】前三季度广州市交通货运业表现亮眼</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州服务业/枢纽经济数据：产业活跃度与从业客群规模相关，物流/枢纽产业链企业是代发工资与经营贷潜在对象。</p>
@@ -1366,7 +1394,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10846972.html" target="_blank" rel="noopener noreferrer">【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">财富业务</span><span class="sub-chip">零售客群</span></p>
   <p class="article-excerpt">【广州市政府】【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
@@ -1384,7 +1412,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshv9458079.shtml" target="_blank" rel="noopener noreferrer">外交部：中方坚决反对在人工智能问题上搞选边站队、阵营对抗</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">私行业务</span></p>
   
   
@@ -1392,7 +1420,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvwqt9396392.shtml" target="_blank" rel="noopener noreferrer">三星上调芯片代工价格，最高涨15%</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">私行业务</span></p>
   
   
@@ -1400,7 +1428,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/wm/2026-08-18/doc-inintpiw0074101.shtml" target="_blank" rel="noopener noreferrer">A股V型反弹超80股涨停，千亿半导体设备巨头跌超6%，大牛股16天11板，PCB、CPO多股下挫</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">私行业务</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> A股V型反弹、科技板块分化，反映市场情绪与结构性机会并存，可作为客户权益类基金营销和风险教育素材，提示避免追高、坚持定投配置。</p>
@@ -1410,7 +1438,7 @@
     <article class="article">
   <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10970551.html" target="_blank" rel="noopener noreferrer">关于转发广州市工业和信息化局征集重点领域智能眼镜典型应用场景与案例的通知</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">私行业务</span></p>
   <p class="article-excerpt">【南沙】关于转发广州市工业和信息化局征集重点领域智能眼镜典型应用场景与案例的通知</p>
   
@@ -1418,7 +1446,7 @@
 <article class="article">
   <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968359.html" target="_blank" rel="noopener noreferrer">广州市南沙区知识产权局关于发放2025年度广州市知识产权项目资金的通知</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【南沙】广州市南沙区知识产权局关于发放2025年度广州市知识产权项目资金的通知</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 南沙产业扶持政策（知识产权/总部/独角兽等）：高成长企业及高管客群是私行、代发与企业融资的精准目标，政策落地即业务机会。</p>
@@ -1426,7 +1454,7 @@
 <article class="article">
   <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968393.html" target="_blank" rel="noopener noreferrer">关于2024年度广州南沙新区（自贸片区）促进半导体与集成电路产业扶持办法拟入库及兑现名单的公示</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【南沙】关于2024年度广州南沙新区（自贸片区）促进半导体与集成电路产业扶持办法拟入库及兑现名单的公示</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 南沙半导体/集成电路产业扶持：区内科创企业及实控人是私行与企业信贷重点客群，扶持兑现伴随开户、融资与资产配置需求。</p>
@@ -1439,11 +1467,11 @@
   <div class="source-contents">
     <div class="source-content active" data-source-content="bloomberg-markets" data-sub="gz-ipo" data-cat="gz">
     <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/pakistan-s-record-ipo-year-gets-boost-from-se-fruits-listing" target="_blank" rel="noopener noreferrer">Pakistan’s Record IPO Year Gets Boost From SE Fruits Listing</a></h3>
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/videos/2026-08-19/hkex-sees-strong-ipo-pipeline-with-international-firms-video" target="_blank" rel="noopener noreferrer">HKEX Sees Strong IPO Pipeline With International Firms</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 07:44</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 18:33</p>
   <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  <p class="article-excerpt">Fresh produce company SE Fruits and Vegetable Ltd. is planning an initial public offering in Pakistan next month to boost its export capacity, adding to a record year of listings in the country.</p>
+  <p class="article-excerpt">Initial public offering pipeline remains strong with close to 10 international companies, Hong Kong Exchanges &amp; Clearing Ltd. CEO Bonnie Chan told Bloomberg TV&#39;s Minmin Low on Wednesday (Source: Bloomberg)</p>
   
 </article>
   </div>
@@ -1451,7 +1479,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvshr7108887.shtml" target="_blank" rel="noopener noreferrer">宇树科技上市庆功照流出，“投资教父”沈南鹏露面</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
   
   
@@ -1461,7 +1489,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIaIXdV3IwSGurrOKdrWt9260819.shtml" target="_blank" rel="noopener noreferrer">财报透视丨上市银行首份半年报出炉 平安银行营收、净利重回正增长</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 平安银行首发半年报，营收净利重回正增长，同业零售业务经营数据可对照分析</p>
@@ -1471,7 +1499,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-08-19/doc-ininuzku8367605.shtml" target="_blank" rel="noopener noreferrer">万国黄金集团拟发行本金总额55亿港元的可换股债券</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 01:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 09:12</p>
   <p class="article-subs"><span class="sub-chip">广州IPO相关</span><span class="sub-chip">财富业务</span></p>
   <p class="article-excerpt">【财富管理】万国黄金集团拟发行本金总额55亿港元的可换股债券</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 万国黄金拟发行55亿港元可换股债券，港股黄金板块再融资活跃，关注黄金价格行情下的企业融资需求与贵金属投资产品营销窗口。</p>
@@ -1489,7 +1517,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225480711.PDF" target="_blank" rel="noopener noreferrer">马矿股份 (601123)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | 马矿股份&lt;em&gt;首次公开发行&lt;/em&gt;股票并在主板上市网上路演公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 沪市马矿股份（601123）发布公告，广东矿业上市公司动态，关注企业融资、并购及产业链上下游金融服务需求。</p>
@@ -1497,7 +1525,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225480319.PDF" target="_blank" rel="noopener noreferrer">甘李药业 (603087)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;部分限售股上市流通公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 甘李药业（603087）发布公告，医药行业上市公司动态，关注其研发投入、资金需求及上下游供应链金融机会。</p>
@@ -1505,7 +1533,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478760.PDF" target="_blank" rel="noopener noreferrer">泰凌微 (688591)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;部分限售股上市流通公告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1513,7 +1541,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478669.PDF" target="_blank" rel="noopener noreferrer">宇树科技 (688836)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | 宇树科技&lt;em&gt;首次公开发行&lt;/em&gt;股票科创板上市公告书提示性公告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1521,7 +1549,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478438.PDF" target="_blank" rel="noopener noreferrer">天博智能 (603448)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | 天博智能&lt;em&gt;首次公开发行&lt;/em&gt;股票并在主板上市招股意向书附录 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1529,7 +1557,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478314.PDF" target="_blank" rel="noopener noreferrer">高凯技术 (688835)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 上交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">上交所</span></p>
   <p class="article-excerpt">上交所公告 | 高凯技术&lt;em&gt;首次公开发行&lt;/em&gt;股票并在科创板上市网下初步配售结果及网上中签结果公告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1544,7 +1572,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225481620.PDF" target="_blank" rel="noopener noreferrer">真兰仪表 (301303)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 华福证券股份有限公司关于上海真兰仪表科技股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份解除限售并上市流通的核查意见 | 日期: 2026-08-19</p>
   
@@ -1552,7 +1580,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225481019.PDF" target="_blank" rel="noopener noreferrer">绿控传动 (301655)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 北京德恒律师事务所关于苏州绿控传动科技股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市的法律意见书 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 绿控传动（301655）发布公告，新能源传动系统企业动态，关注绿色产业企业融资与供应链金融服务需求。</p>
@@ -1560,7 +1588,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479686.PDF" target="_blank" rel="noopener noreferrer">英特科技 (301399)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 浙商证券股份有限公司关于浙江英特科技股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;股票部分募投项目结项的核查意见 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 英特科技（301399）发布公告，科技制造企业动态，关注其经营与融资动向，挖掘对公信贷与结算合作机会。</p>
@@ -1568,7 +1596,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479343.PDF" target="_blank" rel="noopener noreferrer">波长光电 (301421)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 华泰联合证券有限责任公司关于南京波长光电科技股份有限公司部分&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份上市流通的核查意见 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 波长光电（301421）发布公告，光电企业动态，关注高端制造企业设备更新与技改信贷需求。</p>
@@ -1576,7 +1604,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479214.PDF" target="_blank" rel="noopener noreferrer">和泰机电 (001225)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 国联民生证券承销保荐有限公司关于杭州和泰机电股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份解除限售并上市流通的核查意见 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 和泰机电（001225）发布公告，机电制造企业动态，关注制造业企业资金周转与供应链金融合作机会。</p>
@@ -1584,7 +1612,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479054.PDF" target="_blank" rel="noopener noreferrer">格林生物 (301688)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市投资风险特别公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 格林生物（301688）发布公告，生物科技企业动态，关注生物医药企业研发融资与知识产权质押等创新金融需求。</p>
@@ -1592,7 +1620,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225477657.PDF" target="_blank" rel="noopener noreferrer">乖宝宠物 (301498)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 中泰证券股份有限公司关于乖宝宠物食品集团股份有限公司部分&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份上市流通的核查意见 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1600,7 +1628,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476845.PDF" target="_blank" rel="noopener noreferrer">洛轴股份 (301699)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | 立信会计师事务所（特殊普通合伙）关于公司&lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市的财务报表及审计报告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1608,7 +1636,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476276.PDF" target="_blank" rel="noopener noreferrer">贝特利 (301697)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市投资风险特别公告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1616,7 +1644,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476258.PDF" target="_blank" rel="noopener noreferrer">格林生物 (301688)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 深交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">深交所</span></p>
   <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市网上路演公告 | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1631,7 +1659,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-19/79747cb56451427eb6e4cbd6a559709b.pdf" target="_blank" rel="noopener noreferrer">森合高科 (920038)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/19 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/19 08:00</p>
   <p class="article-subs"><span class="sub-chip">北交所</span></p>
   <p class="article-excerpt">北交所公告 | [临时公告]森合高科:关于广西森合高新科技股份有限公司以自筹资金预先投入募集资金投资项目和支付发行费用的鉴证报告 | 日期: 2026-08-19</p>
   
@@ -1639,7 +1667,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/e59b3e9205684d03930706e4bf77b036.pdf" target="_blank" rel="noopener noreferrer">智新电子 (920212)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">北交所</span></p>
   <p class="article-excerpt">北交所公告 | [临时公告]智新电子:关于拟减少注册资本并修订《公司章程》的公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 北交所智新电子（920212）发布公告，专精特新企业动态，关注北交所挂牌企业股权融资与专精特新贷等产品机会。</p>
@@ -1647,7 +1675,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/ddb7a5900ec240d48dd375a560a3b8ed.pdf" target="_blank" rel="noopener noreferrer">戈碧迦 (920438)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">北交所</span></p>
   <p class="article-excerpt">北交所公告 | [临时公告]戈碧迦:关于2026年度向特定对象发行股票募集说明书（草案）的提示性公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 北交所戈碧迦（920438）发布公告，光电材料企业动态，关注北交所中小企业融资需求与创新型信贷产品落地。</p>
@@ -1655,7 +1683,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/2300cec323564046bac323c59083cf64.pdf" target="_blank" rel="noopener noreferrer">聚仁新材 (920258)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">北交所</span></p>
   <p class="article-excerpt">北交所公告 | [临时公告]聚仁新材:关于使用募集资金置换预先已支付发行费用的自筹资金的公告 | 日期: 2026-08-18</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 聚仁新材北交所动态，新材料企业跟踪</p>
@@ -1663,7 +1691,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-17/2096904def6341eb92138fb03341195d.pdf" target="_blank" rel="noopener noreferrer">创远信科 (920961)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 北交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">北交所</span></p>
   <p class="article-excerpt">北交所公告 | [临时公告]创远信科:中汇会计师事务所关于创远信科（上海）技术股份有限公司发行股份及支付现金购买资产并募集配套资金暨关联交易申请文件的审核问询函有关财务问题回复的专项说明（二次修订稿） | 日期: 2026-08-17</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1678,7 +1706,7 @@
     <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800247.pdf" target="_blank" rel="noopener noreferrer">361 DEGREES (01361) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 01361 | 公司: 361 DEGREES | 时间: 18/08/2026 12:00 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1686,7 +1714,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801889.pdf" target="_blank" rel="noopener noreferrer">OCT (ASIA) (03366) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 03366 | 公司: OCT (ASIA) | 时间: 18/08/2026 22:28 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 港交所华侨城亚洲发布中期业绩，广东国企境外上市主体经营动态，关注其境内关联企业与金融服务合作机会。</p>
@@ -1694,7 +1722,7 @@
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801005.pdf" target="_blank" rel="noopener noreferrer">CHANGMAO BIO (00954) — INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026 AND DISCLOSURE PURSUANT TO RULE 13.19 OF THE LISTING RULES</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 00954 | 公司: CHANGMAO BIO | 时间: 18/08/2026 17:24 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 港交所上市公司中期业绩公告（昌茂生物），医药行业企业动态</p>
@@ -1703,7 +1731,7 @@
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800784.pdf" target="_blank" rel="noopener noreferrer">PA GOODDOCTOR (01833) — ANNOUNCEMENT OF UNAUDITED INTERIM RESULTS FOR
 THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 01833 | 公司: PA GOODDOCTOR | 时间: 18/08/2026 16:56 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 平安好医生中期业绩公告，互联网医疗企业动态，可关注股东客群</p>
@@ -1711,7 +1739,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800772.pdf" target="_blank" rel="noopener noreferrer">CHINA OVERSEAS (00688) — NOTICE OF LISTING ON THE STOCK EXCHANGE OF HONG KONG LIMITED - CNY3,191,000,000 2.20 PER CENT. GUARANTEED GREEN NOTES DUE 2031 ISSUED BY CHINA OVERSEAS FINANCE (CAYMAN) VIII LIMITED</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 00688 | 公司: CHINA OVERSEAS | 时间: 18/08/2026 16:54 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 中国海外发展港交所上市公告，地产头部企业动态</p>
@@ -1719,7 +1747,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081700888.pdf" target="_blank" rel="noopener noreferrer">C C LAND (01224) — Disclosure pursuant to Rule 13.18 of the Listing Rules</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 01224 | 公司: C C LAND | 时间: 17/08/2026 17:20 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1727,7 +1755,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081701803.pdf" target="_blank" rel="noopener noreferrer">NANHUA FUTURES (02691) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 02691 | 公司: NANHUA FUTURES | 时间: 17/08/2026 22:47 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1735,7 +1763,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081701623.pdf" target="_blank" rel="noopener noreferrer">CMS (00867) — INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 港交所IPO公告 · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">港交所</span></p>
   <p class="article-excerpt">港交所公告 | 代码: 00867 | 公司: CMS | 时间: 17/08/2026 21:22 | 格式: PDF</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
@@ -1755,7 +1783,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
     <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.17271" target="_blank" rel="noopener noreferrer">ASI-Bench: At the Dawn of Artificial Superintelligence</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifiable results. However, the capabilities of today&#39;s AI systems are still largely built on learning, compressing, and applyi</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> ASI 基准提出，超级智能评测前沿探索</p>
@@ -1763,7 +1791,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.17310" target="_blank" rel="noopener noreferrer">Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Reinforcement Learning (RL) has been promising in single-turn LLM fine-tuning. However, long-horizon agentic reasoning introduces increasingly branching interactions and sparse rewards, exposing several limitations of RL: its heavyweight backpropagation-based training stack makes it impractical to f</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 长程任务 Agent 微调方法，Agent 能力提升实践</p>
@@ -1771,7 +1799,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.17512" target="_blank" rel="noopener noreferrer">Embodied-Navigator: Point, Think, Memorize, and Align for Efficient Navigation</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Although Large Vision-Language Models (VLMs) have significantly advanced embodied navigation, their direct deployment remains challenging, as existing methods often force VLMs into unnatural action spaces that misalign with their 2D pre-training priors, compounded by rigid reasoning schedules and in</p>
   
@@ -1779,7 +1807,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16798" target="_blank" rel="noopener noreferrer">ClawGym II: Exploring Black-Box RL on Agent Harness</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Agent harnesses have substantially improved performance on long-horizon tasks by coordinating agent interactions with the environment. However, reinforcement learning through complex harnesses remains largely unexplored, as scaling such training to long-horizon agent tasks introduces fundamental cha</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 探索黑盒强化学习在agent harness上的应用，解决长程任务中复杂脚手架带来的训练扩展难题。通过不访问内部结构的优化方式，在预定义harness上学习策略，为提升长程智能体训练效率提供新思路。</p>
@@ -1787,7 +1815,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16859" target="_blank" rel="noopener noreferrer">HarnessEval-W: Agentifying the Evaluation of Visual Worlds</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">A benchmark should deliver more than a scalar score: what makes an evaluation trustworthy is the reasoning that justifies the score. This is especially critical for world models, where judging a rollout requires understanding whether physics, causality, and world state evolve correctly. Humans spot </p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 提出HarnessEval-W，将视觉世界模型评估过程智能体化，通过可解释推理生成评估结论，而非仅输出标量分数。该方法重点关注rollout中物理、因果及世界状态演化的正确性判断，提升评估结果的可信度与诊断价值。</p>
@@ -1795,7 +1823,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16072" target="_blank" rel="noopener noreferrer">Learn What&#39;s Left, Not What&#39;s Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Reinforcement learning (RL) with group-relative advantages has become the de facto standard for post-training language model reasoners. However, when optimizing multiple reward objectives, existing methods typically scalarize the reward vector with a fixed weighted sum before group-wise standardizat</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 饱和感知对抗训练，模型训练效率提升方法</p>
@@ -1803,7 +1831,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16157" target="_blank" rel="noopener noreferrer">FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 08/17 08:00</p>
   <p class="article-subs"><span class="sub-chip">热门论文</span></p>
   <p class="article-excerpt">Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the </p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 边缘端 MoE 高效推理，端侧大模型部署优化</p>
@@ -1818,7 +1846,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
     <article class="article">
   <h3 class="article-title"><a href="https://x.com/XFreeze/status/2089954139220713662" target="_blank" rel="noopener noreferrer">Here&#39;s the simplest way to get started with Grok Bot</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 05:54</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 13:54</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Grok Bot is one of the most viral AI product launches right now... it keeps going viral as more people discover how insanely useful it is Just think about what you’re getting: You can have multiple</p>
   
@@ -1826,7 +1854,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/mattyp/status/2089758434921160877" target="_blank" rel="noopener noreferrer">Chat is all you need</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 16:56</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:56</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Grok Bot has a single output: a message This might seem backwards. Power-user tools are built on complexity and breadth, right? Chat can’t possibly have my workflow. It’s a special workflow. I’m a</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 社区热帖：聊天交互范式讨论</p>
@@ -1834,7 +1862,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/milesdeutscher/status/2089724781449052255" target="_blank" rel="noopener noreferrer">Grok Bot: The Ultimate Guide </a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 14:43</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 22:43</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Elon has officially done it. He&#39;s created the most powerful agentic software in the world. In this guide, I&#39;m going to lay out everything you need to know about the new Grok Bot. I&#39;ve been ruthlessly</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent工具快速普及，银行可研究智能助手在客户服务、营销触达中的应用，提升运营效率。</p>
@@ -1842,7 +1870,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/0xCodez/status/2089676836619878567" target="_blank" rel="noopener noreferrer">Grok Bot Agents: how to automate your life in 10 Steps (Full-tutorial)</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 11:32</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 19:32</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Every AI tool you have used so far waits for you. You open it, you ask, it answers, you close it. The work still happens in your hands - the model just talks you through it. Follow my Substack to get</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent自动化工作流教程走红，反映企业数字化需求旺盛，银行可探索为中小企业客户提供智能化解决方案。</p>
@@ -1850,7 +1878,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/_avichawla/status/2089657097244024858" target="_blank" rel="noopener noreferrer">Grok Bot Masterclass</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 10:14</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 18:14</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Everything you need to understand, set up, and get real work out of Grok Bot. It covers what a Bot actually is, how the shared computer works underneath, how it compares to Hermes Agent, and how to</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent使用培训需求增长，银行内部可组织AI工具培训，提升一线员工数字化作业能力。</p>
@@ -1858,7 +1886,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/PiCoreTeam/status/2089477194045141419" target="_blank" rel="noopener noreferrer">Update to Pi App Studio Creation Pricing</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 22:19</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 06:19</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Starting August 24, 2026, Pi App Studio will update how app creation and editing are priced. Until now, Pi has heavily subsidized the cost of creating and editing apps in App Studio for all creators.</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> Pi官方宣布2026年8月24日起调整App Studio的创建和编辑定价。此前Pi对所有创作者在App Studio中创建和编辑应用给予了大幅补贴，新政策将改变这一机制。</p>
@@ -1866,7 +1894,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/GoogleAI/status/2089437060310434098" target="_blank" rel="noopener noreferrer">Bring your spreadsheet data to life</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 19:39</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 03:39</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Turn your spreadsheets into live, interactive mini-apps with Sheets canvas and Gemini 3.7 Flash — no coding required. How does it work? Let’s dive into it: Most AI UI tools produce prototypes that</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> Google AI 发布 Sheets canvas 与 Gemini 3.7 Flash 集成，可将电子表格转化为可运行的交互式迷你应用，无需写代码。与多数 AI UI 工具只生成原型不同，该方案直接让数据活起来，适合快速搭建数据看板或小工具。</p>
@@ -1874,7 +1902,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/JensenHuang/status/2089331487342829862" target="_blank" rel="noopener noreferrer">Securing the Infrastructure of Intelligence</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 12:40</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 20:40</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Land, power and shell: The next critical resource for AI factories. AI factories are the defining infrastructure of the AI era—where compute transforms energy and data into intelligence that powers</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 黄仁勋指出土地、电力和外壳是AI工厂的下一个关键资源。AI工厂将能源和数据转化为智能，是AI时代的基础设施，强调算力设施的战略重要性。</p>
@@ -1882,7 +1910,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/kristaletz/status/2089103618121314689" target="_blank" rel="noopener noreferrer">Grok Bot for GTM</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/16 21:34</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 05:34</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">This is how I use Grok Bot for Enterprise GTM at SpaceXAI. When we were initially dogfooding this product internally, Grok Bot rapidly gained adoption throughout the company, and I created an internal</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> SpaceXAI 内部 GTM 负责人拆解 Grok Bot 企业级落地方法：从内部 dogfooding 到全公司铺开，建立了从试用至成单的完整 SOP。</p>
@@ -1890,7 +1918,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://x.com/EXM7777/status/2088992368695628159" target="_blank" rel="noopener noreferrer">How to build a $2M video production pipeline</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/16 14:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/16 22:12</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">i&#39;m giving you 7 free skills and the exact pipeline directors are using to produce AI films with millions of dollars in budget in higgsfield... the whole system revealed step-by-step, with the skill</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 免费送出7项技能，详细拆解导演在Higgsfield中制作百万美元预算AI电影的完整流程，从系统步骤到技能组合逐步公开，适合想入局AI视频制作的人。</p>
@@ -1900,7 +1928,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
     <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/111936" target="_blank" rel="noopener noreferrer">App+1 | Inkive：把纸质书上划好的线存进 Obsidian</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 02:54</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 10:54</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">让纸书上的划线，回到你的数字笔记里。查看全文</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 纸质书笔记数字化工具 Inkive 分享，效率工具社区热帖</p>
@@ -1908,7 +1936,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113607" target="_blank" rel="noopener noreferrer">派早报：iQOO 发布手机新品、闪极举行 Loomos AI 眼镜发布会等</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 00:30</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:30</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">Spotify 上线「播放列表备注」功能、Windows Server 2022 即将结束主流更新等。查看全文</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> iQOO 手机与 Loomos AI 眼镜等新品发布早报</p>
@@ -1916,7 +1944,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113593" target="_blank" rel="noopener noreferrer">社区速递 154 | AI 代码助手大乱斗、租房电钻组合与神奇实体卡片故事机</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 09:01</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 17:01</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">除了首页时间流和侧栏的精选展位，少数派Matrix社区还有很多优秀内容因条件所限无法得到有效曝光，因此我们决定重启Matrix周报，并在此基础上添加更多社区内容、作者投稿新玩意呈现给大家。上周社区速递 ...查看全文</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 社区速递：AI 代码助手对比与生活好物分享</p>
@@ -1924,7 +1952,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113564" target="_blank" rel="noopener noreferrer">线下活动 | 爵士律动唤醒动漫回忆：炒饭 Fried Rice 音乐分享签售会</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 07:05</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 15:05</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">二次元加爵士，你说有没有搞头？音乐人介绍炒饭（B站），本职是常驻波士顿的程序员社畜，同时也是多乐器演奏音乐人、B站UP主。炒饭没有专业科班学习经历，却凭兴趣及自学掌握了多种音乐技能，专辑音乐均为自己在 ...查看全文</p>
   
@@ -1932,7 +1960,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113438" target="_blank" rel="noopener noreferrer">App+1 | 让任务栏更有用：WindowSill</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 06:30</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 14:30</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">屏幕不是注意力中心的地方可以塞下多少有用的东西呢？查看全文</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 任务栏增强工具 WindowSill 分享，效率工具社区热帖</p>
@@ -1940,7 +1968,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113454" target="_blank" rel="noopener noreferrer">7月音乐精选：夏天赠予我们的 9 张专辑</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 02:52</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 10:52</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">编者注：2026年我们将重启少数派音乐推荐栏目FM3.14，特邀资深音乐从业者及爱好者为大家推荐优质的华语独立、流行音乐，今年我们也很荣幸邀请到老朋友飞傲，为本栏目冠名。飞傲目前拥有品牌以音乐发烧友为 ...查看全文</p>
   
@@ -1948,7 +1976,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113566" target="_blank" rel="noopener noreferrer">派早报：阿里巴巴出售灵犀互娱，Linux 7.2 内核稳定版发布等</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 00:04</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 08:04</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">少数派的近期动态新一季少数派会员启航，更新权益，更多惊喜，还有实体纪念卡。点击了解能让AI助手通过自然语言指令直接与您的Quote/0摘录墨水屏交互的DotSkill已上线。点击了解你可能错过的文章成 ...查看全文</p>
   
@@ -1956,7 +1984,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113544" target="_blank" rel="noopener noreferrer">派评 | 近期值得关注的 App</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 10:14</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 18:14</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">&gt;下载少数派2.0客户端、关注少数派公众号，解锁全新阅读体验📰&gt;实用、好用的正版软件，少数派为你呈现🚀查看全文</p>
   
@@ -1964,7 +1992,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113368" target="_blank" rel="noopener noreferrer">分享我知识管理 12 年来最重要的经验：INL 结构</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 07:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 15:00</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">你是不是有几百个笔记，超级乱，都懒得打开？今天我们介绍一个方法，可以让你不怎么整理，就能快速找到重点。查看全文</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 知识管理 INL 结构经验分享，12 年方法论社区热帖</p>
@@ -1972,7 +2000,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113448" target="_blank" rel="noopener noreferrer">当陶瓷水杯遇上像素屏：PixelMug 体验</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 05:55</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/17 13:55</p>
   <p class="article-subs"><span class="sub-chip">X 推文</span></p>
   <p class="article-excerpt">如今，伴随着科技和生产力的发展，许多曾经只存在于科幻作品里的创意都逐渐变成了现实。各种新奇酷炫的产品，也开始在人们的刚需之外提供不一样的解法。尤其是那些无关「生产力」、单纯为了让生活变得更有意思的产品 ...查看全文</p>
   
@@ -1987,7 +2015,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
     <article class="article">
   <h3 class="article-title"><a href="https://www.latent.space/p/ainews-memory-prices-up-500-in-12" target="_blank" rel="noopener noreferrer">[AINews] Memory prices up 500% in 12 months</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Latent Space · 08/19 08:44</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Latent Space · 08/19 16:44</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   <p class="article-excerpt">the Memory crunch continues - Moore’s Law reversed to 2007 levels</p>
   
@@ -1995,7 +2023,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.latent.space/p/glean-model-routing" target="_blank" rel="noopener noreferrer">Frontier Model Cost and Open-Weights Popularity is Driving Demand for Model Routing</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Latent Space · 08/18 21:41</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Latent Space · 08/19 05:41</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   <p class="article-excerpt">Glean CEO Arvind Jain explains why model routing helps control AI costs for organizations, and how human feedback loops at scale improve its routing systems.</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 前沿模型推理成本高企推动模型路由需求，银行AI应用应注重降本增效与多模型选型策略。</p>
@@ -2003,7 +2031,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://simonwillison.net/2026/Aug/18/mojo-is-now-open-source/" target="_blank" rel="noopener noreferrer">Mojo🔥 is now open source</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Simon Willison&#39;s Weblog · 08/18 21:39</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Simon Willison&#39;s Weblog · 08/19 05:39</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 编程语言Mojo宣布开源，AI开发工具链加速演进，银行技术团队可关注新兴语言生态降低AI开发成本。</p>
@@ -2011,7 +2039,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/blog/ibm-research/altk-evolve-hmm" target="_blank" rel="noopener noreferrer">How Much Memory Does Your Agent Actually Need?</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · Hugging Face Blog · 08/18 18:09</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · Hugging Face Blog · 08/19 02:09</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> Agent 内存需求研究，企业级 AI 部署成本优化参考</p>
@@ -2019,7 +2047,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142226/how-people-use-ai/" target="_blank" rel="noopener noreferrer">We still don’t know how people are really using AI</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 10:06</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 18:06</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   <p class="article-excerpt">AI companies like Anthropic and OpenAI regularly publish reports on how people are using products like Claude and ChatGPT, but they only release the data they want us to see, AI researchers say. “There is no independent source to corroborate it,” says Anka Reuel, a computer science PhD candidate at </p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 用户实际使用AI的方式仍不清晰，提示银行零售客群的AI应用需求尚在探索期，产品设计宜渐进式迭代。</p>
@@ -2027,7 +2055,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement/" target="_blank" rel="noopener noreferrer">AI’s recursive self-improvement might not come so quickly after all</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 09:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 17:00</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   <p class="article-excerpt">The AI industry’s boldest promise right now is that AI will soon improve itself, with almost no need for human oversight. LLMs can already write code, generate synthetic data for training, and optimize the computer chips they run on. Forecasts of explosive AI progress predict that what researchers c</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> AI自我进化的速度可能低于预期，提示理性看待AI能力预期，避免过度投入短期无法兑现的技术项目。</p>
@@ -2035,7 +2063,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/474673.html" target="_blank" rel="noopener noreferrer">650亿美元！IPO前夕，Anthropic营收底牌曝光</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/18 05:58</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/18 13:58</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   <p class="article-excerpt">回头看，A社就这样完成了反超</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> Anthropic 650 亿美元营收曝光于 IPO 前夕，AI 头部公司商业化进展</p>
@@ -2043,7 +2071,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://huggingface.co/blog/multi-vector-encoder" target="_blank" rel="noopener noreferrer">Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · Hugging Face Blog · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · Hugging Face Blog · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 多向量嵌入模型进展，检索增强技术更新</p>
@@ -2051,7 +2079,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://tldr.tech/ai/2026-08-18" target="_blank" rel="noopener noreferrer">Cursor Origin 👨‍💻, Anthropic $65B revenue 💰, deadline dividend scaling 📈</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · TLDR AI · 08/18 00:00</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · TLDR AI · 08/18 08:00</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> AI创业公司融资与产品进展密集，全球AI赛道热度不减，提示分行关注科技企业信贷与股权投资合作机会。</p>
@@ -2059,7 +2087,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/" target="_blank" rel="noopener noreferrer">Qwen 3.8 27B scores 52 on the Artificial Analysis Intelligence Index</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Simon Willison&#39;s Weblog · 08/17 23:58</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Simon Willison&#39;s Weblog · 08/18 07:58</p>
   <p class="article-subs"><span class="sub-chip">AI 媒体</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> Simon Willison的博客报道，Qwen 3.8 27B模型在Artificial Analysis智能指数上得分52。该指数用于衡量AI模型的综合智能表现。</p>
@@ -2072,9 +2100,17 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   <div class="source-contents">
     <div class="source-content active" data-source-content="_merged" data-sub="cn-tech" data-cat="tech">
     <article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/0AR0FaYEllc9tk7iWu9U?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Pinterest 如何通过集中式 Terraform 管道在大规模环境中保障 AWS 基础设施的安全</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 01:41</p>
+  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
   <h3 class="article-title"><a href="https://www.infoq.cn/article/ZZYxRqKglT4RpYO454K3?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">2026 世界杯：一个通过与 CoCo 对话构建的实时应用 | 技术实践</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 17:12</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 01:12</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">点击查看原文&gt;</p>
   
@@ -2082,7 +2118,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.infoq.cn/article/LrAzoZZQiecRCtyVX1u9?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">AI for Science进入新阶段：机器人正在成为科研新基础设施</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 16:22</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 00:22</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">点击查看原文&gt;</p>
   
@@ -2090,7 +2126,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.infoq.cn/article/aJvM0NaOObTK34dOAUTC?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Java 近期新闻：Shenandoah GC、TeamCity CVE、A2A Java SDK、Camel、Gradle、GlassFish</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 16:11</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 00:11</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">点击查看原文&gt;</p>
   
@@ -2098,23 +2134,23 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://xie.infoq.cn/article/6724ff083cc2192487d818695?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">明道云举办首届 Real AI Contest，面向真实落地的企业 AI 应用</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 15:50</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 23:50</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">明道云举办首届 Real AI Contest，把已经走完这段距离的团队放到同一套标准下比一次，现金总奖池 ¥80,000，报名免费。 点击查看原文&gt;</p>
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/eUqDCgNhzkbNpNxS7dYI?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">网易 AI 另辟赛道：近千亿研发，蜜蜂AI杀入年轻人社区</a></h3>
+  <h3 class="article-title"><a href="https://sspai.com/post/113618" target="_blank" rel="noopener noreferrer">iOS 27 测试版近期动向，还有 Apple 产品新消息</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 15:02</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 少数派 · 08/19 17:39</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 网易近千亿研发押注蜜蜂AI，切入年轻人社区，大厂 AI 应用竞争观察</p>
+  <p class="article-excerpt">7月20日至今，Apple陆续发布了iOS27的DeveloperBeta4、5、6三个测试版本。随着9月秋季发布会的渐进，iOS27距离正式版的发布越来越近。今天，我们就来一起看看这三个Beta版本 ...查看全文</p>
+  
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475901.html" target="_blank" rel="noopener noreferrer">IDC发布2026中国AI50强：360以“智能体+安全”双轮驱动入选</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 08:34</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 16:34</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">凭借企业级智能体与AI安全的全栈布局，360成为中国人工智能产业发展的代表企业之一。</p>
   
@@ -2122,7 +2158,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475869.html" target="_blank" rel="noopener noreferrer">MiniMax核心工程负责人阿岛离职</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 08:23</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 16:23</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">从技术研发到开发者沟通，长期活跃在开发者一线</p>
   
@@ -2130,7 +2166,7 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475477.html" target="_blank" rel="noopener noreferrer">具身数据底座开卖，首发5100元：机器人训练数据有了新解法</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 07:42</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 15:42</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">构建全栈物理AI基础设施</p>
   
@@ -2138,17 +2174,9 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475764.html" target="_blank" rel="noopener noreferrer">用DeepSeek网页版就能瓜分鹅厂600万？？！</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 07:40</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 15:40</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">冠军姿势长这样</p>
-  
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475476.html" target="_blank" rel="noopener noreferrer">写2000字提示词，不如先生成3D白模！AI视频创作进入“预演时代”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 07:22</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">AI终于能听严格执行运镜需求</p>
   
 </article>
   </div>
@@ -2228,6 +2256,17 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
       document.querySelectorAll('.trading-group-content').forEach(function (p) {
         p.classList.toggle('active', p.dataset.group === grp);
       });
+    });
+  });
+  // 执行摘要 · 商机提示折叠
+  document.querySelectorAll('.insight-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var body = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!body) return;
+      var open = body.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var label = btn.querySelector('.insight-toggle-label');
+      if (label) label.textContent = open ? (btn.dataset.hide || label.textContent) : (btn.dataset.show || label.textContent);
     });
   });
 </script>
