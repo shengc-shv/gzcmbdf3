@@ -48,8 +48,13 @@ const todayLocal = new Intl.DateTimeFormat("en-CA", {
   day: "2-digit",
 }).format(new Date());
 
+// M2-⑤ 存储合并：优先统一历史目录 data/history/reports/，回退旧 daily_reports/
 function reportPath(d) {
-  return path.join("daily_reports", d, `${d}.html`);
+  const candidates = [
+    path.join("data/history/reports", d, `${d}.html`),
+    path.join("daily_reports", d, `${d}.html`),
+  ];
+  return candidates.find((p) => fs.existsSync(p)) ?? candidates[0];
 }
 
 let date;
@@ -65,13 +70,13 @@ if (dateArg) {
   date = todayLocal;
   localFile = reportPath(todayLocal);
 } else {
-  const dirs = fs
-    .readdirSync("daily_reports")
+  const dirs = ["data/history/reports", "daily_reports"]
+    .flatMap((d) => (fs.existsSync(d) ? fs.readdirSync(d) : []))
     .filter((f) => /^\d{4}-\d{2}-\d{2}$/.test(f))
     .filter((f) => fs.existsSync(reportPath(f)))
     .sort();
   if (dirs.length === 0) {
-    console.error("[deploy] no <YYYY-MM-DD>/<YYYY-MM-DD>.html files in daily_reports/");
+    console.error("[deploy] no <YYYY-MM-DD>/<YYYY-MM-DD>.html files in data/history/reports or daily_reports/");
     process.exit(1);
   }
   date = dirs[dirs.length - 1];

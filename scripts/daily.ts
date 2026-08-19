@@ -65,6 +65,7 @@ import {
   type ArticleAiAsset,
 } from "../lib/ai/assets";
 import type { ExecutiveSummary } from "../lib/ai/executive-summary";
+import { REPORTS_DIR } from "../lib/output/paths";
 
 const OUTPUT_DIR = "daily_reports";
 
@@ -651,25 +652,31 @@ async function main() {
   saveAiAssets(aiAssets);
   console.log(`[daily] AI 资产账本已更新: ${Object.keys(aiAssets).length} 键`);
 
-  const dateDir = path.join(OUTPUT_DIR, date);
-  fs.mkdirSync(dateDir, { recursive: true });
-  const base = path.join(dateDir, date);
-  fs.writeFileSync(`${base}.json`, JSON.stringify(report, null, 2), "utf8");
-  // Sidecar with the rolling article list (today + past-30d) + LLM-attached
-  // summary, so scripts/render.ts can rebuild HTML/MD for UI iteration
-  // without re-fetching or re-calling the LLM.
-  fs.writeFileSync(
-    `${base}-articles.json`,
-    JSON.stringify({ date, articles: rolling }, null, 2),
-    "utf8",
-  );
-  fs.writeFileSync(`${base}.html`, renderHtml(report, raw, date), "utf8");
-  if (process.env.OUTPUT_MARKDOWN === "true") {
-    fs.writeFileSync(`${base}.md`, renderMarkdown(report, date), "utf8");
-    console.log(`[daily] wrote ${base}.{json,html,md,articles.json}`);
-  } else {
-    console.log(`[daily] wrote ${base}.{json,html,articles.json}`);
-  }
+  // —— M2-⑤ 存储合并：双写过渡（旧发布目录 + 统一历史目录 data/history/reports/）——
+  // daily.yml 的 `ls -1d daily_reports/20*/` 还原依赖旧目录，双写期内不删；
+  // 验证发布链路无误后再停写旧目录（见整改计划 M2-⑤）。
+  const html = renderHtml(report, raw, date);
+  const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(report, date) : null;
+  const writeBundle = (dir: string) => {
+    const d = path.join(dir, date);
+    fs.mkdirSync(d, { recursive: true });
+    const b = path.join(d, date);
+    fs.writeFileSync(`${b}.json`, JSON.stringify(report, null, 2), "utf8");
+    // Sidecar with the rolling article list (today + past-30d) + LLM-attached
+    // summary, so scripts/render.ts can rebuild HTML/MD for UI iteration
+    // without re-fetching or re-calling the LLM.
+    fs.writeFileSync(
+      `${b}-articles.json`,
+      JSON.stringify({ date, articles: rolling }, null, 2),
+      "utf8",
+    );
+    fs.writeFileSync(`${b}.html`, html, "utf8");
+    if (md) fs.writeFileSync(`${b}.md`, md, "utf8");
+    return b;
+  };
+  const base = writeBundle(OUTPUT_DIR);
+  writeBundle(REPORTS_DIR);
+  console.log(`[daily] wrote ${base}.{json,html${md ? ",md" : ""},articles.json} + ${REPORTS_DIR}/${date}/`);
 
   console.log(`[daily] done.`);
 }

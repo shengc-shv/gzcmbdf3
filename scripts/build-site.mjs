@@ -17,27 +17,40 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = "daily_reports";
+const READ_DIRS = ["data/history/reports", "daily_reports"];
 
-if (!fs.existsSync(ROOT)) {
-  console.error(`[build-site] ${ROOT}/ doesn't exist — run \`npm run daily\` first.`);
+// M2-⑤ 存储合并：优先读统一历史目录 data/history/reports/（回退旧 daily_reports/）；
+// 输出仍写 daily_reports/（gh-pages 发布目录，daily.yml 依赖）。
+const readRoot =
+  READ_DIRS.find(
+    (d) =>
+      fs.existsSync(d) &&
+      fs.readdirSync(d).some((f) => /^\d{4}-\d{2}-\d{2}$/.test(f)),
+  ) ?? null;
+
+if (!readRoot) {
+  console.error(`[build-site] 找不到报告目录（${READ_DIRS.join(" / ")}）— 先跑 \`npm run daily\`。`);
   process.exit(1);
 }
 
 // Pick up every <YYYY-MM-DD>/<YYYY-MM-DD>.html, newest first.
 const dates = fs
-  .readdirSync(ROOT)
+  .readdirSync(readRoot)
   .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d))
-  .filter((d) => fs.existsSync(path.join(ROOT, d, `${d}.html`)))
+  .filter((d) => fs.existsSync(path.join(readRoot, d, `${d}.html`)))
   .sort((a, b) => b.localeCompare(a));
 
 if (dates.length === 0) {
-  console.error(`[build-site] no <YYYY-MM-DD>/<YYYY-MM-DD>.html found in ${ROOT}/`);
+  console.error(`[build-site] no <YYYY-MM-DD>/<YYYY-MM-DD>.html found in ${readRoot}/`);
   process.exit(1);
 }
 
+// 输出目录（发布目录）确保存在
+fs.mkdirSync(ROOT, { recursive: true });
+
 // --- index.html = latest report ---
 const latest = dates[0];
-const latestPath = path.join(ROOT, latest, `${latest}.html`);
+const latestPath = path.join(readRoot, latest, `${latest}.html`);
 const latestHtml = fs
   .readFileSync(latestPath, "utf8")
   .replace(/href="\.\.\/archive\.html"/g, 'href="./archive.html"');
@@ -47,7 +60,7 @@ console.log(`[build-site] index.html  ← ${latest}/${latest}.html`);
 // --- archive.html = list of all reports ---
 const rows = dates
   .map((d) => {
-    const size = (fs.statSync(path.join(ROOT, d, `${d}.html`)).size / 1024).toFixed(0);
+    const size = (fs.statSync(path.join(readRoot, d, `${d}.html`)).size / 1024).toFixed(0);
     return `      <li><a href="./${d}/${d}.html">${d}</a> <span class="size">${size} KB</span></li>`;
   })
   .join("\n");

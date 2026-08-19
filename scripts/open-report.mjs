@@ -16,7 +16,12 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const reportsDir = path.join(projectRoot, "daily_reports");
+// M2-⑤ 存储合并：优先统一历史目录 data/history/reports/，回退旧 daily_reports/
+const reportsDir =
+  [
+    path.join(projectRoot, "data/history/reports"),
+    path.join(projectRoot, "daily_reports"),
+  ].find((d) => fs.existsSync(d)) ?? path.join(projectRoot, "daily_reports");
 
 function pickReport(dateArg) {
   if (!fs.existsSync(reportsDir)) {
