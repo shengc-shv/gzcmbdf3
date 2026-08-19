@@ -21,6 +21,7 @@ import type { ArticleInput } from "../types";
 import type { Category } from "../sources/types";
 import { SOURCE_ROUTE } from "../sources/constants";
 import { loadAllSources } from "../sources/registry";
+import { todayKey } from "../utils";
 
 const HISTORY_PATH = path.resolve(process.cwd(), "data/article-history.json");
 const HISTORY_DAYS = 7;
@@ -127,9 +128,15 @@ export function buildRolling(
   history: HistoryStore,
 ): ArticleInput[] {
   const map = new Map<string, ArticleInput>();
+  // 当天已处理的内容（lastSeenAt=今天，含预 AI 分析写入的当日条目）标记为
+  // fetchedToday=true 参与「当天」视图——与 OFFLINE 模式的 lastSeenAt 标记一致。
+  // 否则预分析/当天早跑写入的条目当天不展示，而新抓同主题又被跨天判重挡掉，
+  // 导致当天面板空洞（2026-08-19 用户反馈「国家政策空、公积金被删」）。
+  const todayStr = todayKey();
   for (const e of Object.values(history)) {
     if (!isFreshEntry(e)) continue;
-    map.set(e.url, entryToArticle(e, false));
+    const isToday = typeof e.lastSeenAt === "string" && e.lastSeenAt.startsWith(todayStr);
+    map.set(e.url, entryToArticle(e, isToday));
   }
   for (const a of today) {
     // 当天抓到的旧链接（publishedAt 超 7 天窗口，如 RSS 滚动列表里的老文章、

@@ -128,3 +128,27 @@ test("buildRolling: 历史中重复 URL 只保留一条", () => {
   const dups = out.filter((a) => a.url === "dup");
   assert.equal(dups.length, 1, "重复 URL 在滚动列表应去重");
 });
+
+test("buildRolling: 历史条目 lastSeenAt=今天 → 标记 fetchedToday=true（预分析/当天早跑内容当天展示）", () => {
+  const dayAgo = iso(Date.now() - 86_400_000);
+  const h: HistoryStore = {
+    // 预分析/今天早跑写入：lastSeenAt 今天
+    pre: mk("https://x/pre", {
+      subcategory: "cn-policy",
+      ai_relevant: true,
+      summary: "公积金政策解读",
+      publishedAt: iso(Date.now() - 3 * 86_400_000),
+    }),
+    // 昨天写入：lastSeenAt 昨天 → 不标记当天
+    old: mk("https://x/old", {
+      lastSeenAt: dayAgo,
+      publishedAt: iso(Date.now() - 3 * 86_400_000),
+    }),
+  };
+  const out = buildRolling([], h);
+  const pre = out.find((a) => a.url === "https://x/pre");
+  const old = out.find((a) => a.url === "https://x/old");
+  assert.equal(pre?.fetchedToday, true, "lastSeenAt=今天 的历史条目应标记为当天展示");
+  assert.ok(pre?.subcategory === "cn-policy" && pre?.summary === "公积金政策解读", "应继承 AI 分析字段");
+  assert.equal(old?.fetchedToday, false, "lastSeenAt=昨天 的历史条目不标记当天");
+});
