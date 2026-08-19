@@ -2,11 +2,11 @@ name: Daily Brief
 
 # Generate a fresh daily report and publish to GitHub Pages.
 #
-# Schedule: 每小时 :05 和 :35 触发（UTC）——多触发点是防 GitHub cron 静默丢失的
-# 冗余保险；真正放行由 gate 决定：
-#   - REPORT_HOUR（默认 9）过滤：只有北京时区 9 点那次通过（cron :35 触发时
-#     北京已是 13:35，hour 不匹配被 gate 跳过）
-#   - 当日报告已发布到 gh-pages 则跳过（一天最多构建一次，第一个成功的早晨跑赢）
+# Schedule: 每小时 :10 和 :40 触发（UTC，= 北京时间每小时 :10/:40）——每小时都触发
+# 用于监测 cron 是否正常工作（Actions 列表每小时都应有 run 记录）；真正放行由 gate 决定：
+#   - REPORT_TIMES（默认 "9:10,9:40"，北京时间 HH:MM 逗号列表）过滤：只有北京 9:10 / 9:40
+#     两次通过（其余小时被 gate 跳过；9:10 成功发布后 9:40 因「当日已发布」自动跳过作兜底）
+#   - 当日报告已发布到 gh-pages 则跳过（一天最多构建一次，9:10 失败则 9:40 兜底补跑）
 #   - 并发检查：同 workflow 前一 run 仍在 in_progress 则本次直接跳过
 #     （用 Actions API 而非 concurrency —— concurrency 是 QUEUE 延迟，不是 SKIP）
 # workflow_dispatch 手动触发有两个开关：
@@ -17,9 +17,10 @@ name: Daily Brief
 
 on:
   schedule:
-    # 每小时第 5 分 / 第 35 分（UTC），gate 过滤只放行 REPORT_HOUR 对应那次
-    - cron: '5 * * * *'
-    - cron: '35 * * * *'
+    # 每小时第 10 分 / 第 40 分（UTC；北京 = UTC+8，即每小时 :10/:40），
+    # gate 只放行 REPORT_TIMES 配置的北京时间点（默认 9:10 / 9:40）
+    - cron: '10 * * * *'
+    - cron: '40 * * * *'
   workflow_dispatch:
     inputs:
       skip_ai:
@@ -45,7 +46,7 @@ jobs:
         id: check
         env:
           REPORT_TZ: ${{ vars.REPORT_TZ }}
-          REPORT_HOUR: ${{ vars.REPORT_HOUR }}
+          REPORT_TIMES: ${{ vars.REPORT_TIMES }}
           REPORT_DAYS: ${{ vars.REPORT_DAYS }}
           EVENT_NAME: ${{ github.event_name }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -75,23 +76,24 @@ jobs:
           fi
 
           TZ_VAL="${REPORT_TZ:-Asia/Shanghai}"
-          HOURS_VAL="${REPORT_HOUR:-9}"
+          TIMES_VAL="${REPORT_TIMES:-9:10,9:40}"
           DAYS_VAL="${REPORT_DAYS:-*}"
 
-          NOW_HOUR=$(TZ="$TZ_VAL" date +%-H)
+          # %-H: GNU date 无前导零（GitHub ubuntu 支持），与配置 "9:10" 匹配
+          NOW_HM=$(TZ="$TZ_VAL" date +%-H:%M)
           NOW_DOW=$(TZ="$TZ_VAL" date +%w)
           NOW_PRINT=$(TZ="$TZ_VAL" date '+%Y-%m-%d %H:%M %Z')
 
-          echo "Now in $TZ_VAL: $NOW_PRINT (hour=$NOW_HOUR, dow=$NOW_DOW)"
-          echo "Configured REPORT_HOUR='$HOURS_VAL', REPORT_DAYS='$DAYS_VAL'"
+          echo "Now in $TZ_VAL: $NOW_PRINT (time=$NOW_HM, dow=$NOW_DOW)"
+          echo "Configured REPORT_TIMES='$TIMES_VAL', REPORT_DAYS='$DAYS_VAL'"
 
-          # Hour match: comma-separated list of integers (0-23).
-          hour_match=false
-          IFS=',' read -ra HLIST <<< "$HOURS_VAL"
-          for h in "${HLIST[@]}"; do
-            h_trim="${h// /}"
-            if [ "$NOW_HOUR" = "$h_trim" ]; then
-              hour_match=true
+          # Time match: comma-separated list of HH:MM (e.g. "9:10,9:40").
+          time_match=false
+          IFS=',' read -ra TLIST <<< "$TIMES_VAL"
+          for t in "${TLIST[@]}"; do
+            t_trim="${t// /}"
+            if [ "$NOW_HM" = "$t_trim" ]; then
+              time_match=true
               break
             fi
           done
@@ -122,7 +124,7 @@ jobs:
 
           # 每天最多构建一次：当日报告已发布到 gh-pages 则跳过本次触发。
           # 并发跳过已在前面处理：前一次还在跑（in_progress）时本次直接跳过。
-          if [ "$hour_match" = "true" ] && [ "$day_match" = "true" ]; then
+          if [ "$time_match" = "true" ] && [ "$day_match" = "true" ]; then
             TODAY=$(TZ="$TZ_VAL" date +%Y-%m-%d)
             CHECK_URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/${TODAY}/${TODAY}.html?ref=gh-pages"
             HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
@@ -138,7 +140,7 @@ jobs:
               echo "should-run=false" >> "$GITHUB_OUTPUT"
             fi
           else
-            echo "✗ No match — skipping (hour=$hour_match day=$day_match)"
+            echo "✗ No match — skipping (time=$time_match day=$day_match)"
             echo "should-run=false" >> "$GITHUB_OUTPUT"
           fi
 
@@ -147,7 +149,7 @@ jobs:
     needs: gate
     if: needs.gate.outputs.should-run == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 30
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
