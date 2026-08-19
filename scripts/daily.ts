@@ -55,6 +55,16 @@ import { generateTradingCommentary } from "../lib/ai/trading-commentary";
 import { generateExecutiveSummary } from "../lib/ai/executive-summary";
 import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
+import {
+  loadAiAssets,
+  saveAiAssets,
+  dailyAssetKey,
+  assetSummary,
+  assetDaily,
+  type AiAssetStore,
+  type ArticleAiAsset,
+} from "../lib/ai/assets";
+import type { ExecutiveSummary } from "../lib/ai/executive-summary";
 
 const OUTPUT_DIR = "daily_reports";
 
@@ -68,6 +78,8 @@ const SKIP_AI = !aiEnabled();
  * URLs), and rewritten at the end of the run.
  */
 let history: HistoryStore = {};
+/** M2-④：AI 付费产物账本（data/ai-assets/store.json）。读取优先、写回 append-only。 */
+let aiAssets: AiAssetStore = {};
 
 /**
  * Reuse previously-generated AI summaries from the history so we don't pay
@@ -76,7 +88,8 @@ let history: HistoryStore = {};
 function applyCache(items: ArticleInput[]): ArticleInput[] {
   const pending: ArticleInput[] = [];
   for (const a of items) {
-    const cached = history[a.url]?.summary;
+    // M2-④：AI 资产账本优先（付费资产永不丢），history 缓存兜底
+    const cached = assetSummary(aiAssets, a.url) ?? history[a.url]?.summary;
     if (cached) {
       a.summary = cached;
     } else {
@@ -389,6 +402,8 @@ async function main() {
   // 加载滚动 30 天历史（含已解读的 AI 摘要缓存），供富集去重 + 过去30天 tab 使用。
   history = loadHistory();
   console.log(`[daily] 已加载历史缓存: ${Object.keys(history).length} 条（来自 data/article-history.json）`);
+  aiAssets = loadAiAssets();
+  console.log(`[daily] 已加载 AI 资产账本: ${Object.keys(aiAssets).length} 键（data/ai-assets/，${process.env.PERSIST_AI === "off" ? "PERSIST_AI=off 旁路" : "启用"}`);
 
   const date = todayKey();
   console.log(`[daily] ${date} — fetching sources…\n`);
@@ -594,12 +609,13 @@ async function main() {
         .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory }));
     const execSummary = SKIP_AI
       ? null
-      : await generateExecutiveSummary({
+      : (assetDaily(aiAssets, date)?.executive as ExecutiveSummary | undefined) ??
+        (await generateExecutiveSummary({
           date,
           finance: flat("finance"),
           gz: flat("gz"),
           marketOverview: trading?.market_overview,
-        });
+        }));
     if (execSummary) {
       report.executive_summary = execSummary;
       console.log(
@@ -612,6 +628,28 @@ async function main() {
     const msg = e instanceof Error ? e.message : String(e);
     console.warn(`[daily] 执行摘要生成异常（${msg}），跳过该板块`);
   }
+
+  // —— M2-④：AI 资产账本写回（append-only，永不 7 天裁剪；PERSIST_AI=off 旁路）——
+  for (const a of articles) {
+    const prev = aiAssets[a.url] as ArticleAiAsset | undefined;
+    aiAssets[a.url] = {
+      ...(prev ?? {}),
+      summary: a.summary || prev?.summary,
+      subcategory: a.subcategory ?? prev?.subcategory,
+      relevant: a.relevant ?? prev?.relevant,
+      updatedAt: nowIso,
+    };
+  }
+  const dk = dailyAssetKey(date);
+  const dailyPrev = assetDaily(aiAssets, date);
+  aiAssets[dk] = {
+    ...(dailyPrev ?? {}),
+    ...(report.executive_summary ? { executive: report.executive_summary } : {}),
+    ...(trading ? { trading } : {}),
+    updatedAt: nowIso,
+  };
+  saveAiAssets(aiAssets);
+  console.log(`[daily] AI 资产账本已更新: ${Object.keys(aiAssets).length} 键`);
 
   const dateDir = path.join(OUTPUT_DIR, date);
   fs.mkdirSync(dateDir, { recursive: true });
