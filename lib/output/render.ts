@@ -49,6 +49,28 @@ import { classifyGdIpo, type GdIssuerRegistry } from "../classify/gdIpo";
 const GZ_NOISE_RE =
   /历史建筑|门前三包|禁燃|黑烟|柴油货车|限行|交通管制|禁停|环境保护|生态|绿化|消防|防汛|水务|河道|畜牧|兽医|文物|非遗|民政局|街道办|居委会|司法厅|决定书|注销|律师|执业|行政许可|招聘|竞投|摆卖|摊位|路灯|景观照明|电费补贴|排污|噪声|拆迁补偿|工伤|教师资格|招生|赛事|演出|博物馆|公园|厕所|殡葬|诊所备案|欠薪|养犬|渔港|见义勇为|储备土地|低保|入学|气瓶/;
 
+/**
+ * 上位法传导规则（「包含关系」，2026-08-19 用户要求）：finance（宏观政策）板块的
+ * 全国/省级政策条目，若标题命中广州业务线关键词，渲染时镜像到 广州商机(gz) 板块的
+ * 对应业务线子标签——国家/省级变动必然传导到广州分行辖区，广州板块必须能看到这条信号；
+ * 宏观政策板块原样保留，广州商机板块额外传导一条（同一 URL 双板块展示）。
+ *
+ * 词表与 scripts/analyze-gz.ts 的 HEURISTIC_RULES 第 2-6 条（业务线）保持一致，
+ * 避免「宏观里判信贷、商机里判无关」的口径分裂。
+ */
+const GZ_CONDUCTION_RULES: Array<{ sub: string; re: RegExp }> = [
+  { sub: "gz-ipo", re: /IPO|上市|辅导备案|发行|招股|股份公司.*注册/ },
+  { sub: "gz-wealth", re: /理财|基金|保险|黄金|财富|资产配置|私人银行|代销|AUM|信托/ },
+  { sub: "gz-credit", re: /信贷|贷款|房贷|消费贷|经营贷|按揭|公积金|利率|首付|融资担保/ },
+  { sub: "gz-customer", re: /社零|消费|零售|居民|收入|人口|就业|物价|CPI|民生|储蓄|存款|支付|商圈|市场运行/ },
+  { sub: "gz-private", re: /家族|股权|企业主|专精特新|半导体|集成电路|生物医药|高端制造|人工智能|芯片|知识产权|补贴|兑现|产业扶持|招商引资|独角兽/ },
+];
+
+/** 命中哪些广州业务线子标签（可多值：同一条上位政策可能影响多个业务线）。 */
+export function conductToGzSubs(title: string): string[] {
+  return Array.from(new Set(GZ_CONDUCTION_RULES.filter((r) => r.re.test(title)).map((r) => r.sub)));
+}
+
 
 
 /**
@@ -353,6 +375,28 @@ export function groupRaw(
     
     b.items.push(a);
     // console.log('[groupRaw] buckets[gd-ipo] size after filling:', buckets['gd-ipo']?.size);
+
+    // —— 上位法传导（「包含关系」，2026-08-19）：finance（宏观政策）板块的全国/省级
+    // 政策若影响广州业务线（标题命中传导词表），镜像到 广州商机(gz) 板块对应业务线
+    // 子标签。宏观板块原样保留；a.relevant===false 的 finance 条目已在上面 continue
+    // 过滤，此处仅剩相关/未判条目。镜像条目覆盖 category/subcategories 为 gz 维度。
+    if (a.category === "finance") {
+      const gzSubs = conductToGzSubs(a.title);
+      if (gzSubs.length > 0) {
+        const gzMap = buckets["gz"];
+        let mb = gzMap.get(a.sourceId);
+        if (!mb) {
+          mb = { sourceName: a.source, items: [] };
+          gzMap.set(a.sourceId, mb);
+        }
+        mb.items.push({
+          ...a,
+          category: "gz" as const,
+          subcategory: gzSubs[0],
+          subcategories: gzSubs,
+        });
+      }
+    }
   }
 
   for (const cat of CATEGORY_ORDER) {
@@ -493,7 +537,11 @@ export function groupRaw(
                 : a.subcategory
                   ? [a.subcategory]
                   : [];
-            return subs.length > 0 ? subs.includes(subId) : subcatOf.get(id) === subId;
+            // gz 板块补判（上位法传导，防御老数据）：见非 merge 分支注释。
+            return subs.length > 0
+              ? subs.includes(subId) ||
+                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
+              : subcatOf.get(id) === subId;
           },
           );
           if (matched.length) {
@@ -547,7 +595,13 @@ export function groupRaw(
                 : a.subcategory
                   ? [a.subcategory]
                   : [];
-            return subs.length > 0 ? subs.includes(subId) : subcatOf.get(id) === subId;
+            // gz 板块补判（上位法传导，防御老数据）：条目带的是非 gz 标签（cn-*，
+            // 全国性政策/财经，历史库老条目 category=gz 的错标）→ 按业务线词表补判归属，
+            // 不因标签不匹配被吞掉。新数据（category=finance）已在归桶时镜像进 gz。
+            return subs.length > 0
+              ? subs.includes(subId) ||
+                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
+              : subcatOf.get(id) === subId;
           },
         );
         if (items.length) {

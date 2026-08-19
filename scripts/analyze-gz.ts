@@ -160,11 +160,13 @@ async function main() {
     })),
     ...sinaMoney.map((x: any) => ({
       url: x.url, title: x.title, source: "新浪理财保险", srcId: x.sourceId,
-      category: "gz", publishedAt: x.publishedAt ? x.publishedAt.toISOString() : undefined,
+      // 全国性财经资讯（新浪理财/21财经）→ 宏观政策板块（cn-finance/cn-policy）；
+      // 若命中广州业务线传导词表（如公积金/房贷/理财），渲染层会镜像进广州商机。
+      category: "finance", publishedAt: x.publishedAt ? x.publishedAt.toISOString() : undefined,
     })),
     ...jingji.map((x: any) => ({
       url: x.url, title: x.title, source: "21财经", srcId: x.sourceId,
-      category: "gz", publishedAt: x.publishedAt ? x.publishedAt.toISOString() : undefined,
+      category: "finance", publishedAt: x.publishedAt ? x.publishedAt.toISOString() : undefined,
     })),
     ...ipo.map((x: any) => ({
       url: x.url, title: x.title, source: x.source || "交易所", srcId: x.sourceId,
