@@ -62,7 +62,7 @@
     "publishedAt": "2026-08-14T00:00:00.000Z",
     "summary": "TLDR AI 8月14日简报：谷歌发布Gemini 3.7，OpenAI推出GPT-5.6 Sol Ultrafast极速版，Anthropic传出拟以2万亿美元估值IPO的消息。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://tldr.tech/ai/2026-08-13": {
     "title": "Claude Chrome Cowork 🌐, Grok 4.6 🚀, DeepSeek v4-Pro-0813 🧠",
@@ -75,7 +75,7 @@
     "publishedAt": "2026-08-13T00:00:00.000Z",
     "summary": "xAI 推出 Grok 4.6，在 Intelligence Index 上取得61分，智能体能力表现强劲；Grok 4.7 已在训练中。（多家报道）",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.latent.space/p/flue-2": {
     "title": "React for Agents: Astro Creator Brings Hooks to his Meta-Harness, Flue",
@@ -88,7 +88,7 @@
     "publishedAt": "2026-08-15T15:46:22.000Z",
     "summary": "Flue 2 借鉴 React 设计理念，由 Astro 创始人 Fred Schott 将 hooks 引入智能体编排框架。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.latent.space/p/ainews-gemini-37-flash-brings-gdm": {
     "title": "[AINews] Gemini 3.7 Flash brings GDM back to the forefront",
@@ -101,7 +101,7 @@
     "publishedAt": "2026-08-14T05:30:39.000Z",
     "summary": "Google 发布 Gemini 3.7 Flash 模型，推动 DeepMind 重返 AI 前沿竞争行列。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.latent.space/p/ainews-spacexai-grok-46-and-grok": {
     "title": "[AINews] SpaceXAI Grok 4.6 and Grok @Bot",
@@ -114,7 +114,7 @@
     "publishedAt": "2026-08-13T01:53:47.000Z",
     "summary": "xAI 发布 Grok 4.6 及 Grok @Bot，成为 AI 智能体赛道的重要新入局者。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.latent.space/p/ainews-how-to-steal-a-reasoning-trace": {
     "title": "[AINews] How to steal a Reasoning Trace",
@@ -127,7 +127,7 @@
     "publishedAt": "2026-08-12T07:11:08.000Z",
     "summary": "研究人员展示可通过推测解码方法窃取大模型的推理链路痕迹。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/13/1141904/flock-is-tightening-its-rules-in-response-to-a-growing-surveillance-backlash/": {
     "title": "Flock is tightening its rules in response to a growing surveillance backlash",
@@ -140,7 +140,7 @@
     "publishedAt": "2026-08-13T13:41:10.000Z",
     "summary": "警用科技巨头 Flock 宣布收紧其全国车牌读取器网络的访问权限，以应对日益增长的监控争议。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/13/1141410/how-kids-feel-about-ai-own-words/": {
     "title": "How kids feel about AI, in their own words",
@@ -153,7 +153,7 @@
     "publishedAt": "2026-08-13T09:00:00.000Z",
     "summary": "MIT Technology Review 采访儿童对 AI 的真实感受，发现他们的使用方式与成人预期不同。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/12/1141032/scaling-ai-agents-with-trustworthy-data/": {
     "title": "Scaling AI agents with trustworthy data",
@@ -166,7 +166,7 @@
     "publishedAt": "2026-08-12T16:51:57.000Z",
     "summary": "企业领导者认为智能体 AI 时代已来，但规模化部署依赖于可信数据基础设施。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/sarahdingwang/status/2088271571848986965": {
     "title": "Cursor + SpaceXAI: the fastest iterating team wins ",
@@ -205,7 +205,7 @@
     "publishedAt": "2026-08-16T21:34:50.000Z",
     "summary": "SpaceXAI 内部 GTM 负责人拆解 Grok Bot 企业级落地方法：从内部 dogfooding 到全公司铺开，建立了从试用至成单的完整 SOP。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/AndrewYNg/status/2088302050706686198": {
     "title": "The AI Engineering Skills Map",
@@ -847,7 +847,7 @@
     "publishedAt": "2026-08-16T23:59:37.000Z",
     "summary": "Simon Willison的博客文章介绍了Markdown中SVG功能的升级改进。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/16/qwen-38-27b/": {
     "title": "Qwen 3.8 27B is excellent, but it defaults to wildly overthinking things",
@@ -860,7 +860,7 @@
     "publishedAt": "2026-08-16T22:00:39.000Z",
     "summary": "西蒙·威利森测评阿里通义千问Qwen 3.8 27B模型，认为其性能表现出色，但默认会过度思考，导致推理变得复杂，影响实际使用效率。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/16/dario-amodei/": {
     "title": "Quoting Dario Amodei",
@@ -873,7 +873,7 @@
     "publishedAt": "2026-08-16T15:05:36.000Z",
     "summary": "西蒙·威利森在博客中引用Anthropic首席执行官达里奥·阿莫迪（Dario Amodei）的言论，内容涉及人工智能相关话题。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/15/cors-chat/": {
     "title": "CORS Chat",
@@ -886,7 +886,7 @@
     "publishedAt": "2026-08-15T14:49:54.000Z",
     "summary": "西蒙·威利森发布技术文章「CORS Chat」，围绕跨域资源共享（CORS）的相关话题展开讨论。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/15/sighting-391300422/": {
     "title": "Northern Gannet",
@@ -899,7 +899,7 @@
     "publishedAt": "2026-08-15T03:22:00.000Z",
     "summary": "西蒙·威利森在博客中记录了一次目击北鲣鸟（Northern Gannet）的观鸟见闻。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/14/dont-classify-hallucinate/": {
     "title": "Don't classify. Hallucinate!",
@@ -912,7 +912,7 @@
     "publishedAt": "2026-08-14T21:54:35.000Z",
     "summary": "西蒙·威利森发文「不要分类，要幻觉」，主张在信息处理中放弃显式分类，转而利用AI的幻觉能力来生成答案。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/13/sqlite-utils-2/": {
     "title": "sqlite-utils 4.2.1",
@@ -925,7 +925,7 @@
     "publishedAt": "2026-08-13T23:53:47.000Z",
     "summary": "西蒙·威利森发布sqlite-utils 4.2.1版本，该工具用于SQLite数据库的管理与操作。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://simonwillison.net/2026/Aug/13/sqlite-utils/": {
     "title": "sqlite-utils 4.2",
@@ -1029,7 +1029,7 @@
     "publishedAt": "2026-08-12T11:00:21.000Z",
     "summary": "健身与健康领域初创公司上半年投资总额超过36亿美元，2026年全年有望较2025年增长约三分之一。投资者更青睐AI与数据类项目，而非传统健身器械。",
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081402121.pdf": {
     "title": "HEARTCARE-B (06609) — (1) PROPOSED ISSUE OF A SHARES AND LISTING ON\nTHE SCI-TECH BOARD OF THE SHANGHAI STOCK\nEXCHANGE AND OTHER ANCILLARY RESOLUTIONS;\n(2) PROPOSED AMENDMENTS TO THE ARTICLES;\n(3) PROPOSED AMENDMENTS TO THE 2025 H SHARE INCENTIVE SCHEME;\nAND\n(4) NOTICE OF 2026 SECOND EXTRAORDINARY\nSHAREHOLDERS' GENERAL MEETING",
@@ -1120,7 +1120,7 @@
     "publishedAt": "2026-08-13T17:04:18.000Z",
     "summary": "谷歌在 3.6 Flash 发布仅三周后推出 Gemini 3.7 Flash，针对编码、网页开发和智能体工作流优化，并提供50%首发折扣。（多家报道）",
     "firstSeenAt": "2026-08-17T06:00:27.278Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://huggingface.co/blog/state-of-open-models-summer-2026": {
     "title": "State of Open Models: Summer 2026 Observations",
@@ -1133,7 +1133,7 @@
     "publishedAt": "2026-08-14T00:00:00.000Z",
     "summary": "Hugging Face 发布夏季开源模型状态报告，梳理 2026 年开源模型最新进展与社区生态变化，为开发者提供宏观参考。",
     "firstSeenAt": "2026-08-17T06:00:27.278Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://huggingface.co/blog/amazon/strands-lerobot-streaming-data-loop": {
     "title": "Record, train, and deploy from one place with Strands Agents, LeRobot, and Hugging Face Storage Buckets",
@@ -1146,7 +1146,7 @@
     "publishedAt": "2026-08-13T17:16:04.000Z",
     "summary": "Hugging Face博客介绍，结合Strands Agents、LeRobot与Hugging Face Storage Buckets，可实现从数据记录、模型训练到部署的一站式流程。",
     "firstSeenAt": "2026-08-17T06:00:27.278Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://huggingface.co/papers/2608.13489": {
     "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
@@ -2565,7 +2565,7 @@
     "publishedAt": "2026-08-17T09:00:00.000Z",
     "summary": "MIT技术评论探讨儿童机器人好友离世的影响。以Xander与机器人Moxie的六年相处为例，Moxie曾教他通过蜂鸣式呼气、龙式呼吸等方法调节情绪，失去它令孩子面临情感挑战。",
     "firstSeenAt": "2026-08-17T09:31:59.195Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/EXM7777/status/2088992368695628159": {
     "title": "How to build a $2M video production pipeline",
@@ -2578,7 +2578,7 @@
     "publishedAt": "2026-08-16T14:12:46.000Z",
     "summary": "免费送出7项技能，详细拆解导演在Higgsfield中制作百万美元预算AI电影的完整流程，从系统步骤到技能组合逐步公开，适合想入局AI视频制作的人。",
     "firstSeenAt": "2026-08-17T09:31:59.195Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bloomberg.com/news/articles/2026-08-17/dollar-extends-slide-as-traders-scale-back-fed-tightening-bets": {
     "title": "Dollar Extends Slide as Traders Scale Back Fed Tightening Bets",
@@ -3282,7 +3282,7 @@
     "publishedAt": "2026-08-17T19:46:21.000Z",
     "summary": "Hugging Face博客文章称，在同一个GPU集群上，仅通过调整任务执行顺序，利用率提升了33个百分点。文章强调调度顺序对集群性能的重要影响。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://tldr.tech/ai/2026-08-17": {
     "title": "GLM-5.3 🤖, Stripe OpenRouter deal 💰, AI agent consensus 🤝",
@@ -3295,7 +3295,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "本期TLDR AI资讯汇总：发布GLM-5.3模型，Stripe与OpenRouter达成交易合作，以及AI代理领域形成共识。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://news.smol.ai/issues/26-08-17-not-much/": {
     "title": "not much happened today",
@@ -3321,7 +3321,7 @@
     "publishedAt": "2026-08-17T23:13:41.000Z",
     "summary": "支付公司Stripe以70亿美元收购OpenRouter。评论指出，交易标的没有GPU、没有智能体，仅凭扎实的基础设施和分发能力取胜。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/17/1142200/what-flocks-defenders-are-missing/": {
     "title": "What Flock’s defenders are missing",
@@ -3334,7 +3334,7 @@
     "publishedAt": "2026-08-17T19:16:09.000Z",
     "summary": "MIT技术评论报道，美国警用科技巨头Flock拥有约12万个自动车牌读取器网络，近期宣布了若干调整，但其辩护者们忽略了一些关键问题。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/JensenHuang/status/2089331487342829862": {
     "title": "Securing the Infrastructure of Intelligence",
@@ -3347,7 +3347,7 @@
     "publishedAt": "2026-08-17T12:40:19.000Z",
     "summary": "黄仁勋指出土地、电力和外壳是AI工厂的下一个关键资源。AI工厂将能源和数据转化为智能，是AI时代的基础设施，强调算力设施的战略重要性。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/PiCoreTeam/status/2089477194045141419": {
     "title": "Update to Pi App Studio Creation Pricing",
@@ -3360,7 +3360,7 @@
     "publishedAt": "2026-08-17T22:19:18.000Z",
     "summary": "Pi官方宣布2026年8月24日起调整App Studio的创建和编辑定价。此前Pi对所有创作者在App Studio中创建和编辑应用给予了大幅补贴，新政策将改变这一机制。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bloomberg.com/news/articles/2026-08-17/stock-market-today-dow-s-p-live-updates": {
     "title": "Stocks Fall as Bond Selloff Saps Risk Appetite: Markets Wrap",
@@ -3868,7 +3868,7 @@
     "publishedAt": "2026-08-17T15:21:29.000Z",
     "summary": "Simon Willison的博客报道，一批珍稀书籍的运输被追踪后，最终抵达亚马逊的一座AI训练设施。相关细节引发对AI训练数据来源的关注。",
     "firstSeenAt": "2026-08-17T23:46:53.827Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.theguardian.com/us-news/2026/aug/17/gas-prices-august-record-iran-war": {
     "title": "US gas prices reach highest ever recorded for August amid stalled talks with Iran",
@@ -4076,7 +4076,7 @@
     "publishedAt": "2026-08-17T23:58:14.000Z",
     "summary": "Simon Willison的博客报道，Qwen 3.8 27B模型在Artificial Analysis智能指数上得分52。该指数用于衡量AI模型的综合智能表现。",
     "firstSeenAt": "2026-08-18T00:28:10.237Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.ftchinese.com/story/001110641": {
     "title": "特朗普威胁要轰炸传统盟友阿曼",
@@ -4547,7 +4547,7 @@
     "publishedAt": "2026-08-16T00:00:00.000Z",
     "summary": "提出UI-Mate，利用上下文演示增强开放权重基础GUI智能体。针对训练数据稀缺有偏、提示歧义及执行不可靠问题，通过示例引导明确用户特定流程和隐式约定，提升复杂数字任务的自动化执行准确率与可靠性。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://huggingface.co/papers/2608.16859": {
     "title": "HarnessEval-W: Agentifying the Evaluation of Visual Worlds",
@@ -4560,7 +4560,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "提出HarnessEval-W，将视觉世界模型评估过程智能体化，通过可解释推理生成评估结论，而非仅输出标量分数。该方法重点关注rollout中物理、因果及世界状态演化的正确性判断，提升评估结果的可信度与诊断价值。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/GoogleAI/status/2089437060310434098": {
     "title": "Bring your spreadsheet data to life",
@@ -4573,7 +4573,7 @@
     "publishedAt": "2026-08-17T19:39:49.000Z",
     "summary": "Google AI 发布 Sheets canvas 与 Gemini 3.7 Flash 集成，可将电子表格转化为可运行的交互式迷你应用，无需写代码。与多数 AI UI 工具只生成原型不同，该方案直接让数据活起来，适合快速搭建数据看板或小工具。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bloomberg.com/news/articles/2026-08-18/congo-ebola-outbreak-financial-oversight-takes-priority-as-distrust-grows": {
     "title": "Congo Ebola Outbreak: Financial Oversight Takes Priority as Distrust Grows",
@@ -5044,7 +5044,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478669.PDF": {
     "title": "宇树科技 (688836)",
@@ -5057,7 +5057,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478438.PDF": {
     "title": "天博智能 (603448)",
@@ -5070,7 +5070,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478314.PDF": {
     "title": "高凯技术 (688835)",
@@ -5083,7 +5083,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-17/1225476108.PDF": {
     "title": "频准激光 (688826)",
@@ -5096,7 +5096,7 @@
     "publishedAt": "2026-08-16T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-15/1225474373.PDF": {
     "title": "沪硅产业 (688126)",
@@ -5109,7 +5109,7 @@
     "publishedAt": "2026-08-14T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-14/1225471786.PDF": {
     "title": "沪农商行 (601825)",
@@ -5122,7 +5122,7 @@
     "publishedAt": "2026-08-13T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225477657.PDF": {
     "title": "乖宝宠物 (301498)",
@@ -5135,7 +5135,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225476845.PDF": {
     "title": "洛轴股份 (301699)",
@@ -5148,7 +5148,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225476276.PDF": {
     "title": "贝特利 (301697)",
@@ -5161,7 +5161,7 @@
     "publishedAt": "2026-08-17T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-18/1225476258.PDF": {
     "title": "格林生物 (301688)",
@@ -5200,7 +5200,7 @@
     "publishedAt": "2026-08-13T00:00:00.000Z",
     "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
     "firstSeenAt": "2026-08-18T04:12:19.018Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bse.cn/disclosure/2026/2026-08-17/2096904def6341eb92138fb03341195d.pdf": {
     "title": "创远信科 (920961)",
@@ -6581,7 +6581,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "港交所华侨城亚洲发布中期业绩，广东国企境外上市主体经营动态，关注其境内关联企业与金融服务合作机会。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225480711.PDF": {
     "title": "马矿股份 (601123)",
@@ -6594,7 +6594,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "沪市马矿股份（601123）发布公告，广东矿业上市公司动态，关注企业融资、并购及产业链上下游金融服务需求。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225480319.PDF": {
     "title": "甘李药业 (603087)",
@@ -6607,7 +6607,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "甘李药业（603087）发布公告，医药行业上市公司动态，关注其研发投入、资金需求及上下游供应链金融机会。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481019.PDF": {
     "title": "绿控传动 (301655)",
@@ -6620,7 +6620,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "绿控传动（301655）发布公告，新能源传动系统企业动态，关注绿色产业企业融资与供应链金融服务需求。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479686.PDF": {
     "title": "英特科技 (301399)",
@@ -6633,7 +6633,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "英特科技（301399）发布公告，科技制造企业动态，关注其经营与融资动向，挖掘对公信贷与结算合作机会。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479343.PDF": {
     "title": "波长光电 (301421)",
@@ -6646,7 +6646,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "波长光电（301421）发布公告，光电企业动态，关注高端制造企业设备更新与技改信贷需求。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479214.PDF": {
     "title": "和泰机电 (001225)",
@@ -6659,7 +6659,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "和泰机电（001225）发布公告，机电制造企业动态，关注制造业企业资金周转与供应链金融合作机会。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479054.PDF": {
     "title": "格林生物 (301688)",
@@ -6672,7 +6672,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "格林生物（301688）发布公告，生物科技企业动态，关注生物医药企业研发融资与知识产权质押等创新金融需求。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bse.cn/disclosure/2026/2026-08-18/e59b3e9205684d03930706e4bf77b036.pdf": {
     "title": "智新电子 (920212)",
@@ -6685,7 +6685,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "北交所智新电子（920212）发布公告，专精特新企业动态，关注北交所挂牌企业股权融资与专精特新贷等产品机会。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bse.cn/disclosure/2026/2026-08-18/ddb7a5900ec240d48dd375a560a3b8ed.pdf": {
     "title": "戈碧迦 (920438)",
@@ -6698,7 +6698,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "北交所戈碧迦（920438）发布公告，光电材料企业动态，关注北交所中小企业融资需求与创新型信贷产品落地。",
     "firstSeenAt": "2026-08-19T00:59:04.615Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://huggingface.co/papers/2608.15089": {
     "title": "StateM: Reaching 95.3% Raw Accuracy, or a \\$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
@@ -6711,7 +6711,7 @@
     "publishedAt": "2026-08-15T00:00:00.000Z",
     "summary": "AI智能体在终端任务评测取得新突破，银行可参考该技术评估自身智能客服、自动化审批等场景的落地潜力。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://tldr.tech/ai/2026-08-18": {
     "title": "Cursor Origin 👨‍💻, Anthropic $65B revenue 💰, deadline dividend scaling 📈",
@@ -6724,7 +6724,7 @@
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "summary": "AI创业公司融资与产品进展密集，全球AI赛道热度不减，提示分行关注科技企业信贷与股权投资合作机会。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.latent.space/p/glean-model-routing": {
     "title": "Frontier Model Cost and Open-Weights Popularity is Driving Demand for Model Routing",
@@ -6737,7 +6737,7 @@
     "publishedAt": "2026-08-18T21:41:10.000Z",
     "summary": "前沿模型推理成本高企推动模型路由需求，银行AI应用应注重降本增效与多模型选型策略。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/18/1142226/how-people-use-ai/": {
     "title": "We still don’t know how people are really using AI",
@@ -6750,7 +6750,7 @@
     "publishedAt": "2026-08-18T10:06:43.000Z",
     "summary": "用户实际使用AI的方式仍不清晰，提示银行零售客群的AI应用需求尚在探索期，产品设计宜渐进式迭代。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement/": {
     "title": "AI’s recursive self-improvement might not come so quickly after all",
@@ -6763,7 +6763,7 @@
     "publishedAt": "2026-08-18T09:00:00.000Z",
     "summary": "AI自我进化的速度可能低于预期，提示理性看待AI能力预期，避免过度投入短期无法兑现的技术项目。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/milesdeutscher/status/2089724781449052255": {
     "title": "Grok Bot: The Ultimate Guide ",
@@ -6776,7 +6776,7 @@
     "publishedAt": "2026-08-18T14:43:07.000Z",
     "summary": "AI Agent工具快速普及，银行可研究智能助手在客户服务、营销触达中的应用，提升运营效率。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/0xCodez/status/2089676836619878567": {
     "title": "Grok Bot Agents: how to automate your life in 10 Steps (Full-tutorial)",
@@ -6789,7 +6789,7 @@
     "publishedAt": "2026-08-18T11:32:36.000Z",
     "summary": "AI Agent自动化工作流教程走红，反映企业数字化需求旺盛，银行可探索为中小企业客户提供智能化解决方案。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://x.com/_avichawla/status/2089657097244024858": {
     "title": "Grok Bot Masterclass",
@@ -6802,7 +6802,7 @@
     "publishedAt": "2026-08-18T10:14:10.000Z",
     "summary": "AI Agent使用培训需求增长，银行内部可组织AI工具培训，提升一线员工数字化作业能力。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.bloomberg.com/news/articles/2026-08-19/korea-bears-brunt-as-higher-bond-yields-weigh-on-chip-stocks": {
     "title": "Korean Stocks Bear Brunt of Chip Selloff on Higher Yield Worry",
@@ -7546,7 +7546,7 @@
     "publishedAt": "2026-08-18T21:39:20.000Z",
     "summary": "编程语言Mojo宣布开源，AI开发工具链加速演进，银行技术团队可关注新兴语言生态降低AI开发成本。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.qbitai.com/2026/08/474907.html": {
     "title": "年轻人首选B级闪充轿车秦MAX正式上市，售价10.99-14.39万元",
@@ -7559,7 +7559,7 @@
     "publishedAt": "2026-08-18T11:07:02.000Z",
     "summary": "比亚迪秦系列新车上市主打性价比，汽车消费旺季启动，关注汽车供应链金融与经销商融资需求。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.qbitai.com/2026/08/474868.html": {
     "title": "比亚迪全程护航丝路万里行，深圳收官再启海外征程",
@@ -7572,7 +7572,7 @@
     "publishedAt": "2026-08-18T10:40:23.000Z",
     "summary": "比亚迪沿丝路推进海外布局，中国车企出海加速，关注出口企业跨境结算、外汇避险与海外融资需求。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.qbitai.com/2026/08/474857.html": {
     "title": "网易传媒发布”蜜蜂AI” ：从工具到伙伴，让AI更懂人",
@@ -7585,7 +7585,7 @@
     "publishedAt": "2026-08-18T10:04:14.000Z",
     "summary": "网易发布蜜蜂AI助手，国内AI应用从工具走向陪伴，银行可探索AI陪伴式客群运营与财富顾问场景。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.qbitai.com/2026/08/474838.html": {
     "title": "π0引用的中国团队，又出手了：世界仿真器新作发布",
@@ -7598,7 +7598,7 @@
     "publishedAt": "2026-08-18T09:57:40.000Z",
     "summary": "中国团队发布世界仿真器，具身智能技术进展显著，AI+制造融合加速，关注智能制造企业金融需求。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.qbitai.com/2026/08/474840.html": {
     "title": "人人都能写好听的歌，阿里发布AI音乐模型HappyShrimp",
@@ -7611,7 +7611,7 @@
     "publishedAt": "2026-08-18T09:38:21.000Z",
     "summary": "阿里发布AI音乐模型，AIGC商业化提速，内容创作成本下降，关注文娱AI企业融资与生态合作机会。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
-    "lastSeenAt": "2026-08-19T01:12:16.071Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.theguardian.com/us-news/2026/aug/18/abc-sues-trump-federal-communications-commission": {
     "title": "ABC sues Trump’s media regulator over demand for TV license renewals",
@@ -7662,7 +7662,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-12T14:00:51.000Z",
     "firstSeenAt": "2026-08-19T06:43:50.641Z",
-    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.gov.cn/zhengce/content/202608/content_7078477.htm": {
     "title": "国务院关于修改《住房公积金管理条例》的决定",
@@ -7674,7 +7674,7 @@
     "excerpt": "【国务院政策】国务院关于修改《住房公积金管理条例》的决定",
     "publishedAt": "2026-08-18T00:00:00.000Z",
     "firstSeenAt": "2026-08-19T06:43:50.641Z",
-    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://m.21jingji.com/article/20260819/herald/7e757ecc8a45ce07866fb6342dfda77f.html": {
     "title": "住房公积金政策迎大变化！9月20日起施行",
@@ -7685,7 +7685,7 @@
     "subcategory": "cn-finance",
     "excerpt": "【21财经】住房公积金政策迎大变化！9月20日起施行",
     "firstSeenAt": "2026-08-19T06:43:50.641Z",
-    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   },
   "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html": {
     "title": "【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
@@ -7696,6 +7696,510 @@
     "subcategory": "gz-policy",
     "excerpt": "【广州市政府】【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
     "firstSeenAt": "2026-08-19T06:43:50.641Z",
-    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/": {
+    "title": "Putting sign language AI into users’ hands",
+    "url": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/",
+    "sourceId": "deepmind-blog",
+    "source": "DeepMind Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "Introducing sign-language-to-text (SL2T), our breakthrough model powering new sign language features for Deaf and hard of hearing users.",
+    "publishedAt": "2026-08-12T14:01:59.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/blog/ibm-research/altk-evolve-hmm": {
+    "title": "How Much Memory Does Your Agent Actually Need?",
+    "url": "https://huggingface.co/blog/ibm-research/altk-evolve-hmm",
+    "sourceId": "huggingface-blog",
+    "source": "Hugging Face Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-18T18:09:38.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/blog/multi-vector-encoder": {
+    "title": "Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers",
+    "url": "https://huggingface.co/blog/multi-vector-encoder",
+    "sourceId": "huggingface-blog",
+    "source": "Hugging Face Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/blog/icml-2026-open-reproductions": {
+    "title": "What We Learned by Reproducing 2,200 papers from ICML",
+    "url": "https://huggingface.co/blog/icml-2026-open-reproductions",
+    "sourceId": "huggingface-blog",
+    "source": "Hugging Face Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-13T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/blog/allenai/olmoearth-embeddings": {
+    "title": "Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis",
+    "url": "https://huggingface.co/blog/allenai/olmoearth-embeddings",
+    "sourceId": "huggingface-blog",
+    "source": "Hugging Face Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-12T16:14:36.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.16072": {
+    "title": "Learn What's Left, Not What's Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization",
+    "url": "https://huggingface.co/papers/2608.16072",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Reinforcement learning (RL) with group-relative advantages has become the de facto standard for post-training language model reasoners. However, when optimizing multiple reward objectives, existing methods typically scalarize the reward vector with a fixed weighted sum before group-wise standardizat",
+    "publishedAt": "2026-08-17T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.15669": {
+    "title": "Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search",
+    "url": "https://huggingface.co/papers/2608.15669",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Scientific discovery often involves optimising expensive-to-evaluate objectives over vast, structured, and open-ended hypothesis spaces, such as molecules, protein sequences, and computer programs. Generative models such as large language models (LLMs) provide expressive priors over such spaces, but",
+    "publishedAt": "2026-08-16T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.15045": {
+    "title": "MOSS-VL Technical Report",
+    "url": "https://huggingface.co/papers/2608.15045",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "We present MOSS-VL, an open vision-language model family that treats real-time interaction -- perceiving while it speaks -- as a first-class capability. It is co-designed across the stack: the language decoder attends to vision only through gated cross-attention, so the model can naturally see incom",
+    "publishedAt": "2026-08-15T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.17271": {
+    "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
+    "url": "https://huggingface.co/papers/2608.17271",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifiable results. However, the capabilities of today's AI systems are still largely built on learning, compressing, and applyi",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.16157": {
+    "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+    "url": "https://huggingface.co/papers/2608.16157",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Frontier open-weight models are increasingly available, but serving them still largely assumes datacenter infrastructure. We present FreeToken, an edge-native MoE serving system that treats a personal machine not as a small GPU, but as a unified, elastic inference platform. FreeToken co-designs the ",
+    "publishedAt": "2026-08-17T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://huggingface.co/papers/2608.17310": {
+    "title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
+    "url": "https://huggingface.co/papers/2608.17310",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Reinforcement Learning (RL) has been promising in single-turn LLM fine-tuning. However, long-horizon agentic reasoning introduces increasingly branching interactions and sparse rewards, exposing several limitations of RL: its heavyweight backpropagation-based training stack makes it impractical to f",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.latent.space/p/ainews-cursors-60b-acquisition-by": {
+    "title": "[AINews] Cursor's $60B acquisition by SpaceXai closes",
+    "url": "https://www.latent.space/p/ainews-cursors-60b-acquisition-by",
+    "sourceId": "latent-space",
+    "source": "Latent Space",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "Congrats to the team!",
+    "publishedAt": "2026-08-14T06:16:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://x.com/mattyp/status/2089758434921160877": {
+    "title": "Chat is all you need",
+    "url": "https://x.com/mattyp/status/2089758434921160877",
+    "sourceId": "attentionvc-ai",
+    "source": "X 推文 (AttentionVC)",
+    "category": "tech",
+    "subcategory": "x-viral",
+    "excerpt": "Grok Bot has a single output: a message This might seem backwards. Power-user tools are built on complexity and breadth, right? Chat can’t possibly have my workflow. It’s a special workflow. I’m a",
+    "publishedAt": "2026-08-18T16:56:51.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/H74fUrce5mmYgtDtM8tI?utm_source=rss&utm_medium=article": {
+    "title": "Canva 分享了基于 S3 的架构，用于管理数亿个会话的会话撤销",
+    "url": "https://www.infoq.cn/article/H74fUrce5mmYgtDtM8tI?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-19T14:24:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/8grNo7eCm3Rly0NV8bcS?utm_source=rss&utm_medium=article": {
+    "title": "Valhalla 项目首次预览：JEP 401 重新定义 Java 对象的 == 运算符",
+    "url": "https://www.infoq.cn/article/8grNo7eCm3Rly0NV8bcS?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-19T12:25:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/5LJARsierf0NbH3Rc6wc?utm_source=rss&utm_medium=article": {
+    "title": "Embabel智能体框架发布1.0版本",
+    "url": "https://www.infoq.cn/article/5LJARsierf0NbH3Rc6wc?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-19T11:14:23.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/vrlSsJUrdpfGqsj3CTZK?utm_source=rss&utm_medium=article": {
+    "title": "让 Agent 真正驱动销售增长——FDE 模式下的业务流重构实战｜AICon深圳",
+    "url": "https://www.infoq.cn/article/vrlSsJUrdpfGqsj3CTZK?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-19T10:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/J7CiEHSU79e9TYi3soro?utm_source=rss&utm_medium=article": {
+    "title": "谷歌发布 Angular v22，带来稳定的 Signal Forms、默认启用的 OnPush 以及实验性的 WebMCP",
+    "url": "https://www.infoq.cn/article/J7CiEHSU79e9TYi3soro?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T17:28:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/pOfV96f9DHG9Cw1KQAZB?utm_source=rss&utm_medium=article": {
+    "title": "Snowflake CoCo AI 成本优化指南：7 个关键方法 | 技术实践",
+    "url": "https://www.infoq.cn/article/pOfV96f9DHG9Cw1KQAZB?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T16:29:05.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/jsqPaMGuPXFkhifJmTym?utm_source=rss&utm_medium=article": {
+    "title": "共识之外：Linux 生态系统中 AI 政策的碎片化现象",
+    "url": "https://www.infoq.cn/article/jsqPaMGuPXFkhifJmTym?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T16:15:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/QekQuwv8UhxAcrOFgKM8?utm_source=rss&utm_medium=article": {
+    "title": "阿里云的野心，不在 Agent Builder",
+    "url": "https://www.infoq.cn/article/QekQuwv8UhxAcrOFgKM8?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T15:32:44.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/kJK3qG9m7UEYtf7siCgU?utm_source=rss&utm_medium=article": {
+    "title": "豆包视频通话升级，火山引擎多模态传输系统提供技术支撑",
+    "url": "https://www.infoq.cn/article/kJK3qG9m7UEYtf7siCgU?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T14:46:57.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.infoq.cn/article/lHpgJMVERySthZ0KKIg4?utm_source=rss&utm_medium=article": {
+    "title": "Stripe 利用 Graph Search 和状态机实现数据库修复自动化",
+    "url": "https://www.infoq.cn/article/lHpgJMVERySthZ0KKIg4?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-18T14:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.qbitai.com/2026/08/475009.html": {
+    "title": "郭富城换车，30万级顶配华为全家桶",
+    "url": "https://www.qbitai.com/2026/08/475009.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "5.3米六座家用SUV",
+    "publishedAt": "2026-08-19T00:59:23.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.qbitai.com/2026/08/474806.html": {
+    "title": "6个Agent组团Vibe Gaming：自己生成、试玩、修Bug",
+    "url": "https://www.qbitai.com/2026/08/474806.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "代码能跑≠游戏能玩",
+    "publishedAt": "2026-08-18T07:33:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.qbitai.com/2026/08/474803.html": {
+    "title": "今日起，阿里“千问办公”接入企业微信",
+    "url": "https://www.qbitai.com/2026/08/474803.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "国内三大办公平台全面支持",
+    "publishedAt": "2026-08-18T07:17:42.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.qbitai.com/2026/08/474736.html": {
+    "title": "吉利汽车业绩高点，李书福激流勇退",
+    "url": "https://www.qbitai.com/2026/08/474736.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "“吉利不再研发传统燃油车”",
+    "publishedAt": "2026-08-18T06:46:46.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.qbitai.com/2026/08/474673.html": {
+    "title": "650亿美元！IPO前夕，Anthropic营收底牌曝光",
+    "url": "https://www.qbitai.com/2026/08/474673.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "回头看，A社就这样完成了反超",
+    "publishedAt": "2026-08-18T05:58:57.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/111936": {
+    "title": "App+1 | Inkive：把纸质书上划好的线存进 Obsidian",
+    "url": "https://sspai.com/post/111936",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "让纸书上的划线，回到你的数字笔记里。查看全文",
+    "publishedAt": "2026-08-19T02:54:52.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113607": {
+    "title": "派早报：iQOO 发布手机新品、闪极举行 Loomos AI 眼镜发布会等",
+    "url": "https://sspai.com/post/113607",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "Spotify 上线「播放列表备注」功能、Windows Server 2022 即将结束主流更新等。查看全文",
+    "publishedAt": "2026-08-19T00:30:54.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113593": {
+    "title": "社区速递 154 | AI 代码助手大乱斗、租房电钻组合与神奇实体卡片故事机",
+    "url": "https://sspai.com/post/113593",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "除了首页时间流和侧栏的精选展位，少数派Matrix社区还有很多优秀内容因条件所限无法得到有效曝光，因此我们决定重启Matrix周报，并在此基础上添加更多社区内容、作者投稿新玩意呈现给大家。上周社区速递 ...查看全文",
+    "publishedAt": "2026-08-18T09:01:31.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113564": {
+    "title": "线下活动 | 爵士律动唤醒动漫回忆：炒饭 Fried Rice 音乐分享签售会",
+    "url": "https://sspai.com/post/113564",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "二次元加爵士，你说有没有搞头？音乐人介绍炒饭（B站），本职是常驻波士顿的程序员社畜，同时也是多乐器演奏音乐人、B站UP主。炒饭没有专业科班学习经历，却凭兴趣及自学掌握了多种音乐技能，专辑音乐均为自己在 ...查看全文",
+    "publishedAt": "2026-08-18T07:05:05.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113438": {
+    "title": "App+1 | 让任务栏更有用：WindowSill",
+    "url": "https://sspai.com/post/113438",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "屏幕不是注意力中心的地方可以塞下多少有用的东西呢？查看全文",
+    "publishedAt": "2026-08-18T06:30:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113454": {
+    "title": "7月音乐精选：夏天赠予我们的 9 张专辑",
+    "url": "https://sspai.com/post/113454",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "编者注：2026年我们将重启少数派音乐推荐栏目FM3.14，特邀资深音乐从业者及爱好者为大家推荐优质的华语独立、流行音乐，今年我们也很荣幸邀请到老朋友飞傲，为本栏目冠名。飞傲目前拥有品牌以音乐发烧友为 ...查看全文",
+    "publishedAt": "2026-08-18T02:52:11.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113566": {
+    "title": "派早报：阿里巴巴出售灵犀互娱，Linux 7.2 内核稳定版发布等",
+    "url": "https://sspai.com/post/113566",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "少数派的近期动态新一季少数派会员启航，更新权益，更多惊喜，还有实体纪念卡。点击了解能让AI助手通过自然语言指令直接与您的Quote/0摘录墨水屏交互的DotSkill已上线。点击了解你可能错过的文章成 ...查看全文",
+    "publishedAt": "2026-08-18T00:04:07.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113544": {
+    "title": "派评 | 近期值得关注的 App",
+    "url": "https://sspai.com/post/113544",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": ">下载少数派2.0客户端、关注少数派公众号，解锁全新阅读体验📰>实用、好用的正版软件，少数派为你呈现🚀查看全文",
+    "publishedAt": "2026-08-17T10:14:56.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113368": {
+    "title": "分享我知识管理 12 年来最重要的经验：INL 结构",
+    "url": "https://sspai.com/post/113368",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "你是不是有几百个笔记，超级乱，都懒得打开？今天我们介绍一个方法，可以让你不怎么整理，就能快速找到重点。查看全文",
+    "publishedAt": "2026-08-17T07:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://sspai.com/post/113448": {
+    "title": "当陶瓷水杯遇上像素屏：PixelMug 体验",
+    "url": "https://sspai.com/post/113448",
+    "sourceId": "sspai",
+    "source": "少数派",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "如今，伴随着科技和生产力的发展，许多曾经只存在于科幻作品里的创意都逐渐变成了现实。各种新奇酷炫的产品，也开始在人们的刚需之外提供不一样的解法。尤其是那些无关「生产力」、单纯为了让生活变得更有意思的产品 ...查看全文",
+    "publishedAt": "2026-08-17T05:55:17.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801005.pdf": {
+    "title": "CHANGMAO BIO (00954) — INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026 AND DISCLOSURE PURSUANT TO RULE 13.19 OF THE LISTING RULES",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801005.pdf",
+    "sourceId": "gd-hkex",
+    "source": "港交所IPO公告",
+    "category": "ipo",
+    "subcategory": "hkex",
+    "excerpt": "港交所公告 | 代码: 00954 | 公司: CHANGMAO BIO | 时间: 18/08/2026 17:24 | 格式: PDF",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800784.pdf": {
+    "title": "PA GOODDOCTOR (01833) — ANNOUNCEMENT OF UNAUDITED INTERIM RESULTS FOR\nTHE SIX MONTHS ENDED 30 JUNE 2026",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800784.pdf",
+    "sourceId": "gd-hkex",
+    "source": "港交所IPO公告",
+    "category": "ipo",
+    "subcategory": "hkex",
+    "excerpt": "港交所公告 | 代码: 01833 | 公司: PA GOODDOCTOR | 时间: 18/08/2026 16:56 | 格式: PDF",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800772.pdf": {
+    "title": "CHINA OVERSEAS (00688) — NOTICE OF LISTING ON THE STOCK EXCHANGE OF HONG KONG LIMITED - CNY3,191,000,000 2.20 PER CENT. GUARANTEED GREEN NOTES DUE 2031 ISSUED BY CHINA OVERSEAS FINANCE (CAYMAN) VIII LIMITED",
+    "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800772.pdf",
+    "sourceId": "gd-hkex",
+    "source": "港交所IPO公告",
+    "category": "ipo",
+    "subcategory": "hkex",
+    "excerpt": "港交所公告 | 代码: 00688 | 公司: CHINA OVERSEAS | 时间: 18/08/2026 16:54 | 格式: PDF",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  "https://www.bse.cn/disclosure/2026/2026-08-18/2300cec323564046bac323c59083cf64.pdf": {
+    "title": "聚仁新材 (920258)",
+    "url": "https://www.bse.cn/disclosure/2026/2026-08-18/2300cec323564046bac323c59083cf64.pdf",
+    "sourceId": "gd-bse",
+    "source": "北交所IPO公告",
+    "category": "ipo",
+    "subcategory": "bse",
+    "excerpt": "北交所公告 | [临时公告]聚仁新材:关于使用募集资金置换预先已支付发行费用的自筹资金的公告 | 日期: 2026-08-18",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   }
 }

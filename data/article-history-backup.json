@@ -4326,5 +4326,41 @@
     "publishedAt": "2025-12-29T00:00:00.000Z",
     "firstSeenAt": "2026-08-18T09:03:39.020Z",
     "lastSeenAt": "2026-08-18T09:03:39.020Z"
+  },
+  {
+    "title": "AVA-Encoder: Towards Agent-Native Video Representation Learning",
+    "url": "https://huggingface.co/papers/2608.12313",
+    "sourceId": "huggingface-papers",
+    "source": "HuggingFace Trending Papers",
+    "category": "tech",
+    "subcategory": "trending-papers",
+    "excerpt": "Creative agents still lack an effective way to learn from high-quality human films, limiting their ability to produce cinematic-grade videos. A key challenge is the absence of a structured video representation that is both faithful to film content and directly usable for agentic reasoning and manipu",
+    "publishedAt": "2026-08-12T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  {
+    "title": "Cursor’s GitHub rival 👨‍💻, OpenAI COO leaves 👋, Gemini 1B milestone 📈",
+    "url": "https://tldr.tech/ai/2026-08-12",
+    "sourceId": "tldr-ai",
+    "source": "TLDR AI",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-12T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  {
+    "title": "🔬The BioAI Phase Shift - Matthew McPartlon & Neil Patil, Chai Discovery",
+    "url": "https://www.latent.space/p/chai-discovery",
+    "sourceId": "latent-space",
+    "source": "Latent Space",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "Pharma is suddenly paying for Bio × AI tools, and Chai is leading the pack with four deals closed this summer. Cofounder Matt McPartlon and Product leader Neil Patil explain why.",
+    "publishedAt": "2026-08-11T21:03:50.000Z",
+    "firstSeenAt": "2026-08-19T06:59:01.766Z",
+    "lastSeenAt": "2026-08-19T06:59:01.766Z"
   }
 ]
