@@ -161,3 +161,86 @@ test("groupRaw: relevant=false 的 finance 条目不传导也不进宏观面板"
   assert.ok(!inFinance, "relevant=false 不进宏观面板");
   assert.ok(!inGz, "relevant=false 不传导到广州商机");
 });
+
+// —— 标签内主题去重（同主题 ≤2 条、2 条必须 tier 不同）——
+test("groupRaw: gz-credit 内 4 条公积金同主题 → 只留 2 条且 tier 不同", () => {
+  const mk = (title: string, sourceId: string, source: string, tier: any, url: string): ArticleInput => ({
+    sourceId, source, title, url, excerpt: "",
+    category: "finance", subcategory: "cn-policy", tier,
+    publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+  });
+  const articles: ArticleInput[] = [
+    mk("住房公积金提取和使用范围拓宽，9月20日起施行→", "cctv-finance", "央视财经", "T1.5", "https://x/gjj1"),
+    mk("国务院关于修改《住房公积金管理条例》的决定", "govcn-policy", "中国政府网", "T1", "https://x/gjj2"),
+    mk("重磅新政来了，《住房公积金管理条例》正式公布", "21jingji-finance", "21财经", "T2", "https://x/gjj3"),
+    mk("住房公积金政策迎大变化！9月20日起施行", "21jingji-finance", "21财经", "T2", "https://x/gjj4"),
+  ];
+  const raw = groupRaw(articles, registry);
+  const gzCredit = findSub(raw, "gz", "gz-credit");
+  assert.ok(gzCredit, "应构建 gz-credit 子组");
+  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  assert.ok(items.length <= 2, `同主题应 ≤2 条，实际 ${items.length} 条`);
+  if (items.length === 2) {
+    assert.notEqual(items[0]!.tier, items[1]!.tier, "2 条必须来源等级不同");
+  }
+  assert.ok(items.some((a) => a.tier === "T1"), "应保留 T1 国务院原文");
+});
+
+test("groupRaw: gz-credit 内同 tier 同主题只留 1 条", () => {
+  const mk = (title: string, url: string, tier: any): ArticleInput => ({
+    sourceId: "21jingji-finance", source: "21财经", title, url, excerpt: "",
+    category: "finance", subcategory: "cn-policy", tier,
+    publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+  });
+  const articles: ArticleInput[] = [
+    mk("重磅新政来了，《住房公积金管理条例》正式公布", "https://x/a", "T2"),
+    mk("住房公积金政策迎大变化！9月20日起施行", "https://x/b", "T2"),
+  ];
+  const raw = groupRaw(articles, registry);
+  const gzCredit = findSub(raw, "gz", "gz-credit");
+  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  assert.equal(items.length, 1, "同 tier 同主题只留 1 条");
+});
+
+test("groupRaw: 不同主题（公积金 vs 房贷）各自保留", () => {
+  const articles: ArticleInput[] = [
+    {
+      sourceId: "govcn-policy", source: "中国政府网",
+      title: "国务院关于修改《住房公积金管理条例》的决定",
+      url: "https://x/gjj", excerpt: "", category: "finance", subcategory: "cn-policy",
+      tier: "T1" as const, publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+    },
+    {
+      sourceId: "21jingji-finance", source: "21财经",
+      title: "多地房贷利率下调 首付比例降低",
+      url: "https://x/fangdai", excerpt: "", category: "finance", subcategory: "cn-policy",
+      tier: "T2" as const, publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+    },
+  ];
+  const raw = groupRaw(articles, registry);
+  const gzCredit = findSub(raw, "gz", "gz-credit");
+  const urls = gzCredit!.sources.flatMap((s) => s.items).map((a) => a.url);
+  assert.ok(urls.includes("https://x/gjj"), "公积金主题保留");
+  assert.ok(urls.includes("https://x/fangdai"), "房贷主题保留（不同主题不互删）");
+});
+
+test("groupRaw: 无主题词的条目不误删", () => {
+  const articles: ArticleInput[] = [
+    {
+      sourceId: "govcn-policy", source: "中国政府网",
+      title: "国务院批复森林年采伐限额",
+      url: "https://x/f1", excerpt: "", category: "finance", subcategory: "cn-policy",
+      tier: "T1" as const, publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+    },
+    {
+      sourceId: "govcn-policy", source: "中国政府网",
+      title: "国务院关于法治宣传教育第九个五年规划的批复",
+      url: "https://x/f2", excerpt: "", category: "finance", subcategory: "cn-policy",
+      tier: "T1" as const, publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+    },
+  ];
+  const raw = groupRaw(articles, registry);
+  const cnPolicy = findSub(raw, "finance", "cn-policy");
+  const urls = cnPolicy!.sources.flatMap((s) => s.items).map((a) => a.url);
+  assert.ok(urls.includes("https://x/f1") && urls.includes("https://x/f2"), "无主题词条目全部保留");
+});

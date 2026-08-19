@@ -71,6 +71,63 @@ export function conductToGzSubs(title: string): string[] {
   return Array.from(new Set(GZ_CONDUCTION_RULES.filter((r) => r.re.test(title)).map((r) => r.sub)));
 }
 
+/**
+ * 标签内主题去重词表（2026-08-19 用户要求）：同一子标签下「类似主题」最多展示
+ * maxPerTheme 条，且若为 2 条，来源等级（tier）必须不同——避免同一政策/事件被
+ * 多家媒体报道后堆满一个标签（如 gz-credit 出现 3+ 条公积金新政）。
+ *
+ * 主题键 = 标题命中的本词表词；两条目同主题 ⟺ 主题键交集非空。
+ * 词表与 GZ_CONDUCTION_RULES（业务线传导）同源口径，仅粒度更细（具体业务词）。
+ */
+const GZ_THEME_TERMS: Record<string, string[]> = {
+  "gz-ipo": ["IPO", "上市", "辅导备案", "招股", "股份公司"],
+  "gz-wealth": ["理财", "基金", "保险", "黄金", "财富", "资产配置", "私人银行", "代销", "信托"],
+  "gz-credit": ["公积金", "房贷", "消费贷", "经营贷", "按揭", "LPR", "利率", "首付", "融资担保", "信贷", "贷款"],
+  "gz-customer": ["社零", "消费", "零售", "居民收入", "收入", "人口", "就业", "物价", "CPI", "民生", "储蓄", "存款", "支付", "商圈", "市场运行"],
+  "gz-private": ["家族", "股权", "企业主", "专精特新", "半导体", "集成电路", "生物医药", "高端制造", "人工智能", "芯片", "知识产权", "产业扶持", "招商引资", "独角兽"],
+};
+
+/** 标题命中的主题词（按子标签词表；未命中返回空数组 = 不参与主题聚类）。 */
+export function themeKeysOf(title: string, sub?: string): string[] {
+  const words = sub ? GZ_THEME_TERMS[sub] : Object.values(GZ_THEME_TERMS).flat();
+  if (!words || words.length === 0) return [];
+  return Array.from(new Set(words.filter((w) => title.includes(w))));
+}
+
+/**
+ * 标签内主题去重 + tier 去重：同主题簇（主题键交集非空）最多保留 maxPerTheme 条，
+ * 且同一簇内同一 tier 只保留 1 条（用户规则：2 条必须是不同来源等级）。
+ * 无主题词的条目不聚类（独立保留，不误删）。保持传入顺序（时间倒序 → 留最新）。
+ */
+export function capByThemeAndTier<T extends ArticleInput>(
+  items: T[],
+  maxPerTheme = 2,
+  sub?: string,
+): T[] {
+  // 快路径仅对 1 条成立：2 条同主题也可能同 tier（不合规），必须走聚类检查。
+  if (items.length <= 1) return items;
+  const kept: T[] = [];
+  for (const a of items) {
+    const aKeys = themeKeysOf(a.title, sub);
+    if (aKeys.length === 0) {
+      kept.push(a);
+      continue;
+    }
+    const cluster = kept.filter((k) =>
+      themeKeysOf(k.title, sub).some((kw) => aKeys.includes(kw)),
+    );
+    if (cluster.length === 0) {
+      kept.push(a);
+      continue;
+    }
+    // 同簇：同一 tier 只留 1 条；簇已满（maxPerTheme 条不同 tier）则丢弃
+    if (cluster.some((k) => k.tier === a.tier)) continue;
+    if (cluster.length >= maxPerTheme) continue;
+    kept.push(a);
+  }
+  return kept;
+}
+
 
 
 /**
@@ -584,7 +641,8 @@ export function groupRaw(
       }
 
       const limit = displayLimitFor(cat, subId);
-      const sources: SourceGroup[] = [];
+      // 1) 子标签级聚合（跨源）：收集所有命中该子标签的条目（含 gz 板块传导补判）
+      const perSourceMap = new Map<string, { sourceName: string; items: ArticleInput[] }>();
       for (const [id, b] of buckets[cat].entries()) {
         // 条目级 subcategory 优先（AI/启发式分类），注册表源级兜底
         const items = b.items.filter(
@@ -604,8 +662,23 @@ export function groupRaw(
               : subcatOf.get(id) === subId;
           },
         );
+        if (items.length) perSourceMap.set(id, { sourceName: b.sourceName, items });
+      }
+      // 2) 标签内主题去重（跨源，2026-08-19 用户要求）：同主题 ≤2 条、2 条必须 tier 不同。
+      //    在子标签层面对所有源的条目统一裁剪（央视/国务院/媒体同报一个政策只留 ≤2 条）。
+      const all = [...perSourceMap.values()]
+        .flatMap((g) => g.items)
+        .sort(
+          (a, b) =>
+            (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
+        );
+      const keepUrls = new Set(capByThemeAndTier(all, 2).map((a) => a.url));
+      // 3) 按源分组输出（保留被裁剪后的条目，维持 L3 源 tabs 结构）
+      const sources: SourceGroup[] = [];
+      for (const [id, g] of perSourceMap) {
+        const items = g.items.filter((a) => keepUrls.has(a.url));
         if (items.length) {
-          sources.push({ sourceId: id, sourceName: b.sourceName, items });
+          sources.push({ sourceId: id, sourceName: g.sourceName, items });
         }
       }
       // 财经要点 / 广州商机 的二级标签始终渲染，即使当天为空也保留
