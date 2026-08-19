@@ -47,9 +47,23 @@ export function jaccard(a: Set<string>, b: Set<string>): number {
   return union === 0 ? 0 : inter / union;
 }
 
+/** Dice 系数：2 × 交集 / (A + B)——对长度差异与措辞改写更宽容（跨天判重用）。 */
+export function dice(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 && b.size === 0) return 1;
+  let inter = 0;
+  for (const g of a) if (b.has(g)) inter++;
+  const denom = a.size + b.size;
+  return denom === 0 ? 0 : (2 * inter) / denom;
+}
+
 /** 两标题相似度（bigram Jaccard）。 */
 export function titleSimilarity(a: string, b: string): number {
   return jaccard(titleBigrams(a), titleBigrams(b));
+}
+
+/** 两标题相似度（bigram Dice，跨天判重专用）。 */
+export function titleSimilarityDice(a: string, b: string): number {
+  return dice(titleBigrams(a), titleBigrams(b));
 }
 
 /** tier 优先级排序权重（越小越优先保留）。 */
@@ -122,5 +136,103 @@ export function dedupeByTitleSimilarity(
     removed.push(...sorted.filter((x) => !picked.includes(x)));
   }
 
+  return { kept, removed };
+}
+
+/** 参与跨天判重的历史条目（只需 title + tier）。 */
+export interface HistorySimilarEntry {
+  title: string;
+  url: string;
+  tier?: SourceTier;
+}
+
+/**
+ * 跨天标题判重（先来后到）：新抓取的条目与历史库中标题相似（≥ threshold）的
+ * 既有条目比较——同主题重复报道按「同 tier 只留 1、不同 tier 最多 maxPerTheme
+ * 条、历史先来者优先占位」过滤。
+ *
+ * 用户规则（2026-08-19）：政府今天发公积金，明天某媒体发、后天又一家媒体发——
+ * 这些都是同一主题的重复报道；历史条目先占位（T1），新条目仅当该 tier 空缺且
+ * 总数 < 上限时才补充 1 条（T2），同 tier 的新条目互相去重只留 1，其余视为无效。
+ *
+ * 实现：历史 + 新条目混合贪心聚簇（历史先加入、作簇代表 = 先来后到），
+ * 簇内按「历史占位 → 新条目按 (tier 优先级, 时间新) 填补空缺」选择。
+ * 相似度用 bigram Dice（对措辞改写更宽容），默认阈值 0.6（低于当日内部判重
+ * 的 0.7——跨天抓的是「媒体改写政府通稿」这类措辞近似的重复报道）。
+ */
+export function dedupeAgainstHistory<T extends { title: string; tier?: SourceTier; publishedAt?: Date }>(
+  articles: T[],
+  history: HistorySimilarEntry[],
+  opts: SimilarDedupOptions = {},
+): { kept: T[]; removed: T[] } {
+  const threshold = opts.threshold ?? 0.6;
+  const maxPerTheme = opts.maxPerTheme ?? 2;
+  if (articles.length === 0) return { kept: articles, removed: [] };
+
+  type Cand = {
+    title: string;
+    tier?: SourceTier;
+    kind: "hist" | "new";
+    item: T | null;
+  };
+  const gramsCache = new Map<string, Set<string>>();
+  const gramsOf = (t: string): Set<string> => {
+    let g = gramsCache.get(t);
+    if (!g) {
+      g = titleBigrams(t);
+      gramsCache.set(t, g);
+    }
+    return g;
+  };
+
+  // 混合聚簇（历史先加入 → 历史条目优先成为簇代表；相似度用 Dice，更宽容）
+  const clusters: Cand[][] = [];
+  const reps: Set<string>[] = [];
+  const add = (c: Cand): void => {
+    const g = gramsOf(c.title);
+    for (let i = 0; i < reps.length; i++) {
+      if (dice(g, reps[i]) >= threshold) {
+        clusters[i].push(c);
+        return;
+      }
+    }
+    clusters.push([c]);
+    reps.push(g);
+  };
+  for (const h of history) {
+    if (!h || !h.title) continue;
+    add({ title: h.title, tier: h.tier, kind: "hist", item: null });
+  }
+  for (const a of articles) add({ title: a.title, tier: a.tier, kind: "new", item: a });
+
+  const kept: T[] = [];
+  const removed: T[] = [];
+  for (const cluster of clusters) {
+    const newItems = cluster.filter((c) => c.kind === "new");
+    if (newItems.length === 0) continue;
+    // 历史先来者占位：历史条目的 tier 集合（同 tier 只占 1 个位置）
+    const occupied = new Set<SourceTier | "none">();
+    for (const h of cluster) {
+      if (h.kind === "hist") occupied.add(h.tier ?? "none");
+    }
+    // 新条目按 (tier 优先级, publishedAt 新→旧) 排序，填补空缺；同 tier 只补 1 个
+    const sorted = [...newItems].sort((a, b) => {
+      const tw = tierWeight(a.tier) - tierWeight(b.tier);
+      if (tw !== 0) return tw;
+      const at = a.item?.publishedAt?.getTime() ?? -Infinity;
+      const bt = b.item?.publishedAt?.getTime() ?? -Infinity;
+      return bt - at;
+    });
+    for (const c of sorted) {
+      const key: SourceTier | "none" = c.tier ?? "none";
+      const fits = !occupied.has(key) && occupied.size < maxPerTheme;
+      if (fits) {
+        occupied.add(key);
+        kept.push(c.item!);
+      } else {
+        removed.push(c.item!);
+      }
+    }
+  }
   return { kept, removed };
 }

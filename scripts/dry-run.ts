@@ -16,7 +16,11 @@ import {
   dedupSimilarEnabled,
   loadDedupConfig,
 } from "../lib/filters/config";
-import { dedupeByTitleSimilarity } from "../lib/ingest/dedup-similar";
+import {
+  dedupeByTitleSimilarity,
+  dedupeAgainstHistory,
+  type HistorySimilarEntry,
+} from "../lib/ingest/dedup-similar";
 import { filterByWindow } from "../lib/ingest/merge";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import { REPORTS_DIR } from "../lib/output/paths";
@@ -233,6 +237,25 @@ async function main() {
   // 合并滚动 7 天历史（窗口按信息发生时间 publishedAt 计）：今日抓取 + 历史缓存（按 fetchedToday 打标），
   // 使渲染同时拥有「当天」与「过去7天」两个时间标签。
   const history = loadHistory();
+
+  // —— 跨天标题判重（与 daily.ts 一致，非 OFFLINE）：新抓取 vs 历史库，先来后到 ——
+  if (!isOffline) {
+    const tierBySource = new Map(loadAllSources().map((s) => [s.id, s.tier]));
+    const histSim: HistorySimilarEntry[] = Object.values(history).map((e) => ({
+      title: e.title,
+      url: e.url,
+      tier: tierBySource.get(e.sourceId),
+    }));
+    const dhBefore = articles.length;
+    const dh = dedupeAgainstHistory(articles, histSim, { maxPerTheme: 2 }) // 跨天阈值默认 0.6（Dice）;
+    if (dh.removed.length > 0) {
+      console.log(
+        `[dry-run] 🔄 跨天标题判重: ${dhBefore} → ${dh.kept.length} 条（历史库已覆盖 ${dh.removed.length} 条重复主题）`,
+      );
+    }
+    articles = dh.kept;
+  }
+
   const nowIso = new Date().toISOString();
   const rolling = buildRolling(articles, history);
   if (isOffline) {

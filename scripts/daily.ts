@@ -21,7 +21,11 @@ import {
   dedupSimilarEnabled,
   loadDedupConfig,
 } from "../lib/filters/config";
-import { dedupeByTitleSimilarity } from "../lib/ingest/dedup-similar";
+import {
+  dedupeByTitleSimilarity,
+  dedupeAgainstHistory,
+  type HistorySimilarEntry,
+} from "../lib/ingest/dedup-similar";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import {
   type ArticleInput,
@@ -531,6 +535,24 @@ async function main() {
       `[daily] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,
     );
   }
+
+  // —— 跨天标题判重（先来后到）：新抓取 vs 历史库已有条目 ——
+  // 同主题（标题相似 ≥0.7）重复报道：同 tier 只留 1、不同 tier 最多 2 条、
+  // 历史先来者优先占位。例：政府今天发公积金，明天某媒体再发、后天又一家——
+  // 仅当该 tier 空缺且总数 < 2 时才补充，否则视为无效重复丢弃。
+  const histSim: HistorySimilarEntry[] = Object.values(history).map((e) => ({
+    title: e.title,
+    url: e.url,
+    tier: tierBySource.get(e.sourceId),
+  }));
+  const dhBefore = articles.length;
+  const dh = dedupeAgainstHistory(articles, histSim, { maxPerTheme: 2 }) // 跨天阈值默认 0.6（Dice）;
+  if (dh.removed.length > 0) {
+    console.log(
+      `[daily] 🔄 跨天标题判重: ${dhBefore} → ${dh.kept.length} 条（历史库已覆盖 ${dh.removed.length} 条重复主题）`,
+    );
+  }
+  articles = dh.kept;
 
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
   // 走各自专属摘要 prompt)。finance 不再单独 enrich——其摘要+分类统一由下方

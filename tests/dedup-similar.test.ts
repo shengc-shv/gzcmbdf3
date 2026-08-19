@@ -115,3 +115,71 @@ test("无 tier 条目：簇超上限时排在最后被移除（T1+T2+无等级 �
   assert.equal(removed.length, 1);
   assert.equal(removed[0].tier, undefined);
 });
+
+// —— 跨天判重（先来后到：历史先占位，新抓取仅在 tier 空缺且总数 < 上限时补充）——
+import {
+  dedupeAgainstHistory,
+  type HistorySimilarEntry,
+} from "../lib/ingest/dedup-similar";
+
+const hist = (
+  title: string,
+  tier: SourceTier | undefined,
+  url = "https://hist/" + encodeURIComponent(title),
+): HistorySimilarEntry => ({ title, url, tier });
+
+test("跨天判重：历史已有同 tier 同主题 → 新条目丢弃（政府今天发，媒体明天再发同 tier 无效）", () => {
+  const { kept, removed } = dedupeAgainstHistory(
+    [mk("LPR下调，广州多家银行跟进", { tier: "T1" })],
+    [hist("广州多家银行跟进LPR下调", "T1")],
+  );
+  assert.equal(kept.length, 0, "同 tier 已被历史占位，新条目丢弃");
+  assert.equal(removed.length, 1);
+});
+
+test("跨天判重：历史有 T1、新来 T2（该 tier 空缺）→ 保留（政府+媒体各 1）", () => {
+  const { kept, removed } = dedupeAgainstHistory(
+    [mk("LPR下调，广州多家银行跟进", { tier: "T2" })],
+    [hist("广州多家银行跟进LPR下调", "T1")],
+  );
+  assert.equal(kept.length, 1, "T2 空缺，补充为第 2 条");
+  assert.equal(removed.length, 0);
+});
+
+test("跨天判重：历史已满 2 条（T1+T1.5）→ 新来 T2 丢弃", () => {
+  const { kept, removed } = dedupeAgainstHistory(
+    [mk("LPR下调，广州多家银行跟进", { tier: "T2" })],
+    [
+      hist("广州多家银行跟进LPR下调", "T1"),
+      hist("LPR下调，广州多家银行已跟进", "T1.5"),
+    ],
+  );
+  assert.equal(kept.length, 0, "总数已满 2，新 tier 也不补充");
+  assert.equal(removed.length, 1);
+});
+
+test("跨天判重：历史无相似主题 → 保留", () => {
+  const { kept, removed } = dedupeAgainstHistory(
+    [mk("美联储宣布加息25个基点", { tier: "T1" })],
+    [hist("广州多家银行跟进LPR下调", "T1")],
+  );
+  assert.equal(kept.length, 1);
+  assert.equal(removed.length, 0);
+});
+
+test("跨天判重：相似度低于阈值 → 保留（不同主题）", () => {
+  const { kept } = dedupeAgainstHistory(
+    [mk("央行降准释放流动性", { tier: "T1" })],
+    [hist("LPR下调，广州多家银行跟进", "T2")],
+  );
+  assert.equal(kept.length, 1);
+});
+
+test("跨天判重：历史无 tier 条目视为独立等级，可补 1 条", () => {
+  const { kept, removed } = dedupeAgainstHistory(
+    [mk("LPR下调，广州多家银行跟进", { tier: "T2" })],
+    [hist("广州多家银行跟进LPR下调", undefined)],
+  );
+  assert.equal(kept.length, 1, "历史为无等级、新来 T2，等级不同且未满 2 → 保留");
+  assert.equal(removed.length, 0);
+});
