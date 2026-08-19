@@ -51,19 +51,6 @@
     "firstSeenAt": "2026-08-17T05:57:40.858Z",
     "lastSeenAt": "2026-08-18T01:43:25.793Z"
   },
-  "https://openai.com/index/how-enterprises-put-ai-to-work": {
-    "title": "From assistance to execution: How enterprises put AI to work",
-    "url": "https://openai.com/index/how-enterprises-put-ai-to-work",
-    "sourceId": "openai-news",
-    "source": "OpenAI News",
-    "category": "tech",
-    "subcategory": "ai-news",
-    "excerpt": "OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.",
-    "publishedAt": "2026-08-12T06:00:00.000Z",
-    "summary": "OpenAI 研究揭示企业采用代理式 AI 的现状，前沿企业通过 ChatGPT 和 Codex 在 AI 采纳上拉开差距。",
-    "firstSeenAt": "2026-08-17T05:57:40.858Z",
-    "lastSeenAt": "2026-08-18T01:43:25.793Z"
-  },
   "https://tldr.tech/ai/2026-08-14": {
     "title": "Gemini 3.7 🤖, GPT-5.6 Sol Ultrafast ⚡, Anthropic $2T IPO 💰",
     "url": "https://tldr.tech/ai/2026-08-14",
@@ -7664,5 +7651,51 @@
     "summary": "多国政府融资成本升至数十年高位，全球利率环境收紧，提示跨境客户融资成本与汇率风险上升。",
     "firstSeenAt": "2026-08-19T01:01:26.435Z",
     "lastSeenAt": "2026-08-19T01:12:16.071Z"
+  },
+  "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-3b": {
+    "title": "LFM2.5-VL-3B for Better and Faster Vision Capabilities for the Edge",
+    "url": "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-3b",
+    "sourceId": "huggingface-blog",
+    "source": "Hugging Face Blog",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "",
+    "publishedAt": "2026-08-12T14:00:51.000Z",
+    "firstSeenAt": "2026-08-19T06:43:50.641Z",
+    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+  },
+  "https://www.gov.cn/zhengce/content/202608/content_7078477.htm": {
+    "title": "国务院关于修改《住房公积金管理条例》的决定",
+    "url": "https://www.gov.cn/zhengce/content/202608/content_7078477.htm",
+    "sourceId": "govcn-policy",
+    "source": "中国政府网·国务院政策",
+    "category": "finance",
+    "subcategory": "cn-policy",
+    "excerpt": "【国务院政策】国务院关于修改《住房公积金管理条例》的决定",
+    "publishedAt": "2026-08-18T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T06:43:50.641Z",
+    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+  },
+  "https://m.21jingji.com/article/20260819/herald/7e757ecc8a45ce07866fb6342dfda77f.html": {
+    "title": "住房公积金政策迎大变化！9月20日起施行",
+    "url": "https://m.21jingji.com/article/20260819/herald/7e757ecc8a45ce07866fb6342dfda77f.html",
+    "sourceId": "21jingji-finance",
+    "source": "21世纪经济报道·金融",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【21财经】住房公积金政策迎大变化！9月20日起施行",
+    "firstSeenAt": "2026-08-19T06:43:50.641Z",
+    "lastSeenAt": "2026-08-19T06:43:50.641Z"
+  },
+  "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html": {
+    "title": "【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
+    "url": "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html",
+    "sourceId": "gz-gov",
+    "source": "广州市政府",
+    "category": "finance",
+    "subcategory": "gz-policy",
+    "excerpt": "【广州市政府】【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
+    "firstSeenAt": "2026-08-19T06:43:50.641Z",
+    "lastSeenAt": "2026-08-19T06:43:50.641Z"
   }
 }

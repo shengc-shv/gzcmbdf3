@@ -1,0 +1,2143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日简报 · 2026-08-19</title>
+<style>
+  :root {
+    --bg: #f6f5f3;
+    --bg-elevated: #ffffff;
+    --fg: #1a1a1f;
+    --fg-soft: #4a4a52;
+    --muted: #797986;
+    --rule: #e7e5e1;
+    --card: #ffffff;
+    --card-alt: #f1efec;
+    --link: #2f4cdd;
+    --accent: #1a1a1f;
+    --accent-fg: #ffffff;
+    --rank-high-bg: #fde8e8;
+    --rank-high-fg: #c01c1c;
+    --rank-mid-bg: #fdf0d9;
+    --rank-mid-fg: #9a5b09;
+    --rank-low-bg: #e6e9fd;
+    --rank-low-fg: #3b36a8;
+    --c-tech: #4f46e5;
+    --c-trading: #0d9488;
+    --c-finance: #d97706;
+    --c-gdipo: #e11d48;
+    --c-ipo: #7c3aed;
+    --c-gz: #059669;
+    --hero-grad-from: #f6f5f3;
+    --hero-grad-to: #efedea;
+    --r-sm: 0.5rem;
+    --r-md: 0.75rem;
+    --r-lg: 1rem;
+    --shadow-sm: 0 1px 2px rgba(20, 20, 30, 0.05), 0 1px 3px rgba(20, 20, 30, 0.06);
+    --shadow-md: 0 6px 16px rgba(20, 20, 30, 0.09);
+    --shadow-lg: 0 14px 32px rgba(20, 20, 30, 0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0d11;
+      --bg-elevated: #15191f;
+      --fg: #f3f4f6;
+      --fg-soft: #c2c6cf;
+      --muted: #8b909c;
+      --rule: #262b33;
+      --card: #15191f;
+      --card-alt: #1b2027;
+      --link: #8aa0ff;
+      --accent: #f3f4f6;
+      --accent-fg: #0b0d11;
+      --rank-high-bg: rgba(239, 68, 68, 0.16);
+      --rank-high-fg: #fca5a5;
+      --rank-mid-bg: rgba(245, 158, 11, 0.16);
+      --rank-mid-fg: #fcd34d;
+      --rank-low-bg: rgba(99, 102, 241, 0.16);
+      --rank-low-fg: #a5b4fc;
+      --c-tech: #818cf8;
+      --c-trading: #2dd4bf;
+      --c-finance: #fbbf24;
+      --c-gdipo: #fb7185;
+      --c-ipo: #a78bfa;
+      --c-gz: #34d399;
+      --hero-grad-from: #15191f;
+      --hero-grad-to: #0b0d11;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.55);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: rgba(79, 70, 229, 0.22); }
+  main { max-width: 1040px; margin: 0 auto; padding: 2.75rem 1.5rem 4rem; }
+
+  /* ===== header / masthead ===== */
+  header.report-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  h1.report-title {
+    font-family: Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0.2rem;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
+  }
+  .archive-link {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .archive-link:hover { color: var(--accent); border-bottom-style: solid; }
+
+  /* per-category accent wiring */
+  .panel[data-panel="tech"] { --cat: var(--c-tech); }
+  .panel[data-panel="trading"] { --cat: var(--c-trading); }
+  .panel[data-panel="finance"] { --cat: var(--c-finance); }
+  .panel[data-panel="gd-ipo"] { --cat: var(--c-gdipo); }
+  .panel[data-panel="ipo"] { --cat: var(--c-ipo); }
+  .panel[data-panel="gz"] { --cat: var(--c-gz); }
+  .tab[data-tab="tech"] { --cat: var(--c-tech); }
+  .tab[data-tab="trading"] { --cat: var(--c-trading); }
+  .tab[data-tab="finance"] { --cat: var(--c-finance); }
+  .tab[data-tab="gd-ipo"] { --cat: var(--c-gdipo); }
+  .tab[data-tab="ipo"] { --cat: var(--c-ipo); }
+  .tab[data-tab="gz"] { --cat: var(--c-gz); }
+
+  .hero-card {
+    margin-top: 1.4rem;
+    background: linear-gradient(135deg, var(--hero-grad-from) 0%, var(--hero-grad-to) 100%);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--c-tech);
+    padding: 1.1rem 1.5rem;
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .hero-headline {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0.4rem 0 0;
+    line-height: 1.5;
+    color: var(--fg);
+  }
+  .overview-card {
+    margin: 0.8rem 0 0;
+    padding: 0.8rem 1.2rem;
+    background: var(--card-alt);
+    border-radius: var(--r-md);
+    border-left: 3px solid var(--muted);
+  }
+  .overview-card .eyebrow { display: block; margin-bottom: 0.3rem; }
+  .overview-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--fg-soft);
+  }
+
+  /* ===== 执行摘要板块（今日必读 + 商机提示）===== */
+  .exec-summary {
+    margin: 1.1rem 0 0.6rem;
+    border: 1px solid color-mix(in srgb, var(--c-finance) 30%, transparent);
+    border-left: 4px solid var(--c-finance);
+    border-radius: 14px;
+    padding: 0.9rem 1.1rem;
+    background: color-mix(in srgb, var(--c-finance) 6%, var(--bg));
+    box-shadow: var(--shadow-1);
+  }
+  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; }
+  .exec-title { margin: 0; font-size: 1.05rem; color: var(--fg); letter-spacing: 0.02em; }
+  .exec-sub { font-size: 0.75rem; color: var(--muted); }
+  .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  @media (max-width: 760px) { .exec-grid { grid-template-columns: 1fr; } }
+  .exec-col-title { margin: 0 0 0.45rem; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+  .must-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+  .must-item { display: flex; gap: 0.5rem; align-items: baseline; }
+  .must-index {
+    flex: none; width: 1.15rem; height: 1.15rem; border-radius: 50%;
+    background: color-mix(in srgb, var(--c-finance) 18%, transparent);
+    color: var(--c-finance); font-size: 0.72rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .must-body { display: flex; flex-direction: column; }
+  .must-body strong { font-size: 0.86rem; color: var(--fg); font-weight: 600; }
+  .must-why { font-size: 0.76rem; color: var(--fg-soft); line-height: 1.5; }
+  .insight-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .insight-card {
+    border: 1px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem;
+    background: var(--bg);
+  }
+  .insight-topic { margin: 0 0 0.3rem; font-size: 0.85rem; color: var(--c-finance); font-weight: 700; }
+  .insight-impact, .insight-action { margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--fg-soft); line-height: 1.55; }
+  .tag {
+    display: inline-block; font-size: 0.66rem; font-weight: 700; color: var(--c-finance);
+    background: color-mix(in srgb, var(--c-finance) 12%, transparent);
+    border-radius: 4px; padding: 0.05rem 0.35rem; margin-right: 0.35rem; vertical-align: 0.08em;
+  }
+  .tag-action { color: var(--c-gdipo); background: color-mix(in srgb, var(--c-gdipo) 12%, transparent); }
+
+  /* ===== sticky primary tabs ===== */
+  .tabs {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    gap: 0.15rem;
+    margin: 0 0 1rem;
+    padding: 0.7rem 0 0;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+  }
+  .tab {
+    background: none;
+    border: none;
+    padding: 0.65rem 1.05rem 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -1px;
+    font-family: inherit;
+    transition: color 0.15s;
+    border-radius: var(--r-sm) var(--r-sm) 0 0;
+  }
+  .tab:hover { color: var(--fg); }
+  .tab.active {
+    color: var(--cat, var(--accent));
+    border-bottom-color: var(--cat, var(--accent));
+    font-weight: 600;
+  }
+  .tab .count {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: 0.4rem;
+    font-weight: 400;
+  }
+  /* 科创动态（T3 降权）：tab 弱化折叠——小号、浅色、末尾竖线分隔 */
+  .tab.tab-fold {
+    font-size: 0.82rem;
+    color: var(--muted);
+    opacity: 0.72;
+    margin-left: 0.25rem;
+    border-left: 1px solid var(--rule);
+    padding-left: 1.1rem;
+    border-radius: 0;
+  }
+  .tab.tab-fold.active { opacity: 1; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade 0.25s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  /* ===== digest (AI 简报) — compact ===== */
+  .digest-category { margin-bottom: 1.2rem; }
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .category-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--fg);
+    margin: 0;
+    letter-spacing: 0.05em;
+  }
+  .category-count {
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--card-alt);
+    padding: 0.12rem 0.45rem;
+    border-radius: 999px;
+  }
+  .brief-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  @media (min-width: 720px) {
+    .brief-list { grid-template-columns: 1fr 1fr; }
+  }
+  .brief {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 0.8rem 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .brief:hover {
+    border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .brief-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.35rem;
+  }
+  .brief-source {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .brief-rank {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .brief-rank.high { background: var(--rank-high-bg); color: var(--rank-high-fg); }
+  .brief-rank.mid  { background: var(--rank-mid-bg);  color: var(--rank-mid-fg); }
+  .brief-rank.low  { background: var(--rank-low-bg);  color: var(--rank-low-fg); }
+  .brief-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+    line-height: 1.4;
+  }
+  .brief-title a { color: var(--fg); text-decoration: none; }
+  .brief-title a:hover { color: var(--link); text-decoration: underline; }
+  .brief-summary {
+    margin: 0;
+    color: var(--fg-soft);
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .editor-card {
+    background: var(--card-alt);
+    border-left: 3px solid var(--muted);
+    border-radius: var(--r-md);
+    padding: 1.1rem 1.4rem;
+    margin: 1.6rem 0 1.3rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .editor-card .eyebrow { display: block; margin-bottom: 0.45rem; }
+  .editor-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--fg);
+  }
+  .keywords { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.6rem; }
+  .keyword {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    color: var(--fg-soft);
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .keyword:hover { border-color: var(--muted); color: var(--fg); }
+
+  /* ===== L2 sub-tabs ===== */
+  .sub-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 1.1rem 0;
+  }
+  .sub-tab {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 0.5rem 1.05rem;
+    border-radius: var(--r-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fg-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .sub-tab:hover { border-color: var(--muted); color: var(--fg); transform: translateY(-1px); }
+  .sub-tab.active {
+    background: var(--cat, var(--accent));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: var(--shadow-sm);
+  }
+  .sub-tab .count {
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-left: 0.4rem;
+    font-weight: 400;
+  }
+  .sub-content { display: none; }
+  .sub-content.active { display: block; animation: fade 0.2s ease; }
+
+  /* ===== time split (当天 / 过去7天) ===== */
+  .time-tabs {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+  }
+  .time-tab {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 0.34rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--fg-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .time-tab:hover { border-color: var(--muted); color: var(--fg); }
+  .time-tab.active {
+    background: var(--cat, var(--fg));
+    color: #fff;
+    border-color: transparent;
+  }
+  .time-tab .count {
+    font-size: 0.68rem;
+    opacity: 0.8;
+    margin-left: 0.35rem;
+  }
+  .time-content { display: none; }
+  .time-content.active { display: block; }
+
+  /* ===== L3 source-tabs ===== */
+  .source-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0 1.3rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .source-tab {
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 0.36rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.83rem;
+    color: var(--fg-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .source-tab:hover { border-color: var(--muted); color: var(--fg); }
+  .source-tab.active {
+    background: var(--cat, var(--fg));
+    color: #fff;
+    border-color: transparent;
+  }
+  .source-tab .count {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-left: 0.3rem;
+  }
+  .source-content { display: none; }
+  .source-content.active { display: block; }
+
+  /* ===== article cards in raw panels ===== */
+  .article {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 1rem 1.15rem;
+    margin-bottom: 0.7rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .article:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--muted);
+  }
+  .article:first-child { padding-top: 1rem; }
+  .article:last-child { border-bottom: 1px solid var(--rule); }
+  .article-title {
+    font-size: 1.02rem;
+    margin: 0 0 0.35rem;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .article-title a { color: var(--fg); text-decoration: none; }
+  .article-title a:hover { color: var(--link); text-decoration: underline; }
+  .article-meta { color: var(--muted); font-size: 0.76rem; margin: 0 0 0.4rem; }
+  .article-stats {
+    color: var(--muted);
+    font-size: 0.8rem;
+    margin: 0 0 0.45rem;
+    font-feature-settings: "tnum";
+  }
+  .article-excerpt {
+    margin: 0;
+    color: var(--fg-soft);
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+  .article-summary {
+    margin: 0.6rem 0 0;
+    padding: 0.65rem 0.9rem;
+    background: var(--card-alt);
+    border-left: 3px solid var(--cat, var(--link));
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: var(--fg);
+  }
+  .summary-label {
+    display: inline-block;
+    font-size: 0.68rem;
+    color: var(--link);
+    margin-right: 0.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .empty {
+    color: var(--muted);
+    text-align: center;
+    padding: 2.2rem 0;
+    font-size: 0.9rem;
+    background: var(--card);
+    border: 1px dashed var(--rule);
+    border-radius: var(--r-md);
+  }
+
+  /* ===== trading panel ===== */
+  .crypto-widgets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    margin: 0.4rem 0 1.3rem;
+  }
+  @media (min-width: 720px) {
+    .crypto-widgets { grid-template-columns: repeat(4, 1fr); }
+  }
+  .crypto-widget {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 0.8rem 0.9rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .crypto-widget:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .widget-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .widget-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--fg);
+    line-height: 1.1;
+  }
+  .widget-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .widget-sub.positive { color: #16a34a; }
+  .widget-sub.negative { color: #dc2626; }
+  @media (prefers-color-scheme: dark) {
+    .widget-sub.positive { color: #4ade80; }
+    .widget-sub.negative { color: #fca5a5; }
+  }
+  .crypto-widget.fg-fear-extreme { border-left: 4px solid #b91c1c; }
+  .crypto-widget.fg-fear-extreme .widget-value { color: #b91c1c; }
+  .crypto-widget.fg-fear { border-left: 4px solid #d97706; }
+  .crypto-widget.fg-fear .widget-value { color: #d97706; }
+  .crypto-widget.fg-neutral { border-left: 4px solid var(--muted); }
+  .crypto-widget.fg-greed { border-left: 4px solid #65a30d; }
+  .crypto-widget.fg-greed .widget-value { color: #65a30d; }
+  .crypto-widget.fg-greed-extreme { border-left: 4px solid #16a34a; }
+  .crypto-widget.fg-greed-extreme .widget-value { color: #16a34a; }
+  @media (prefers-color-scheme: dark) {
+    .crypto-widget.fg-fear-extreme .widget-value,
+    .crypto-widget.fg-fear .widget-value { color: #fca5a5; }
+    .crypto-widget.fg-greed .widget-value,
+    .crypto-widget.fg-greed-extreme .widget-value { color: #4ade80; }
+  }
+
+  .trading-overview-card {
+    margin: 0 0 1.6rem;
+    padding: 1.1rem 1.4rem;
+    background: var(--card);
+    border-radius: var(--r-md);
+    border-left: 4px solid var(--c-trading);
+    box-shadow: var(--shadow-sm);
+  }
+  .trading-overview-card .eyebrow { display: block; margin-bottom: 0.45rem; }
+  .trading-overview-text { font-size: 0.92rem; line-height: 1.75; color: var(--fg-soft); margin: 0; }
+
+  .trading-section-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin: 1.6rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--fg);
+    letter-spacing: 0.05em;
+  }
+
+  .trading-picks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  @media (min-width: 720px) {
+    .trading-picks { grid-template-columns: 1fr 1fr; }
+  }
+  .trading-pick {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--muted);
+    border-radius: var(--r-md);
+    padding: 0.85rem 1.1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .trading-pick:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .trading-pick.stance-bull { border-left-color: #16a34a; }
+  .trading-pick.stance-bear { border-left-color: #dc2626; }
+  .trading-pick.stance-neutral { border-left-color: var(--muted); }
+  .pick-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .pick-symbol-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .pick-symbol { font-weight: 700; font-size: 1rem; color: var(--fg); }
+  .pick-name { color: var(--muted); font-size: 0.82rem; }
+  .pick-stance {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .pick-stance-bull { background: rgba(22,163,74,0.12); color: #16a34a; }
+  .pick-stance-bear { background: rgba(220,38,38,0.12); color: #dc2626; }
+  .pick-stance-neutral { background: var(--card-alt); color: var(--muted); }
+  .pick-rationale { margin: 0; font-size: 0.88rem; line-height: 1.65; color: var(--fg-soft); }
+
+  .trading-group-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0.7rem 0 1.3rem;
+  }
+  .trading-group-tab {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    padding: 0.5rem 1rem;
+    border-radius: var(--r-sm);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--fg-soft);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .trading-group-tab:hover { border-color: var(--muted); color: var(--fg); transform: translateY(-1px); }
+  .trading-group-tab.active {
+    background: var(--c-trading);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: var(--shadow-sm);
+  }
+  .trading-group-tab .count {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-left: 0.4rem;
+    font-weight: 400;
+  }
+  .trading-group-content { display: none; }
+  .trading-group-content.active { display: block; animation: fade 0.2s ease; }
+
+  .ticker-card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    padding: 0.9rem 1.15rem;
+    margin-bottom: 0.7rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  }
+  .ticker-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--muted); }
+  .ticker-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .ticker-id { min-width: 0; }
+  .ticker-symbol { margin: 0; font-size: 1.02rem; font-weight: 700; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+  .ticker-name { margin: 0.15rem 0 0; font-size: 0.82rem; color: var(--muted); }
+  .ticker-price-block { text-align: right; flex-shrink: 0; }
+  .ticker-price { display: block; font-size: 1.08rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ticker-pct { display: inline-block; font-size: 0.84rem; font-weight: 500; margin-top: 0.15rem; font-variant-numeric: tabular-nums; }
+  .ticker-pct.positive, .positive { color: #16a34a; }
+  .ticker-pct.negative, .negative { color: #dc2626; }
+
+  .ticker-indicators {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem 0.9rem;
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--fg-soft);
+  }
+  @media (min-width: 720px) {
+    .ticker-indicators { grid-template-columns: repeat(3, 1fr); }
+  }
+  .ticker-indicators > div { display: flex; gap: 0.4rem; align-items: baseline; min-width: 0; }
+  .ticker-indicators dt { color: var(--muted); font-size: 0.74rem; margin: 0; white-space: nowrap; }
+  .ticker-indicators dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 500; color: var(--fg); }
+  .trend-bullish { color: #16a34a; }
+  .trend-bearish { color: #dc2626; }
+  .trend-neutral { color: var(--muted); }
+  .rsi-overbought { color: #d97706; }
+  .rsi-oversold { color: #2563eb; }
+
+  .ticker-signals {
+    margin-top: 0.7rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .signal-pill {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .signal-pill.tone-bull { background: rgba(22,163,74,0.13); color: #166534; }
+  .signal-pill.tone-bear { background: rgba(220,38,38,0.13); color: #991b1b; }
+  .signal-pill.tone-caution { background: rgba(217,119,6,0.15); color: #92400e; }
+  @media (prefers-color-scheme: dark) {
+    .signal-pill.tone-bull { color: #4ade80; }
+    .signal-pill.tone-bear { color: #fca5a5; }
+    .signal-pill.tone-caution { color: #fcd34d; }
+    .trend-bullish, .positive, .ticker-pct.positive { color: #4ade80; }
+    .trend-bearish, .negative, .ticker-pct.negative { color: #fca5a5; }
+    .rsi-overbought { color: #fcd34d; }
+    .rsi-oversold { color: #93c5fd; }
+    .trading-pick.stance-bull { border-left-color: #4ade80; }
+    .trading-pick.stance-bear { border-left-color: #fca5a5; }
+    .pick-stance-bull { background: rgba(74,222,128,0.15); color: #4ade80; }
+    .pick-stance-bear { background: rgba(252,165,165,0.15); color: #fca5a5; }
+  }
+  .signal-age { opacity: 0.7; font-weight: 400; }
+
+  .trading-risk {
+    margin: 1.6rem 0 0;
+    padding: 0.95rem 1.3rem;
+    background: var(--card);
+    border-radius: var(--r-md);
+    border-left: 4px solid #d97706;
+    box-shadow: var(--shadow-sm);
+  }
+  .trading-risk .eyebrow { display: block; margin-bottom: 0.4rem; }
+  .trading-risk p { margin: 0; font-size: 0.82rem; line-height: 1.65; color: var(--fg-soft); }
+
+  footer {
+    margin-top: 2.75rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.2rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  </style>
+</head>
+<body>
+<main>
+  <header class="report-header">
+    <span class="eyebrow">每日简报</span>
+    <h1 class="report-title">2026-08-19</h1>
+    <a class="archive-link" href="./archive.html">← 历史归档</a>
+  </header>
+
+  
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="finance">宏观政策<span class="count">62</span></button>
+    
+    <button class="tab" data-tab="gz">广州商机<span class="count">12</span></button>
+    <button class="tab tab-fold" data-tab="ipo">IPO/新股<span class="count">32</span></button>
+    <button class="tab tab-fold" data-tab="tech">技术动态<span class="count">38</span></button>
+  </nav>
+
+  <section class="panel active" data-panel="finance">
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-policy" data-cat="finance">国家政策<span class="count">3</span></button><button class="sub-tab" data-sub="cn-finance" data-cat="finance">国内财经<span class="count">12</span></button><button class="sub-tab" data-sub="gz-policy" data-cat="finance">广州政策<span class="count">39</span></button><button class="sub-tab" data-sub="news" data-cat="finance">国际财经<span class="count">10</span></button></nav>
+<div class="sub-contents"><div class="sub-content active" data-sub-content="cn-policy" data-cat="finance">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="govcn-policy" data-sub="cn-policy" data-cat="finance">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.gov.cn/zhengce/content/202608/content_7078477.htm" target="_blank" rel="noopener noreferrer">国务院关于修改《住房公积金管理条例》的决定</a></h3>
+  
+  <p class="article-meta">08/18 08:00</p>
+  <p class="article-excerpt">【国务院政策】国务院关于修改《住房公积金管理条例》的决定</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gov.cn/zhengce/content/202608/content_7078320.htm" target="_blank" rel="noopener noreferrer">国务院关于《特殊教育发展提升“十五五”行动计划》的批复</a></h3>
+  
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">【国务院政策】国务院关于《特殊教育发展提升“十五五”行动计划》的批复</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 国务院批复特殊教育&quot;十五五&quot;行动计划：教育领域投入增加，相关机构及家庭客群带来教育金融/代发机会（参考）。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gov.cn/zhengce/content/202608/content_7077980.htm" target="_blank" rel="noopener noreferrer">国务院关于修改和废止部分行政法规的决定</a></h3>
+  
+  <p class="article-meta">08/13 08:00</p>
+  <p class="article-excerpt">【国务院政策】国务院关于修改和废止部分行政法规的决定</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 国务院修改废止部分行政法规：法规环境调整，涉及信贷/担保等金融相关条款变化需跟踪合规影响。</p>
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="cn-finance" data-cat="finance">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="cn-finance" data-cat="finance">
+    <article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvfsz9560189.shtml" target="_blank" rel="noopener noreferrer">美伊谈判陷入僵局，机构：央行购金与地缘支撑中长期金价</a></h3>
+  
+  <p class="article-meta">新浪财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininvfsz9560446.shtml" target="_blank" rel="noopener noreferrer">就在今晚！美债又将迎“大考”……</a></h3>
+  
+  <p class="article-meta">新浪财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininvfsz9546876.shtml" target="_blank" rel="noopener noreferrer">伊朗最高领袖“只闻其名，不见其人”，这波操作大有深意</a></h3>
+  
+  <p class="article-meta">新浪财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvfss8340782.shtml" target="_blank" rel="noopener noreferrer">王兴兴身家超千亿元，拿下90后新首富</a></h3>
+  
+  <p class="article-meta">新浪财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvfss8311695.shtml" target="_blank" rel="noopener noreferrer">曹德旺儿子首份半年报成绩单发布，福耀玻璃上半年净利下降近两成</a></h3>
+  
+  <p class="article-meta">新浪财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
+  
+  <p class="article-meta">央视财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIAr50D5dxeFUmx2mXbRJZ260819.shtml" target="_blank" rel="noopener noreferrer">机器人能否实现“完美”陪伴</a></h3>
+  
+  <p class="article-meta">央视财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIbcdCSWiyzw2K3I4hj4vU260819.shtml" target="_blank" rel="noopener noreferrer">从“罚业务”到“罚机制”，银行“规模情结”迎重拳：监管一日三张罚单剑指考核指标</a></h3>
+  
+  <p class="article-meta">央视财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTIyLvxcPRx4mXukBp79TGm260818.shtml" target="_blank" rel="noopener noreferrer">《不凡之路》做自己人生的冠军重磅上线 中国国家游泳队携手高途老师共话成长</a></h3>
+  
+  <p class="article-meta">央视财经 · 08/19 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/18/ARTIPRUEiHIztmXCcoTnWgvw260818.shtml" target="_blank" rel="noopener noreferrer">及时谋划出台增量政策，国务院最新部署</a></h3>
+  
+  <p class="article-meta">央视财经 · 08/18 08:00</p>
+  
+  
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="gz-policy" data-cat="finance">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="gz-gov" data-sub="gz-policy" data-cat="finance">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10907172.html" target="_blank" rel="noopener noreferrer">【文字解读】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》政策解读</a></h3>
+  
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">【广州市政府】【文字解读】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》政策解读</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10968058.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于印发广州市政府投资管理办法的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于印发广州市政府投资管理办法的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府投资管理办法：规范政府投资项目，基建与产业投资落地带动施工/供应企业开户、代发与供应链融资需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10833640.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于印发广州市国民经济和社会发展第十五个五年规划纲要的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于印发广州市国民经济和社会发展第十五个五年规划纲要的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州&quot;十五五&quot;规划纲要：未来五年投资与产业布局总纲，重点片区建设带来对公+零售联动（代发/按揭/经营贷）机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10815782.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于公布广州市第九批市级非物质文化遗产代表性项目名录的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于公布广州市第九批市级非物质文化遗产代表性项目名录的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州文化产业数据：新业态快速增长，文化企业及从业者是零售获客与经营贷的细分机会客群。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10916679.html" target="_blank" rel="noopener noreferrer">【一图读懂】一图读懂16届128次市政府常务会议</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】一图读懂16届128次市政府常务会议</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10907293.html" target="_blank" rel="noopener noreferrer">【一图读懂】一图读懂16届127次市政府常务会议</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】一图读懂16届127次市政府常务会议</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10907170.html" target="_blank" rel="noopener noreferrer">【一图读懂】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10882377.html" target="_blank" rel="noopener noreferrer">【一图读懂】一图读懂16届126次市政府常务会议</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】一图读懂16届126次市政府常务会议</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10863006.html" target="_blank" rel="noopener noreferrer">【一图读懂】一图读懂16届125次市政府常务会议</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】一图读懂16届125次市政府常务会议</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10846972.html" target="_blank" rel="noopener noreferrer">【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【一图读懂】《广州市人民政府办公厅关于延长广州市城乡居民基本养老保险实施办法有效期的通知》政策解读</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10968061.html" target="_blank" rel="noopener noreferrer">【文字解读】《广州市政府投资管理办法》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【文字解读】《广州市政府投资管理办法》政策解读</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府投资管理办法：规范政府投资项目，基建与产业投资落地带动施工/供应企业开户、代发与供应链融资需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10907168.html" target="_blank" rel="noopener noreferrer">【音频解读】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【音频解读】《广州市人民政府办公厅关于延长广州市临时救助实施细则有效期的通知》政策解读</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10842958.html" target="_blank" rel="noopener noreferrer">【音频解读】《广州市国有土地上房屋征收与补偿实施办法》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【音频解读】《广州市国有土地上房屋征收与补偿实施办法》政策解读</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10844902.html" target="_blank" rel="noopener noreferrer">【媒体解读】《广州市国有土地上房屋征收与补偿实施办法》印发 房屋征收补偿新增40平方米“兜底”规定</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【媒体解读】《广州市国有土地上房屋征收与补偿实施办法》印发 房屋征收补偿新增40平方米“兜底”规定</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10834892.html" target="_blank" rel="noopener noreferrer">【媒体解读】五年蓝图兼顾“国之大者”与三餐四季</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【媒体解读】五年蓝图兼顾“国之大者”与三餐四季</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10765891.html" target="_blank" rel="noopener noreferrer">【媒体解读】广州公布23个重大行政决策事项</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【媒体解读】广州公布23个重大行政决策事项</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10761623.html" target="_blank" rel="noopener noreferrer">【媒体解读】年交易总额超1.5万亿元 广州推动专业市场转型升级</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【媒体解读】年交易总额超1.5万亿元 广州推动专业市场转型升级</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政策解读：官方解读文件帮助快速把握政策要点，涉投资/产业/民生政策可直接映射对公与零售业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10966003.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于简易修改实施国Ⅲ排放标准柴油货车限制通行交通管理措施通告的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于简易修改实施国Ⅲ排放标准柴油货车限制通行交通管理措施通告的通知</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965935.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于简易修改划定禁止使用高排放非道路移动机械区域通告的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于简易修改划定禁止使用高排放非道路移动机械区域通告的通知</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965931.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于简易修改禁止黑烟车上路行驶通告的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于简易修改禁止黑烟车上路行驶通告的通知</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965927.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于简易修改划定广州市高污染燃料禁燃区通告的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于简易修改划定广州市高污染燃料禁燃区通告的通知</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10949563.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于全面加强“门前三包”责任制管理工作的通告</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于全面加强“门前三包”责任制管理工作的通告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10895767.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于开展广州市第四轮综合交通调查的通告</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于开展广州市第四轮综合交通调查的通告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10890715.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《广州中医药大学金沙洲医院扩建项目（AB3703规划管理单元）控制性详细规划》等6项规划成果的批复</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《广州中医药大学金沙洲医院扩建项目（AB3703规划管理单元）控制性详细规划》等6项规划成果的批复</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10879960.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于禁止猎捕陆生野生动物的通告</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于禁止猎捕陆生野生动物的通告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10871309.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于省十四届人大五次会议第1760号代表建议答复的函</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于省十四届人大五次会议第1760号代表建议答复的函</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10844789.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《从化区江埔街赛车场片区（CH5402-CZTB单元）控制性详细规划》等10项规划成果的批复</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《从化区江埔街赛车场片区（CH5402-CZTB单元）控制性详细规划》等10项规划成果的批复</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10765852.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于表扬中华人民共和国第三届职业技能大赛我市获奖选手和为参赛工作作出突出贡献的单位及个人的通报</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于表扬中华人民共和国第三届职业技能大赛我市获奖选手和为参赛工作作出突出贡献的单位及个人的通报</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10750211.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于废止镇街综合行政执法有关文件的公告</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于废止镇街综合行政执法有关文件的公告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10741085.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《鱼珠车辆基地场站综合体（AP0508、AT1017规划管理单元）控制性详细规划》等2项规划成果的批复</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《鱼珠车辆基地场站综合体（AP0508、AT1017规划管理单元）控制性详细规划》等2项规划成果的批复</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10685700.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《花都区新街村、大陵村城市更新单元控制性详细规划》等2项规划成果的批复</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《花都区新街村、大陵村城市更新单元控制性详细规划》等2项规划成果的批复</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10681039.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于公布实施全国重点文物保护单位南越文王墓保护规划（2021—2035年）的通告</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于公布实施全国重点文物保护单位南越文王墓保护规划（2021—2035年）的通告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10660563.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《广州地铁八号线北延段（滘心—广州北站）工程车辆段及周边片区控制性详细规划》等2项规划成果的批复</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《广州地铁八号线北延段（滘心—广州北站）工程车辆段及周边片区控制性详细规划》等2项规划成果的批复</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10643700.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于废止穗府规〔2024〕1号文件的通知</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】广州市人民政府关于废止穗府规〔2024〕1号文件的通知</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10903511.html" target="_blank" rel="noopener noreferrer">【⼀图读懂】《广州市人民政府关于禁止猎捕陆生野生动物的通告》</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【⼀图读懂】《广州市人民政府关于禁止猎捕陆生野生动物的通告》</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10950353.html" target="_blank" rel="noopener noreferrer">【音频解读】《广州市人民政府关于全面加强“门前三包”责任制管理工作的通告》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【音频解读】《广州市人民政府关于全面加强“门前三包”责任制管理工作的通告》政策解读</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10895808.html" target="_blank" rel="noopener noreferrer">【音频解读】《广州市人民政府关于开展广州市第四轮综合交通调查的通告》解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【音频解读】《广州市人民政府关于开展广州市第四轮综合交通调查的通告》解读</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html" target="_blank" rel="noopener noreferrer">【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10950446.html" target="_blank" rel="noopener noreferrer">【媒体解读】广州全面加强“门前三包”责任制 将非机动车停放管理纳入“包秩序良好”范畴</a></h3>
+  
+  
+  <p class="article-excerpt">【广州市政府】【媒体解读】广州全面加强“门前三包”责任制 将非机动车停放管理纳入“包秩序良好”范畴</p>
+  
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="news" data-cat="finance">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="news" data-cat="finance">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/swiss-to-reject-stricter-neutrality-in-vote-russia-wants-to-sway" target="_blank" rel="noopener noreferrer">Swiss to Reject Stricter Neutrality in Vote Russia Wants to Sway</a></h3>
+  
+  <p class="article-meta">Bloomberg Markets · 08/19 11:00</p>
+  <p class="article-excerpt">Swiss voters are set to reject an initiative to strengthen the country’s neutrality in a ballot next month that Russia has tried to sway with jibes about the country’s actions during World War II.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/18/trump-carney-canada-tariffs-dealine-talks.html" target="_blank" rel="noopener noreferrer">Trump pauses 50% scheduled tariffs on Canada for three days, announces &#39;deal&#39; with Ottawa</a></h3>
+  
+  <p class="article-meta">CNBC Top Stories · 08/19 10:50</p>
+  <p class="article-excerpt">Trump has already imposed a variety of tariffs on Canada and its specific exports, including metals, lumber and auto parts.</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 美加关税摩擦升级，贸易保护主义抬头，外贸企业汇率与关税风险加大，提示跨境金融服务需求上升。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/stealth-group-fy26-slides-acquisition-drives-record-results-500m-target-93CH-4866386" target="_blank" rel="noopener noreferrer">Stealth Group FY26 slides: acquisition drives record results, $500m target</a></h3>
+  
+  <p class="article-meta">Investing.com News · 08/19 10:48</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/stock-market-news/nvidia-h200-chips-reach-china-in-small-shipments-ft-reports-4866385" target="_blank" rel="noopener noreferrer">Nvidia H200 chips reach China in small shipments, FT reports</a></h3>
+  
+  <p class="article-meta">Investing.com News · 08/19 10:48</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/insider-trading-news/magnetar-financial-sells-334m-in-coreweave-crwv-stock-93CH-4866384" target="_blank" rel="noopener noreferrer">Magnetar Financial sells $33.4m in CoreWeave (CRWV) stock</a></h3>
+  
+  <p class="article-meta">Investing.com News · 08/19 10:46</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/insider-trading-news/compass-diversified-holdings-coo-sawtelle-acquires-211146-in-shares-93CH-4866383" target="_blank" rel="noopener noreferrer">Compass Diversified Holdings COO Sawtelle acquires $211,146 in shares</a></h3>
+  
+  <p class="article-meta">Investing.com News · 08/19 10:46</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bbc.co.uk/news/articles/cy9wz79ze29o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Trump pauses new tariffs on Canada and says countries close to a deal</a></h3>
+  
+  <p class="article-meta">BBC Business · 08/19 10:41</p>
+  <p class="article-excerpt">US President Donald Trump said he will delay imposing new tariffs on a wide array of Canadian goods for three days as the countries firm up a trade deal.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/bwp-fy26-slides-reset-year-drives-45-ffo-growth-portfolio-hits-4bn-93CH-4866382" target="_blank" rel="noopener noreferrer">BWP FY26 slides: reset year drives 4.5% FFO growth, portfolio hits $4bn</a></h3>
+  
+  <p class="article-meta">Investing.com News · 08/19 10:38</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/newsletters/2026-08-19/nse-eyes-55-billion-valuation-in-ipo-while-rival-bse-s-shares-lose-favor" target="_blank" rel="noopener noreferrer">NSE Eyes $55 Billion Valuation in IPO While Rival BSE’s Shares Lose Favor</a></h3>
+  
+  <p class="article-meta">Bloomberg Markets · 08/19 10:30</p>
+  <p class="article-excerpt">The IPO is expected to launch in the second half of September.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/videos/2026-08-19/humanoids-make-stock-market-debut-in-china-s-ai-push-video" target="_blank" rel="noopener noreferrer">Humanoids Make Stock Market Debut in China’s AI Push</a></h3>
+  
+  <p class="article-meta">Bloomberg Markets · 08/19 10:24</p>
+  <p class="article-excerpt">China&#39;s humanoids have made their stock market debut. Unitree Robotics has just become China&#39;s first publicly traded humanoid robot maker, adding investor firepower to the country&#39;s AI ambitions. Winnie Hsu explains. (Source: Bloomberg)</p>
+  
+</article>
+  </div>
+  </div>
+    </div></div>
+  </section>
+  
+  <section class="panel" data-panel="gz">
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">0</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">0</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">2</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">10</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">0</span></button></nav>
+<div class="sub-contents"><div class="sub-content active" data-sub-content="gz-wealth" data-cat="gz">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="gz" data-sub="gz-wealth">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="gz" data-sub="gz-wealth">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="gz" data-sub="gz-wealth"><p class="empty">该源今日无内容。</p></div>
+      <div class="time-content" data-time-content="past" data-cat="gz" data-sub="gz-wealth"><p class="empty">该源今日无内容。</p></div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="gz-credit" data-cat="gz">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="gz" data-sub="gz-credit">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="gz" data-sub="gz-credit">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="gz" data-sub="gz-credit"><p class="empty">该源今日无内容。</p></div>
+      <div class="time-content" data-time-content="past" data-cat="gz" data-sub="gz-credit"><p class="empty">该源今日无内容。</p></div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="gz-customer" data-cat="gz">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="gz" data-sub="gz-customer">当天<span class="count">2</span></button>
+      <button class="time-tab" data-time="past" data-cat="gz" data-sub="gz-customer">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="gz" data-sub="gz-customer">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="gz-stats" data-sub="gz-customer" data-cat="gz">
+    <article class="article">
+  <h3 class="article-title"><a href="http://tjj.gz.gov.cn/stats_newtjyw/sjfb/content/post_10954505.html" target="_blank" rel="noopener noreferrer">上半年广州服务业向新向优</a></h3>
+  
+  
+  <p class="article-excerpt">【广州统计局】上半年广州服务业向新向优</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州服务业/枢纽经济数据：产业活跃度与从业客群规模相关，物流/枢纽产业链企业是代发工资与经营贷潜在对象。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://tjj.gz.gov.cn/stats_newtjyw/sjfb/content/post_10523330.html" target="_blank" rel="noopener noreferrer">前三季度广州市交通货运业表现亮眼</a></h3>
+  
+  
+  <p class="article-excerpt">【广州统计局】前三季度广州市交通货运业表现亮眼</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州服务业/枢纽经济数据：产业活跃度与从业客群规模相关，物流/枢纽产业链企业是代发工资与经营贷潜在对象。</p>
+</article>
+  </div>
+  </div>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="gz" data-sub="gz-customer">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="gz-private" data-cat="gz">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="gz" data-sub="gz-private">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="gz" data-sub="gz-private">过去7天<span class="count">10</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="gz" data-sub="gz-private">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="gz" data-sub="gz-private">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="gz-nansha" data-sub="gz-private" data-cat="gz">
+    <article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968359.html" target="_blank" rel="noopener noreferrer">广州市南沙区知识产权局关于发放2025年度广州市知识产权项目资金的通知</a></h3>
+  
+  <p class="article-meta">08/18 08:00</p>
+  <p class="article-excerpt">【南沙】广州市南沙区知识产权局关于发放2025年度广州市知识产权项目资金的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 南沙产业扶持政策（知识产权/总部/独角兽等）：高成长企业及高管客群是私行、代发与企业融资的精准目标，政策落地即业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968356.html" target="_blank" rel="noopener noreferrer">广州市南沙区知识产权局关于发放第四批2024年度广州市知识产权项目资金的通知</a></h3>
+  
+  <p class="article-meta">08/18 08:00</p>
+  <p class="article-excerpt">【南沙】广州市南沙区知识产权局关于发放第四批2024年度广州市知识产权项目资金的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 南沙产业扶持政策（知识产权/总部/独角兽等）：高成长企业及高管客群是私行、代发与企业融资的精准目标，政策落地即业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968393.html" target="_blank" rel="noopener noreferrer">关于2024年度广州南沙新区（自贸片区）促进半导体与集成电路产业扶持办法拟入库及兑现名单的公示</a></h3>
+  
+  <p class="article-meta">08/18 08:00</p>
+  <p class="article-excerpt">【南沙】关于2024年度广州南沙新区（自贸片区）促进半导体与集成电路产业扶持办法拟入库及兑现名单的公示</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 南沙半导体/集成电路产业扶持：区内科创企业及实控人是私行与企业信贷重点客群，扶持兑现伴随开户、融资与资产配置需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10968282.html" target="_blank" rel="noopener noreferrer">广州市南沙区工业和信息化局转发广东省工业和信息化厅关于组织开展新型机电一体化关键材料创新任务揭榜挂帅工作的通知</a></h3>
+  
+  <p class="article-meta">08/18 08:00</p>
+  <p class="article-excerpt">【南沙】广州市南沙区工业和信息化局转发广东省工业和信息化厅关于组织开展新型机电一体化关键材料创新任务揭榜挂帅工作的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 南沙产业扶持政策（知识产权/总部/独角兽等）：高成长企业及高管客群是私行、代发与企业融资的精准目标，政策落地即业务机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10964847.html" target="_blank" rel="noopener noreferrer">广州市规划和自然资源局南沙区分局国有建设用地使用权出让预告</a></h3>
+  
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">【南沙】广州市规划和自然资源局南沙区分局国有建设用地使用权出让预告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10965575.html" target="_blank" rel="noopener noreferrer">广州市南沙区工业和信息化局转发广东省工业和信息化厅关于组织申报2026年工业和信息化领域生物制造、消费品行业创新任务揭榜挂帅工作的通知</a></h3>
+  
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">【南沙】广州市南沙区工业和信息化局转发广东省工业和信息化厅关于组织申报2026年工业和信息化领域生物制造、消费品行业创新任务揭榜挂帅工作的通知</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 广州消费市场数据：消费复苏节奏影响零售客户资金活跃度与信贷需求，可用于消费贷/分期/收单业务研判。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10965205.html" target="_blank" rel="noopener noreferrer">广州市南沙区卫生健康局关于承接市级行政职权的公告</a></h3>
+  
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">【南沙】广州市南沙区卫生健康局关于承接市级行政职权的公告</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10965796.html" target="_blank" rel="noopener noreferrer">广州南沙区大岗镇蓝湾口腔诊所（个体工商户）备案信息公示</a></h3>
+  
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">【南沙】广州南沙区大岗镇蓝湾口腔诊所（个体工商户）备案信息公示</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10965805.html" target="_blank" rel="noopener noreferrer">广州预健诊所有限公司备案信息公示</a></h3>
+  
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">【南沙】广州预健诊所有限公司备案信息公示</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://www.gzns.gov.cn/zwgk/tzgg/content/post_10965810.html" target="_blank" rel="noopener noreferrer">广州钧安诊所有限公司备案信息公示</a></h3>
+  
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">【南沙】广州钧安诊所有限公司备案信息公示</p>
+  
+</article>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="gz-ipo" data-cat="gz">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="gz" data-sub="gz-ipo">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="gz" data-sub="gz-ipo">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="gz" data-sub="gz-ipo"><p class="empty">该源今日无内容。</p></div>
+      <div class="time-content" data-time-content="past" data-cat="gz" data-sub="gz-ipo"><p class="empty">该源今日无内容。</p></div>
+    </div>
+  </div></div>
+  </section>
+  <section class="panel" data-panel="ipo">
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="sse" data-cat="ipo">上交所<span class="count">9</span></button><button class="sub-tab" data-sub="szse" data-cat="ipo">深交所<span class="count">11</span></button><button class="sub-tab" data-sub="bse" data-cat="ipo">北交所<span class="count">4</span></button><button class="sub-tab" data-sub="hkex" data-cat="ipo">港交所<span class="count">8</span></button><button class="sub-tab" data-sub="ipo-tutoring" data-cat="ipo">IPO辅导<span class="count">0</span></button><button class="sub-tab" data-sub="overseas" data-cat="ipo">境外<span class="count">0</span></button></nav>
+<div class="sub-contents"><div class="sub-content active" data-sub-content="sse" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="sse">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="sse">过去7天<span class="count">9</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="sse">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="sse">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="sse" data-cat="ipo">
+    <article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225480711.PDF" target="_blank" rel="noopener noreferrer">马矿股份 (601123)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">上交所公告 | 马矿股份&lt;em&gt;首次公开发行&lt;/em&gt;股票并在主板上市网上路演公告 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 沪市马矿股份（601123）发布公告，广东矿业上市公司动态，关注企业融资、并购及产业链上下游金融服务需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225480319.PDF" target="_blank" rel="noopener noreferrer">甘李药业 (603087)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">上交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;部分限售股上市流通公告 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 甘李药业（603087）发布公告，医药行业上市公司动态，关注其研发投入、资金需求及上下游供应链金融机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478760.PDF" target="_blank" rel="noopener noreferrer">泰凌微 (688591)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">上交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;部分限售股上市流通公告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478669.PDF" target="_blank" rel="noopener noreferrer">宇树科技 (688836)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">上交所公告 | 宇树科技&lt;em&gt;首次公开发行&lt;/em&gt;股票科创板上市公告书提示性公告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478438.PDF" target="_blank" rel="noopener noreferrer">天博智能 (603448)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">上交所公告 | 天博智能&lt;em&gt;首次公开发行&lt;/em&gt;股票并在主板上市招股意向书附录 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225478314.PDF" target="_blank" rel="noopener noreferrer">高凯技术 (688835)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">上交所公告 | 高凯技术&lt;em&gt;首次公开发行&lt;/em&gt;股票并在科创板上市网下初步配售结果及网上中签结果公告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-17/1225476108.PDF" target="_blank" rel="noopener noreferrer">频准激光 (688826)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/16 08:00</p>
+  <p class="article-excerpt">上交所公告 | 频准激光&lt;em&gt;首次公开发行&lt;/em&gt;股票科创板上市公告书 | 日期: 2026-08-16</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-15/1225474373.PDF" target="_blank" rel="noopener noreferrer">沪硅产业 (688126)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/14 08:00</p>
+  <p class="article-excerpt">上交所公告 | 沪硅产业关于&lt;em&gt;首次公开发行&lt;/em&gt;前股票期权行权限售股上市流通的公告 | 日期: 2026-08-14</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-14/1225471786.PDF" target="_blank" rel="noopener noreferrer">沪农商行 (601825)</a></h3>
+  
+  <p class="article-meta">上交所IPO公告 · 08/13 08:00</p>
+  <p class="article-excerpt">上交所公告 | 国泰海通证券股份有限公司关于上海农村商业银行股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;部分限售股解禁上市流通的核查意见 | 日期: 2026-08-13</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="szse" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="szse">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="szse">过去7天<span class="count">11</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="szse">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="szse">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="szse" data-cat="ipo">
+    <article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225481019.PDF" target="_blank" rel="noopener noreferrer">绿控传动 (301655)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">深交所公告 | 北京德恒律师事务所关于苏州绿控传动科技股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市的法律意见书 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 绿控传动（301655）发布公告，新能源传动系统企业动态，关注绿色产业企业融资与供应链金融服务需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479686.PDF" target="_blank" rel="noopener noreferrer">英特科技 (301399)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">深交所公告 | 浙商证券股份有限公司关于浙江英特科技股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;股票部分募投项目结项的核查意见 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 英特科技（301399）发布公告，科技制造企业动态，关注其经营与融资动向，挖掘对公信贷与结算合作机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479343.PDF" target="_blank" rel="noopener noreferrer">波长光电 (301421)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">深交所公告 | 华泰联合证券有限责任公司关于南京波长光电科技股份有限公司部分&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份上市流通的核查意见 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 波长光电（301421）发布公告，光电企业动态，关注高端制造企业设备更新与技改信贷需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479214.PDF" target="_blank" rel="noopener noreferrer">和泰机电 (001225)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">深交所公告 | 国联民生证券承销保荐有限公司关于杭州和泰机电股份有限公司&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份解除限售并上市流通的核查意见 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 和泰机电（001225）发布公告，机电制造企业动态，关注制造业企业资金周转与供应链金融合作机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-19/1225479054.PDF" target="_blank" rel="noopener noreferrer">格林生物 (301688)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市投资风险特别公告 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 格林生物（301688）发布公告，生物科技企业动态，关注生物医药企业研发融资与知识产权质押等创新金融需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225477657.PDF" target="_blank" rel="noopener noreferrer">乖宝宠物 (301498)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">深交所公告 | 中泰证券股份有限公司关于乖宝宠物食品集团股份有限公司部分&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份上市流通的核查意见 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476845.PDF" target="_blank" rel="noopener noreferrer">洛轴股份 (301699)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">深交所公告 | 立信会计师事务所（特殊普通合伙）关于公司&lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市的财务报表及审计报告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476276.PDF" target="_blank" rel="noopener noreferrer">贝特利 (301697)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市投资风险特别公告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-18/1225476258.PDF" target="_blank" rel="noopener noreferrer">格林生物 (301688)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市网上路演公告 | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-14/1225472828.PDF" target="_blank" rel="noopener noreferrer">绿控传动 (301655)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/13 08:00</p>
+  <p class="article-excerpt">深交所公告 | &lt;em&gt;首次公开发行&lt;/em&gt;股票并在创业板上市招股说明书 | 日期: 2026-08-13</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://static.cninfo.com.cn/finalpage/2026-08-13/1225471886.PDF" target="_blank" rel="noopener noreferrer">德福科技 (301511)</a></h3>
+  
+  <p class="article-meta">深交所IPO公告 · 08/13 08:00</p>
+  <p class="article-excerpt">深交所公告 | 国泰海通证券股份有限公司关于九江德福科技股份有限公司部分&lt;em&gt;首次公开发行&lt;/em&gt;前已发行股份上市流通的核查意见 | 日期: 2026-08-13</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="bse" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="bse">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="bse">过去7天<span class="count">4</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="bse">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="bse">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="bse" data-cat="ipo">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/e59b3e9205684d03930706e4bf77b036.pdf" target="_blank" rel="noopener noreferrer">智新电子 (920212)</a></h3>
+  
+  <p class="article-meta">北交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">北交所公告 | [临时公告]智新电子:关于拟减少注册资本并修订《公司章程》的公告 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 北交所智新电子（920212）发布公告，专精特新企业动态，关注北交所挂牌企业股权融资与专精特新贷等产品机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/ddb7a5900ec240d48dd375a560a3b8ed.pdf" target="_blank" rel="noopener noreferrer">戈碧迦 (920438)</a></h3>
+  
+  <p class="article-meta">北交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">北交所公告 | [临时公告]戈碧迦:关于2026年度向特定对象发行股票募集说明书（草案）的提示性公告 | 日期: 2026-08-18</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 北交所戈碧迦（920438）发布公告，光电材料企业动态，关注北交所中小企业融资需求与创新型信贷产品落地。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-18/2300cec323564046bac323c59083cf64.pdf" target="_blank" rel="noopener noreferrer">聚仁新材 (920258)</a></h3>
+  
+  <p class="article-meta">北交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">北交所公告 | [临时公告]聚仁新材:关于使用募集资金置换预先已支付发行费用的自筹资金的公告 | 日期: 2026-08-18</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.bse.cn/disclosure/2026/2026-08-17/2096904def6341eb92138fb03341195d.pdf" target="_blank" rel="noopener noreferrer">创远信科 (920961)</a></h3>
+  
+  <p class="article-meta">北交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">北交所公告 | [临时公告]创远信科:中汇会计师事务所关于创远信科（上海）技术股份有限公司发行股份及支付现金购买资产并募集配套资金暨关联交易申请文件的审核问询函有关财务问题回复的专项说明（二次修订稿） | 日期: 2026-08-17</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="hkex" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="hkex">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="hkex">过去7天<span class="count">8</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="hkex">
+        <p class="empty">该源今日无内容。</p>
+      </div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="hkex">
+        
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="hkex" data-cat="ipo">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800247.pdf" target="_blank" rel="noopener noreferrer">361 DEGREES (01361) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 01361 | 公司: 361 DEGREES | 时间: 18/08/2026 12:00 | 格式: PDF</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801889.pdf" target="_blank" rel="noopener noreferrer">OCT (ASIA) (03366) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 03366 | 公司: OCT (ASIA) | 时间: 18/08/2026 22:28 | 格式: PDF</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 港交所华侨城亚洲发布中期业绩，广东国企境外上市主体经营动态，关注其境内关联企业与金融服务合作机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081801005.pdf" target="_blank" rel="noopener noreferrer">CHANGMAO BIO (00954) — INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026 AND DISCLOSURE PURSUANT TO RULE 13.19 OF THE LISTING RULES</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 00954 | 公司: CHANGMAO BIO | 时间: 18/08/2026 17:24 | 格式: PDF</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800784.pdf" target="_blank" rel="noopener noreferrer">PA GOODDOCTOR (01833) — ANNOUNCEMENT OF UNAUDITED INTERIM RESULTS FOR
+THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 01833 | 公司: PA GOODDOCTOR | 时间: 18/08/2026 16:56 | 格式: PDF</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0818/2026081800772.pdf" target="_blank" rel="noopener noreferrer">CHINA OVERSEAS (00688) — NOTICE OF LISTING ON THE STOCK EXCHANGE OF HONG KONG LIMITED - CNY3,191,000,000 2.20 PER CENT. GUARANTEED GREEN NOTES DUE 2031 ISSUED BY CHINA OVERSEAS FINANCE (CAYMAN) VIII LIMITED</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/18 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 00688 | 公司: CHINA OVERSEAS | 时间: 18/08/2026 16:54 | 格式: PDF</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081700888.pdf" target="_blank" rel="noopener noreferrer">C C LAND (01224) — Disclosure pursuant to Rule 13.18 of the Listing Rules</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 01224 | 公司: C C LAND | 时间: 17/08/2026 17:20 | 格式: PDF</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081701803.pdf" target="_blank" rel="noopener noreferrer">NANHUA FUTURES (02691) — 2026 INTERIM RESULTS ANNOUNCEMENT</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 02691 | 公司: NANHUA FUTURES | 时间: 17/08/2026 22:47 | 格式: PDF</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081701623.pdf" target="_blank" rel="noopener noreferrer">CMS (00867) — INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
+  
+  <p class="article-meta">港交所IPO公告 · 08/17 08:00</p>
+  <p class="article-excerpt">港交所公告 | 代码: 00867 | 公司: CMS | 时间: 17/08/2026 21:22 | 格式: PDF</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。</p>
+</article>
+  </div>
+  </div>
+      </div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="ipo-tutoring" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="ipo-tutoring">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="ipo-tutoring">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="ipo-tutoring"><p class="empty">该源今日无内容。</p></div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="ipo-tutoring"><p class="empty">该源今日无内容。</p></div>
+    </div>
+  </div>
+<div class="sub-content" data-sub-content="overseas" data-cat="ipo">
+    <nav class="time-tabs">
+      <button class="time-tab active" data-time="today" data-cat="ipo" data-sub="overseas">当天<span class="count">0</span></button>
+      <button class="time-tab" data-time="past" data-cat="ipo" data-sub="overseas">过去7天<span class="count">0</span></button>
+    </nav>
+    <div class="time-contents">
+      <div class="time-content active" data-time-content="today" data-cat="ipo" data-sub="overseas"><p class="empty">该源今日无内容。</p></div>
+      <div class="time-content" data-time-content="past" data-cat="ipo" data-sub="overseas"><p class="empty">该源今日无内容。</p></div>
+    </div>
+  </div></div>
+  </section>
+  <section class="panel" data-panel="tech">
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="trending-papers" data-cat="tech">热门论文<span class="count">21</span></button><button class="sub-tab" data-sub="x-viral" data-cat="tech">X 推文<span class="count">16</span></button><button class="sub-tab" data-sub="ai-news" data-cat="tech">AI 媒体<span class="count">10</span></button><button class="sub-tab" data-sub="cn-tech" data-cat="tech">国内技术<span class="count">10</span></button></nav>
+<div class="sub-contents"><div class="sub-content active" data-sub-content="trending-papers" data-cat="tech">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="huggingface-papers" data-sub="trending-papers" data-cat="tech">
+    <article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.15265" target="_blank" rel="noopener noreferrer">VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?</a></h3>
+  <p class="article-stats">👍 51</p>
+  <p class="article-meta">08/15 08:00</p>
+  <p class="article-excerpt">Constructing an interactive 3D open world from a user query is important. However, existing methods are primarily evaluated on idealized, simple queries, making it difficult to systematically analyze and compare how multimodal agents understand user intent, use 3D tools, and reason over textual and </p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 研究多模态智能体能否端到端构建交互式3D开放世界。现有方法多在理想化简单查询上评估，难以系统分析比较智能体理解用户意图、使用3D工具、对文本与视觉信息推理的能力。本文聚焦这一挑战，探讨端到端构建3D开放世界的可行性。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16798" target="_blank" rel="noopener noreferrer">ClawGym II: Exploring Black-Box RL on Agent Harness</a></h3>
+  <p class="article-stats">👍 35</p>
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">Agent harnesses have substantially improved performance on long-horizon tasks by coordinating agent interactions with the environment. However, reinforcement learning through complex harnesses remains largely unexplored, as scaling such training to long-horizon agent tasks introduces fundamental cha</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 探索黑盒强化学习在agent harness上的应用，解决长程任务中复杂脚手架带来的训练扩展难题。通过不访问内部结构的优化方式，在预定义harness上学习策略，为提升长程智能体训练效率提供新思路。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.15930" target="_blank" rel="noopener noreferrer">UI-Mate: Advancing Open-Weight Foundation GUI Agents with In-Context Demonstrations</a></h3>
+  <p class="article-stats">👍 38</p>
+  <p class="article-meta">08/16 08:00</p>
+  <p class="article-excerpt">Foundation GUI agents can automate complex digital tasks, but deployment is hindered by scarce and biased training data, ambiguous prompts, and unreliable execution. Routine workflows rely on user-specific tools and tacit conventions, so unstated instructions can produce arbitrary variations across </p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 提出UI-Mate，利用上下文演示增强开放权重基础GUI智能体。针对训练数据稀缺有偏、提示歧义及执行不可靠问题，通过示例引导明确用户特定流程和隐式约定，提升复杂数字任务的自动化执行准确率与可靠性。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16859" target="_blank" rel="noopener noreferrer">HarnessEval-W: Agentifying the Evaluation of Visual Worlds</a></h3>
+  <p class="article-stats">👍 114</p>
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">A benchmark should deliver more than a scalar score: what makes an evaluation trustworthy is the reasoning that justifies the score. This is especially critical for world models, where judging a rollout requires understanding whether physics, causality, and world state evolve correctly. Humans spot </p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 提出HarnessEval-W，将视觉世界模型评估过程智能体化，通过可解释推理生成评估结论，而非仅输出标量分数。该方法重点关注rollout中物理、因果及世界状态演化的正确性判断，提升评估结果的可信度与诊断价值。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.15089" target="_blank" rel="noopener noreferrer">StateM: Reaching 95.3% Raw Accuracy, or a \$15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling</a></h3>
+  <p class="article-stats">👍 167</p>
+  <p class="article-meta">08/15 08:00</p>
+  <p class="article-excerpt">Long-horizon agents can fail even when their underlying models can solve the constituent steps. They may lose track of mutable state, fail to reactivate lessons from earlier executions, skip known procedures, or stop prematurely. We bet on harness scaling to improve the execution system around an ag</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI智能体在终端任务评测取得新突破，银行可参考该技术评估自身智能客服、自动化审批等场景的落地潜力。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16072" target="_blank" rel="noopener noreferrer">Learn What&#39;s Left, Not What&#39;s Mastered: Saturation Aware Advantage Reweighting for Multi-Reward Policy Optimization</a></h3>
+  <p class="article-stats">👍 53</p>
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">Reinforcement learning (RL) with group-relative advantages has become the de facto standard for post-training language model reasoners. However, when optimizing multiple reward objectives, existing methods typically scalarize the reward vector with a fixed weighted sum before group-wise standardizat</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.15669" target="_blank" rel="noopener noreferrer">Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search</a></h3>
+  <p class="article-stats">👍 52</p>
+  <p class="article-meta">08/16 08:00</p>
+  <p class="article-excerpt">Scientific discovery often involves optimising expensive-to-evaluate objectives over vast, structured, and open-ended hypothesis spaces, such as molecules, protein sequences, and computer programs. Generative models such as large language models (LLMs) provide expressive priors over such spaces, but</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.15045" target="_blank" rel="noopener noreferrer">MOSS-VL Technical Report</a></h3>
+  <p class="article-stats">👍 39</p>
+  <p class="article-meta">08/15 08:00</p>
+  <p class="article-excerpt">We present MOSS-VL, an open vision-language model family that treats real-time interaction -- perceiving while it speaks -- as a first-class capability. It is co-designed across the stack: the language decoder attends to vision only through gated cross-attention, so the model can naturally see incom</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.14905" target="_blank" rel="noopener noreferrer">How Do Agents Fail on AutoResearch: End-to-End Diagnostic Evaluation on 100 Real-World Frontier Research Tasks</a></h3>
+  <p class="article-stats">👍 23</p>
+  <p class="article-meta">08/14 08:00</p>
+  <p class="article-excerpt">AI has long assisted scientific research, but the rapid advance of LLMs and agentic scaffolds is reshaping the landscape; a single system can now carry whole-stage research from an initial hypothesis all the way to final published paper, which is a paradigm now referred to as AutoResearch. Existing </p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/papers/2608.16721" target="_blank" rel="noopener noreferrer">GenRouter: Unified Workflow Routing for Agentic Image Generation</a></h3>
+  <p class="article-stats">👍 20</p>
+  <p class="article-meta">08/17 08:00</p>
+  <p class="article-excerpt">The rapid evolution of text-to-image (T2I) generation models has effectively solved the foundational challenge of raw pixel synthesis, shifting the community&#39;s focus toward fulfilling increasingly intricate user requests. While recent agentic image generation workflows enhance static inference with </p>
+  
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="x-viral" data-cat="tech">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="attentionvc-ai" data-sub="x-viral" data-cat="tech">
+    <article class="article">
+  <h3 class="article-title"><a href="https://x.com/kristaletz/status/2089103618121314689" target="_blank" rel="noopener noreferrer">Grok Bot for GTM</a></h3>
+  <p class="article-stats">@kristaletz · 4.2K 粉丝 · 41.6K 阅 · 513 赞 · 24 转</p>
+  <p class="article-meta">08/17 05:34</p>
+  <p class="article-excerpt">This is how I use Grok Bot for Enterprise GTM at SpaceXAI. When we were initially dogfooding this product internally, Grok Bot rapidly gained adoption throughout the company, and I created an internal</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> SpaceXAI 内部 GTM 负责人拆解 Grok Bot 企业级落地方法：从内部 dogfooding 到全公司铺开，建立了从试用至成单的完整 SOP。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/EXM7777/status/2088992368695628159" target="_blank" rel="noopener noreferrer">How to build a $2M video production pipeline</a></h3>
+  <p class="article-stats">@EXM7777 · 131.5K 粉丝 · 172.8K 阅 · 516 赞 · 38 转</p>
+  <p class="article-meta">08/16 22:12</p>
+  <p class="article-excerpt">i&#39;m giving you 7 free skills and the exact pipeline directors are using to produce AI films with millions of dollars in budget in higgsfield... the whole system revealed step-by-step, with the skill</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 免费送出7项技能，详细拆解导演在Higgsfield中制作百万美元预算AI电影的完整流程，从系统步骤到技能组合逐步公开，适合想入局AI视频制作的人。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/JensenHuang/status/2089331487342829862" target="_blank" rel="noopener noreferrer">Securing the Infrastructure of Intelligence</a></h3>
+  <p class="article-stats">@JensenHuang · 1.0M 粉丝 · 110.9K 阅 · 1.9K 赞 · 234 转</p>
+  <p class="article-meta">08/17 20:40</p>
+  <p class="article-excerpt">Land, power and shell: The next critical resource for AI factories. AI factories are the defining infrastructure of the AI era—where compute transforms energy and data into intelligence that powers</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 黄仁勋指出土地、电力和外壳是AI工厂的下一个关键资源。AI工厂将能源和数据转化为智能，是AI时代的基础设施，强调算力设施的战略重要性。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/PiCoreTeam/status/2089477194045141419" target="_blank" rel="noopener noreferrer">Update to Pi App Studio Creation Pricing</a></h3>
+  <p class="article-stats">@PiCoreTeam · 4.3M 粉丝 · 74.1K 阅 · 850 赞 · 222 转</p>
+  <p class="article-meta">08/18 06:19</p>
+  <p class="article-excerpt">Starting August 24, 2026, Pi App Studio will update how app creation and editing are priced. Until now, Pi has heavily subsidized the cost of creating and editing apps in App Studio for all creators.</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> Pi官方宣布2026年8月24日起调整App Studio的创建和编辑定价。此前Pi对所有创作者在App Studio中创建和编辑应用给予了大幅补贴，新政策将改变这一机制。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/GoogleAI/status/2089437060310434098" target="_blank" rel="noopener noreferrer">Bring your spreadsheet data to life</a></h3>
+  <p class="article-stats">@GoogleAI · 2.4M 粉丝 · 49.3K 阅 · 516 赞 · 53 转</p>
+  <p class="article-meta">08/18 03:39</p>
+  <p class="article-excerpt">Turn your spreadsheets into live, interactive mini-apps with Sheets canvas and Gemini 3.7 Flash — no coding required. How does it work? Let’s dive into it: Most AI UI tools produce prototypes that</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> Google AI 发布 Sheets canvas 与 Gemini 3.7 Flash 集成，可将电子表格转化为可运行的交互式迷你应用，无需写代码。与多数 AI UI 工具只生成原型不同，该方案直接让数据活起来，适合快速搭建数据看板或小工具。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/milesdeutscher/status/2089724781449052255" target="_blank" rel="noopener noreferrer">Grok Bot: The Ultimate Guide </a></h3>
+  <p class="article-stats">@milesdeutscher · 676.5K 粉丝 · 142.9K 阅 · 515 赞 · 65 转</p>
+  <p class="article-meta">08/18 22:43</p>
+  <p class="article-excerpt">Elon has officially done it. He&#39;s created the most powerful agentic software in the world. In this guide, I&#39;m going to lay out everything you need to know about the new Grok Bot. I&#39;ve been ruthlessly</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent工具快速普及，银行可研究智能助手在客户服务、营销触达中的应用，提升运营效率。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/0xCodez/status/2089676836619878567" target="_blank" rel="noopener noreferrer">Grok Bot Agents: how to automate your life in 10 Steps (Full-tutorial)</a></h3>
+  <p class="article-stats">@0xCodez · 32.7K 粉丝 · 92.3K 阅 · 508 赞 · 48 转</p>
+  <p class="article-meta">08/18 19:32</p>
+  <p class="article-excerpt">Every AI tool you have used so far waits for you. You open it, you ask, it answers, you close it. The work still happens in your hands - the model just talks you through it. Follow my Substack to get</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent自动化工作流教程走红，反映企业数字化需求旺盛，银行可探索为中小企业客户提供智能化解决方案。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://x.com/_avichawla/status/2089657097244024858" target="_blank" rel="noopener noreferrer">Grok Bot Masterclass</a></h3>
+  <p class="article-stats">@_avichawla · 73.4K 粉丝 · 54.7K 阅 · 525 赞 · 48 转</p>
+  <p class="article-meta">08/18 18:14</p>
+  <p class="article-excerpt">Everything you need to understand, set up, and get real work out of Grok Bot. It covers what a Bot actually is, how the shared computer works underneath, how it compares to Hermes Agent, and how to</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI Agent使用培训需求增长，银行内部可组织AI工具培训，提升一线员工数字化作业能力。</p>
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="ai-news" data-cat="tech">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="ai-news" data-cat="tech">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.latent.space/p/glean-model-routing" target="_blank" rel="noopener noreferrer">Frontier Model Cost and Open-Weights Popularity is Driving Demand for Model Routing</a></h3>
+  
+  <p class="article-meta">Latent Space · 08/19 05:41</p>
+  <p class="article-excerpt">Glean CEO Arvind Jain explains why model routing helps control AI costs for organizations, and how human feedback loops at scale improve its routing systems.</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 前沿模型推理成本高企推动模型路由需求，银行AI应用应注重降本增效与多模型选型策略。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://simonwillison.net/2026/Aug/18/mojo-is-now-open-source/" target="_blank" rel="noopener noreferrer">Mojo🔥 is now open source</a></h3>
+  
+  <p class="article-meta">Simon Willison&#39;s Weblog · 08/19 05:39</p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 编程语言Mojo宣布开源，AI开发工具链加速演进，银行技术团队可关注新兴语言生态降低AI开发成本。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/blog/ibm-research/altk-evolve-hmm" target="_blank" rel="noopener noreferrer">How Much Memory Does Your Agent Actually Need?</a></h3>
+  
+  <p class="article-meta">Hugging Face Blog · 08/19 02:09</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142226/how-people-use-ai/" target="_blank" rel="noopener noreferrer">We still don’t know how people are really using AI</a></h3>
+  
+  <p class="article-meta">MIT Tech Review AI · 08/18 18:06</p>
+  <p class="article-excerpt">AI companies like Anthropic and OpenAI regularly publish reports on how people are using products like Claude and ChatGPT, but they only release the data they want us to see, AI researchers say. “There is no independent source to corroborate it,” says Anka Reuel, a computer science PhD candidate at </p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 用户实际使用AI的方式仍不清晰，提示银行零售客群的AI应用需求尚在探索期，产品设计宜渐进式迭代。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement/" target="_blank" rel="noopener noreferrer">AI’s recursive self-improvement might not come so quickly after all</a></h3>
+  
+  <p class="article-meta">MIT Tech Review AI · 08/18 17:00</p>
+  <p class="article-excerpt">The AI industry’s boldest promise right now is that AI will soon improve itself, with almost no need for human oversight. LLMs can already write code, generate synthetic data for training, and optimize the computer chips they run on. Forecasts of explosive AI progress predict that what researchers c</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI自我进化的速度可能低于预期，提示理性看待AI能力预期，避免过度投入短期无法兑现的技术项目。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/blog/multi-vector-encoder" target="_blank" rel="noopener noreferrer">Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers</a></h3>
+  
+  <p class="article-meta">Hugging Face Blog · 08/18 08:00</p>
+  
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://tldr.tech/ai/2026-08-18" target="_blank" rel="noopener noreferrer">Cursor Origin 👨‍💻, Anthropic $65B revenue 💰, deadline dividend scaling 📈</a></h3>
+  
+  <p class="article-meta">TLDR AI · 08/18 08:00</p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> AI创业公司融资与产品进展密集，全球AI赛道热度不减，提示分行关注科技企业信贷与股权投资合作机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/" target="_blank" rel="noopener noreferrer">Qwen 3.8 27B scores 52 on the Artificial Analysis Intelligence Index</a></h3>
+  
+  <p class="article-meta">Simon Willison&#39;s Weblog · 08/18 07:58</p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> Simon Willison的博客报道，Qwen 3.8 27B模型在Artificial Analysis智能指数上得分52。该指数用于衡量AI模型的综合智能表现。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.latent.space/p/ainews-stripe-buys-openrouter-for" target="_blank" rel="noopener noreferrer">[AINews] Stripe buys OpenRouter for $7B</a></h3>
+  
+  <p class="article-meta">Latent Space · 08/18 07:13</p>
+  <p class="article-excerpt">No GPUs, no Agents, just really, really, really good infra and distribution.</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 支付公司Stripe以70亿美元收购OpenRouter。评论指出，交易标的没有GPU、没有智能体，仅凭扎实的基础设施和分发能力取胜。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://huggingface.co/blog/Dharma-AI/gpu-management-pt2" target="_blank" rel="noopener noreferrer">Same Cluster, 33 Points More Utilization: What Changed Was the Order</a></h3>
+  
+  <p class="article-meta">Hugging Face Blog · 08/18 03:46</p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> Hugging Face博客文章称，在同一个GPU集群上，仅通过调整任务执行顺序，利用率提升了33个百分点。文章强调调度顺序对集群性能的重要影响。</p>
+</article>
+  </div>
+  </div>
+    </div>
+<div class="sub-content" data-sub-content="cn-tech" data-cat="tech">
+      
+  <div class="source-contents">
+    <div class="source-content active" data-source-content="_merged" data-sub="cn-tech" data-cat="tech">
+    <article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/vrlSsJUrdpfGqsj3CTZK?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">让 Agent 真正驱动销售增长——FDE 模式下的业务流重构实战｜AICon深圳</a></h3>
+  
+  <p class="article-meta">InfoQ 中国 · 08/19 18:00</p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475009.html" target="_blank" rel="noopener noreferrer">郭富城换车，30万级顶配华为全家桶</a></h3>
+  
+  <p class="article-meta">量子位 · 08/19 08:59</p>
+  <p class="article-excerpt">5.3米六座家用SUV</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://sspai.com/post/113607" target="_blank" rel="noopener noreferrer">派早报：iQOO 发布手机新品、闪极举行 Loomos AI 眼镜发布会等</a></h3>
+  
+  <p class="article-meta">少数派 · 08/19 08:30</p>
+  <p class="article-excerpt">Spotify 上线「播放列表备注」功能、Windows Server 2022 即将结束主流更新等。查看全文</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/J7CiEHSU79e9TYi3soro?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">谷歌发布 Angular v22，带来稳定的 Signal Forms、默认启用的 OnPush 以及实验性的 WebMCP</a></h3>
+  
+  <p class="article-meta">InfoQ 中国 · 08/19 01:28</p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/pOfV96f9DHG9Cw1KQAZB?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Snowflake CoCo AI 成本优化指南：7 个关键方法 | 技术实践</a></h3>
+  
+  <p class="article-meta">InfoQ 中国 · 08/19 00:29</p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/jsqPaMGuPXFkhifJmTym?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">共识之外：Linux 生态系统中 AI 政策的碎片化现象</a></h3>
+  
+  <p class="article-meta">InfoQ 中国 · 08/19 00:15</p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/QekQuwv8UhxAcrOFgKM8?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">阿里云的野心，不在 Agent Builder</a></h3>
+  
+  <p class="article-meta">InfoQ 中国 · 08/18 23:32</p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/474907.html" target="_blank" rel="noopener noreferrer">年轻人首选B级闪充轿车秦MAX正式上市，售价10.99-14.39万元</a></h3>
+  
+  <p class="article-meta">量子位 · 08/18 19:07</p>
+  <p class="article-excerpt">8月13日，比亚迪秦MAX正式上市，推出EV与DM-i双动力版本</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 比亚迪秦系列新车上市主打性价比，汽车消费旺季启动，关注汽车供应链金融与经销商融资需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/474868.html" target="_blank" rel="noopener noreferrer">比亚迪全程护航丝路万里行，深圳收官再启海外征程</a></h3>
+  
+  <p class="article-meta">量子位 · 08/18 18:40</p>
+  <p class="article-excerpt">8月14日，2026丝绸之路万里行·启迪之路国内段在深圳收官。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 比亚迪沿丝路推进海外布局，中国车企出海加速，关注出口企业跨境结算、外汇避险与海外融资需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/474857.html" target="_blank" rel="noopener noreferrer">网易传媒发布”蜜蜂AI” ：从工具到伙伴，让AI更懂人</a></h3>
+  
+  <p class="article-meta">量子位 · 08/18 18:04</p>
+  <p class="article-excerpt">8月18日，网易传媒举办“蜜蜂AI媒体沟通会”</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 网易发布蜜蜂AI助手，国内AI应用从工具走向陪伴，银行可探索AI陪伴式客群运营与财富顾问场景。</p>
+</article>
+  </div>
+  </div>
+    </div></div>
+  </section>
+  
+  
+
+  <footer>
+    内容均来自原媒体，本站仅作摘要整理与回链。
+  </footer>
+</main>
+<script>
+  document.querySelectorAll('.tabs > .tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = btn.dataset.tab;
+      document.querySelectorAll('.tabs > .tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      document.querySelectorAll('.panel').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.panel === target);
+      });
+    });
+  });
+  // Scope sub-tab / source-tab toggles to the parent .panel so two L1 panels
+  // can share the same data-cat (e.g. tech main + community both data-cat=tech)
+  // without stomping on each other's active state.
+  document.querySelectorAll('.sub-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = btn.closest('.panel');
+      if (!panel) return;
+      var sub = btn.dataset.sub;
+      panel.querySelectorAll('.sub-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      panel.querySelectorAll('.sub-content').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.subContent === sub);
+      });
+    });
+  });
+  // Time split (当天 / 过去7天) — scoped to the parent .sub-content so it
+  // doesn't interfere with sibling L2 tabs sharing the same data-cat.
+  document.querySelectorAll('.time-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var subContent = btn.closest('.sub-content');
+      if (!subContent) return;
+      var time = btn.dataset.time;
+      subContent.querySelectorAll('.time-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      subContent.querySelectorAll('.time-content').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.timeContent === time);
+      });
+    });
+  });
+  document.querySelectorAll('.source-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var subContent = btn.closest('.sub-content');
+      if (!subContent) return;
+      var src = btn.dataset.source;
+      subContent.querySelectorAll('.source-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      subContent.querySelectorAll('.source-content').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.sourceContent === src);
+      });
+    });
+  });
+  // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
+  document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var grp = btn.dataset.group;
+      document.querySelectorAll('.trading-group-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      document.querySelectorAll('.trading-group-content').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.group === grp);
+      });
+    });
+  });
+</script>
+</body>
+</html>
