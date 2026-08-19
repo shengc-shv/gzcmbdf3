@@ -49,7 +49,7 @@ export interface SourceDef {
   keywords?: string[];
   /**
    * 源角色（M3-D）：crawled-input = 爬虫产物路由源（url 为 file:// 占位，
-   * 实际数据由 scripts/crawlers/*.mjs 产出、经 lib/ingest/merge.ts 归一化接入；
+   * 实际数据由 TS 爬虫 lib/sources/crawlers/* 产出、经 lib/ingest/merge.ts 归一化接入；
    * 保留在 config 仅为 groupRaw 的 knownSourceIds 白名单识别）。缺省为普通源。
    */
   role?: "crawled-input" | string;

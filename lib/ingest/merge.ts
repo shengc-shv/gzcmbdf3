@@ -17,7 +17,7 @@ import {
   rewriteGzPrefix,
 } from "../sources/constants";
 
-/** .mjs 爬虫产物（crawled-articles.json / crawled-gz.json 的条目）。 */
+/** TS 爬虫产物（fetchCrawledArticles() 的条目；原 .mjs 爬虫 crawled-*.json 的等价结构）。 */
 export interface CrawledArticle {
   sourceId?: string;
   source?: string;
@@ -33,7 +33,7 @@ export interface CrawledArticle {
   tier?: SourceTier;
 }
 
-/** 爬虫数据的两条进入路径：IPO/新股（crawled-articles.json）与广州商机（crawled-gz.json）。 */
+/** 爬虫数据的两条进入路径：IPO/新股（mode=ipo）与广州商机（mode=gz）。 */
 export type CrawlMode = "ipo" | "gz";
 
 /** 归一化后的统一文章结构（与 ArticleInput 结构兼容，由调用方透传）。 */

@@ -14,9 +14,9 @@ import { SOURCE_ROUTE } from "./constants";
 /**
  * 节约 AI 成本（用户 2026-08-18）：除商机类来源外，每个资讯源每轮最多取 10 条。
  * 抓得少 → enrich/分类的 LLM 调用少。
- * 商机类来源（广州本地 gz-stats/gz-gov/gz-nansha 及广州辖区 IPO）由爬虫
- * scripts/crawlers/run-gz.mjs 产出、不走 dispatch；白名单由集中路由表
- * SOURCE_ROUTE（category=gz 或 gz-policy）派生，防止未来误 cap 商机源。
+ * 商机类来源（广州本地 gz-stats/gz-gov/gz-nansha 及广州辖区 IPO）由 TS 爬虫
+ * lib/sources/crawlers 产出（fetchCrawledArticles 进程内调用）、不走 dispatch；
+ * 白名单由集中路由表 SOURCE_ROUTE（category=gz 或 gz-policy）派生，防止未来误 cap 商机源。
  */
 const BUSINESS_SOURCES: ReadonlySet<string> = new Set(
   Object.entries(SOURCE_ROUTE)

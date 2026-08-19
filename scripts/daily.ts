@@ -13,6 +13,7 @@ import {
   filterByWindow,
   type CrawledArticle,
 } from "../lib/ingest/merge";
+import { fetchCrawledArticles } from "../lib/sources/crawlers";
 import { applyKeywordFilter } from "../lib/filters/keyword-filter";
 import {
   keywordFilterEnabled,
@@ -427,46 +428,41 @@ async function main() {
   console.log(`\n[daily] total articles: ${articles.length}`);
 
   // —— 归一化（边界②）：采集产物汇合 + URL 去重 + region 分流（gd-→gz- 前缀改写）——
-  // 逻辑集中在 lib/ingest/merge.ts（纯函数、可单测）；此处仅做文件读取与结果回写。
-  const dataPath = path.resolve(process.cwd(), 'data/crawled-articles.json');
-  if (fs.existsSync(dataPath)) {
-    try {
-      const raw = JSON.parse(fs.readFileSync(dataPath, 'utf8')) as CrawledArticle[];
-      const { merged, added, skipped } = dedupeByUrl(
-        articles,
-        raw.map((it) => toMergeArticle(it, "ipo")),
-      );
-      articles = merged;
-      console.log(`[daily] ✅ 加载爬虫数据 ${added} 条（跳过 ${skipped} 条重复）`);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`[daily] ⚠️ 加载爬虫数据失败: ${msg}`);
-    }
-  } else {
-    console.log(`[daily] ℹ️ 爬虫数据文件不存在: ${dataPath}`);
+  // M3-A：爬虫已 TS 化并由本进程内 fetchCrawledArticles() 直接调用（不再 shell 出去写
+  // crawled-articles.json / crawled-gz.json 中间文件）；逻辑集中在 lib/ingest/merge.ts（纯函数、可单测）。
+  let crawled: { ipo: CrawledArticle[]; gz: CrawledArticle[] } = { ipo: [], gz: [] };
+  try {
+    crawled = await fetchCrawledArticles();
+    console.log(
+      `[daily] ✅ 爬虫抓取: IPO/新股 ${crawled.ipo.length} 条 / 广州商机 ${crawled.gz.length} 条`,
+    );
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn(`[daily] ⚠️ 爬虫抓取失败（跳过爬虫源）: ${msg}`);
   }
 
-  // 广州商机爬虫数据（统计局/市政府/南沙）。独立文件，由 scripts/crawlers/run-gz.mjs 产出。
+  // IPO / 新股（crawled-articles.json 等价路径，mode=ipo）
+  if (crawled.ipo.length) {
+    const { merged, added, skipped } = dedupeByUrl(
+      articles,
+      crawled.ipo.map((it) => toMergeArticle(it, "ipo")),
+    );
+    articles = merged;
+    console.log(`[daily] ✅ 加载爬虫数据 ${added} 条（跳过 ${skipped} 条重复）`);
+  }
+
+  // 广州商机（crawled-gz.json 等价路径，mode=gz）。category 按集中路由表判定
+  // （M3-D：SOURCE_ROUTE，不依赖 config 里的 file:// 占位源）。
   // 注意：走「今日抓取」数组 → buildRolling 自动打 fetchedToday=true（当天）；
   // 次日经 saveHistory 进入历史缓存后 fetchedToday 自动为 false（过去7天）。当天/历史严格区分。
-  const gzPath = path.resolve(process.cwd(), 'data/crawled-gz.json');
-  if (fs.existsSync(gzPath)) {
-    try {
-      const raw = JSON.parse(fs.readFileSync(gzPath, 'utf8')) as CrawledArticle[];
-      // category 按集中路由表判定（M3-D：SOURCE_ROUTE，不依赖 config 里的 file:// 占位源）
-      const regCat = (id?: string) => (id ? SOURCE_ROUTE[id]?.category : undefined);
-      const { merged, added, skipped } = dedupeByUrl(
-        articles,
-        raw.map((it) => toMergeArticle(it, "gz", { gzCategory: regCat(it.sourceId) })),
-      );
-      articles = merged;
-      console.log(`[daily] ✅ 加载广州商机数据 ${added} 条（跳过 ${skipped} 条重复）`);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`[daily] ⚠️ 加载广州商机数据失败: ${msg}`);
-    }
-  } else {
-    console.log(`[daily] ℹ️ 广州商机数据文件不存在: ${gzPath}`);
+  if (crawled.gz.length) {
+    const regCat = (id?: string) => (id ? SOURCE_ROUTE[id]?.category : undefined);
+    const { merged, added, skipped } = dedupeByUrl(
+      articles,
+      crawled.gz.map((it) => toMergeArticle(it, "gz", { gzCategory: regCat(it.sourceId) })),
+    );
+    articles = merged;
+    console.log(`[daily] ✅ 加载广州商机数据 ${added} 条（跳过 ${skipped} 条重复）`);
   }
 
   // —— 源等级 tier 补齐（T6）：爬虫产物未带 tier 的条目，按源定义透传（归一化层只透传、不渲染）——

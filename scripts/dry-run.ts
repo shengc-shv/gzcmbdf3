@@ -4,7 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { sources, loadAllSources } from "../lib/sources/registry";
+import { SOURCE_ROUTE } from "../lib/sources/constants";
 import { fetchSource } from "../lib/sources/dispatch";
+import { fetchCrawledArticles } from "../lib/sources/crawlers";
 import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
 import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
@@ -22,7 +24,7 @@ import {
   dedupeAgainstHistory,
   type HistorySimilarEntry,
 } from "../lib/ingest/dedup-similar";
-import { filterByWindow } from "../lib/ingest/merge";
+import { filterByWindow, toMergeArticle, dedupeByUrl } from "../lib/ingest/merge";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import { REPORTS_DIR } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
@@ -79,77 +81,35 @@ async function main() {
   const date = todayKey();
   let articles: ArticleInput[] = [];
 
-  // ----- 加载本地爬虫数据（广东IPO）-----
-  const dataPath = path.resolve(process.cwd(), 'data/crawled-articles.json');
-  if (fs.existsSync(dataPath)) {
-    try {
-      const raw = fs.readFileSync(dataPath, 'utf8');
-      const items = JSON.parse(raw);
-      let count = 0;
-      for (const item of items) {
-        const exists = articles.some(a => a.url === item.url);
-        if (exists) continue;
-        const srcId = item.sourceId || 'gd-local-scraper';
-        // 与 daily.ts 一致：region=gz(招行广州分行辖区) → 广州商机·广州IPO相关；gd(非广州)/nation/无 → 参考区 全国IPO
-        const category = item.region === 'gz' ? 'gz' : 'ipo';
-        const finalSrcId = category === 'gz' ? srcId.replace(/^gd-/, 'gz-') : srcId;
-        articles.push({
-          sourceId: finalSrcId,
-          source: item.source || '广东本地爬虫',
-          title: item.title || '无标题',
-          url: item.url || '',
-          excerpt: item.excerpt || '',
-          publishedAt: item.publishedAt ? new Date(item.publishedAt) : undefined,
-          category,
-          summary: item.summary || '',
-        });
-        count++;
-      }
-      console.log(`  ✅ 加载爬虫数据 ${count} 条（跳过 ${items.length - count} 条重复）`);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`  ⚠️ 加载爬虫数据失败: ${msg}`);
+  // ----- 加载爬虫数据（M3-A：进程内 runner，与 daily.ts 同入口，不再读 JSON 中间文件）-----
+  // OFFLINE 模式不访问网络：纯历史渲染，跳过爬虫抓取（与下方 fetchSource 同策略）。
+  const isOffline = process.env.OFFLINE === 'true';
+  if (!isOffline) {
+    const crawled = await fetchCrawledArticles().catch((e: any) => {
+      console.warn('  ⚠️ 爬虫抓取失败（跳过爬虫源）:', e?.message ?? e);
+      return { ipo: [], gz: [] };
+    });
+    // IPO / 新股（crawled-articles.json 等价路径，mode=ipo）
+    if (crawled.ipo.length) {
+      const { merged, added } = dedupeByUrl(articles, crawled.ipo.map((it) => toMergeArticle(it, 'ipo')));
+      articles = merged;
+      console.log(`  ✅ 加载爬虫(IPO/新股)数据 ${added} 条`);
+    }
+    // 广州商机（crawled-gz.json 等价路径，mode=gz；category 按集中路由表 SOURCE_ROUTE 判定）
+    if (crawled.gz.length) {
+      const regCat = (id?: string) => (id ? SOURCE_ROUTE[id]?.category : undefined);
+      const { merged, added } = dedupeByUrl(
+        articles,
+        crawled.gz.map((it) => toMergeArticle(it, 'gz', { gzCategory: regCat(it.sourceId) })),
+      );
+      articles = merged;
+      console.log(`  ✅ 加载广州商机数据 ${added} 条`);
     }
   } else {
-    console.log(`  ℹ️ 爬虫数据文件不存在: ${dataPath}`);
-  }
-
-  // ----- 加载广州商机爬虫数据（统计局/市政府/南沙）-----
-  // 走「今日抓取」数组：buildRolling 自动打 fetchedToday=true（当天）；
-  // 历史回写后次日 fetchedToday=false（过去7天），当天/历史严格区分。
-  const gzPath = path.resolve(process.cwd(), 'data/crawled-gz.json');
-  if (fs.existsSync(gzPath)) {
-    try {
-      const items = JSON.parse(fs.readFileSync(gzPath, 'utf8'));
-      let count = 0;
-      for (const item of items) {
-        const exists = articles.some(a => a.url === item.url);
-        if (exists) continue;
-        // category 按注册表路由（gz-gov 已迁入宏观政策·广州政策）
-        const regCat = loadAllSources().find(s => s.id === item.sourceId)?.category;
-        articles.push({
-          sourceId: item.sourceId || 'gz-local',
-          source: item.source || '广州商机',
-          title: item.title || '无标题',
-          url: item.url || '',
-          excerpt: item.excerpt || '',
-          publishedAt: item.publishedAt ? new Date(item.publishedAt) : undefined,
-          category: regCat ?? 'gz',
-          summary: item.summary || '',
-        });
-        count++;
-      }
-      console.log(`  ✅ 加载广州商机数据 ${count} 条（跳过 ${items.length - count} 条重复）`);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`  ⚠️ 加载广州商机数据失败: ${msg}`);
-    }
-  } else {
-    console.log(`  ℹ️ 广州商机数据文件不存在: ${gzPath}`);
+    console.log('  ℹ️ OFFLINE 模式：跳过爬虫抓取（与 fetchSource 同策略）');
   }
 
   // 抓取所有 enabled 数据源（OFFLINE=true 时跳过：纯历史渲染，不访问网络）
-  const isOffline = process.env.OFFLINE === 'true';
   if (!isOffline) {
     const enabled = sources.filter((s) => s.enabled !== false);
     for (const source of enabled) {

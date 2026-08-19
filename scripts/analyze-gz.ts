@@ -5,6 +5,7 @@ import { extractJson } from "../lib/ai/json-util";
 import { loadAllSources } from "../lib/sources/registry";
 import { fetchGovCnPolicy } from "../lib/sources/national-policy";
 import { fetchSinaMoney, fetch21jingjiFinance } from "../lib/sources/wealth-credit";
+import { fetchCrawledArticles } from "../lib/sources/crawlers";
 
 /**
  * 广州商机 / 宏观政策 数据逐条 AI 分析
@@ -130,9 +131,14 @@ async function analyzeBatch(
 
 async function main() {
   // ---- 1. 收集条目 ----
-  const gz = JSON.parse(fs.readFileSync("data/crawled-gz.json", "utf8"));
-  const ipoPath = "data/crawled-articles.json";
-  const ipo = fs.existsSync(ipoPath) ? JSON.parse(fs.readFileSync(ipoPath, "utf8")) : [];
+  // M3-A：不再硬读 JSON 中间文件（data/crawled-gz.json / data/crawled-articles.json），
+  // 改为与 daily.ts 同入口的进程内爬虫 runner；单源失败由 runner 隔离，整体不连坐。
+  const crawled = await fetchCrawledArticles().catch((e: any) => {
+    console.warn("爬虫抓取失败（gz/ipo 将为空）:", e?.message ?? e);
+    return { ipo: [], gz: [] };
+  });
+  const gz = crawled.gz;
+  const ipo = crawled.ipo;
   const govcn = await fetchGovCnPolicy("govcn-policy", 20).catch((e) => {
     console.warn("govcn 抓取失败:", e.message);
     return [];

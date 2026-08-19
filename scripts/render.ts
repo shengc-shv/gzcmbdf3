@@ -5,6 +5,7 @@ import path from "node:path";
 
 import { sources, loadAllSources } from "../lib/sources/registry";
 import { fetchSource } from "../lib/sources/dispatch";
+import { fetchCrawledArticles } from "../lib/sources/crawlers";
 import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
 import { resolveDateDir } from "../lib/output/paths";
@@ -62,35 +63,31 @@ async function main() {
   const date = todayKey();
   const articles: ArticleInput[] = [];
 
-  // ----- 加载本地爬虫数据（广东IPO）-----
-  const dataPath = path.resolve(process.cwd(), "data/crawled-articles.json");
-  if (fs.existsSync(dataPath)) {
-    try {
-      const raw = fs.readFileSync(dataPath, "utf8");
-      const items = JSON.parse(raw);
-      let count = 0;
-      for (const item of items) {
-        const exists = articles.some((a) => a.url === item.url);
-        if (exists) continue;
-        articles.push({
-          sourceId: "gd-local-scraper",
-          source: "广东本地爬虫",
-          title: item.title || "无标题",
-          url: item.url || "",
-          excerpt: item.excerpt || "",
-          publishedAt: item.publishedAt ? new Date(item.publishedAt) : new Date(),
-          category: "gd-ipo",
-          summary: item.summary || "",
-        });
-        count++;
-      }
-      console.log(`  ✅ 加载爬虫数据 ${count} 条（跳过 ${items.length - count} 条重复）`);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      console.warn(`  ⚠️ 加载爬虫数据失败: ${msg}`);
+  // ----- 加载爬虫数据（广东IPO）—— M3-A：进程内 runner，与 daily.ts 同入口，不再读 JSON 中间文件 -----
+  const crawled = await fetchCrawledArticles().catch((e: any) => {
+    console.warn("  ⚠️ 爬虫抓取失败（跳过爬虫源）:", e?.message ?? e);
+    return { ipo: [], gz: [] };
+  });
+  if (crawled.ipo.length) {
+    let count = 0;
+    for (const item of crawled.ipo) {
+      const exists = articles.some((a) => a.url === item.url);
+      if (exists) continue;
+      articles.push({
+        sourceId: item.sourceId || "gd-local-scraper",
+        source: item.source || "广东本地爬虫",
+        title: item.title || "无标题",
+        url: item.url || "",
+        excerpt: item.excerpt || "",
+        publishedAt: item.publishedAt ? new Date(item.publishedAt) : new Date(),
+        category: "gd-ipo",
+        summary: item.summary || "",
+      });
+      count++;
     }
+    console.log(`  ✅ 加载爬虫数据 ${count} 条（跳过 ${crawled.ipo.length - count} 条重复）`);
   } else {
-    console.log(`  ℹ️ 爬虫数据文件不存在: ${dataPath}`);
+    console.log(`  ℹ️ 爬虫无 IPO/新股数据（或抓取失败）`);
   }
 
   // 抓取所有 enabled 数据源

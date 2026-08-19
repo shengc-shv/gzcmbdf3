@@ -22,7 +22,7 @@
 
 | 边界 | 职责 | 关键模块 |
 |---|---|---|
-| ① 采集 | 从各源抓取原始数据（TS 源 + `.mjs` 爬虫产物） | `lib/sources/*`、`scripts/crawlers/*` |
+| ① 采集 | 从各源抓取原始数据（TS 源 + 进程内 TS 爬虫） | `lib/sources/*`、`lib/sources/crawlers/*` |
 | ② 归一化 | 汇合 / URL 去重 / region 分流（`gd-`→`gz-` 改写）/ tier 透传 | `lib/ingest/merge.ts`、`lib/sources/constants.ts` |
 | ③ AI | 关键词漏斗（零成本）→ LLM 富集 / 分类 / 摘要 / 交易点评 / 执行摘要 | `lib/filters/*`、`lib/ai/*` |
 | ④ 渲染 | 把规范数据渲染为单文件 HTML（i18n / theme / cards / sections） | `lib/output/render.ts` + `lib/output/render/` |
@@ -35,7 +35,7 @@
 ```bash
 npm ci
 cp .env.example .env.local   # 按需配置 LLM_BACKEND + API Key
-npm run daily                # 跑一次日报（含爬虫产物读取 + 漏斗 + AI）
+npm run daily                # 跑一次日报（含进程内爬虫 + 漏斗 + AI）
 npm test                     # 运行测试（node:test，30+ 用例）
 npm run build-site           # 生成静态站（index.html / archive.html）
 ```
@@ -47,7 +47,6 @@ npm run build-site           # 生成静态站（index.html / archive.html）
 | 命令 | 说明 |
 |---|---|
 | `npm run daily` | 主编排：采集→归一化→漏斗→AI→渲染→写盘 |
-| `npm run crawl:gz` | 跑广州商机爬虫（统计局/市政府/南沙） |
 | `npm run render` | 用 sidecar 重新渲染 HTML/MD（不重抓不调 AI） |
 | `npm run sources` / `sources:check` | 查看/校验数据源配置 |
 | `npm run quota-report` | AI 调用量与花费估算（基于 `data/metrics/`） |
@@ -62,8 +61,10 @@ npm run build-site           # 生成静态站（index.html / archive.html）
 - **T1.5 准官方·机构一手**（交易所/官方博客/央视）：沪深北港交易所、巨潮、DeepMind/HF 博客
 - **T2 媒体·智库**：财经媒体（新浪/央视财经之外）、科技媒体、个人博客
 
-`scripts/crawlers/*.mjs` 产出 `data/crawled-articles.json`（IPO/新股）与
-`data/crawled-gz.json`（广州商机），经 `lib/ingest/merge.ts` 归一化接入主流程。
+`lib/sources/crawlers/*`（TS 爬虫，M3-A 双采集合并）在 `daily.ts` / `dry-run.ts` 进程内
+由 `fetchCrawledArticles()` 直接调用：6 个 IPO/新股源（沪深北港交易所、东方财富、同花顺）
++ 3 个广州商机源（统计局/市政府/南沙），产物经 `lib/ingest/merge.ts` 归一化接入主流程，
+不再写 `data/crawled-articles.json` / `data/crawled-gz.json` 中间文件。
 
 ## 关键词漏斗（银行零售业务体系 v4）
 
@@ -84,8 +85,6 @@ npm run build-site           # 生成静态站（index.html / archive.html）
 data/
   article-history.json      # 7 天滚动缓存（URL 去重 + AI 摘要，展示窗口）
   article-history-backup.json  # 被裁条目的持久归档（去重）
-  crawled-articles.json     # IPO 爬虫产物（CI 生成，不入库）
-  crawled-gz.json           # 广州商机爬虫产物（同上）
   history/reports/<date>.json   # 唯一报告存储（daily 只写这里；build-site 同步到发布目录）
   ai-assets/                # AI 付费产物账本（append-only，永不 7 天裁剪）
   metrics/ai-calls-<date>.jsonl # AI 调用埋点（backend/stage/ok/ms）
@@ -116,6 +115,6 @@ daily_reports/              # gh-pages 发布目录（build-site 从 data/histor
 - M0 ✅ 测试基线（node:test）+ 归一化层 + 源等级 tier（T6）
 - M1 ✅ 关键词漏斗 + daily 集成
 - M2 🚧 AI 埋点 / AI 资产持久化 / 存储合并（进行中）
-- M3 ✅/🚧 删 pipeline 死代码、SKIP_AI 开关层、占位源角色化、集中路由常量、render 拆分(i18n/theme)；双采集本体 TS 化与 cards/sections 拆分为二期
+- M3 ✅ 删 pipeline 死代码、SKIP_AI 开关层、占位源角色化、集中路由常量、render 拆分(i18n/theme)；双采集本体 TS 化（M3-A，`.mjs` 爬虫→`lib/sources/crawlers/*.ts` 进程内调用）；cards/sections 拆分为二期
 
 详见 `docs/`（架构分析报告 / 整改计划 / M1 任务文档）。

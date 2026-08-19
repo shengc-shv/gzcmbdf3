@@ -1,6 +1,5 @@
-import { BaseCrawler } from '../base-crawler.mjs';
-import { regionOf } from '../province-resolver.mjs';
-import { fetch } from 'undici';
+import { BaseCrawler } from "../base-crawler";
+import { regionOf } from "../province-resolver";
 
 /**
  * 上交所 IPO 公告爬虫（数据源：巨潮资讯 cninfo）
@@ -17,61 +16,65 @@ import { fetch } from 'undici';
  * 2) 按股票代码前缀过滤出真正的上交所（6 开头：主板/科创板；含 900 B股），剔除深交所 0/3；
  * 3) 按股票代码解析注册省份=广东（覆盖深圳/广州等地），精准识别广东企业。
  * 注：cninfo 的 column 过滤较宽松（会混入深交所 3xxxx），故用代码前缀二次过滤保证只取上交所。
+ *
+ * M3-A 移植：原 scripts/crawlers/sources/sse-api.mjs 逐字移植；`import { fetch } from "undici"`
+ * 改为全局 fetch（同引擎，去除未声明依赖）。
  */
 
 const CNINFO_UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36";
 
 // 上交所代码：6 开头（主板 60xxxx / 科创板 688xxxx / 689xxxx）+ 900（B股）
-const SSE_PREFIX = /^[69]/;
+export const SSE_PREFIX = /^[69]/;
 
 export class SSEAPICrawler extends BaseCrawler {
+  windowDays = 7; // 回溯窗口（天）
+  maxPages = 12; // 翻页上限，防止异常时无限翻
+  searchKey = "首次公开发行";
+
   constructor() {
     super({
-      name: '上交所IPO公告',
+      name: "上交所IPO公告",
       keywords: [],
       timeout: 15000,
       retries: 3,
     });
-    this.windowDays = 7;       // 回溯窗口（天）
-    this.maxPages = 12;        // 翻页上限，防止异常时无限翻
-    this.searchKey = '首次公开发行';
   }
 
-  _buildBody(pageNum) {
+  _buildBody(pageNum: number): string {
     const end = new Date();
     const start = new Date(Date.now() - this.windowDays * 86400000);
-    const fmt = (d) => d.toISOString().slice(0, 10);
+    const fmt = (d: Date) => d.toISOString().slice(0, 10);
     const seDate = `${fmt(start)}~${fmt(end)}`;
     return new URLSearchParams({
       pageNum: String(pageNum),
-      pageSize: '30',
-      column: 'sse',
-      tabName: 'fulltext',
-      plate: '',
-      stock: '',
+      pageSize: "30",
+      column: "sse",
+      tabName: "fulltext",
+      plate: "",
+      stock: "",
       searchkey: this.searchKey,
-      secid: '',
-      category: '',
-      trade: '',
+      secid: "",
+      category: "",
+      trade: "",
       seDate,
-      sortName: '',
-      sortType: '',
-      isHLtitle: 'true',
+      sortName: "",
+      sortType: "",
+      isHLtitle: "true",
     }).toString();
   }
 
-  async _fetchPage(pageNum) {
+  async _fetchPage(pageNum: number): Promise<any | null> {
     const maxAttempts = this.retries + 1;
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
-        const resp = await fetch('https://www.cninfo.com.cn/new/hisAnnouncement/query', {
-          method: 'POST',
+        const resp = await fetch("https://www.cninfo.com.cn/new/hisAnnouncement/query", {
+          method: "POST",
           headers: {
-            'Referer': 'https://www.cninfo.com.cn/new/index',
-            'Origin': 'https://www.cninfo.com.cn',
-            'User-Agent': CNINFO_UA,
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            Referer: "https://www.cninfo.com.cn/new/index",
+            Origin: "https://www.cninfo.com.cn",
+            "User-Agent": CNINFO_UA,
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           },
           body: this._buildBody(pageNum),
           signal: AbortSignal.timeout(this.timeout),
@@ -86,7 +89,9 @@ export class SSEAPICrawler extends BaseCrawler {
         }
         return await resp.json();
       } catch (err) {
-        console.warn(`[${this.name}] 第${pageNum}页抓取失败（尝试 ${attempt}/${maxAttempts}）: ${err.message}`);
+        console.warn(
+          `[${this.name}] 第${pageNum}页抓取失败（尝试 ${attempt}/${maxAttempts}）: ${(err as Error).message}`,
+        );
         if (attempt < maxAttempts) {
           await new Promise((r) => setTimeout(r, 1000 * attempt * attempt));
           continue;
@@ -97,10 +102,12 @@ export class SSEAPICrawler extends BaseCrawler {
     return null;
   }
 
-  async run() {
-    console.log(`[${this.name}] 开始抓取 (cninfo, 最近${this.windowDays}天, 关键词="${this.searchKey}")`);
-    const articles = [];
-    const seen = new Set();
+  async run(): Promise<import("../base-crawler").CrawlerResult[]> {
+    console.log(
+      `[${this.name}] 开始抓取 (cninfo, 最近${this.windowDays}天, 关键词="${this.searchKey}")`,
+    );
+    const articles: import("../base-crawler").CrawlerResult[] = [];
+    const seen = new Set<string>();
     let scanned = 0;
     let provinceChecks = 0;
     const cutoff = new Date();
@@ -114,9 +121,9 @@ export class SSEAPICrawler extends BaseCrawler {
 
       let oldestTs = Infinity;
       for (const item of list) {
-        const code = String(item.secCode || '').replace(/^[a-zA-Z]+/, '');
-        const name = item.secName || '';
-        const title = item.announcementTitle || '';
+        const code = String(item.secCode || "").replace(/^[a-zA-Z]+/, "");
+        const name = item.secName || "";
+        const title = item.announcementTitle || "";
         const ts = Number(item.announcementTime) || 0;
         const pubDate = ts
           ? new Date(ts).toISOString().slice(0, 10)
@@ -132,7 +139,7 @@ export class SSEAPICrawler extends BaseCrawler {
         // 注：不再丢弃非广东企业——广东的进「广东地区IPO」，其余进「全国IPO/新股」
         provinceChecks++;
         await new Promise((r) => setTimeout(r, 80));
-        const reg = await regionOf(code, 'SH');
+        const reg = await regionOf(code, "SH");
 
         // 每家公司只保留一条
         if (seen.has(code)) continue;
@@ -140,14 +147,14 @@ export class SSEAPICrawler extends BaseCrawler {
 
         const detailUrl = item.adjunctUrl
           ? `https://static.cninfo.com.cn/${item.adjunctUrl}`
-          : '';
+          : "";
         articles.push({
           title: `${name} (${code})`,
           url: detailUrl,
           excerpt: `上交所公告 | ${title} | 日期: ${pubDate}`,
           publishedAt: pubDate,
-          sourceId: 'gd-sse',
-          region: reg || 'nation',
+          sourceId: "gd-sse",
+          region: reg || "nation",
         });
       }
 
@@ -158,7 +165,7 @@ export class SSEAPICrawler extends BaseCrawler {
     }
 
     console.log(
-      `[${this.name}] 扫描 ${scanned} 条，IPO 命中 ${provinceChecks} 家，其中广东企业 ${articles.filter(a => a.region === 'gd').length} 家、全国共 ${articles.length} 家`,
+      `[${this.name}] 扫描 ${scanned} 条，IPO 命中 ${provinceChecks} 家，其中广东企业 ${articles.filter((a) => a.region === "gd").length} 家、全国共 ${articles.length} 家`,
     );
     this.results.push(...articles);
     console.log(`[${this.name}] 完成，共 ${this.results.length} 条`);
@@ -166,6 +173,6 @@ export class SSEAPICrawler extends BaseCrawler {
   }
 }
 
-export function createCrawler() {
+export function createCrawler(): SSEAPICrawler {
   return new SSEAPICrawler();
 }

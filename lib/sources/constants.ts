@@ -39,8 +39,8 @@ export function rewriteGzPrefix(sourceId: string): string {
  * 爬虫产物源的路由元数据（M3-D/A：从 sources.config.json 的 file:// 占位源
  * 中抽离，避免「源配置兼任路由表」的概念交叉）。
  *
- * 这些 sourceId 由 scripts/crawlers/*.mjs 产出（crawled-articles.json /
- * crawled-gz.json），经 lib/ingest/merge.ts 归一化接入；category/subcategory
+ * 这些 sourceId 由 TS 爬虫（lib/sources/crawlers/*，M3-A 双采集合并）产出、
+ * 经 fetchCrawledArticles() + lib/ingest/merge.ts 归一化接入；category/subcategory
  * 用于：daily.ts 的 regCat、history.ts 的 subcatOf、render groupRaw 的分组。
  * 配置里保留同名 disabled 源仅供 groupRaw 的 knownSourceIds 白名单识别，
  * 路由判定以本表为准。

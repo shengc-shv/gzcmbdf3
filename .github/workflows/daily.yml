@@ -184,39 +184,9 @@ jobs:
             echo "gh-pages doesn't exist yet — first run"
           fi
 
-      - name: Run local crawlers (exchange IPO)
-        run: node scripts/crawlers/run-all.mjs
-        continue-on-error: true
-
-      # 广州商机源（统计局/市政府/南沙）。独立于 run-all.mjs，产出 data/crawled-gz.json，
-      # 供 daily.ts 加载（否则报「广州商机数据文件不存在」）。
-      - name: Run GZ crawlers
-        run: node scripts/crawlers/run-gz.mjs
-        continue-on-error: true
-
-      # ---------- 检查数据文件，若不存在则创建空文件 ----------
-      - name: Ensure data files exist
-        run: |
-          mkdir -p data
-          for f in data/crawled-articles.json data/crawled-gz.json; do
-            if [ ! -f "$f" ]; then
-              echo "⚠️ $f 未生成，创建空文件"
-              echo '[]' > "$f"
-            else
-              count=$(cat "$f" | jq '. | length' 2>/dev/null || echo 0)
-              echo "✅ $f 存在，共 $count 条"
-            fi
-          done
-
-      # ---------- 将爬虫数据保存为 Artifact（永久下载） ----------
-      - name: Upload crawler data as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: crawler-data
-          path: |
-            data/crawled-articles.json
-            data/crawled-gz.json
-          retention-days: 30   # 保留30天，可调整
+      # ---------- 爬虫（Exchange IPO 六源 + 广州商机三源）已 TS 化 ----------
+      # M3-A：不再 shell 出去跑 scripts/crawlers/*.mjs，也不再产出 crawled-*.json；
+      # 由 daily.ts 进程内调用 lib/sources/crawlers 的 fetchCrawledArticles() 直接抓取并归一化。
 
       # 生成当日报告（全 AI 流程）。skip_ai=true（手动触发时勾选）→ 复用历史缓存摘要，
       # 不触发任何 LLM 调用（等价原 test2 失败恢复 / test1 无 AI 验证）。
