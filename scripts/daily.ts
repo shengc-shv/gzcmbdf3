@@ -49,6 +49,7 @@ import {
   renderMarkdown,
   type RawByCategory,
 } from "../lib/output/render";
+import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import {
   loadHistory,
   buildRolling,
@@ -526,10 +527,10 @@ async function main() {
     articles = kept;
   }
 
-  // —— 超窗口旧文过滤（归一化②）：rss 流混入的 7 天前旧文不进 AI、不展示 ——
+  // —— 超窗口旧文过滤（归一化②）：rss 流混入的 7 天前旧文不进 AI、不展示（展示窗口 {{DISPLAY}} 天）——
   // 否则旧文 URL 不在 7 天历史缓存，会被误判为「新条目」进 AI 分类（白花钱）。
   const wBefore = articles.length;
-  articles = filterByWindow(articles, 7);
+  articles = filterByWindow(articles, DISPLAY_WINDOW_DAYS);
   if (articles.length !== wBefore) {
     console.log(
       `[daily] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,

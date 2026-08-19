@@ -7,6 +7,7 @@ import { sources, loadAllSources } from "../lib/sources/registry";
 import { fetchSource } from "../lib/sources/dispatch";
 import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
+import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import { loadHistory, buildRolling, saveHistory } from "../lib/output/history";
 import { applyKeywordFilter } from "../lib/filters/keyword-filter";
 import {
@@ -223,10 +224,10 @@ async function main() {
     articles = kept;
   }
 
-  // —— 超窗口旧文过滤（与 daily.ts 一致）：rss 混入的 7 天前旧文不进 AI、不展示 ——
+  // —— 超窗口旧文过滤（与 daily.ts 一致）：rss 混入的 7 天前旧文不进 AI、不展示（展示窗口 {{DISPLAY}} 天）——
   if (!isOffline) {
     const wBefore = articles.length;
-    articles = filterByWindow(articles, 7);
+    articles = filterByWindow(articles, DISPLAY_WINDOW_DAYS);
     if (articles.length !== wBefore) {
       console.log(
         `[dry-run] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,

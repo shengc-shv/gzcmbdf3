@@ -134,8 +134,10 @@ test("renderHtml: 源等级 tier 角标差异化（T6）", () => {
   assert.ok(html.includes("官方一手"), "应渲染 T1 中文标签");
 });
 
-test("技术动态 sub-tab 计数与内容口径一致：只算当天（修复 tab 有数点进去空）", () => {
-  // 两个子组触发 sub-tabs 渲染；每组都混入历史缓存条目（fetchedToday=false）
+test("技术动态 sub-tab 计数与内容口径一致：只算最近 3 天（统一展示窗口）", () => {
+  // 两个子组触发 sub-tabs 渲染；每组混入 3 天前的旧条目（超窗口，不计入）
+  const now = new Date();
+  const oldDate = new Date(now.getTime() - 5 * 86_400_000).toISOString();
   const subs: SubGroup[] = [
     {
       id: "cn-tech",
@@ -145,8 +147,8 @@ test("技术动态 sub-tab 计数与内容口径一致：只算当天（修复 t
           sourceId: "test-src",
           sourceName: "测试源",
           items: [
-            { ...item("https://x/a", "今天的技术新闻", "tech"), fetchedToday: true },
-            { ...item("https://x/b", "历史缓存的技术新闻", "tech"), fetchedToday: false },
+            { ...item("https://x/a", "今天的技术新闻", "tech"), publishedAt: now },
+            { ...item("https://x/b", "5天前的技术新闻", "tech"), publishedAt: new Date(oldDate) },
           ],
         },
       ],
@@ -159,23 +161,25 @@ test("技术动态 sub-tab 计数与内容口径一致：只算当天（修复 t
           sourceId: "test-src",
           sourceName: "测试源",
           items: [
-            { ...item("https://x/c", "今天 AI 动态", "tech"), fetchedToday: true },
-            { ...item("https://x/d", "历史缓存 AI 动态", "tech"), fetchedToday: false },
-            { ...item("https://x/e", "历史缓存 AI 动态2", "tech"), fetchedToday: false },
+            { ...item("https://x/c", "今天 AI 动态", "tech"), publishedAt: now },
+            { ...item("https://x/d", "5天前 AI 动态", "tech"), publishedAt: new Date(oldDate) },
+            { ...item("https://x/e", "5天前 AI 动态2", "tech"), publishedAt: new Date(oldDate) },
           ],
         },
       ],
     },
   ];
   const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
-  // tab 计数应只统计当天：cn-tech=1、ai-news=1（而非全量 2/3）
-  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">1</span>'), "cn-tech 计数应只算当天 1 条");
-  assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算当天 1 条");
-  assert.ok(!html.includes('<span class="count">3</span>'), "不应把历史缓存计入 tab 计数");
+  // 计数应只统计最近 3 天：cn-tech=1、ai-news=1（而非全量 2/3）
+  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">1</span>'), "cn-tech 计数应只算最近 3 天 1 条");
+  assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算最近 3 天 1 条");
+  assert.ok(!html.includes('<span class="count">3</span>'), "不应把超窗口条目计入 tab 计数");
 });
 
-test("财经面板「国家政策」sub-tab 计数同口径：只算当天（用户报告 cn-policy 3→1）", () => {
-  // 用户场景：finance 面板 cn-policy 子组，2 条历史缓存 + 1 条当天
+test("财经面板「国家政策」sub-tab 计数同口径：只算最近 3 天", () => {
+  // 用户场景：finance 面板 cn-policy 子组，2 条超窗口旧文 + 1 条 3 天内
+  const now = new Date();
+  const oldDate = new Date(now.getTime() - 5 * 86_400_000).toISOString();
   const subs: SubGroup[] = [
     {
       id: "cn-policy",
@@ -185,9 +189,9 @@ test("财经面板「国家政策」sub-tab 计数同口径：只算当天（用
           sourceId: "test-src",
           sourceName: "测试源",
           items: [
-            { ...item("https://x/p1", "今天的宏观政策", "finance"), fetchedToday: true },
-            { ...item("https://x/p2", "历史宏观政策1", "finance"), fetchedToday: false },
-            { ...item("https://x/p3", "历史宏观政策2", "finance"), fetchedToday: false },
+            { ...item("https://x/p1", "最近的宏观政策", "finance"), publishedAt: now },
+            { ...item("https://x/p2", "5天前宏观政策1", "finance"), publishedAt: new Date(oldDate) },
+            { ...item("https://x/p3", "5天前宏观政策2", "finance"), publishedAt: new Date(oldDate) },
           ],
         },
       ],
@@ -199,13 +203,13 @@ test("财经面板「国家政策」sub-tab 计数同口径：只算当天（用
         {
           sourceId: "test-src",
           sourceName: "测试源",
-          items: [{ ...item("https://x/n1", "今天要闻", "finance"), fetchedToday: true }],
+          items: [{ ...item("https://x/n1", "最近要闻", "finance"), publishedAt: now }],
         },
       ],
     },
   ];
   const html = renderRawCategoryPanel("finance", subs, "2026-08-19");
-  // cn-policy 计数应为当天 1 条（而非全量 3 条）——用户看到「有3点进去1条」的根因
-  assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算当天 1 条");
-  assert.ok(!html.includes('<span class="count">3</span>'), "不应把历史缓存计入 cn-policy 计数");
+  // cn-policy 计数应为最近 3 天 1 条（而非全量 3 条）
+  assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算最近 3 天 1 条");
+  assert.ok(!html.includes('<span class="count">3</span>'), "不应把超窗口条目计入 cn-policy 计数");
 });

@@ -9,7 +9,7 @@ import { REPORT_LOCALE,loadAllSources  } from "../sources/registry";
 import { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "./render/i18n";
 import {
   renderRawCategoryPanel,
-  countItemsToday,
+  countItemsRecent,
   CATEGORY_LABELS,
   CATEGORY_DIGEST_LABELS,
   TECH_MAIN_SUBS,
@@ -606,18 +606,14 @@ export function renderHtml(
   // are filtered out and the tech panel renders only the configured subs.
   const techMainSubs = raw.tech.filter((s) => TECH_MAIN_SUBS.has(s.id));
 
-  const sumItems = (subs: SubGroup[]) =>
-    subs.reduce(
-      (n, sg) => n + sg.sources.reduce((m, s) => m + s.items.length, 0),
-      0,
-    );
+  // 顶部 tab 计数：统一「最近 DISPLAY_WINDOW_DAYS 天」口径（与面板内容一致）
   const counts = {
-    tech: countItemsToday(techMainSubs),
-    finance: countItemsToday(raw.finance),
-    'gd-ipo': sumItems(raw['gd-ipo'] || []),
-    ipo: sumItems(raw['ipo'] || []),
-    gz: sumItems(raw['gz'] || []),
-    politics: countItemsToday(raw.politics), // 与 tech/finance 同口径（当天）；当前顶部 tabs 未消费，保留一致
+    tech: countItemsRecent(techMainSubs),
+    finance: countItemsRecent(raw.finance),
+    'gd-ipo': countItemsRecent(raw['gd-ipo'] || []),
+    ipo: countItemsRecent(raw['ipo'] || []),
+    gz: countItemsRecent(raw['gz'] || []),
+    politics: countItemsRecent(raw.politics),
   };
 
   return `<!doctype html>

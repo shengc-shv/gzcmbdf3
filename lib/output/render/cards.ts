@@ -50,12 +50,11 @@ export const CATEGORY_DIGEST_LABELS: Record<Category, string> = {
 };
 
 /**
- * 仅这些分类在 L2 子面板内展示"当天 / 过去7天"时间拆分。
- *  - 技术动态、财经要点：只看当天（热门），不暴露历史库存，故不渲染时间标签。
- *  - 广东地区IPO、全国IPO/新股：按信息发生时间 publishedAt 做 当天/过去7天 回溯。
- *  - 市场行情：在线生成的当日宏观数据，由独立 trading 面板渲染，不在此时间拆分体系内。
+ * 展示窗口（天）：所有面板统一展示最近 N 天发布的内容，按发布时间倒序。
+ * （2026-08-19 用户调整：不再区分「当天/过去7天」时间拆分，全部展示最近 3 天。）
  */
-export const TIME_SPLIT_CATEGORIES = new Set<Category>(["gd-ipo", "ipo", "gz"]);
+export const DISPLAY_WINDOW_DAYS = 3;
+
 
 
 export const TECH_MAIN_SUBS = new Set(["github-trending", "trending-papers", "x-viral", "ai-news", "cn-tech"]);
@@ -175,17 +174,24 @@ export function renderSourceTabs(
 }
 
 /**
- * Keep only the articles of each source that match the time window.
- * `todayOnly=true` → fetched in the current run (`fetchedToday`);
- * `todayOnly=false` → carried from the rolling 7-day history.
+ * 保留每个源中「最近 days 天发布」的条目，并按发布时间倒序排序。
+ * 窗口按 publishedAt 判定；无 publishedAt 的保留（时间未知，靠抓取归属）。
  */
-export function filterByTime(sources: SourceGroup[], todayOnly: boolean): SourceGroup[] {
-  return sources.map((s) => ({
-    ...s,
-    items: s.items.filter((a) =>
-      todayOnly ? a.fetchedToday === true : a.fetchedToday !== true,
-    ),
-  }));
+export function filterRecentDays(sources: SourceGroup[], days = DISPLAY_WINDOW_DAYS): SourceGroup[] {
+  const cutoff = Date.now() - days * 86_400_000;
+  return sources.map((s) => {
+    const items = s.items
+      .filter((a) => {
+        if (!a.publishedAt) return true;
+        return a.publishedAt.getTime() >= cutoff;
+      })
+      .sort((a, b) => {
+        const at = a.publishedAt?.getTime() ?? 0;
+        const bt = b.publishedAt?.getTime() ?? 0;
+        return bt - at;
+      });
+    return { ...s, items };
+  });
 }
 
 let _tzFmt: Intl.DateTimeFormat | undefined;
@@ -202,52 +208,14 @@ export function tzDateStr(d: Date): string {
   return _tzFmt.format(d);
 }
 
-/**
- * 广东地区IPO / 全国IPO / 广州商机 的「当天 / 过去7天」按信息发生时间 publishedAt（发文/公告日期）拆分，
- * 而不是按抓取时间 fetchedToday —— 否则今天抓到的 8 月 12 日公告（或 5 月的月度数据）会被错放进
- * 「当天」。规则（严格 7 天窗口）：
- *  - 有 publishedAt：发文=今天 → 当天；在 [过去7天窗口, 今天) 内 → 过去7天；
- *  - 有 publishedAt 但早于 7 天窗口（如 2025 年旧数据、过期月度数据）：超窗口，**不显示**（不属于最近7天简报）；
- *  - 无 publishedAt：回退 fetchedToday（今天抓到 → 当天；历史缓存 → 过去7天），避免丢失。
- */
-export function splitGdIpoByPublishedAt(
-  sources: SourceGroup[],
-  dateStr: string,
-): { today: SourceGroup[]; past: SourceGroup[] } {
-  const pastStartMs = Date.UTC(
-    Number(dateStr.slice(0, 4)),
-    Number(dateStr.slice(5, 7)) - 1,
-    Number(dateStr.slice(8, 10)) - 7,
-  );
-  const pastStartStr = tzDateStr(new Date(pastStartMs));
-  const today: SourceGroup[] = [];
-  const past: SourceGroup[] = [];
-  for (const s of sources) {
-    const t: ArticleInput[] = [];
-    const p: ArticleInput[] = [];
-    for (const a of s.items) {
-      const ds = a.publishedAt ? tzDateStr(a.publishedAt) : undefined;
-      if (ds === dateStr) t.push(a);
-      else if (ds && ds >= pastStartStr && ds < dateStr) p.push(a);
-      // 有日期但早于 7 天窗口（2025 年旧数据/过期月度数据）：超窗口，直接丢弃不进任何视图
-      else if (ds && ds < pastStartStr) continue;
-      else if (!ds && a.fetchedToday === true) t.push(a);
-      else p.push(a);
-    }
-    if (t.length) today.push({ ...s, items: t });
-    if (p.length) past.push({ ...s, items: p });
-  }
-  return { today, past };
-}
 
 export function countItems(sources: SourceGroup[]): number {
   return sources.reduce((n, s) => n + s.items.length, 0);
 }
 
-/** Sum only the "当天" (fetchedToday) items across subgroups — used for the
- *  top-level tab badge of categories that don't expose a 过去7天 backlog. */
-export function countItemsToday(subs: SubGroup[]): number {
-  return subs.reduce((n, sg) => n + countItems(filterByTime(sg.sources, true)), 0);
+/** 最近 N 天（默认 DISPLAY_WINDOW_DAYS）的条数合计——顶部 tab 徽标。 */
+export function countItemsRecent(subs: SubGroup[], days = DISPLAY_WINDOW_DAYS): number {
+  return subs.reduce((n, sg) => n + countItems(filterRecentDays(sg.sources, days)), 0);
 }
 
 export function renderSourcesBlock(
@@ -265,58 +233,19 @@ export function renderSourcesBlock(
 }
 
 export function renderSubContent(category: Category, sub: SubGroup, isActive: boolean, date: string): string {
-  const usesTimeSplit = TIME_SPLIT_CATEGORIES.has(category);
   const activeCls = isActive ? " active" : "";
   const subAttr = `data-sub-content="${escapeHtml(sub.id)}" data-cat="${category}"`;
 
-  // 空 sub 占位结构：
-  //  - 需要时间拆分的（gd-ipo）保留"当天 / 过去7天"两个空面板，结构稳定可见；
-  //  - 其他分类（技术动态 / 财经要点）直接显示"今日无内容"。
+  // 空 sub 直接占位
   if (sub.sources.length === 0) {
-    if (!usesTimeSplit) {
-      return `<div class="sub-content${activeCls}" ${subAttr}><p class="empty">${STR.emptySource}</p></div>`;
-    }
-    return `<div class="sub-content${activeCls}" ${subAttr}>
-    <nav class="time-tabs">
-      <button class="time-tab active" data-time="today" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">${STR.timeToday}<span class="count">0</span></button>
-      <button class="time-tab" data-time="past" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">${STR.timePast7}<span class="count">0</span></button>
-    </nav>
-    <div class="time-contents">
-      <div class="time-content active" data-time-content="today" data-cat="${category}" data-sub="${escapeHtml(sub.id)}"><p class="empty">${STR.emptySource}</p></div>
-      <div class="time-content" data-time-content="past" data-cat="${category}" data-sub="${escapeHtml(sub.id)}"><p class="empty">${STR.emptySource}</p></div>
-    </div>
-  </div>`;
+    return `<div class="sub-content${activeCls}" ${subAttr}><p class="empty">${STR.emptySource}</p></div>`;
   }
 
-  // 不需要时间拆分的分类（技术动态 / 财经要点）：只渲染当天抓取的条目，
-  // 不出现"过去7天"标签。
-  if (!usesTimeSplit) {
-    const todaySrc = filterByTime(sub.sources, true);
-    return `<div class="sub-content${activeCls}" ${subAttr}>
-      ${renderSourcesBlock(category, sub.id, todaySrc)}
-    </div>`;
-  }
-
-  // 需要时间拆分（广东地区IPO）：当天 vs 过去7天（按公告时间 publishedAt）。
-  const { today: todaySrc, past: pastSrc } = splitGdIpoByPublishedAt(
-    sub.sources,
-    date,
-  );
-  const todayCount = countItems(todaySrc);
-  const pastCount = countItems(pastSrc);
+  // 统一展示窗口（2026-08-19 用户调整）：所有分类展示最近 DISPLAY_WINDOW_DAYS 天
+  // 发布的内容，按发布时间倒序；不再区分「当天 / 过去7天」时间拆分。
+  const recent = filterRecentDays(sub.sources, DISPLAY_WINDOW_DAYS);
   return `<div class="sub-content${activeCls}" ${subAttr}>
-    <nav class="time-tabs">
-      <button class="time-tab active" data-time="today" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">${STR.timeToday}<span class="count">${todayCount}</span></button>
-      <button class="time-tab" data-time="past" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">${STR.timePast7}<span class="count">${pastCount}</span></button>
-    </nav>
-    <div class="time-contents">
-      <div class="time-content active" data-time-content="today" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">
-        ${renderSourcesBlock(category, sub.id, todaySrc)}
-      </div>
-      <div class="time-content" data-time-content="past" data-cat="${category}" data-sub="${escapeHtml(sub.id)}">
-        ${renderSourcesBlock(category, sub.id, pastSrc)}
-      </div>
-    </div>
+    ${renderSourcesBlock(category, sub.id, recent)}
   </div>`;
 }
 
@@ -333,12 +262,8 @@ export function renderRawCategoryPanel(
   }
   const subTabs = subs
     .map((s, i) => {
-      // 计数与内容口径一致（修复 2026-08-19）：非时间拆分分类（tech/finance/politics）
-      // 内容只渲染当天（filterByTime todayOnly），计数也统计当天，避免「tab 有数、点进去空」；
-      // 时间拆分分类（gd-ipo/ipo/gz）内容覆盖当天+过去7天全量，计数用全量。
-      const count = TIME_SPLIT_CATEGORIES.has(category)
-        ? s.sources.reduce((n, src) => n + src.items.length, 0)
-        : countItems(filterByTime(s.sources, true));
+      // 计数与内容口径一致：最近 DISPLAY_WINDOW_DAYS 天、按发布时间倒序
+      const count = countItems(filterRecentDays(s.sources, DISPLAY_WINDOW_DAYS));
       return `<button class="sub-tab${i === 0 ? " active" : ""}" data-sub="${escapeHtml(s.id)}" data-cat="${category}">${escapeHtml(s.name)}<span class="count">${count}</span></button>`;
     })
     .join("");
