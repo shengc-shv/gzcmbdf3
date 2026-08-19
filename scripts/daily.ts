@@ -7,6 +7,18 @@ import { sources, loadAllSources, REPORT_LOCALE } from "../lib/sources/registry"
 import type { Category } from "../lib/sources/types";
 import { fetchSource } from "../lib/sources/dispatch";
 import {
+  toMergeArticle,
+  dedupeByUrl,
+  type CrawledArticle,
+} from "../lib/ingest/merge";
+import { applyKeywordFilter } from "../lib/filters/keyword-filter";
+import {
+  keywordFilterEnabled,
+  keywordFilterFallbackEnabled,
+  loadKeywordConfig,
+} from "../lib/filters/config";
+import type { FilterResult, RawArticleInput } from "../lib/filters/types";
+import {
   type ArticleInput,
   type BriefItem,
   type DailyReport,
@@ -82,7 +94,8 @@ async function fetchAll(): Promise<ArticleInput[]> {
     try {
       const items = await fetchSource(source);
       console.log(`  ${source.id.padEnd(20)} ${items.length}`);
-      articles.push(...items.map((it) => ({ ...it, source: source.name })));
+      // 采集层声明源等级 tier（T6）：源定义 → 文章
+      articles.push(...items.map((it) => ({ ...it, source: source.name, tier: source.tier })));
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`  ${source.id.padEnd(20)} FAILED — ${msg}`);
@@ -380,39 +393,21 @@ async function main() {
 
   const date = todayKey();
   console.log(`[daily] ${date} — fetching sources…\n`);
-  const articles = await fetchAll();
+  let articles = await fetchAll();
   console.log(`\n[daily] total articles: ${articles.length}`);
 
+  // —— 归一化（边界②）：采集产物汇合 + URL 去重 + region 分流（gd-→gz- 前缀改写）——
+  // 逻辑集中在 lib/ingest/merge.ts（纯函数、可单测）；此处仅做文件读取与结果回写。
   const dataPath = path.resolve(process.cwd(), 'data/crawled-articles.json');
   if (fs.existsSync(dataPath)) {
     try {
-      const raw = fs.readFileSync(dataPath, 'utf8');
-      const items = JSON.parse(raw);
-      let count = 0;
-      for (const item of items) {
-        // 跳过已存在的（按 URL 去重）
-        const exists = articles.some(a => a.url === item.url);
-        if (exists) continue;
-        // 每条爬虫结果自带 sourceId（gd-szse/gd-sse/gd-bse/gd-hkex/gd-em-ipo 等）。
-        // 按 region 三分：gz(招行广州分行辖区=市区/南沙/湛江/清远) → 广州商机·广州IPO相关，
-        // gd(广东非广州) / nation(全国) / 无标记 → 参考区 全国IPO/新股。
-        const srcId = item.sourceId || 'gd-local-scraper';
-        const region = item.region === 'gz' ? 'gz' : 'ipo';
-        // 广州辖区条目的 sourceId 改 gz- 前缀（gd-sse→gz-sse），供注册表 subcatOf 路由到「广州IPO相关」
-        const finalSrcId = region === 'gz' ? srcId.replace(/^gd-/, 'gz-') : srcId;
-        articles.push({
-          sourceId: finalSrcId,
-          source: item.source || '广东本地爬虫',
-          title: item.title || '无标题',
-          url: item.url || '',
-          excerpt: item.excerpt || '',
-          publishedAt: item.publishedAt ? new Date(item.publishedAt) : undefined,
-          category: region,
-          summary: item.summary || '',
-        });
-        count++;
-      }
-      console.log(`[daily] ✅ 加载爬虫数据 ${count} 条（跳过 ${items.length - count} 条重复）`);
+      const raw = JSON.parse(fs.readFileSync(dataPath, 'utf8')) as CrawledArticle[];
+      const { merged, added, skipped } = dedupeByUrl(
+        articles,
+        raw.map((it) => toMergeArticle(it, "ipo")),
+      );
+      articles = merged;
+      console.log(`[daily] ✅ 加载爬虫数据 ${added} 条（跳过 ${skipped} 条重复）`);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`[daily] ⚠️ 加载爬虫数据失败: ${msg}`);
@@ -427,26 +422,15 @@ async function main() {
   const gzPath = path.resolve(process.cwd(), 'data/crawled-gz.json');
   if (fs.existsSync(gzPath)) {
     try {
-      const raw = JSON.parse(fs.readFileSync(gzPath, 'utf8'));
-      let count = 0;
-      for (const item of raw) {
-        const exists = articles.some(a => a.url === item.url);
-        if (exists) continue;
-        // category 按注册表路由（gz-gov 已迁入宏观政策·广州政策，其余归广州商机）
-        const regCat = loadAllSources().find(s => s.id === item.sourceId)?.category;
-        articles.push({
-          sourceId: item.sourceId || 'gz-local',
-          source: item.source || '广州商机',
-          title: item.title || '无标题',
-          url: item.url || '',
-          excerpt: item.excerpt || '',
-          publishedAt: item.publishedAt ? new Date(item.publishedAt) : undefined,
-          category: regCat ?? 'gz',
-          summary: item.summary || '',
-        });
-        count++;
-      }
-      console.log(`[daily] ✅ 加载广州商机数据 ${count} 条（跳过 ${raw.length - count} 条重复）`);
+      const raw = JSON.parse(fs.readFileSync(gzPath, 'utf8')) as CrawledArticle[];
+      // category 按注册表路由（gz-gov 已迁入宏观政策·广州政策，其余归广州商机）
+      const regCat = (id?: string) => loadAllSources().find((s) => s.id === id)?.category;
+      const { merged, added, skipped } = dedupeByUrl(
+        articles,
+        raw.map((it) => toMergeArticle(it, "gz", { gzCategory: regCat(it.sourceId) })),
+      );
+      articles = merged;
+      console.log(`[daily] ✅ 加载广州商机数据 ${added} 条（跳过 ${skipped} 条重复）`);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn(`[daily] ⚠️ 加载广州商机数据失败: ${msg}`);
@@ -454,10 +438,55 @@ async function main() {
   } else {
     console.log(`[daily] ℹ️ 广州商机数据文件不存在: ${gzPath}`);
   }
+
+  // —— 源等级 tier 补齐（T6）：爬虫产物未带 tier 的条目，按源定义透传（归一化层只透传、不渲染）——
+  const tierBySource = new Map(loadAllSources().map((s) => [s.id, s.tier]));
+  articles = articles.map((a) =>
+    a.tier === undefined && tierBySource.has(a.sourceId)
+      ? { ...a, tier: tierBySource.get(a.sourceId) }
+      : a,
+  );
   if (articles.length === 0) {
     throw new Error("no articles fetched — aborting");
   }
-  
+
+  // —— 关键词漏斗（边界③最前端，零成本）：银行零售关键词体系硬过滤 ——
+  // 未命中直接丢弃（决策②：硬过滤），不进入任何 AI 富集/分类；KEYWORD_FILTER=off 旁路。
+  if (keywordFilterEnabled()) {
+    const kwConfig = loadKeywordConfig();
+    const before = articles.length;
+    const keep: ArticleInput[] = [];
+    let opp = 0;
+    let weekly = 0;
+    for (const a of articles) {
+      const input: RawArticleInput = {
+        title: a.title,
+        content: a.excerpt,
+        sourceId: a.sourceId,
+        url: a.url,
+      };
+      const r = applyKeywordFilter(input, kwConfig);
+      if (!r.pass) continue;
+      const tagged = a as ArticleInput & {
+        filterBucket?: string;
+        filterDimensions?: string[];
+        filterOpportunity?: FilterResult["opportunity"];
+      };
+      tagged.filterBucket = r.bucket;
+      tagged.filterDimensions = r.dimensions;
+      if (r.opportunity) tagged.filterOpportunity = r.opportunity;
+      if (r.bucket === "opportunity") opp++;
+      if (r.bucket === "weekly") weekly++;
+      keep.push(a);
+    }
+    if (keep.length === 0 && keywordFilterFallbackEnabled()) {
+      console.warn(`[daily] ⚠️ 关键词漏斗将全部 ${before} 条过滤为 0（疑似误杀/词表过严）— 回退全量保底，避免空报告`);
+    } else {
+      articles = keep;
+      console.log(`[daily] 🔻 关键词漏斗: ${before} → ${articles.length} 条（商机 ${opp} / 周报 ${weekly}，其余日报池）`);
+    }
+  }
+
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
   // 走各自专属摘要 prompt)。finance 不再单独 enrich——其摘要+分类统一由下方
   // classifyItemsWithLlm 一次批量调用完成（中文/英文源全覆盖，省一次重复调用）。
