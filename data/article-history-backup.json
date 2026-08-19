@@ -4362,5 +4362,41 @@
     "publishedAt": "2026-08-11T21:03:50.000Z",
     "firstSeenAt": "2026-08-19T06:59:01.766Z",
     "lastSeenAt": "2026-08-19T06:59:01.766Z"
+  },
+  {
+    "title": "[AINews] How to steal a Reasoning Trace",
+    "url": "https://www.latent.space/p/ainews-how-to-steal-a-reasoning-trace",
+    "sourceId": "latent-space",
+    "source": "Latent Space",
+    "category": "tech",
+    "subcategory": "ai-news",
+    "excerpt": "Speculative Decoding by any other name would distil as sweet",
+    "publishedAt": "2026-08-12T07:11:08.000Z",
+    "firstSeenAt": "2026-08-19T07:28:46.270Z",
+    "lastSeenAt": "2026-08-19T07:28:46.270Z"
+  },
+  {
+    "title": "Hooray for index funds—just don’t call them passive",
+    "url": "https://www.economist.com/finance-and-economics/2026/08/11/hooray-for-index-funds-just-dont-call-them-passive",
+    "sourceId": "economist-finance",
+    "source": "The Economist Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Jack Bogle’s creation has transformed markets, and involves plenty of choices",
+    "publishedAt": "2026-08-11T19:25:38.000Z",
+    "firstSeenAt": "2026-08-19T07:28:46.270Z",
+    "lastSeenAt": "2026-08-19T07:28:46.270Z"
+  },
+  {
+    "title": "国办印发《关于国务院行政复议案件处理程序的若干规定》的通知",
+    "url": "https://www.gov.cn/zhengce/content/202607/content_7076684.htm",
+    "sourceId": "govcn-policy",
+    "source": "中国政府网·国务院政策",
+    "category": "finance",
+    "subcategory": "cn-policy",
+    "excerpt": "【国务院政策】国办印发《关于国务院行政复议案件处理程序的若干规定》的通知",
+    "publishedAt": "2026-07-27T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T07:28:46.270Z",
+    "lastSeenAt": "2026-08-19T07:28:46.270Z"
   }
 ]
