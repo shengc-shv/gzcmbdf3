@@ -252,7 +252,7 @@ async function runEnrichment(
       systemPrompt,
       userPrompt,
       timeoutMs: 240_000,
-    });
+    }, { stage: "enrich" });
     const cleaned = extractJson(text);
 
     let parsed: { summaries?: Array<{ url?: string; summary?: string }> };

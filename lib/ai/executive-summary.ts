@@ -80,7 +80,7 @@ export async function generateExecutiveSummary(
     "请输出 {\"must_read\": [...], \"insights\": [...]}，must_read 3-5 条、insights 3-5 条。",
   ].join("\n");
   try {
-    const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 });
+    const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 }, { stage: "executive" });
     const cleaned = extractJson(text);
     let parsed: ExecutiveSummary;
     try {

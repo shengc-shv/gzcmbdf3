@@ -27,6 +27,9 @@ import {
   openaiCompatModel,
   runOpenAICompat,
 } from "./backends/openai-compat";
+import { recordAiCall } from "./metrics";
+import type { AiStage } from "./mode";
+import { todayKey } from "../utils";
 
 export interface LlmRunOptions {
   systemPrompt: string;
@@ -89,18 +92,42 @@ export function getModelTag(): string {
   return `${backend}-${getActiveModel(backend)}`;
 }
 
-export async function runLlm(opts: LlmRunOptions): Promise<LlmRunResult> {
+export async function runLlm(
+  opts: LlmRunOptions,
+  meta?: { stage?: AiStage },
+): Promise<LlmRunResult> {
   const backend = getBackend();
-  switch (backend) {
-    case "claude-cli":
-      return runClaudeCli(opts);
-    case "anthropic":
-    case "zhipu":
-      return runAnthropicCompat(opts, ANTHROPIC_PRESETS[backend]);
-    case "openai":
-    case "deepseek":
-    case "minimax":
-      return runOpenAICompat(opts, OPENAI_PRESETS[backend]);
+  const stage = meta?.stage ?? "other";
+  const t0 = Date.now();
+  const stamp = () => ({
+    ts: new Date().toISOString(),
+    date: todayKey(),
+    backend,
+    stage,
+    tokens: 0,
+    modelTag: getModelTag(),
+  });
+  try {
+    let result: LlmRunResult;
+    switch (backend) {
+      case "claude-cli":
+        result = await runClaudeCli(opts);
+        break;
+      case "anthropic":
+      case "zhipu":
+        result = await runAnthropicCompat(opts, ANTHROPIC_PRESETS[backend]);
+        break;
+      case "openai":
+      case "deepseek":
+      case "minimax":
+        result = await runOpenAICompat(opts, OPENAI_PRESETS[backend]);
+        break;
+    }
+    recordAiCall({ ...stamp(), ok: true, ms: result.durationMs || Date.now() - t0 });
+    return result;
+  } catch (e) {
+    recordAiCall({ ...stamp(), ok: false, ms: Date.now() - t0 });
+    throw e;
   }
 }
 /**

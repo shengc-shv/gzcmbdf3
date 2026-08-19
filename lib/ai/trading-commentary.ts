@@ -240,7 +240,7 @@ async function callOnce(
     systemPrompt: SYSTEM_PROMPT,
     userPrompt,
     timeoutMs: 240_000,
-  });
+  }, { stage: "trading" });
   const cleaned = extractJson(text);
   let parsed: Partial<TradingCommentary>;
   try {

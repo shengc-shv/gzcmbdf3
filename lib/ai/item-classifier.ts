@@ -73,7 +73,7 @@ export async function classifyItemsWithLlm(
       "请逐条分析并输出 {\"items\": [...]}，url 必须精确回填输入值。",
     ].join("\n");
     try {
-      const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 });
+      const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 }, { stage: "classify" });
       const cleaned = extractJson(text);
       let parsed: { items?: Array<{ url?: string; relevant?: boolean; subcategory?: string; summary?: string }> };
       try {
