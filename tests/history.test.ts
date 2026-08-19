@@ -92,6 +92,7 @@ test("buildRolling: URL 冲突今日胜出，并继承历史 AI 分析（subcate
   const h: HistoryStore = {
     dup: mk("dup", {
       subcategory: "gz-credit",
+      subcategories: ["gz-credit", "gz-wealth"],
       ai_relevant: true,
       summary: "历史AI摘要",
       publishedAt: iso(now - DAY),
@@ -112,6 +113,7 @@ test("buildRolling: URL 冲突今日胜出，并继承历史 AI 分析（subcate
   assert.equal(out.length, 1);
   assert.equal(out[0].title, "今日新标题", "今日标题胜出");
   assert.equal(out[0].subcategory, "gz-credit", "继承历史 subcategory");
+  assert.deepEqual(out[0].subcategories, ["gz-credit", "gz-wealth"], "继承历史多标签 subcategories");
   assert.equal(out[0].relevant, true, "继承历史 relevant");
   assert.equal(out[0].summary, "历史AI摘要", "今日无摘要时继承历史摘要");
 });

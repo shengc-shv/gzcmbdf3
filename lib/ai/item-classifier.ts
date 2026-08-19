@@ -4,31 +4,36 @@ import { extractJson } from "./json-util";
 /**
  * 条目级 LLM 分类（并入 daily 流程）
  *
- * 对新增条目批量调用 LLM，输出 { relevant(是否与银行业务相关), subcategory(业务线子标签), summary(银行视角摘要) }。
+ * 对新增条目批量调用 LLM，输出 { relevant(是否与银行业务相关), subcategories(业务线多标签),
+ * summary(银行视角摘要) }。subcategories 为多值数组（≤3）：一条信息可能同时影响多个
+ * 业务线/场景，AI 应打多个标签，渲染层据此多归桶（同一 URL 进多个业务线面板）。
  * 任何失败（余额不足 402 / 网络 / 解析）→ 返回空 Map，调用方降级到启发式/注册表，绝不影响 daily 主流程。
  */
 
 export interface ItemClassifyResult {
   relevant: boolean;
-  subcategory: string;
+  /** 业务线多标签（按影响程度排序，≤3；至少 1 个）。 */
+  subcategories: string[];
   summary: string;
 }
 
 const SYSTEM_PROMPT =
-  "你是招商银行广州分行零售决策简报编辑。逐条判断相关性、归类业务线子标签、写银行视角摘要，严格按用户要求输出 JSON。";
+  "你是招商银行广州分行零售决策简报编辑。逐条判断相关性、归类业务线子标签（可多标签）、写银行视角摘要，严格按用户要求输出 JSON。";
 
 const RULES = `你是招商银行广州分行零售决策简报编辑。对每条信息逐条判断，输出 JSON。
 
-每条输入含 category 字段，必须按对应类别的标签体系选 subcategory（禁止跨体系混用）：
-- category=gz / finance（银行零售商机/政策面板）：判断是否银行零售相关，并归入子标签；
-- category=tech / ipo / gd-ipo / politics 等参考区：默认展示，relevant 固定 true，只决定 subcategory。
+每条输入含 category 字段，必须按对应类别的标签体系选 subcategories（禁止跨体系混用）。
+一条信息可能同时影响多个业务线/场景（例如"广州房贷利率下调"同时影响 个人信贷 与 财富管理）：
+- subcategories 输出 JSON 字符串数组，最多 3 个，按影响程度从大到小排序；
+- 只影响一个业务线时输出单元素数组；不影响任何业务线时输出空数组 []。
+- 涉及广州本地落地才归 gz-*；全国性报道一律 cn-finance/news/cn-policy。
 
 === gz / finance 标签体系 ===
 1. relevant(bool)：对银行零售业务（财富管理/个人信贷/零售客群/私行业务）或分行经营决策是否有参考价值。
    - 无关(false)：历史建筑保护、门前三包、交通管制、环保、司法行政、招聘、纯个股行情、娱乐八卦等。
    - 相关(true)：经济数据、金融信贷政策、房地产/房贷、产业扶持招商、企业IPO/融资、消费客群、理财/基金/保险/黄金、银行经营监管。
-2. subcategory 候选：
-   - cn-finance：全国性财经资讯（非广州本地）——理财/基金/保险/黄金/银行/信贷等全国报道，不涉及广州本地落地，一律归 cn-finance，绝不归 gz-*；
+2. subcategories 候选（可多选，≤3）：
+   - cn-finance：全国性财经资讯（非广州本地）——理财/基金/保险/黄金/银行/信贷等全国报道，不涉及广州本地落地；
    - gz-wealth：财富管理（理财/基金/保险/黄金/存款/利率），仅限明确涉及广州/南沙/湛江/清远本地；
    - gz-credit：个人信贷（房贷/消费贷/经营贷/普惠），仅限广州本地；
    - gz-customer：零售客群（广州居民消费/社零/收入/人口/就业）；
@@ -37,24 +42,43 @@ const RULES = `你是招商银行广州分行零售决策简报编辑。对每�
    - gz-policy：广州市级/南沙政府政策文件；
    - cn-policy：国家级宏观政策（国务院/央行/部委）；
    - news：国际宏观。
-   口诀：涉及广州本地落地才归 gz-*；全国性报道一律 cn-finance/news/cn-policy。
+   口诀：涉及广州本地落地才归 gz-*；全国性报道一律 cn-finance/news/cn-policy；一条可同时归多个。
 
 === tech 标签体系（relevant 固定 true）===
-subcategory 候选：cn-tech（综合科技产业/政策/国内大厂动态）/ ai-news（AI 大模型与产品发布）/ x-viral（社交平台热议话题）/ trending-papers（arXiv 等学术论文）。
+subcategories 候选：cn-tech（综合科技产业/政策/国内大厂动态）/ ai-news（AI 大模型与产品发布）/ x-viral（社交平台热议话题）/ trending-papers（arXiv 等学术论文）。
 
 === ipo 标签体系（relevant 固定 true）===
-subcategory 候选（按上市地）：hkex（港交所）/ sse（上交所）/ szse（深交所）/ bse（北交所）。
+subcategories 候选（按上市地）：hkex（港交所）/ sse（上交所）/ szse（深交所）/ bse（北交所）。
 
 === gd-ipo 标签体系（relevant 固定 true）===
-subcategory 候选：hkex（港交所）/ overseas（海外上市）/ foreign（外资/境外）。
+subcategories 候选：hkex（港交所）/ overseas（海外上市）/ foreign（外资/境外）。
 （注：实际渲染路由由三道闸区域分类器最终裁定，此处仅作 AI 初步标注）
 
 3. summary：40-70 字中文摘要，站在银行零售业务视角点出这条信息意味着什么、对分行有什么启示（tech/ipo 等参考区也站在"对分行有什么参考价值"角度写）。
 
 输出 STRICTLY 一个 JSON 对象（无 markdown 代码块）：
-{"items":[{"url":"<必须原样回填输入的url>","relevant":true,"subcategory":"...","summary":"..."}]}
+{"items":[{"url":"<必须原样回填输入的url>","relevant":true,"subcategories":["gz-credit","gz-wealth"],"summary":"..."}]}
 
 注意：summary 内的引号请用单引号或中文引号，禁止裸双引号。`;
+
+/** 解析多标签：兼容 AI 输出数组或旧单值 subcategory，去重、截断 ≤3。 */
+function parseSubcategories(x: {
+  subcategories?: unknown;
+  subcategory?: unknown;
+}): string[] {
+  const raw = Array.isArray(x.subcategories)
+    ? x.subcategories
+    : x.subcategory !== undefined
+      ? [x.subcategory]
+      : [];
+  const seen: string[] = [];
+  for (const v of raw) {
+    const s = String(v ?? "").trim();
+    if (s && !seen.includes(s)) seen.push(s);
+    if (seen.length >= 3) break;
+  }
+  return seen;
+}
 
 export async function classifyItemsWithLlm(
   items: Array<{ url: string; title: string; source?: string; category?: string }>,
@@ -75,7 +99,15 @@ export async function classifyItemsWithLlm(
     try {
       const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 }, { stage: "classify" });
       const cleaned = extractJson(text);
-      let parsed: { items?: Array<{ url?: string; relevant?: boolean; subcategory?: string; summary?: string }> };
+      let parsed: {
+        items?: Array<{
+          url?: string;
+          relevant?: boolean;
+          subcategory?: string;
+          subcategories?: unknown;
+          summary?: string;
+        }>;
+      };
       try {
         parsed = JSON.parse(cleaned);
       } catch {
@@ -86,7 +118,7 @@ export async function classifyItemsWithLlm(
         if (x.url) {
           result.set(x.url, {
             relevant: x.relevant === true,
-            subcategory: (x.subcategory || "").trim(),
+            subcategories: parseSubcategories(x),
             summary: (x.summary || "").trim(),
           });
         }

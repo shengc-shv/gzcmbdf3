@@ -49,14 +49,14 @@ test("商机S：上市辅导备案 → listing_pipeline（需地域命中 geo_lo
   const r = applyKeywordFilter(art("广州某企业启动上市辅导备案"), cfg);
   assert.equal(r.pass, true);
   assert.equal(r.bucket, "opportunity");
-  assert.equal(r.opportunity?.tracker, "listing_pipeline");
-  assert.equal(r.opportunity?.priority, "S");
+  assert.equal(r.opportunities?.[0]?.tracker, "listing_pipeline");
+  assert.equal(r.opportunities?.[0]?.priority, "S");
 });
 
 test("商机A：落户广州设立研发中心 → branch_expansion；北京被 exclude_if_in_title 排除", () => {
   const hit = applyKeywordFilter(art("某企业落户广州设立研发中心扩编500人"), cfg);
   assert.equal(hit.bucket, "opportunity");
-  assert.equal(hit.opportunity?.tracker, "branch_expansion");
+  assert.equal(hit.opportunities?.[0]?.tracker, "branch_expansion");
 
   const skip = applyKeywordFilter(art("某企业落户北京设立研发中心扩编500人"), cfg);
   assert.equal(skip.pass, false, "标题含北京应被排除");
@@ -66,6 +66,15 @@ test("周报池：私行维度命中 → weekly bucket", () => {
   const r = applyKeywordFilter(art("高净值客户家族信托需求增长"), cfg);
   assert.equal(r.bucket, "weekly");
   assert.ok(r.dimensions.includes("private_banking"));
+});
+
+test("多商机：一条信息同时命中 listing_pipeline 与 funding_milestones", () => {
+  const r = applyKeywordFilter(art("广州某企业启动上市辅导备案并完成B轮融资"), cfg);
+  assert.equal(r.bucket, "opportunity");
+  const trackers = (r.opportunities ?? []).map((o) => o.tracker);
+  assert.ok(trackers.includes("listing_pipeline"), "应收录上市进程商机");
+  assert.ok(trackers.includes("funding_milestones"), "应收录融资里程碑商机");
+  assert.equal(r.opportunities?.[0]?.priority, "S", "优先级 S 应排在最前");
 });
 
 test("硬过滤：与银行零售无关内容不通过", () => {

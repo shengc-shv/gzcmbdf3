@@ -485,11 +485,11 @@ async function main() {
       const tagged = a as ArticleInput & {
         filterBucket?: string;
         filterDimensions?: string[];
-        filterOpportunity?: FilterResult["opportunity"];
+        filterOpportunities?: FilterResult["opportunities"];
       };
       tagged.filterBucket = r.bucket;
       tagged.filterDimensions = r.dimensions;
-      if (r.opportunity) tagged.filterOpportunity = r.opportunity;
+      if (r.opportunities?.length) tagged.filterOpportunities = r.opportunities;
       if (r.bucket === "opportunity") opp++;
       if (r.bucket === "weekly") weekly++;
       keep.push(a);
@@ -573,7 +573,10 @@ async function main() {
         for (const a of classifyPending) {
           const r = cls.get(a.url);
           if (r) {
-            a.subcategory = r.subcategory || a.subcategory;
+            if (r.subcategories.length > 0) {
+              a.subcategories = r.subcategories;
+              a.subcategory = r.subcategories[0]; // 兼容旧消费方（主标签）
+            }
             a.relevant = r.relevant;
             if (r.summary && r.summary.length > 10 && !a.summary) a.summary = r.summary;
             tagged++;
@@ -637,6 +640,7 @@ async function main() {
       ...(prev ?? {}),
       summary: a.summary || prev?.summary,
       subcategory: a.subcategory ?? prev?.subcategory,
+      subcategories: a.subcategories ?? prev?.subcategories,
       relevant: a.relevant ?? prev?.relevant,
       updatedAt: nowIso,
     };

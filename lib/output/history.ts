@@ -34,6 +34,8 @@ export interface HistoryEntry {
   category: Category;
   /** 条目级子标签：AI/启发式逐条分类结果（覆盖注册表源级）；由分析脚本写入。 */
   subcategory?: string;
+  /** 条目级多标签（AI 分类，多值）：非空时渲染多归桶；subcategories 优先于 subcategory。 */
+  subcategories?: string[];
   excerpt?: string;
   /** ISO string (from article.publishedAt). */
   publishedAt?: string;
@@ -109,6 +111,7 @@ function entryToArticle(e: HistoryEntry, fetchedToday: boolean): ArticleInput {
     fetchedToday,
     // 条目级 AI/启发式分类透传
     ...(e.subcategory ? { subcategory: e.subcategory } : {}),
+    ...(e.subcategories ? { subcategories: e.subcategories } : {}),
     ...(e.ai_relevant !== undefined ? { relevant: e.ai_relevant } : {}),
   };
 }
@@ -141,6 +144,7 @@ export function buildRolling(
     const h = history[a.url];
     const merged = { ...a, fetchedToday: true };
     if (h?.subcategory && !merged.subcategory) merged.subcategory = h.subcategory;
+    if (h?.subcategories && !merged.subcategories) merged.subcategories = h.subcategories;
     // fix: HistoryEntry 的字段名是 ai_relevant（entryToArticle 映射为 relevant）
     if (h?.ai_relevant !== undefined && merged.relevant === undefined) {
       merged.relevant = h.ai_relevant;
@@ -172,6 +176,7 @@ export function saveHistory(
       category: a.category,
       // 条目级 AI 分类优先，注册表源级兜底
       subcategory: a.subcategory ?? subcatOf(a),
+      ...(a.subcategories ? { subcategories: a.subcategories } : {}),
       ...(a.relevant !== undefined ? { ai_relevant: a.relevant } : {}),
       excerpt: a.excerpt,
       publishedAt: a.publishedAt?.toISOString(),

@@ -92,6 +92,11 @@ export interface RawArticle {
    */
   subcategory?: string;
   /**
+   * 条目级多标签（AI 分类结果，多值：一条信息可影响多个业务线）。
+   * 非空时 groupRaw 按数组多归桶；与 subcategory 二选一（subcategories 优先）。
+   */
+  subcategories?: string[];
+  /**
    * 条目级相关性（AI/启发式判断）：false = 与银行业务无关，渲染时过滤。
    */
   relevant?: boolean;

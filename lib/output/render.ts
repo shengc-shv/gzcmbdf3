@@ -486,7 +486,15 @@ export function groupRaw(
         for (const [id, b] of buckets[cat].entries()) {
           // 条目级 subcategory 优先（AI/启发式分类），注册表源级兜底
           const matched = b.items.filter(
-            (a) => (a.subcategory ?? subcatOf.get(id)) === subId,
+            (a) => {
+            const subs =
+              a.subcategories && a.subcategories.length > 0
+                ? a.subcategories
+                : a.subcategory
+                  ? [a.subcategory]
+                  : [];
+            return subs.length > 0 ? subs.includes(subId) : subcatOf.get(id) === subId;
+          },
           );
           if (matched.length) {
             flat.push(...(perCap ? takeFirstToday(matched, perCap) : matched));
@@ -532,7 +540,15 @@ export function groupRaw(
       for (const [id, b] of buckets[cat].entries()) {
         // 条目级 subcategory 优先（AI/启发式分类），注册表源级兜底
         const items = b.items.filter(
-          (a) => (a.subcategory ?? subcatOf.get(id)) === subId,
+          (a) => {
+            const subs =
+              a.subcategories && a.subcategories.length > 0
+                ? a.subcategories
+                : a.subcategory
+                  ? [a.subcategory]
+                  : [];
+            return subs.length > 0 ? subs.includes(subId) : subcatOf.get(id) === subId;
+          },
         );
         if (items.length) {
           sources.push({ sourceId: id, sourceName: b.sourceName, items });

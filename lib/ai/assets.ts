@@ -14,6 +14,7 @@ import path from "node:path";
 export interface ArticleAiAsset {
   summary?: string;
   subcategory?: string;
+  subcategories?: string[];
   relevant?: boolean;
   updatedAt: string;
 }

@@ -83,16 +83,19 @@ export interface FilterResult {
   pass: boolean;
   /** 综合权重分（geo + 维度 + 商机加分），供排序/复审参考。 */
   score: number;
-  /** 命中的维度 key 列表。 */
+  /** 命中的维度 key 列表（多维度，multi_dimension: all_hit）。 */
   dimensions: string[];
-  /** 命中商机追踪器时填充。 */
-  opportunity?: {
+  /**
+   * 命中的商机追踪器列表（多值：一条信息可进多个商机池）。
+   * 按优先级 S > A > B 排序；无命中时为 undefined。
+   */
+  opportunities?: Array<{
     tracker: string;
     priority: "S" | "A" | "B";
     label: string;
     fields: string[];
     action: string;
-  };
+  }>;
   /** 命中的关键词/触发词（用于调试与测试断言）。 */
   matched: string[];
   bucket: FilterBucket;

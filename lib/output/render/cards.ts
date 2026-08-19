@@ -112,6 +112,26 @@ export function renderArticleHtml(a: ArticleInput, showSource = false): string {
     ? `<span class="tier-badge tier-${escapeHtml(a.tier)}" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:${TIER_COLORS[a.tier]}">${escapeHtml(SOURCE_TIER_LABELS[a.tier] ?? a.tier)}</span>`
     : "";
   const metaLine = [tierBadge, sourceLabel, time, alsoLine].filter(Boolean).join(" · ");
+  // 多维度影响 chips（AI 多标签）：展示该条还影响的其他业务线，避免多归桶造成困惑
+  const subTags =
+    (a.subcategories && a.subcategories.length > 0
+      ? a.subcategories
+      : a.subcategory
+        ? [a.subcategory]
+        : []
+    ).length > 0
+      ? `<p class="article-subs">${(a.subcategories && a.subcategories.length > 0
+          ? a.subcategories
+          : a.subcategory
+            ? [a.subcategory]
+            : []
+        )
+          .map(
+            (s) =>
+              `<span class="sub-chip">${escapeHtml(SUBCATEGORY_LABELS[s] ?? s)}</span>`,
+          )
+          .join("")}</p>`
+      : "";
   // News-style summary label for finance/politics, project-intro style for GH/tech.
   const newsy = a.category === "finance" || a.category === "politics";
   const summaryLabel = newsy ? STR.summaryLabelNews : STR.summaryLabelIntro;
@@ -119,6 +139,7 @@ export function renderArticleHtml(a: ArticleInput, showSource = false): string {
   <h3 class="article-title"><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
   ${meta ? `<p class="article-stats">${meta}</p>` : ""}
   ${metaLine ? `<p class="article-meta">${metaLine}</p>` : ""}
+  ${subTags}
   ${excerpt ? `<p class="article-excerpt">${excerpt}</p>` : ""}
   ${summary ? `<p class="article-summary"><span class="summary-label">${summaryLabel}</span> ${summary}</p>` : ""}
 </article>`;

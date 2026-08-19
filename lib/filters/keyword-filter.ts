@@ -132,37 +132,36 @@ export function applyKeywordFilter(
     }
   }
 
-  // 商机追踪（命中即商机池，极高优先级；按配置顺序取首个最高优先级）
-  let opportunity: FilterResult["opportunity"];
-  let oppScore = 0;
+  // 商机追踪（多值：命中即全部收录，按 S>A>B 排序；一条信息可进多个商机池）
+  const PRIORITY_ORDER: Record<"S" | "A" | "B", number> = { S: 0, A: 1, B: 2 };
+  const opportunities: NonNullable<FilterResult["opportunities"]> = [];
   for (const [key, t] of Object.entries(config.opportunity_tracker ?? {})) {
     if (!t || typeof t !== "object" || Array.isArray(t)) continue;
     if (t.priority !== "S" && t.priority !== "A" && t.priority !== "B") continue;
     const r = matchTracker(t, full, geo.hit);
     if (r.hit) {
-      opportunity = {
+      opportunities.push({
         tracker: key,
         priority: t.priority,
         label: t.label ?? key,
         fields: t.fields ?? [],
         action: t.action ?? "",
-      };
-      oppScore = 1000;
+      });
       matched.push(...r.matched);
-      break;
     }
   }
+  opportunities.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]);
 
   let bucket: FilterResult["bucket"] = "dropped";
-  if (opportunity) bucket = "opportunity";
+  if (opportunities.length > 0) bucket = "opportunity";
   else if (weekly) bucket = "weekly";
   else if (hitDims.length > 0) bucket = "daily";
 
   return {
     pass: bucket !== "dropped",
-    score: geo.score + dimScore + oppScore,
+    score: geo.score + dimScore + (opportunities.length > 0 ? 1000 : 0),
     dimensions: hitDims,
-    ...(opportunity ? { opportunity } : {}),
+    ...(opportunities.length > 0 ? { opportunities } : {}),
     matched,
     bucket,
   };
