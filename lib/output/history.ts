@@ -137,7 +137,10 @@ export function buildRolling(
     const h = history[a.url];
     const merged = { ...a, fetchedToday: true };
     if (h?.subcategory && !merged.subcategory) merged.subcategory = h.subcategory;
-    if (h?.relevant !== undefined && merged.relevant === undefined) merged.relevant = h.relevant;
+    // fix: HistoryEntry 的字段名是 ai_relevant（entryToArticle 映射为 relevant）
+    if (h?.ai_relevant !== undefined && merged.relevant === undefined) {
+      merged.relevant = h.ai_relevant;
+    }
     if (h?.summary && !merged.summary) merged.summary = h.summary;
     map.set(a.url, merged);
   }

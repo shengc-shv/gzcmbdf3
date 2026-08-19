@@ -1,6 +1,7 @@
 [
   {
     "id": "openai-news",
+    "tier": "T1.5",
     "name": "OpenAI News",
     "type": "rss",
     "url": "https://openai.com/news/rss.xml",
@@ -15,6 +16,7 @@
   },
   {
     "id": "deepmind-blog",
+    "tier": "T1.5",
     "name": "DeepMind Blog",
     "type": "rss",
     "url": "https://deepmind.google/blog/rss.xml",
@@ -28,6 +30,7 @@
   },
   {
     "id": "huggingface-blog",
+    "tier": "T1.5",
     "name": "Hugging Face Blog",
     "type": "rss",
     "url": "https://huggingface.co/blog/feed.xml",
@@ -41,6 +44,7 @@
   },
   {
     "id": "huggingface-papers",
+    "tier": "T1.5",
     "name": "HuggingFace Trending Papers",
     "type": "api",
     "url": "https://huggingface.co/api/daily_papers",
@@ -61,6 +65,7 @@
   },
   {
     "id": "tldr-ai",
+    "tier": "T2",
     "name": "TLDR AI",
     "type": "rss",
     "url": "https://tldr.tech/api/rss/ai",
@@ -74,6 +79,7 @@
   },
   {
     "id": "smol-ai-news",
+    "tier": "T2",
     "name": "Smol AI News",
     "type": "rss",
     "url": "https://news.smol.ai/rss.xml",
@@ -88,6 +94,7 @@
   },
   {
     "id": "latent-space",
+    "tier": "T2",
     "name": "Latent Space",
     "type": "rss",
     "url": "https://www.latent.space/feed",
@@ -101,6 +108,7 @@
   },
   {
     "id": "mit-tech-review-ai",
+    "tier": "T2",
     "name": "MIT Tech Review AI",
     "type": "rss",
     "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
@@ -114,6 +122,7 @@
   },
   {
     "id": "attentionvc-ai",
+    "tier": "T2",
     "name": "X 推文 (AttentionVC)",
     "type": "api",
     "url": "https://reply-vc-90459984647.us-central1.run.app/v1/articles/leaderboard?window=3d&category=ai&lang=en&limit=30",
@@ -127,6 +136,7 @@
   },
   {
     "id": "bloomberg-markets",
+    "tier": "T2",
     "name": "Bloomberg Markets",
     "type": "rss",
     "url": "https://feeds.bloomberg.com/markets/news.rss",
@@ -140,6 +150,7 @@
   },
   {
     "id": "wsj-markets",
+    "tier": "T2",
     "name": "WSJ Markets",
     "type": "rss",
     "url": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
@@ -154,6 +165,7 @@
   },
   {
     "id": "ft-companies",
+    "tier": "T2",
     "name": "Financial Times",
     "type": "rss",
     "url": "https://www.ft.com/companies?format=rss",
@@ -167,6 +179,7 @@
   },
   {
     "id": "bbc-business",
+    "tier": "T2",
     "name": "BBC Business",
     "type": "rss",
     "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
@@ -180,6 +193,7 @@
   },
   {
     "id": "economist-finance",
+    "tier": "T2",
     "name": "The Economist Finance",
     "type": "rss",
     "url": "https://www.economist.com/finance-and-economics/rss.xml",
@@ -193,6 +207,7 @@
   },
   {
     "id": "cnbc-top",
+    "tier": "T2",
     "name": "CNBC Top Stories",
     "type": "rss",
     "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
@@ -206,6 +221,7 @@
   },
   {
     "id": "yahoo-finance",
+    "tier": "T2",
     "name": "Yahoo Finance",
     "type": "rss",
     "url": "https://finance.yahoo.com/news/rssindex",
@@ -220,6 +236,7 @@
   },
   {
     "id": "investing-news",
+    "tier": "T2",
     "name": "Investing.com News",
     "type": "rss",
     "url": "https://www.investing.com/rss/news.rss",
@@ -234,6 +251,7 @@
   },
   {
     "id": "sina-finance",
+    "tier": "T2",
     "name": "新浪财经",
     "type": "scrape",
     "url": "https://finance.sina.com.cn/roll/index.shtml",
@@ -248,6 +266,7 @@
   },
   {
     "id": "cctv-finance",
+    "tier": "T1.5",
     "name": "央视财经",
     "type": "scrape",
     "url": "https://finance.cctv.com/",
@@ -262,6 +281,7 @@
   },
   {
     "id": "govcn-policy",
+    "tier": "T1",
     "name": "中国政府网·国务院政策",
     "type": "scrape",
     "url": "https://www.gov.cn/zhengce/",
@@ -276,6 +296,7 @@
   },
   {
     "id": "sina-money",
+    "tier": "T2",
     "name": "新浪财经·理财保险",
     "type": "scrape",
     "url": "https://finance.sina.com.cn/money/",
@@ -290,6 +311,7 @@
   },
   {
     "id": "21jingji-finance",
+    "tier": "T2",
     "name": "21世纪经济报道·金融",
     "type": "scrape",
     "url": "https://www.21jingji.com/channel/finance",
@@ -304,6 +326,7 @@
   },
   {
     "id": "cninfo",
+    "tier": "T1.5",
     "name": "巨潮A股披露",
     "type": "api",
     "url": "https://www.cninfo.com.cn/new/disclosure/stock",
@@ -318,6 +341,7 @@
   },
   {
     "id": "hkex-disclosure",
+    "tier": "T1.5",
     "name": "港交所披露易",
     "type": "rss",
     "url": "https://www.hkexnews.hk/rss/listedco.xml",
@@ -333,6 +357,7 @@
   },
   {
     "id": "gd-local-scraper",
+    "tier": "T1.5",
     "name": "广东本地企业动态",
     "type": "api",
     "url": "file://./data/crawled-articles.json",
@@ -345,6 +370,7 @@
   },
   {
     "id": "gd-szse",
+    "tier": "T1.5",
     "name": "深交所IPO公告(历史兼容)",
     "type": "api",
     "url": "file://./data/crawled-articles.json",
@@ -358,6 +384,7 @@
   },
   {
     "id": "gd-hkex",
+    "tier": "T1.5",
     "name": "港交所IPO公告(历史兼容)",
     "type": "api",
     "url": "file://./data/crawled-articles.json",
@@ -370,6 +397,7 @@
   },
   {
     "id": "gd-em-ipo",
+    "tier": "T2",
     "name": "东方财富IPO辅导(历史兼容)",
     "type": "api",
     "url": "file://./data/crawled-articles.json",
@@ -382,6 +410,7 @@
   },
   {
     "id": "simonwillison",
+    "tier": "T2",
     "name": "Simon Willison's Weblog",
     "type": "rss",
     "url": "https://simonwillison.net/atom/everything/",
@@ -396,6 +425,7 @@
   },
   {
     "id": "infoq-cn",
+    "tier": "T2",
     "name": "InfoQ 中国",
     "type": "rss",
     "url": "https://www.infoq.cn/feed",
@@ -411,6 +441,7 @@
   },
   {
     "id": "qbitai",
+    "tier": "T2",
     "name": "量子位",
     "type": "rss",
     "url": "https://www.qbitai.com/feed",
@@ -426,6 +457,7 @@
   },
   {
     "id": "sspai",
+    "tier": "T2",
     "name": "少数派",
     "type": "rss",
     "url": "https://sspai.com/feed",
@@ -441,6 +473,7 @@
   },
   {
     "id": "guardian-business",
+    "tier": "T2",
     "name": "The Guardian Business",
     "type": "rss",
     "url": "https://www.theguardian.com/business/rss",
@@ -455,6 +488,7 @@
   },
   {
     "id": "fed-press",
+    "tier": "T1",
     "name": "Federal Reserve Press Releases",
     "type": "rss",
     "url": "https://www.federalreserve.gov/feeds/press_all.xml",
@@ -469,6 +503,7 @@
   },
   {
     "id": "ftchinese",
+    "tier": "T2",
     "name": "FT中文网",
     "type": "rss",
     "url": "https://www.ftchinese.com/rss/news",
@@ -483,6 +518,7 @@
   },
   {
     "id": "crunchbase-news",
+    "tier": "T2",
     "name": "Crunchbase News",
     "type": "rss",
     "url": "https://news.crunchbase.com/feed/",
@@ -503,6 +539,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "爬虫兼容占位源：上交所/北交所IPO公告由 scripts/crawlers 产出（sourceId=gd-sse/gd-bse），此条目仅用于 registry 识别，不直接抓取",
     "id": "gd-sse",
+    "tier": "T1.5",
     "name": "上交所IPO公告(历史兼容)",
     "subcategory": "sse"
   },
@@ -513,6 +550,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "爬虫兼容占位源：上交所/北交所IPO公告由 scripts/crawlers 产出（sourceId=gd-sse/gd-bse），此条目仅用于 registry 识别，不直接抓取",
     "id": "gd-bse",
+    "tier": "T1.5",
     "name": "北交所IPO公告(历史兼容)",
     "subcategory": "bse"
   },
@@ -523,6 +561,7 @@
     "url": "file://./data/crawled-gz.json",
     "notes": "广州商机爬虫兼容占位源：由 scripts/crawlers/run-gz.mjs 产出（sourceId=gz-stats/gz-nansha），此条目仅用于 registry 识别（subcatOf 路由）与 knownSourceIds 防丢弃，不直接抓取",
     "id": "gz-stats",
+    "tier": "T1",
     "name": "广州市统计局(爬虫产物)",
     "subcategory": "gz-customer"
   },
@@ -533,6 +572,7 @@
     "url": "file://./data/crawled-gz.json",
     "notes": "广州商机爬虫兼容占位源：由 scripts/crawlers/run-gz.mjs 产出（sourceId=gz-gov），已从广州商机迁入宏观政策·广州政策子标签",
     "id": "gz-gov",
+    "tier": "T1",
     "name": "广州市政府(爬虫产物)",
     "subcategory": "gz-policy"
   },
@@ -543,6 +583,7 @@
     "url": "file://./data/crawled-gz.json",
     "notes": "广州商机爬虫兼容占位源：由 scripts/crawlers/run-gz.mjs 产出，仅用于 registry 识别",
     "id": "gz-nansha",
+    "tier": "T1",
     "name": "广州南沙区政府(爬虫产物)",
     "subcategory": "gz-private"
   },
@@ -553,6 +594,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "广州辖区 IPO 兼容占位源：daily 分流将 region=gz 的交易所公告 sourceId 改写为 gz-* 前缀（gd-sse→gz-sse 等），供 subcatOf 路由到广州商机·企业融资",
     "id": "gz-sse",
+    "tier": "T1.5",
     "name": "广州辖区上交所IPO(分流改写)",
     "subcategory": "gz-ipo"
   },
@@ -563,6 +605,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "广州辖区 IPO 兼容占位源：见 gz-sse",
     "id": "gz-szse",
+    "tier": "T1.5",
     "name": "广州辖区深交所IPO(分流改写)",
     "subcategory": "gz-ipo"
   },
@@ -573,6 +616,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "广州辖区 IPO 兼容占位源：见 gz-sse",
     "id": "gz-bse",
+    "tier": "T1.5",
     "name": "广州辖区北交所IPO(分流改写)",
     "subcategory": "gz-ipo"
   },
@@ -583,6 +627,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "广州辖区 IPO 兼容占位源：见 gz-sse",
     "id": "gz-hkex",
+    "tier": "T1.5",
     "name": "广州辖区港交所(分流改写)",
     "subcategory": "gz-ipo"
   },
@@ -593,6 +638,7 @@
     "url": "file://./data/crawled-articles.json",
     "notes": "广州辖区 IPO 兼容占位源：见 gz-sse",
     "id": "gz-em-ipo",
+    "tier": "T2",
     "name": "广州辖区东财辅导(分流改写)",
     "subcategory": "gz-ipo"
   }

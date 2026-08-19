@@ -1,0 +1,128 @@
+/**
+ * article-history（lib/output/history.ts）边界测试：
+ * 7 天窗口边界 / 空数组 / 重复 URL / 时间字段优先级 / buildRolling 行为。
+ */
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import {
+  pruneHistory,
+  buildRolling,
+  type HistoryEntry,
+  type HistoryStore,
+} from "../lib/output/history";
+
+const DAY = 86_400_000;
+const iso = (ms: number) => new Date(ms).toISOString();
+
+function mk(url: string, over: Partial<HistoryEntry> = {}): HistoryEntry {
+  return {
+    title: url,
+    url,
+    sourceId: "test-src",
+    source: "测试源",
+    category: "finance",
+    firstSeenAt: iso(Date.now()),
+    lastSeenAt: iso(Date.now()),
+    ...over,
+  };
+}
+
+test("pruneHistory: 7天边界——窗口内保留、窗口外剔除", () => {
+  const now = Date.now();
+  const store: HistoryStore = {
+    fresh: mk("fresh", { publishedAt: iso(now - 6 * DAY) }), // 6天 → 保留
+    boundary: mk("boundary", { publishedAt: iso(now - 7 * DAY + 60_000) }), // 7天-1min → 保留
+    stale: mk("stale", { publishedAt: iso(now - 8 * DAY) }), // 8天 → 剔除
+  };
+  const out = pruneHistory(store);
+  assert.ok(out.fresh, "6天前应保留");
+  assert.ok(out.boundary, "7天边界内应保留");
+  assert.ok(!out.stale, "8天前应剔除");
+});
+
+test("pruneHistory: 无 publishedAt 回退 lastSeenAt", () => {
+  const now = Date.now();
+  const out = pruneHistory({
+    "seen-old": mk("seen-old", {
+      publishedAt: undefined,
+      lastSeenAt: iso(now - 10 * DAY),
+    }),
+  });
+  assert.deepEqual(out, {}, "lastSeenAt 超窗口应剔除");
+});
+
+test("pruneHistory: 空输入返回空对象，不抛错", () => {
+  assert.deepEqual(pruneHistory({}), {});
+});
+
+test("buildRolling: 空历史 + 今日 → 仅今日（fetchedToday=true）", () => {
+  const today = [
+    {
+      url: "a",
+      title: "A",
+      sourceId: "s",
+      source: "S",
+      category: "finance" as const,
+      excerpt: "",
+      publishedAt: new Date(),
+    },
+  ];
+  const out = buildRolling(today, {});
+  assert.equal(out.length, 1);
+  assert.equal(out[0].fetchedToday, true);
+});
+
+test("buildRolling: 今日文章 publishedAt 超7天窗口 → 丢弃", () => {
+  const today = [
+    {
+      url: "old",
+      title: "O",
+      sourceId: "s",
+      source: "S",
+      category: "finance" as const,
+      excerpt: "",
+      publishedAt: new Date(Date.now() - 9 * DAY),
+    },
+  ];
+  assert.deepEqual(buildRolling(today, {}), []);
+});
+
+test("buildRolling: URL 冲突今日胜出，并继承历史 AI 分析（subcategory/relevant/summary）", () => {
+  const now = Date.now();
+  const h: HistoryStore = {
+    dup: mk("dup", {
+      subcategory: "gz-credit",
+      ai_relevant: true,
+      summary: "历史AI摘要",
+      publishedAt: iso(now - DAY),
+    }),
+  };
+  const today = [
+    {
+      url: "dup",
+      title: "今日新标题",
+      sourceId: "s",
+      source: "S",
+      category: "finance" as const,
+      excerpt: "",
+      publishedAt: new Date(now - 30 * 60_000),
+    },
+  ];
+  const out = buildRolling(today, h);
+  assert.equal(out.length, 1);
+  assert.equal(out[0].title, "今日新标题", "今日标题胜出");
+  assert.equal(out[0].subcategory, "gz-credit", "继承历史 subcategory");
+  assert.equal(out[0].relevant, true, "继承历史 relevant");
+  assert.equal(out[0].summary, "历史AI摘要", "今日无摘要时继承历史摘要");
+});
+
+test("buildRolling: 历史中重复 URL 只保留一条", () => {
+  const now = Date.now();
+  const h: HistoryStore = {
+    dup1: mk("dup", { publishedAt: iso(now - 2 * DAY), title: "旧版" }),
+    dup2: mk("dup", { publishedAt: iso(now - 1 * DAY), title: "新版" }),
+  };
+  const out = buildRolling([], h);
+  const dups = out.filter((a) => a.url === "dup");
+  assert.equal(dups.length, 1, "重复 URL 在滚动列表应去重");
+});

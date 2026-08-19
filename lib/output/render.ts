@@ -8,6 +8,7 @@ import type { WatchlistPick } from "../ai/trading-commentary";
 import { REPORT_LOCALE,loadAllSources  } from "../sources/registry";
 import { getReportTz } from "../utils";
 import type { Category, SourceDef } from "../sources/types";
+import { SOURCE_TIER_LABELS, type SourceTier } from "../sources/tiers";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { V2EX_OFF_TOPIC_RE } from "../sources/v2ex";
@@ -820,7 +821,16 @@ function renderArticleHtml(a: ArticleInput, showSource = false): string {
     alsoFrom.length > 0
       ? `${escapeHtml("多家来源")}：${alsoFrom.map(escapeHtml).join("、")}`
       : "";
-  const metaLine = [sourceLabel, time, alsoLine].filter(Boolean).join(" · ");
+  // 源等级差异化角标（T6）：T1 官方一手（红）/ T1.5 准官方·机构一手（琥珀）/ T2 媒体·智库（灰）
+  const TIER_COLORS: Record<SourceTier, string> = {
+    T1: "#c0392b",
+    "T1.5": "#b9770e",
+    T2: "#6b7280",
+  };
+  const tierBadge = a.tier
+    ? `<span class="tier-badge tier-${escapeHtml(a.tier)}" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:${TIER_COLORS[a.tier]}">${escapeHtml(SOURCE_TIER_LABELS[a.tier] ?? a.tier)}</span>`
+    : "";
+  const metaLine = [tierBadge, sourceLabel, time, alsoLine].filter(Boolean).join(" · ");
   // News-style summary label for finance/politics, project-intro style for GH/tech.
   const newsy = a.category === "finance" || a.category === "politics";
   const summaryLabel = newsy ? STR.summaryLabelNews : STR.summaryLabelIntro;

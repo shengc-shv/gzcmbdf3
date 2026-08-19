@@ -1,5 +1,6 @@
 export type Category = "tech" | "finance" | "politics" | "gd-ipo" | "ipo" | "gz";
 export type SourceType = "rss" | "api" | "scrape";
+import type { SourceTier } from "./tiers";
 
 export interface SourceDef {
   id: string;
@@ -46,6 +47,12 @@ export interface SourceDef {
    * Omit or leave empty to return all items unfiltered.
    */
   keywords?: string[];
+  /**
+   * 源等级（T6）：T1=官方一手（政府/央行/监管）、T1.5=准官方·机构一手（交易所/
+   * 行业协会/官方背景机构）、T2=媒体·智库。采集层声明，归一化层透传进 RawArticle，
+   * 渲染层差异化标识。缺省按 T2 处理。
+   */
+  tier?: SourceTier;
 }
 
 export interface RawArticle {
@@ -89,4 +96,8 @@ export interface RawArticle {
    * Never set by fetchers.
    */
   alsoFrom?: string[];
+  /**
+   * 源等级（T6）：由采集层声明、归一化层透传。渲染层据此差异化标识来源权威性。
+   */
+  tier?: SourceTier;
 }
