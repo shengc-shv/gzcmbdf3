@@ -98,3 +98,18 @@ export async function generateExecutiveSummary(
     return null;
   }
 }
+
+/**
+ * 解析当日执行摘要来源（2026-08-19 修正 SKIP_AI 行为）。
+ * - SKIP_AI：仅复用持久化资产（data/ai-assets 的 daily:<date>.executive），绝不调 LLM，与 README 一致。
+ * - 正常：优先复用持久化，缺失才回退 generate。
+ * 纯函数，便于单测；daily.ts 调用。
+ */
+export async function selectExecutiveSummary(opts: {
+  skipAi: boolean;
+  persisted: ExecutiveSummary | undefined;
+  generate: () => Promise<ExecutiveSummary | null>;
+}): Promise<ExecutiveSummary | null> {
+  if (opts.skipAi) return opts.persisted ?? null;
+  return opts.persisted ?? (await opts.generate());
+}

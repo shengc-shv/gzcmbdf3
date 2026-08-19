@@ -883,6 +883,17 @@ ${THEME_CSS}
       });
     });
   });
+  // 执行摘要 · 商机提示折叠
+  document.querySelectorAll('.insight-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var body = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!body) return;
+      var open = body.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var label = btn.querySelector('.insight-toggle-label');
+      if (label) label.textContent = open ? (btn.dataset.hide || label.textContent) : (btn.dataset.show || label.textContent);
+    });
+  });
 </script>
 </body>
 </html>`;

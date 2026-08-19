@@ -60,6 +60,8 @@ const TEXTS_ZH = {
   mdTodayKeywords: "今日关键词",
   mdImportance: "重要度",
   archiveLink: "← 历史归档",
+  execInsightsShow: "条商机洞察",
+  execInsightsHide: "收起商机洞察",
 };
 
 
@@ -117,6 +119,8 @@ const TEXTS_EN: typeof TEXTS_ZH = {
   mdTodayKeywords: "Keywords",
   mdImportance: "Importance",
   archiveLink: "← Archive",
+  execInsightsShow: "business insights",
+  execInsightsHide: "Hide insights",
 };
 
 

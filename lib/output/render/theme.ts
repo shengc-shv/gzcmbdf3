@@ -24,6 +24,7 @@ export const THEME_CSS = `
     --link: #2f4cdd;
     --accent: #1a1a1f;
     --accent-fg: #ffffff;
+    --accent-cmb: #e60012;
     --rank-high-bg: #fde8e8;
     --rank-high-fg: #c01c1c;
     --rank-mid-bg: #fdf0d9;
@@ -56,8 +57,9 @@ export const THEME_CSS = `
       --card: #15191f;
       --card-alt: #1b2027;
       --link: #8aa0ff;
-      --accent: #f3f4f6;
-      --accent-fg: #0b0d11;
+    --accent: #f3f4f6;
+    --accent-fg: #0b0d11;
+    --accent-cmb: #ff5a5f;
       --rank-high-bg: rgba(239, 68, 68, 0.16);
       --rank-high-fg: #fca5a5;
       --rank-mid-bg: rgba(245, 158, 11, 0.16);
@@ -177,36 +179,72 @@ export const THEME_CSS = `
     color: var(--fg-soft);
   }
 
-  /* ===== 执行摘要板块（今日必读 + 商机提示）===== */
+  /* ===== 执行摘要板块（今日必读 + 商机提示，移动端优先折叠）===== */
   .exec-summary {
-    margin: 1.1rem 0 0.6rem;
-    border: 1px solid color-mix(in srgb, var(--c-finance) 30%, transparent);
-    border-left: 4px solid var(--c-finance);
+    margin: 1rem 0 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    border-left: 4px solid var(--accent-cmb);
     border-radius: 14px;
-    padding: 0.9rem 1.1rem;
-    background: color-mix(in srgb, var(--c-finance) 6%, var(--bg));
-    box-shadow: var(--shadow-1);
+    padding: 0.85rem 1rem;
+    background: color-mix(in srgb, var(--accent-cmb) 5%, var(--bg));
+    box-shadow: var(--shadow-md);
   }
-  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .exec-title { margin: 0; font-size: 1.05rem; color: var(--fg); letter-spacing: 0.02em; }
-  .exec-sub { font-size: 0.75rem; color: var(--muted); }
-  .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-  @media (max-width: 760px) { .exec-grid { grid-template-columns: 1fr; } }
+  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.55rem; }
+  .exec-title { margin: 0; font-size: 1.02rem; color: var(--fg); letter-spacing: 0.02em; }
+  .exec-sub { font-size: 0.72rem; color: var(--muted); }
   .exec-col-title { margin: 0 0 0.45rem; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-  .must-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
-  .must-item { display: flex; gap: 0.5rem; align-items: baseline; }
-  .must-index {
-    flex: none; width: 1.15rem; height: 1.15rem; border-radius: 50%;
-    background: color-mix(in srgb, var(--c-finance) 18%, transparent);
-    color: var(--c-finance); font-size: 0.72rem; font-weight: 700;
-    display: inline-flex; align-items: center; justify-content: center;
+
+  /* 今日必读：横向滑动卡片（Apple News 风），桌面转为 5 列网格 */
+  .exec-must { margin-bottom: 0.5rem; }
+  .must-scroller {
+    list-style: none; margin: 0; padding: 0 0 0.4rem;
+    display: flex; gap: 0.6rem; overflow-x: auto;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .must-body { display: flex; flex-direction: column; }
-  .must-body strong { font-size: 0.86rem; color: var(--fg); font-weight: 600; }
-  .must-why { font-size: 0.76rem; color: var(--fg-soft); line-height: 1.5; }
+  .must-scroller::-webkit-scrollbar { display: none; }
+  .must-card {
+    flex: 0 0 auto; width: 80%; max-width: 16.5rem; scroll-snap-align: start;
+    display: flex; gap: 0.55rem; align-items: flex-start;
+    border: 1px solid var(--rule); border-radius: 12px;
+    padding: 0.6rem 0.75rem; background: var(--bg-elevated);
+    box-shadow: var(--shadow-sm);
+  }
+  .must-index {
+    flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%;
+    background: var(--accent-cmb); color: #fff; font-size: 0.72rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 0.05rem;
+  }
+  .must-body { display: flex; flex-direction: column; min-width: 0; }
+  .must-body strong { font-size: 0.85rem; color: var(--fg); font-weight: 600; line-height: 1.35; }
+  .must-why {
+    font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-card { width: auto; max-width: none; }
+  }
+
+  /* 商机提示：默认折叠，点击展开 */
+  .exec-insights { margin-top: 0.2rem; }
+  .insight-toggle {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 0.3rem;
+    width: 100%; box-sizing: border-box;
+    background: color-mix(in srgb, var(--accent-cmb) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    color: var(--accent-cmb); font-weight: 600; font-size: 0.84rem;
+    border-radius: 10px; padding: 0.55rem 0.8rem; cursor: pointer;
+    font-family: inherit;
+  }
+  .insight-caret { transition: transform 0.2s ease; font-size: 0.8rem; }
+  .insight-toggle[aria-expanded="true"] .insight-caret { transform: rotate(180deg); }
+  .insight-collapse { display: none; margin-top: 0.6rem; }
+  .insight-collapse.is-open { display: block; }
+
   .insight-grid { display: flex; flex-direction: column; gap: 0.5rem; }
   .insight-card {
-    border: 1px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem;
+    border: 1px solid var(--rule); border-radius: 10px; padding: 0.55rem 0.7rem;
     background: var(--bg);
   }
   .insight-topic { margin: 0 0 0.3rem; font-size: 0.85rem; color: var(--c-finance); font-weight: 700; }

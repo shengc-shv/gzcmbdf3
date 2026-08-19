@@ -62,7 +62,7 @@ import { classifyItemsWithLlm } from "../lib/ai/item-classifier";
 import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";
 import { fetchCryptoGlobal } from "../lib/trading/coingecko";
 import { generateTradingCommentary } from "../lib/ai/trading-commentary";
-import { generateExecutiveSummary } from "../lib/ai/executive-summary";
+import { generateExecutiveSummary, selectExecutiveSummary } from "../lib/ai/executive-summary";
 import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
 import {
@@ -668,19 +668,24 @@ async function main() {
         .flatMap((sg) => sg.sources.flatMap((s) => s.items))
         .slice(0, 12)
         .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory }));
-    const execSummary = SKIP_AI
-      ? null
-      : (assetDaily(aiAssets, date)?.executive as ExecutiveSummary | undefined) ??
-        (await generateExecutiveSummary({
+    // SKIP_AI 模式下复用持久化执行摘要（data/ai-assets 的 daily:<date>.executive），
+    // 与 README「SKIP_AI 仅用 AI 资产渲染」一致；正常模式优先复用、缺失才调 LLM。
+    const persistedExec = assetDaily(aiAssets, date)?.executive as ExecutiveSummary | undefined;
+    const execSummary = await selectExecutiveSummary({
+      skipAi: SKIP_AI,
+      persisted: persistedExec,
+      generate: () =>
+        generateExecutiveSummary({
           date,
           finance: flat("finance"),
           gz: flat("gz"),
           marketOverview: trading?.market_overview,
-        }));
+        }),
+    });
     if (execSummary) {
       report.executive_summary = execSummary;
       console.log(
-        `[daily] 执行摘要已生成: 必读 ${execSummary.must_read.length} 条 / 商机提示 ${execSummary.insights.length} 条`,
+        `[daily] 执行摘要${SKIP_AI ? "已复用(持久化)" : "已生成"}: 必读 ${execSummary.must_read.length} 条 / 商机提示 ${execSummary.insights.length} 条`,
       );
     } else if (!SKIP_AI) {
       console.warn("[daily] 执行摘要生成失败（LLM 不可用或解析失败），跳过该板块");

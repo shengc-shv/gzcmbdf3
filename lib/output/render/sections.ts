@@ -152,7 +152,7 @@ export function renderCryptoWidgets(t: TradingSection): string {
 export function renderExecutiveSummary(exec: ExecutiveSummary): string {
   const must = exec.must_read
     .map(
-      (m, i) => `<li class="must-item">
+      (m, i) => `<li class="must-card">
         <span class="must-index">${i + 1}</span>
         <div class="must-body"><strong>${escapeHtml(m.title)}</strong><span class="must-why">${escapeHtml(m.why)}</span></div>
       </li>`,
@@ -167,17 +167,23 @@ export function renderExecutiveSummary(exec: ExecutiveSummary): string {
       </div>`,
     )
     .join("");
+  const n = exec.insights.length;
+  const showLabel = `查看 ${n} ${STR.execInsightsShow}`;
   return `<section class="exec-summary">
     <div class="exec-head">
       <h2 class="exec-title">执行摘要</h2>
       <span class="exec-sub">今日必读 · 商机提示（AI 生成）</span>
     </div>
-    <div class="exec-grid">
-      <div class="exec-col must-col">
-        <h3 class="exec-col-title">📌 今日必读</h3>
-        <ol class="must-list">${must}</ol>
-      </div>
-      <div class="exec-col insight-col">
+    <div class="exec-must">
+      <h3 class="exec-col-title">📌 今日必读</h3>
+      <ul class="must-scroller">${must}</ul>
+    </div>
+    <div class="exec-insights">
+      <button class="insight-toggle" type="button" aria-expanded="false" aria-controls="exec-insights-body" data-show="${showLabel}" data-hide="${STR.execInsightsHide}">
+        <span class="insight-toggle-label">${showLabel}</span>
+        <span class="insight-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="insight-collapse" id="exec-insights-body">
         <h3 class="exec-col-title">💡 商机提示</h3>
         <div class="insight-grid">${insights}</div>
       </div>
