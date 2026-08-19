@@ -12,6 +12,13 @@
 /daily_reports/
 /logs/
 
+# runtime data (M2: unified history / AI assets ledger / AI telemetry)
+# article-history*.json & gd-issuers.json stay committed; these are regenerated per run
+/data/fetched-articles.json
+/data/history/
+/data/ai-assets/
+/data/metrics/
+
 # Claude Code local state (skills + commands ARE committed; cache/state aren't)
 /.claude/state/
 /.claude/cache/

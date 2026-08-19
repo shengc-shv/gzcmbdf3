@@ -52,6 +52,7 @@ npm run build-site           # 生成静态站（index.html / archive.html）
 | `npm run sources` / `sources:check` | 查看/校验数据源配置 |
 | `npm run quota-report` | AI 调用量与花费估算（基于 `data/metrics/`） |
 | `npm run build-site` / `deploy` / `open` | 静态站构建 / 发布 / 本地打开 |
+| `npm run cleanup:legacy` | 清理旧发布目录过期报告（保留 7 天，`--apply` 才真删） |
 | `npm test` | node:test 测试套件 |
 
 ## 数据源与等级

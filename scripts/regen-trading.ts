@@ -10,8 +10,7 @@ import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";
 import { fetchCryptoGlobal } from "../lib/trading/coingecko";
 import { analyzeWatchlist } from "../lib/trading/runner";
 import { todayKey } from "../lib/utils";
-
-const OUTPUT_DIR = "daily_reports";
+import { resolveDateDir } from "../lib/output/paths";
 
 /**
  * Re-run ONLY the trading section (Yahoo + F&G + CoinGecko + Sonnet
@@ -31,7 +30,7 @@ async function main() {
   validateBackendCredentials();
 
   const date = process.argv[2] || todayKey();
-  const base = path.join(OUTPUT_DIR, date, date);
+  const base = path.join(resolveDateDir(date), date);
   const jsonPath = `${base}.json`;
   if (!fs.existsSync(jsonPath)) {
     throw new Error(`Report JSON not found: ${jsonPath}`);

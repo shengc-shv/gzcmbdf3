@@ -8,6 +8,13 @@ import { fetchSource } from "../lib/sources/dispatch";
 import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
 import { loadHistory, buildRolling, saveHistory } from "../lib/output/history";
+import { applyKeywordFilter } from "../lib/filters/keyword-filter";
+import {
+  keywordFilterEnabled,
+  keywordFilterFallbackEnabled,
+  loadKeywordConfig,
+} from "../lib/filters/config";
+import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import { todayKey } from "../lib/utils";
 
 const OUTPUT_DIR = "daily_reports";
@@ -59,7 +66,7 @@ async function main() {
   console.log("🚀 Dry-run 模式（无 AI）开始...\n");
 
   const date = todayKey();
-  const articles: ArticleInput[] = [];
+  let articles: ArticleInput[] = [];
 
   // ----- 加载本地爬虫数据（广东IPO）-----
   const dataPath = path.resolve(process.cwd(), 'data/crawled-articles.json');
@@ -146,6 +153,47 @@ async function main() {
     }
   } else {
     console.log(`  ℹ️ OFFLINE 模式：跳过全部网络抓取，仅用本地数据文件 + 历史缓存渲染`);
+  }
+
+  // —— 关键词漏斗（与 daily.ts 一致，边界③最前端，零成本）：银行零售关键词体系硬过滤 ——
+  // 仅真实抓取路径生效；OFFLINE 纯历史渲染不过漏斗（历史条目已由 AI 打标，不应再粗筛）。
+  if (!isOffline && keywordFilterEnabled()) {
+    const kwConfig = loadKeywordConfig();
+    const before = articles.length;
+    const keep: ArticleInput[] = [];
+    let opp = 0;
+    let weekly = 0;
+    for (const a of articles) {
+      const input: RawArticleInput = {
+        title: a.title,
+        content: a.excerpt,
+        sourceId: a.sourceId,
+        url: a.url,
+      };
+      const r = applyKeywordFilter(input, kwConfig);
+      if (!r.pass) continue;
+      const tagged = a as ArticleInput & {
+        filterBucket?: string;
+        filterDimensions?: string[];
+        filterOpportunities?: FilterResult["opportunities"];
+      };
+      tagged.filterBucket = r.bucket;
+      tagged.filterDimensions = r.dimensions;
+      if (r.opportunities?.length) tagged.filterOpportunities = r.opportunities;
+      if (r.bucket === "opportunity") opp++;
+      if (r.bucket === "weekly") weekly++;
+      keep.push(a);
+    }
+    if (keep.length === 0 && keywordFilterFallbackEnabled()) {
+      console.warn(
+        `[dry-run] ⚠️ 关键词漏斗将全部 ${before} 条过滤为 0（疑似误杀/词表过严）— 回退全量保底，避免空报告`,
+      );
+    } else {
+      articles = keep;
+      console.log(
+        `[dry-run] 🔻 关键词漏斗: ${before} → ${articles.length} 条（商机 ${opp} / 周报 ${weekly}，其余日报池）`,
+      );
+    }
   }
 
   // 合并滚动 7 天历史（窗口按信息发生时间 publishedAt 计）：今日抓取 + 历史缓存（按 fetchedToday 打标），

@@ -12,8 +12,7 @@ import {
   isSportsArticle,
 } from "../lib/output/render";
 import { todayKey } from "../lib/utils";
-
-const OUTPUT_DIR = "daily_reports";
+import { resolveDateDir } from "../lib/output/paths";
 
 /**
  * Top up missing summary fields on the sidecar without re-running the
@@ -50,7 +49,7 @@ async function main() {
     throw new Error(`Unknown category: ${category}`);
   }
 
-  const sidecarPath = path.join(OUTPUT_DIR, date, `${date}-articles.json`);
+  const sidecarPath = path.join(resolveDateDir(date), `${date}-articles.json`);
   if (!fs.existsSync(sidecarPath)) {
     throw new Error(`Sidecar not found: ${sidecarPath}`);
   }

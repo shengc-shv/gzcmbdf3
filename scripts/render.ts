@@ -7,9 +7,8 @@ import { sources, loadAllSources } from "../lib/sources/registry";
 import { fetchSource } from "../lib/sources/dispatch";
 import type { ArticleInput } from "../lib/types";
 import { groupRaw, renderHtml } from "../lib/output/render";
+import { resolveDateDir } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
-
-const OUTPUT_DIR = "daily_reports";
 
 // Build a report skeleton (no AI) for the re-render pass: the LLM digest
 // fields are left empty and the raw articles are rendered straight from the
@@ -125,8 +124,8 @@ async function main() {
 
   const html = renderHtml(report, raw, date);
 
-  // 写入文件
-  const dateDir = path.join(OUTPUT_DIR, date);
+  // 写入文件（读路径解析：优先 data/history/reports，回退 daily_reports）
+  const dateDir = resolveDateDir(date);
   fs.mkdirSync(dateDir, { recursive: true });
   const base = path.join(dateDir, date);
   fs.writeFileSync(`${base}.html`, html, "utf8");
