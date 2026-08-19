@@ -106,6 +106,8 @@ export function capByThemeAndTier<T extends ArticleInput>(
 ): T[] {
   // 快路径仅对 1 条成立：2 条同主题也可能同 tier（不合规），必须走聚类检查。
   if (items.length <= 1) return items;
+  const tierRank = (t?: SourceTier): number =>
+    t === "T1" ? 3 : t === "T1.5" ? 2 : t === "T2" ? 1 : 0;
   const kept: T[] = [];
   for (const a of items) {
     const aKeys = themeKeysOf(a.title, sub);
@@ -120,10 +122,22 @@ export function capByThemeAndTier<T extends ArticleInput>(
       kept.push(a);
       continue;
     }
-    // 同簇：同一 tier 只留 1 条；簇已满（maxPerTheme 条不同 tier）则丢弃
+    // 同簇：同一 tier 只留 1 条
     if (cluster.some((k) => k.tier === a.tier)) continue;
-    if (cluster.length >= maxPerTheme) continue;
-    kept.push(a);
+    // 簇未满 → 加入
+    if (cluster.length < maxPerTheme) {
+      kept.push(a);
+      continue;
+    }
+    // 簇已满：tier 高的优先（T1 > T1.5 > T2），用更高 tier 的新条目替换簇内最低者
+    // （避免时间优先把 T1 官方原文挤掉、只留 T2 媒体转载）。
+    const lowest = cluster.reduce(
+      (m, k) => (tierRank(k.tier) < tierRank(m.tier) ? k : m),
+      cluster[0]!,
+    );
+    if (tierRank(a.tier) > tierRank(lowest.tier)) {
+      kept.splice(kept.indexOf(lowest), 1, a);
+    }
   }
   return kept;
 }
@@ -322,6 +336,12 @@ export function groupRaw(
   // sidecar, that file still holds the disabled source's fetched data; we must
   // not silently drop it. (We deliberately do NOT filter by `enabled !== false`.)
   const knownSourceIds = new Set(loadAllSources().map((s) => s.id));
+  // 源等级 tier 补齐（2026-08-19）：历史库条目（buildRolling 历史侧）不带 tier →
+  // 标签内主题去重 capByThemeAndTier 会把不同权威性的来源（国务院 T1 / 央视 T1.5 /
+  // 媒体 T2）误判为同 tier，只留 1 条且挤掉 T1 原文。此处按 registry 统一补齐，
+  // 覆盖 daily/dry-run/render 所有入口（daily.ts 抓取路径已补，重复补无害）。
+  const tierBySource = new Map<string, SourceTier | undefined>();
+  for (const s of registry) tierBySource.set(s.id, s.tier);
 
   // console.log('[groupRaw] enabledIds 包含的 sourceId 列表:', Array.from(enabledIds));
   // console.log('[groupRaw] gd-local-scraper 是否在 enabledIds 中:', enabledIds.has('gd-local-scraper'));
@@ -362,6 +382,10 @@ export function groupRaw(
 
   for (const a of articles) {
     if (!knownSourceIds.has(a.sourceId)) continue;
+    // 历史条目补 tier（见上注释）：就地补齐，供主题去重与角标展示
+    if (a.tier === undefined && tierBySource.has(a.sourceId)) {
+      a.tier = tierBySource.get(a.sourceId);
+    }
     // 条目级相关性过滤：AI/启发式判断「与银行业务无关」的条目不进任何面板。
     // 仅对 广州商机(gz) 与 宏观政策(finance) 生效——这两个分类定位是"商机/政策"，
     // 需要精准过滤（历史建筑/招聘/娱乐等）；tech/ipo/politics 参考区不做银行相关

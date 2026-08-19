@@ -244,3 +244,45 @@ test("groupRaw: 无主题词的条目不误删", () => {
   const urls = cnPolicy!.sources.flatMap((s) => s.items).map((a) => a.url);
   assert.ok(urls.includes("https://x/f1") && urls.includes("https://x/f2"), "无主题词条目全部保留");
 });
+
+test("groupRaw: 历史条目无 tier → 按 registry 补齐后主题去重保留 2 条不同等级", () => {
+  // 模拟历史库条目：不带 tier（真实历史条目 buildRolling 后 tier=undefined）
+  const mk = (title: string, sourceId: string, source: string, url: string): ArticleInput => ({
+    sourceId, source, title, url, excerpt: "",
+    category: "finance", subcategory: "cn-policy",
+    publishedAt: new Date("2026-08-19T08:00:00Z"), fetchedToday: true,
+  });
+  const articles: ArticleInput[] = [
+    mk("住房公积金提取和使用范围拓宽，9月20日起施行→", "cctv-finance", "央视财经", "https://x/a"),
+    mk("重磅新政来了，《住房公积金管理条例》正式公布", "21jingji-finance", "21财经", "https://x/b"),
+    mk("国务院关于修改《住房公积金管理条例》的决定", "govcn-policy", "中国政府网", "https://x/c"),
+  ];
+  const raw = groupRaw(articles, registry);
+  const gzCredit = findSub(raw, "gz", "gz-credit");
+  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  assert.ok(items.length === 2, `应保留 2 条不同 tier，实际 ${items.length}`);
+  const tiers = items.map((a) => a.tier).sort();
+  assert.deepEqual(tiers, ["T1", "T1.5"], "应补 tier 并保留 T1 国务院 + T1.5 央视");
+  assert.ok(items.some((a) => a.sourceId === "govcn-policy"), "T1 官方原文应保留");
+});
+
+test("groupRaw: 簇满时 tier 高的替换 tier 低的（T1 原文不被 T2 媒体挤掉）", () => {
+  // 时间序：T2（最新）→ T1.5 → T1（最旧）——cap 应保留 T1 + T1.5，而非时间优先的 T2 + T1.5
+  const mk = (title: string, sourceId: string, source: string, tier: any, pub: string, url: string): ArticleInput => ({
+    sourceId, source, title, url, excerpt: "",
+    category: "finance", subcategory: "cn-policy", tier,
+    publishedAt: new Date(pub), fetchedToday: true,
+  });
+  const articles: ArticleInput[] = [
+    mk("住房公积金政策迎大变化！9月20日起施行", "21jingji-finance", "21财经", "T2", "2026-08-19T10:00:00Z", "https://x/t2"),
+    mk("住房公积金提取和使用范围拓宽，9月20日起施行", "cctv-finance", "央视财经", "T1.5", "2026-08-19T08:00:00Z", "https://x/t15"),
+    mk("国务院关于修改《住房公积金管理条例》的决定", "govcn-policy", "中国政府网", "T1", "2026-08-18T00:00:00Z", "https://x/t1"),
+  ];
+  const raw = groupRaw(articles, registry);
+  const gzCredit = findSub(raw, "gz", "gz-credit");
+  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  assert.equal(items.length, 2);
+  const hasT1 = items.some((a) => a.tier === "T1" && a.sourceId === "govcn-policy");
+  const hasT15 = items.some((a) => a.tier === "T1.5");
+  assert.ok(hasT1 && hasT15, "应保留 T1 国务院 + T1.5 央视（tier 优先替换 T2）");
+});
