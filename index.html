@@ -18,6 +18,7 @@
     --link: #2f4cdd;
     --accent: #1a1a1f;
     --accent-fg: #ffffff;
+    --accent-cmb: #e60012;
     --rank-high-bg: #fde8e8;
     --rank-high-fg: #c01c1c;
     --rank-mid-bg: #fdf0d9;
@@ -50,8 +51,9 @@
       --card: #15191f;
       --card-alt: #1b2027;
       --link: #8aa0ff;
-      --accent: #f3f4f6;
-      --accent-fg: #0b0d11;
+    --accent: #f3f4f6;
+    --accent-fg: #0b0d11;
+    --accent-cmb: #ff5a5f;
       --rank-high-bg: rgba(239, 68, 68, 0.16);
       --rank-high-fg: #fca5a5;
       --rank-mid-bg: rgba(245, 158, 11, 0.16);
@@ -171,36 +173,72 @@
     color: var(--fg-soft);
   }
 
-  /* ===== 执行摘要板块（今日必读 + 商机提示）===== */
+  /* ===== 执行摘要板块（今日必读 + 商机提示，移动端优先折叠）===== */
   .exec-summary {
-    margin: 1.1rem 0 0.6rem;
-    border: 1px solid color-mix(in srgb, var(--c-finance) 30%, transparent);
-    border-left: 4px solid var(--c-finance);
+    margin: 1rem 0 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    border-left: 4px solid var(--accent-cmb);
     border-radius: 14px;
-    padding: 0.9rem 1.1rem;
-    background: color-mix(in srgb, var(--c-finance) 6%, var(--bg));
-    box-shadow: var(--shadow-1);
+    padding: 0.85rem 1rem;
+    background: color-mix(in srgb, var(--accent-cmb) 5%, var(--bg));
+    box-shadow: var(--shadow-md);
   }
-  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .exec-title { margin: 0; font-size: 1.05rem; color: var(--fg); letter-spacing: 0.02em; }
-  .exec-sub { font-size: 0.75rem; color: var(--muted); }
-  .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
-  @media (max-width: 760px) { .exec-grid { grid-template-columns: 1fr; } }
+  .exec-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.55rem; }
+  .exec-title { margin: 0; font-size: 1.02rem; color: var(--fg); letter-spacing: 0.02em; }
+  .exec-sub { font-size: 0.72rem; color: var(--muted); }
   .exec-col-title { margin: 0 0 0.45rem; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-  .must-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
-  .must-item { display: flex; gap: 0.5rem; align-items: baseline; }
-  .must-index {
-    flex: none; width: 1.15rem; height: 1.15rem; border-radius: 50%;
-    background: color-mix(in srgb, var(--c-finance) 18%, transparent);
-    color: var(--c-finance); font-size: 0.72rem; font-weight: 700;
-    display: inline-flex; align-items: center; justify-content: center;
+
+  /* 今日必读：横向滑动卡片（Apple News 风），桌面转为 5 列网格 */
+  .exec-must { margin-bottom: 0.5rem; }
+  .must-scroller {
+    list-style: none; margin: 0; padding: 0 0 0.4rem;
+    display: flex; gap: 0.6rem; overflow-x: auto;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .must-body { display: flex; flex-direction: column; }
-  .must-body strong { font-size: 0.86rem; color: var(--fg); font-weight: 600; }
-  .must-why { font-size: 0.76rem; color: var(--fg-soft); line-height: 1.5; }
+  .must-scroller::-webkit-scrollbar { display: none; }
+  .must-card {
+    flex: 0 0 auto; width: 80%; max-width: 16.5rem; scroll-snap-align: start;
+    display: flex; gap: 0.55rem; align-items: flex-start;
+    border: 1px solid var(--rule); border-radius: 12px;
+    padding: 0.6rem 0.75rem; background: var(--bg-elevated);
+    box-shadow: var(--shadow-sm);
+  }
+  .must-index {
+    flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%;
+    background: var(--accent-cmb); color: #fff; font-size: 0.72rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 0.05rem;
+  }
+  .must-body { display: flex; flex-direction: column; min-width: 0; }
+  .must-body strong { font-size: 0.85rem; color: var(--fg); font-weight: 600; line-height: 1.35; }
+  .must-why {
+    font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-card { width: auto; max-width: none; }
+  }
+
+  /* 商机提示：默认折叠，点击展开 */
+  .exec-insights { margin-top: 0.2rem; }
+  .insight-toggle {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 0.3rem;
+    width: 100%; box-sizing: border-box;
+    background: color-mix(in srgb, var(--accent-cmb) 8%, var(--bg));
+    border: 1px solid color-mix(in srgb, var(--accent-cmb) 22%, transparent);
+    color: var(--accent-cmb); font-weight: 600; font-size: 0.84rem;
+    border-radius: 10px; padding: 0.55rem 0.8rem; cursor: pointer;
+    font-family: inherit;
+  }
+  .insight-caret { transition: transform 0.2s ease; font-size: 0.8rem; }
+  .insight-toggle[aria-expanded="true"] .insight-caret { transform: rotate(180deg); }
+  .insight-collapse { display: none; margin-top: 0.6rem; }
+  .insight-collapse.is-open { display: block; }
+
   .insight-grid { display: flex; flex-direction: column; gap: 0.5rem; }
   .insight-card {
-    border: 1px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem;
+    border: 1px solid var(--rule); border-radius: 10px; padding: 0.55rem 0.7rem;
     background: var(--bg);
   }
   .insight-topic { margin: 0 0 0.3rem; font-size: 0.85rem; color: var(--c-finance); font-weight: 700; }
@@ -819,62 +857,12 @@
     <a class="archive-link" href="./archive.html">← 历史归档</a>
   </header>
 
-  <section class="exec-summary">
-    <div class="exec-head">
-      <h2 class="exec-title">执行摘要</h2>
-      <span class="exec-sub">今日必读 · 商机提示（AI 生成）</span>
-    </div>
-    <div class="exec-grid">
-      <div class="exec-col must-col">
-        <h3 class="exec-col-title">📌 今日必读</h3>
-        <ol class="must-list"><li class="must-item">
-        <span class="must-index">1</span>
-        <div class="must-body"><strong>国务院部署增量政策</strong><span class="must-why">宏观政策加力预期升温，影响信贷投放、消费提振与资产配置方向，需前瞻调整广州分行信贷和财富策略。</span></div>
-      </li><li class="must-item">
-        <span class="must-index">2</span>
-        <div class="must-body"><strong>公积金新政拓宽使用</strong><span class="must-why">国务院修改公积金条例、9月20日施行，拓宽提取和使用范围，利好住房消费与房贷客群，是零售贷款和财富联动营销窗口。</span></div>
-      </li><li class="must-item">
-        <span class="must-index">3</span>
-        <div class="must-body"><strong>7月信贷降速存款搬家</strong><span class="must-why">信贷结构优化、居民存款向理财搬家，显示资金流向变化，影响存款稳定性，也带来财富管理获客机遇。</span></div>
-      </li><li class="must-item">
-        <span class="must-index">4</span>
-        <div class="must-body"><strong>最大规模IPO或临近</strong><span class="must-why">资本市场活跃度提升，有望带动新股开户、基金代销及财富管理增量，需提前布局客群和产品对接。</span></div>
-      </li><li class="must-item">
-        <span class="must-index">5</span>
-        <div class="must-body"><strong>监管重拳治理规模情结</strong><span class="must-why">从罚业务到罚机制，监管明确反对考核规模导向，分行需检视业务考核与合规机制，防范经营风险。</span></div>
-      </li></ol>
-      </div>
-      <div class="exec-col insight-col">
-        <h3 class="exec-col-title">💡 商机提示</h3>
-        <div class="insight-grid"><div class="insight-card">
-        <h4 class="insight-topic">公积金新政营销</h4>
-        <p class="insight-impact"><span class="tag">影响</span>公积金提取使用范围拓宽，9月20日施行，将释放住房消费需求，提升存量房贷客户活跃度，带动装修、家居等消费信贷需求。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>向存量房贷客户推送公积金提取与装修、家居消费贷组合方案，联动信用卡家装分期和房贷客户交叉营销，抢占政策窗口。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">存款搬家财富管理</h4>
-        <p class="insight-impact"><span class="tag">影响</span>7月居民存款继续向理财、基金转移，零售存款稳定性承压；但这也正是承接他行资金、做大AUM和财富中收的关键窗口。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>对到期存款客户设计稳健固收+配置方案，依托手机银行理财节权益促转化；重点拦截他行大额转账，避免存款流失、留住AUM。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">黄金配置机会</h4>
-        <p class="insight-impact"><span class="tag">影响</span>黄金技术面偏强，RSI64且正动能，市场聚焦4300至4390美元；美联储政策预期扰动金价，客户黄金配置需求上升。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>加大黄金积存、贵金属理财营销，结合美联储议息事件做策略解读；提示高位波动风险，引导客户分批定投、避免追高。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">广州养老金融</h4>
-        <p class="insight-impact"><span class="tag">影响</span>广州市城乡居民养老保险办法延长有效期，本地养老政策延续，稳定居民预期，个人养老金和养老理财需求仍有释放空间。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>以政策延续为话题，面向本地居民推介个人养老金账户预约、养老理财及长期储蓄产品，深耕代发企业和社区客群。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">家族信托高净值服务</h4>
-        <p class="insight-impact"><span class="tag">影响</span>信托知识科普可提升高净值客户对财富传承、家族信托的认知，叠加私行客户综合规划需求，带来代销和中间业务收入机会。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>面向私行客户举办家族信托主题沙龙和一对一咨询，与信托公司合作，挖掘家族信托、保险金信托意向客户，提升综合贡献。</p>
-      </div></div>
-      </div>
-    </div>
-  </section>
+  
 
   <nav class="tabs" role="tablist">
     <button class="tab active" data-tab="finance">宏观政策<span class="count">42</span></button>
-    <button class="tab" data-tab="trading">市场行情<span class="count">10</span></button>
-    <button class="tab" data-tab="gz">广州商机<span class="count">27</span></button>
+    
+    <button class="tab" data-tab="gz">广州商机<span class="count">26</span></button>
     <button class="tab tab-fold" data-tab="ipo">IPO/新股<span class="count">29</span></button>
     <button class="tab tab-fold" data-tab="tech">技术动态<span class="count">47</span></button>
   </nav>
@@ -1165,395 +1153,94 @@
   <div class="source-contents">
     <div class="source-content active" data-source-content="_merged" data-sub="news" data-cat="finance">
     <article class="article">
-  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html" target="_blank" rel="noopener noreferrer">Dollar risks are mounting. Here’s what could weaken the greenback</a></h3>
+  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/moderna-merck-cancer-vaccine-shows-initial-late-stage-melanoma-data.html" target="_blank" rel="noopener noreferrer">Personalized cancer vaccine from Moderna, Merck shows promise in first late-stage melanoma trial</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 17:32</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 18:49</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Currency strategists flag Treasury risk, softer U.S. data and uncertain Fed policy as key factors that could pressure the dollar.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美元走弱风险上升，可能影响黄金、外汇及海外资产配置，提示分行关注客户避险需求，适时提供多元化财富管理建议。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/full-truck-alliance-beats-estimates-on-revenue-growth-93CH-4866741" target="_blank" rel="noopener noreferrer">Full Truck Alliance beats estimates on revenue growth</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 17:16</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  
+  <p class="article-excerpt">The combination regimen significantly extended the time patients lived without their melanoma returning, compared with Keytruda alone.</p>
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/shell-trader-mansfield-resigns-after-26-years-at-oil-major" target="_blank" rel="noopener noreferrer">Shell Trader Mansfield Resigns After 26 Years at Oil Major</a></h3>
+  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/target-tgt-q2-2026-earnings.html" target="_blank" rel="noopener noreferrer">Target hikes outlook as sales rebound and huge tariff refund boosts bottom line</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 17:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 18:45</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Shell Plc veteran Geoffrey Mansfield has resigned from his role as global desk lead for low-carbon fuels trading, according to a person familiar with the matter.</p>
+  <p class="article-excerpt">Target posted better-than-expected second-quarter sales and raised its full-year outlook.</p>
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/ambea-q2-2026-slides-margins-hit-10-pipeline-surges-64-93CH-4866740" target="_blank" rel="noopener noreferrer">Ambea Q2 2026 slides: margins hit 10%, pipeline surges 64%</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/commodities-news/morning-bid-bonds-out-robots-in-4866977" target="_blank" rel="noopener noreferrer">Morning Bid: Bonds out, robots in</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 17:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:42</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/weibo-shares-gain-3-as-earnings-top-estimates-93CH-4866738" target="_blank" rel="noopener noreferrer">Weibo shares gain 3% as earnings top estimates</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/target-earnings-beat-by-178-revenue-topped-estimates-4866975" target="_blank" rel="noopener noreferrer">Target earnings beat by $1.78, revenue topped estimates</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 17:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:41</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/activeops-executive-chair-acquires-shares-through-incentive-plan-93CH-4866737" target="_blank" rel="noopener noreferrer">ActiveOps executive chair acquires shares through incentive plan</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/analyst-ratings/needham-reiterates-hold-on-klarna-stock-after-mixed-results-93CH-4866974" target="_blank" rel="noopener noreferrer">Needham reiterates Hold on Klarna stock after mixed results</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 17:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:41</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.investing.com/news/company-news/ithaca-energy-h1-2026-slides-record-output-drives-dividend-upgrade-93CH-4866739" target="_blank" rel="noopener noreferrer">Ithaca Energy H1 2026 slides: record output drives dividend upgrade</a></h3>
+  <h3 class="article-title"><a href="https://finance.yahoo.com/markets/stocks/articles/fund-sold-floor-decor-fnd-103954829.html" target="_blank" rel="noopener noreferrer">The Fund Sold Floor &amp; Decor (FND) as Housing Demand Stayed Weak</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 17:16</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Yahoo Finance · 08/19 18:39</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/videos/2026-08-19/copper-s-upward-trend-can-continue-blackrock-says-video" target="_blank" rel="noopener noreferrer">Copper&#39;s Upward Trend Can Continue, BlackRock Says</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/target-raises-fullyear-sales-forecast-amid-ongoing-turnaround-drive-4866969" target="_blank" rel="noopener noreferrer">Target raises full-year sales forecast amid ongoing turnaround drive</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 17:15</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:39</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">&quot;The trend is very much your friend,&quot; says Evy Hambro, head of fundamental equities thematic and sector investing at BlackRock, when asked about the rise in copper prices. &quot;We are seeing a very tight market,&quot; he tells Bloomberg Television. &quot;It&#39;s very easy to say: well, okay, it&#39;s gone up a lot and w</p>
+  
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/libyan-protests-flare-as-government-struggles-to-keep-lights-on" target="_blank" rel="noopener noreferrer">Libyan Protests Flare as Government Struggles to Keep Lights On</a></h3>
+  <h3 class="article-title"><a href="https://www.investing.com/news/earnings/toyo-shares-edge-up-despite-q2-earnings-revenue-miss-93CH-4866955" target="_blank" rel="noopener noreferrer">Toyo shares edge up despite Q2 earnings, revenue miss</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 16:56</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Investing.com News · 08/19 18:38</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Protests broke out again in the Libyan capital after the energy-rich country suffered its third widespread blackout in two days, fueling public anger over deteriorating basic services.</p>
+  
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/19/deoleo-takeover-battle-olive-oil-dcoop.html" target="_blank" rel="noopener noreferrer">World’s largest olive oil company pops over 17% as rivals circle in takeover battle</a></h3>
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/saudis-give-full-oil-allocations-to-at-least-three-europe-buyers" target="_blank" rel="noopener noreferrer">Saudis Give Full Oil Allocations to at Least Three Europe Buyers</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/19 16:49</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/19 18:38</p>
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Shares of Spain&#39;s Deoleo jumped nearly 16% on Wednesday morning amid an intensifying takeover battle for the world&#39;s largest olive oil bottler and marketer.</p>
+  <p class="article-excerpt">Saudi Aramco has notified at least three European oil refiners that will supply full contractual crude volumes next month, easing concerns about the region’s supply concerns while crude flows from the Persian Gulf and Red Sea are disrupted.</p>
+  
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.yahoo.com/markets/stocks/articles/applied-aerospace-defense-aadx-convert-103704440.html" target="_blank" rel="noopener noreferrer">Can Applied Aerospace &amp; Defense (AADX) Convert Its Backlog Into Durable Earnings Growth?</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Yahoo Finance · 08/19 18:37</p>
+  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
+  
   
 </article>
   </div>
   </div>
   </div></div>
   </section>
-  <section class="panel" data-panel="trading"><section class="trading-overview-card">
-    <span class="eyebrow">市场总览</span>
-    <p class="overview-text trading-overview-text">综合四类资产技术面：美股SPY现价767.45高于SMA20/50/200，呈多头排列，RSI56.6、MACD线位于信号线上方，整体偏强；加密市场在恐慌贪婪指数46（恐慌）、总市值2.29万亿美元、BTC主导率56.5%背景下，BTC-USD与ETH-USD均站上SMA20与SMA50但低于SMA200，MACD出现金叉或信号收敛，走势偏中性；中国资产中上证指数跌破SMA50/200但守住SMA20，沪深300虽单日反弹1.32%但仍低于多周期均线，技术面整体偏弱；商品外汇分化明显：原油多头排列、黄金RSI64且MACD为正动能，美元兑人民币则空头排列且RSI25.3超卖。10Y美债收益率贴近52周高位，VIX空头排列显示波动率偏低。整体多空信号并存。</p>
-  </section>
-
-  <section class="trading-watchlist">
-    <h2 class="category-title trading-section-title">今日关注</h2>
-    <div class="trading-picks">
-      <article class="trading-pick stance-bull">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">SPY</span>
-        <span class="pick-name">标普500 (SPY)</span>
-      </div>
-      <span class="pick-stance pick-stance-bull">偏上行</span>
-    </header>
-    <p class="pick-rationale">标普500现价767.45位于SMA20(758.68)、SMA50(749.84)及SMA200(706.28)上方，呈多头排列；RSI14为56.6，处于中性偏强区间；MACD线7.6692高于信号线6.8705，动能维持正值。距52周高点仅-1.53%，整体技术结构偏上行。</p>
-  </article>
-<article class="trading-pick stance-bull">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">CL=F</span>
-        <span class="pick-name">WTI 原油 (CL=F)</span>
-      </div>
-      <span class="pick-stance pick-stance-bull">偏上行</span>
-    </header>
-    <p class="pick-rationale">WTI原油现价84.86高于SMA20(82.47)、SMA50(79.14)和SMA200(77.20)，均线呈多头排列；RSI14为56.2，处于偏强但未超买；MACD线0.9125高于信号线0.4773，短期动量向上；近5日累计上涨1.91%，技术面整体偏上行。</p>
-  </article>
-<article class="trading-pick stance-bear">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">USDCNY=X</span>
-        <span class="pick-name">美元/人民币 (USDCNY=X)</span>
-      </div>
-      <span class="pick-stance pick-stance-bear">偏下行</span>
-    </header>
-    <p class="pick-rationale">美元兑人民币现价6.74低于SMA20(6.75)、SMA50(6.77)与SMA200(6.88)，呈空头排列；RSI14报25.3，进入超卖区域；MACD线-0.0095低于信号线-0.0087，负向动能延续；价格贴近52周低位，技术状态偏下行。</p>
-  </article>
-<article class="trading-pick stance-neutral">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">000001.SS</span>
-        <span class="pick-name">上证指数 (000001.SS)</span>
-      </div>
-      <span class="pick-stance pick-stance-neutral">中性</span>
-    </header>
-    <p class="pick-rationale">上证指数收盘3894.42，处于SMA20(3887.38)上方，但低于SMA50(3961.46)与SMA200(4014.19)，均线结构仍偏空；RSI14为47，处于中性区间；MACD线3.7606虽高于信号线-9.3264，但趋势标记为空头排列。多空信号混杂，技术状态暂归中性。</p>
-  </article>
-<article class="trading-pick stance-neutral">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">BTC-USD</span>
-        <span class="pick-name">比特币 (BTC-USD)</span>
-      </div>
-      <span class="pick-stance pick-stance-neutral">中性</span>
-    </header>
-    <p class="pick-rationale">比特币现价64323.19站上SMA20(63833.05)与SMA50(63874.12)，但仍低于SMA200(68970.35)；RSI14为52.8，中性偏强；MACD线-22.1682高于信号线-77.7025，触发MACD金叉信号，但整体趋势字段仍为中性；近5日+2.14%、近1日-0.55%，方向不明朗，归为中性。</p>
-  </article>
-    </div>
-  </section>
-
-  <section class="trading-tickers">
-    <h2 class="category-title trading-section-title">全部资产</h2>
-    <nav class="trading-group-tabs"><button class="trading-group-tab active" data-group="china-equity">中概 / 港股<span class="count">2</span></button><button class="trading-group-tab" data-group="commodity-fx">商品 / 外汇<span class="count">3</span></button><button class="trading-group-tab" data-group="macro">宏观信号<span class="count">2</span></button><button class="trading-group-tab" data-group="us-equity">美股 / ETF<span class="count">1</span></button><button class="trading-group-tab" data-group="crypto">加密货币<span class="count">2</span></button></nav>
-    <div class="trading-group-contents"><div class="trading-group-content active" data-group="china-equity">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">000001.SS</h3>
-        <p class="ticker-name">上证指数</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥3,894.42</span>
-        <span class="ticker-pct negative">-2.40%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-1.32%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-8.6%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">47.0</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>3,887.38 / 3,961.46 / 4,014.19</dd></div>
-      <div><dt>MACD / 信号</dt><dd>3.761 / -9.326</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">空头排列</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">000300.SS</h3>
-        <p class="ticker-name">沪深300</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥4,588.70</span>
-        <span class="ticker-pct positive">+1.32%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-2.27%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-1.8%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">39.0</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>4,820.62 / 4,854.51 / 4,694.33</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-61.996 / -30.662</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="commodity-fx">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">USDCNY=X</h3>
-        <p class="ticker-name">美元 / 人民币</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥6.74</span>
-        <span class="ticker-pct negative">-0.04%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-0.11%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-6.3%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-oversold">25.3</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>6.75 / 6.77 / 6.88</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-0.009 / -0.009</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">RSI 超卖</span><span class="signal-pill tone-caution">接近 52 周低</span><span class="signal-pill tone-caution">空头排列</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">GC=F</h3>
-        <p class="ticker-name">黄金</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$4,410.80</span>
-        <span class="ticker-pct positive">+1.03%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+0.04%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-21.0%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">64.0</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>4,222.94 / 4,158.93 / 4,492.49</dd></div>
-      <div><dt>MACD / 信号</dt><dd>76.610 / 53.142</dd></div>
-    </dl>
-    
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">CL=F</h3>
-        <p class="ticker-name">WTI 原油</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$84.86</span>
-        <span class="ticker-pct negative">-0.09%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+1.91%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-29.0%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">56.2</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bullish">多头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>82.47 / 79.14 / 77.20</dd></div>
-      <div><dt>MACD / 信号</dt><dd>0.913 / 0.477</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">多头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="macro">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">^TNX</h3>
-        <p class="ticker-name">10Y 美债收益率 (%)</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$4.71</span>
-        <span class="ticker-pct negative">-0.38%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+0.47%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-0.9%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">50.7</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>— / — / —</dd></div>
-      <div><dt>MACD / 信号</dt><dd>— / —</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">^VIX</h3>
-        <p class="ticker-name">VIX 恐慌指数</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$15.85</span>
-        <span class="ticker-pct positive">+0.06%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+8.93%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-55.1%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">48.4</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>16.36 / 17.00 / 18.51</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-0.567 / -0.557</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">空头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="us-equity">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">SPY</h3>
-        <p class="ticker-name">S&amp;P 500</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$767.45</span>
-        <span class="ticker-pct negative">-0.68%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-0.40%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-1.5%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">56.6</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bullish">多头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>758.68 / 749.84 / 706.28</dd></div>
-      <div><dt>MACD / 信号</dt><dd>7.669 / 6.871</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span><span class="signal-pill tone-caution">多头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="crypto">
-      <div class="crypto-widgets"><div class="crypto-widget fg-neutral">
-      <div class="widget-label">加密恐慌贪婪</div>
-      <div class="widget-value">46</div>
-      <div class="widget-sub">恐慌</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">加密总市值</div>
-      <div class="widget-value">$2.29 T</div>
-      <div class="widget-sub positive">+0.45% / 24h</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">BTC 主导率</div>
-      <div class="widget-value">56.5%</div>
-      <div class="widget-sub">ETH 10.1%</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">24h 成交量</div>
-      <div class="widget-value">$45.2 B</div>
-      <div class="widget-sub">活跃币 18,483</div>
-    </div></div>
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">BTC-USD</h3>
-        <p class="ticker-name">Bitcoin</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$64,323.19</span>
-        <span class="ticker-pct negative">-0.55%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+2.14%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-49.0%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">52.8</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>63,833.05 / 63,874.12 / 68,970.35</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-22.168 / -77.703</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 金叉 <span class="signal-age">(1 天前)</span></span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">ETH-USD</h3>
-        <p class="ticker-name">Ethereum</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$1,917.61</span>
-        <span class="ticker-pct positive">+0.06%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+1.97%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-61.3%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">57.6</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>1,887.78 / 1,856.14 / 2,001.60</dd></div>
-      <div><dt>MACD / 信号</dt><dd>11.940 / 12.097</dd></div>
-    </dl>
-    
-  </article>
-    </div></div>
-  </section>
-
-  <section class="trading-risk">
-    <span class="eyebrow">风险提示</span>
-    <p>本报告仅基于公开行情数据的技术指标解读，不构成任何投资建议。过去走势不代表未来表现，技术指标可能出现失效或滞后；仅供技术指标解读参考。</p>
-  </section></section>
+  
   <section class="panel" data-panel="gz">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">4</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">7</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">4</span></button></nav>
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">5</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">4</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">7</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">6</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">4</span></button></nav>
 <div class="sub-contents"><div class="sub-content active" data-sub-content="gz-wealth" data-cat="gz">
-    <nav class="source-tabs"><button class="source-tab active" data-source="sina-finance" data-sub="gz-wealth" data-cat="gz">新浪财经<span class="count">2</span></button><button class="source-tab" data-source="cctv-finance" data-sub="gz-wealth" data-cat="gz">央视财经<span class="count">1</span></button><button class="source-tab" data-source="sina-money" data-sub="gz-wealth" data-cat="gz">新浪财经·理财保险<span class="count">2</span></button><button class="source-tab" data-source="gz-gov" data-sub="gz-wealth" data-cat="gz">广州市政府<span class="count">1</span></button></nav>
+    <nav class="source-tabs"><button class="source-tab active" data-source="sina-finance" data-sub="gz-wealth" data-cat="gz">新浪财经<span class="count">3</span></button><button class="source-tab" data-source="cctv-finance" data-sub="gz-wealth" data-cat="gz">央视财经<span class="count">1</span></button><button class="source-tab" data-source="gz-gov" data-sub="gz-wealth" data-cat="gz">广州市政府<span class="count">1</span></button></nav>
   <div class="source-contents">
     <div class="source-content active" data-source-content="sina-finance" data-sub="gz-wealth" data-cat="gz">
     <article class="article">
@@ -1572,6 +1259,14 @@
   
   
 </article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-19/doc-ininwawh8252713.shtml" target="_blank" rel="noopener noreferrer">千元新股引爆市场！宇树科技首日暴涨456%，信托自营揽收868万，53只理财斩获近亿元浮盈</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 08:00</p>
+  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  
+  
+</article>
   </div>
 <div class="source-content" data-source-content="cctv-finance" data-sub="gz-wealth" data-cat="gz">
     <article class="article">
@@ -1581,24 +1276,6 @@
   <p class="article-subs"><span class="sub-chip">财富业务</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 险企起诉代理人追讨佣金，保险销售进入责任绑定时代，代销合规与代理人管理参考</p>
-</article>
-  </div>
-<div class="source-content" data-source-content="sina-money" data-sub="gz-wealth" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-18/doc-ininttrs3267415.shtml" target="_blank" rel="noopener noreferrer">从518到618再到818：10余家银行系机构扎堆理财节，3家理财子首次入局券商十年 IP</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 15:42</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】从518到618再到818：10余家银行系机构扎堆理财节，3家理财子首次入局券商十年 IP</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 银行系机构扎堆举办理财节、理财子首次入局，理财营销竞争白热化，银行零售可借理财节节点强化获客与产品渗透，提升AUM。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-18/doc-inintpir7404618.shtml" target="_blank" rel="noopener noreferrer">【信托知识库】信托知识百问百答</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/18 18:09</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】【信托知识库】信托知识百问百答</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 信托知识科普可提升高净值客户对财富传承和家族信托的认知，建议纳入私行客户沟通素材，挖掘信托代销与综合规划服务机会。</p>
 </article>
   </div>
 <div class="source-content" data-source-content="gz-gov" data-sub="gz-wealth" data-cat="gz">
@@ -1790,11 +1467,11 @@
   <div class="source-contents">
     <div class="source-content active" data-source-content="bloomberg-markets" data-sub="gz-ipo" data-cat="gz">
     <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-19/pakistan-s-record-ipo-year-gets-boost-from-se-fruits-listing" target="_blank" rel="noopener noreferrer">Pakistan’s Record IPO Year Gets Boost From SE Fruits Listing</a></h3>
+  <h3 class="article-title"><a href="https://www.bloomberg.com/news/videos/2026-08-19/hkex-sees-strong-ipo-pipeline-with-international-firms-video" target="_blank" rel="noopener noreferrer">HKEX Sees Strong IPO Pipeline With International Firms</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 15:44</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 08/19 18:33</p>
   <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  <p class="article-excerpt">Fresh produce company SE Fruits and Vegetable Ltd. is planning an initial public offering in Pakistan next month to boost its export capacity, adding to a record year of listings in the country.</p>
+  <p class="article-excerpt">Initial public offering pipeline remains strong with close to 10 international companies, Hong Kong Exchanges &amp; Clearing Ltd. CEO Bonnie Chan told Bloomberg TV&#39;s Minmin Low on Wednesday (Source: Bloomberg)</p>
   
 </article>
   </div>
@@ -2423,6 +2100,14 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   <div class="source-contents">
     <div class="source-content active" data-source-content="_merged" data-sub="cn-tech" data-cat="tech">
     <article class="article">
+  <h3 class="article-title"><a href="https://www.infoq.cn/article/0AR0FaYEllc9tk7iWu9U?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Pinterest 如何通过集中式 Terraform 管道在大规模环境中保障 AWS 基础设施的安全</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 01:41</p>
+  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
+  <p class="article-excerpt">点击查看原文&gt;</p>
+  
+</article>
+<article class="article">
   <h3 class="article-title"><a href="https://www.infoq.cn/article/ZZYxRqKglT4RpYO454K3?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">2026 世界杯：一个通过与 CoCo 对话构建的实时应用 | 技术实践</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 01:12</p>
@@ -2455,12 +2140,12 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/eUqDCgNhzkbNpNxS7dYI?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">网易 AI 另辟赛道：近千亿研发，蜜蜂AI杀入年轻人社区</a></h3>
+  <h3 class="article-title"><a href="https://sspai.com/post/113618" target="_blank" rel="noopener noreferrer">iOS 27 测试版近期动向，还有 Apple 产品新消息</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/19 23:02</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 少数派 · 08/19 17:39</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 网易近千亿研发押注蜜蜂AI，切入年轻人社区，大厂 AI 应用竞争观察</p>
+  <p class="article-excerpt">7月20日至今，Apple陆续发布了iOS27的DeveloperBeta4、5、6三个测试版本。随着9月秋季发布会的渐进，iOS27距离正式版的发布越来越近。今天，我们就来一起看看这三个Beta版本 ...查看全文</p>
+  
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475901.html" target="_blank" rel="noopener noreferrer">IDC发布2026中国AI50强：360以“智能体+安全”双轮驱动入选</a></h3>
@@ -2492,14 +2177,6 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 15:40</p>
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">冠军姿势长这样</p>
-  
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/475476.html" target="_blank" rel="noopener noreferrer">写2000字提示词，不如先生成3D白模！AI视频创作进入“预演时代”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/19 15:22</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">AI终于能听严格执行运镜需求</p>
   
 </article>
   </div>
@@ -2579,6 +2256,17 @@ THE SIX MONTHS ENDED 30 JUNE 2026</a></h3>
       document.querySelectorAll('.trading-group-content').forEach(function (p) {
         p.classList.toggle('active', p.dataset.group === grp);
       });
+    });
+  });
+  // 执行摘要 · 商机提示折叠
+  document.querySelectorAll('.insight-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var body = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!body) return;
+      var open = body.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var label = btn.querySelector('.insight-toggle-label');
+      if (label) label.textContent = open ? (btn.dataset.hide || label.textContent) : (btn.dataset.show || label.textContent);
     });
   });
 </script>
