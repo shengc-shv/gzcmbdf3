@@ -82,3 +82,43 @@ test("硬过滤：与银行零售无关内容不通过", () => {
   assert.equal(r.pass, false);
   assert.equal(r.bucket, "dropped");
 });
+
+// —— 参考区豁免（2026-08-19 修复：tech/ipo/gd-ipo/politics 不过银行零售漏斗）——
+test("参考区豁免：tech 技术动态不过漏斗，直接放行", () => {
+  const r = applyKeywordFilter({ ...art("OpenAI 发布 GPT-5，多模态能力大幅提升"), category: "tech" }, cfg);
+  assert.equal(r.pass, true, "参考区条目应放行");
+  assert.notEqual(r.bucket, "dropped");
+});
+
+test("参考区豁免：L0 全局排除词对参考区不生效（仅银行零售线适用）", () => {
+  const r = applyKeywordFilter({ ...art("A股涨停，沪指报3400点"), category: "tech" }, cfg);
+  assert.equal(r.pass, true, "tech 参考区不受 L0 排除词约束");
+});
+
+test("参考区豁免：tech 条目仍可触发商机追踪器", () => {
+  const r = applyKeywordFilter({ ...art("广州某 AI 公司完成B轮融资"), category: "tech" }, cfg);
+  assert.equal(r.pass, true);
+  assert.equal(r.bucket, "opportunity");
+  const trackers = (r.opportunities ?? []).map((o) => o.tracker);
+  assert.ok(trackers.includes("funding_milestones"), "tech 参考区里的融资新闻应进商机池");
+});
+
+test("参考区豁免：ipo/gd-ipo/politics 同样放行", () => {
+  for (const category of ["ipo", "gd-ipo", "politics"]) {
+    const r = applyKeywordFilter(
+      { ...art(`[${category}] 常规参考区内容示例`), category },
+      cfg,
+    );
+    assert.equal(r.pass, true, `${category} 参考区应放行`);
+  }
+});
+
+test("参考区豁免：finance/gz 仍走完整漏斗（银行零售主战场）", () => {
+  for (const category of ["finance", "gz"]) {
+    const r = applyKeywordFilter(
+      { ...art("某科技公司发布新款手机"), category },
+      cfg,
+    );
+    assert.equal(r.pass, false, `${category} 应仍被银行零售漏斗硬过滤`);
+  }
+});

@@ -5,6 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { renderHtml, type RawByCategory } from "../lib/output/render";
+import { renderRawCategoryPanel, type SubGroup } from "../lib/output/render/cards";
 import type { DailyReport, ArticleInput } from "../lib/types";
 import { toMatchSnapshot } from "./snapshot";
 
@@ -131,4 +132,44 @@ test("renderHtml: 源等级 tier 角标差异化（T6）", () => {
   const html = renderHtml(report(), raw, "2026-08-19");
   assert.ok(html.includes('class="tier-badge tier-T1"'), "应渲染 T1 角标 class");
   assert.ok(html.includes("官方一手"), "应渲染 T1 中文标签");
+});
+
+test("技术动态 sub-tab 计数与内容口径一致：只算当天（修复 tab 有数点进去空）", () => {
+  // 两个子组触发 sub-tabs 渲染；每组都混入历史缓存条目（fetchedToday=false）
+  const subs: SubGroup[] = [
+    {
+      id: "cn-tech",
+      name: "技术动态",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [
+            { ...item("https://x/a", "今天的技术新闻", "tech"), fetchedToday: true },
+            { ...item("https://x/b", "历史缓存的技术新闻", "tech"), fetchedToday: false },
+          ],
+        },
+      ],
+    },
+    {
+      id: "ai-news",
+      name: "AI 动态",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [
+            { ...item("https://x/c", "今天 AI 动态", "tech"), fetchedToday: true },
+            { ...item("https://x/d", "历史缓存 AI 动态", "tech"), fetchedToday: false },
+            { ...item("https://x/e", "历史缓存 AI 动态2", "tech"), fetchedToday: false },
+          ],
+        },
+      ],
+    },
+  ];
+  const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
+  // tab 计数应只统计当天：cn-tech=1、ai-news=1（而非全量 2/3）
+  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">1</span>'), "cn-tech 计数应只算当天 1 条");
+  assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算当天 1 条");
+  assert.ok(!html.includes('<span class="count">3</span>'), "不应把历史缓存计入 tab 计数");
 });

@@ -477,6 +477,7 @@ async function main() {
         content: a.excerpt,
         sourceId: a.sourceId,
         url: a.url,
+        category: a.category, // 参考区（tech/ipo/gd-ipo/politics）豁免漏斗，仅商机扫描
       };
       const r = applyKeywordFilter(input, kwConfig);
       if (!r.pass) continue;

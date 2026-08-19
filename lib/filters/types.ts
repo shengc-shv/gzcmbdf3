@@ -72,6 +72,12 @@ export interface RawArticleInput {
   url?: string;
   /** 归一化 region 分流结果（gz / gd / …），当前过滤以文本地域判定为准，此字段仅透传。 */
   region?: string;
+  /**
+   * 文章分类（归一化层 category）。参考区（tech / ipo / gd-ipo / politics）
+   * 不参与银行零售维度过滤（参考区是展示窗口，有独立 AI enrich），
+   * 仅扫描商机追踪器；finance / gz 走完整漏斗。
+   */
+  category?: string;
   /** 源等级（T6 透传），供 bucket_allocation 分池参考。 */
   tier?: SourceTier;
 }

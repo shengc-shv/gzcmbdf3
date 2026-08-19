@@ -92,6 +92,42 @@ function matchTracker(
 }
 
 /**
+ * 参考区分类：不参与银行零售维度过滤（tech 技术动态 / ipo 全国IPO /
+ * gd-ipo 广东IPO / politics 时政观察 是展示参考区，有独立 AI enrich），
+ * 仅扫描商机追踪器；命中商机进商机池，未命中直接放行。
+ * finance / gz（银行零售业务线）走完整漏斗。
+ */
+const REFERENCE_CATEGORIES = new Set(["tech", "ipo", "gd-ipo", "politics"]);
+
+/** 商机追踪（多值：命中即全部收录，按 S>A>B 排序；一条信息可进多个商机池）。 */
+function scanOpportunities(
+  config: KeywordConfig,
+  text: string,
+  geoHit: boolean,
+  matched: string[],
+): NonNullable<FilterResult["opportunities"]> {
+  const PRIORITY_ORDER: Record<"S" | "A" | "B", number> = { S: 0, A: 1, B: 2 };
+  const opportunities: NonNullable<FilterResult["opportunities"]> = [];
+  for (const [key, t] of Object.entries(config.opportunity_tracker ?? {})) {
+    if (!t || typeof t !== "object" || Array.isArray(t)) continue;
+    if (t.priority !== "S" && t.priority !== "A" && t.priority !== "B") continue;
+    const r = matchTracker(t, text, geoHit);
+    if (r.hit) {
+      opportunities.push({
+        tracker: key,
+        priority: t.priority,
+        label: t.label ?? key,
+        fields: t.fields ?? [],
+        action: t.action ?? "",
+      });
+      matched.push(...r.matched);
+    }
+  }
+  opportunities.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]);
+  return opportunities;
+}
+
+/**
  * 对单条文章执行关键词漏斗（硬过滤）。
  *
  * @returns FilterResult — pass=false 表示未命中，应直接丢弃、不进 AI。
@@ -103,6 +139,24 @@ export function applyKeywordFilter(
   const title = article.title ?? "";
   const full = `${title}\n${article.content ?? ""}`;
   const matched: string[] = [];
+
+  // 参考区豁免：tech/ipo/gd-ipo/politics 不过银行零售漏斗（技术动态/IPO/时政
+  // 是参考展示区，有自己的 AI enrich），仅扫描商机追踪器。
+  // 修复 2026-08-19：此前漏斗对全部条目应用，技术动态/IPO 参考区被银行零售
+  // 词表硬过滤 → 当天面板永远为空。
+  if (article.category && REFERENCE_CATEGORIES.has(article.category)) {
+    // 仍跑 geo 判定：商机追踪器里 geo_lock=true 的（上市/融资/扩张等）依赖地域命中
+    const geo = matchGeo(config, full);
+    const opportunities = scanOpportunities(config, full, geo.hit, matched);
+    return {
+      pass: true,
+      score: geo.score + (opportunities.length > 0 ? 1000 : 0),
+      dimensions: [],
+      ...(opportunities.length > 0 ? { opportunities } : {}),
+      matched,
+      bucket: opportunities.length > 0 ? "opportunity" : "daily",
+    };
+  }
 
   // L0 全局硬排除（仅标题，命中即丢，负向优先）
   for (const group of Object.values(config.global_exclude ?? {})) {
@@ -133,24 +187,7 @@ export function applyKeywordFilter(
   }
 
   // 商机追踪（多值：命中即全部收录，按 S>A>B 排序；一条信息可进多个商机池）
-  const PRIORITY_ORDER: Record<"S" | "A" | "B", number> = { S: 0, A: 1, B: 2 };
-  const opportunities: NonNullable<FilterResult["opportunities"]> = [];
-  for (const [key, t] of Object.entries(config.opportunity_tracker ?? {})) {
-    if (!t || typeof t !== "object" || Array.isArray(t)) continue;
-    if (t.priority !== "S" && t.priority !== "A" && t.priority !== "B") continue;
-    const r = matchTracker(t, full, geo.hit);
-    if (r.hit) {
-      opportunities.push({
-        tracker: key,
-        priority: t.priority,
-        label: t.label ?? key,
-        fields: t.fields ?? [],
-        action: t.action ?? "",
-      });
-      matched.push(...r.matched);
-    }
-  }
-  opportunities.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]);
+  const opportunities = scanOpportunities(config, full, geo.hit, matched);
 
   let bucket: FilterResult["bucket"] = "dropped";
   if (opportunities.length > 0) bucket = "opportunity";

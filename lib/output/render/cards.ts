@@ -333,7 +333,12 @@ export function renderRawCategoryPanel(
   }
   const subTabs = subs
     .map((s, i) => {
-      const count = s.sources.reduce((n, src) => n + src.items.length, 0);
+      // 计数与内容口径一致（修复 2026-08-19）：非时间拆分分类（tech/finance/politics）
+      // 内容只渲染当天（filterByTime todayOnly），计数也统计当天，避免「tab 有数、点进去空」；
+      // 时间拆分分类（gd-ipo/ipo/gz）内容覆盖当天+过去7天全量，计数用全量。
+      const count = TIME_SPLIT_CATEGORIES.has(category)
+        ? s.sources.reduce((n, src) => n + src.items.length, 0)
+        : countItems(filterByTime(s.sources, true));
       return `<button class="sub-tab${i === 0 ? " active" : ""}" data-sub="${escapeHtml(s.id)}" data-cat="${category}">${escapeHtml(s.name)}<span class="count">${count}</span></button>`;
     })
     .join("");
