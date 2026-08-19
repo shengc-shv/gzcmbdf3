@@ -7,7 +7,39 @@ import {
   dedupeByUrl,
   routeRegion,
   toMergeArticle,
+  filterByWindow,
 } from "../lib/ingest/merge";
+
+test("filterByWindow: publishedAt 早于 7 天窗口的旧文丢弃，窗口内保留", () => {
+  const now = Date.now();
+  const day = 86_400_000;
+  const items = [
+    { url: "a", publishedAt: new Date(now) },                       // 今天
+    { url: "b", publishedAt: new Date(now - 2 * day) },             // 2 天前（窗口内）
+    { url: "c", publishedAt: new Date(now - 6 * day) },             // 6 天前（窗口内边界）
+    { url: "d", publishedAt: new Date(now - 8 * day) },             // 8 天前（超窗口）
+    { url: "e", publishedAt: new Date(now - 40 * day) },            // 40 天前旧文
+    { url: "f" },                                                   // 无时间戳 → 保留
+  ];
+  const kept = filterByWindow(items, 7);
+  assert.deepEqual(
+    kept.map((x) => x.url),
+    ["a", "b", "c", "f"],
+    "窗口内 + 无时间戳保留；超窗口旧文（d/e）丢弃",
+  );
+});
+
+test("filterByWindow: 兼容字符串时间戳（JSON 数据）", () => {
+  const now = Date.now();
+  const kept = filterByWindow(
+    [
+      { url: "a", publishedAt: new Date(now - 1 * 86_400_000).toISOString() },
+      { url: "b", publishedAt: new Date(now - 30 * 86_400_000).toISOString() },
+    ],
+    7,
+  );
+  assert.deepEqual(kept.map((x) => x.url), ["a"]);
+});
 
 test("dedupeByUrl: 重复 URL 仅保留先出现的，计数正确", () => {
   const base = [{ url: "a" }, { url: "b" }];

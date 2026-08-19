@@ -17,6 +17,7 @@ import {
   loadDedupConfig,
 } from "../lib/filters/config";
 import { dedupeByTitleSimilarity } from "../lib/ingest/dedup-similar";
+import { filterByWindow } from "../lib/ingest/merge";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import { REPORTS_DIR } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
@@ -216,6 +217,17 @@ async function main() {
       );
     }
     articles = kept;
+  }
+
+  // —— 超窗口旧文过滤（与 daily.ts 一致）：rss 混入的 7 天前旧文不进 AI、不展示 ——
+  if (!isOffline) {
+    const wBefore = articles.length;
+    articles = filterByWindow(articles, 7);
+    if (articles.length !== wBefore) {
+      console.log(
+        `[dry-run] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,
+      );
+    }
   }
 
   // 合并滚动 7 天历史（窗口按信息发生时间 publishedAt 计）：今日抓取 + 历史缓存（按 fetchedToday 打标），

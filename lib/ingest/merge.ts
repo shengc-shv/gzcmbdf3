@@ -113,3 +113,26 @@ export function dedupeByUrl<T extends { url: string }>(
   }
   return { merged, added, skipped: incoming.length - added };
 }
+
+/**
+ * 超窗口旧文过滤（归一化②）：publishedAt 早于窗口（默认 7 天）的条目丢弃。
+ *
+ * 动机（2026-08-19 用户反馈）：rss 流会混入 7 天前甚至更早的旧文，其 URL 不在
+ * 7 天历史缓存 → 被误判为「新条目」进 AI 分类（白花模型费用），且会显示在当日
+ * 面板。过滤后：旧文不进 AI、不展示。
+ * 无 publishedAt 的条目保留（时间未知，宁可保留）。
+ */
+export function filterByWindow<T extends { publishedAt?: Date | string }>(
+  articles: T[],
+  days = 7,
+): T[] {
+  const cutoff = Date.now() - days * 86_400_000;
+  return articles.filter((a) => {
+    if (!a.publishedAt) return true;
+    const t =
+      typeof a.publishedAt === "string"
+        ? new Date(a.publishedAt).getTime()
+        : a.publishedAt.getTime();
+    return Number.isNaN(t) || t >= cutoff;
+  });
+}

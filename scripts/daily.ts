@@ -10,6 +10,7 @@ import { fetchSource } from "../lib/sources/dispatch";
 import {
   toMergeArticle,
   dedupeByUrl,
+  filterByWindow,
   type CrawledArticle,
 } from "../lib/ingest/merge";
 import { applyKeywordFilter } from "../lib/filters/keyword-filter";
@@ -519,6 +520,16 @@ async function main() {
       );
     }
     articles = kept;
+  }
+
+  // —— 超窗口旧文过滤（归一化②）：rss 流混入的 7 天前旧文不进 AI、不展示 ——
+  // 否则旧文 URL 不在 7 天历史缓存，会被误判为「新条目」进 AI 分类（白花钱）。
+  const wBefore = articles.length;
+  articles = filterByWindow(articles, 7);
+  if (articles.length !== wBefore) {
+    console.log(
+      `[daily] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,
+    );
   }
 
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
