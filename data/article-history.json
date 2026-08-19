@@ -11637,5 +11637,86 @@
     "publishedAt": "2026-08-19T00:00:00.000Z",
     "firstSeenAt": "2026-08-19T09:25:21.508Z",
     "lastSeenAt": "2026-08-19T09:25:21.508Z"
+  },
+  "https://www.bloomberg.com/news/articles/2026-08-19/shell-trader-mansfield-resigns-after-26-years-at-oil-major": {
+    "title": "Shell Trader Mansfield Resigns After 26 Years at Oil Major",
+    "url": "https://www.bloomberg.com/news/articles/2026-08-19/shell-trader-mansfield-resigns-after-26-years-at-oil-major",
+    "sourceId": "bloomberg-markets",
+    "source": "Bloomberg Markets",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Shell Plc veteran Geoffrey Mansfield has resigned from his role as global desk lead for low-carbon fuels trading, according to a person familiar with the matter.",
+    "publishedAt": "2026-08-19T09:16:52.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://www.cnbc.com/2026/08/18/mortgage-rates-treasury-bond-yields-consumer-loans.html": {
+    "title": "Bond yields are climbing. Here’s what that means for mortgages and other consumer borrowing",
+    "url": "https://www.cnbc.com/2026/08/18/mortgage-rates-treasury-bond-yields-consumer-loans.html",
+    "sourceId": "cnbc-top",
+    "source": "CNBC Top Stories",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Long-term government bond yields have risen sharply in recent days. Higher bond yields push consumer borrowing costs up, sometimes immediately.",
+    "publishedAt": "2026-08-18T16:58:29.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://finance.yahoo.com/technology/ai/articles/artisan-told-companies-stop-hiring-234204345.html": {
+    "title": "Artisan told companies to \"stop hiring humans\" for sales. Now it's hiring one for just that job.",
+    "url": "https://finance.yahoo.com/technology/ai/articles/artisan-told-companies-stop-hiring-234204345.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "",
+    "publishedAt": "2026-08-17T23:42:04.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://finance.sina.com.cn/world/2026-08-19/doc-ininvwqk8332090.shtml": {
+    "title": "棕榈油价格升至八个月高位 因厄尔尼诺加剧东南亚干旱",
+    "url": "https://finance.sina.com.cn/world/2026-08-19/doc-ininvwqk8332090.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-19T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvwqs2632759.shtml": {
+    "title": "兆易创新，上半年炒股浮盈22亿",
+    "url": "https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvwqs2632759.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-19T00:00:00.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://finance.sina.com.cn/money/fund/jjyj/2026-08-19/doc-ininvwqs2634594.shtml": {
+    "title": "5家基金公司上半年经营数据出炉：富国基金净利润超",
+    "url": "https://finance.sina.com.cn/money/fund/jjyj/2026-08-19/doc-ininvwqs2634594.shtml",
+    "sourceId": "sina-money",
+    "source": "新浪财经·理财保险",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【财富管理】5家基金公司上半年经营数据出炉：富国基金净利润超",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://www.qbitai.com/2026/08/475901.html": {
+    "title": "IDC发布2026中国AI50强：360以“智能体+安全”双轮驱动入选",
+    "url": "https://www.qbitai.com/2026/08/475901.html",
+    "sourceId": "qbitai",
+    "source": "量子位",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "凭借企业级智能体与AI安全的全栈布局，360成为中国人工智能产业发展的代表企业之一。",
+    "publishedAt": "2026-08-19T08:34:36.000Z",
+    "firstSeenAt": "2026-08-19T09:33:39.455Z",
+    "lastSeenAt": "2026-08-19T09:33:39.455Z"
   }
 }
