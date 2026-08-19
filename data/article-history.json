@@ -11718,5 +11718,50 @@
     "publishedAt": "2026-08-19T08:34:36.000Z",
     "firstSeenAt": "2026-08-19T09:33:39.455Z",
     "lastSeenAt": "2026-08-19T09:33:39.455Z"
+  },
+  "https://www.bloomberg.com/news/articles/2026-08-19/eqt-is-said-to-mull-sale-of-english-language-schools-in-vietnam": {
+    "title": "EQT Is Said to Mull Sale of English Language Schools in Vietnam",
+    "url": "https://www.bloomberg.com/news/articles/2026-08-19/eqt-is-said-to-mull-sale-of-english-language-schools-in-vietnam",
+    "sourceId": "bloomberg-markets",
+    "source": "Bloomberg Markets",
+    "category": "finance",
+    "subcategory": "news",
+    "ai_relevant": false,
+    "excerpt": "Private equity firm EQT AB is considering selling its English language education businesses in Vietnam, according to people with knowledge of the matter.",
+    "publishedAt": "2026-08-19T09:25:34.000Z",
+    "summary": "EQT拟出售越南英语学校，属海外私募交易，与广州零售银行业务无直接关联，对分行经营决策参考价值有限。",
+    "firstSeenAt": "2026-08-19T09:42:36.769Z",
+    "lastSeenAt": "2026-08-19T09:42:36.769Z"
+  },
+  "https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html": {
+    "title": "Dollar risks are mounting. Here’s what could weaken the greenback",
+    "url": "https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html",
+    "sourceId": "cnbc-top",
+    "source": "CNBC Top Stories",
+    "category": "finance",
+    "subcategory": "news",
+    "subcategories": [
+      "news"
+    ],
+    "ai_relevant": true,
+    "excerpt": "Currency strategists flag Treasury risk, softer U.S. data and uncertain Fed policy as key factors that could pressure the dollar.",
+    "publishedAt": "2026-08-19T09:32:56.000Z",
+    "summary": "美元走弱风险上升，可能影响黄金、外汇及海外资产配置，提示分行关注客户避险需求，适时提供多元化财富管理建议。",
+    "firstSeenAt": "2026-08-19T09:42:36.769Z",
+    "lastSeenAt": "2026-08-19T09:42:36.769Z"
+  },
+  "https://finance.yahoo.com/healthcare/articles/cibus-inc-interoc-expands-rice-215020923.html": {
+    "title": "Cibus Inc: Interoc Expands Rice Trade to 5 Traits, 36% Revenue Growth – Quarterly Update Report",
+    "url": "https://finance.yahoo.com/healthcare/articles/cibus-inc-interoc-expands-rice-215020923.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "ai_relevant": false,
+    "excerpt": "",
+    "publishedAt": "2026-08-17T21:50:20.000Z",
+    "summary": "Cibus季报属纯个股行情，涉及农业生物技术个股业绩，与银行零售业务无直接关联，参考价值有限。",
+    "firstSeenAt": "2026-08-19T09:42:36.769Z",
+    "lastSeenAt": "2026-08-19T09:42:36.769Z"
   }
 }
