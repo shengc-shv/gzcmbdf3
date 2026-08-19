@@ -4,7 +4,7 @@ Operational knowledge for any AI coding agent working on this repo (Claude Code,
 
 ## What this project is
 
-`daily-brief` is a local-first pipeline that fetches the news sources declared in `sources.config.json` (24 enabled in the default zh mode), runs LLM enrichment, and renders a single self-contained HTML report. It runs on the user's machine via the OS scheduler, OR in GitHub Actions publishing to GitHub Pages. No web framework, no DB, no servers.
+`gzcmbdf3` is a local-first pipeline that fetches the news sources declared in `sources.config.json` (24 enabled in the default zh mode), runs LLM enrichment, and renders a single self-contained HTML report. It runs on the user's machine via the OS scheduler, OR in GitHub Actions publishing to GitHub Pages. No web framework, no DB, no servers.
 
 This repository is a **fork of [leiting-eric/DailyBrief](https://github.com/leiting-eric/DailyBrief)**. Fork-specific additions: a `gd-ipo` (广东地区 IPO) category plus a set of A-share / HK IPO crawlers under `scripts/crawlers/` whose output (`data/crawled-articles.json`) is merged into the report; and a Chinese/Finance-curated source list (the upstream English-community sources — github-trending, Hacker News, V2EX, LinuxDo — are not in this fork's default config).
 
@@ -98,5 +98,5 @@ sources.config.json   # SINGLE SOURCE OF TRUTH for the source registry
 
 - `README.md` — user-facing intro, install, configuration
 - `FORKING.md` — common customizations (LLM provider, sources, layout, styling)
-- `.claude/skills/daily-brief/SKILL.md` — fuller operational reference (Claude Code auto-loads it; other agents can read it directly)
+- `.claude/skills/gzcmbdf3/SKILL.md` — fuller operational reference (Claude Code auto-loads it; other agents can read it directly)
 - `sources.config.json` — see what sources look like in practice

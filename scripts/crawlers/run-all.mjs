@@ -25,7 +25,7 @@ async function main() {
   for (const crawler of crawlers) {
     try {
       await crawler.run();
-      allResults.push(...crawler.toDailyBriefFormat());
+      allResults.push(...crawler.toGzcmbdf3Format());
     } catch (err) {
       console.error(`[${crawler.name}] 爬虫异常:`, err.message);
     }
@@ -44,7 +44,7 @@ async function main() {
   const dir = path.dirname(OUTPUT_PATH);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-  // 写入 JSON（DailyBrief 可读格式）
+  // 写入 JSON（gzcmbdf3 可读格式）
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(unique, null, 2), 'utf8');
   
   console.log(`\n✅ 爬虫完成，共写入 ${unique.length} 条到 ${OUTPUT_PATH}`);

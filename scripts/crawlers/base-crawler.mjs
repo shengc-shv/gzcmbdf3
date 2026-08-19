@@ -1,7 +1,7 @@
 import { fetch, Headers } from 'undici';
 
 /**
- * 通用爬虫基类 - 专门为 DailyBrief 格式设计
+ * 通用爬虫基类 - 专门为 gzcmbdf3 格式设计
  * 每个子类只需实现 getUrls() 和 parseArticle() 两个方法
  */
 export class BaseCrawler {
@@ -116,9 +116,9 @@ export class BaseCrawler {
 }
 
   /**
-   * 转换格式供 DailyBrief 使用
+   * 转换格式供 gzcmbdf3 使用
    */
-  toDailyBriefFormat() {
+  toGzcmbdf3Format() {
     return this.results.map(item => ({
       title: item.title || '无标题',
       url: item.url || '',

@@ -149,15 +149,15 @@ Adding a NEW secret (e.g. you wire up a paid data source like Bloomberg):
 
 ```powershell
 # Windows
-Get-ScheduledTaskInfo -TaskName DailyBrief | Format-List LastRunTime, LastTaskResult
+Get-ScheduledTaskInfo -TaskName gzcmbdf3 | Format-List LastRunTime, LastTaskResult
 ```
 
 ```bash
 # macOS
-launchctl list | grep com.daily-brief
+launchctl list | grep com.gzcmbdf3
 
 # Linux (cron doesn't track per-job state, so just inspect cron + log)
-crontab -l | grep daily-brief
+crontab -l | grep gzcmbdf3
 ```
 
 **Tail today's log** (date = local time, not UTC):

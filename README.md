@@ -1,6 +1,6 @@
 <a id="zh"></a>
 
-# 📰 daily-brief · 10 分钟拥有你自己的 AI 每日简报
+# 📰 gzcmbdf3 · 10 分钟拥有你自己的 AI 每日简报
 
 **中文** · [English ↓](#en)
 
@@ -9,17 +9,17 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org/)
 [![LLM: pluggable](https://img.shields.io/badge/LLM-pluggable%20(6%20backends)-orange.svg)](#-llm-后端配置)
 [![Deploy: GH Actions](https://img.shields.io/badge/deploy-GitHub%20Actions-2088ff.svg)](#a-github-actions--pages零基础设施推荐)
-[![Demo: live](https://img.shields.io/badge/demo-leiting--eric.github.io%2FDailyBrief-brightgreen.svg)](https://leiting-eric.github.io/DailyBrief)
-[![Stars](https://img.shields.io/github/stars/leiting-eric/DailyBrief?style=social)](https://github.com/leiting-eric/DailyBrief)
+[![Demo: live](https://img.shields.io/badge/demo-leiting--eric.github.io%2Fgzcmbdf3-brightgreen.svg)](https://shengc-shv.github.io/gzcmbdf3)
+[![Stars](https://img.shields.io/github/stars/shengc-shv/gzcmbdf3?style=social)](https://github.com/shengc-shv/gzcmbdf3)
 
 > **你的私人 AI 每日简报，跑在你自己掌控的基础设施上。** 默认启用 24 个数据源 · LLM 摘要 · 21 个股票/加密标的**技术指标 + AI 交易点评** · 中英双语 · 6 个 LLM 后端可选。
 >
 > **三种部署任选**：[**🚀 5 分钟 Fork 到 GitHub Actions**](#a-github-actions--pages零基础设施推荐) · [**💻 本地一键装**](#b-本地一键装) · [**🤖 一句话让 AI Agent 帮你装**](#c-给-ai-agent-一句话装)。
 >
-> 🍴 **本仓库是 [leiting-eric/DailyBrief](https://github.com/leiting-eric/DailyBrief) 的 fork**：默认信源精简为中文/财经向（tech + finance + `gd-ipo` 广东地区IPO）；上游英文社区源（GitHub Trending / Hacker News / V2EX / LinuxDo）不在默认配置，`politics` / `community` 两个 L1 tab 默认无启用源；A 股 / 港股 IPO 爬虫（`scripts/crawlers/`）经 `data/crawled-articles.json` 并入 `gd-ipo` tab。实时信源以 `sources.config.json` / `npm run sources` 为准。
+> 🍴 **本仓库是 [shengc-shv/gzcmbdf3](https://github.com/shengc-shv/gzcmbdf3) 的 fork**：默认信源精简为中文/财经向（tech + finance + `gd-ipo` 广东地区IPO）；上游英文社区源（GitHub Trending / Hacker News / V2EX / LinuxDo）不在默认配置，`politics` / `community` 两个 L1 tab 默认无启用源；A 股 / 港股 IPO 爬虫（`scripts/crawlers/`）经 `data/crawled-articles.json` 并入 `gd-ipo` tab。实时信源以 `sources.config.json` / `npm run sources` 为准。
 
 **🌐 Live demos** —
-[📰 leiting-eric.github.io/DailyBrief](https://leiting-eric.github.io/DailyBrief)（A 方式 · GitHub Actions + Pages）
+[📰 shengc-shv.github.io/gzcmbdf3](https://shengc-shv.github.io/gzcmbdf3)（A 方式 · GitHub Actions + Pages）
 ·
 [📰 daily.leiting.tech](https://daily.leiting.tech)（B 方式 · 本地服务器部署）
 
@@ -164,27 +164,27 @@
 
 ```bash
 # Linux / macOS
-curl -sSL https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node
+curl -sSL https://raw.githubusercontent.com/shengc-shv/gzcmbdf3/main/bootstrap.mjs | node
 
 # Windows PowerShell
-irm https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node -
+irm https://raw.githubusercontent.com/shengc-shv/gzcmbdf3/main/bootstrap.mjs | node -
 ```
 
 这条命令会自动：
 1. 检查 Node / git / claude CLI 是否就位（没装 claude CLI 只发警告，可继续走 API 后端）
-2. `git clone` 到 `~/daily-brief`（Windows: `%USERPROFILE%\daily-brief`）
+2. `git clone` 到 `~/gzcmbdf3`（Windows: `%USERPROFILE%\gzcmbdf3`）
 3. `npm install`
 4. 注册系统定时（Windows Task Scheduler / macOS launchd / Linux cron，默认 08:00 本地时间）
-5. 写 `~/.daily-brief-config` 记录项目路径
+5. 写 `~/.gzcmbdf3-config` 记录项目路径
 6. 在 `~/.claude/` 建符号链接让 Claude Code 的 skill 和 slash command 全局可用
 7. 跑一次 `npm run dry-run` 烟测
 
-**Claude Code 集成**：使用 `--global` 安装后，可以在任意目录运行 `/run-daily` 和 `/check-daily`；描述问题时也会加载项目内的 `daily-brief` skill。Cursor / Codex 等其他 agent 不使用这套 skill/command 机制，但不影响系统定时任务运行。手动触发命令：
+**Claude Code 集成**：使用 `--global` 安装后，可以在任意目录运行 `/run-daily` 和 `/check-daily`；描述问题时也会加载项目内的 `gzcmbdf3` skill。Cursor / Codex 等其他 agent 不使用这套 skill/command 机制，但不影响系统定时任务运行。手动触发命令：
 
 | 平台 | 手动触发 |
 |---|---|
-| Windows | `Start-ScheduledTask -TaskName DailyBrief` |
-| macOS | `launchctl start com.daily-brief` |
+| Windows | `Start-ScheduledTask -TaskName gzcmbdf3` |
+| macOS | `launchctl start com.gzcmbdf3` |
 | Linux | `node scripts/run-daily.mjs`（cron 不支持手动触发） |
 
 自定义路径 / 触发时间：
@@ -200,9 +200,9 @@ node bootstrap.mjs --target /custom/path --at 07:30
 无论你用哪个 AI Agent（Claude Code / Cursor / Codex / Continue.dev / OpenClaw 等），把下面这段发给它：
 
 > 帮我装这个开源项目，按 README 的"本地一键装"流程跑 bootstrap，完成后告诉我下次自动触发的时间：
-> https://github.com/leiting-eric/DailyBrief
+> https://github.com/shengc-shv/gzcmbdf3
 
-项目里有 [`AGENTS.md`](AGENTS.md)（通用 agent 协议）+ [`.claude/skills/daily-brief/SKILL.md`](.claude/skills/daily-brief/SKILL.md)（Claude Code 专属，更详细），Agent 装完后能直接帮你诊断"今天报告没出来"、"加个新数据源"这类问题。
+项目里有 [`AGENTS.md`](AGENTS.md)（通用 agent 协议）+ [`.claude/skills/gzcmbdf3/SKILL.md`](.claude/skills/gzcmbdf3/SKILL.md)（Claude Code 专属，更详细），Agent 装完后能直接帮你诊断"今天报告没出来"、"加个新数据源"这类问题。
 
 ---
 
@@ -218,8 +218,8 @@ node bootstrap.mjs --target /custom/path --at 07:30
 
 ```bash
 # 1. clone + 依赖
-git clone https://github.com/leiting-eric/DailyBrief.git
-cd DailyBrief
+git clone https://github.com/shengc-shv/gzcmbdf3.git
+cd gzcmbdf3
 npm install
 
 # 2. 配置 LLM 后端
@@ -232,8 +232,8 @@ node scripts/install.mjs --global
 # 也可指定时间：node scripts/install.mjs --at 07:30 --global
 
 # 4. 立即触发一次测试
-# Windows:  Start-ScheduledTask -TaskName DailyBrief
-# macOS:    launchctl start com.daily-brief
+# Windows:  Start-ScheduledTask -TaskName gzcmbdf3
+# macOS:    launchctl start com.gzcmbdf3
 # Linux:    node scripts/run-daily.mjs
 ```
 
@@ -464,16 +464,16 @@ DEPLOY_PATH=/var/www/your-domain
 |---|---|
 | `/run-daily` | 立即触发 daily 并后台监听到完成。从任意目录都行 |
 | `/check-daily` | 查任务状态 + 报告文件 + 配额 |
-| 描述问题（"日报又挂了"、"X 推文为啥没更新"等）| `daily-brief` skill 的关键词触发自动加载，让 Claude 直接懂这个项目 |
+| 描述问题（"日报又挂了"、"X 推文为啥没更新"等）| `gzcmbdf3` skill 的关键词触发自动加载，让 Claude 直接懂这个项目 |
 
-**实现机制**：`scripts/install.mjs --global` 在 `~/.claude/` 下建符号链接，指向项目内的 [`.claude/skills/daily-brief/SKILL.md`](.claude/skills/daily-brief/SKILL.md) 和 [`.claude/commands/`](.claude/commands/) 文件——**单一源**，编辑项目文件等于编辑用户级 skill。当 symlink 因权限受限失败时（如 Windows 无开发者模式），自动 fallback 到 copy。`~/.daily-brief-config` 记录项目实际路径，让 slash command 在任意 cwd 都能找到项目。
+**实现机制**：`scripts/install.mjs --global` 在 `~/.claude/` 下建符号链接，指向项目内的 [`.claude/skills/gzcmbdf3/SKILL.md`](.claude/skills/gzcmbdf3/SKILL.md) 和 [`.claude/commands/`](.claude/commands/) 文件——**单一源**，编辑项目文件等于编辑用户级 skill。当 symlink 因权限受限失败时（如 Windows 无开发者模式），自动 fallback 到 copy。`~/.gzcmbdf3-config` 记录项目实际路径，让 slash command 在任意 cwd 都能找到项目。
 
 ---
 
 ## 📁 项目结构
 
 ```
-daily-brief/
+gzcmbdf3/
 ├── lib/
 │   ├── sources/        # RSS / API / curl 抓取器；新加源在这里
 │   ├── ai/             # 可插拔 LLM 后端 + 提示词（lib/ai/backends/ 下每个 backend）
@@ -511,7 +511,7 @@ daily-brief/
 
 ```bash
 node scripts/uninstall.mjs
-# 移除：定时任务 (Task Scheduler / launchd / cron) + ~/.claude/ 下的链接 + ~/.daily-brief-config
+# 移除：定时任务 (Task Scheduler / launchd / cron) + ~/.claude/ 下的链接 + ~/.gzcmbdf3-config
 # 不动：项目文件、daily_reports/、logs/、power plan 设置
 # 想彻底清理就 rm -rf 整个项目目录
 ```
@@ -538,7 +538,7 @@ MIT
 
 <a id="en"></a>
 
-# 📰 daily-brief · your own AI-curated daily news brief in 10 minutes
+# 📰 gzcmbdf3 · your own AI-curated daily news brief in 10 minutes
 
 [↑ 中文](#zh) · **English**
 
@@ -547,17 +547,17 @@ MIT
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org/)
 [![LLM: pluggable](https://img.shields.io/badge/LLM-pluggable%20(6%20backends)-orange.svg)](#-llm-backend-configuration)
 [![Deploy: GH Actions](https://img.shields.io/badge/deploy-GitHub%20Actions-2088ff.svg)](#a-github-actions--pages-zero-infra-recommended)
-[![Demo: live](https://img.shields.io/badge/demo-leiting--eric.github.io%2FDailyBrief-brightgreen.svg)](https://leiting-eric.github.io/DailyBrief)
-[![Stars](https://img.shields.io/github/stars/leiting-eric/DailyBrief?style=social)](https://github.com/leiting-eric/DailyBrief)
+[![Demo: live](https://img.shields.io/badge/demo-leiting--eric.github.io%2Fgzcmbdf3-brightgreen.svg)](https://shengc-shv.github.io/gzcmbdf3)
+[![Stars](https://img.shields.io/github/stars/shengc-shv/gzcmbdf3?style=social)](https://github.com/shengc-shv/gzcmbdf3)
 
 > **Your own AI-curated daily news brief, on infrastructure you control.** 24 sources enabled by default · LLM summaries · 21-ticker market panel with SMA/RSI/MACD signals + AI commentary · bilingual (zh/en) · 6 swappable LLM backends.
 >
 > **Three deployment paths, pick one:** [**🚀 5-min GitHub Actions fork**](#a-github-actions--pages-zero-infra-recommended) · [**💻 local one-liner install**](#b-local-one-liner-install) · [**🤖 have an AI agent install it for you**](#c-have-an-ai-agent-install-it-for-you).
 >
-> 🍴 **This repo is a fork of [leiting-eric/DailyBrief](https://github.com/leiting-eric/DailyBrief)**: the default source set is curated to Chinese/Finance-focused tech + finance + a `gd-ipo` (Guangdong IPO) category; upstream English-community sources (GitHub Trending / Hacker News / V2EX / LinuxDo) are absent, so the `politics` / `community` L1 tabs have no enabled sources by default. A-share / HK IPO crawlers under `scripts/crawlers/` feed the `gd-ipo` tab via `data/crawled-articles.json`. The live list is in `sources.config.json` / `npm run sources`.
+> 🍴 **This repo is a fork of [shengc-shv/gzcmbdf3](https://github.com/shengc-shv/gzcmbdf3)**: the default source set is curated to Chinese/Finance-focused tech + finance + a `gd-ipo` (Guangdong IPO) category; upstream English-community sources (GitHub Trending / Hacker News / V2EX / LinuxDo) are absent, so the `politics` / `community` L1 tabs have no enabled sources by default. A-share / HK IPO crawlers under `scripts/crawlers/` feed the `gd-ipo` tab via `data/crawled-articles.json`. The live list is in `sources.config.json` / `npm run sources`.
 
 **🌐 Live demos** —
-[📰 leiting-eric.github.io/DailyBrief](https://leiting-eric.github.io/DailyBrief) (path A · GitHub Actions + Pages)
+[📰 shengc-shv.github.io/gzcmbdf3](https://shengc-shv.github.io/gzcmbdf3) (path A · GitHub Actions + Pages)
 ·
 [📰 daily.leiting.tech](https://daily.leiting.tech) (path B · self-hosted server)
 
@@ -702,27 +702,27 @@ If you just want the default (08:00 local daily), **set only `REPORT_TZ`** (e.g.
 
 ```bash
 # Linux / macOS
-curl -sSL https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node
+curl -sSL https://raw.githubusercontent.com/shengc-shv/gzcmbdf3/main/bootstrap.mjs | node
 
 # Windows PowerShell
-irm https://raw.githubusercontent.com/leiting-eric/DailyBrief/main/bootstrap.mjs | node -
+irm https://raw.githubusercontent.com/shengc-shv/gzcmbdf3/main/bootstrap.mjs | node -
 ```
 
 This script will:
 1. Check that Node / git / claude CLI are on PATH (claude CLI missing is a warning, not an error — you can use an API backend instead)
-2. `git clone` to `~/daily-brief` (Windows: `%USERPROFILE%\daily-brief`)
+2. `git clone` to `~/gzcmbdf3` (Windows: `%USERPROFILE%\gzcmbdf3`)
 3. `npm install`
 4. Register the OS scheduler (Windows Task Scheduler / macOS launchd / Linux cron, default 08:00 local time)
-5. Write `~/.daily-brief-config` recording the project path
+5. Write `~/.gzcmbdf3-config` recording the project path
 6. Symlink the Claude Code skill + slash commands into `~/.claude/` so they work from any directory
 7. Run `npm run dry-run` as a smoke test
 
-**Claude Code integration**: after installing with `--global`, Claude Code can use `/run-daily` and `/check-daily` from any directory, and plain-language troubleshooting prompts can load the bundled `daily-brief` skill. Other agents such as Cursor and Codex do not use this skill/command mechanism, but the OS scheduled task still works. Manual triggers:
+**Claude Code integration**: after installing with `--global`, Claude Code can use `/run-daily` and `/check-daily` from any directory, and plain-language troubleshooting prompts can load the bundled `gzcmbdf3` skill. Other agents such as Cursor and Codex do not use this skill/command mechanism, but the OS scheduled task still works. Manual triggers:
 
 | Platform | Command |
 |---|---|
-| Windows | `Start-ScheduledTask -TaskName DailyBrief` |
-| macOS | `launchctl start com.daily-brief` |
+| Windows | `Start-ScheduledTask -TaskName gzcmbdf3` |
+| macOS | `launchctl start com.gzcmbdf3` |
 | Linux | `node scripts/run-daily.mjs` (cron doesn't support manual trigger) |
 
 Custom install path / time:
@@ -738,9 +738,9 @@ node bootstrap.mjs --target /custom/path --at 07:30
 Whichever AI agent you use (Claude Code / Cursor / Codex / Continue.dev / OpenClaw / etc.), send it this prompt:
 
 > Please install this open-source project following the README's "local one-liner" path with bootstrap, and tell me when the next auto-trigger will fire:
-> https://github.com/leiting-eric/DailyBrief
+> https://github.com/shengc-shv/gzcmbdf3
 
-The repo includes [`AGENTS.md`](AGENTS.md) (universal agent protocol) and [`.claude/skills/daily-brief/SKILL.md`](.claude/skills/daily-brief/SKILL.md) (Claude Code-specific, more detailed). After install, the agent can help diagnose things like "today's report didn't come out" or "add a new source".
+The repo includes [`AGENTS.md`](AGENTS.md) (universal agent protocol) and [`.claude/skills/gzcmbdf3/SKILL.md`](.claude/skills/gzcmbdf3/SKILL.md) (Claude Code-specific, more detailed). After install, the agent can help diagnose things like "today's report didn't come out" or "add a new source".
 
 ---
 
@@ -756,8 +756,8 @@ The repo includes [`AGENTS.md`](AGENTS.md) (universal agent protocol) and [`.cla
 
 ```bash
 # 1. Clone + dependencies
-git clone https://github.com/leiting-eric/DailyBrief.git
-cd DailyBrief
+git clone https://github.com/shengc-shv/gzcmbdf3.git
+cd gzcmbdf3
 npm install
 
 # 2. Pick an LLM backend
@@ -770,8 +770,8 @@ echo "say hi" | claude --print --model sonnet
 node scripts/install.mjs --global
 
 # 4. Test trigger immediately
-# Windows:  Start-ScheduledTask -TaskName DailyBrief
-# macOS:    launchctl start com.daily-brief
+# Windows:  Start-ScheduledTask -TaskName gzcmbdf3
+# macOS:    launchctl start com.gzcmbdf3
 # Linux:    node scripts/run-daily.mjs
 ```
 
@@ -1002,16 +1002,16 @@ Then:
 |---|---|
 | `/run-daily` | Triggers daily immediately, monitors in the background until done. Works from any directory. |
 | `/check-daily` | Checks task state + report files + quota |
-| Describing a problem ("today's report didn't come out", "why didn't X posts update") | Auto-loads the `daily-brief` skill so Claude understands the project context |
+| Describing a problem ("today's report didn't come out", "why didn't X posts update") | Auto-loads the `gzcmbdf3` skill so Claude understands the project context |
 
-**How it works**: `scripts/install.mjs --global` symlinks files in `~/.claude/` pointing at the project's [`.claude/skills/daily-brief/SKILL.md`](.claude/skills/daily-brief/SKILL.md) and [`.claude/commands/`](.claude/commands/) — **single source**, editing the project files is editing the user-level skill. If symlinks aren't permitted (Windows without Developer Mode), it falls back to copying. `~/.daily-brief-config` records the absolute project path so slash commands find it from any CWD.
+**How it works**: `scripts/install.mjs --global` symlinks files in `~/.claude/` pointing at the project's [`.claude/skills/gzcmbdf3/SKILL.md`](.claude/skills/gzcmbdf3/SKILL.md) and [`.claude/commands/`](.claude/commands/) — **single source**, editing the project files is editing the user-level skill. If symlinks aren't permitted (Windows without Developer Mode), it falls back to copying. `~/.gzcmbdf3-config` records the absolute project path so slash commands find it from any CWD.
 
 ---
 
 ## 📁 Project structure
 
 ```
-daily-brief/
+gzcmbdf3/
 ├── lib/
 │   ├── sources/        # RSS / API / curl fetchers; add new sources here
 │   ├── ai/             # Pluggable LLM backends + prompts (lib/ai/backends/ per backend)
@@ -1049,7 +1049,7 @@ daily-brief/
 
 ```bash
 node scripts/uninstall.mjs
-# Removes: scheduled task (Task Scheduler / launchd / cron) + ~/.claude/ symlinks + ~/.daily-brief-config
+# Removes: scheduled task (Task Scheduler / launchd / cron) + ~/.claude/ symlinks + ~/.gzcmbdf3-config
 # Leaves alone: project files, daily_reports/, logs/, power plan settings
 # For a full cleanup: rm -rf the project directory
 ```

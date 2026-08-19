@@ -7,7 +7,7 @@ const parser = new Parser({
   timeout: 15000,
   headers: {
     "User-Agent":
-      "Mozilla/5.0 (compatible; DailyBriefBot/1.0; +https://github.com/)",
+      "Mozilla/5.0 (compatible; gzcmbdf3Bot/1.0; +https://github.com/)",
   },
 });
 
