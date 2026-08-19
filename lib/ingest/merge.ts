@@ -93,6 +93,8 @@ export function toMergeArticle(
     url: item.url || "",
     excerpt: item.excerpt || "",
     publishedAt: item.publishedAt ? new Date(item.publishedAt) : undefined,
+    // 无发布时间 → 回退采集时间（本次爬取时刻）
+    ...(item.publishedAt ? {} : { fetchedAt: new Date() }),
     category,
     summary: item.summary || "",
     ...(item.tier ? { tier: item.tier } : {}),
@@ -120,19 +122,18 @@ export function dedupeByUrl<T extends { url: string }>(
  * 动机（2026-08-19 用户反馈）：rss 流会混入 7 天前甚至更早的旧文，其 URL 不在
  * 7 天历史缓存 → 被误判为「新条目」进 AI 分类（白花模型费用），且会显示在当日
  * 面板。过滤后：旧文不进 AI、不展示。
- * 无 publishedAt 的条目保留（时间未知，宁可保留）。
+ * 时间判定统一为 `publishedAt ?? fetchedAt`（2026-08-19 用户确认：无发布时间
+ * 采用信息采集时间）；两者皆无的条目保留（时间未知，宁可保留）。
  */
-export function filterByWindow<T extends { publishedAt?: Date | string }>(
+export function filterByWindow<T extends { publishedAt?: Date | string; fetchedAt?: Date }>(
   articles: T[],
   days = 7,
 ): T[] {
   const cutoff = Date.now() - days * 86_400_000;
   return articles.filter((a) => {
-    if (!a.publishedAt) return true;
-    const t =
-      typeof a.publishedAt === "string"
-        ? new Date(a.publishedAt).getTime()
-        : a.publishedAt.getTime();
+    const raw = a.publishedAt ?? a.fetchedAt;
+    if (!raw) return true;
+    const t = typeof raw === "string" ? new Date(raw).getTime() : raw.getTime();
     return Number.isNaN(t) || t >= cutoff;
   });
 }

@@ -99,7 +99,7 @@ export function renderArticleHtml(a: ArticleInput, showSource = false): string {
   const summaryText = a.summary ?? (a as unknown as { cnSummary?: string }).cnSummary;
   const summary = summaryText ? escapeHtml(summaryText) : "";
   const meta = a.meta ? escapeHtml(a.meta) : "";
-  const time = formatDate(a.publishedAt);
+  const time = formatDate(a.publishedAt ?? a.fetchedAt);
   const sourceLabel = showSource && a.source ? escapeHtml(a.source) : "";
   const alsoFrom = (a.alsoFrom ?? []).filter(Boolean);
   const alsoLine =
@@ -174,20 +174,22 @@ export function renderSourceTabs(
 }
 
 /**
- * 保留每个源中「最近 days 天发布」的条目，并按发布时间倒序排序。
- * 窗口按 publishedAt 判定；无 publishedAt 的保留（时间未知，靠抓取归属）。
+ * 保留每个源中「最近 days 天」的条目，并按时间倒序排序。
+ * 时间判定统一为 `publishedAt ?? fetchedAt`（2026-08-19 用户确认：
+ * 没有发布时间的采用信息采集时间）；两者皆无的保留（时间未知）。
  */
 export function filterRecentDays(sources: SourceGroup[], days = DISPLAY_WINDOW_DAYS): SourceGroup[] {
   const cutoff = Date.now() - days * 86_400_000;
   return sources.map((s) => {
     const items = s.items
       .filter((a) => {
-        if (!a.publishedAt) return true;
-        return a.publishedAt.getTime() >= cutoff;
+        const t = a.publishedAt ?? a.fetchedAt;
+        if (!t) return true;
+        return t.getTime() >= cutoff;
       })
       .sort((a, b) => {
-        const at = a.publishedAt?.getTime() ?? 0;
-        const bt = b.publishedAt?.getTime() ?? 0;
+        const at = (a.publishedAt ?? a.fetchedAt)?.getTime() ?? 0;
+        const bt = (b.publishedAt ?? b.fetchedAt)?.getTime() ?? 0;
         return bt - at;
       });
     return { ...s, items };

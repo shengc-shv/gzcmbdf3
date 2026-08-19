@@ -213,3 +213,47 @@ test("财经面板「国家政策」sub-tab 计数同口径：只算最近 3 天
   assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算最近 3 天 1 条");
   assert.ok(!html.includes('<span class="count">3</span>'), "不应把超窗口条目计入 cn-policy 计数");
 });
+
+test("filterRecentDays: 无发布时间 → 按采集时间 fetchedAt 排序与窗口（不垫底、不误弃）", () => {
+  const now = new Date();
+  const day = 86_400_000;
+  const subs: SubGroup[] = [
+    {
+      id: "cn-tech",
+      name: "技术动态",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [
+            // 无 publishedAt：采集于 1 小时前 → 应排第一（按采集时间回退）
+            { ...item("https://x/f1", "无发布时间·今天采集", "tech"), publishedAt: undefined, fetchedAt: new Date(now.getTime() - 3_600_000) },
+            // 有发布时间：发布 2 小时前 → 第二
+            { ...item("https://x/p1", "有发布时间·2小时前", "tech"), publishedAt: new Date(now.getTime() - 2 * 3_600_000) },
+            // 采集于 5 天前（超窗口）→ 不计入
+            { ...item("https://x/f2", "无发布时间·5天前采集", "tech"), publishedAt: undefined, fetchedAt: new Date(now.getTime() - 5 * day) },
+          ],
+        },
+      ],
+    },
+    // 第二子组触发 sub-tabs 渲染（单子组走单面板分支不渲染计数）
+    {
+      id: "ai-news",
+      name: "AI 动态",
+      sources: [
+        {
+          sourceId: "test-src",
+          sourceName: "测试源",
+          items: [{ ...item("https://x/a1", "AI 动态条目", "tech"), publishedAt: now }],
+        },
+      ],
+    },
+  ];
+  const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
+  // 计数只算 3 天窗口内（1h + 2h = 2 条，5 天前采集的不计）
+  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">2</span>'), "无发布时间条目按 fetchedAt 判定窗口（5天前采集不计入）");
+  // 顺序：无发布时间(采集1h前) 应在 有发布时间(2h前) 之前
+  const order = html.indexOf("无发布时间·今天采集");
+  const order2 = html.indexOf("有发布时间·2小时前");
+  assert.ok(order !== -1 && order2 !== -1 && order < order2, "无发布时间条目按采集时间参与倒序排序");
+});

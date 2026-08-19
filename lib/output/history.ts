@@ -106,6 +106,8 @@ function entryToArticle(e: HistoryEntry, fetchedToday: boolean): ArticleInput {
     url: e.url,
     excerpt: e.excerpt,
     publishedAt: e.publishedAt ? new Date(e.publishedAt) : undefined,
+    // 无发布时间 → 回退采集时间（历史条目 = 最近一次被采集/确认的时间）
+    ...(e.publishedAt ? {} : { fetchedAt: new Date(e.lastSeenAt) }),
     category: e.category,
     summary: e.summary,
     source: e.source,

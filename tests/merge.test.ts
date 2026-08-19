@@ -41,6 +41,25 @@ test("filterByWindow: 兼容字符串时间戳（JSON 数据）", () => {
   assert.deepEqual(kept.map((x) => x.url), ["a"]);
 });
 
+test("filterByWindow: 无发布时间 → 回退采集时间 fetchedAt 判定窗口", () => {
+  const now = Date.now();
+  const day = 86_400_000;
+  const kept = filterByWindow(
+    [
+      { url: "a", fetchedAt: new Date(now) },                 // 采集于今天 → 保留
+      { url: "b", fetchedAt: new Date(now - 2 * day) },       // 采集于 2 天前 → 保留
+      { url: "c", fetchedAt: new Date(now - 40 * day) },      // 采集于 40 天前 → 丢弃
+      { url: "d" },                                           // 两者皆无 → 保留
+    ],
+    7,
+  );
+  assert.deepEqual(
+    kept.map((x) => x.url),
+    ["a", "b", "d"],
+    "无 publishedAt 时按 fetchedAt 判定；两者皆无才保留",
+  );
+});
+
 test("dedupeByUrl: 重复 URL 仅保留先出现的，计数正确", () => {
   const base = [{ url: "a" }, { url: "b" }];
   const incoming = [{ url: "b" }, { url: "c" }];

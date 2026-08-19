@@ -67,6 +67,15 @@ export interface RawArticle {
   url: string;
   excerpt?: string;
   publishedAt?: Date;
+  /**
+   * 采集时间（信息被抓取的时间）。仅当 publishedAt 缺失时作为回退：
+   * 窗口过滤（filterByWindow/filterRecentDays）与排序统一按
+   * `publishedAt ?? fetchedAt` 处理（2026-08-19 用户确认：
+   * 没有发布时间的采用信息采集时间）。
+   * - 抓取/爬虫条目：本次抓取时补 new Date()；
+   * - 历史条目：回退为 lastSeenAt（最近一次被采集/确认的时间）。
+   */
+  fetchedAt?: Date;
   category: Category;
   /**
    * LLM-generated summary in the active REPORT_LOCALE language. For zh

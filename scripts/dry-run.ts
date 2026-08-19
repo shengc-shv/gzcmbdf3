@@ -156,7 +156,14 @@ async function main() {
       try {
         const items = await fetchSource(source);
         console.log(`  ${source.id.padEnd(20)} ${items.length}`);
-        articles.push(...items.map((it) => ({ ...it, source: source.name })));
+        // 无发布时间 → 回退采集时间（本次抓取时刻）
+        articles.push(
+          ...items.map((it) => ({
+            ...it,
+            source: source.name,
+            ...(it.publishedAt ? {} : { fetchedAt: new Date() }),
+          })),
+        );
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
         console.error(`  ${source.id.padEnd(20)} FAILED — ${msg}`);

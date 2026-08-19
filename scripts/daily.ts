@@ -114,8 +114,16 @@ async function fetchAll(): Promise<ArticleInput[]> {
     try {
       const items = await fetchSource(source);
       console.log(`  ${source.id.padEnd(20)} ${items.length}`);
-      // 采集层声明源等级 tier（T6）：源定义 → 文章
-      articles.push(...items.map((it) => ({ ...it, source: source.name, tier: source.tier })));
+      // 采集层声明源等级 tier（T6）：源定义 → 文章；
+      // 无发布时间 → 回退采集时间（本次抓取时刻）
+      articles.push(
+        ...items.map((it) => ({
+          ...it,
+          source: source.name,
+          tier: source.tier,
+          ...(it.publishedAt ? {} : { fetchedAt: new Date() }),
+        })),
+      );
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error(`  ${source.id.padEnd(20)} FAILED — ${msg}`);
