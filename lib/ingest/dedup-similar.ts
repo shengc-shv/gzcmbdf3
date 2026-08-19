@@ -1,0 +1,126 @@
+/**
+ * 标题相似度判重（归一化边界②，漏斗之后、AI 之前）。
+ *
+ * 用户规则（2026-08-19）：同一主题（标题相似度 ≥ threshold）最多保留
+ * maxPerTheme 条（默认 2），且**同 tier 只留 1 条**——两个政府源（T1）发同
+ * 一消息只留 1；政府 + 媒体 = 政府留 1 + 媒体留 1（共 2）。保留优先级按
+ * 来源等级：T1 官方一手 > T1.5 准官方·机构一手 > T2 媒体·智库 > 无等级。
+ *
+ * 与 URL 精确判重（dedupeByUrl）互补：URL 判重管"同一条"，本模块管
+ * "同一事件的多家报道"（不同 URL、相似标题）。放在 AI 之前执行，
+ * 让 LLM 只处理保留条目（省钱）。
+ */
+import type { ArticleInput } from "../types";
+import { SOURCE_TIERS, type SourceTier } from "../sources/tiers";
+
+export interface SimilarDedupOptions {
+  /** 标题相似度阈值（0-1），≥ 阈值视为同一主题。默认 0.7。 */
+  threshold?: number;
+  /** 每个主题最多保留条数。默认 2。 */
+  maxPerTheme?: number;
+}
+
+export interface SimilarDedupResult {
+  kept: ArticleInput[];
+  removed: ArticleInput[];
+}
+
+/** 标题字符二元组（bigram）集合——中文标题相似度的零依赖近似。 */
+export function titleBigrams(s: string): Set<string> {
+  const t = s.replace(/\s+/g, "").toLowerCase();
+  const grams = new Set<string>();
+  if (t.length === 0) return grams;
+  if (t.length === 1) {
+    grams.add(t);
+    return grams;
+  }
+  for (let i = 0; i < t.length - 1; i++) grams.add(t.slice(i, i + 2));
+  return grams;
+}
+
+/** Jaccard 相似度：交集 / 并集。 */
+export function jaccard(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 && b.size === 0) return 1;
+  let inter = 0;
+  for (const g of a) if (b.has(g)) inter++;
+  const union = a.size + b.size - inter;
+  return union === 0 ? 0 : inter / union;
+}
+
+/** 两标题相似度（bigram Jaccard）。 */
+export function titleSimilarity(a: string, b: string): number {
+  return jaccard(titleBigrams(a), titleBigrams(b));
+}
+
+/** tier 优先级排序权重（越小越优先保留）。 */
+function tierWeight(tier: SourceTier | undefined): number {
+  if (tier === undefined) return SOURCE_TIERS.length; // 无等级垫底
+  const i = SOURCE_TIERS.indexOf(tier);
+  return i === -1 ? SOURCE_TIERS.length : i;
+}
+
+/**
+ * 标题相似度判重：把标题相似度 ≥ threshold 的条目聚为同一主题，
+ * 每主题保留 ≤ maxPerTheme 条，且同一 tier 只留 1 条（不同 tier 可各留 1）。
+ * 簇内选择：按 (tier 优先级, publishedAt 新→旧) 排序，贪心取不重复 tier 的条目。
+ */
+export function dedupeByTitleSimilarity(
+  articles: ArticleInput[],
+  opts: SimilarDedupOptions = {},
+): SimilarDedupResult {
+  const threshold = opts.threshold ?? 0.7;
+  const maxPerTheme = opts.maxPerTheme ?? 2;
+  if (articles.length <= 1 || maxPerTheme < 1) {
+    return { kept: articles, removed: [] };
+  }
+
+  // 贪心聚簇：每条与已有簇的代表比较，相似则入簇，否则新建簇。
+  const clusters: ArticleInput[][] = [];
+  const reps: ArticleInput[] = [];
+  for (const a of articles) {
+    let placed = false;
+    for (let i = 0; i < reps.length; i++) {
+      if (titleSimilarity(a.title, reps[i].title) >= threshold) {
+        clusters[i].push(a);
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) {
+      clusters.push([a]);
+      reps.push(a);
+    }
+  }
+
+  const kept: ArticleInput[] = [];
+  const removed: ArticleInput[] = [];
+  for (const cluster of clusters) {
+    if (cluster.length <= 1) {
+      kept.push(...cluster);
+      continue;
+    }
+    // 排序：tier 优先级升序，其次 publishedAt 新→旧（undefined 垫底）
+    const sorted = [...cluster].sort((a, b) => {
+      const tw = tierWeight(a.tier) - tierWeight(b.tier);
+      if (tw !== 0) return tw;
+      const at = a.publishedAt ? a.publishedAt.getTime() : -Infinity;
+      const bt = b.publishedAt ? b.publishedAt.getTime() : -Infinity;
+      return bt - at;
+    });
+    // 同 tier 只留 1（总是生效，与簇大小无关）；总上限 maxPerTheme。
+    // 例：T1+T1 → 留 1；T1+T1.5 → 留 2；T1+T1.5+T2 → 留 T1+T1.5（2 条上限，T2 移除）。
+    const seenTier = new Set<SourceTier | "none">();
+    const picked: ArticleInput[] = [];
+    for (const it of sorted) {
+      const key: SourceTier | "none" = it.tier ?? "none";
+      if (seenTier.has(key)) continue; // 同 tier 只留 1 条
+      seenTier.add(key);
+      picked.push(it);
+      if (picked.length >= maxPerTheme) break;
+    }
+    kept.push(...picked);
+    removed.push(...sorted.filter((x) => !picked.includes(x)));
+  }
+
+  return { kept, removed };
+}

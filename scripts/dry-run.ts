@@ -13,7 +13,10 @@ import {
   keywordFilterEnabled,
   keywordFilterFallbackEnabled,
   loadKeywordConfig,
+  dedupSimilarEnabled,
+  loadDedupConfig,
 } from "../lib/filters/config";
+import { dedupeByTitleSimilarity } from "../lib/ingest/dedup-similar";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import { REPORTS_DIR } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
@@ -197,6 +200,22 @@ async function main() {
         `[dry-run] 🔻 关键词漏斗: ${before} → ${articles.length} 条（商机 ${opp} / 周报 ${weekly}，其余日报池）`,
       );
     }
+  }
+
+  // —— 标题相似度判重（与 daily.ts 一致，漏斗之后、buildRolling 之前）——
+  if (!isOffline && dedupSimilarEnabled()) {
+    const dd = loadDedupConfig();
+    const before = articles.length;
+    const { kept, removed } = dedupeByTitleSimilarity(articles, {
+      threshold: dd.threshold,
+      maxPerTheme: dd.maxPerTheme,
+    });
+    if (removed.length > 0) {
+      console.log(
+        `[dry-run] 🔁 标题相似度判重: ${before} → ${kept.length} 条（阈值 ${dd.threshold}、每主题 ≤${dd.maxPerTheme}、同 tier 只留 1；移除 ${removed.length} 条重复报道）`,
+      );
+    }
+    articles = kept;
   }
 
   // 合并滚动 7 天历史（窗口按信息发生时间 publishedAt 计）：今日抓取 + 历史缓存（按 fetchedToday 打标），

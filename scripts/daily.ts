@@ -17,7 +17,10 @@ import {
   keywordFilterEnabled,
   keywordFilterFallbackEnabled,
   loadKeywordConfig,
+  dedupSimilarEnabled,
+  loadDedupConfig,
 } from "../lib/filters/config";
+import { dedupeByTitleSimilarity } from "../lib/ingest/dedup-similar";
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import {
   type ArticleInput,
@@ -499,6 +502,23 @@ async function main() {
       articles = keep;
       console.log(`[daily] 🔻 关键词漏斗: ${before} → ${articles.length} 条（商机 ${opp} / 周报 ${weekly}，其余日报池）`);
     }
+  }
+
+  // —— 标题相似度判重（归一化②，漏斗之后 AI 之前）：同一主题最多 maxPerTheme 条、
+  // 同 tier 只留 1 条（政府+媒体 = 政府 1 + 媒体 1）。让 LLM 只处理保留条目（省钱）。
+  if (dedupSimilarEnabled()) {
+    const dd = loadDedupConfig();
+    const before = articles.length;
+    const { kept, removed } = dedupeByTitleSimilarity(articles, {
+      threshold: dd.threshold,
+      maxPerTheme: dd.maxPerTheme,
+    });
+    if (removed.length > 0) {
+      console.log(
+        `[daily] 🔁 标题相似度判重: ${before} → ${kept.length} 条（阈值 ${dd.threshold}、每主题 ≤${dd.maxPerTheme}、同 tier 只留 1；移除 ${removed.length} 条重复报道）`,
+      );
+    }
+    articles = kept;
   }
 
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
