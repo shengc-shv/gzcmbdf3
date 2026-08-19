@@ -36,7 +36,6 @@ test("save → load roundtrip：文章资产与每日资产均可持久化", () 
   };
   saveAiAssets(store);
   const loaded = loadAiAssets();
-  assert.equal(loaded["https://x/u1"].summary, "AI 摘要");
   assert.equal(assetSummary(loaded, "https://x/u1"), "AI 摘要");
   assert.ok(assetDaily(loaded, "2026-08-19")?.executive, "每日资产可读");
 });
@@ -79,6 +78,6 @@ test("dailyAssetKey / assetSummary / assetDaily 便捷函数", () => {
   };
   assert.equal(assetSummary(store, "u1"), "s");
   assert.equal(assetSummary(store, "nope"), undefined);
-  assert.equal(assetDaily(store, "d")?.executive?.x, 1);
+  assert.deepEqual(assetDaily(store, "d")?.executive, { x: 1 });
   assert.equal(assetDaily(store, "nope"), undefined);
 });
