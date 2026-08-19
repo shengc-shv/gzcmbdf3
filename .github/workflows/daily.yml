@@ -165,12 +165,16 @@ jobs:
 
       # Bring previous reports into the workspace so they survive each run
       # and so build-site can list them all in the archive.
+      # 2026-08-19 修复：原 `git --work-tree=daily_reports checkout origin/gh-pages -- .`
+      # 会把 gh-pages 内容 staged 进 main 的暂存区 → 后续 Commit 步骤把根目录发布物
+      # （2026-08-xx/、index.html、archive.html）误提交到 main。改用 git archive
+      # 解包恢复，完全不碰 git index。
       - name: Restore existing reports from gh-pages
         run: |
           mkdir -p daily_reports
           if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
             git fetch origin gh-pages --depth=1
-            git --work-tree=daily_reports checkout origin/gh-pages -- . || true
+            git archive origin/gh-pages | tar -x -C daily_reports
             # Drop the index/archive — build-site regenerates them
             rm -f daily_reports/index.html daily_reports/archive.html
             restored=$(ls -1d daily_reports/20*/ 2>/dev/null | wc -l | tr -d ' ')
@@ -234,20 +238,27 @@ jobs:
 
       # 每日流程会重写 data/article-history.json（含当日爬虫数据 + 被重新灌入的
       # 旧缓存，可能含陈旧日期）。先裁剪到最近 N 天（默认 7），被移除数据累积写入
-      # data/article-history-backup.json（不丢弃），再一次性把两者提交回 main。
-      # 注意：本步骤提交的是主分支上的文件，与下方发布到 gh-pages 的报告互不干扰。
+      # data/article-history-backup.json（不丢弃），再一次性提交回 main。
+      # 2026-08-19：报告归档统一放 main/history/（不再堆根目录）；restore 已改
+      # git archive（暂存区干净），本步骤只 add history/ 与 data/ 下的历史文件。
       - name: Trim history to recent N days (keep backup)
         run: node scripts/cleanup-history.mjs
 
-      - name: Commit rolling history + backup (article-history.json)
+      - name: Archive reports to history/ + commit rolling history
         run: |
+          # 1) 归档唯一存储里的报告到 main/history/（daily 产物 data/history/reports/<date>/）
+          mkdir -p history
+          for d in data/history/reports/20*/; do
+            [ -d "$d" ] && cp -r "$d" history/
+          done
+          # 2) 提交历史库 + 报告归档
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/article-history.json data/article-history-backup.json
+          git add history/ data/article-history.json data/article-history-backup.json
           if git diff --cached --quiet; then
-            echo "历史文件无变化，跳过提交"
+            echo "历史文件与报告归档无变化，跳过提交"
           else
-            git commit -m "chore: 更新当日文章历史缓存并裁剪到最近7天 ($(date -u +%Y-%m-%d))"
+            git commit -m "chore: 更新历史缓存并归档报告 ($(date -u +%Y-%m-%d))"
             git push
           fi
 
