@@ -11732,11 +11732,9 @@
       "publishedAt": "2026-08-19T09:16:52.000Z",
       "category": "finance",
       "source": "Bloomberg Markets",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "tier": "T2"
     },
     {
       "sourceId": "cnbc-top",
@@ -11746,11 +11744,9 @@
       "publishedAt": "2026-08-18T16:58:29.000Z",
       "category": "finance",
       "source": "CNBC Top Stories",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "tier": "T2"
     },
     {
       "sourceId": "yahoo-finance",
@@ -11760,51 +11756,43 @@
       "publishedAt": "2026-08-17T23:42:04.000Z",
       "category": "finance",
       "source": "Yahoo Finance",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "tier": "T2"
     },
     {
       "sourceId": "sina-finance",
       "title": "棕榈油价格升至八个月高位 因厄尔尼诺加剧东南亚干旱",
       "url": "https://finance.sina.com.cn/world/2026-08-19/doc-ininvwqk8332090.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-19T00:00:00.000Z",
+      "category": "finance",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "tier": "T2"
     },
     {
       "sourceId": "sina-finance",
       "title": "兆易创新，上半年炒股浮盈22亿",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininvwqs2632759.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-19T00:00:00.000Z",
+      "category": "finance",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "tier": "T2"
     },
     {
       "sourceId": "sina-money",
       "title": "5家基金公司上半年经营数据出炉：富国基金净利润超",
       "url": "https://finance.sina.com.cn/money/fund/jjyj/2026-08-19/doc-ininvwqs2634594.shtml",
       "excerpt": "【财富管理】5家基金公司上半年经营数据出炉：富国基金净利润超",
+      "fetchedAt": "2026-08-19T09:33:39.455Z",
       "category": "gz",
       "source": "新浪财经·理财保险",
-      "tier": "T2",
-      "fetchedAt": "2026-08-19T09:31:55.727Z",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "tier": "T2"
     },
     {
       "sourceId": "qbitai",
@@ -11814,11 +11802,60 @@
       "publishedAt": "2026-08-19T08:34:36.000Z",
       "category": "tech",
       "source": "量子位",
+      "fetchedToday": true,
+      "subcategory": "cn-tech",
+      "tier": "T2"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "EQT Is Said to Mull Sale of English Language Schools in Vietnam",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-19/eqt-is-said-to-mull-sale-of-english-language-schools-in-vietnam",
+      "excerpt": "Private equity firm EQT AB is considering selling its English language education businesses in Vietnam, according to people with knowledge of the matter.",
+      "publishedAt": "2026-08-19T09:25:34.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
       "tier": "T2",
       "filterBucket": "daily",
       "filterDimensions": [],
+      "relevant": false,
+      "summary": "EQT拟出售越南英语学校，属海外私募交易，与广州零售银行业务无直接关联，对分行经营决策参考价值有限。",
       "fetchedToday": true,
-      "subcategory": "cn-tech"
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "cnbc-top",
+      "title": "Dollar risks are mounting. Here’s what could weaken the greenback",
+      "url": "https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html",
+      "excerpt": "Currency strategists flag Treasury risk, softer U.S. data and uncertain Fed policy as key factors that could pressure the dollar.",
+      "publishedAt": "2026-08-19T09:32:56.000Z",
+      "category": "finance",
+      "source": "CNBC Top Stories",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "subcategories": [
+        "news"
+      ],
+      "subcategory": "news",
+      "relevant": true,
+      "summary": "美元走弱风险上升，可能影响黄金、外汇及海外资产配置，提示分行关注客户避险需求，适时提供多元化财富管理建议。",
+      "fetchedToday": true
+    },
+    {
+      "sourceId": "yahoo-finance",
+      "title": "Cibus Inc: Interoc Expands Rice Trade to 5 Traits, 36% Revenue Growth – Quarterly Update Report",
+      "url": "https://finance.yahoo.com/healthcare/articles/cibus-inc-interoc-expands-rice-215020923.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-17T21:50:20.000Z",
+      "category": "finance",
+      "source": "Yahoo Finance",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "relevant": false,
+      "summary": "Cibus季报属纯个股行情，涉及农业生物技术个股业绩，与银行零售业务无直接关联，参考价值有限。",
+      "fetchedToday": true,
+      "subcategory": "news"
     }
   ]
 }
