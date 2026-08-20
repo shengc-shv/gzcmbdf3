@@ -22,7 +22,6 @@ export const REGION_IPO: Category = "ipo";
 export const CATEGORY_ORDER: Category[] = [
   "tech",
   "finance",
-  "politics",
   "gd-ipo",
   "ipo",
   "gz",
@@ -49,7 +48,6 @@ export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: st
   // 广州辖区（gz- 前缀）：招行广州分行重点
   "gz-stats": { category: "gz", subcategory: "gz-customer" },
   "gz-gov": { category: "finance", subcategory: "gz-policy" },
-  "gz-nansha": { category: "gz", subcategory: "gz-private" },
   "gz-sse": { category: "gz", subcategory: "gz-ipo" },
   "gz-szse": { category: "gz", subcategory: "gz-ipo" },
   "gz-bse": { category: "gz", subcategory: "gz-ipo" },

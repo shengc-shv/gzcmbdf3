@@ -152,7 +152,8 @@
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "wsj-markets",
@@ -181,7 +182,8 @@
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "bbc-business",
@@ -195,7 +197,8 @@
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "economist-finance",
@@ -209,7 +212,8 @@
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "cnbc-top",
@@ -223,7 +227,8 @@
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "yahoo-finance",
@@ -238,7 +243,8 @@
       "zh",
       "en"
     ],
-    "disabledReason": "恢复：#45 CI 实测拉到 30 条（沙箱403仅为环境拦截，非源失效）"
+    "disabledReason": "恢复：#45 CI 实测拉到 30 条（沙箱403仅为环境拦截，非源失效）",
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "investing-news",
@@ -253,7 +259,8 @@
       "zh",
       "en"
     ],
-    "disabledReason": "恢复：#45 CI 实测拉到 10 条（沙箱403仅为环境拦截，非源失效）"
+    "disabledReason": "恢复：#45 CI 实测拉到 10 条（沙箱403仅为环境拦截，非源失效）",
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "sina-finance",
@@ -329,37 +336,6 @@
     ],
     "notes": "信贷/银行资讯源（全国）：21财经金融频道，房贷/消费贷/普惠/银行动态。全国性资讯，归宏观政策·国内财经，不作广州商机",
     "subcategory": "cn-finance"
-  },
-  {
-    "id": "cninfo",
-    "tier": "T1.5",
-    "name": "巨潮A股披露",
-    "type": "api",
-    "url": "https://www.cninfo.com.cn/new/disclosure/stock",
-    "category": "gd-ipo",
-    "subcategory": "szse",
-    "enabled": false,
-    "locales": [
-      "zh"
-    ],
-    "note": "深交所/上交所/北交所全披露平台。统一抓取后由分类器按『地域→类型→市场』分发到深/沪/京子标签；非IPO类（财报/分红/解禁）转财经要点。",
-    "disabledReason": "空壳 live-API 源：未接爬虫、永远0条，Daily Brief #45 实测 FAILED 500，禁用"
-  },
-  {
-    "id": "hkex-disclosure",
-    "tier": "T1.5",
-    "name": "港交所披露易",
-    "type": "rss",
-    "url": "https://www.hkexnews.hk/rss/listedco.xml",
-    "category": "gd-ipo",
-    "subcategory": "hkex",
-    "enabled": false,
-    "locales": [
-      "zh",
-      "en"
-    ],
-    "note": "港交所公告，覆盖广东企业港股上市/辅导动态。",
-    "disabledReason": "港交所披露易 RSS 地址失效(404)；港股 IPO 由爬虫 hkex-ipo.mjs 提供，此冗余 RSS 源禁用"
   },
   {
     "id": "gd-local-scraper",
@@ -495,7 +471,8 @@
       "zh",
       "en"
     ],
-    "note": "已验证可用。英美市场与经济新闻，无付费墙。"
+    "note": "已验证可用。英美市场与经济新闻，无付费墙。",
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "fed-press",
@@ -510,7 +487,8 @@
       "zh",
       "en"
     ],
-    "note": "已验证可用。美联储全部公告（FOMC 声明、纪要、监管），宏观信号第一手来源。"
+    "note": "已验证可用。美联储全部公告（FOMC 声明、纪要、监管），宏观信号第一手来源。",
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "ftchinese",
@@ -525,7 +503,8 @@
       "zh"
     ],
     "note": "已验证可用。FT 中文版综合新闻，全球宏观+中国市场视角。已按用户要求从「国内财经」移至「国际财经」。",
-    "lang": "zh"
+    "lang": "zh",
+    "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
     "id": "crunchbase-news",
@@ -590,18 +569,6 @@
     "tier": "T1",
     "name": "广州市政府(爬虫产物)",
     "subcategory": "gz-policy"
-  },
-  {
-    "type": "scrape",
-    "category": "gz",
-    "enabled": false,
-    "url": "file://./data/crawled-gz.json",
-    "notes": "广州商机爬虫兼容占位源：由 TS 爬虫 lib/sources/crawlers 产出（fetchCrawledArticles 进程内调用），仅用于 registry 识别",
-    "id": "gz-nansha",
-    "role": "crawled-input",
-    "tier": "T1",
-    "name": "广州南沙区政府(爬虫产物)",
-    "subcategory": "gz-private"
   },
   {
     "type": "api",
