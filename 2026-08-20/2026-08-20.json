@@ -3,38 +3,38 @@
   "daily_overview": "",
   "tech_briefs": [
     {
-      "title": "AI爬虫涌入电商，安全防线正在从“拦截”转向“判断”",
-      "url": "https://www.infoq.cn/article/61DFAJiVlqlaWQXi9kzA?utm_source=rss&utm_medium=article",
+      "title": "将可理解性作为架构特性：无法理解的系统无法安全演进",
+      "url": "https://www.infoq.cn/article/d5mWBGZxB2l2vRTO8wFU?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "AI爬虫涌入电商、安全防线转向判断，电商安全技术趋势参考。",
+      "summary": "点击查看原文>",
       "importance": 1
     },
     {
-      "title": "中国“机器人第一股”来了，宇树科技开盘暴涨 620%",
-      "url": "https://www.infoq.cn/article/Ae1KpZ9eIJD2V4DcQ0Au?utm_source=rss&utm_medium=article",
+      "title": "将Pod作为worker而非智能体：在Kubernetes上重新思考AI智能体的部署单元",
+      "url": "https://www.infoq.cn/article/u2O9k3QiZkeIbqJ7GsPw?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "宇树科技开盘暴涨620%，中国机器人第一股上市，人形机器人产业里程碑。",
+      "summary": "点击查看原文>",
       "importance": 1
     },
     {
-      "title": "OpenAI 因安全问题突然停训GPT-6！网友：当你造出一个神，就不可能再给它拴上绳子",
-      "url": "https://www.infoq.cn/article/BLfF9zUGrzpqJ5QbSBJD?utm_source=rss&utm_medium=article",
+      "title": "从中文到小语种都能无痕修改，美图影像研究院（MT Lab）提出全新场景文本编辑方案 | ICML 2026",
+      "url": "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "OpenAI因安全问题停训GPT-6，AI安全治理议题，大模型监管参考。",
+      "summary": "点击查看原文>",
       "importance": 1
     },
     {
-      "title": "CPU 迎来高光时刻：解读 Arm 在超大规模云计算市场增长背后的逻辑",
-      "url": "https://www.infoq.cn/article/7G2xADmzVapd9x8lIaY5?utm_source=rss&utm_medium=article",
+      "title": "蚂蚁 AI 驱动的生产级软件交付基建和实践｜AICon深圳",
+      "url": "https://www.infoq.cn/article/FjAtSWXLEfY3Iu4ThvJM?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "Arm在超大规模云计算增长逻辑解读，芯片架构趋势，半导体产业参考。",
+      "summary": "点击查看原文>",
       "importance": 1
     },
     {
-      "title": "章鱼动力亮相WRC 2026，携“脑-手-数据”技术体系探索具身智能未来范式",
-      "url": "https://www.qbitai.com/2026/08/475931.html",
-      "source": "量子位",
-      "summary": "章鱼动力携脑-手-数据技术体系亮相WRC，具身智能产业动态参考。",
+      "title": "保存历史不等于形成记忆：KDC 的长期运行主张",
+      "url": "https://www.infoq.cn/article/EF97eR5oivR50UqIINsP?utm_source=rss&utm_medium=article",
+      "source": "InfoQ 中国",
+      "summary": "点击查看原文>",
       "importance": 1
     }
   ],
@@ -68,10 +68,10 @@
       "importance": 1
     },
     {
-      "title": "投资者认为10年期美债收益率触及5%将损害亚洲新兴市场债券",
-      "url": "https://finance.sina.com.cn/world/2026-08-20/doc-ininxkry2129003.shtml",
-      "source": "新浪财经",
-      "summary": "10年期美债收益率触及5%或损害亚洲新兴市场债券，利率风险提示。",
+      "title": "常州金融监管分局行政处罚信息公开表",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642",
+      "source": "国家金融监督管理总局",
+      "summary": "",
       "importance": 1
     }
   ],
