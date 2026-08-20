@@ -27,248 +27,176 @@
       "title": "你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践",
       "url": "https://www.infoq.cn/article/CPidTC2YJ7AvlU7jUgiq?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "该文讨论Coding Agent的数据价值，属通用工程实践，未触及银行业务场景，对分行零售经营无直接参考意义。",
+      "summary": "Coding Agent价值取决于对企业数据的理解，属AI工程实践，对分行AI应用与数据治理有参考。",
       "importance": 1
     },
     {
       "title": "Buildpacks 将容器加固控制点从 Dockerfile 中移出",
       "url": "https://www.infoq.cn/article/8EPJjIlk5WwgiXphjxEW?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "Buildpacks 将容器镜像加固（CVE扫描、非root、最小基线）的控制点从Dockerfile移出、交由构建平台统一管控，实现安全左移与研发提效。对分行科技条线及服务的技术型客户，意味着交付合规成本下降、DevSecOps 成熟度提升。",
+      "summary": "Buildpacks将容器加固控制点移出Dockerfile，属容器技术实践，与银行零售业务无直接关联。",
       "importance": 1
     }
   ],
   "finance_briefs": [
     {
-      "title": "8月5年期以上LPR报3.5%维持不变 专家：贷款定价基础多元化将进一步推进",
-      "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininxzpk8016253.shtml",
-      "source": "新浪财经",
-      "summary": "8月5年期LPR维持3.5%不变，房贷利率保持稳定，专家指贷款定价机制将多元化，分行应关注LPR传导及客户房贷策略。",
-      "importance": 1
-    },
-    {
-      "title": "住房公积金提取和使用范围拓宽，9月20日起施行→",
-      "url": "https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml",
-      "source": "央视财经",
-      "summary": "公积金提取和使用范围拓宽，9月20日起施行，利好住房消费与房贷客群，可跟进配套营销",
-      "importance": 1
-    },
-    {
-      "title": "及时谋划出台增量政策，国务院最新部署",
-      "url": "https://finance.cctv.com/2026/08/18/ARTIPRUEiHIztmXCcoTnWgvw260818.shtml",
-      "source": "央视财经",
-      "summary": "国务院部署及时出台增量政策，宏观政策加力预期升温，关注对信贷投放与消费提振的影响",
-      "importance": 1
-    },
-    {
       "title": "国务院关于修改《住房公积金管理条例》的决定",
       "url": "https://www.gov.cn/zhengce/content/202608/content_7078477.htm",
       "source": "中国政府网·国务院政策",
-      "summary": "国务院修改住房公积金管理条例，全国性住房金融政策调整，对房贷与公积金客群影响重大",
+      "summary": "国务院修改《住房公积金管理条例》，公积金制度调整影响住房金融，对分行公积金业务与住房信贷有直接参考。",
       "importance": 1
     },
     {
-      "title": "国务院关于《特殊教育发展提升“十五五”行动计划》的批复",
-      "url": "https://www.gov.cn/zhengce/content/202608/content_7078320.htm",
-      "source": "中国政府网·国务院政策",
-      "summary": "国务院批复特殊教育\"十五五\"行动计划：教育领域投入增加，相关机构及家庭客群带来教育金融/代发机会（参考）。",
+      "title": "常州金融监管分局行政处罚信息公开表",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642",
+      "source": "国家金融监督管理总局",
+      "summary": "常州金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
+      "importance": 1
+    },
+    {
+      "title": "国家金融监督管理总局廊坊监管分局行政处罚信息公开表（廊金罚决字〔2026〕37号）",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268480",
+      "source": "国家金融监督管理总局",
+      "summary": "廊坊金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
+      "importance": 1
+    },
+    {
+      "title": "中国人民银行行长潘功胜会见澳门银行公会代表团",
+      "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081919184870631/index.html",
+      "source": "中国人民银行",
+      "summary": "央行行长潘功胜会见澳门银行公会代表团，跨境金融合作动向，对分行跨境业务与区域合作有参考。",
+      "importance": 1
+    },
+    {
+      "title": "中澳（大利亚）两国央行续签双边本币互换协议",
+      "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081915294182128/index.html",
+      "source": "中国人民银行",
+      "summary": "中澳两国央行续签双边本币互换协议，人民币国际化推进，对跨境人民币业务与外汇配置有参考。",
       "importance": 1
     }
   ],
   "politics_briefs": [],
   "gd_ipo_briefs": [
     {
-      "title": "SHENZHENEXPRESS (00548) — Notice of 2026 Interim Results Presentation",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0817/2026081700458.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "HEARTCARE-B (06609) — (1) PROPOSED ISSUE OF A SHARES AND LISTING ON\nTHE SCI-TECH BOARD OF THE SHANGHAI STOCK\nEXCHANGE AND OTHER ANCILLARY RESOLUTIONS;\n(2) PROPOSED AMENDMENTS TO THE ARTICLES;\n(3) PROPOSED AMENDMENTS TO THE 2025 H SHARE INCENTIVE SCHEME;\nAND\n(4) NOTICE OF 2026 SECOND EXTRAORDINARY\nSHAREHOLDERS' GENERAL MEETING",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081402121.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "HEARTCARE-B (06609) — PROPOSED ISSUE OF A SHARES AND LISTING ON THE SCI-TECH BOARD OF THE SHANGHAI STOCK EXCHANGE AND PROPOSED AMENDMENT OF THE ARTICLES",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081402093.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "PING AN, PING AN-R (02318, 82318) — Overseas Regulatory Announcement - the Announcement of Ping An Insurance (Group) Company of China, Ltd. in relation to the Disclosure of 2026 Interim Report Summary of Ping An Bank",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401701.pdf",
-      "source": "港交所IPO公告",
-      "summary": "港股公告：上市公司中报/披露动态，作为港股企业客户经营状况与对公机会的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "PHOENIX TV (02008) — ANNOUNCEMENT OF UNAUDITED INTERIM RESULTS FOR THE SIX MONTHS ENDED 30 JUNE 2026",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401639.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "CA CULTURAL (01566) — JOINT ANNOUNCEMENT - COMPLETION OF THE PROPOSED RESTRUCTURING INCLUDING A. THE COMPLETION OF THE SUBSCRIPTION AGREEMENTS; AND B. THE CREDITORS' SCHEME BECOMING EFFECTIVE",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401551.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "SG GROUP HLDGS (01657) — JOINT ANNOUNCEMENT (1) CLOSE OF UNCONDITIONAL MANDATORY CASH OFFER BY DL SECURITIES (HK) LIMITED FOR AND ON BEHALF OF THE OFFEROR TO ACQUIRE ALL THE ISSUED SHARES OF THE COMPANY (OTHER THAN THOSE ALREADY OWNED AND/OR AGREED TO BE ACQUIRED BY THE OFFEROR AND THE OFFEROR CONCERT PARTIES); (2) RESULTS OF THE OFFER; (3) SETTLEMENT OF THE OFFER; (4) PUBLIC FLOAT OF THE COMPANY; AND (5) RESIGNATION OF DIRECTOR AND REDESIGNATION OF DIRECTOR",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081401387.pdf",
-      "source": "港交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
       "title": "高凯技术 (688835)",
       "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483508.PDF",
       "source": "上交所IPO公告",
-      "summary": "高凯技术（688835）科创板上市动态，技术企业IPO进展参考。",
+      "summary": "高凯技术（688835）公告披露，科创板公司动态，广东科技企业资本运作，可关注其金融服务需求。",
       "importance": 1
     },
     {
       "title": "马矿股份 (601123)",
       "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483441.PDF",
       "source": "上交所IPO公告",
-      "summary": "马矿股份（601123）上交所上市动态，矿业企业IPO进展参考。",
-      "importance": 1
-    },
-    {
-      "title": "马矿股份 (601123)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225480711.PDF",
-      "source": "上交所IPO公告",
-      "summary": "沪市马矿股份（601123）发布公告，广东矿业上市公司动态，关注企业融资、并购及产业链上下游金融服务需求。",
+      "summary": "马矿股份（601123）公告披露，沪市公司动态，可关注其公司金融与结算合作机会。",
       "importance": 1
     },
     {
       "title": "甘李药业 (603087)",
       "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225480319.PDF",
       "source": "上交所IPO公告",
-      "summary": "甘李药业（603087）发布公告，医药行业上市公司动态，关注其研发投入、资金需求及上下游供应链金融机会。",
-      "importance": 1
-    },
-    {
-      "title": "泰凌微 (688591)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478760.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "宇树科技 (688836)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478669.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "天博智能 (603448)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478438.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "高凯技术 (688835)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-18/1225478314.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "频准激光 (688826)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-17/1225476108.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
-      "importance": 1
-    },
-    {
-      "title": "沪硅产业 (688126)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-15/1225474373.PDF",
-      "source": "上交所IPO公告",
-      "summary": "新股观察：该企业 IPO/公告进程反映资本市场活跃度，作为对公客户储备与理财市场环境的参考信息。",
+      "summary": "甘李药业（603087）公告披露，生物医药上市公司动态，可关注医药行业客群金融服务需求。",
       "importance": 1
     },
     {
       "title": "协昌科技 (301418)",
       "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225484911.PDF",
       "source": "深交所IPO公告",
-      "summary": "协昌科技上市前已发行股份流通核查意见披露，广东企业IPO进程推进，分行可关注其募资与结算合作机会。",
-      "importance": 1
-    },
-    {
-      "title": "真兰仪表 (301303)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481620.PDF",
-      "source": "深交所IPO公告",
-      "summary": "真兰仪表（301303）深交所上市动态，仪表制造企业IPO进展参考。",
+      "summary": "协昌科技上市前股份流通核查意见披露，广东企业IPO进程推进，分行可关注其募资与结算合作机会。",
       "importance": 1
     },
     {
       "title": "电科思仪 (301689)",
       "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483835.PDF",
       "source": "深交所IPO公告",
-      "summary": "电科思仪（301689）深交所上市动态，仪器企业IPO进展参考。",
+      "summary": "电科思仪（301689）公告披露，深市公司动态，可关注其资本运作与金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "贝特利 (301697)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225482235.PDF",
+      "source": "深交所IPO公告",
+      "summary": "贝特利（301697）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "真兰仪表 (301303)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481620.PDF",
+      "source": "深交所IPO公告",
+      "summary": "真兰仪表（301303）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "绿控传动 (301655)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481019.PDF",
+      "source": "深交所IPO公告",
+      "summary": "绿控传动（301655）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "英特科技 (301399)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479686.PDF",
+      "source": "深交所IPO公告",
+      "summary": "英特科技（301399）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "波长光电 (301421)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479343.PDF",
+      "source": "深交所IPO公告",
+      "summary": "波长光电（301421）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "和泰机电 (001225)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479214.PDF",
+      "source": "深交所IPO公告",
+      "summary": "和泰机电（001225）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "格林生物 (301688)",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479054.PDF",
+      "source": "深交所IPO公告",
+      "summary": "格林生物（301688）公告披露，深市公司动态，可关注其金融服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "千岸科技 (920065)",
+      "url": "https://www.bse.cn/disclosure/2026/2026-08-20/064acdc191f94de5bc8eb23d635a1513.pdf",
+      "source": "北交所IPO公告",
+      "summary": "千岸科技（920065）变更注册资本及修订章程，公司治理动态，提示广东企业上市后持续综合服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "中诚咨询 (920003)",
+      "url": "https://www.bse.cn/disclosure/2026/2026-08-20/2ee05ed4d39d4e10ab07c4ccfc45f41b.pdf",
+      "source": "北交所IPO公告",
+      "summary": "中诚咨询（920003）变更注册资本及修订章程公告，公司治理动态，提示广东企业上市后持续综合服务需求。",
+      "importance": 1
+    },
+    {
+      "title": "CITIC (00267) — Announcement - 2026 Interim Results Announcement of CITIC Securities Company Limited",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001159.pdf",
+      "source": "港交所IPO公告",
+      "summary": "中信股份（00267.HK）发布2026年中期业绩公告，香港上市中资企业动态，可关注其金融板块业绩对行业参考。",
+      "importance": 1
+    },
+    {
+      "title": "PING AN, PING AN-R (02318, 82318) — Announcement of Unaudited Results for the Six Months Ended June 30, 2026",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082000761.pdf",
+      "source": "港交所IPO公告",
+      "summary": "中国平安（02318.HK）发布未经审计中期业绩公告，综合金融龙头业绩，对保险银行板块与财富配置参考。",
+      "importance": 1
+    },
+    {
+      "title": "GREENTECH INTL (00195) — Cancellation of listing",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082000517.pdf",
+      "source": "港交所IPO公告",
+      "summary": "格林国际控股（00195.HK）取消上市地位公告，港股退市动态，提示港股风险与投资者保护，可作风险教育素材。",
       "importance": 1
     }
   ],
   "editor_note": "",
-  "keywords": [],
-  "executive_summary": {
-    "must_read": [
-      {
-        "title": "8月LPR维持3.5%不变",
-        "why": "房贷利率保持稳定，贷款定价基础多元化推进，直接影响存量按揭客户策略与分行零售信贷投放节奏。"
-      },
-      {
-        "title": "公积金提取使用范围拓宽",
-        "why": "9月20日施行后住房消费相关提取更方便，利好存量房贷与潜在购房客群，可带动相关零售产品联动。"
-      },
-      {
-        "title": "国务院部署出台增量政策",
-        "why": "宏观政策加力预期升温，预示后续信贷投放和消费刺激空间打开，分行应提前做好项目与客群储备。"
-      },
-      {
-        "title": "7月金融数据：信贷结构优化",
-        "why": "贷款降速提质、直接融资占比提升，显示融资渠道变化，影响分行信贷投放策略与存款稳定性管理。"
-      },
-      {
-        "title": "金价单日大涨4%站上4500美元",
-        "why": "黄金强势上涨且短线超买，美元兑人民币逼近低点，对财富客户避险配置和外汇敞口管理影响显著。"
-      }
-    ],
-    "insights": [
-      {
-        "topic": "公积金新政带动住房消费",
-        "impact": "9月20日公积金提取范围拓宽，将激活存量房贷客户资金流转及住房相关消费需求，释放零售信贷与财富管理机会。",
-        "action": "梳理存量公积金房贷客户，结合新政推出家装分期、消费贷配套营销，同时引导提取资金沉淀为行内理财或存款。"
-      },
-      {
-        "topic": "存款搬家财富管理双轮驱动",
-        "impact": "居民存款持续向理财、基金转移，零售存款稳定性承压，但财富管理代销规模有望成为新的核心增长点。",
-        "action": "加大稳健理财和优选基金配置推荐，对活期资金自动转存客户精准触达，以资产配置方案留住搬家资金。"
-      },
-      {
-        "topic": "黄金大涨下的配置与风险",
-        "impact": "金价单日上涨超4%并站上4500美元，港交所黄金期货交割创新高，客户避险配置需求升温但短期超买明显。",
-        "action": "面向私行客户推荐黄金积存等分批买入方式，提示短期追高风险，同时搭配固收产品平抑组合波动。"
-      },
-      {
-        "topic": "人民币升值汇率避险",
-        "impact": "美元兑人民币RSI仅21.4且逼近52周低点，人民币走强将冲击广州外向型企业出口结汇收益，需及时锁定。",
-        "action": "面向外贸企业客户推介远期结售汇和期权产品，锁定结汇汇率，降低人民币进一步升值带来的汇兑损失。"
-      },
-      {
-        "topic": "增量政策储备信贷项目",
-        "impact": "国务院部署及时出台增量政策，后续消费和投资刺激或加码，为零售消费贷和普惠小微拓客提供政策窗口。",
-        "action": "提前梳理消费贷、小微目标客群，结合线上预授信工具进行名单式营销，待政策落地快速投放。"
-      }
-    ]
-  }
+  "keywords": []
 }
