@@ -14,6 +14,10 @@ import {
   type CrawledArticle,
 } from "../lib/ingest/merge";
 import { fetchCrawledArticles } from "../lib/sources/crawlers";
+import {
+  loadLocalAcquired,
+  filterLocalAcquiredRecent,
+} from "../lib/sources/local-acquired";
 import { applyKeywordFilter } from "../lib/filters/keyword-filter";
 import {
   keywordFilterEnabled,
@@ -383,6 +387,38 @@ async function main() {
     );
     articles = merged;
     console.log(`[daily] ✅ 加载广州商机数据 ${added} 条（跳过 ${skipped} 条重复）`);
+  }
+
+  // —— 本地手动采集（data/local-acquired.json，2026-08-20 方案）——
+  // 被 WAF 拦的国内源（NFRA/PBC/财联社/同花顺）由用户本地 skill（local-acquire）抓取后
+  // 提交到该文件；此处只取「最新 7 天」条目，按 region/sourceId 分 ipo/gz 两类，
+  // 与爬虫产物同构（toMergeArticle + dedupeByUrl）并入同一管线（后续漏斗/AI/分类/渲染一致）。
+  const localAcq = loadLocalAcquired();
+  if (localAcq && localAcq.items.length) {
+    const recent = filterLocalAcquiredRecent(localAcq.items);
+    const isIpoItem = (it: CrawledArticle) =>
+      it.region === "gd" || (it.sourceId ?? "").startsWith("gd-");
+    const localIpo = recent.filter(isIpoItem);
+    const localGz = recent.filter((it) => !isIpoItem(it));
+    if (localIpo.length) {
+      const { merged, added, skipped } = dedupeByUrl(
+        articles,
+        localIpo.map((it) => toMergeArticle(it, "ipo")),
+      );
+      articles = merged;
+      console.log(`[daily] ✅ 本地手动采集(IPO) ${added} 条（跳过 ${skipped} 条重复，共 ${recent.length} 条 7 天内）`);
+    }
+    if (localGz.length) {
+      const regCat = (id?: string) => (id ? SOURCE_ROUTE[id]?.category : undefined);
+      const { merged, added, skipped } = dedupeByUrl(
+        articles,
+        localGz.map((it) => toMergeArticle(it, "gz", { gzCategory: regCat(it.sourceId) })),
+      );
+      articles = merged;
+      console.log(`[daily] ✅ 本地手动采集(商机财经) ${added} 条（跳过 ${skipped} 条重复，共 ${recent.length} 条 7 天内）`);
+    }
+  } else {
+    console.log(`[daily] ℹ️ 无本地手动采集文件（data/local-acquired.json 缺失或为空）`);
   }
 
   // —— 源等级 tier 补齐（T6）：爬虫产物未带 tier 的条目，按源定义透传（归一化层只透传、不渲染）——
