@@ -60,7 +60,7 @@ import { classifyItemsWithLlm } from "../lib/ai/item-classifier";
 import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";
 import { fetchCryptoGlobal } from "../lib/trading/coingecko";
 import { generateTradingCommentary } from "../lib/ai/trading-commentary";
-import { generateExecutiveSummary, selectExecutiveSummary, writeExecutiveArchive, loadExecutiveArchive } from "../lib/ai/executive-summary";
+import { generateExecutiveSummary, selectExecutiveSummary, writeStore, loadStore } from "../lib/ai/executive-summary";
 import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
 import {
@@ -586,14 +586,21 @@ async function main() {
         .flatMap((sg) => sg.sources.flatMap((s) => s.items))
         .slice(0, 12)
         .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory }));
-    // 持久化执行摘要源（2026-08-20 扩展）：history/<date>/executive.json 优先
+    // 持久化执行摘要源（2026-08-20 扩展）：history/<date>/store.json 优先
     // （随报告提交进 main，CI 跨运行可复用），其次 data/ai-assets 的 daily:<date>.executive。
     const persistedExec =
-      loadExecutiveArchive(date) ??
+      loadStore(date) ??
       (assetDaily(aiAssets, date)?.executive as ExecutiveSummary | undefined);
+    // 强制重生成开关：REGEN_STORE=1 → 忽略已存在归档、重新调 LLM 并覆盖写。
+    // 仅在非 SKIP_AI 模式有意义；SKIP_AI 下矛盾，忽略并告警。
+    const forceRegen = !!process.env.REGEN_STORE && !SKIP_AI;
+    if (process.env.REGEN_STORE && SKIP_AI) {
+      console.warn("[daily] REGEN_STORE 仅在非 SKIP_AI 模式生效，已忽略（保留复用）");
+    }
     const execSummary = await selectExecutiveSummary({
       skipAi: SKIP_AI,
       persisted: persistedExec,
+      forceRegen,
       generate: () =>
         generateExecutiveSummary({
           date,
@@ -604,11 +611,12 @@ async function main() {
     });
     if (execSummary) {
       report.executive_summary = execSummary;
-      // 归档进 history/<date>/，随 CI「Archive reports to history/」步骤提交，
-      // 使后续 SKIP_AI / 正常模式重跑都能复用（真正的跨运行持久化）。
-      writeExecutiveArchive(date, execSummary);
+      // 归档进 history/<date>/store.json，随 CI「Archive reports to history/」步骤提交，
+      // 使后续 SKIP_AI / 正常模式重跑都能复用（真正的跨运行持久化）。覆盖写幂等。
+      writeStore(date, execSummary);
+      const tag = SKIP_AI ? "已复用(持久化)" : forceRegen ? "已重新生成(覆盖)" : persistedExec ? "已复用(持久化)" : "已生成";
       console.log(
-        `[daily] 执行摘要${SKIP_AI ? "已复用(持久化)" : "已生成"}: 必读 ${execSummary.must_read.length} 条 / 商机提示 ${execSummary.insights.length} 条`,
+        `[daily] 执行摘要${tag}: 必读 ${execSummary.must_read.length} 条 / 商机提示 ${execSummary.insights.length} 条`,
       );
     } else if (!SKIP_AI) {
       console.warn("[daily] 执行摘要生成失败（LLM 不可用或解析失败），跳过该板块");

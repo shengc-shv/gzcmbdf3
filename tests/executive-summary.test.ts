@@ -9,8 +9,8 @@ import os from "node:os";
 import path from "node:path";
 import {
   selectExecutiveSummary,
-  writeExecutiveArchive,
-  loadExecutiveArchive,
+  writeStore,
+  loadStore,
   type ExecutiveSummary,
 } from "../lib/ai/executive-summary";
 
@@ -75,20 +75,20 @@ test("正常模式：无持久化则回退 generate", async () => {
   assert.equal(called, true);
 });
 
-test("归档 round-trip：writeExecutiveArchive 后可 loadExecutiveArchive 读回", () => {
+test("归档 round-trip：writeStore 后可 loadStore 读回", () => {
   const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
   const date = "2026-08-20";
-  writeExecutiveArchive(date, SAMPLE, { baseDir: base });
-  const p = path.join(base, "history", date, "executive.json");
-  assert.ok(fs.existsSync(p), "应生成 history/<date>/executive.json");
-  const back = loadExecutiveArchive(date, { baseDir: base });
+  writeStore(date, SAMPLE, { baseDir: base });
+  const p = path.join(base, "history", date, "store.json");
+  assert.ok(fs.existsSync(p), "应生成 history/<date>/store.json");
+  const back = loadStore(date, { baseDir: base });
   assert.deepEqual(back, SAMPLE);
   fs.rmSync(base, { recursive: true, force: true });
 });
 
 test("归档读取：缺失日期返回 undefined", () => {
   const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
-  assert.equal(loadExecutiveArchive("2026-08-21", { baseDir: base }), undefined);
+  assert.equal(loadStore("2026-08-21", { baseDir: base }), undefined);
   fs.rmSync(base, { recursive: true, force: true });
 });
 
@@ -97,7 +97,48 @@ test("归档读取：损坏文件返回 undefined（不 crash）", () => {
   const date = "2026-08-20";
   const dir = path.join(base, "history", date);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "executive.json"), "{broken", "utf8");
-  assert.equal(loadExecutiveArchive(date, { baseDir: base }), undefined);
+  fs.writeFileSync(path.join(dir, "store.json"), "{broken", "utf8");
+  assert.equal(loadStore(date, { baseDir: base }), undefined);
   fs.rmSync(base, { recursive: true, force: true });
+});
+
+test("loadStore 过渡兼容：无 store.json 时回退读旧 executive.json", () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
+  const date = "2026-08-20";
+  const dir = path.join(base, "history", date);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "executive.json"), JSON.stringify({ date, executive: SAMPLE }), "utf8");
+  assert.deepEqual(loadStore(date, { baseDir: base }), SAMPLE, "应回退读 executive.json");
+  fs.rmSync(base, { recursive: true, force: true });
+});
+
+test("forceRegen：忽略已存在持久化，强制调用 generate", async () => {
+  let called = false;
+  const fresh = { must_read: [{ title: "new", why: "n" }], insights: [] };
+  const res = await selectExecutiveSummary({
+    skipAi: false,
+    persisted: SAMPLE,
+    forceRegen: true,
+    generate: async () => {
+      called = true;
+      return fresh;
+    },
+  });
+  assert.deepEqual(res, fresh, "forceRegen 应返回新生成结果");
+  assert.equal(called, true, "forceRegen 应触达 generate");
+});
+
+test("forceRegen 在 SKIP_AI 下被忽略：仍复用持久化、不调用 generate", async () => {
+  let called = false;
+  const res = await selectExecutiveSummary({
+    skipAi: true,
+    persisted: SAMPLE,
+    forceRegen: true,
+    generate: async () => {
+      called = true;
+      return SAMPLE;
+    },
+  });
+  assert.deepEqual(res, SAMPLE, "SKIP_AI+forceRegen 应忽略 forceRegen 复用持久化");
+  assert.equal(called, false);
 });

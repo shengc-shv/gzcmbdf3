@@ -6,6 +6,7 @@
 // 用法：node scripts/cleanup-history.mjs  （可选 RETENTION_DAYS=7 覆盖保留天数）
 import fs from 'node:fs';
 import path from 'node:path';
+import { pruneHistoryDirs } from '../lib/history/retention.mjs';
 
 const RETENTION_DAYS = Number(process.env.RETENTION_DAYS || 7);
 const HISTORY_PATH = path.resolve(process.cwd(), 'data/article-history.json');
@@ -97,3 +98,13 @@ console.log(
     `主文件保留 ${keptCount} 条，本次移除 ${dropped.length} 条；` +
     `备份累计 ${backupMap.size} 条（新增 ${added}）-> ${BACKUP_PATH}`
 );
+
+// 根 history/<YYYY-MM-DD>/ 目录 7 天（RETENTION_DAYS）保留：删掉早于 cutoff 的整日目录
+// （含 store.json + 报告 html/json/md）。与 article-history 同一保留窗口。
+const HISTORY_ROOT = path.resolve(process.cwd(), 'history');
+const removedDirs = pruneHistoryDirs(HISTORY_ROOT, RETENTION_DAYS);
+if (removedDirs.length) {
+  console.log(`[cleanup] 根 history/ 清理 ${removedDirs.length} 个过期日期目录（< ${cutoffStr}）: ${removedDirs.join(', ')}`);
+} else {
+  console.log(`[cleanup] 根 history/ 无过期目录（保留窗口 ${RETENTION_DAYS} 天）`);
+}
