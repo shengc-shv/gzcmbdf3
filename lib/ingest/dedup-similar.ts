@@ -27,7 +27,10 @@ export interface SimilarDedupResult {
 
 /** 标题字符二元组（bigram）集合——中文标题相似度的零依赖近似。 */
 export function titleBigrams(s: string): Set<string> {
-  const t = s.replace(/\s+/g, "").toLowerCase();
+  // 去除所有非字母/数字字符（含中英文标点、空白、符号），仅保留 \p{L}\p{N}。
+  // 让「央行：降准！」与「央行降准」归一化为同一 bigram 序列，提升对同事件
+  // 不同措辞（标点/全半角差异）的合并率（B：内容级去重增强，2026-08-20）。
+  const t = s.replace(/[^\p{L}\p{N}]+/gu, "").toLowerCase();
   const grams = new Set<string>();
   if (t.length === 0) return grams;
   if (t.length === 1) {

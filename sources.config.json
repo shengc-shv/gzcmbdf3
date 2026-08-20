@@ -148,6 +148,7 @@
     "url": "https://feeds.bloomberg.com/markets/news.rss",
     "category": "finance",
     "subcategory": "news",
+    "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
     "enabled": true,
     "locales": [
       "zh",
@@ -178,6 +179,7 @@
     "url": "https://www.ft.com/companies?format=rss",
     "category": "finance",
     "subcategory": "news",
+    "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
     "enabled": true,
     "locales": [
       "zh",
@@ -223,6 +225,7 @@
     "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
     "category": "finance",
     "subcategory": "news",
+    "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
     "enabled": true,
     "locales": [
       "zh",
@@ -238,6 +241,7 @@
     "url": "https://finance.yahoo.com/news/rssindex",
     "category": "finance",
     "subcategory": "news",
+    "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
     "enabled": true,
     "locales": [
       "zh",
@@ -254,6 +258,7 @@
     "url": "https://www.investing.com/rss/news.rss",
     "category": "finance",
     "subcategory": "news",
+    "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
     "enabled": true,
     "locales": [
       "zh",

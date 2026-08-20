@@ -83,9 +83,14 @@ export function loadHistory(): HistoryStore {
  * crawled datasets) fall back to `lastSeenAt` so they aren't silently dropped.
  */
 function isFreshEntry(e: HistoryEntry): boolean {
-  const agePub = e.publishedAt ? Date.now() - Date.parse(e.publishedAt) : null;
-  const ageSeen = e.lastSeenAt ? Date.now() - Date.parse(e.lastSeenAt) : null;
-  if (agePub !== null && !Number.isNaN(agePub)) return agePub <= MAX_AGE_MS;
+  const now = Date.now();
+  const agePub = e.publishedAt ? now - Date.parse(e.publishedAt) : null;
+  const ageSeen = e.lastSeenAt ? now - Date.parse(e.lastSeenAt) : null;
+  // 发布时间为未来（异常/源站时区错误）→ 不按发布时间判新鲜，回退用 lastSeenAt，
+  // 避免 agePub<0 永远 <= MAX_AGE_MS 导致该条目永不进入 7 天裁剪（D，2026-08-20）。
+  if (agePub !== null && !Number.isNaN(agePub)) {
+    if (agePub >= 0) return agePub <= MAX_AGE_MS;
+  }
   if (ageSeen !== null && !Number.isNaN(ageSeen)) return ageSeen <= MAX_AGE_MS;
   return false;
 }
