@@ -308,6 +308,21 @@
     "notes": "国家级宏观政策权威源：国务院政策文件/批复/条例（服务端渲染列表，标题+日期+链接可稳定解析）。央行/金监总局/统计局官网为 JS/模板渲染不可静态抓，其权威动态由新浪/央视媒体解读在同子标签覆盖"
   },
   {
+    "id": "nfra",
+    "tier": "T1",
+    "name": "国家金融监督管理总局",
+    "type": "scrape",
+    "url": "https://www.nfra.gov.cn/cn/view/pages/index/index.html",
+    "category": "finance",
+    "subcategory": "cn-policy",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "部委级宏观政策/行政处罚权威源（爬虫产物）：由 lib/sources/crawlers/sources/nfra-api.ts 经 ESD 后端 JSON 接口(/cbircweb)抓取，fetchCrawledArticles 进程内调用；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为 Angular JS 壳，静态抓为空）。经 SOURCE_ROUTE 路由 finance/cn-policy（国家政策标签）"
+  },
+  {
     "id": "sina-money",
     "tier": "T2",
     "name": "新浪财经·理财保险",

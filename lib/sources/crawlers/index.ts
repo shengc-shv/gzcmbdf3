@@ -17,6 +17,7 @@ import { EastMoneyIPOCrawler } from "./sources/eastmoney-ipo";
 import { TonghuashunIPOCrawler } from "./sources/tonghuashun-ipo";
 import { GzStatsCrawler } from "./sources/gz-stats";
 import { GzGovCrawler } from "./sources/gz-gov";
+import { NfraCrawler } from "./sources/nfra-api";
 // 2026-08-20 用户决定：取消南沙信息源（只看广州市政府 gz-gov），GzNanshaCrawler 停用，
 // 文件保留便于未来恢复。
 
@@ -59,10 +60,13 @@ export async function fetchCrawledArticles(): Promise<CrawledBundle> {
     }
   }
 
-  // —— 广州商机（两源，2026-08-20 起南沙停用）→ 取原始 results（保留 category/subcategory/region/sourceId）——
+  // —— 广州商机 + 部委政策（两源，2026-08-20 起南沙停用）→ 取原始 results（保留 category/subcategory/region/sourceId）——
+  // 注：nfra（国家金融监督管理总局）虽为全国性部委政策，但复用同一条「非 IPO 爬虫」通道，
+  // 经 SOURCE_ROUTE 路由到 finance/cn-policy，与 gz-gov（国务院政策→finance/gz-policy）同模式。
   const gzCrawlers: BaseCrawler[] = [
     new GzStatsCrawler(),
     new GzGovCrawler(),
+    new NfraCrawler(),
   ];
 
   const gz: CrawledArticle[] = [];
