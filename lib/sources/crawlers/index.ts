@@ -20,6 +20,7 @@ import { GzGovCrawler } from "./sources/gz-gov";
 import { NfraCrawler } from "./sources/nfra-api";
 import { PbcCrawler } from "./sources/pbc-web";
 import { CnfinCrawler } from "./sources/cnfin-web";
+import { StcnCrawler } from "./sources/stcn-web";
 // 2026-08-20 用户决定：取消南沙信息源（只看广州市政府 gz-gov），GzNanshaCrawler 停用，
 // 文件保留便于未来恢复。
 
@@ -71,6 +72,7 @@ export async function fetchCrawledArticles(): Promise<CrawledBundle> {
     new NfraCrawler(),
     new PbcCrawler(),
     new CnfinCrawler(),
+    new StcnCrawler(),
   ];
 
   const gz: CrawledArticle[] = [];

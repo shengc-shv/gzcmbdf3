@@ -353,6 +353,21 @@
     "notes": "综合财经媒体（爬虫产物）：由 lib/sources/crawlers/sources/cnfin-web.ts 抓静态列表页（要闻 /news + 宏观 /macro + 区域 /local + 产业 /industry），解析 <a> 包裹的 detail 链接、日期由路径前8位推导，经 SOURCE_ROUTE 路由 finance/cn-finance（国内财经新闻标签）；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在栏目静态列表页）。股市/债市/汇市/货币/大宗/快讯 v1 已排除，后续可单独扩展"
   },
   {
+    "id": "stcn",
+    "tier": "T2",
+    "name": "证券时报",
+    "type": "scrape",
+    "url": "https://www.stcn.com",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "财经媒体（爬虫产物）：由 lib/sources/crawlers/sources/stcn-web.ts 抓静态列表页（新闻 /article/list/xw.html + 地方·广东 /article/list/area.html?subType=粤 + 投资 /article/list/investment.html），解析 <div class=\"tt\"><a href=\"/article/detail/<id>.html\"> 列表项；列表页与分页接口均无发布日期字段（ID 为纯数字），publishedAt 用抓取当天近似；经 SOURCE_ROUTE 路由 finance/cn-finance（国内财经新闻标签）。config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在栏目静态列表页）。快讯/专题 v1 已排除，后续可单独扩展"
+  },
+  {
     "id": "sina-money",
     "tier": "T2",
     "name": "新浪财经·理财保险",

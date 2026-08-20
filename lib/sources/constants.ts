@@ -54,6 +54,8 @@ export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: st
   "pbc": { category: "finance", subcategory: "cn-policy" },
   // 新华财经（CNFIN）：综合财经媒体（要闻/宏观/区域/产业），归 finance/cn-finance（国内财经新闻标签）
   "cnfin": { category: "finance", subcategory: "cn-finance" },
+  // 证券时报（STCN）：财经媒体（新闻/地方·广东/投资），归 finance/cn-finance（国内财经新闻标签）
+  "stcn": { category: "finance", subcategory: "cn-finance" },
   "gz-sse": { category: "gz", subcategory: "gz-ipo" },
   "gz-szse": { category: "gz", subcategory: "gz-ipo" },
   "gz-bse": { category: "gz", subcategory: "gz-ipo" },
