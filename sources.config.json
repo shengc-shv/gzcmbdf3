@@ -339,13 +339,14 @@
   },
   {
     "id": "cnfin",
+    "role": "crawled-input",
     "tier": "T1.5",
     "name": "新华财经",
     "type": "scrape",
     "url": "https://www.cnfin.com",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
@@ -354,13 +355,14 @@
   },
   {
     "id": "stcn",
+    "role": "crawled-input",
     "tier": "T2",
     "name": "证券时报",
     "type": "scrape",
     "url": "https://www.stcn.com",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
@@ -369,13 +371,14 @@
   },
   {
     "id": "sina-bank",
+    "role": "crawled-input",
     "tier": "T2",
     "name": "新浪财经·银行频道",
     "type": "scrape",
     "url": "https://finance.sina.com.cn/money/bank/",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
@@ -399,13 +402,14 @@
   },
   {
     "id": "guancha",
+    "role": "crawled-input",
     "tier": "T2",
     "name": "观察者网·金融",
     "type": "scrape",
     "url": "https://www.guancha.cn/GuanJinRong",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
