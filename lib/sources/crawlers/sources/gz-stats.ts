@@ -20,7 +20,8 @@ export class GzStatsCrawler extends BaseCrawler {
 
   async getUrls(): Promise<import("../base-crawler").CrawlUrl[]> {
     const base = "http://tjj.gz.gov.cn/stats_newtjyw/sjfb/";
-    return [base + "index.html", base + "index_1.html", base + "index_2.html"].map((u) => ({
+    // 分页规律（2026-08-20 实测）：第1页 index.html，第N页(N≥2) index_N.html（index_1.html 不存在，404）
+    return [base + "index.html", base + "index_2.html", base + "index_3.html"].map((u) => ({
       url: u,
       headers: { "User-Agent": this.userAgent },
     }));

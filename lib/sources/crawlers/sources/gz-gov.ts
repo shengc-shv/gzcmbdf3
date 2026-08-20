@@ -20,9 +20,10 @@ export class GzGovCrawler extends BaseCrawler {
   }
 
   async getUrls(): Promise<import("../base-crawler").CrawlUrl[]> {
+    // 分页规律（2026-08-20 实测）：第1页 index.html，第N页(N≥2) index_N.html（index_1.html 不存在，404）
     return [
       { url: "https://www.gz.gov.cn/zwgk/fggw/szfwj/index.html", sub: "gz-industry" },
-      { url: "https://www.gz.gov.cn/zwgk/fggw/szfwj/index_1.html", sub: "gz-industry" },
+      { url: "https://www.gz.gov.cn/zwgk/fggw/szfwj/index_2.html", sub: "gz-industry" },
       { url: "https://www.gz.gov.cn/zwgk/zcjd/index.html", sub: "gz-industry" },
     ].map((u) => ({ ...u, headers: { "User-Agent": this.userAgent } }));
   }
