@@ -40,7 +40,7 @@ npm test                     # 运行测试（node:test，30+ 用例）
 npm run build-site           # 生成静态站（index.html / archive.html）
 ```
 
-`SKIP_AI=true npm run daily`：跳过所有 LLM 调用，仅用历史缓存/AI 资产渲染（失败恢复用）。
+`SKIP_AI=true npm run daily`：跳过所有 LLM 调用，仅用历史缓存/AI 资产渲染（失败恢复用）。执行摘要复用源为 `history/<date>/executive.json`（跨运行归档，优先）与 `data/ai-assets` 账本（兜底）。
 
 ## 命令
 
@@ -86,9 +86,10 @@ data/
   article-history.json      # 7 天滚动缓存（URL 去重 + AI 摘要，展示窗口）
   article-history-backup.json  # 被裁条目的持久归档（去重）
   history/reports/<date>.json   # 唯一报告存储（daily 只写这里；build-site 同步到发布目录）
-  ai-assets/                # AI 付费产物账本（append-only，永不 7 天裁剪）
+  ai-assets/                # AI 付费产物账本（append-only，永不 7 天裁剪；gitignore 运行时数据）
   metrics/ai-calls-<date>.jsonl # AI 调用埋点（backend/stage/ok/ms）
 daily_reports/              # gh-pages 发布目录（build-site 从 data/history/reports 同步生成）
+history/<date>/executive.json # 执行摘要跨运行归档（随报告提交 main，SKIP_AI 重跑复用，零 LLM 成本）
 ```
 
 ## AI 后端

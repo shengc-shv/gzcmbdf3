@@ -1,5 +1,7 @@
 import { runLlm } from "./llm";
 import { extractJson } from "./json-util";
+import fs from "node:fs";
+import path from "node:path";
 
 /**
  * 「执行摘要 / 商机提示」AI 层（用户 2026-08-19 确认实施）
@@ -100,8 +102,53 @@ export async function generateExecutiveSummary(
 }
 
 /**
- * 解析当日执行摘要来源（2026-08-19 修正 SKIP_AI 行为）。
- * - SKIP_AI：仅复用持久化资产（data/ai-assets 的 daily:<date>.executive），绝不调 LLM，与 README 一致。
+ * 执行摘要跨运行归档（2026-08-20）。
+ *
+ * 背景：data/ai-assets/store.json 被 .gitignore 排除、CI 不提交，SKIP_AI 复用
+ * 在 CI 里每次 runner 都是空 {}，README 承诺的「复用 AI 资产」实际从未跨运行生效。
+ * 解法：当天生成的执行摘要额外归档一份到 history/<date>/executive.json（随报告
+ * 一起提交进 main），SKIP_AI / 正常模式重跑时优先从该文件复用，实现真正的
+ * 零 LLM 成本重跑。baseDir 参数便于单测隔离（默认 process.cwd()）。
+ */
+export function writeExecutiveArchive(
+  date: string,
+  exec: ExecutiveSummary,
+  opts: { baseDir?: string } = {},
+): void {
+  try {
+    const dir = path.resolve(opts.baseDir ?? process.cwd(), "history", date);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(
+      path.join(dir, "executive.json"),
+      JSON.stringify({ date, updatedAt: new Date().toISOString(), executive: exec }, null, 2),
+      "utf8",
+    );
+  } catch {
+    // 归档失败不打断主流程
+  }
+}
+
+/** 读取 history/<date>/executive.json；缺失或损坏返回 undefined。 */
+export function loadExecutiveArchive(
+  date: string,
+  opts: { baseDir?: string } = {},
+): ExecutiveSummary | undefined {
+  try {
+    const p = path.resolve(opts.baseDir ?? process.cwd(), "history", date, "executive.json");
+    if (!fs.existsSync(p)) return undefined;
+    const raw = JSON.parse(fs.readFileSync(p, "utf8"));
+    const exec = raw?.executive;
+    if (exec && Array.isArray(exec.must_read) && Array.isArray(exec.insights)) return exec as ExecutiveSummary;
+    return undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * 解析当日执行摘要来源（2026-08-19 修正 SKIP_AI 行为；2026-08-20 持久化源扩展）。
+ * - SKIP_AI：仅复用持久化资产（history/<date>/executive.json 优先，其次
+ *   data/ai-assets 的 daily:<date>.executive），绝不调 LLM，与 README 一致。
  * - 正常：优先复用持久化，缺失才回退 generate。
  * 纯函数，便于单测；daily.ts 调用。
  */

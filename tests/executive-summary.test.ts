@@ -4,7 +4,15 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { selectExecutiveSummary, type ExecutiveSummary } from "../lib/ai/executive-summary";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import {
+  selectExecutiveSummary,
+  writeExecutiveArchive,
+  loadExecutiveArchive,
+  type ExecutiveSummary,
+} from "../lib/ai/executive-summary";
 
 const SAMPLE: ExecutiveSummary = {
   must_read: [{ title: "t", why: "w" }],
@@ -65,4 +73,31 @@ test("正常模式：无持久化则回退 generate", async () => {
   });
   assert.deepEqual(res, SAMPLE);
   assert.equal(called, true);
+});
+
+test("归档 round-trip：writeExecutiveArchive 后可 loadExecutiveArchive 读回", () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
+  const date = "2026-08-20";
+  writeExecutiveArchive(date, SAMPLE, { baseDir: base });
+  const p = path.join(base, "history", date, "executive.json");
+  assert.ok(fs.existsSync(p), "应生成 history/<date>/executive.json");
+  const back = loadExecutiveArchive(date, { baseDir: base });
+  assert.deepEqual(back, SAMPLE);
+  fs.rmSync(base, { recursive: true, force: true });
+});
+
+test("归档读取：缺失日期返回 undefined", () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
+  assert.equal(loadExecutiveArchive("2026-08-21", { baseDir: base }), undefined);
+  fs.rmSync(base, { recursive: true, force: true });
+});
+
+test("归档读取：损坏文件返回 undefined（不 crash）", () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), "gzcmbdf3-exec-"));
+  const date = "2026-08-20";
+  const dir = path.join(base, "history", date);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "executive.json"), "{broken", "utf8");
+  assert.equal(loadExecutiveArchive(date, { baseDir: base }), undefined);
+  fs.rmSync(base, { recursive: true, force: true });
 });
