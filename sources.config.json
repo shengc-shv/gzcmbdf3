@@ -368,6 +368,51 @@
     "notes": "财经媒体（爬虫产物）：由 lib/sources/crawlers/sources/stcn-web.ts 抓静态列表页（新闻 /article/list/xw.html + 地方·广东 /article/list/area.html?subType=粤 + 投资 /article/list/investment.html），解析 <div class=\"tt\"><a href=\"/article/detail/<id>.html\"> 列表项；列表页与分页接口均无发布日期字段（ID 为纯数字），publishedAt 用抓取当天近似；经 SOURCE_ROUTE 路由 finance/cn-finance（国内财经新闻标签）。config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在栏目静态列表页）。快讯/专题 v1 已排除，后续可单独扩展"
   },
   {
+    "id": "sina-bank",
+    "tier": "T2",
+    "name": "新浪财经·银行频道",
+    "type": "scrape",
+    "url": "https://finance.sina.com.cn/money/bank/",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "银行业财经媒体（爬虫产物）：由 lib/sources/crawlers/sources/sina-bank-web.ts 抓 SSR 列表页（/money/bank/），匹配 doc-xxx.shtml 文章链接（路径 /YYYY-MM-DD/ 推导日期），经 SOURCE_ROUTE 路由 finance/cn-finance。config 仅供 tier/knownSourceIds 识别，不直接 scrape（频道页混导航/专题链接，需按 doc+日期精确过滤）。与 sina-money(理财保险) 同域独立频道，单独接入"
+  },
+  {
+    "id": "cls",
+    "tier": "T2",
+    "name": "财联社金融",
+    "type": "api",
+    "url": "https://www.cls.cn/depth?id=1032",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "金融深度媒体（爬虫产物）：由 lib/sources/crawlers/sources/cls-api.ts 调 v3/depth API（频道 1032），签名 sign=md5(sha1(排序query))，固定参数 app=CailianpressWeb&os=web&sv=8.7.9（sv 变更时需同步页面 JS）；字段 id/title/brief/ctime，URL=/detail/<id>，日期由 ctime 转北京时间。经 SOURCE_ROUTE 路由 finance/cn-finance。config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为 Next.js 壳，真实数据走接口）"
+  },
+  {
+    "id": "guancha",
+    "tier": "T2",
+    "name": "观察者网·金融",
+    "type": "scrape",
+    "url": "https://www.guancha.cn/GuanJinRong",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "金融评论/深度媒体（爬虫产物）：由 lib/sources/crawlers/sources/guancha-web.ts 抓 SSR 列表页（/GuanJinRong），匹配 /GuanJinRong/<YYYY>_<MM>_<DD>_<id>.shtml 文章链接（日期由链接推导，标题取 <h1>），经 SOURCE_ROUTE 路由 finance/cn-finance。config 仅供 tier/knownSourceIds 识别，不直接 scrape（频道页混 politics 等其他栏目链接，按前缀精确过滤）。?page=N 实测不生效，v1 只抓首页"
+  },
+  {
     "id": "sina-money",
     "tier": "T2",
     "name": "新浪财经·理财保险",

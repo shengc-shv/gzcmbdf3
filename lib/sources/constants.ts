@@ -56,6 +56,12 @@ export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: st
   "cnfin": { category: "finance", subcategory: "cn-finance" },
   // 证券时报（STCN）：财经媒体（新闻/地方·广东/投资），归 finance/cn-finance（国内财经新闻标签）
   "stcn": { category: "finance", subcategory: "cn-finance" },
+  // 新浪财经·银行频道（SINA-BANK）：银行业财经媒体，归 finance/cn-finance（国内财经新闻标签）
+  "sina-bank": { category: "finance", subcategory: "cn-finance" },
+  // 财联社（CLS）：金融深度媒体，归 finance/cn-finance（国内财经新闻标签）
+  "cls": { category: "finance", subcategory: "cn-finance" },
+  // 观察者网·金融（GUANCHA）：金融评论/深度媒体，归 finance/cn-finance（国内财经新闻标签）
+  "guancha": { category: "finance", subcategory: "cn-finance" },
   "gz-sse": { category: "gz", subcategory: "gz-ipo" },
   "gz-szse": { category: "gz", subcategory: "gz-ipo" },
   "gz-bse": { category: "gz", subcategory: "gz-ipo" },
