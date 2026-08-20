@@ -22,11 +22,29 @@ function stripHtml(s: string): string {
   return s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 }
 
+/**
+ * 源级关键词过滤（2026-08-20，用户指定 arXiv 金融科技流）。
+ * 当源配置带 keywords 时，仅保留 title/excerpt 命中至少一个关键词的条目
+ * （大小写不敏感、子串匹配）。无 keywords（或空数组）不过滤。
+ * 纯函数，便于单测。
+ */
+export function filterByKeywords(
+  items: RawArticle[],
+  keywords: string[] | undefined,
+): RawArticle[] {
+  const kws = (keywords ?? []).map((k) => k.trim().toLowerCase()).filter(Boolean);
+  if (kws.length === 0) return items;
+  return items.filter((a) => {
+    const hay = `${a.title} ${a.excerpt ?? ""}`.toLowerCase();
+    return kws.some((k) => hay.includes(k));
+  });
+}
+
 export async function fetchRss(
   sourceId: string,
   url: string,
   category: Category,
-  options: { limit?: number; useCurl?: boolean } = {},
+  options: { limit?: number; useCurl?: boolean; keywords?: string[] } = {},
 ): Promise<RawArticle[]> {
   const limit = options.limit ?? 30;
 
@@ -38,7 +56,7 @@ export async function fetchRss(
     feed = await parser.parseURL(url);
   }
 
-  const mapped = (feed.items ?? [])
+  let mapped: RawArticle[] = (feed.items ?? [])
     .slice(0, limit)
     .map((item) => ({
       sourceId,
@@ -52,6 +70,15 @@ export async function fetchRss(
       category,
     }))
     .filter((a) => a.title && a.url);
+
+  // 源级关键词过滤（arXiv 金融科技流等）：命中任一关键词才保留。
+  if (options.keywords && options.keywords.length > 0) {
+    const before = mapped.length;
+    mapped = filterByKeywords(mapped, options.keywords);
+    console.log(
+      `[rss ${sourceId}] 关键词过滤: ${before} → ${mapped.length} 条 (${options.keywords.join(", ")})`,
+    );
+  }
 
   // 广东地区 IPO 类源（目前即"国外"子分类的 RSS 资信源）需按广东企业过滤：
   // 这些源没有股票代码可解析省份，只能用公司名/正文中的广东城市名识别。

@@ -37,8 +37,6 @@ import { getModelTag, validateBackendCredentials } from "../lib/ai/llm";
 import {
   enrichFinanceNewsSummaries,
   enrichGithubTrendingSummaries,
-  enrichTrendingPapersSummaries,
-  enrichXViralSummaries,
 } from "../lib/ai/enrich";
 import {
   groupRaw,
@@ -177,86 +175,8 @@ async function enrichPolitics(articles: ArticleInput[]): Promise<void> {
   await enrichMergedSubgroup(articles, "politics", "world");
 }
 
-async function enrichAiNews(articles: ArticleInput[]): Promise<void> {
-  await enrichMergedSubgroup(articles, "tech", "ai-news");
-}
-
-/**
- * X 热帖 enrichment is different from merged subgroups — we preserve the
- * AttentionVC API's heat-rank order (do NOT sort by date) and cap to the
- * displayed limit (matches SOURCE_DISPLAY_LIMITS["tech:x-viral"]).
- *
- * The Sonnet prompt also differs (XVIRAL_SYSTEM_PROMPT in enrich.ts) — X
- * tweet titles are clickbait, the previewText holds the actual claim.
- */
-async function enrichXViral(articles: ArticleInput[]): Promise<void> {
-  const xPosts = articles
-    .filter((a) => a.sourceId === "attentionvc-ai")
-    .slice(0, SOURCE_DISPLAY_LIMITS["tech:x-viral"] ?? 5);
-  if (xPosts.length === 0) return;
-  const pending = applyCache(xPosts);
-  if (pending.length === 0) {
-    console.log(`[daily] enriching X 推文: ${xPosts.length} 条全部命中历史缓存，跳过 LLM`);
-    return;
-  }
-  if (SKIP_AI) {
-    console.log(`[daily] SKIP_AI: 跳过 X 推文 LLM 富集（${pending.length} 条仅用历史缓存摘要）`);
-    return;
-  }
-  console.log(`[daily] enriching ${pending.length}/${xPosts.length} X posts with ${REPORT_LOCALE} summaries…`);
-  const t0 = Date.now();
-  // Author handle is encoded in the URL (https://x.com/{handle}/status/{id})
-  // — extract it to help the model identify whose claim it is.
-  const summaries = await enrichXViralSummaries(
-    pending.map((a) => ({
-      url: a.url,
-      title: a.title,
-      excerpt: a.excerpt,
-      author: a.url.match(/x\.com\/([^/]+)\//)?.[1] ?? "",
-    })),
-  );
-  for (const a of pending) {
-    const s = summaries.get(a.url);
-    if (s) a.summary = s;
-  }
-  console.log(
-    `[daily] enrichment done in ${((Date.now() - t0) / 1000).toFixed(1)}s, matched ${summaries.size}/${pending.length}`,
-  );
-}
-
-/**
- * Trending papers enrichment — preserves the fetcher's upvote-desc order
- * (huggingface-papers is in PRESERVE_FETCH_ORDER_SOURCES) and caps to the
- * displayed limit (matches SOURCE_DISPLAY_LIMITS["tech:trending-papers"]).
- */
-async function enrichTrendingPapers(articles: ArticleInput[]): Promise<void> {
-  const papers = articles
-    .filter((a) => a.sourceId === "huggingface-papers")
-    .slice(0, SOURCE_DISPLAY_LIMITS["tech:trending-papers"] ?? 5);
-  if (papers.length === 0) return;
-  const pending = applyCache(papers);
-  if (pending.length === 0) {
-    console.log(`[daily] enriching 热门论文: ${papers.length} 条全部命中历史缓存，跳过 LLM`);
-    return;
-  }
-  if (SKIP_AI) {
-    console.log(`[daily] SKIP_AI: 跳过热门论文 LLM 富集（${pending.length} 条仅用历史缓存摘要）`);
-    return;
-  }
-  console.log(
-    `[daily] enriching ${pending.length}/${papers.length} trending papers with ${REPORT_LOCALE} summaries…`,
-  );
-  const t0 = Date.now();
-  const summaries = await enrichTrendingPapersSummaries(
-    pending.map((a) => ({ url: a.url, title: a.title, excerpt: a.excerpt })),
-  );
-  for (const a of pending) {
-    const s = summaries.get(a.url);
-    if (s) a.summary = s;
-  }
-  console.log(
-    `[daily] enrichment done in ${((Date.now() - t0) / 1000).toFixed(1)}s, matched ${summaries.size}/${pending.length}`,
-  );
+async function enrichOverseasTech(articles: ArticleInput[]): Promise<void> {
+  await enrichMergedSubgroup(articles, "tech", "overseas-tech");
 }
 
 /**
@@ -563,10 +483,8 @@ async function main() {
   // 走各自专属摘要 prompt)。finance 不再单独 enrich——其摘要+分类统一由下方
   // classifyItemsWithLlm 一次批量调用完成（中文/英文源全覆盖，省一次重复调用）。
   await enrichGhTrending(articles);
-  await enrichTrendingPapers(articles);
   await enrichPolitics(articles);
-  await enrichAiNews(articles);
-  await enrichXViral(articles);
+  await enrichOverseasTech(articles);
   
   // ===== 为 gd-ipo / 全国ipo 数据生成中文摘要（复用历史缓存去重）=====
   const gdIpoArticles = articles.filter(a => a.category === 'gd-ipo' || a.category === 'ipo');

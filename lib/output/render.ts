@@ -155,20 +155,15 @@ export function capByThemeAndTier<T extends ArticleInput>(
 export const SOURCE_DISPLAY_LIMITS: Record<string, number> = {
   "tech:github-trending": 10,
   "tech:cn-community": 10,
-  // 热门论文 / X 推文：单源子标签，每源≤5（保留抓取端热度/点赞排序，不切合并流）
-  "tech:x-viral": 5,
-  "tech:trending-papers": 5,
 };
 
 /**
  * Sources whose fetcher returns items already sorted by an engagement/heat
  * algorithm we want to preserve. groupRaw skips its default date-desc sort
  * for these so the final render reflects the source's own ranking.
+ * （2026-08-20：attentionvc-ai / huggingface-papers 已随 X/论文类清理禁用）
  */
-const PRESERVE_FETCH_ORDER_SOURCES = new Set([
-  "attentionvc-ai",
-  "huggingface-papers",
-]);
+const PRESERVE_FETCH_ORDER_SOURCES = new Set<string>([]);
 
 function displayLimitFor(
   category: Category,
@@ -262,8 +257,8 @@ function mergeSimilarStories(items: ArticleInput[]): ArticleInput[] {
  */
 export const MERGED_SUBGROUP_LIMITS: Record<string, number> = {
   // 技术动态 / 财经要点 合并流：每数据源≤5、子标签整体≤10
-  // （省钱 + 避免单一源霸屏）。典型子标签：AI媒体 / 国内技术 / 国际财经。
-  "tech:ai-news": 10,
+  // （省钱 + 避免单一源霸屏）。典型子标签：国外技术 / 国内技术 / 国际财经。
+  "tech:overseas-tech": 10,
   "tech:cn-tech": 10,
   "finance:news": 10,
   // 国内财经：上限 20，按接入的信息源平摊（见 groupRaw 的 cn-finance 逻辑）
@@ -280,7 +275,7 @@ export const MERGED_SUBGROUP_LIMITS: Record<string, number> = {
  * 缺省不限制（undefined）即沿用旧行为。
  */
 export const MERGE_PER_SOURCE_CAP: Record<string, number> = {
-  "tech:ai-news": 5,
+  "tech:overseas-tech": 5,
   "tech:cn-tech": 5,
   "finance:news": 5,
 };

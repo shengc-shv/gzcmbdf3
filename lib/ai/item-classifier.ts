@@ -45,7 +45,7 @@ const RULES = `你是招商银行广州分行零售决策简报编辑。对每�
    口诀：涉及广州本地落地才归 gz-*；全国性报道一律 cn-finance/news/cn-policy；一条可同时归多个。
 
 === tech 标签体系（relevant 固定 true）===
-subcategories 候选：cn-tech（综合科技产业/政策/国内大厂动态）/ ai-news（AI 大模型与产品发布）/ x-viral（社交平台热议话题）/ trending-papers（arXiv 等学术论文）。
+subcategories 候选：cn-tech（综合科技产业/政策/国内大厂动态）/ overseas-tech（国外技术，含金融科技/AI 监管）。
 
 === ipo 标签体系（relevant 固定 true）===
 subcategories 候选（按上市地）：hkex（港交所）/ sse（上交所）/ szse（深交所）/ bse（北交所）。

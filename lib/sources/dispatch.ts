@@ -41,6 +41,7 @@ export async function fetchSource(source: SourceDef): Promise<RawArticle[]> {
   else
     items = await fetchRss(source.id, source.url, source.category, {
       useCurl: source.useCurl,
+      keywords: source.keywords,
     });
   return BUSINESS_SOURCES.has(source.id) ? items : items.slice(0, PER_SOURCE_FETCH_CAP);
 }

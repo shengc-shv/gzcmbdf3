@@ -57,7 +57,7 @@ export const DISPLAY_WINDOW_DAYS = 3;
 
 
 
-export const TECH_MAIN_SUBS = new Set(["github-trending", "trending-papers", "x-viral", "ai-news", "cn-tech"]);
+export const TECH_MAIN_SUBS = new Set(["cn-tech", "overseas-tech"]);
 export const TECH_COMMUNITY_SUBS = new Set(["cn-community", "overseas-community"]);
 
 // ----- HTML helpers -----

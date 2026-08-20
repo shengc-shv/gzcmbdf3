@@ -22,6 +22,7 @@ const TEXTS_ZH = {
   subBlogWeekly: "博客周刊",
   subCnCommunity: "中文社区",
   subCnTech: "国内技术",
+  subOverseasTech: "国外技术",
   subOverseasCommunity: "海外社区",
   subFinanceNews: "国际财经",
   subFinanceCn: "国内财经",
@@ -80,6 +81,7 @@ const TEXTS_EN: typeof TEXTS_ZH = {
   subBlogWeekly: "Blog Weekly",
   subCnCommunity: "Chinese Community",
   subCnTech: "Chinese Tech",
+  subOverseasTech: "Overseas Tech",
   subOverseasCommunity: "Overseas Community",
   subFinanceNews: "Finance News",
   subFinanceCn: "Finance China",
@@ -133,7 +135,8 @@ const SUBCATEGORY_ORDER: Partial<Record<Category, string[]>> = {
   // Locale filtering at registry level decides which actually appears:
   // zh mode keeps cn-community (V2EX / LinuxDo); en mode keeps
   // overseas-community (Hacker News / r/stocks).
-  tech: ["trending-papers", "x-viral", "ai-news", "cn-tech"],
+  // 技术动态：国内技术 / 国外技术（2026-08-20 清理：去掉 AI媒体/热门论文/X 推文子类）
+  tech: ["cn-tech", "overseas-tech"],
   // 宏观政策：国内政策(权威) / 国内财经(媒体) / 广州政策 / 国际
   finance: ["cn-policy", "cn-finance", "gz-policy", "news"],
   'gd-ipo': ["szse", "sse", "bse", "hkex", "ipo-tutoring", "overseas"],
@@ -151,6 +154,7 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "overseas-community": STR.subOverseasCommunity,
   "ai-news": STR.subAiNews,
   "cn-tech": STR.subCnTech,
+  "overseas-tech": STR.subOverseasTech,
   "x-viral": STR.subXViral,
   "blog-weekly": STR.subBlogWeekly,
   news: STR.subFinanceNews,

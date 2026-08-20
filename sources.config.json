@@ -22,11 +22,12 @@
     "url": "https://deepmind.google/blog/rss.xml",
     "category": "tech",
     "subcategory": "ai-news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：AI 媒体类不再接入"
   },
   {
     "id": "huggingface-blog",
@@ -36,11 +37,12 @@
     "url": "https://huggingface.co/blog/feed.xml",
     "category": "tech",
     "subcategory": "ai-news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：AI 媒体类不再接入"
   },
   {
     "id": "huggingface-papers",
@@ -50,7 +52,7 @@
     "url": "https://huggingface.co/api/daily_papers",
     "category": "tech",
     "subcategory": "trending-papers",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
@@ -61,7 +63,8 @@
       "RAG",
       "reasoning",
       "coding"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：论文类不再接入（国外技术仅保留 arXiv 金融科技过滤流）"
   },
   {
     "id": "tldr-ai",
@@ -71,11 +74,12 @@
     "url": "https://tldr.tech/api/rss/ai",
     "category": "tech",
     "subcategory": "ai-news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：AI 媒体类不再接入"
   },
   {
     "id": "smol-ai-news",
@@ -100,20 +104,21 @@
     "url": "https://www.latent.space/feed",
     "category": "tech",
     "subcategory": "ai-news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：AI 媒体类不再接入"
   },
   {
     "id": "mit-tech-review-ai",
     "tier": "T2",
     "name": "MIT Tech Review AI",
     "type": "rss",
-    "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+    "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
     "category": "tech",
-    "subcategory": "ai-news",
+    "subcategory": "overseas-tech",
     "enabled": true,
     "locales": [
       "zh",
@@ -128,11 +133,12 @@
     "url": "https://reply-vc-90459984647.us-central1.run.app/v1/articles/leaderboard?window=3d&category=ai&lang=en&limit=30",
     "category": "tech",
     "subcategory": "x-viral",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "国外技术数据源清理(2026-08-20)：X 推文类不再接入"
   },
   {
     "id": "bloomberg-markets",
@@ -420,12 +426,13 @@
     "url": "https://simonwillison.net/atom/everything/",
     "category": "tech",
     "subcategory": "ai-news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "note": "独立开发者视角的 AI 工具评测与 LLM 进展，更新极高频。"
+    "note": "独立开发者视角的 AI 工具评测与 LLM 进展，更新极高频。",
+    "disabledReason": "国外技术数据源清理(2026-08-20)：AI 媒体类不再接入"
   },
   {
     "id": "infoq-cn",
@@ -655,5 +662,27 @@
     "tier": "T2",
     "name": "广州辖区东财辅导(分流改写)",
     "subcategory": "gz-ipo"
+  },
+  {
+    "id": "arxiv-fintech",
+    "tier": "T2",
+    "name": "arXiv 金融科技论文 (cs.AI·cs.LG·q-fin)",
+    "type": "rss",
+    "url": "https://rss.arxiv.org/rss/cs.AI+cs.LG+q-fin",
+    "category": "tech",
+    "subcategory": "overseas-tech",
+    "enabled": true,
+    "lang": "en",
+    "locales": [
+      "zh",
+      "en"
+    ],
+    "keywords": [
+      "banking",
+      "financial services",
+      "credit risk",
+      "compliance"
+    ],
+    "notes": "用户指定(2026-08-20)：q-fin/cs.AI/cs.LG 三分类，按关键词过滤只留金融科技相关"
   }
 ]
