@@ -3,42 +3,49 @@
   "daily_overview": "",
   "tech_briefs": [
     {
+      "title": "Buildpacks 将容器加固控制点从 Dockerfile 中移出",
+      "url": "https://www.infoq.cn/article/8EPJjIlk5WwgiXphjxEW?utm_source=rss&utm_medium=article",
+      "source": "InfoQ 中国",
+      "summary": "Buildpacks 将容器镜像加固（CVE扫描、非root、最小基线）的控制点从Dockerfile移出、交由构建平台统一管控，实现安全左移与研发提效。对分行科技条线及服务的技术型客户，意味着交付合规成本下降、DevSecOps 成熟度提升。",
+      "importance": 1
+    },
+    {
       "title": "将可理解性作为架构特性：无法理解的系统无法安全演进",
       "url": "https://www.infoq.cn/article/d5mWBGZxB2l2vRTO8wFU?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "点击查看原文>",
+      "summary": "【国内技术】无法理解的系统无法安全演进。国内技术进展，关注金融科技与数字化赋能。",
       "importance": 1
     },
     {
       "title": "将Pod作为worker而非智能体：在Kubernetes上重新思考AI智能体的部署单元",
       "url": "https://www.infoq.cn/article/u2O9k3QiZkeIbqJ7GsPw?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "点击查看原文>",
+      "summary": "【国内技术】在Kubernetes上重新思考AI智能体的部署。国内技术进展，关注金融科技与数字化赋能。",
       "importance": 1
     },
     {
       "title": "从中文到小语种都能无痕修改，美图影像研究院（MT Lab）提出全新场景文本编辑方案 | ICML 2026",
       "url": "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "点击查看原文>",
+      "summary": "【国内技术】从中文到小语种都能无痕修改，美图影像研究院（MT。国内技术进展，关注金融科技与数字化赋能。",
       "importance": 1
     },
     {
       "title": "蚂蚁 AI 驱动的生产级软件交付基建和实践｜AICon深圳",
       "url": "https://www.infoq.cn/article/FjAtSWXLEfY3Iu4ThvJM?utm_source=rss&utm_medium=article",
       "source": "InfoQ 中国",
-      "summary": "点击查看原文>",
-      "importance": 1
-    },
-    {
-      "title": "保存历史不等于形成记忆：KDC 的长期运行主张",
-      "url": "https://www.infoq.cn/article/EF97eR5oivR50UqIINsP?utm_source=rss&utm_medium=article",
-      "source": "InfoQ 中国",
-      "summary": "点击查看原文>",
+      "summary": "【国内技术】蚂蚁 AI 驱动的生产级软件交付基建和实践｜AI。国内技术进展，关注金融科技与数字化赋能。",
       "importance": 1
     }
   ],
   "finance_briefs": [
+    {
+      "title": "8月5年期以上LPR报3.5%维持不变 专家：贷款定价基础多元化将进一步推进",
+      "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininxzpk8016253.shtml",
+      "source": "新浪财经",
+      "summary": "8月5年期LPR维持3.5%不变，房贷利率保持稳定，专家指贷款定价机制将多元化，分行应关注LPR传导及客户房贷策略。",
+      "importance": 1
+    },
     {
       "title": "住房公积金提取和使用范围拓宽，9月20日起施行→",
       "url": "https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml",
@@ -65,13 +72,6 @@
       "url": "https://www.gov.cn/zhengce/content/202608/content_7078320.htm",
       "source": "中国政府网·国务院政策",
       "summary": "国务院批复特殊教育\"十五五\"行动计划：教育领域投入增加，相关机构及家庭客群带来教育金融/代发机会（参考）。",
-      "importance": 1
-    },
-    {
-      "title": "常州金融监管分局行政处罚信息公开表",
-      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642",
-      "source": "国家金融监督管理总局",
-      "summary": "",
       "importance": 1
     }
   ],
@@ -219,5 +219,401 @@
     }
   ],
   "editor_note": "",
-  "keywords": []
+  "keywords": [],
+  "trading": {
+    "market_overview": "当前市场技术面呈现多空分化。美股方面，SPY 现价 769.06 站上 SMA20（759.77）、SMA50（750.43）与 SMA200（706.73），RSI14 为 57.8，MACD 柱为正，且距 52 周高点仅 1.32%，趋势指标偏强。加密资产在恐慌贪婪指数 62（贪婪）、总市值 2.44 万亿美元（24h +5.97%）的背景下整体走强：BTC 5 日 +13.15%、ETH 5 日 +21.12%，两者均出现 MACD 金叉，但 RSI 分别达到 77.8 和 83，超买信号明显；BTC 主导率 58.5%、ETH 占比 11.3%，资金仍集中于头部币种。中概股方面，上证指数现价 3903.72 低于 SMA50（3967.65）与 SMA200（4015.26），呈空头排列，沪深 300 虽接近 52 周高但关键均线、MACD 数据缺失，方向信号不明确。商品外汇中，黄金 RSI 70.7 超买、MACD 红柱扩张，原油站上全部均线且 MACD 金叉，而美元兑人民币 RSI 21.4 超卖并逼近 52 周低点，形成明显反差。整体看，偏上行标的集中在美股与商品，加密虽强但过热，偏下行标的以离岸人民币和上证指数为代表，市场风险偏好仍偏向风险资产。",
+    "watchlist": [
+      {
+        "symbol": "000001.SS",
+        "display_name": "上证指数 (000001.SS)",
+        "stance": "偏下行",
+        "rationale": "上证指数现价 3903.72，仅位于 SMA20（3890.95）上方，但低于 SMA50（3967.65）和 SMA200（4015.26），均线呈空头排列；RSI14 为 47.4，处于中性；MACD（-3.12）虽高于信号线（-12.71），但仍在零轴下方。距 52 周高点 -8.34%，5 日 -0.59%，技术面偏下行。"
+      },
+      {
+        "symbol": "USDCNY=X",
+        "display_name": "美元 / 人民币 (USDCNY=X)",
+        "stance": "偏下行",
+        "rationale": "美元兑人民币现价 6.72，低于 SMA20（6.75）、SMA50（6.77）和 SMA200（6.88），呈空头排列；RSI14 为 21.4，处于超卖区域；MACD（-0.0106）低于信号线（-0.0090），绿柱运行。价格距 52 周低点仅 0.2%，近 1 日 -0.29%、5 日 -0.32%，技术面偏下行。"
+      },
+      {
+        "symbol": "SPY",
+        "display_name": "S&P 500 (SPY)",
+        "stance": "偏上行",
+        "rationale": "SPY 现价 769.06，高于 SMA20（759.77）、SMA50（750.43）与 SMA200（706.73），均线呈多头排列；RSI14 为 57.8 处于正常偏强区间；MACD（7.19）高于信号线（6.94），柱体为正。虽 5 日微跌 -0.44%，但距 52 周高点仅 -1.32%，整体技术状态偏上行。"
+      },
+      {
+        "symbol": "BTC-USD",
+        "display_name": "Bitcoin (BTC-USD)",
+        "stance": "偏上行",
+        "rationale": "BTC 现价 71313，位于 SMA20（64505）、SMA50（64199）和 SMA200（68966）上方；RSI14 为 77.8，进入超买区；MACD（873.51）大幅高于信号线（175.63），呈金叉形态。近 1 日 +2.95%、5 日 +13.15%，动量强劲，但恐慌贪婪指数 62 显示贪婪，RSI 超买提示短期波动可能加大；技术面仍偏上行。"
+      },
+      {
+        "symbol": "^TNX",
+        "display_name": "10Y 美债收益率 (%) (^TNX)",
+        "stance": "中性",
+        "rationale": "10Y 美债收益率报 4.65，距 52 周高点仅 -1.98%，RSI14 为 44.6，处于中性区间；近 1 日 -1.13%、5 日 -0.62%，显示高位小幅回落，但缺少均线与 MACD 数据，无法确认多空排列；技术信号整体中性。"
+      }
+    ],
+    "risk_caveat": "本报告仅为基于公开行情数据的技术指标解读，不构成任何投资建议。技术指标具有滞后性与局限性，过去走势不代表未来表现，市场可能因突发事件偏离指标状态。仅供技术指标解读参考，请读者独立决策。",
+    "tickers": [
+      {
+        "symbol": "000001.SS",
+        "displayName": "上证指数",
+        "group": "china-equity",
+        "currency": "CNY",
+        "exchangeName": "SHH",
+        "currentPrice": 3903.721,
+        "pct1Day": 0.2387743437895985,
+        "pct5Day": -0.5919097157828462,
+        "pct52WeekHigh": -8.338892328774142,
+        "pct52WeekLow": 4.577774563067258,
+        "sma20": 3890.953479003906,
+        "sma50": 3967.65123046875,
+        "sma200": 4015.2567541503904,
+        "rsi14": 47.446542451795224,
+        "macd": -3.1180013296407196,
+        "macdSignal": -12.711017403318177,
+        "macdHistogram": 9.593016073677457,
+        "trend": "bearish",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "below-sma50-sma200",
+            "label": "空头排列"
+          }
+        ]
+      },
+      {
+        "symbol": "000300.SS",
+        "displayName": "沪深300",
+        "group": "china-equity",
+        "currency": "CNY",
+        "exchangeName": "SHH",
+        "currentPrice": 4592.7505,
+        "pct1Day": 0,
+        "pct5Day": 0,
+        "pct52WeekHigh": -0.8286429693340258,
+        "pct52WeekLow": 0.5148025005537048,
+        "sma20": null,
+        "sma50": null,
+        "sma200": null,
+        "rsi14": null,
+        "macd": null,
+        "macdSignal": null,
+        "macdHistogram": null,
+        "trend": "neutral",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "near-52w-high",
+            "label": "接近 52 周高"
+          }
+        ]
+      },
+      {
+        "symbol": "USDCNY=X",
+        "displayName": "美元 / 人民币",
+        "group": "commodity-fx",
+        "currency": "CNY",
+        "exchangeName": "CCY",
+        "currentPrice": 6.7231,
+        "pct1Day": -0.2892054140175866,
+        "pct5Day": -0.32468326064718905,
+        "pct52WeekHigh": -6.505444381092776,
+        "pct52WeekLow": 0.19672424328230576,
+        "sma20": 6.753049969673157,
+        "sma50": 6.768917961120605,
+        "sma200": 6.883782985210419,
+        "rsi14": 21.418134347595597,
+        "macd": -0.01056012978233234,
+        "macdSignal": -0.008990421728380204,
+        "macdHistogram": -0.0015697080539521357,
+        "trend": "bearish",
+        "rsiState": "oversold",
+        "signals": [
+          {
+            "type": "rsi-oversold",
+            "label": "RSI 超卖"
+          },
+          {
+            "type": "near-52w-low",
+            "label": "接近 52 周低"
+          },
+          {
+            "type": "below-sma50-sma200",
+            "label": "空头排列"
+          }
+        ]
+      },
+      {
+        "symbol": "GC=F",
+        "displayName": "黄金",
+        "group": "commodity-fx",
+        "currency": "USD",
+        "exchangeName": "CMX",
+        "currentPrice": 4549.9,
+        "pct1Day": 1.3476210400562616,
+        "pct5Day": 4.269408244898837,
+        "pct52WeekHigh": -18.55107228527443,
+        "pct52WeekLow": 36.77739365699683,
+        "sma20": 4252.034973144531,
+        "sma50": 4166.297998046875,
+        "sma200": 4495.71898803711,
+        "rsi14": 70.68929107960147,
+        "macd": 93.59373829200013,
+        "macdSignal": 62.23579173967454,
+        "macdHistogram": 31.357946552325586,
+        "trend": "neutral",
+        "rsiState": "overbought",
+        "signals": [
+          {
+            "type": "rsi-overbought",
+            "label": "RSI 超买"
+          }
+        ]
+      },
+      {
+        "symbol": "CL=F",
+        "displayName": "WTI 原油",
+        "group": "commodity-fx",
+        "currency": "USD",
+        "exchangeName": "NYM",
+        "currentPrice": 85.44,
+        "pct1Day": -0.45438870177628354,
+        "pct5Day": 5.156923076923074,
+        "pct52WeekHigh": -28.49012387010379,
+        "pct52WeekLow": 55.40196435067297,
+        "sma20": 82.18299942016601,
+        "sma50": 79.10379989624023,
+        "sma200": 77.32989988327026,
+        "rsi14": 56.950027877939796,
+        "macd": 1.1261227957785422,
+        "macdSignal": 0.619424326168108,
+        "macdHistogram": 0.5066984696104342,
+        "trend": "bullish",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "above-sma50-sma200",
+            "label": "多头排列"
+          }
+        ]
+      },
+      {
+        "symbol": "^TNX",
+        "displayName": "10Y 美债收益率 (%)",
+        "group": "macro",
+        "currency": "USD",
+        "exchangeName": "CGI",
+        "currentPrice": 4.653,
+        "pct1Day": -1.1262187187063029,
+        "pct5Day": -0.6193968224029219,
+        "pct52WeekHigh": -1.9801980198019868,
+        "pct52WeekLow": 0,
+        "sma20": null,
+        "sma50": null,
+        "sma200": null,
+        "rsi14": 44.62064006048679,
+        "macd": null,
+        "macdSignal": null,
+        "macdHistogram": null,
+        "trend": "neutral",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "near-52w-high",
+            "label": "接近 52 周高"
+          }
+        ]
+      },
+      {
+        "symbol": "^VIX",
+        "displayName": "VIX 恐慌指数",
+        "group": "macro",
+        "currency": "USD",
+        "exchangeName": "CXI",
+        "currentPrice": 15.11,
+        "pct1Day": 1.477499339185051,
+        "pct5Day": 3.2809287888199345,
+        "pct52WeekHigh": -57.195467422096314,
+        "pct52WeekLow": 12.929745889387135,
+        "sma20": 16.266499948501586,
+        "sma50": 17.09819995880127,
+        "sma200": 18.50205005168915,
+        "rsi14": 45.128033654357836,
+        "macd": -0.6401149857548507,
+        "macdSignal": -0.5851500834816135,
+        "macdHistogram": -0.05496490227323725,
+        "trend": "bearish",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "below-sma50-sma200",
+            "label": "空头排列"
+          }
+        ]
+      },
+      {
+        "symbol": "SPY",
+        "displayName": "S&P 500",
+        "group": "us-equity",
+        "currency": "USD",
+        "exchangeName": "PCX",
+        "currentPrice": 769.06,
+        "pct1Day": 0.20978405985540294,
+        "pct5Day": -0.44401743423683565,
+        "pct52WeekHigh": -1.3228633383373827,
+        "pct52WeekLow": 22.212687515891176,
+        "sma20": 759.76650390625,
+        "sma50": 750.4328051757813,
+        "sma200": 706.7298010253907,
+        "rsi14": 57.78357799142168,
+        "macd": 7.194666891505449,
+        "macdSignal": 6.935335492613427,
+        "macdHistogram": 0.25933139889202206,
+        "trend": "bullish",
+        "rsiState": "normal",
+        "signals": [
+          {
+            "type": "near-52w-high",
+            "label": "接近 52 周高"
+          },
+          {
+            "type": "above-sma50-sma200",
+            "label": "多头排列"
+          }
+        ]
+      },
+      {
+        "symbol": "BTC-USD",
+        "displayName": "Bitcoin",
+        "group": "crypto",
+        "currency": "USD",
+        "exchangeName": "CCC",
+        "currentPrice": 71313,
+        "pct1Day": 2.9549951771201495,
+        "pct5Day": 13.15155744068541,
+        "pct52WeekHigh": -43.49121187035587,
+        "pct52WeekLow": 23.490491389744836,
+        "sma20": 64505.166796875,
+        "sma50": 64199.163125,
+        "sma200": 68966.76197265626,
+        "rsi14": 77.7672565163322,
+        "macd": 873.506409640213,
+        "macdSignal": 175.62934129790773,
+        "macdHistogram": 697.8770683423052,
+        "trend": "neutral",
+        "rsiState": "overbought",
+        "signals": [
+          {
+            "type": "macd-bull-cross",
+            "label": "MACD 金叉",
+            "daysAgo": 2
+          },
+          {
+            "type": "rsi-overbought",
+            "label": "RSI 超买"
+          }
+        ]
+      },
+      {
+        "symbol": "ETH-USD",
+        "displayName": "Ethereum",
+        "group": "crypto",
+        "currency": "USD",
+        "exchangeName": "CCC",
+        "currentPrice": 2278.2,
+        "pct1Day": 1.187763311361163,
+        "pct5Day": 21.12233060393482,
+        "pct52WeekHigh": -54.0104402074153,
+        "pct52WeekLow": 51.22412082476687,
+        "sma20": 1925.3630126953126,
+        "sma50": 1876.203310546875,
+        "sma200": 2003.318521118164,
+        "rsi14": 83.04901004380224,
+        "macd": 62.06885960760019,
+        "macdSignal": 26.352229571953437,
+        "macdHistogram": 35.71663003564675,
+        "trend": "neutral",
+        "rsiState": "overbought",
+        "signals": [
+          {
+            "type": "macd-bull-cross",
+            "label": "MACD 金叉",
+            "daysAgo": 1
+          },
+          {
+            "type": "rsi-overbought",
+            "label": "RSI 超买"
+          }
+        ]
+      }
+    ],
+    "crypto_fear_greed": {
+      "value": 62,
+      "classification": "Greed",
+      "classificationCn": "贪婪",
+      "timestamp": "2026-08-20T00:00:00.000Z"
+    },
+    "crypto_global": {
+      "totalMarketCapUsd": 2440128628880.5615,
+      "total24hVolumeUsd": 133410068746.48103,
+      "marketCapChangePct24h": 5.965631939797768,
+      "btcDominance": 58.47439651858535,
+      "ethDominance": 11.288755167178497,
+      "activeCryptocurrencies": 18506
+    },
+    "generated_at": "2026-08-20T08:19:46.871Z"
+  },
+  "executive_summary": {
+    "must_read": [
+      {
+        "title": "8月LPR维持3.5%不变",
+        "why": "房贷利率保持稳定，贷款定价基础多元化推进，直接影响存量按揭客户策略与分行零售信贷投放节奏。"
+      },
+      {
+        "title": "公积金提取使用范围拓宽",
+        "why": "9月20日施行后住房消费相关提取更方便，利好存量房贷与潜在购房客群，可带动相关零售产品联动。"
+      },
+      {
+        "title": "国务院部署出台增量政策",
+        "why": "宏观政策加力预期升温，预示后续信贷投放和消费刺激空间打开，分行应提前做好项目与客群储备。"
+      },
+      {
+        "title": "7月金融数据：信贷结构优化",
+        "why": "贷款降速提质、直接融资占比提升，显示融资渠道变化，影响分行信贷投放策略与存款稳定性管理。"
+      },
+      {
+        "title": "金价单日大涨4%站上4500美元",
+        "why": "黄金强势上涨且短线超买，美元兑人民币逼近低点，对财富客户避险配置和外汇敞口管理影响显著。"
+      }
+    ],
+    "insights": [
+      {
+        "topic": "公积金新政带动住房消费",
+        "impact": "9月20日公积金提取范围拓宽，将激活存量房贷客户资金流转及住房相关消费需求，释放零售信贷与财富管理机会。",
+        "action": "梳理存量公积金房贷客户，结合新政推出家装分期、消费贷配套营销，同时引导提取资金沉淀为行内理财或存款。"
+      },
+      {
+        "topic": "存款搬家财富管理双轮驱动",
+        "impact": "居民存款持续向理财、基金转移，零售存款稳定性承压，但财富管理代销规模有望成为新的核心增长点。",
+        "action": "加大稳健理财和优选基金配置推荐，对活期资金自动转存客户精准触达，以资产配置方案留住搬家资金。"
+      },
+      {
+        "topic": "黄金大涨下的配置与风险",
+        "impact": "金价单日上涨超4%并站上4500美元，港交所黄金期货交割创新高，客户避险配置需求升温但短期超买明显。",
+        "action": "面向私行客户推荐黄金积存等分批买入方式，提示短期追高风险，同时搭配固收产品平抑组合波动。"
+      },
+      {
+        "topic": "人民币升值汇率避险",
+        "impact": "美元兑人民币RSI仅21.4且逼近52周低点，人民币走强将冲击广州外向型企业出口结汇收益，需及时锁定。",
+        "action": "面向外贸企业客户推介远期结售汇和期权产品，锁定结汇汇率，降低人民币进一步升值带来的汇兑损失。"
+      },
+      {
+        "topic": "增量政策储备信贷项目",
+        "impact": "国务院部署及时出台增量政策，后续消费和投资刺激或加码，为零售消费贷和普惠小微拓客提供政策窗口。",
+        "action": "提前梳理消费贷、小微目标客群，结合线上预授信工具进行名单式营销，待政策落地快速投放。"
+      }
+    ]
+  }
 }
