@@ -49,8 +49,18 @@ function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/** 把 2026/08/14、2026.08.14、2026年08月14日 归一为 YYYY-MM-DD（无效返回 ""） */
+/** 把 2026/08/14、2026.08.14、2026年08月14日、20260814（无分隔符）归一为 YYYY-MM-DD（无效返回 ""） */
 function normalizeDate(raw: string): string {
+  // 无分隔符 8 位（文章 ID 时间戳前 8 位，如 20260820）：(\d{4})(\d{2})(\d{2})
+  const m0 = String(raw).match(/^(\d{4})(\d{2})(\d{2})/);
+  if (m0) {
+    const y = +m0[1];
+    const mo = +m0[2];
+    const d = +m0[3];
+    if (mo >= 1 && mo <= 12 && d >= 1 && d <= 31) {
+      return `${y}-${String(mo).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+    }
+  }
   const m = raw.match(/(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})/);
   if (!m) return "";
   const y = +m[1];
@@ -70,7 +80,7 @@ function deriveDateFromId(url: string): string {
 interface ParsedItem {
   title: string;
   url: string;
-  date: string;
+  date?: string;
 }
 
 export class PbcCrawler extends BaseCrawler {
@@ -130,7 +140,8 @@ export class PbcCrawler extends BaseCrawler {
       const after = html.slice(m.index, m.index + 600);
       const dm = after.match(/class="hui12"[^>]*>(20\d{2}[-/.年]\d{1,2}[-/.月]\d{1,2})/);
       const date = dm ? normalizeDate(dm[1]) : deriveDateFromId(m[1]);
-      out.push({ title, url, date: date || new Date().toISOString().slice(0, 10) });
+      // 取不到日期 → undefined（不伪造"今天"，避免旧文伪装新鲜进历史库）
+      out.push({ title, url, date: date || undefined });
     }
     return out;
   }

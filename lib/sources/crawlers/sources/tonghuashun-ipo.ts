@@ -131,19 +131,20 @@ export class TonghuashunIPOCrawler extends BaseCrawler {
         const isRegion = regionKeywords.some((kw) => stockName.includes(kw));
         if (!isRegion) continue;
 
-        // 解析日期
-        let pubDate = disclosureDate;
+        // 解析日期（取不到不伪造"今天"：无有效日期 → 下方过滤丢弃，
+        // 避免旧文被盖今天戳绕过 7 天窗口进历史库，形成"每7天重生"循环）
+        let pubDate: string | undefined = disclosureDate;
         if (pubDate) {
           const dateMatch = pubDate.match(/(\d{4}-\d{2}-\d{2})/);
           if (dateMatch) {
             pubDate = dateMatch[1];
           }
-        } else {
-          pubDate = new Date().toISOString().slice(0, 10);
         }
 
-        // 日期过滤
+        // 日期过滤（无有效日期一律丢弃）
+        if (!pubDate) continue;
         const itemDate = new Date(pubDate);
+        if (Number.isNaN(itemDate.getTime())) continue;
         if (itemDate < sevenDaysAgo) continue;
 
         let title = `${stockName}`;

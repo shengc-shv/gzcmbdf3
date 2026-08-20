@@ -158,9 +158,8 @@ export class NfraCrawler extends BaseCrawler {
         seen.add(key);
         const title = (doc.docTitle || doc.docSubtitle || "").trim();
         if (!title) continue;
-        const pub = doc.publishDate
-          ? doc.publishDate.slice(0, 10)
-          : new Date().toISOString().slice(0, 10);
+        // 取不到发布日期 → undefined（不伪造"今天"，避免旧文绕过窗口进历史库）
+        const pub = doc.publishDate ? doc.publishDate.slice(0, 10) : undefined;
         const subtitle = doc.docSubtitle && doc.docSubtitle !== title ? doc.docSubtitle : "";
         const excerpt = (subtitle || doc.docSummary || "").toString().slice(0, 200);
         this.results.push({

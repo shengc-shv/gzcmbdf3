@@ -153,7 +153,7 @@ export class ClsCrawler extends BaseCrawler {
           title: it.title,
           url: `${CLS_BASE}/detail/${it.id}`,
           excerpt: it.brief ?? "",
-          publishedAt: dateFromCtime(it.ctime ?? 0) || new Date(Date.now() + 8 * 3600 * 1000).toISOString().slice(0, 10),
+          publishedAt: dateFromCtime(it.ctime ?? 0) || undefined,
           sourceId: "cls",
           source: "财联社",
         });

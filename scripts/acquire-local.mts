@@ -17,7 +17,7 @@ import { NfraCrawler } from "../lib/sources/crawlers/sources/nfra-api";
 import { PbcCrawler } from "../lib/sources/crawlers/sources/pbc-web";
 import { ClsCrawler } from "../lib/sources/crawlers/sources/cls-api";
 import { TonghuashunIPOCrawler } from "../lib/sources/crawlers/sources/tonghuashun-ipo";
-import { loadLocalAcquired, LOCAL_ACQUIRED_DAYS } from "../lib/sources/local-acquired";
+import { loadLocalAcquired, filterLocalAcquiredRecent, LOCAL_ACQUIRED_DAYS } from "../lib/sources/local-acquired";
 
 const OUT = "data/local-acquired.json";
 const DAYS = LOCAL_ACQUIRED_DAYS;
@@ -56,7 +56,9 @@ async function main(): Promise<void> {
   }
   console.log(`[acquire:local] 本次抓到 ${fresh.length} 条`);
 
-  // 合并：已有条目先按 7 天裁剪，再与新抓条目 URL 去重（新抓优先，保留已有非重复）
+  // 合并：已有条目先按 7 天裁剪，本次新抓**同样**按 7 天裁剪后再合并
+  // （2026-08-20：此前只裁 kept，PBC 列表页常青旧文（预算/决算/续展公示）每次重进文件，
+  // 与 SKILL.md「合并时已按 7 天裁剪」表述不符；裁剪后旧文不再写回，文件只留近 7 天）
   const existing = loadLocalAcquired()?.items ?? [];
   const cutoff = Date.now() - DAYS * 24 * 3600 * 1000;
   const kept = existing.filter((it) => {
@@ -64,14 +66,15 @@ async function main(): Promise<void> {
     const t = Date.parse(it.publishedAt);
     return Number.isFinite(t) && t >= cutoff;
   });
-  const merged = dedupeByUrl([...fresh, ...kept]);
+  const freshRecent = filterLocalAcquiredRecent(fresh, DAYS);
+  const merged = dedupeByUrl([...freshRecent, ...kept]);
   const file = {
     fetchedAt: new Date().toISOString(),
     items: merged,
   };
   fs.writeFileSync(OUT, JSON.stringify(file, null, 2), "utf8");
   console.log(
-    `[acquire:local] ✅ 已写回 ${OUT}: 本次 ${fresh.length} 条 + 保留 ${kept.length} 条 → 合并 ${merged.length} 条（最近 ${DAYS} 天）`,
+    `[acquire:local] ✅ 已写回 ${OUT}: 本次 ${fresh.length} 条（7天内 ${freshRecent.length} 条） + 保留 ${kept.length} 条 → 合并 ${merged.length} 条（最近 ${DAYS} 天）`,
   );
 }
 
