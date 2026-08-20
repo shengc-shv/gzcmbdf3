@@ -11353,18 +11353,17 @@
     "ai_relevant": true
   },
   "https://www.bloomberg.com/news/articles/2026-08-19/gold-holds-near-4-500-as-us-treasury-buyback-sends-yields-lower": {
-    "title": "Gold Holds Near $4,500 as US Treasury Buyback Sends Yields Lower",
+    "title": "Gold Trades Near $4,500 After US Treasury’s Surprise Bond Move",
     "url": "https://www.bloomberg.com/news/articles/2026-08-19/gold-holds-near-4-500-as-us-treasury-buyback-sends-yields-lower",
     "sourceId": "bloomberg-markets",
     "source": "Bloomberg Markets",
     "category": "finance",
     "subcategory": "news",
-    "excerpt": "Gold held the biggest gain in six months after the Treasury Department made a surprise move to rein in long-term borrowing costs.",
+    "excerpt": "Gold largely held on to its biggest gain in six months, following the US Treasury’s surprise move to rein in long-term borrowing costs.",
     "publishedAt": "2026-08-19T23:34:15.000Z",
-    "firstSeenAt": "2026-08-20T00:50:41.147Z",
-    "lastSeenAt": "2026-08-20T00:50:41.147Z",
     "summary": "美债回购压低收益率，金价维持4500美元附近，黄金与利率联动参考。",
-    "ai_relevant": true
+    "firstSeenAt": "2026-08-20T00:50:41.147Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
   },
   "https://www.bloomberg.com/news/articles/2026-08-19/japan-s-20-year-bond-auction-faces-test-as-global-yields-surge": {
     "title": "Japan’s 20-Year Bond Auction Faces Test as Global Yields Surge",
@@ -11603,18 +11602,17 @@
     "ai_relevant": true
   },
   "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss": {
-    "title": "Canada and US say they are finalising a trade deal, but details remain murky",
+    "title": "Carney asks for end to US alcohol ban, province leader says, as trade deal nears",
     "url": "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss",
     "sourceId": "bbc-business",
     "source": "BBC Business",
     "category": "finance",
     "subcategory": "news",
-    "excerpt": "Prime Minister Carney hailed \"significant progress\" in trade talks as the two countries seek to hammer out final details ahead of a new weekend tariff deadline.",
-    "publishedAt": "2026-08-20T00:18:01.000Z",
-    "firstSeenAt": "2026-08-20T00:50:41.147Z",
-    "lastSeenAt": "2026-08-20T00:50:41.147Z",
+    "excerpt": "An agreement preventing a new wave of US tariffs is close and could include an end to Canada's boycott of US whiskey.",
+    "publishedAt": "2026-08-20T11:10:25.000Z",
     "summary": "美加贸易协议敲定中但细节待披露，贸易谈判进展参考。",
-    "ai_relevant": true
+    "firstSeenAt": "2026-08-20T00:50:41.147Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
   },
   "https://www.bbc.co.uk/news/articles/c78gp4y8d3eo?at_medium=RSS&at_campaign=rss": {
     "title": "US retail giant receives $1bn boost from tariff refunds",
@@ -18220,18 +18218,17 @@
     "lastSeenAt": "2026-08-20T08:22:50.857Z"
   },
   "https://www.bbc.co.uk/news/articles/c2k7e7zwxvyo?at_medium=RSS&at_campaign=rss": {
-    "title": "Travelodge boss steps down after security issues in rooms",
+    "title": "Travelodge boss resigns as chain tackles security after sex assault at hotel",
     "url": "https://www.bbc.co.uk/news/articles/c2k7e7zwxvyo?at_medium=RSS&at_campaign=rss",
     "sourceId": "bbc-business",
     "source": "BBC Business",
     "category": "finance",
     "subcategory": "news",
-    "ai_relevant": false,
     "excerpt": "Jo Boydell had been criticised for the company's handling of issues with its safety and security.",
-    "publishedAt": "2026-08-20T07:51:29.000Z",
+    "publishedAt": "2026-08-20T10:05:24.000Z",
     "summary": "TravelodgeCEO因客房安全问题辞职，属境外企业治理事件，不涉及零售银行业务，决策参考价值低。",
     "firstSeenAt": "2026-08-20T08:22:50.857Z",
-    "lastSeenAt": "2026-08-20T08:22:50.857Z"
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
   },
   "https://www.economist.com/finance-and-economics/2026/08/18/stock-indices-no-longer-reflect-equity-reality": {
     "title": "Stock indices no longer reflect equity reality",
@@ -20413,5 +20410,232 @@
     "lastSeenAt": "2026-08-20T12:08:44.848Z",
     "summary": "思派健康（00314.HK）上半年业绩实质改善、毛利率提升，港股中概医疗动态，可关注相关行业客群与跨境财富配置。",
     "ai_relevant": true
+  },
+  "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video": {
+    "title": "Treasury Action Not a Fed Game Changer for September, Says Evercore’s Guha",
+    "url": "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video",
+    "sourceId": "bloomberg-markets",
+    "source": "Bloomberg Markets",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Krishna Guha, vice chair and head of central bank strategy at Evercore ISI, says the US Treasury Department’s move to increase its planned purchases of outstanding 10-year to 30-year debt “certainly complicates things” for Federal Reserve Chairman Kevin Warsh, but won’t impact the central bank’s Sep",
+    "publishedAt": "2026-08-20T11:30:45.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.ft.com/content/79f1f638-1fd5-40e1-845b-b4a787a12883?syn-25a6b1a6=1": {
+    "title": "Walmart pledges price cuts as sales growth slows to six-year low",
+    "url": "https://www.ft.com/content/79f1f638-1fd5-40e1-845b-b4a787a12883?syn-25a6b1a6=1",
+    "sourceId": "ft-companies",
+    "source": "Financial Times",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Retailer to use tariff refund to reduce prices after reporting slowest US sales growth for six years",
+    "publishedAt": "2026-08-20T12:10:41.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.ft.com/content/2e59ab7f-ed8f-4cbe-9faf-b2cb408768d5?syn-25a6b1a6=1": {
+    "title": "Harold Hamm launches multibillion-dollar plan to drill Argentine shale",
+    "url": "https://www.ft.com/content/2e59ab7f-ed8f-4cbe-9faf-b2cb408768d5?syn-25a6b1a6=1",
+    "sourceId": "ft-companies",
+    "source": "Financial Times",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Trump ally partners with trader Mercuria in latest move targeting South American nation’s oil",
+    "publishedAt": "2026-08-20T10:00:13.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.ft.com/content/5ca20d4b-1ec1-4e6d-8994-ba906c7cfd33?syn-25a6b1a6=1": {
+    "title": "Barclays struggles to ‘retrain the dog’ on Wall Street",
+    "url": "https://www.ft.com/content/5ca20d4b-1ec1-4e6d-8994-ba906c7cfd33?syn-25a6b1a6=1",
+    "sourceId": "ft-companies",
+    "source": "Financial Times",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Investment bank’s seventh co-CEO in four years expected to face same restrictions as predecessors",
+    "publishedAt": "2026-08-20T04:00:19.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.bbc.co.uk/news/articles/crl7y671w8go?at_medium=RSS&at_campaign=rss": {
+    "title": "Danone €1bn takeover of Huel approved by watchdog",
+    "url": "https://www.bbc.co.uk/news/articles/crl7y671w8go?at_medium=RSS&at_campaign=rss",
+    "sourceId": "bbc-business",
+    "source": "BBC Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "French firm says the acquisition of Huel will help it grow in the nutritional sector.",
+    "publishedAt": "2026-08-20T11:41:01.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.economist.com/finance-and-economics/2026/08/20/the-high-cost-of-phantom-tollbooths": {
+    "title": "The high cost of phantom tollbooths",
+    "url": "https://www.economist.com/finance-and-economics/2026/08/20/the-high-cost-of-phantom-tollbooths",
+    "sourceId": "economist-finance",
+    "source": "The Economist Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Freedom of navigation is worth preserving",
+    "publishedAt": "2026-08-20T09:21:32.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.economist.com/finance-and-economics/2026/08/20/however-you-measure-it-chinas-job-market-is-weak": {
+    "title": "However you measure it, China’s job market is weak",
+    "url": "https://www.economist.com/finance-and-economics/2026/08/20/however-you-measure-it-chinas-job-market-is-weak",
+    "sourceId": "economist-finance",
+    "source": "The Economist Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Some workers are going back to the farm",
+    "publishedAt": "2026-08-20T09:21:25.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://finance.yahoo.com/technology/articles/unitree-soars-shanghai-debut-milestone-012731295.html": {
+    "title": "Unitree surges in Shanghai debut, a milestone for China's humanoid robotics sector",
+    "url": "https://finance.yahoo.com/technology/articles/unitree-soars-shanghai-debut-milestone-012731295.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "",
+    "publishedAt": "2026-08-19T01:27:31.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1911481.shtml": {
+    "title": "息差收窄之下，南京银行利息净收入何以大增40%？",
+    "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1911481.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates": {
+    "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
+    "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
+    "sourceId": "guardian-business",
+    "source": "The Guardian Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Joanna Boydell has quit as budget hotel chain scrambles to improve safety Meanwhile, the UK’s sports fashion retailer JD Sports has slashed its profit forecasts as cost-of-living pressures, fuelled by the US war on Iran, weighed on sales of trainers. JD Sports, which sells a range of sports brands i",
+    "publishedAt": "2026-08-20T11:48:23.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats": {
+    "title": "From McDonald’s to Congress: can a former fry cook flip a key district for Democrats?",
+    "url": "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats",
+    "sourceId": "guardian-business",
+    "source": "The Guardian Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Manny Rutinel hopes price-tag politics can win key voters in Colorado House race During his presidential campaign in October 2024, Donald Trump staged a photo op at a McDonald’s franchise in Pennsylvania, where he was briefly taught how to work the fryer and drive-thru window at the closed restauran",
+    "publishedAt": "2026-08-20T11:00:50.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.ftchinese.com/story/001110675": {
+    "title": "许家印被判无期徒刑",
+    "url": "https://www.ftchinese.com/story/001110675",
+    "sourceId": "ftchinese",
+    "source": "FT中文网",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "许家印的倒台是中国房地产行业时运变迁的缩影。",
+    "publishedAt": "2026-08-19T16:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.ftchinese.com/story/001110669": {
+    "title": "中国称欧盟对京东收购Ceconomy的调查构成“不当域外管辖”",
+    "url": "https://www.ftchinese.com/story/001110669",
+    "sourceId": "ftchinese",
+    "source": "FT中文网",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "中国司法部已禁止任何组织、个人协助调查，并警告称，“中方将坚决依法反制”。",
+    "publishedAt": "2026-08-19T16:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.cnfin.com/yw-lb/detail/20260820/4458142_1.html": {
+    "title": "受益于储能电池需求持续爆发 天赐材料上半年净利润同比增长近十倍",
+    "url": "https://www.cnfin.com/yw-lb/detail/20260820/4458142_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.cnfin.com/yw-lb/detail/20260820/4458139_1.html": {
+    "title": "净利润超230亿元 中信证券多项指标创历史最佳水平",
+    "url": "https://www.cnfin.com/yw-lb/detail/20260820/4458139_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.stcn.com/article/detail/4091230.html": {
+    "title": "火箭链卫星链加速集聚 2026文昌国际航空航天论坛即将启幕",
+    "url": "https://www.stcn.com/article/detail/4091230.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.stcn.com/article/detail/4093077.html": {
+    "title": "TCL收购华星半导体少数股权获证监会注册 中尺寸显示赛道迎双线竞争",
+    "url": "https://www.stcn.com/article/detail/4093077.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.stcn.com/article/detail/4093078.html": {
+    "title": "税友股份上半年扣非净利润增长44% AI产品回款占比上升",
+    "url": "https://www.stcn.com/article/detail/4093078.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
+  },
+  "https://www.stcn.com/article/detail/4092636.html": {
+    "title": "下游需求持续释放 金杨精密上半年营收利润双高增",
+    "url": "https://www.stcn.com/article/detail/4092636.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:00:00.000Z",
+    "firstSeenAt": "2026-08-20T12:16:04.046Z",
+    "lastSeenAt": "2026-08-20T12:16:04.046Z"
   }
 }
