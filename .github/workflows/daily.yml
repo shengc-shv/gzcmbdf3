@@ -4,8 +4,9 @@ name: Daily Brief
 #
 # Schedule: 每小时 :10 和 :40 触发（UTC，= 北京时间每小时 :10/:40）——每小时都触发
 # 用于监测 cron 是否正常工作（Actions 列表每小时都应有 run 记录）；真正放行由 gate 决定：
-#   - REPORT_TIMES（默认 "9:10,9:40"，北京时间 HH:MM 逗号列表）过滤：只有北京 9:10 / 9:40
-#     两次通过（其余小时被 gate 跳过；9:10 成功发布后 9:40 因「当日已发布」自动跳过作兜底）
+#   - REPORT_TIMES（默认 "9:10,9:40"，北京时间 HH:MM 逗号列表）+ WINDOW_MIN 容差窗口
+#     （默认 30 分钟）过滤：cron 触发延迟到目标点 ±30 分钟内都会放行（9:10 → 8:40-9:40；
+#     9:40 → 9:10-10:10）；9:10 成功发布后 9:40 因「当日已发布」自动跳过作兜底
 #   - 当日报告已发布到 gh-pages 则跳过（一天最多构建一次，9:10 失败则 9:40 兜底补跑）
 #   - 并发检查：同 workflow 前一 run 仍在 in_progress 则本次直接跳过
 #     （用 Actions API 而非 concurrency —— concurrency 是 QUEUE 延迟，不是 SKIP）
@@ -48,6 +49,7 @@ jobs:
           REPORT_TZ: ${{ vars.REPORT_TZ }}
           REPORT_TIMES: ${{ vars.REPORT_TIMES }}
           REPORT_DAYS: ${{ vars.REPORT_DAYS }}
+          WINDOW_MIN: ${{ vars.WINDOW_MIN }}
           EVENT_NAME: ${{ github.event_name }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -87,16 +89,26 @@ jobs:
           echo "Now in $TZ_VAL: $NOW_PRINT (time=$NOW_HM, dow=$NOW_DOW)"
           echo "Configured REPORT_TIMES='$TIMES_VAL', REPORT_DAYS='$DAYS_VAL'"
 
-          # Time match: comma-separated list of HH:MM (e.g. "9:10,9:40").
+          # Time match（2026-08-20 修复）：GitHub Actions 的 schedule 触发有排队延迟
+          # （实测 20-50 分钟，run 常在 :3x-:5x 才启动），分钟级精确匹配（"9:10"）永远
+          # 命中不了 → 自动发布从未成功。改为「目标时刻 ± WINDOW_MIN 分钟」窗口匹配
+          # （默认 30：9:10 → 8:40-9:40 放行；9:40 → 9:10-10:10 放行）。
+          # 一天最多构建一次由下方「当日已发布」检查兜底，窗口重叠不会重复发布。
+          WINDOW_MIN="${WINDOW_MIN:-30}"
+          NOW_TOTAL=$(( $(TZ="$TZ_VAL" date +%-H) * 60 + $(TZ="$TZ_VAL" date +%-M) ))
           time_match=false
           IFS=',' read -ra TLIST <<< "$TIMES_VAL"
           for t in "${TLIST[@]}"; do
             t_trim="${t// /}"
-            if [ "$NOW_HM" = "$t_trim" ]; then
+            t_h="${t_trim%%:*}"; t_m="${t_trim##*:}"
+            tgt=$(( 10#$t_h * 60 + 10#$t_m ))
+            diff=$(( NOW_TOTAL - tgt ))
+            if [ "${diff#-}" -le "$WINDOW_MIN" ]; then
               time_match=true
               break
             fi
           done
+          echo "Time window: WINDOW_MIN=$WINDOW_MIN, now_minute=$NOW_TOTAL, time_match=$time_match"
 
           # Day-of-week match: '*', single digits, ranges "a-b", or comma combos.
           day_match=false
