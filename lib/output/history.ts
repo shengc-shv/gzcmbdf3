@@ -24,7 +24,8 @@ import { loadAllSources } from "../sources/registry";
 import { todayKey } from "../utils";
 
 const HISTORY_PATH = path.resolve(process.cwd(), "data/article-history.json");
-const HISTORY_DAYS = 7;
+/** 历史库保留天数（也用作 daily 源层前置窗口过滤的窗口）。 */
+export const HISTORY_DAYS = 7;
 const MAX_AGE_MS = HISTORY_DAYS * 86_400_000;
 
 export interface HistoryEntry {
