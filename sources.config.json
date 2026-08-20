@@ -323,6 +323,21 @@
     "notes": "部委级宏观政策/行政处罚权威源（爬虫产物）：由 lib/sources/crawlers/sources/nfra-api.ts 经 ESD 后端 JSON 接口(/cbircweb)抓取，fetchCrawledArticles 进程内调用；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为 Angular JS 壳，静态抓为空）。经 SOURCE_ROUTE 路由 finance/cn-policy（国家政策标签）"
   },
   {
+    "id": "pbc",
+    "tier": "T1",
+    "name": "中国人民银行",
+    "type": "scrape",
+    "url": "http://www.pbc.gov.cn",
+    "category": "finance",
+    "subcategory": "cn-policy",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "部委级宏观政策/公告权威源（爬虫产物）：由 lib/sources/crawlers/sources/pbc-web.ts 抓 eportal 列表页（新闻发布 /goutongjiaoliu/113456/113469/ + 公告信息 /rmyh/105208/）经 SOURCE_ROUTE 路由 finance/cn-policy；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在深层静态列表页）。货币政策/法律法规/政策解读三栏 HTML 不规整已排除，后续可单独扩展"
+  },
+  {
     "id": "sina-money",
     "tier": "T2",
     "name": "新浪财经·理财保险",
