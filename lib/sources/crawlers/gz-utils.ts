@@ -54,8 +54,13 @@ export function parseGovList(
     const title = titleAttr || text;
     if (!title || title.length < minLen || title.length > 200) continue;
 
-    // 从链接前 lookback 字符里找最近日期
-    const ctx = html.slice(Math.max(0, m.index - lookback), m.index + 120);
+    // 日期可能在链接前(lookback，兼容 gz-gov 等日期前置结构)，
+    // 也可能在链接后同 <li> 内(统计局列表 `<span>YYYY-MM-DD</span>` 在 </a> 之后，超出原 +120)。
+    // 将上下文上界扩展到当前 <li> 结束(而非固定 +120)，确保捕获链接后日期，
+    // 同时不越界到下一个 <li> 误取其他条目日期；仍取窗口内最后一个日期(即本条目日期)。
+    const liEnd = html.indexOf("</li>", m.index);
+    const ctxEnd = liEnd >= 0 ? liEnd : m.index + 400;
+    const ctx = html.slice(Math.max(0, m.index - lookback), ctxEnd);
     const dates = ctx.match(/20\d\d[-/]\d{1,2}[-/]\d{1,2}/g);
     const publishedAt = dates ? dateToIso(dates[dates.length - 1]) || undefined : undefined;
 
