@@ -14,17 +14,17 @@ import { SSEAPICrawler } from "./sources/sse-api";
 import { SZSEAPICrawler } from "./sources/szse-api-crawler";
 import { BSEAPICrawler } from "./sources/bse-api";
 import { EastMoneyIPOCrawler } from "./sources/eastmoney-ipo";
-import { TonghuashunIPOCrawler } from "./sources/tonghuashun-ipo";
 import { GzStatsCrawler } from "./sources/gz-stats";
 import { GzGovCrawler } from "./sources/gz-gov";
-import { NfraCrawler } from "./sources/nfra-api";
-import { PbcCrawler } from "./sources/pbc-web";
 import { CnfinCrawler } from "./sources/cnfin-web";
 import { StcnCrawler } from "./sources/stcn-web";
 import { SinaBankCrawler } from "./sources/sina-bank-web";
-import { ClsCrawler } from "./sources/cls-api";
 import { GuanchaCrawler } from "./sources/guancha-web";
 // 2026-08-20 用户决定：取消南沙信息源（只看广州市政府 gz-gov），GzNanshaCrawler 停用，
+// 文件保留便于未来恢复。
+// 2026-08-20 本地化停用：TonghuashunIPOCrawler / NfraCrawler / PbcCrawler / ClsCrawler
+// 已被 WAF 拦截国外 IP，改由本地 skill（local-acquire，scripts/acquire-local.mts）抓取后
+// 经 data/local-acquired.json 并入 daily 管线；此处不再 import/实例化（远程不查），
 // 文件保留便于未来恢复。
 
 export interface CrawledBundle {
@@ -46,14 +46,14 @@ function dedupeByUrl<T extends { url?: string }>(items: T[]): T[] {
 }
 
 export async function fetchCrawledArticles(): Promise<CrawledBundle> {
-  // —— IPO / 新股（六源）→ 走 toGzcmbdf3Format（带 sourceId/region）——
+  // —— IPO / 新股（五源）→ 走 toGzcmbdf3Format（带 sourceId/region）——
+  // 注：同花顺（TonghuashunIPOCrawler）已本地化停用（WAF 拦国外 IP），由本地 skill 采集
   const ipoCrawlers: BaseCrawler[] = [
     new HKEXCrawler(),
     new SSEAPICrawler(),
     new SZSEAPICrawler(),
     new BSEAPICrawler(),
     new EastMoneyIPOCrawler(),
-    new TonghuashunIPOCrawler(),
   ];
 
   const ipo: CrawledArticle[] = [];
@@ -66,18 +66,16 @@ export async function fetchCrawledArticles(): Promise<CrawledBundle> {
     }
   }
 
-  // —— 广州商机 + 部委政策（两源，2026-08-20 起南沙停用）→ 取原始 results（保留 category/subcategory/region/sourceId）——
-  // 注：nfra（国家金融监督管理总局）虽为全国性部委政策，但复用同一条「非 IPO 爬虫」通道，
-  // 经 SOURCE_ROUTE 路由到 finance/cn-policy，与 gz-gov（国务院政策→finance/gz-policy）同模式。
+  // —— 广州商机 + 财经媒体（2026-08-20 起南沙停用；nfra/pbc/cls 已本地化停用）→ 取原始 results（保留 category/subcategory/region/sourceId）——
+  // 注：nfra/pbc/cls（国家金融监督管理总局/中国人民银行/财联社）被 WAF 拦国外 IP，
+  // 已本地化停用（本地 skill local-acquire → data/local-acquired.json → daily 读取并入）；
+  // 其 SOURCE_ROUTE（finance/cn-policy、finance/cn-finance）仍保留供 local-acquired 路由。
   const gzCrawlers: BaseCrawler[] = [
     new GzStatsCrawler(),
     new GzGovCrawler(),
-    new NfraCrawler(),
-    new PbcCrawler(),
     new CnfinCrawler(),
     new StcnCrawler(),
     new SinaBankCrawler(),
-    new ClsCrawler(),
     new GuanchaCrawler(),
   ];
 

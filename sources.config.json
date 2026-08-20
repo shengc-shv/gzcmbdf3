@@ -315,12 +315,12 @@
     "url": "https://www.nfra.gov.cn/cn/view/pages/index/index.html",
     "category": "finance",
     "subcategory": "cn-policy",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
     ],
-    "notes": "部委级宏观政策/行政处罚权威源（爬虫产物）：由 lib/sources/crawlers/sources/nfra-api.ts 经 ESD 后端 JSON 接口(/cbircweb)抓取，fetchCrawledArticles 进程内调用；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为 Angular JS 壳，静态抓为空）。经 SOURCE_ROUTE 路由 finance/cn-policy（国家政策标签）"
+    "notes": "⚠️ 已本地化停用（2026-08-20）：WAF 拦截 GitHub 托管 runner 国外出口 IP（CI 下 403/0 条），改由本地 skill（local-acquire → data/local-acquired.json）抓取后由 daily 读取并入，经 SOURCE_ROUTE 路由 finance/cn-policy；本条仅保留占位（tier/knownSourceIds 识别 + local-acquired 路由），远程不再抓取"
   },
   {
     "id": "pbc",
@@ -330,12 +330,12 @@
     "url": "http://www.pbc.gov.cn",
     "category": "finance",
     "subcategory": "cn-policy",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
     ],
-    "notes": "部委级宏观政策/公告权威源（爬虫产物）：由 lib/sources/crawlers/sources/pbc-web.ts 抓 eportal 列表页（新闻发布 /goutongjiaoliu/113456/113469/ + 公告信息 /rmyh/105208/）经 SOURCE_ROUTE 路由 finance/cn-policy；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在深层静态列表页）。货币政策/法律法规/政策解读三栏 HTML 不规整已排除，后续可单独扩展"
+    "notes": "⚠️ 已本地化停用（2026-08-20）：站点对 GitHub 托管 runner 出口 IP 连接失败（CI 下 fetch failed/0 条），改由本地 skill（local-acquire → data/local-acquired.json）抓取后由 daily 读取并入，经 SOURCE_ROUTE 路由 finance/cn-policy；本条仅保留占位（tier/knownSourceIds 识别 + local-acquired 路由），远程不再抓取"
   },
   {
     "id": "cnfin",
@@ -390,12 +390,12 @@
     "url": "https://www.cls.cn/depth?id=1032",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
     ],
-    "notes": "金融深度媒体（爬虫产物）：由 lib/sources/crawlers/sources/cls-api.ts 调 v3/depth API（频道 1032），签名 sign=md5(sha1(排序query))，固定参数 app=CailianpressWeb&os=web&sv=8.7.9（sv 变更时需同步页面 JS）；字段 id/title/brief/ctime，URL=/detail/<id>，日期由 ctime 转北京时间。经 SOURCE_ROUTE 路由 finance/cn-finance。config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为 Next.js 壳，真实数据走接口）"
+    "notes": "⚠️ 已本地化停用（2026-08-20）：站点对 GitHub 托管 runner 出口 IP 连接失败（CI 下 fetch failed/0 条），改由本地 skill（local-acquire → data/local-acquired.json）抓取后由 daily 读取并入，经 SOURCE_ROUTE 路由 finance/cn-finance；本条仅保留占位（tier/knownSourceIds 识别 + local-acquired 路由），远程不再抓取"
   },
   {
     "id": "guancha",
