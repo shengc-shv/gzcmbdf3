@@ -52,6 +52,8 @@ export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: st
   "nfra": { category: "finance", subcategory: "cn-policy" },
   // 中国人民银行（PBC）：部委级宏观政策/公告（新闻发布+公告信息），归 finance/cn-policy（国家政策标签）
   "pbc": { category: "finance", subcategory: "cn-policy" },
+  // 新华财经（CNFIN）：综合财经媒体（要闻/宏观/区域/产业），归 finance/cn-finance（国内财经新闻标签）
+  "cnfin": { category: "finance", subcategory: "cn-finance" },
   "gz-sse": { category: "gz", subcategory: "gz-ipo" },
   "gz-szse": { category: "gz", subcategory: "gz-ipo" },
   "gz-bse": { category: "gz", subcategory: "gz-ipo" },

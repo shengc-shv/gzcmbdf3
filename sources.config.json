@@ -338,6 +338,21 @@
     "notes": "部委级宏观政策/公告权威源（爬虫产物）：由 lib/sources/crawlers/sources/pbc-web.ts 抓 eportal 列表页（新闻发布 /goutongjiaoliu/113456/113469/ + 公告信息 /rmyh/105208/）经 SOURCE_ROUTE 路由 finance/cn-policy；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在深层静态列表页）。货币政策/法律法规/政策解读三栏 HTML 不规整已排除，后续可单独扩展"
   },
   {
+    "id": "cnfin",
+    "tier": "T1.5",
+    "name": "新华财经",
+    "type": "scrape",
+    "url": "https://www.cnfin.com",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "综合财经媒体（爬虫产物）：由 lib/sources/crawlers/sources/cnfin-web.ts 抓静态列表页（要闻 /news + 宏观 /macro + 区域 /local + 产业 /industry），解析 <a> 包裹的 detail 链接、日期由路径前8位推导，经 SOURCE_ROUTE 路由 finance/cn-finance（国内财经新闻标签）；config 仅供 tier/knownSourceIds 识别，不直接 scrape（首页为导航壳，真实内容在栏目静态列表页）。股市/债市/汇市/货币/大宗/快讯 v1 已排除，后续可单独扩展"
+  },
+  {
     "id": "sina-money",
     "tier": "T2",
     "name": "新浪财经·理财保险",
