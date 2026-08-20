@@ -28,3 +28,6 @@
 
 # screenshot originals (only the cropped versions are committed)
 /docs/screenshots/originals/
+
+# pre-analysis runtime artifact (analyze-gz.ts output, regenerated per run)
+/data/gz-analysis.json

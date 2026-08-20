@@ -17,7 +17,8 @@ import { EastMoneyIPOCrawler } from "./sources/eastmoney-ipo";
 import { TonghuashunIPOCrawler } from "./sources/tonghuashun-ipo";
 import { GzStatsCrawler } from "./sources/gz-stats";
 import { GzGovCrawler } from "./sources/gz-gov";
-import { GzNanshaCrawler } from "./sources/gz-nansha";
+// 2026-08-20 用户决定：取消南沙信息源（只看广州市政府 gz-gov），GzNanshaCrawler 停用，
+// 文件保留便于未来恢复。
 
 export interface CrawledBundle {
   ipo: CrawledArticle[];
@@ -58,11 +59,10 @@ export async function fetchCrawledArticles(): Promise<CrawledBundle> {
     }
   }
 
-  // —— 广州商机（三源）→ 取原始 results（保留 category/subcategory/region/sourceId）——
+  // —— 广州商机（两源，2026-08-20 起南沙停用）→ 取原始 results（保留 category/subcategory/region/sourceId）——
   const gzCrawlers: BaseCrawler[] = [
     new GzStatsCrawler(),
     new GzGovCrawler(),
-    new GzNanshaCrawler(),
   ];
 
   const gz: CrawledArticle[] = [];

@@ -753,11 +753,11 @@ export function renderHtml(
   const techMainSubs = raw.tech.filter((s) => TECH_MAIN_SUBS.has(s.id));
 
   // 顶部 tab 计数：统一「最近 DISPLAY_WINDOW_DAYS 天」口径（与面板内容一致）
+  // 2026-08-20 用户决定：取消全国 IPO 展示，只保留广东相关 → tab 只统计 gd-ipo。
   const counts = {
     tech: countItemsRecent(techMainSubs),
     finance: countItemsRecent(raw.finance),
     'gd-ipo': countItemsRecent(raw['gd-ipo'] || []),
-    ipo: countItemsRecent(raw['ipo'] || []),
     gz: countItemsRecent(raw['gz'] || []),
     politics: countItemsRecent(raw.politics),
   };
@@ -786,7 +786,7 @@ ${THEME_CSS}
     <button class="tab active" data-tab="finance">${CATEGORY_LABELS.finance}<span class="count">${counts.finance}</span></button>
     ${trading ? `<button class="tab" data-tab="trading">${STR.catTrading}<span class="count">${trading.tickers.length}</span></button>` : ""}
     <button class="tab" data-tab="gz">${CATEGORY_LABELS['gz']}<span class="count">${counts['gz']}</span></button>
-    <button class="tab tab-fold" data-tab="ipo">${CATEGORY_LABELS['ipo']}<span class="count">${counts['ipo']}</span></button>
+    <button class="tab tab-fold" data-tab="gd-ipo">${CATEGORY_LABELS['gd-ipo']}<span class="count">${counts['gd-ipo']}</span></button>
     <button class="tab tab-fold" data-tab="tech">${CATEGORY_LABELS.tech}<span class="count">${counts.tech}</span></button>
   </nav>
 
@@ -797,8 +797,8 @@ ${THEME_CSS}
   <section class="panel" data-panel="gz">
     ${renderRawCategoryPanel("gz", raw["gz"] || [], date)}
   </section>
-  <section class="panel" data-panel="ipo">
-    ${renderRawCategoryPanel("ipo", raw["ipo"] || [], date)}
+  <section class="panel" data-panel="gd-ipo">
+    ${renderRawCategoryPanel("gd-ipo", raw["gd-ipo"] || [], date)}
   </section>
   <section class="panel" data-panel="tech">
     ${renderRawCategoryPanel("tech", techMainSubs, date)}
