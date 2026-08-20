@@ -317,62 +317,6 @@
   "lastSeenAt": "2026-08-17T10:56:25.847Z",
   "summary": "高盛指出欧洲股市被低估，试图打破其不如美国市场的常见误解。"
  },
- "https://www.cnbc.com/2026/08/15/aoc-egg-freezing-costs-insurance-taxes.html": {
-  "title": "AOC says she's been saving up to freeze her eggs. Here's how much the procedure can cost",
-  "url": "https://www.cnbc.com/2026/08/15/aoc-egg-freezing-costs-insurance-taxes.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "AOC is highlighting the cost of freezing her eggs. Here's what to know about health insurance coverage, state laws and taxes associated with the process.",
-  "publishedAt": "2026-08-15T14:35:01.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "AOC公开自己为冻卵攒钱，引发关于该程序费用及保险税收政策的讨论。",
-  "ai_relevant": false
- },
- "https://www.cnbc.com/2026/08/15/rivian-tesla-self-driving-adas-fsd.html": {
-  "title": "I drove Tesla FSD, Rivian Autonomy+ ‘hands-free’ driving systems. Here’s how they compare",
-  "url": "https://www.cnbc.com/2026/08/15/rivian-tesla-self-driving-adas-fsd.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Rivian is trying to catch up to Tesla's \"hands-free\" capabilities, but with additional safety guardrails that the Elon Musk company doesn't have.",
-  "publishedAt": "2026-08-17T19:14:03.000Z",
-  "summary": "对比评测显示 Rivian 的自动驾驶在安全冗余上优于特斯拉 FSD。",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-18T00:28:10.237Z",
-  "ai_relevant": false
- },
- "https://www.cnbc.com/2026/08/14/lamborghini-revuelto-sv-hybrid-price.html": {
-  "title": "Lamborghini unveils Revuelto SV, its most powerful production car ever",
-  "url": "https://www.cnbc.com/2026/08/14/lamborghini-revuelto-sv-hybrid-price.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Lamborghini's Revuelto SV is a limited-edition V12 hybrid with over 1,050 horsepower, a 2.4-second 0-to-100 kph time and a $741,172 starting price.",
-  "publishedAt": "2026-08-16T17:08:04.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "兰博基尼发布 Revuelto SV，限量版V12混动超跑，起售价74.1万美元。",
-  "ai_relevant": false
- },
- "https://www.cnbc.com/2026/08/15/prediction-markets-and-sports-betting-how-this-uk-exchange-is-trying-to-do-both-in-the-us.html": {
-  "title": "Prediction markets and sports betting: How this UK exchange is trying to do both in the U.S.",
-  "url": "https://www.cnbc.com/2026/08/15/prediction-markets-and-sports-betting-how-this-uk-exchange-is-trying-to-do-both-in-the-us.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Smarkets is entering the U.S. prediction market race but also applying to run as a sportsbook within states amid regulatory uncertainty at the federal level.",
-  "publishedAt": "2026-08-15T14:46:43.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "英国交易所 Smarkets 试图同时进入美国预测市场和体育博彩领域。",
-  "ai_relevant": false
- },
  "https://www.cnbc.com/2026/08/15/cash-money-market-funds-bonds.html": {
   "title": "Between earn-nothing cash, broken long-term bonds, these are the safety trades of 2026 market",
   "url": "https://www.cnbc.com/2026/08/15/cash-money-market-funds-bonds.html",
@@ -438,20 +382,6 @@
   "lastSeenAt": "2026-08-17T10:56:25.847Z",
   "summary": "AI产业投资动态：全球AI资本开支高企，科技产业链融资与财富科技主题参考。"
  },
- "https://www.cnbc.com/2026/08/16/grandma-gail-advice-for-late-bloomers-it-doesnt-all-have-to-be-perfect.html": {
-  "title": "The internet's grandma has advice for late bloomers: 'It doesn't all have to be perfect'",
-  "url": "https://www.cnbc.com/2026/08/16/grandma-gail-advice-for-late-bloomers-it-doesnt-all-have-to-be-perfect.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Kim Murstein and Gail Rudnick are the duo behind \"Excuse My Grandma,\" an advice podcast that dives into life, love and other issues across generations.",
-  "publishedAt": "2026-08-16T14:30:01.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "\"Excuse My Grandma\" 播客主创建议晚成者：不必事事追求完美。",
-  "ai_relevant": false
- },
  "https://www.cnbc.com/2026/08/15/berkshire-adds-17-billion-to-alphabet-stake.html": {
   "title": "Berkshire adds $17 billion to Alphabet stake",
   "url": "https://www.cnbc.com/2026/08/15/berkshire-adds-17-billion-to-alphabet-stake.html",
@@ -464,34 +394,6 @@
   "firstSeenAt": "2026-08-17T05:57:40.858Z",
   "lastSeenAt": "2026-08-17T10:56:25.847Z",
   "summary": "伯克希尔哈撒韦增持谷歌母公司 Alphabet 170 亿美元，Alphabet 成为其第三大持仓。"
- },
- "https://www.cnbc.com/2026/08/15/cannabis-marijuana-legalization-midterm-elections.html": {
-  "title": "Marijuana reform is emerging as a midterm elections issue on both sides of the aisle",
-  "url": "https://www.cnbc.com/2026/08/15/cannabis-marijuana-legalization-midterm-elections.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "With November's midterms fast approaching, cannabis reform is an issue. It's popular with voters, but its power to tilt elections remains uncertain.",
-  "publishedAt": "2026-08-15T17:35:09.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "大麻改革成为美国中期选举议题，两党均有涉及，但其左右选情的能力仍不确定。",
-  "ai_relevant": false
- },
- "https://www.cnbc.com/2026/08/14/world-liberty-trump-occ-bank-charter-stablecoin.html": {
-  "title": "Trump family-backed crypto firm World Liberty gets conditional bank charter approval",
-  "url": "https://www.cnbc.com/2026/08/14/world-liberty-trump-occ-bank-charter-stablecoin.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "The OCC conditionally approved World Liberty Trust Co.’s national trust bank charter. That would allow the Trump family-backed firm to issue stablecoins.",
-  "publishedAt": "2026-08-14T23:41:50.000Z",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-17T10:56:25.847Z",
-  "summary": "特朗普家族支持的 World Liberty 获 OCC 有条件批准国民信托银行牌照，将可发行稳定币。",
-  "ai_relevant": false
  },
  "https://www.cnbc.com/2026/08/15/software-defined-vehicles-rivian-tesla.html": {
   "title": "How long will software-defined cars last? The auto industry doesn't know yet",
@@ -939,20 +841,6 @@
   "firstSeenAt": "2026-08-17T05:57:40.858Z",
   "lastSeenAt": "2026-08-17T10:01:57.951Z",
   "summary": "广州消费市场数据：消费复苏节奏影响零售客户资金活跃度与信贷需求，可用于消费贷/分期/收单业务研判。"
- },
- "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260813a.htm": {
-  "title": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
-  "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260813a.htm",
-  "sourceId": "fed-press",
-  "source": "Federal Reserve Press Releases",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Federal Reserve Board issues enforcement action with former employee of Regions Bank",
-  "publishedAt": "2026-08-13T15:00:00.000Z",
-  "summary": "美联储/美债动态：全球利率与美元走势影响国内资产配置与外币理财策略。",
-  "firstSeenAt": "2026-08-17T05:57:40.858Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0814/2026081402121.pdf": {
   "title": "HEARTCARE-B (06609) — (1) PROPOSED ISSUE OF A SHARES AND LISTING ON\nTHE SCI-TECH BOARD OF THE SHANGHAI STOCK\nEXCHANGE AND OTHER ANCILLARY RESOLUTIONS;\n(2) PROPOSED AMENDMENTS TO THE ARTICLES;\n(3) PROPOSED AMENDMENTS TO THE 2025 H SHARE INCENTIVE SCHEME;\nAND\n(4) NOTICE OF 2026 SECOND EXTRAORDINARY\nSHAREHOLDERS' GENERAL MEETING",
@@ -1724,20 +1612,6 @@
   "firstSeenAt": "2026-08-17T06:00:27.278Z",
   "lastSeenAt": "2026-08-18T00:28:10.237Z"
  },
- "https://www.economist.com/finance-and-economics/2026/08/13/when-japan-buys-yen-it-unwinds-a-dangerous-trade": {
-  "title": "When Japan buys yen, it unwinds a dangerous trade",
-  "url": "https://www.economist.com/finance-and-economics/2026/08/13/when-japan-buys-yen-it-unwinds-a-dangerous-trade",
-  "sourceId": "economist-finance",
-  "source": "The Economist Finance",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "The world’s biggest carry trader begins to exit its position",
-  "publishedAt": "2026-08-13T08:49:36.000Z",
-  "summary": "日本经济/日元动态：全球资金流向与套息交易风险，影响跨境资产配置。",
-  "firstSeenAt": "2026-08-17T06:00:27.278Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.economist.com/finance-and-economics/2026/08/13/is-chinas-debt-bomb-squad-about-to-blow-up": {
   "title": "Is China’s debt-bomb squad about to blow up?",
   "url": "https://www.economist.com/finance-and-economics/2026/08/13/is-chinas-debt-bomb-squad-about-to-blow-up",
@@ -2181,20 +2055,6 @@
   "lastSeenAt": "2026-08-17T06:00:27.278Z",
   "summary": "中国经济相关报道：外部视角观察中国经济，提示宏观政策与市场预期变化。"
  },
- "https://www.theguardian.com/media/2026/aug/14/bbc-trump-children-subpoenas-lawsuit": {
-  "title": "BBC seeks to subpoena Trump children and son-in-law over defamation lawsuit",
-  "url": "https://www.theguardian.com/media/2026/aug/14/bbc-trump-children-subpoenas-lawsuit",
-  "sourceId": "guardian-business",
-  "source": "The Guardian Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Network wants to serve Jared Kushner, Ivanka Trump and Donald Trump Jr after president sues over January 6 documentary The BBC is trying to subpoena Donald Trump’s children as it builds its defense against the president’s defamation lawsuit centered on a documentary on the January 6 insurrection. In",
-  "publishedAt": "2026-08-14T21:05:47.000Z",
-  "summary": "美国政治经济动态：政策不确定性影响全球市场情绪与资产配置。",
-  "firstSeenAt": "2026-08-17T06:00:27.278Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.theguardian.com/us-news/2026/aug/13/consumer-financial-protection-trump-administration": {
   "title": "Trump administration accused of ‘bullying’ union leader at consumer protection agency",
   "url": "https://www.theguardian.com/us-news/2026/aug/13/consumer-financial-protection-trump-administration",
@@ -2220,34 +2080,6 @@
   "summary": "美国政治经济动态：政策不确定性影响全球市场情绪与资产配置。",
   "firstSeenAt": "2026-08-17T06:00:27.278Z",
   "lastSeenAt": "2026-08-18T09:03:39.020Z"
- },
- "https://www.ftchinese.com/story/001110625": {
-  "title": "美国人对特朗普治下的经济日益悲观",
-  "url": "https://www.ftchinese.com/story/001110625",
-  "sourceId": "ftchinese",
-  "source": "FT中文网",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "在美伊战争加剧生活负担危机、迫使美国人缩减支出的背景下，8月消费者信心指数大幅下降，高油价沉重打击老年和低收入人群。",
-  "publishedAt": "2026-08-16T16:00:00.000Z",
-  "summary": "受美伊战争加剧生活成本危机影响，8月美国消费者信心指数显著下降，高油价对老年人和低收入群体打击尤为严重。",
-  "firstSeenAt": "2026-08-17T06:00:27.278Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.ftchinese.com/story/001110617": {
-  "title": "美国指控40余国家和地区帮助中国规避特朗普关税",
-  "url": "https://www.ftchinese.com/story/001110617",
-  "sourceId": "ftchinese",
-  "source": "FT中文网",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "白宫称，加拿大、日本、欧盟等国家和地区通过所谓“转运骗局”，为价值600亿美元的贸易规避关税提供了便利。",
-  "publishedAt": "2026-08-13T16:00:00.000Z",
-  "summary": "美国扩大关税规避指控，外贸环境趋紧，相关企业及就业人群受冲击，关注贸易类客群信贷风险与经营周转需求。",
-  "firstSeenAt": "2026-08-17T06:00:27.278Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www.ftchinese.com/story/001110616": {
   "title": "中国AI公司步步紧逼 OpenAI和Anthropic打降价牌",
@@ -3379,20 +3211,6 @@
   "firstSeenAt": "2026-08-17T23:46:53.827Z",
   "lastSeenAt": "2026-08-18T09:03:39.020Z"
  },
- "https://www.cnbc.com/2026/08/17/jeanie-buss-opposes-sale-family-stake.html": {
-  "title": "Lakers governor Jeanie Buss says siblings cannot sell family’s stake to Bob Iger, Joshua Kushner",
-  "url": "https://www.cnbc.com/2026/08/17/jeanie-buss-opposes-sale-family-stake.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Jeanie Buss's lawyer says she has not agreed to sell the team and that any vote suggesting the Buss family is selling \"would be and is void.\"",
-  "publishedAt": "2026-08-18T21:29:03.000Z",
-  "summary": "洛杉矶湖人队老板珍妮·巴斯（Jeanie Buss）表示，她的兄弟姐妹不能将家族股份出售给鲍勃·艾格（Bob Iger）和约书亚·库什纳（Joshua Kushner）。其律师强调，她并未同意出售球队，任何暗示巴斯家族出售的投票“均属无效”。",
-  "firstSeenAt": "2026-08-17T23:46:53.827Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html": {
   "title": "Anthropic tells investors annualized revenue run rate climbed to $65 billion in July",
   "url": "https://www.cnbc.com/2026/08/17/anthropic-says-annualized-revenue-climbed-to-65-billion-in-july.html",
@@ -3655,20 +3473,6 @@
   "firstSeenAt": "2026-08-17T23:46:53.827Z",
   "lastSeenAt": "2026-08-18T10:09:50.328Z"
  },
- "https://www.theguardian.com/environment/2026/aug/17/european-farmers-unprecedented-crisis-successive-heatwaves": {
-  "title": "European farmers face ‘unprecedented crisis’ after successive heatwaves",
-  "url": "https://www.theguardian.com/environment/2026/aug/17/european-farmers-unprecedented-crisis-successive-heatwaves",
-  "sourceId": "guardian-business",
-  "source": "The Guardian Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Vegetable and grain growers call for urgent action, warning of ‘catastrophic’ harvests due to continent-wide drought Successive intense heatwaves and an increasingly severe, continent-wide drought have left many of Europe’s farmers in an “unprecedented” crisis, with vegetable and grain growers in pa",
-  "publishedAt": "2026-08-17T16:01:47.000Z",
-  "summary": "欧洲经济动态：全球需求与贸易环境参考，间接影响出口链企业信贷。",
-  "firstSeenAt": "2026-08-17T23:46:53.827Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.theguardian.com/business/2026/aug/17/china-economy-slowdown-signs-extending": {
   "title": "China’s economy showing signs that slowdown may be extending",
   "url": "https://www.theguardian.com/business/2026/aug/17/china-economy-slowdown-signs-extending",
@@ -3682,34 +3486,6 @@
   "firstSeenAt": "2026-08-17T23:46:53.827Z",
   "lastSeenAt": "2026-08-19T07:42:15Z",
   "ai_relevant": true
- },
- "https://www.theguardian.com/technology/2026/aug/17/are-microsofts-ai-plans-being-held-back-by-a-shortage-of-chips": {
-  "title": "Are Microsoft’s AI plans being held back by a shortage of chips?",
-  "url": "https://www.theguardian.com/technology/2026/aug/17/are-microsofts-ai-plans-being-held-back-by-a-shortage-of-chips",
-  "sourceId": "guardian-business",
-  "source": "The Guardian Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Guardian investigation finds apparent discrepancy between what tech company has said about its AI capacity – and the number of advanced chips it has in operation The chips are quite small and some can be held in the palm of a hand. They are fundamental to the development of artificial intelligence m",
-  "publishedAt": "2026-08-17T04:00:46.000Z",
-  "summary": "AI产业投资动态：全球AI资本开支高企，科技产业链融资与财富科技主题参考。",
-  "firstSeenAt": "2026-08-17T23:46:53.827Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.theguardian.com/world/2026/aug/17/strait-hormuz-alternative-china-ships-north-sea-route-arctic-ice-silk-road": {
-  "title": "After Hormuz, China looks to the promise – and peril – of the Arctic’s ‘ice silk road’",
-  "url": "https://www.theguardian.com/world/2026/aug/17/strait-hormuz-alternative-china-ships-north-sea-route-arctic-ice-silk-road",
-  "sourceId": "guardian-business",
-  "source": "The Guardian Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "China has established the first scheduled transit through the northern sea route, but questions remain over the environmental and political risks When Marco Rubio suggested that the world should look to new shipping lanes to bypass the logjammed strait of Hormuz, it’s unlikely he had the Arctic’s no",
-  "publishedAt": "2026-08-17T00:09:23.000Z",
-  "summary": "中国经济相关报道：外部视角观察中国经济，提示宏观政策与市场预期变化。",
-  "firstSeenAt": "2026-08-17T23:46:53.827Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www.theguardian.com/australia-news/2026/aug/17/fbi-investigation-china-alleged-espionage-fake-websites-defence-intelligence-australia": {
   "title": "A fake website and a deluge of CVs: the Australian firm embroiled in an FBI probe into alleged Chinese espionage",
@@ -3854,20 +3630,6 @@
   "firstSeenAt": "2026-08-18T00:28:10.237Z",
   "lastSeenAt": "2026-08-19T07:42:15Z",
   "ai_relevant": true
- },
- "https://www.ftchinese.com/story/001110641": {
-  "title": "特朗普威胁要轰炸传统盟友阿曼",
-  "url": "https://www.ftchinese.com/story/001110641",
-  "sourceId": "ftchinese",
-  "source": "FT中文网",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "美国总统威胁称，如果阿曼妨碍华盛顿方面与伊朗达成重新开放霍尔木兹海峡的协议，美国将轰炸这个海湾国家。",
-  "publishedAt": "2026-08-17T16:00:00.000Z",
-  "summary": "美国与阿曼地缘冲突风险升级，避险情绪或升温，油价黄金波动加大，建议关注避险资产配置与客户资产保值需求。",
-  "firstSeenAt": "2026-08-18T00:28:10.237Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www.bloomberg.com/news/articles/2026-08-18/m-g-backs-korean-bonds-sees-too-many-rate-hikes-priced-in": {
   "title": "M&G Backs Korean Bonds, Sees Too Many Rate Hikes Priced In",
@@ -4423,20 +4185,6 @@
   "firstSeenAt": "2026-08-18T04:12:19.018Z",
   "lastSeenAt": "2026-08-18T04:12:19.018Z",
   "summary": "大宗商品（原油/铜/黄金）动态：通胀与避险信号，关联贵金属与商品类财富产品。"
- },
- "https://www.cnbc.com/2026/08/18/us-iran-war-trump-hormuz-trump-ceasefire-expires-extension-.html": {
-  "title": "Trump says no talks scheduled with Iran as he teases action in Hormuz Strait",
-  "url": "https://www.cnbc.com/2026/08/18/us-iran-war-trump-hormuz-trump-ceasefire-expires-extension-.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Trump insists the U.S., not Iran, is in control of the strait, even though transiting vessels continue to come under attack and few attempt the crossing.",
-  "publishedAt": "2026-08-18T18:28:37.000Z",
-  "summary": "美国与伊朗在临时停火于8月18日到期后，双方都准备打持久战，立场强硬且拒绝重启谈判；同时霍尔木兹海峡有一艘船只遭袭，外界担心冲突可能进一步延长。",
-  "firstSeenAt": "2026-08-18T04:12:19.018Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www.cnbc.com/2026/08/17/synchrony-openai.html": {
   "title": "Credit card issuer Synchrony announces partnership with OpenAI",
@@ -6498,20 +6246,6 @@
   "firstSeenAt": "2026-08-19T01:01:26.435Z",
   "lastSeenAt": "2026-08-19T01:12:16.071Z"
  },
- "https://www.bloomberg.com/news/articles/2026-08-19/japanese-stocks-slide-as-bond-market-anxiety-hits-ai-sentiment": {
-  "title": "Japan’s Topix Falls Most Since March as Tech Selloff Accelerates",
-  "url": "https://www.bloomberg.com/news/articles/2026-08-19/japanese-stocks-slide-as-bond-market-anxiety-hits-ai-sentiment",
-  "sourceId": "bloomberg-markets",
-  "source": "Bloomberg Markets",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Japan’s stocks slumped, with the Topix benchmark dropping the most since March, as anxiety over surging bond yields sapped risk appetite and weighed on AI-related stocks.",
-  "publishedAt": "2026-08-19T00:22:43.000Z",
-  "summary": "日股受债券市场焦虑拖累走弱，全球风险偏好降温，提示跨境理财与QDII产品净值波动风险。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.bloomberg.com/news/videos/2026-08-19/trump-takes-hard-line-as-hormuz-tensions-mark-new-normal-video": {
   "title": "Trump Takes Hard Line as Hormuz Tensions Mark New Normal",
   "url": "https://www.bloomberg.com/news/videos/2026-08-19/trump-takes-hard-line-as-hormuz-tensions-mark-new-normal-video",
@@ -6748,48 +6482,6 @@
   "firstSeenAt": "2026-08-19T01:01:26.435Z",
   "lastSeenAt": "2026-08-19T01:12:16.071Z"
  },
- "https://www.bbc.co.uk/news/articles/cly5r7vr7q1o?at_medium=RSS&at_campaign=rss": {
-  "title": "Meta hooked children on Facebook and Instagram, US court hears",
-  "url": "https://www.bbc.co.uk/news/articles/cly5r7vr7q1o?at_medium=RSS&at_campaign=rss",
-  "sourceId": "bbc-business",
-  "source": "BBC Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Meta argued social media addiction does not exist, as a trial stemming from a major lawsuit brought by US states started.",
-  "publishedAt": "2026-08-18T22:11:07.000Z",
-  "summary": "社交平台未成年人沉迷诉讼引发关注，提示银行数字渠道营销须重视未成年人保护与合规边界。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.bbc.co.uk/news/articles/cx2kwnrn5zpo?at_medium=RSS&at_campaign=rss": {
-  "title": "'Banned over a pair of £2 sandals': Why some sellers are complaining about Vinted",
-  "url": "https://www.bbc.co.uk/news/articles/cx2kwnrn5zpo?at_medium=RSS&at_campaign=rss",
-  "sourceId": "bbc-business",
-  "source": "BBC Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Several thousands of Vinted users say they have been wrongly suspended or permanently banned from the preloved app.",
-  "publishedAt": "2026-08-18T23:14:49.000Z",
-  "summary": "二手电商平台治理争议，反映电商生态规范化趋势，银行电商场景合作需关注平台合规风险。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.bbc.co.uk/news/articles/cd7l9en2qrjo?at_medium=RSS&at_campaign=rss": {
-  "title": "Mobile payments on the rise but cash decline slows",
-  "url": "https://www.bbc.co.uk/news/articles/cd7l9en2qrjo?at_medium=RSS&at_campaign=rss",
-  "sourceId": "bbc-business",
-  "source": "BBC Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Nine in 10 mobile wallet users have their debit card loaded as their default payment method, new data shows.",
-  "publishedAt": "2026-08-18T23:04:53.000Z",
-  "summary": "移动支付渗透率持续上升而现金下降放缓，支付渠道多元并存，银行支付生态建设可兼顾线上与现金服务。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.bbc.co.uk/news/articles/c1k1x1zdywdo?at_medium=RSS&at_campaign=rss": {
   "title": "Global borrowing costs hit fresh highs over oil, AI and inflation concerns",
   "url": "https://www.bbc.co.uk/news/articles/c1k1x1zdywdo?at_medium=RSS&at_campaign=rss",
@@ -6804,34 +6496,6 @@
   "lastSeenAt": "2026-08-19T07:42:15Z",
   "ai_relevant": true
  },
- "https://www.bbc.co.uk/news/articles/c20ydrndr0wo?at_medium=RSS&at_campaign=rss": {
-  "title": "The critical tech staying safe by going underground",
-  "url": "https://www.bbc.co.uk/news/articles/c20ydrndr0wo?at_medium=RSS&at_campaign=rss",
-  "sourceId": "bbc-business",
-  "source": "BBC Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "The war in Ukraine has spurred people to consider putting vital infrastructure underground.",
-  "publishedAt": "2026-08-18T23:25:21.000Z",
-  "summary": "关键数据基础设施向地下迁移以保障安全，数字安全投入加大，关注企业级数据安全服务需求。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.bbc.co.uk/news/articles/c70glp55y95o?at_medium=RSS&at_campaign=rss": {
-  "title": "American Airlines to bring back TV screens on US flights",
-  "url": "https://www.bbc.co.uk/news/articles/c70glp55y95o?at_medium=RSS&at_campaign=rss",
-  "sourceId": "bbc-business",
-  "source": "BBC Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "It is also adding more premium seats, with the changes aimed at improving the travel experience and boosting revenue.",
-  "publishedAt": "2026-08-18T20:17:33.000Z",
-  "summary": "航空业服务升级带动出行消费回暖，商旅与跨境支付需求增长，关注出行场景金融合作机会。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.bbc.co.uk/news/articles/c8xnkjwdn5wo?at_medium=RSS&at_campaign=rss": {
   "title": "From jumpers to slug pellets - how British wool is back in demand",
   "url": "https://www.bbc.co.uk/news/articles/c8xnkjwdn5wo?at_medium=RSS&at_campaign=rss",
@@ -6844,48 +6508,6 @@
   "summary": "英国羊毛需求回升反映本土消费趋势，消费结构变化提示银行关注细分客群消费金融需求。",
   "firstSeenAt": "2026-08-19T01:01:26.435Z",
   "lastSeenAt": "2026-08-19T01:12:16.071Z"
- },
- "https://www.economist.com/finance-and-economics/2026/08/18/stock-indices-no-longer-reflect-equity-reality": {
-  "title": "Stock indices no longer reflect equity reality",
-  "url": "https://www.economist.com/finance-and-economics/2026/08/18/stock-indices-no-longer-reflect-equity-reality",
-  "sourceId": "economist-finance",
-  "source": "The Economist Finance",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Lies, damned lies and stock markets",
-  "publishedAt": "2026-08-18T17:50:12.000Z",
-  "summary": "股指与实体经济背离现象加剧，市场结构性分化明显，提示理财配置需关注指数失真下的真实风险。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.economist.com/finance-and-economics/2026/08/18/the-white-houses-absurd-claim-of-a-chinese-transshipment-scam": {
-  "title": "The White House’s absurd claim of a Chinese transshipment “scam”",
-  "url": "https://www.economist.com/finance-and-economics/2026/08/18/the-white-houses-absurd-claim-of-a-chinese-transshipment-scam",
-  "sourceId": "economist-finance",
-  "source": "The Economist Finance",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "High tariffs on Chinese goods have had predictable effects",
-  "publishedAt": "2026-08-18T15:42:49.000Z",
-  "summary": "美方炒作中国转口贸易问题，外贸监管环境趋严，提示出口企业客户关注合规与关税风险，做好跨境结算安排。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
- "https://www.cnbc.com/2026/08/18/trump-carney-canada-tariffs-dealine-talks.html": {
-  "title": "Trump pauses 50% scheduled tariffs on Canada for three days, announces 'deal' with Ottawa",
-  "url": "https://www.cnbc.com/2026/08/18/trump-carney-canada-tariffs-dealine-talks.html",
-  "sourceId": "cnbc-top",
-  "source": "CNBC Top Stories",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Trump has already imposed a variety of tariffs on Canada and its specific exports, including metals, lumber and auto parts.",
-  "publishedAt": "2026-08-19T03:18:57.000Z",
-  "summary": "美加关税摩擦升级，贸易保护主义抬头，外贸企业汇率与关税风险加大，提示跨境金融服务需求上升。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
  },
  "https://www.cnbc.com/2026/08/18/openai-chatgpt-for-teens-safety.html": {
   "title": "OpenAI rolls out ChatGPT for Teens experience with 'stronger built-in safety protections'",
@@ -7310,20 +6932,6 @@
   "lastSeenAt": "2026-08-19T07:42:15Z",
   "ai_relevant": true
  },
- "https://www.theguardian.com/us-news/2026/aug/18/abc-sues-trump-federal-communications-commission": {
-  "title": "ABC sues Trump’s media regulator over demand for TV license renewals",
-  "url": "https://www.theguardian.com/us-news/2026/aug/18/abc-sues-trump-federal-communications-commission",
-  "sourceId": "guardian-business",
-  "source": "The Guardian Business",
-  "category": "finance",
-  "subcategory": "news",
-  "excerpt": "Network alleges FCC is trying to send ‘chilling message’ in retaliation for content the administration disapproves of ABC has sued the Federal Communications Commission (FCC), arguing that it is being retaliated against for content-based reasons in a move it warns threatens the independence of the p",
-  "publishedAt": "2026-08-18T13:38:23.000Z",
-  "summary": "美国媒体监管冲突升级，政策不确定性影响企业经营，关注跨境投资风险偏好变化。",
-  "firstSeenAt": "2026-08-19T01:01:26.435Z",
-  "lastSeenAt": "2026-08-19T07:42:15Z",
-  "ai_relevant": false
- },
  "https://www.theguardian.com/business/2026/aug/18/oil-prices-rise-us-iran-brent-crude-donald-trump": {
   "title": "Oil prices jump after US-Iran ceasefire expires and Trump threatens Oman",
   "url": "https://www.theguardian.com/business/2026/aug/18/oil-prices-rise-us-iran-brent-crude-donald-trump",
@@ -7381,19 +6989,6 @@
   "subcategories": [
    "cn-policy"
   ]
- },
- "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html": {
-  "title": "【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
-  "url": "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10743674.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】【音频解读】《广州市促进历史建筑合理利用实施办法》政策解读",
-  "summary": "广州促进历史建筑合理利用政策解读，涉及城市更新与文旅消费场景，可关注相关项目融资与商户结算需求。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T06:43:50.641Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
  },
  "https://huggingface.co/blog/ibm-research/altk-evolve-hmm": {
   "title": "How Much Memory Does Your Agent Actually Need?",
@@ -9257,19 +8852,6 @@
   "ai_relevant": true,
   "summary": "曼焦内承认枪杀保险高管，美国社会事件，保险行业公众信任议题参考。"
  },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10966003.html": {
-  "title": "广州市人民政府关于简易修改实施国Ⅲ排放标准柴油货车限制通行交通管理措施通告的通知",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10966003.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】广州市人民政府关于简易修改实施国Ⅲ排放标准柴油货车限制通行交通管理措施通告的通知",
-  "summary": "广州调整国Ⅲ柴油货车限行措施，交通管理通告，与银行业务无关。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
  "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965935.html": {
   "title": "广州市人民政府关于简易修改划定禁止使用高排放非道路移动机械区域通告的通知",
   "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965935.html",
@@ -9280,45 +8862,6 @@
   "excerpt": "【广州市政府】广州市人民政府关于简易修改划定禁止使用高排放非道路移动机械区域通告的通知",
   "summary": "广州划定高排放非道路移动机械禁用区域，环保管理通告，与银行业务无关。",
   "ai_relevant": true,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965931.html": {
-  "title": "广州市人民政府关于简易修改禁止黑烟车上路行驶通告的通知",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965931.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】广州市人民政府关于简易修改禁止黑烟车上路行驶通告的通知",
-  "summary": "广州禁止黑烟车上路行驶，环保交通管理通告，与银行业务无关。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965927.html": {
-  "title": "广州市人民政府关于简易修改划定广州市高污染燃料禁燃区通告的通知",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10965927.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】广州市人民政府关于简易修改划定广州市高污染燃料禁燃区通告的通知",
-  "summary": "广州划定高污染燃料禁燃区，环保管理通告，与银行业务无关。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10949563.html": {
-  "title": "广州市人民政府关于全面加强“门前三包”责任制管理工作的通告",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10949563.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】广州市人民政府关于全面加强“门前三包”责任制管理工作的通告",
-  "summary": "广州全面加强门前三包责任制管理，城市管理通告，与银行业务无关。",
-  "ai_relevant": false,
   "firstSeenAt": "2026-08-19T07:28:46.270Z",
   "lastSeenAt": "2026-08-20T07:20:59.734Z"
  },
@@ -9439,19 +8982,6 @@
   "firstSeenAt": "2026-08-19T07:28:46.270Z",
   "lastSeenAt": "2026-08-20T07:20:59.734Z"
  },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10681039.html": {
-  "title": "广州市人民政府关于公布实施全国重点文物保护单位南越文王墓保护规划（2021—2035年）的通告",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10681039.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】广州市人民政府关于公布实施全国重点文物保护单位南越文王墓保护规划（2021—2035年）的通告",
-  "summary": "广州公布南越王墓保护规划，文物保护行政事项，与银行业务无关。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
  "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10660563.html": {
   "title": "广州市人民政府关于同意《广州地铁八号线北延段（滘心—广州北站）工程车辆段及周边片区控制性详细规划》等2项规划成果的批复",
   "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10660563.html",
@@ -9478,19 +9008,6 @@
   "firstSeenAt": "2026-08-19T07:28:46.270Z",
   "lastSeenAt": "2026-08-20T07:20:59.734Z"
  },
- "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10950446.html": {
-  "title": "【媒体解读】广州全面加强“门前三包”责任制 将非机动车停放管理纳入“包秩序良好”范畴",
-  "url": "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/mtfbhjd/content/post_10950446.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】【媒体解读】广州全面加强“门前三包”责任制 将非机动车停放管理纳入“包秩序良好”范畴",
-  "summary": "媒体解读广州门前三包责任制，城市管理宣传，与银行业务无关。",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-19T07:28:46.270Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
  "https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10903511.html": {
   "title": "【⼀图读懂】《广州市人民政府关于禁止猎捕陆生野生动物的通告》",
   "url": "https://www.gz.gov.cn/zwgk/zcjd/ytddzc/content/post_10903511.html",
@@ -9501,19 +9018,6 @@
   "excerpt": "【广州市政府】【⼀图读懂】《广州市人民政府关于禁止猎捕陆生野生动物的通告》",
   "summary": "一图读懂广州禁止猎捕野生动物通告，生态保护宣传，与银行业务无关。",
   "ai_relevant": true,
-  "firstSeenAt": "2026-08-19T07:41:49Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z"
- },
- "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10950353.html": {
-  "title": "【音频解读】《广州市人民政府关于全面加强“门前三包”责任制管理工作的通告》政策解读",
-  "url": "https://www.gz.gov.cn/zwgk/zcjd/zcjdhz/yspjd/content/post_10950353.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "subcategory": "gz-policy",
-  "excerpt": "【广州市政府】【音频解读】《广州市人民政府关于全面加强“门前三包”责任制管理工作的通告》政策解读",
-  "summary": "音频解读广州门前三包管理通告，城市管理宣传，与银行业务无关。",
-  "ai_relevant": false,
   "firstSeenAt": "2026-08-19T07:41:49Z",
   "lastSeenAt": "2026-08-20T07:20:59.734Z"
  },
@@ -11425,20 +10929,6 @@
   "summary": "IDC发布2026中国AI50强，360以智能体+安全入选，AI产业格局参考。",
   "ai_relevant": true
  },
- "https://www.bloomberg.com/news/articles/2026-08-19/eqt-is-said-to-mull-sale-of-english-language-schools-in-vietnam": {
-  "title": "EQT Is Said to Mull Sale of English Language Schools in Vietnam",
-  "url": "https://www.bloomberg.com/news/articles/2026-08-19/eqt-is-said-to-mull-sale-of-english-language-schools-in-vietnam",
-  "sourceId": "bloomberg-markets",
-  "source": "Bloomberg Markets",
-  "category": "finance",
-  "subcategory": "news",
-  "ai_relevant": false,
-  "excerpt": "Private equity firm EQT AB is considering selling its English language education businesses in Vietnam, according to people with knowledge of the matter.",
-  "publishedAt": "2026-08-19T09:25:34.000Z",
-  "summary": "EQT拟出售越南英语学校，属海外私募交易，与广州零售银行业务无直接关联，对分行经营决策参考价值有限。",
-  "firstSeenAt": "2026-08-19T09:42:36.769Z",
-  "lastSeenAt": "2026-08-19T09:42:36.769Z"
- },
  "https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html": {
   "title": "Dollar risks are mounting. Here’s what could weaken the greenback",
   "url": "https://www.cnbc.com/2026/08/19/inflation-dollar-risks-fed.html",
@@ -11453,20 +10943,6 @@
   "excerpt": "Currency strategists flag Treasury risk, softer U.S. data and uncertain Fed policy as key factors that could pressure the dollar.",
   "publishedAt": "2026-08-19T09:32:56.000Z",
   "summary": "美元走弱风险上升，可能影响黄金、外汇及海外资产配置，提示分行关注客户避险需求，适时提供多元化财富管理建议。",
-  "firstSeenAt": "2026-08-19T09:42:36.769Z",
-  "lastSeenAt": "2026-08-19T09:42:36.769Z"
- },
- "https://finance.yahoo.com/healthcare/articles/cibus-inc-interoc-expands-rice-215020923.html": {
-  "title": "Cibus Inc: Interoc Expands Rice Trade to 5 Traits, 36% Revenue Growth – Quarterly Update Report",
-  "url": "https://finance.yahoo.com/healthcare/articles/cibus-inc-interoc-expands-rice-215020923.html",
-  "sourceId": "yahoo-finance",
-  "source": "Yahoo Finance",
-  "category": "finance",
-  "subcategory": "news",
-  "ai_relevant": false,
-  "excerpt": "",
-  "publishedAt": "2026-08-17T21:50:20.000Z",
-  "summary": "Cibus季报属纯个股行情，涉及农业生物技术个股业绩，与银行零售业务无直接关联，参考价值有限。",
   "firstSeenAt": "2026-08-19T09:42:36.769Z",
   "lastSeenAt": "2026-08-19T09:42:36.769Z"
  },
@@ -14495,20 +13971,6 @@
   "summary": "【国内技术】石头发布 A30 Pro Steam 3.0 洗。国内技术进展，关注金融科技与数字化赋能。",
   "ai_relevant": true
  },
- "https://www.cnfin.com/yw-lb/detail/20260820/4457775_1.html": {
-  "title": "【中经社信号】从“技术红利”到“生态规则” 大模型竞争步入新阶段",
-  "url": "https://www.cnfin.com/yw-lb/detail/20260820/4457775_1.html",
-  "sourceId": "cnfin",
-  "source": "新华财经",
-  "category": "finance",
-  "subcategory": "cn-finance",
-  "excerpt": "",
-  "publishedAt": "2026-08-20T00:00:00.000Z",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-20T03:09:44.123Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z",
-  "summary": "（本条与招行广州分行零售业务无关，预分析已标记不相关）"
- },
  "https://www.cnfin.com/yw-lb/detail/20260820/4457743_1.html": {
   "title": "中国240小时过境免签“朋友圈”扩展至57国",
   "url": "https://www.cnfin.com/yw-lb/detail/20260820/4457743_1.html",
@@ -16976,20 +16438,6 @@
   "lastSeenAt": "2026-08-20T07:20:59.734Z",
   "summary": "【国内财经】钛动科技宣布完成新一轮融资。国内财经动态，关系市场情绪与零售产品策略。"
  },
- "https://www.stcn.com/article/detail/4090452.html": {
-  "title": "格力博成功举办美国经销商大会，以Greenworks Power战略开启全球化生态新篇",
-  "url": "https://www.stcn.com/article/detail/4090452.html",
-  "sourceId": "stcn",
-  "source": "证券时报",
-  "category": "finance",
-  "subcategory": "cn-finance",
-  "excerpt": "",
-  "publishedAt": "2026-08-20T00:00:00.000Z",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-20T06:28:03.343Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z",
-  "summary": "（本条与招行广州分行零售业务无关，预分析已标记不相关）"
- },
  "https://www.stcn.com/article/detail/4090449.html": {
   "title": "财达证券解运亮：加快雄安新区总部经济和OPC业态发展的建议",
   "url": "https://www.stcn.com/article/detail/4090449.html",
@@ -19066,19 +18514,6 @@
   "lastSeenAt": "2026-08-20T07:20:59.734Z",
   "summary": "【零售客群】2024年1-2月广州市消费品市场运行情况。指向特定零售客群，宜做精准触达与权益运营。"
  },
- "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10640740.html": {
-  "title": "广州市人民政府关于印发全国重点文物保护单位怀圣寺光塔保护规划（2021—2035年）的通知",
-  "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10640740.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "excerpt": "",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-20T07:20:59.734Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z",
-  "summary": "（本条与招行广州分行零售业务无关，预分析已标记不相关）",
-  "subcategory": "gz-policy"
- },
  "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10603549.html": {
   "title": "广州市人民政府关于同意《番禺区南浦岛东乡片区控制性详细规划》等5项规划成果的批复",
   "url": "https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10603549.html",
@@ -19184,20 +18619,6 @@
   "firstSeenAt": "2026-08-20T07:20:59.734Z",
   "lastSeenAt": "2026-08-20T07:20:59.734Z",
   "summary": "【广州政策】《广州市人民政府关于调整相关市级行政职权的决定》。广州政策利好，分行可跟进落地与客群拓展。"
- },
- "https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10862815.html": {
-  "title": "【政策解读】《广州市气瓶安全监督管理规定》",
-  "url": "https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10862815.html",
-  "sourceId": "gz-gov",
-  "source": "广州市政府",
-  "category": "finance",
-  "excerpt": "",
-  "publishedAt": "2026-07-01T00:00:00.000Z",
-  "ai_relevant": false,
-  "firstSeenAt": "2026-08-20T07:20:59.734Z",
-  "lastSeenAt": "2026-08-20T07:20:59.734Z",
-  "summary": "（本条与招行广州分行零售业务无关，预分析已标记不相关）",
-  "subcategory": "gz-policy"
  },
  "https://www.gz.gov.cn/zwgk/zcjd/zcjd/content/post_10840516.html": {
   "title": "【政策解读】《广州市行政规范性文件管理规定》政策解读",
