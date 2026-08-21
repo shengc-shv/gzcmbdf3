@@ -1,5 +1,6 @@
 import { curlFetch } from "./curl-fetch";
 import type { RawArticle } from "./types";
+import { extractDateFromUrl } from "../utils";
 
 /**
  * 财富管理 / 个人信贷 商机源
@@ -22,12 +23,6 @@ function clean(s: string): string {
   return s.replace(/<[^>]+>/g, "").replace(/&[a-z]+;/gi, " ").replace(/\s+/g, " ").trim();
 }
 
-function parseDate(s: string): Date | undefined {
-  const m = String(s || "").match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
-  if (!m) return undefined;
-  return new Date(`${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}T00:00:00.000Z`);
-}
-
 /** 财富业务关键词（理财/保险/基金/黄金/存款/利率） */
 const WEALTH_KW = /理财|保险|基金|黄金|存款|利率|养老金|资管|信托|债券基金|净值|申购|赎回|寿险|财险|贵金属/;
 /** 个人信贷关键词（房贷/消费贷/普惠/信贷/银行/金融） */
@@ -47,12 +42,15 @@ export async function fetchSinaMoney(
     if (href.startsWith("javascript:") || title.length < 10) continue;
     if (!WEALTH_KW.test(title)) continue; // 只留财富业务相关
     const url = href.startsWith("http") ? href : `https://finance.sina.com.cn${href}`;
+    // 列表页无内联日期 → URL 路径含 YYYY-MM-DD（/roll/2026-08-21/doc-*.shtml）兜底
+    const d = extractDateFromUrl(url);
     out.push({
       sourceId,
       title,
       url,
       excerpt: `【财富管理】${title}`,
       category: "gz",
+      ...(d ? { publishedAt: new Date(`${d}T00:00:00.000Z`) } : {}),
     });
   }
   return out;
@@ -71,14 +69,15 @@ export async function fetch21jingjiFinance(
     const title = clean(m[2]);
     if (!CREDIT_KW.test(title)) continue; // 只留信贷/金融监管相关
     const url = href.startsWith("http") ? href : `https://www.21jingji.com${href}`;
-    const d = parseDate(href);
+    // 文章 URL 含 YYYYMMDD（m.21jingji.com/article/20260820/...）→ 兜底补日期
+    const d = extractDateFromUrl(url);
     out.push({
       sourceId,
       title,
       url,
       excerpt: `【21财经】${title}`,
       category: "gz",
-      ...(d ? { publishedAt: d } : {}),
+      ...(d ? { publishedAt: new Date(`${d}T00:00:00.000Z`) } : {}),
     });
   }
   return out;

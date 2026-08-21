@@ -16,6 +16,7 @@ import {
   REGION_IPO,
   rewriteGzPrefix,
 } from "../sources/constants";
+import { extractDateFromUrl } from "../utils";
 
 /** TS 爬虫产物（fetchCrawledArticles() 的条目；原 .mjs 爬虫 crawled-*.json 的等价结构）。 */
 export interface CrawledArticle {
@@ -72,23 +73,6 @@ export function routeRegion(
     return { sourceId, category };
   }
   return { sourceId: srcId, category: opts.gzCategory ?? REGION_GZ };
-}
-
-/**
- * 从 URL 中提取发布日期（兜底，C 方向 2026-08-20）：部分爬虫/采集源
- * 列表页无内联日期，但文章 URL 路径含 YYYYMMDD / YYYY-MM-DD（如统计局、
- * 部分财经源）。缺失 publishedAt 时据此兜底，避免条目只能靠 lastSeenAt 判新鲜。
- * 返回 ISO 日期串（YYYY-MM-DD）或 undefined。
- */
-export function extractDateFromUrl(url?: string): string | undefined {
-  if (!url) return undefined;
-  const m = url.match(/(\d{4})[-/]?(\d{1,2})[-/]?(\d{1,2})/);
-  if (!m) return undefined;
-  const y = +m[1];
-  const mo = +m[2];
-  const d = +m[3];
-  if (y < 2000 || y > 2100 || mo < 1 || mo > 12 || d < 1 || d > 31) return undefined;
-  return `${y}-${String(mo).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
 /** 单条爬虫产物 → MergeArticle（含默认值映射与 tier 透传）。 */

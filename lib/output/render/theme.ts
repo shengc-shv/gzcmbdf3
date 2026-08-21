@@ -490,39 +490,7 @@ export const THEME_CSS = `
   .time-content { display: none; }
   .time-content.active { display: block; }
 
-  /* ===== L3 source-tabs ===== */
-  .source-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin: 1rem 0 1.3rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--rule);
-  }
-  .source-tab {
-    background: none;
-    border: 1px solid var(--rule);
-    padding: 0.36rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.83rem;
-    color: var(--fg-soft);
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
-  }
-  .source-tab:hover { border-color: var(--muted); color: var(--fg); }
-  .source-tab.active {
-    background: var(--cat, var(--fg));
-    color: #fff;
-    border-color: transparent;
-  }
-  .source-tab .count {
-    font-size: 0.7rem;
-    opacity: 0.8;
-    margin-left: 0.3rem;
-  }
-  .source-content { display: none; }
-  .source-content.active { display: block; }
+  /* L3 source-tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流） */
 
   /* ===== article cards in raw panels ===== */
   .article {

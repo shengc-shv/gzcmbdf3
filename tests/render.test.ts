@@ -5,7 +5,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { renderHtml, type RawByCategory } from "../lib/output/render";
-import { renderRawCategoryPanel, type SubGroup } from "../lib/output/render/cards";
+import { renderRawCategoryPanel, formatDate, isDateOnly, sortByTierAndTime, type SubGroup } from "../lib/output/render/cards";
 import type { DailyReport, ArticleInput } from "../lib/types";
 import { toMatchSnapshot } from "./snapshot";
 
@@ -252,8 +252,76 @@ test("filterRecentDays: 无发布时间 → 按采集时间 fetchedAt 排序与�
   const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
   // 计数只算 3 天窗口内（1h + 2h = 2 条，5 天前采集的不计）
   assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">2</span>'), "无发布时间条目按 fetchedAt 判定窗口（5天前采集不计入）");
-  // 顺序：无发布时间(采集1h前) 应在 有发布时间(2h前) 之前
+  // 顺序（2026-08-21 用户规则）：有发布时间(2h前) 优先；无发布时间(采集1h前) 沉底
   const order = html.indexOf("无发布时间·今天采集");
   const order2 = html.indexOf("有发布时间·2小时前");
-  assert.ok(order !== -1 && order2 !== -1 && order < order2, "无发布时间条目按采集时间参与倒序排序");
+  assert.ok(order !== -1 && order2 !== -1 && order2 < order, "无发布时间条目沉底（有时分 > 只有日期 > 无发布时间）");
+});
+
+test("formatDate: 只有日期（UTC零点/北京零点）→ 展示日期；有真实时分 → 展示时分", () => {
+  
+  // 国内爬虫源形态：UTC 零点 → 只有日期 → YYYY-MM-DD
+  const utcZero = new Date("2026-08-21T00:00:00.000Z");
+  assert.equal(isDateOnly(utcZero), true, "UTC 零点应判定只有日期");
+  assert.equal(formatDate(utcZero), "2026-08-21");
+  // ftchinese 形态：北京零点（UTC 前日 16:00）→ 只有日期
+  const bjZero = new Date("2026-08-19T16:00:00.000Z");
+  assert.equal(isDateOnly(bjZero), true, "北京零点应判定只有日期");
+  // 有真实时分 → 展示 MM/DD HH:mm（zh-CN）
+  const withTime = new Date("2026-08-20T04:39:58.000Z");
+  assert.equal(isDateOnly(withTime), false, "真实时分不应判定只有日期");
+  const fmt = formatDate(withTime);
+  assert.match(fmt, /^\d{2}\/\d{2} \d{2}:\d{2}$/, `formatDate 应输出 MM/DD HH:mm，实际 ${fmt}`);
+});
+
+test("sortByTierAndTime: tier 权威等级 + 时间排序，只有日期沉底", () => {
+  
+  const mk = (title: string, publishedAt: Date | undefined, tier?: string): ArticleInput => ({
+    sourceId: "s",
+    source: "源",
+    title,
+    url: "https://x/" + title,
+    excerpt: "",
+    summary: "",
+    category: "finance",
+    publishedAt,
+    tier: tier as ArticleInput["tier"],
+  });
+  const withTimeT2 = mk("媒体·有时分", new Date("2026-08-20T10:00:00.000Z"), "T2");
+  const withTimeT1 = mk("官方·有时分", new Date("2026-08-20T09:00:00.000Z"), "T1");
+  const dateOnlyT1 = mk("官方·只有日期", new Date("2026-08-20T00:00:00.000Z"), "T1");
+  const noDate = mk("无日期", undefined);
+  const sorted = sortByTierAndTime([noDate, dateOnlyT1, withTimeT2, withTimeT1]);
+  assert.deepEqual(
+    sorted.map((a) => a.title),
+    ["官方·有时分", "媒体·有时分", "官方·只有日期", "无日期"],
+    "排序：有时分按 tier(官方>媒体) → 只有日期沉底 → 无日期最底",
+  );
+});
+
+test("子标签合并输出：无 L3 信息源 tabs（只到子标签）", () => {
+  // 模拟 groupRaw 合并流输出（2026-08-21 起所有子标签均构造成单 _merged source）
+  const subs: SubGroup[] = [
+    {
+      id: "cn-policy",
+      name: "国家政策",
+      sources: [
+        {
+          sourceId: "_merged",
+          sourceName: "国家政策",
+          merged: true,
+          items: [
+            { ...item("https://x/p1", "国务院政策文件", "finance"), tier: "T1", source: "国务院" },
+            { ...item("https://x/p2", "央视解读政策", "finance"), tier: "T1.5", source: "央视" },
+            { ...item("https://x/p3", "新浪报道政策", "finance"), tier: "T2", source: "新浪" },
+          ],
+        },
+      ],
+    },
+  ];
+  const html = renderRawCategoryPanel("finance", subs, "2026-08-19");
+  assert.ok(!html.includes("source-tab"), "不再渲染 L3 信息源 tabs");
+  assert.ok(html.includes("国务院政策文件") && html.includes("央视解读政策") && html.includes("新浪报道政策"), "多源条目合并为单一时间流");
+  // merged 流 → 卡片展示来源小字
+  assert.ok(html.includes("国务院") && html.includes("央视") && html.includes("新浪"), "来源降级为卡片上的来源标识");
 });

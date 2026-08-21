@@ -6,7 +6,7 @@ import type { ArticleInput } from "../../types";
 import type { Category } from "../../sources/types";
 import { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "./i18n";
 import { TIER_COLORS } from "./theme";
-import { SOURCE_TIER_LABELS } from "../../sources/tiers";
+import { SOURCE_TIER_LABELS, SOURCE_TIER_ORDER } from "../../sources/tiers";
 import { REPORT_LOCALE } from "../../sources/registry";
 import { getReportTz } from "../../utils";
 
@@ -71,9 +71,37 @@ export function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/**
+ * 该日期是否只到「日」精度（无真实时分）：
+ * 爬虫/直抓源只有 URL 日期时存在两种存储形态——国内源存 UTC 零点
+ * （T00:00:00.000Z = 北京 08:00）、ftchinese 存北京时间零点
+ * （T16:00:00.000Z = 北京次日 00:00）。任一命中即视为「只有日期」，
+ * 卡片时间只展示 YYYY-MM-DD；有真实时分的 RSS 源两者均不命中 → 展示时分。
+ */
+export function isDateOnly(d: Date | undefined): boolean {
+  if (!d) return false;
+  if (d.getUTCHours() === 0 && d.getUTCMinutes() === 0 && d.getUTCSeconds() === 0) {
+    return true; // UTC 零点存储形态
+  }
+  try {
+    const fmt = new Intl.DateTimeFormat("en-GB", {
+      timeZone: getReportTz(),
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    return fmt.format(d) === "00:00"; // 报告时区零点存储形态（如 ftchinese 北京 0 点）
+  } catch {
+    return false;
+  }
+}
+
 export function formatDate(d: Date | undefined): string {
   if (!d) return "";
   try {
+    // 只有日期（无时分）→ 展示日期；有真实时分 → 展示 MM/DD HH:mm
+    // （2026-08-21 用户要求：有小时分钟展示到小时分钟，没有则展示日期）
+    if (isDateOnly(d)) return tzDateStr(d);
     // zh: "05/20 16:00"  · en: "May 20, 4:00 PM" → keep 24h en-GB style "20/05 16:00"
     const localeTag = REPORT_LOCALE === "en" ? "en-GB" : "zh-CN";
     return d.toLocaleString(localeTag, {
@@ -161,9 +189,9 @@ export function renderSourceTabs(
   subId: string,
   sources: SourceGroup[],
 ): string {
-  // Single-source L2s (X 推文 / GitHub Trending) skip the L3 row — the L2 tab
-  // label already identifies the dataset. L3 only earns its row when there
-  // are ≥2 sources to switch between (e.g. 社区讨论 V2EX vs LinuxDo).
+  // L3 信息源 tabs 已停用（2026-08-21 用户要求：渲染只到子标签）：
+  // 所有子标签统一构造成单一 _merged source（merged:true），此处恒返回空串，
+  // 来源信息降级为卡片 meta 行的来源小字。
   if (sources.length < 2) return "";
   return `<nav class="source-tabs">${sources
     .map(
@@ -174,7 +202,32 @@ export function renderSourceTabs(
 }
 
 /**
- * 保留每个源中「最近 days 天」的条目，并按时间倒序排序。
+ * 子标签内统一排序（2026-08-21 用户要求）：
+ * ① 时间精度：有真实时分 > 只有日期 > 无发布时间（「只有日期的放最后」）；
+ * ② 同精度内按 信息源权威等级（T1 > T1.5 > T2）升序；
+ * ③ 同等级内按发布时间倒序（最新在前）。
+ */
+export function sortByTierAndTime<T extends ArticleInput>(list: T[]): T[] {
+  const precision = (a: ArticleInput): number => {
+    if (!a.publishedAt) return 2; // 无发布时间 → 最沉底
+    return isDateOnly(a.publishedAt) ? 1 : 0; // 只有日期 → 次沉底
+  };
+  return [...list].sort((a, b) => {
+    const pa = precision(a);
+    const pb = precision(b);
+    if (pa !== pb) return pa - pb;
+    const ra = a.tier ? (SOURCE_TIER_ORDER[a.tier] ?? 0) : 0;
+    const rb = b.tier ? (SOURCE_TIER_ORDER[b.tier] ?? 0) : 0;
+    if (ra !== rb) return rb - ra;
+    const ta = (a.publishedAt ?? a.fetchedAt)?.getTime() ?? 0;
+    const tb = (b.publishedAt ?? b.fetchedAt)?.getTime() ?? 0;
+    return tb - ta;
+  });
+}
+
+/**
+ * 保留每个源中「最近 days 天」的条目，并按 sortByTierAndTime 排序
+ * （tier 权威等级 + 发布时间，只有日期的放最后）。
  * 时间判定统一为 `publishedAt ?? fetchedAt`（2026-08-19 用户确认：
  * 没有发布时间的采用信息采集时间）；两者皆无的保留（时间未知）。
  */
@@ -186,13 +239,8 @@ export function filterRecentDays(sources: SourceGroup[], days = DISPLAY_WINDOW_D
         const t = a.publishedAt ?? a.fetchedAt;
         if (!t) return true;
         return t.getTime() >= cutoff;
-      })
-      .sort((a, b) => {
-        const at = (a.publishedAt ?? a.fetchedAt)?.getTime() ?? 0;
-        const bt = (b.publishedAt ?? b.fetchedAt)?.getTime() ?? 0;
-        return bt - at;
       });
-    return { ...s, items };
+    return { ...s, items: sortByTierAndTime(items) };
   });
 }
 

@@ -13,6 +13,7 @@ import {
   CATEGORY_LABELS,
   CATEGORY_DIGEST_LABELS,
   TECH_MAIN_SUBS,
+  sortByTierAndTime,
   type SourceGroup,
   type SubGroup,
   type RawByCategory,
@@ -478,10 +479,7 @@ export function groupRaw(
   for (const cat of CATEGORY_ORDER) {
     for (const [id, b] of buckets[cat].entries()) {
       if (PRESERVE_FETCH_ORDER_SOURCES.has(id)) continue;
-      b.items.sort(
-        (a, b) =>
-          (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
-      );
+      b.items = sortByTierAndTime(b.items);
     }
   }
 
@@ -511,10 +509,7 @@ export function groupRaw(
         });
         continue;
       }
-      b.items.sort(
-        (a, b) =>
-          (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
-      );
+      b.items = sortByTierAndTime(b.items);
       subs.push({
         id: subId,
         name: SUBCATEGORY_LABELS[subId] ?? subId,
@@ -634,11 +629,8 @@ export function groupRaw(
           }
           continue;
         }
-        flat.sort(
-          (a, b) =>
-            (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
-        );
-        const top = takeFirstToday(flat, mergeLimit);
+        const flatSorted = sortByTierAndTime(flat);
+        const top = takeFirstToday(flatSorted, mergeLimit);
         if (top.length === 0) continue;
         // Cross-source story dedup: several sources may cover the same story.
         // Collapse near-identical titles into one item and record the other
@@ -685,25 +677,18 @@ export function groupRaw(
       }
       // 2) 标签内主题去重（跨源，2026-08-19 用户要求）：同主题 ≤2 条、2 条必须 tier 不同。
       //    在子标签层面对所有源的条目统一裁剪（央视/国务院/媒体同报一个政策只留 ≤2 条）。
-      const all = [...perSourceMap.values()]
-        .flatMap((g) => g.items)
-        .sort(
-          (a, b) =>
-            (b.publishedAt?.getTime() ?? 0) - (a.publishedAt?.getTime() ?? 0),
-        );
+      //    排序用 tier 权威等级 + 时间（2026-08-21 用户要求，只有日期的沉底）。
+      const all = sortByTierAndTime(
+        [...perSourceMap.values()].flatMap((g) => g.items),
+      );
       const keepUrls = new Set(capByThemeAndTier(all, 2).map((a) => a.url));
-      // 3) 按源分组输出（保留被裁剪后的条目，维持 L3 源 tabs 结构）
-      const sources: SourceGroup[] = [];
-      for (const [id, g] of perSourceMap) {
-        const items = g.items.filter((a) => keepUrls.has(a.url));
-        if (items.length) {
-          sources.push({ sourceId: id, sourceName: g.sourceName, items });
-        }
-      }
+      // 3) 合并输出（2026-08-21 用户要求：渲染只到子标签，去掉 L3 信息源 tabs）：
+      //    保留被裁剪后的条目为单一时间流（merged），来源降级为卡片上的来源小字。
+      const kept = all.filter((a) => keepUrls.has(a.url));
       // 财经要点 / 广州商机 的二级标签始终渲染，即使当天为空也保留
       // 标签 + “暂无内容”占位，保证结构稳定可见（不折叠成单子标签）。
       // （gd-ipo/ipo 已在循环开头 continue 单独构建，此处不可达，不重复判断）
-      if (sources.length === 0) {
+      if (kept.length === 0) {
         if (cat === 'finance' || cat === 'gz') {
           subs.push({ id: subId, name: SUBCATEGORY_LABELS[subId] ?? subId, sources: [] });
           continue;
@@ -713,7 +698,14 @@ export function groupRaw(
       subs.push({
         id: subId,
         name: SUBCATEGORY_LABELS[subId] ?? subId,
-        sources: sortByRegistry(sources),
+        sources: [
+          {
+            sourceId: "_merged",
+            sourceName: SUBCATEGORY_LABELS[subId] ?? subId,
+            items: kept,
+            merged: true,
+          },
+        ],
       });
     }
     out[cat] = subs;
@@ -822,7 +814,7 @@ ${THEME_CSS}
       });
     });
   });
-  // Scope sub-tab / source-tab toggles to the parent .panel so two L1 panels
+  // Scope sub-tab toggles to the parent .panel so two L1 panels
   // can share the same data-cat (e.g. tech main + community both data-cat=tech)
   // without stomping on each other's active state.
   document.querySelectorAll('.sub-tab').forEach(function (btn) {
@@ -853,19 +845,8 @@ ${THEME_CSS}
       });
     });
   });
-  document.querySelectorAll('.source-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var subContent = btn.closest('.sub-content');
-      if (!subContent) return;
-      var src = btn.dataset.source;
-      subContent.querySelectorAll('.source-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      subContent.querySelectorAll('.source-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.sourceContent === src);
-      });
-    });
-  });
+  // L3 信息源 tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流）；
+  // source-content 结构不再产出，原 source-tab 切换逻辑一并删除。
   // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
   document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
