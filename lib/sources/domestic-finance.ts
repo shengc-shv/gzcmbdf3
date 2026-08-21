@@ -107,3 +107,43 @@ export async function fetchCctvFinance(
   }
   return out;
 }
+
+/**
+ * 每日经济新闻首页（nbd.com.cn）—— 全国权威财经媒体，深度报道银行/科技金融/产业
+ * 动态（2026-08-21 接入：算力贷/Token贷/词元贷等热点报道主力，补国内财经深度视角）。
+ *
+ * 首页服务端渲染，文章链接形如 https://www.nbd.com.cn/articles/YYYY-MM-DD/<id>.html，
+ * 日期从 URL 路径提取。频道列表页（/channels/N.html）有 302 反爬，v1 只抓首页。
+ */
+export function parseNbdHtml(
+  html: string,
+  sourceId: string,
+  limit = 20,
+): RawArticle[] {
+  const re =
+    /<a[^>]+href="(https:\/\/www\.nbd\.com\.cn\/articles\/[^"]+)"[^>]*>([^<]{4,60})<\/a>/g;
+  const seen = new Set<string>();
+  const out: RawArticle[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null && out.length < limit) {
+    const url = m[1];
+    const title = clean(m[2]);
+    if (seen.has(url)) continue;
+    if (!title || title.length < 8) continue; // 跳过空/占位标题
+    seen.add(url);
+    const d = /(\d{4})-(\d{2})-(\d{2})/.exec(url);
+    const publishedAt = d
+      ? new Date(`${d[1]}-${d[2]}-${d[3]}T08:00:00+08:00`)
+      : undefined;
+    out.push({ sourceId, title, url, category: "finance", publishedAt });
+  }
+  return out;
+}
+
+export async function fetchNbd(
+  sourceId: string,
+  limit = 20,
+): Promise<RawArticle[]> {
+  const html = await curlFetch("https://www.nbd.com.cn/", HEADERS);
+  return parseNbdHtml(html, sourceId, limit);
+}

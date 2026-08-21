@@ -1,5 +1,5 @@
 import { fetchAttentionVc } from "./attentionvc";
-import { fetchCctvFinance, fetchSinaFinance } from "./domestic-finance";
+import { fetchCctvFinance, fetchNbd, fetchSinaFinance } from "./domestic-finance";
 import { fetchGovCnPolicy } from "./national-policy";
 import { fetchSinaMoney, fetch21jingjiFinance } from "./wealth-credit";
 import { fetchGithubTrending } from "./github-trending";
@@ -35,6 +35,7 @@ export async function fetchSource(source: SourceDef): Promise<RawArticle[]> {
   else if (source.id === "huggingface-papers") items = await fetchHuggingfacePapers(source.id, source.keywords);
   else if (source.id === "sina-finance") items = await fetchSinaFinance(source.id);
   else if (source.id === "cctv-finance") items = await fetchCctvFinance(source.id);
+  else if (source.id === "nbd") items = await fetchNbd(source.id);
   else if (source.id === "govcn-policy") items = await fetchGovCnPolicy(source.id);
   else if (source.id === "sina-money") items = await fetchSinaMoney(source.id);
   else if (source.id === "21jingji-finance") items = await fetch21jingjiFinance(source.id);

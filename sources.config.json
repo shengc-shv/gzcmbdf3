@@ -119,11 +119,12 @@
     "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
     "category": "tech",
     "subcategory": "overseas-tech",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
-    ]
+    ],
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量5条全部 relevant:false（0% 有效），纯吃 PASS1 token 产出为零；海外 tech 已由 arxiv-fintech 关键词过滤流覆盖"
   },
   {
     "id": "attentionvc-ai",
@@ -149,12 +150,13 @@
     "category": "finance",
     "subcategory": "news",
     "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量12条仅4条相关(33%)，且8条无 summary（标题关键词未命中/被窗口滤掉）；海外财经保留 Guardian/Economist/Yahoo 即可，同类内容重复"
   },
   {
     "id": "wsj-markets",
@@ -180,12 +182,13 @@
     "category": "finance",
     "subcategory": "news",
     "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量14条仅3条相关(21%)，有效产出过低；海外财经保留 Guardian/Economist/Yahoo 即可"
   },
   {
     "id": "bbc-business",
@@ -195,12 +198,13 @@
     "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
     "category": "finance",
     "subcategory": "news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量20条仅5条相关(25%)，且多为英国本地/欧洲商业新闻与分行无关联；海外财经保留 Guardian/Economist/Yahoo 即可"
   },
   {
     "id": "economist-finance",
@@ -226,12 +230,13 @@
     "category": "finance",
     "subcategory": "news",
     "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量10条仅3条相关(30%)，6条 relevant:false（美股个股/科技公司动态与分行无关）；海外财经保留 Guardian/Economist/Yahoo 即可"
   },
   {
     "id": "yahoo-finance",
@@ -259,13 +264,28 @@
     "category": "finance",
     "subcategory": "news",
     "keywords": ["China", "Chinese", "央行", "人民银行", "人民币", "港股", "中概", "bank", "banking", "利率", "美联储", "降息", "降准", "汇率", "黄金", "理财", "信贷", "美元", "trade", "tariff"],
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "disabledReason": "恢复：#45 CI 实测拉到 10 条（沙箱403仅为环境拦截，非源失效）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量仅1条且为军事新闻（未打标），有效产出≈0；海外财经保留 Guardian/Economist/Yahoo/Fed 即可（原恢复原因：#45 CI 实测可拉到10条，但产出于分行无价值）",
     "notes": "CI 沙箱实测可获取（非 403 拦截）"
+  },
+  {
+    "id": "nbd",
+    "tier": "T2",
+    "name": "每日经济新闻",
+    "type": "scrape",
+    "url": "https://www.nbd.com.cn/",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "enabled": true,
+    "lang": "zh",
+    "locales": [
+      "zh"
+    ],
+    "notes": "全国权威财经媒体（2026-08-21 接入）：深度报道银行/科技金融/产业动态，算力贷/Token贷/词元贷等热点报道主力；首页服务端渲染可静态抓（articles/YYYY-MM-DD/<id>.html），频道页有 302 反爬 v1 只抓首页"
   },
   {
     "id": "sina-finance",
@@ -564,13 +584,14 @@
     "url": "https://sspai.com/feed",
     "category": "tech",
     "subcategory": "cn-tech",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh"
     ],
     "lang": "zh",
     "useCurl": true,
-    "note": "数字工具/效率/软件评测类中文社区媒体，已验证 RSS 可用。"
+    "note": "数字工具/效率/软件评测类中文社区媒体，已验证 RSS 可用。",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量12条全部 relevant:false（0% 有效）——数字工具/效率评测与银行零售业务无关联，纯吃 PASS1 token；tech 板块保留 qbitai/infoq-cn 即可"
   },
   {
     "id": "guardian-business",
@@ -612,13 +633,14 @@
     "url": "https://www.ftchinese.com/rss/news",
     "category": "finance",
     "subcategory": "news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh"
     ],
     "note": "已验证可用。FT 中文版综合新闻，全球宏观+中国市场视角。已按用户要求从「国内财经」移至「国际财经」。",
     "lang": "zh",
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "结构失衡清理(2026-08-21)：7天存量10条仅3条相关(30%)；海外财经保留 Guardian/Economist/Yahoo 即可，FT中文与 Yahoo/Guardian 内容重叠"
   },
   {
     "id": "crunchbase-news",
