@@ -5652,21 +5652,17 @@
     "lastSeenAt": "2026-08-21T02:01:28.928Z"
   },
   "https://www.bbc.co.uk/news/articles/cgewlld498xo?at_medium=RSS&at_campaign=rss": {
-    "title": "Millennials are struggling to buy a home - but is it actually getting easier?",
+    "title": "Millenials have found it hard to buy homes – but things may be turning a corner",
     "url": "https://www.bbc.co.uk/news/articles/cgewlld498xo?at_medium=RSS&at_campaign=rss",
     "sourceId": "bbc-business",
     "source": "BBC Business",
     "category": "finance",
     "subcategory": "news",
-    "subcategories": [
-      "news"
-    ],
-    "ai_relevant": true,
-    "excerpt": "Twenty-somethings are much less likely to own a home than previous generations. But data suggests things may be turning a corner.",
+    "excerpt": "Twenty-somethings are much less likely to own a home than previous generations. But data suggests things may be improving.",
     "publishedAt": "2026-08-20T23:10:58.000Z",
     "summary": "海外年轻群体购房困境成为关注焦点，住房可及性影响按揭需求。对分行开展青年客群经营、设计安居信贷产品及投资者教育具有一定借鉴意义。",
     "firstSeenAt": "2026-08-21T02:01:28.928Z",
-    "lastSeenAt": "2026-08-21T02:01:28.928Z"
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
   },
   "https://www.bbc.co.uk/news/articles/c9d8z72nn02o?at_medium=RSS&at_campaign=rss": {
     "title": "Why the US economy is ringing alarm bells",
@@ -7824,16 +7820,16 @@
     "ai_relevant": true
   },
   "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1631800.shtml": {
-    "title": "视频 | 新冠留给人类的遗产",
+    "title": "视频 | 李尚龙：新冠留给人类的遗产 莫德纳新冠期间两天设计疫苗 疫情后投入数百亿攻克癌症 今日见证历史！",
     "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1631800.shtml",
     "sourceId": "sina-finance",
     "source": "新浪财经",
     "category": "finance",
+    "subcategory": "cn-finance",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "firstSeenAt": "2026-08-21T09:20:28.798Z",
-    "lastSeenAt": "2026-08-21T09:20:28.798Z",
     "summary": "回顾新冠长期影响（长新冠、公卫体系），与分行零售银行业务无直接关联。",
-    "ai_relevant": false
+    "firstSeenAt": "2026-08-21T09:20:28.798Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
   },
   "https://finance.sina.com.cn/roll/2026-08-21/doc-inipakut1628135.shtml": {
     "title": "贝森特回购难消市场疑虑，30年期美债持稳5.24%，美元走软，金涨油跌",
@@ -8204,5 +8200,135 @@
     "lastSeenAt": "2026-08-21T09:20:28.798Z",
     "summary": "南京银行以资产+负债两端稳息差、以财富管理与托管修复非息，零售加速财富转型；同业打法可作分行对标参考。",
     "ai_relevant": true
+  },
+  "https://www.bbc.co.uk/news/articles/cx2r9gxp3xgo?at_medium=RSS&at_campaign=rss": {
+    "title": "The teen entrepreneur transforming farm management",
+    "url": "https://www.bbc.co.uk/news/articles/cx2r9gxp3xgo?at_medium=RSS&at_campaign=rss",
+    "sourceId": "bbc-business",
+    "source": "BBC Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "The app was designed to give farmers more time with their families by making the business more manageable.",
+    "publishedAt": "2026-08-20T23:01:01.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://finance.yahoo.com/energy/articles/hope-fades-traders-brace-extended-230000744.html": {
+    "title": "Hope Fades, Traders Brace for Extended Oil, LNG Squeeze",
+    "url": "https://finance.yahoo.com/energy/articles/hope-fades-traders-brace-extended-230000744.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "",
+    "publishedAt": "2026-08-19T23:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakur8187255.shtml": {
+    "title": "贵州茅台酱香酒营销公司原总经理陈宗强被查",
+    "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakur8187255.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://finance.cctv.com/2026/08/21/ARTIIM4QYlZFRNn1BvVaPhw5260821.shtml": {
+    "title": "财报透视丨中国平安交出中报亮眼答卷 郭晓涛称低利率时代寿险迎来黄金发展期",
+    "url": "https://finance.cctv.com/2026/08/21/ARTIIM4QYlZFRNn1BvVaPhw5260821.shtml",
+    "sourceId": "cctv-finance",
+    "source": "央视财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.bse.cn/disclosure/2026/2026-08-21/fcdfa582acad498d9ef84655201a9854.pdf": {
+    "title": "秉扬科技 (920675)",
+    "url": "https://www.bse.cn/disclosure/2026/2026-08-21/fcdfa582acad498d9ef84655201a9854.pdf",
+    "sourceId": "gd-bse",
+    "source": "北交所IPO公告",
+    "category": "ipo",
+    "subcategory": "bse",
+    "excerpt": "北交所公告 | [临时公告]秉扬科技:关于发行股份购买资产并募集配套资金事项的进展公告 | 日期: 2026-08-21",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260821/4458724_1.html": {
+    "title": "“十五五”时期四川将建设改造5.9万公里城市地下管网",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458724_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260821/4458722_1.html": {
+    "title": "四川率先启动省级城市更新创新模式试点 最高支持5亿元",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458722_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260821/4458721_1.html": {
+    "title": "“十五五”时期四川已规划城市更新项目9800余个",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458721_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260821/4458718_1.html": {
+    "title": "反“内卷” 市场监管总局公布经营者集中审查案例",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458718_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260821/4458717_1.html": {
+    "title": "“十五五”时期四川将新开工改造城镇老旧小区8000个",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458717_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
+  },
+  "https://www.stcn.com/article/detail/4096674.html": {
+    "title": "尾盘，港股千亿巨头拉升！啥情况？",
+    "url": "https://www.stcn.com/article/detail/4096674.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T09:32:41.306Z",
+    "lastSeenAt": "2026-08-21T09:32:41.306Z"
   }
 }
