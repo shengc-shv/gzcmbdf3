@@ -646,7 +646,7 @@ async function main() {
       (raw[cat] ?? [])
         .flatMap((sg) => sg.sources.flatMap((s) => s.items))
         .slice(0, 12)
-        .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory }));
+        .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory, url: a.url }));
     // 持久化执行摘要源（2026-08-20 扩展）：history/<date>/store.json 优先
     // （随报告提交进 main，CI 跨运行可复用），其次 data/ai-assets 的 daily:<date>.executive。
     const persistedExec =

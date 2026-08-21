@@ -151,12 +151,16 @@ export function renderCryptoWidgets(t: TradingSection): string {
  */
 export function renderExecutiveSummary(exec: ExecutiveSummary): string {
   const must = exec.must_read
-    .map(
-      (m, i) => `<li class="must-card">
+    .map((m, i) => {
+      const body = `<strong>${escapeHtml(m.title)}</strong><span class="must-why">${escapeHtml(m.why)}</span>`;
+      const inner = m.url
+        ? `<a class="must-body must-link" href="${escapeHtml(m.url)}" target="_blank" rel="noopener">${body}</a>`
+        : `<div class="must-body">${body}</div>`;
+      return `<li class="must-card">
         <span class="must-index">${i + 1}</span>
-        <div class="must-body"><strong>${escapeHtml(m.title)}</strong><span class="must-why">${escapeHtml(m.why)}</span></div>
-      </li>`,
-    )
+        ${inner}
+      </li>`;
+    })
     .join("");
   const insights = exec.insights
     .map(

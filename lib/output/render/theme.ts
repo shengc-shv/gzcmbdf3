@@ -198,18 +198,18 @@ export const THEME_CSS = `
   .exec-must { margin-bottom: 0.5rem; }
   .must-scroller {
     list-style: none; margin: 0; padding: 0 0 0.4rem;
-    display: flex; gap: 0.6rem; overflow-x: auto;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    display: flex; flex-direction: column; gap: 0.5rem;
   }
-  .must-scroller::-webkit-scrollbar { display: none; }
   .must-card {
-    flex: 0 0 auto; width: 80%; max-width: 16.5rem; scroll-snap-align: start;
+    flex: none; width: auto; max-width: none;
     display: flex; gap: 0.55rem; align-items: flex-start;
     border: 1px solid var(--rule); border-radius: 12px;
     padding: 0.6rem 0.75rem; background: var(--bg-elevated);
     box-shadow: var(--shadow-sm);
   }
+  .must-link { text-decoration: none; color: inherit; border-radius: 8px; transition: border-color 0.15s ease; }
+  .must-link:hover strong { color: var(--accent-cmb); }
+  .must-card:hover { border-color: color-mix(in srgb, var(--accent-cmb) 40%, var(--rule)); }
   .must-index {
     flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%;
     background: var(--accent-cmb); color: #fff; font-size: 0.72rem; font-weight: 700;
@@ -219,11 +219,9 @@ export const THEME_CSS = `
   .must-body strong { font-size: 0.85rem; color: var(--fg); font-weight: 600; line-height: 1.35; }
   .must-why {
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
   @media (min-width: 720px) {
     .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
-    .must-card { width: auto; max-width: none; }
   }
 
   /* 商机提示：默认折叠，点击展开 */

@@ -23,17 +23,17 @@ export interface ExecInsight {
 }
 
 export interface ExecutiveSummary {
-  /** 今日必读：高影响事件 + 为何重要 */
-  must_read: Array<{ title: string; why: string }>;
+  /** 今日必读：高影响事件 + 为何重要 + 源链接（可空：旧归档/AI 未回链时渲染不包 <a>） */
+  must_read: Array<{ title: string; why: string; url?: string }>;
   /** 商机提示：对广州分行零售/对公的潜在影响与建议动作 */
   insights: ExecInsight[];
 }
 
 export interface ExecSummaryInput {
-  /** 当日宏观政策条目（title + 摘要） */
-  finance: Array<{ title: string; summary?: string; subcategory?: string }>;
-  /** 当日广州商机条目 */
-  gz: Array<{ title: string; summary?: string; subcategory?: string }>;
+  /** 当日宏观政策条目（title + 摘要 + 源链接） */
+  finance: Array<{ title: string; summary?: string; subcategory?: string; url?: string }>;
+  /** 当日广州商机条目（title + 摘要 + 源链接） */
+  gz: Array<{ title: string; summary?: string; subcategory?: string; url?: string }>;
   /** 市场行情总览（AI 点评，可选） */
   marketOverview?: string;
   /** 报告日期 YYYY-MM-DD */
@@ -50,6 +50,7 @@ const RULES = `你是招商银行广州分行零售决策简报的主编。系�
 1. must_read（今日必读，3-5 条）：从输入中挑出对广州分行领导"今天最该知道"的高影响事件（如降准降息、LPR、社融、广州产业政策、广州本地金融动态、重要市场转折）。每条：
    - title：事件标题（15 字内，可精简）
    - why：为什么重要——对广州分行零售/对公意味着什么（30-50 字）
+   - url：源链接，从下方输入对应条目的 url 字段原样复制（若对不上可省略，留空）
 
 2. insights（商机提示，3-5 条）：把当日信息转化为"在广州可落地的商机/风险"，每条：
    - topic：主题（15 字内）
@@ -61,8 +62,8 @@ const RULES = `你是招商银行广州分行零售决策简报的主编。系�
 - 广州本地信息（南沙/广州企业/广州政策）优先于泛全国信息
 - 语言精炼，站在分行行长视角，不写空话套话
 - 输出 STRICTLY 一个 JSON 对象（无 markdown 代码块）：
-{"must_read":[{"title":"...","why":"..."}],"insights":[{"topic":"...","impact":"...","action":"..."}]}
-注意：字符串内引号用单引号或中文引号，禁止裸双引号。`;
+{"must_read":[{"title":"...","why":"...","url":"..."}],"insights":[{"topic":"...","impact":"...","action":"..."}]}
+注意：字符串内引号用单引号或中文引号，禁止裸双引号；url 字段原样复制输入中的链接。`;
 
 export async function generateExecutiveSummary(
   input: ExecSummaryInput,
@@ -92,8 +93,27 @@ export async function generateExecutiveSummary(
       parsed = JSON.parse(jsonrepair(cleaned));
     }
     if (!Array.isArray(parsed.must_read) || !Array.isArray(parsed.insights)) return null;
+    // 源链接回链：AI 可能漏回 url，用输入 finance/gz 的 url 按标题回匹配注入（更稳，不依赖 LLM 吐 url）
+    const normTitle = (t: string) =>
+      t.replace(/\s+/g, "").replace(/[，。、：:；;！!？?""'']/g, "").toLowerCase();
+    const urlByNorm = new Map<string, string>();
+    for (const it of [...input.finance, ...input.gz]) {
+      if (it.url) urlByNorm.set(normTitle(it.title), it.url);
+    }
+    const resolveUrl = (title: string): string | undefined => {
+      const k = normTitle(title);
+      if (urlByNorm.has(k)) return urlByNorm.get(k);
+      for (const [ik, iu] of urlByNorm) {
+        if (ik.includes(k) || k.includes(ik)) return iu;
+      }
+      return undefined;
+    };
     return {
-      must_read: parsed.must_read.slice(0, 5),
+      must_read: parsed.must_read.slice(0, 5).map((m) => ({
+        title: m.title,
+        why: m.why,
+        url: m.url || resolveUrl(m.title),
+      })),
       insights: parsed.insights.slice(0, 5),
     };
   } catch {
