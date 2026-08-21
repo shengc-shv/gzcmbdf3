@@ -528,6 +528,18 @@ async function main() {
   }
   articles = dh.kept;
 
+  // —— 兜底：无准确发布时间/发布日期的条目不参与任何 AI 分析（2026-08-21 用户要求）——
+  // 任务一已让所有源补上 publishedAt（RSS pubDate / URL 日期提取 / 详情页解析），
+  // 此过滤为防御性兜底：未来任何源若产出无日期条目，直接在此丢弃，
+  // 不进 AI 富集/分类/执行摘要，也不落历史库（saveHistory 只存过滤后的数组）。
+  const noDateBefore = articles.length;
+  articles = articles.filter((a) => a.publishedAt);
+  if (articles.length < noDateBefore) {
+    console.log(
+      `[daily] ⏭ 无发布时间/日期条目 ${noDateBefore - articles.length} 条跳过 AI 分析（兜底丢弃）`,
+    );
+  }
+
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
   // 走各自专属摘要 prompt)。finance 不再单独 enrich——其摘要+分类统一由下方
   // classifyItemsWithLlm 一次批量调用完成（中文/英文源全覆盖，省一次重复调用）。
