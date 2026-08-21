@@ -282,6 +282,21 @@ export function renderSourcesBlock(
   </div>`;
 }
 
+/**
+ * 广东地区 IPO 各上市阶段对应的「招行广州分行商机线索」（任务二）。
+ * 静态规则提示，帮助零售条线领导从 IPO 动态中快速定位可跟进的商机动作。
+ */
+const GD_IPO_STAGE_BIZ: Record<string, string> = {
+  "stage-listed":
+    "商机线索 · 已上市新股：可跟进 员工持股计划/股权激励理财、高管私行、募资后代发工资",
+  "stage-registered":
+    "商机线索 · 注册生效·过会（即将发行）：募资入账在即，可对接 机构合作、代发工资、员工财富管理",
+  "stage-reviewing":
+    "商机线索 · 在审·已受理：Pre-IPO 授信、投贷联动、员工持股计划储备商机",
+  "stage-tutoring":
+    "商机线索 · 辅导备案·Pre-IPO（最佳商机）：Pre-IPO 授信、投贷联动、代发工资、高管私行、员工持股托管",
+};
+
 export function renderSubContent(category: Category, sub: SubGroup, isActive: boolean, date: string): string {
   const activeCls = isActive ? " active" : "";
   const subAttr = `data-sub-content="${escapeHtml(sub.id)}" data-cat="${category}"`;
@@ -294,7 +309,10 @@ export function renderSubContent(category: Category, sub: SubGroup, isActive: bo
   // 统一展示窗口（2026-08-19 用户调整）：所有分类展示最近 DISPLAY_WINDOW_DAYS 天
   // 发布的内容，按发布时间倒序；不再区分「当天 / 过去7天」时间拆分。
   const recent = filterRecentDays(sub.sources, DISPLAY_WINDOW_DAYS);
+  // 任务二：广东地区 IPO 各阶段栏顶部注入「招行广州分行商机线索」提示
+  const bizTip = category === "gd-ipo" ? GD_IPO_STAGE_BIZ[sub.id] : undefined;
   return `<div class="sub-content${activeCls}" ${subAttr}>
+    ${bizTip ? `<p class="biz-tip">${escapeHtml(bizTip)}</p>` : ""}
     ${renderSourcesBlock(category, sub.id, recent)}
   </div>`;
 }

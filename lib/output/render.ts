@@ -34,7 +34,7 @@ import {
   ASSET_GROUP_ORDER,
   type AssetGroup,
 } from "../trading/watchlist";
-import { classifyGdIpo, type GdIssuerRegistry } from "../classify/gdIpo";
+import { classifyGdIpo, inferStage, type GdIssuerRegistry } from "../classify/gdIpo";
 
 
 // ----- types -----
@@ -60,7 +60,6 @@ const GZ_NOISE_RE =
  * 避免「宏观里判信贷、商机里判无关」的口径分裂。
  */
 const GZ_CONDUCTION_RULES: Array<{ sub: string; re: RegExp }> = [
-  { sub: "gz-ipo", re: /IPO|上市|辅导备案|发行|招股|股份公司.*注册/ },
   { sub: "gz-wealth", re: /理财|基金|保险|黄金|财富|资产配置|私人银行|代销|AUM|信托/ },
   { sub: "gz-credit", re: /信贷|贷款|房贷|消费贷|经营贷|按揭|公积金|利率|首付|融资担保/ },
   { sub: "gz-customer", re: /社零|消费|零售|居民|收入|人口|就业|物价|CPI|民生|储蓄|存款|支付|商圈|市场运行/ },
@@ -81,7 +80,6 @@ export function conductToGzSubs(title: string): string[] {
  * 词表与 GZ_CONDUCTION_RULES（业务线传导）同源口径，仅粒度更细（具体业务词）。
  */
 const GZ_THEME_TERMS: Record<string, string[]> = {
-  "gz-ipo": ["IPO", "上市", "辅导备案", "招股", "股份公司"],
   "gz-wealth": ["理财", "基金", "保险", "黄金", "财富", "资产配置", "私人银行", "代销", "信托"],
   "gz-credit": ["公积金", "房贷", "消费贷", "经营贷", "按揭", "LPR", "利率", "首付", "融资担保", "信贷", "贷款"],
   "gz-customer": ["社零", "消费", "零售", "居民收入", "收入", "人口", "就业", "物价", "CPI", "民生", "储蓄", "存款", "支付", "商圈", "市场运行"],
@@ -424,10 +422,12 @@ export function groupRaw(
         financeExtra.push(a);
         continue;
       }
-      let b = gdSubs.get(res.sub);
+      // 按上市阶段归栏（任务二：看已上市 / 准备IPO 两类），不再按交易所来源分栏
+      const stage = inferStage(a.title, a.excerpt);
+      let b = gdSubs.get(stage);
       if (!b) {
-        b = { sourceName: SUBCATEGORY_LABELS[res.sub] ?? res.sub, items: [] };
-        gdSubs.set(res.sub, b);
+        b = { sourceName: SUBCATEGORY_LABELS[stage] ?? stage, items: [] };
+        gdSubs.set(stage, b);
       }
       b.items.push(a);
       continue;

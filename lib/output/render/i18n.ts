@@ -139,11 +139,11 @@ const SUBCATEGORY_ORDER: Partial<Record<Category, string[]>> = {
   tech: ["cn-tech", "overseas-tech"],
   // 宏观政策：国内政策(权威) / 国内财经(媒体) / 广州政策 / 国际
   finance: ["cn-policy", "cn-finance", "gz-policy", "news"],
-  'gd-ipo': ["szse", "sse", "bse", "hkex", "ipo-tutoring", "overseas"],
+  'gd-ipo': ["stage-listed", "stage-registered", "stage-reviewing", "stage-tutoring"],
   // 参考区·全国IPO/新股：全部交易所+辅导（非广州辖区的广东企业也归此）
   ipo: ["sse", "szse", "bse", "hkex", "ipo-tutoring", "overseas"],
-  // 广州商机：按分行零售业务线组织（财富/个贷/客群/私行/广州IPO相关）
-  gz: ["gz-wealth", "gz-credit", "gz-customer", "gz-private", "gz-ipo"],
+  // 广州商机：按分行零售业务线组织（财富/个贷/客群/私行）
+  gz: ["gz-wealth", "gz-credit", "gz-customer", "gz-private"],
   politics: ["world"],
 };
 
@@ -169,6 +169,11 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   hkex: "港交所",
   "ipo-tutoring": "IPO辅导",
   overseas: "境外",
+  // 广东地区IPO 按「上市进度」分栏（任务二：看已上市 / 准备IPO 两类，找招行广州分行商机）
+  "stage-listed": "已上市·新股",
+  "stage-registered": "注册生效·过会",
+  "stage-reviewing": "在审·已受理",
+  "stage-tutoring": "辅导备案·Pre-IPO",
   // 广州商机 子维度（按分行零售业务线）
   "gz-wealth": "财富业务",
   "gz-credit": "个人信贷",

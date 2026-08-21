@@ -132,3 +132,48 @@ export function classifyGdIpo(
   // 既无代码又非明确类型：保守归财经（避免把无关公告塞进IPO）
   return { action: "finance" };
 }
+
+/**
+ * 上市阶段推断（2026-08-21 任务二）：把广东 IPO 企业按「上市进度」归栏，
+ * 对齐用户"看最近有哪些 IPO 企业（已上市）/ 最近有哪些准备 IPO 的企业（拟上市）"需求。
+ *
+ * 四阶段（展示顺序即进度由后往前）：
+ *  - stage-listed     已上市·新股（打新/员工持股/股权激励理财商机）
+ *  - stage-registered 注册生效·过会（即将发行，募资入账机构合作商机）
+ *  - stage-reviewing  在审·已受理（Pre-IPO 授信/投贷联动储备商机）
+ *  - stage-tutoring   辅导备案·Pre-IPO（最佳商机：Pre-IPO 授信/投贷联动/代发工资/高管私行/员工持股托管）
+ *
+ * 判定优先级：未上市信号（注册生效 > 过会/核准 > 在审/受理 > 辅导备案）先于「已上市」，
+ * 避免"注册生效 即将上市"这类标题被误判为已上市；无阶段词兜底归 Pre-IPO（预备上市）。
+ */
+export type GdStage =
+  | "stage-listed"
+  | "stage-registered"
+  | "stage-reviewing"
+  | "stage-tutoring";
+
+export function inferStage(title: string, excerpt?: string): GdStage {
+  const text = `${title} ${excerpt || ""}`;
+  // 1) 注册生效 / 同意注册 / 注册结果 / 注册批准 / 注册完成 / 注册通过（即将发行）
+  if (/(注册生效|注册获准|同意注册|注册结果|注册批准|注册完成|注册通过)/.test(text))
+    return "stage-registered";
+  // 2) 过会 / 核准（注册前最后一步，接近发行）
+  if (/(过会|核准)/.test(text)) return "stage-registered";
+  // 3) 在审 / 已受理：受理 / 问询 / 上会 / 提交注册 / 审核 / 上市委 / 反馈意见 / 问询函 / 问询回复
+  if (/(受理|问询|上会|提交注册|审核|上市委|反馈意见|问询函|问询回复)/.test(text))
+    return "stage-reviewing";
+  // 4) 辅导备案 / Pre-IPO：辅导备案 / 辅导验收 / IPO辅导 / 辅导机构 / 辅导协议 / 股份制改造 / 备案登记
+  if (/(辅导备案|辅导验收|IPO辅导|辅导机构|辅导协议|股份制改造|备案登记|pre-?ipo)/i.test(text))
+    return "stage-tutoring";
+  // 5) 已上市信号（精准词，避免"拟上市/即将上市"误判）
+  if (
+    /(挂牌|上市公告|新股上市|发行结果|中签结果|敲钟|首日|上市交易|已上市|成功上市|正式上市|登陆(沪|深|京|港)交易所)/.test(
+      text,
+    )
+  )
+    return "stage-listed";
+  // 6) 裸"上市"（无未上市信号）→ 默认已上市（多数语境即已上市）
+  if (/上市/.test(text)) return "stage-listed";
+  // 7) 完全无阶段词：预备上市兜底归 Pre-IPO
+  return "stage-tutoring";
+}

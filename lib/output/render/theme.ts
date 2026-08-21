@@ -455,6 +455,16 @@ export const THEME_CSS = `
   }
   .sub-content { display: none; }
   .sub-content.active { display: block; animation: fade 0.2s ease; }
+  .biz-tip {
+    margin: 0 0 0.7rem;
+    padding: 0.5rem 0.7rem;
+    border-left: 3px solid var(--accent-cmb);
+    border-radius: 6px;
+    background: var(--bg-elevated);
+    font-size: 0.78rem;
+    color: var(--fg-soft);
+    line-height: 1.5;
+  }
 
   /* ===== time split (当天 / 过去7天) ===== */
   .time-tabs {
