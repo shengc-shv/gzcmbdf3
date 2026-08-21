@@ -64,6 +64,28 @@ test("商机A：落户广州设立研发中心 → branch_expansion；北京被 
   assert.equal((skip.opportunities ?? []).length, 0, "含北京不应命中 branch_expansion");
 });
 
+test("修复#32：纯招聘软文（招聘仅在正文、无地理锚定）不再误判为机构扩张商机", () => {
+  // 此前 branch_expansion 含 "招聘.*人" token，会导致正文中出现「招聘…人」的纯招聘
+  // 软文（标题无「招聘」故 L0 拦不到）被误判为机构扩张商机保留进池。移除该冲突
+  // token 后，纯招聘噪声不再触发 branch_expansion，落回 daily 兜底（仍由 AI 判相关性）。
+  const r = applyKeywordFilter(art("某公司发布人才发展计划", "公司拟招聘200名新员工填补岗位空缺"), cfg);
+  assert.equal(r.pass, true, "L0 标题无招聘 → 不丢弃");
+  assert.equal((r.opportunities ?? []).length, 0, "移除 招聘.*人 后 branch_expansion 不再误收纯招聘");
+  assert.equal(r.bucket, "daily", "无商机 → daily 兜底");
+});
+
+test("修复#32：广州地理锚定的扩张线索（招聘在正文）仍正确命中 branch_expansion", () => {
+  // 验证地理锚定触发词（落户广州/广州研发中心/扩编）未受影响，真实广州扩张新闻
+  // 即便正文带「招聘」也能经地理词命中 branch_expansion，不再依赖已被移除的冲突 token。
+  const r = applyKeywordFilter(
+    art("某车企落户广州设立研发中心", "项目计划扩编并招聘500名研发人员"),
+    cfg,
+  );
+  assert.equal(r.pass, true);
+  assert.equal(r.bucket, "opportunity");
+  assert.equal(r.opportunities?.[0]?.tracker, "branch_expansion");
+});
+
 test("周报池：私行维度命中 → weekly bucket", () => {
   const r = applyKeywordFilter(art("高净值客户家族信托需求增长"), cfg);
   assert.equal(r.bucket, "weekly");
