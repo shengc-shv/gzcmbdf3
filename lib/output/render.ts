@@ -72,6 +72,13 @@ export function conductToGzSubs(title: string): string[] {
 }
 
 /**
+ * 全国业务线子标签（2026-08-21 用户：从宏观政策面板移入广州商机面板）：
+ * finance 文章命中这些 subcategory 时改写 category=gz 进入广州商机面板，
+ * 与 gz-* 广州业务线子标签成对展示（全国财富 / 广州财富 …）。
+ */
+const CN_BIZ_SUBS = ["cn-wealth", "cn-credit", "cn-private"];
+
+/**
  * 标签内主题去重词表（2026-08-19 用户要求）：同一子标签下「类似主题」最多展示
  * maxPerTheme 条，且若为 2 条，来源等级（tier）必须不同——避免同一政策/事件被
  * 多家媒体报道后堆满一个标签（如 gz-credit 出现 3+ 条公积金新政）。
@@ -442,6 +449,34 @@ export function groupRaw(
       }
       b.items.push(a);
       continue;
+    }
+    // —— 全国业务线子标签移入广州商机面板（2026-08-21 用户）——
+    // 宏观政策(finance)不再承载 cn-wealth/cn-credit/cn-private：这类全国性业务线
+    // 报道（理财/信贷/私行）并入广州商机(gz)面板，与 gz-* 广州业务线子标签成对展示。
+    // 文章改写 category=gz 后继续，不进 finance 桶（宏观政策面板不再显示）。
+    if (a.category === "finance") {
+      const subsArr =
+        a.subcategories && a.subcategories.length > 0
+          ? a.subcategories
+          : a.subcategory
+            ? [a.subcategory]
+            : [];
+      const cnSubs = subsArr.filter((s) => CN_BIZ_SUBS.includes(s));
+      if (cnSubs.length > 0) {
+        const gzMap = buckets["gz"];
+        let gzb = gzMap.get(a.sourceId);
+        if (!gzb) {
+          gzb = { sourceName: a.source, items: [] };
+          gzMap.set(a.sourceId, gzb);
+        }
+        gzb.items.push({
+          ...a,
+          category: "gz" as const,
+          subcategory: cnSubs[0],
+          subcategories: cnSubs,
+        });
+        continue;
+      }
     }
     const map = buckets[a.category];
     let b = map.get(a.sourceId);
@@ -856,6 +891,22 @@ ${THEME_CSS}
   });
   // L3 信息源 tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流）；
   // source-content 结构不再产出，原 source-tab 切换逻辑一并删除。
+  // 官方/媒体 子标签内 tab（#43 改版：分带 → tab 页），按所在 .band-tabs 作用域切换
+  document.querySelectorAll('.band-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tabs = btn.closest('.band-tabs');
+      if (!tabs) return;
+      var scope = tabs.parentElement;
+      if (!scope) return;
+      var band = btn.dataset.band;
+      tabs.querySelectorAll('.band-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      scope.querySelectorAll('.band-panel').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.bandPanel === band);
+      });
+    });
+  });
   // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
   document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
     btn.addEventListener('click', function () {

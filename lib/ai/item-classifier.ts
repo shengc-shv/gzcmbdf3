@@ -26,14 +26,14 @@ export const RULES = `你是招商银行广州分行零售决策简报编辑。�
 一条信息可能同时影响多个业务线/场景（例如"广州房贷利率下调"同时影响 个人信贷 与 财富管理）：
 - subcategories 输出 JSON 字符串数组，最多 3 个，按影响程度从大到小排序；
 - 只影响一个业务线时输出单元素数组；不影响任何业务线时输出空数组 []。
-- 涉及广州本地落地才归 gz-*；全国性报道按业务线细分归 cn-wealth/cn-credit/cn-private，银行业综合/宏观归 cn-finance，国际归 news，政策归 cn-policy。
+- 涉及广州本地落地才归 gz-*；全国性报道按业务线细分归 cn-wealth/cn-credit/cn-private（展示在广州商机面板的全国子标签，与 gz-* 广州业务线成对），银行业综合/宏观归 cn-finance，国际归 news，政策归 cn-policy。
 
 === gz / finance 标签体系 ===
 1. relevant(bool)：对银行零售业务（财富管理/个人信贷/零售客群/私行业务）或分行经营决策是否有参考价值。
    - 无关(false)：历史建筑保护、门前三包、交通管制、环保、司法行政、招聘、纯个股行情、娱乐八卦等。
    - 相关(true)：经济数据、金融信贷政策、房地产/房贷、产业扶持招商、企业IPO/融资、消费客群、理财/基金/保险/黄金、银行经营监管。
    - 国际宏观(news)特别规则：涉及「美联储 / 利率 / 流动性 / 货币政策 / 美债收益率 / 美元或人民币汇率 / 黄金价格 / 大宗商品」的，对零售信贷(房贷/消费贷利率)与财富管理(理财/黄金/债基)有直接影响，判 relevant=true（subcategories 含 news，必要时并 cn-finance/cn-wealth）；纯国际时政、地缘冲突、海外企业个股、娱乐体育等无银行零售参考价值的，判 relevant=false。
-2. subcategories 候选（可多选，≤3）：
+2. subcategories 候选（可多选，≤3；cn-wealth/cn-credit/cn-private 与 gz-* 同展示于广州商机面板，成对区分全国/广州）：
    - cn-wealth：全国财富管理（理财/基金/保险/黄金/存款/利率/资产配置/AUM），全国层面、不涉及广州本地落地；
    - cn-credit：全国零售信贷（房贷/消费贷/经营贷/普惠/利率/首付），全国层面；
    - cn-private：全国私行（家族企业/股权/企业主/高端产业/专精特新扶持），全国层面；
@@ -46,7 +46,7 @@ export const RULES = `你是招商银行广州分行零售决策简报编辑。�
    - gz-policy：广州市级/南沙政府政策文件；
    - cn-policy：国家级宏观政策（国务院/央行/部委）；
    - news：国际宏观。
-   口诀：涉及广州本地落地才归 gz-*；全国性报道按业务线细分归 cn-wealth/cn-credit/cn-private，银行业综合/宏观/不明确归某线的归 cn-finance，国际归 news，政策归 cn-policy；一条可同时归多个。
+   口诀：涉及广州本地落地才归 gz-*；全国性报道按业务线细分归 cn-wealth/cn-credit/cn-private（广州商机面板·全国子标签），银行业综合/宏观/不明确归某线的归 cn-finance，国际归 news，政策归 cn-policy；一条可同时归多个。
 
 === tech 标签体系（relevant 固定 true）===
 subcategories 候选：cn-tech（综合科技产业/政策/国内大厂动态）/ overseas-tech（国外技术，含金融科技/AI 监管）。

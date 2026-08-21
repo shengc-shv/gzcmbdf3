@@ -141,13 +141,15 @@ const SUBCATEGORY_ORDER: Partial<Record<Category, string[]>> = {
   // overseas-community (Hacker News / r/stocks).
   // 技术动态：国内技术 / 国外技术（2026-08-20 清理：去掉 AI媒体/热门论文/X 推文子类）
   tech: ["cn-tech", "overseas-tech"],
-  // 宏观政策：国家政策 / 全国财富 / 全国零售信贷 / 全国私行 / 国内财经(综合) / 广州政策 / 国际
-  finance: ["cn-policy", "cn-wealth", "cn-credit", "cn-private", "cn-finance", "gz-policy", "news"],
+  // 宏观政策：国家政策 / 国内财经(综合) / 广州政策 / 国际
+  // （2026-08-21 用户：全国财富/信贷/私行 移出宏观政策，并入广州商机面板区分全国/广州）
+  finance: ["cn-policy", "cn-finance", "gz-policy", "news"],
   'gd-ipo': ["stage-listed", "stage-registered", "stage-reviewing", "stage-tutoring"],
   // 参考区·全国IPO/新股：全部交易所+辅导（非广州辖区的广东企业也归此）
   ipo: ["sse", "szse", "bse", "hkex", "ipo-tutoring", "overseas"],
-  // 广州商机：按分行零售业务线组织（财富/个贷/客群/私行）
-  gz: ["gz-wealth", "gz-credit", "gz-customer", "gz-private"],
+  // 广州商机：按分行零售业务线组织，子标签内区分「广州 / 全国」
+  // （2026-08-21 用户：全国财富/信贷/私行从宏观政策移入此处，与广州业务线成对展示）
+  gz: ["gz-wealth", "cn-wealth", "gz-credit", "cn-credit", "gz-customer", "gz-private", "cn-private"],
   politics: ["world"],
 };
 
@@ -181,11 +183,11 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "stage-registered": "注册生效·过会",
   "stage-reviewing": "在审·已受理",
   "stage-tutoring": "辅导备案·Pre-IPO",
-  // 广州商机 子维度（按分行零售业务线）
-  "gz-wealth": "财富业务",
-  "gz-credit": "个人信贷",
+  // 广州商机 子维度（按分行零售业务线，2026-08-21 区分广州/全国）
+  "gz-wealth": "广州财富",
+  "gz-credit": "广州个人信贷",
   "gz-customer": "零售客群",
-  "gz-private": "私行业务",
+  "gz-private": "广州私行",
   "gz-ipo": "广州IPO相关",
 };
 

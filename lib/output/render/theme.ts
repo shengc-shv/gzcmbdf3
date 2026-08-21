@@ -198,10 +198,12 @@ export const THEME_CSS = `
   .exec-must { margin-bottom: 0.5rem; }
   .must-scroller {
     list-style: none; margin: 0; padding: 0 0 0.4rem;
-    display: flex; flex-direction: column; gap: 0.5rem;
+    display: flex; flex-direction: row; gap: 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
   .must-card {
-    flex: none; width: auto; max-width: none;
+    flex: 0 0 auto; width: 78vw; max-width: 300px;
     display: flex; gap: 0.55rem; align-items: flex-start;
     border: 1px solid var(--rule); border-radius: 12px;
     padding: 0.6rem 0.75rem; background: var(--bg-elevated);
@@ -221,7 +223,8 @@ export const THEME_CSS = `
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
   }
   @media (min-width: 720px) {
-    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
+    .must-card { width: auto; max-width: none; }
   }
 
   /* 商机提示：默认折叠，点击展开 */
@@ -568,26 +571,24 @@ export const THEME_CSS = `
     border-radius: var(--r-md);
   }
 
-  /* ===== 合并流：官方 / 媒体 分带（任务三 #43）===== */
-  .feed-band { margin: 0.2rem 0; }
-  .feed-band:first-child { margin-top: 0; }
-  .band-head {
-    display: flex; align-items: baseline; gap: 0.5rem;
-    margin: 0.9rem 0 0.55rem; padding-bottom: 0.35rem;
+  /* ===== 合并流：官方 / 媒体 子标签 tab（任务三 #43 改版，长条带 → tab 页）===== */
+  .band-tabs {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0.2rem 0 0.55rem; padding-bottom: 0.3rem;
     border-bottom: 1px solid var(--rule);
   }
-  .feed-band:first-child .band-head { margin-top: 0.1rem; }
-  .band-label { position: relative; font-size: 0.82rem; font-weight: 600; color: var(--fg); letter-spacing: 0.03em; }
-  .band-label::before {
-    content: ""; display: inline-block; width: 3px; height: 0.82rem;
-    vertical-align: -0.1rem; margin-right: 0.5rem; border-radius: 2px; background: var(--muted);
+  .band-tab {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border: 1px solid var(--rule); background: var(--bg);
+    color: var(--fg-soft); font-size: 0.78rem; font-weight: 600;
+    border-radius: 999px; padding: 0.28rem 0.75rem; cursor: pointer;
+    font-family: inherit; transition: all 0.15s ease;
   }
-  .feed-band-official .band-label::before { background: var(--accent-cmb); }
-  .feed-band-media .band-label::before { background: var(--muted); }
-  .band-count {
-    font-size: 0.7rem; color: var(--muted);
-    background: var(--card-alt); padding: 0.08rem 0.45rem; border-radius: 999px;
-  }
+  .band-tab:hover { border-color: var(--muted); color: var(--fg); transform: translateY(-1px); }
+  .band-tab.active { background: var(--accent-cmb); border-color: var(--accent-cmb); color: #fff; }
+  .band-tab .count { font-size: 0.7rem; opacity: 0.85; }
+  .band-panel { display: none; }
+  .band-panel.active { display: block; }
   /* 全局权威等级图例（标签栏下方，一次） */
   .feed-legend {
     display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem;

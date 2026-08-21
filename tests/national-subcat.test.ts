@@ -1,7 +1,8 @@
 /**
- * #33 回归：新增全国 cn-wealth / cn-credit / cn-private 子标签（宏观政策 finance 面板）。
- * 锁定三件事：① 渲染契约（SUBCATEGORY_ORDER + LABELS）；② LLM 候选清单包含三项；
- * ③ 端到端：带 subcategory=cn-wealth 的 finance 文章渲染进「全国财富」子标签。
+ * #33 回归（2026-08-21 更新）：全国 cn-wealth / cn-credit / cn-private 子标签
+ * 从宏观政策(finance)面板移入广州商机(gz)面板，与 gz-* 广州业务线成对区分全国/广州。
+ * 锁定：① 渲染契约（SUBCATEGORY_ORDER + LABELS：finance 不含 cn-*、gz 含 cn-* 且成对）；
+ * ② LLM 候选清单包含三项；③ 端到端：cn-wealth 文章渲染进 gz 面板的「全国财富」子标签。
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -49,30 +50,37 @@ const finItem = (
   fetchedToday: true,
 });
 
-test("#33 渲染契约：finance 子标签顺序含全国三项，且位于 cn-policy 之后、cn-finance 之前", () => {
+test("#33 渲染契约：finance 面板不再含 cn-* 三项", () => {
   const order = SUBCATEGORY_ORDER.finance ?? [];
-  assert.ok(order.includes("cn-wealth"), "应包含 全国财富");
-  assert.ok(order.includes("cn-credit"), "应包含 全国零售信贷");
-  assert.ok(order.includes("cn-private"), "应包含 全国私行");
-  // 顺序：cn-policy < cn-wealth < cn-credit < cn-private < cn-finance
-  const pos = (s: string) => order.indexOf(s);
-  assert.ok(pos("cn-policy") < pos("cn-wealth"), "cn-policy 应在 全国财富 之前");
-  assert.ok(pos("cn-wealth") < pos("cn-credit"));
-  assert.ok(pos("cn-credit") < pos("cn-private"));
-  assert.ok(pos("cn-private") < pos("cn-finance"), "cn-private 应在 国内财经(综合) 之前");
+  assert.ok(!order.includes("cn-wealth"), "finance 不应再包含 全国财富");
+  assert.ok(!order.includes("cn-credit"), "finance 不应再包含 全国零售信贷");
+  assert.ok(!order.includes("cn-private"), "finance 不应再包含 全国私行");
 });
 
-test("#33 渲染契约：三项均有中文标签", () => {
+test("#33 渲染契约：gz 面板含 cn-* 三项，且与 gz-* 成对（广州在前、全国在后）", () => {
+  const order = SUBCATEGORY_ORDER.gz ?? [];
+  assert.ok(order.includes("cn-wealth"), "gz 应包含 全国财富");
+  assert.ok(order.includes("cn-credit"), "gz 应包含 全国零售信贷");
+  assert.ok(order.includes("cn-private"), "gz 应包含 全国私行");
+  const pos = (s: string) => order.indexOf(s);
+  assert.ok(pos("gz-wealth") < pos("cn-wealth"), "广州财富 应在 全国财富 之前");
+  assert.ok(pos("gz-credit") < pos("cn-credit"), "广州个人信贷 应在 全国零售信贷 之前");
+  assert.ok(pos("gz-private") < pos("cn-private"), "广州私行 应在 全国私行 之前");
+});
+
+test("#33 渲染契约：全国/广州标签名区分", () => {
   assert.equal(SUBCATEGORY_LABELS["cn-wealth"], "全国财富");
   assert.equal(SUBCATEGORY_LABELS["cn-credit"], "全国零售信贷");
   assert.equal(SUBCATEGORY_LABELS["cn-private"], "全国私行");
+  assert.equal(SUBCATEGORY_LABELS["gz-wealth"], "广州财富");
+  assert.equal(SUBCATEGORY_LABELS["gz-credit"], "广州个人信贷");
+  assert.equal(SUBCATEGORY_LABELS["gz-private"], "广州私行");
 });
 
 test("#33 LLM 候选清单：RULES 含全国三项业务线标签 + 更新口诀", () => {
   assert.ok(RULES.includes("cn-wealth"), "LLM 候选应包含 全国财富");
   assert.ok(RULES.includes("cn-credit"), "LLM 候选应包含 全国零售信贷");
   assert.ok(RULES.includes("cn-private"), "LLM 候选应包含 全国私行");
-  // 口诀应改为「按业务线细分归 cn-wealth/cn-credit/cn-private」，不再「一律 cn-finance」
   assert.ok(
     RULES.includes("cn-wealth/cn-credit/cn-private"),
     "口诀应引导全国性报道按业务线细分",
@@ -83,9 +91,9 @@ test("#33 LLM 候选清单：RULES 含全国三项业务线标签 + 更新口诀
   );
 });
 
-test("#33 端到端：finance 文章按 subcategory=cn-wealth 渲染进「全国财富」子标签", () => {
+test("#33 端到端：cn-wealth 文章渲染进 gz 面板的「全国财富」子标签", () => {
   const raw = emptyRaw();
-  raw.finance = [
+  raw.gz = [
     {
       id: "cn-wealth",
       name: "全国财富",
@@ -100,7 +108,6 @@ test("#33 端到端：finance 文章按 subcategory=cn-wealth 渲染进「全国
     },
   ];
   const html = renderHtml(report(), raw, REPORT_DATE);
-  // 子标签导航应出现 全国财富 的 data-sub
   assert.ok(
     html.includes('data-sub="cn-wealth"') || html.includes('data-sub-content="cn-wealth"'),
     "应渲染 全国财富 子标签",
@@ -111,7 +118,7 @@ test("#33 端到端：finance 文章按 subcategory=cn-wealth 渲染进「全国
 
 test("#33 端到端：cn-credit / cn-private 子标签同样渲染", () => {
   const raw = emptyRaw();
-  raw.finance = [
+  raw.gz = [
     {
       id: "cn-credit",
       name: "全国零售信贷",

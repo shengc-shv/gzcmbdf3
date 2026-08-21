@@ -185,28 +185,31 @@ export function renderSourceContent(
 }
 
 /**
- * 任务三（#43）：合并流按权威等级拆「官方 / 媒体」两视觉带，官方置顶。
- * 官方带 = T1 官方一手 + T1.5 准官方·机构一手；媒体带 = T2 媒体·智库。
- * 分带只在渲染层拆分，过滤/去重逻辑不变；带内仍按 sortByTierAndTime 排序。
+ * 任务三（#43 改版）：合并流按权威等级拆「官方 / 媒体」两个子标签 tab，
+ * 官方 tab 默认展示（T1 官方一手 + T1.5 准官方·机构），媒体 tab（T2 媒体·智库）。
+ * tab 化替代原上下长条分带（2026-08-21 用户反馈：数据多时长条不友好）。
+ * 拆分只在渲染层，过滤/去重逻辑不变；tab 内仍按 sortByTierAndTime 排序。
  */
 function isOfficialTier(tier?: SourceTier): boolean {
   return tier === "T1" || tier === "T1.5";
 }
 
-function renderBand(kind: "official" | "media", label: string, items: ArticleInput[], showSource: boolean): string {
-  return `<div class="feed-band feed-band-${kind}">
-    <div class="band-head"><span class="band-label">${escapeHtml(label)}</span><span class="band-count">${items.length}</span></div>
-    ${items.map((a) => renderArticleHtml(a, showSource)).join("\n")}
-  </div>`;
+function renderBandPanel(kind: "official" | "media", items: ArticleInput[], showSource: boolean): string {
+  const body =
+    items.length === 0
+      ? `<p class="empty">${STR.emptySource}</p>`
+      : items.map((a) => renderArticleHtml(a, showSource)).join("\n");
+  return `<div class="band-panel${kind === "official" ? " active" : ""}" data-band-panel="${kind}">${body}</div>`;
 }
 
 export function renderBandedFeed(items: ArticleInput[], showSource = false): string {
   const official = sortByTierAndTime(items.filter((a) => isOfficialTier(a.tier)));
   const media = sortByTierAndTime(items.filter((a) => !isOfficialTier(a.tier)));
-  const parts: string[] = [];
-  if (official.length > 0) parts.push(renderBand("official", STR.bandOfficial, official, showSource));
-  if (media.length > 0) parts.push(renderBand("media", STR.bandMedia, media, showSource));
-  return parts.join("\n");
+  const tabs = `<nav class="band-tabs">
+    <button class="band-tab active" data-band="official">${escapeHtml(STR.bandOfficial)}<span class="count">${official.length}</span></button>
+    <button class="band-tab" data-band="media">${escapeHtml(STR.bandMedia)}<span class="count">${media.length}</span></button>
+  </nav>`;
+  return `${tabs}${renderBandPanel("official", official, showSource)}${renderBandPanel("media", media, showSource)}`;
 }
 
 export function renderSourceTabs(
