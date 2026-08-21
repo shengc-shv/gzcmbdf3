@@ -9015,5 +9015,28 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-21T11:23:43.944Z",
     "lastSeenAt": "2026-08-21T11:23:43.944Z"
+  },
+  "https://finance.yahoo.com/markets/stocks/articles/xp-inc-xp-beat-estimates-005034022.html": {
+    "title": "XP Inc. (XP) Beat Estimates. Is a U.S. Banking Operation Growth or Distraction?",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/xp-inc-xp-beat-estimates-005034022.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T00:50:34.000Z",
+    "firstSeenAt": "2026-08-21T11:28:17.440Z",
+    "lastSeenAt": "2026-08-21T11:28:17.440Z"
+  },
+  "http://finance.sina.com.cn/zl/china/2026-08-21/zl-iniparap8129109.shtml": {
+    "title": "余敬中：从关闸到定向开放——公募摊余债基的行政配给与市场后果",
+    "url": "http://finance.sina.com.cn/zl/china/2026-08-21/zl-iniparap8129109.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-21T11:28:17.440Z",
+    "lastSeenAt": "2026-08-21T11:28:17.440Z"
   }
 }
