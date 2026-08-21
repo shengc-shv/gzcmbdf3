@@ -10274,12 +10274,9 @@
       "sourceId": "sina-finance",
       "title": "财政支持如何更精准嵌入企业经营和居民消费场景？财政部、央行等三部门发布新举措",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-iniparap8147752.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
       "fetchedToday": true,
       "subcategory": "cn-finance"
     },
@@ -10291,11 +10288,266 @@
       "publishedAt": "2026-08-21T11:47:27.000Z",
       "category": "tech",
       "source": "量子位",
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "中央网络安全和信息化委员会印发《促进网信企业高质量发展行动计划（2026-2030年）》",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458856_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "国际金融机构称全球粮食危机或于明年爆发 粮食不够吃了吗？",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458873_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "光纤大牛股，净利暴增888.88%",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipavkk1260850.shtml",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新浪财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "比特币5天狂飙超20%，进入技术性牛市，加密货币1天超17万人爆仓",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipavkp1535390.shtml",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新浪财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "现行流通人民币不得买卖！监管为钱币交易“划红线”",
+      "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-iniparar1658677.shtml",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新浪财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "贝森特干预债市治标不治本？小摩“泼冷水”：就像“刷信用卡还房贷”",
+      "url": "https://m.21jingji.com/article/20260821/herald/263637125a3cce407231246b1d41b6af.html",
+      "excerpt": "【21财经·金融】贝森特干预债市治标不治本？小摩“泼冷水”：就像“刷信用卡还房贷”",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "gz",
+      "source": "21世纪经济报道·金融",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "受益于市场活跃度提升 东方财富上半年营收净利双增 现金流大幅改善",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458866_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "时隔三个月 现货黄金再度站上4600美元",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458863_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "【财经分析】四大交易所首次齐聚北京亦庄 资本市场改革与优质企业培育加快双向奔赴",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458862_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "打击非法买卖人民币 两部门将开展专项清理整顿工作",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458867_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "中国具身智能迎来规模化应用关键窗口期",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458855_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "宝新能源：2026年上半年净利润同比实现双位数增长，主业盈利持续提升",
+      "url": "https://www.stcn.com/article/detail/4098529.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "南方传媒二季度归母净利润同比增长33.39% 构建出版融合新业态",
+      "url": "https://www.stcn.com/article/detail/4098475.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "有机硅上半年走出周期低谷 东岳硅材净利润增逾9倍",
+      "url": "https://www.stcn.com/article/detail/4099233.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "智能硬件驱动消费电子行业回暖 歌尔股份上半年营收突破400亿元",
+      "url": "https://www.stcn.com/article/detail/4099223.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "销量、销额双双高增 智能眼镜进入“百镜大战”淘汰赛",
+      "url": "https://www.stcn.com/article/detail/4099224.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "核心指标亮眼、词元（Token）商业化提速！迅策中期业绩高增兑现“真AI”价值",
+      "url": "https://www.stcn.com/article/detail/4098488.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "title": "杭州热电：半年报实现营收16.29亿元 向绿色低碳转型迈出坚实步伐",
+      "url": "https://www.stcn.com/article/detail/4096969.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "江苏银行、南京银行上半年净利润增速均超8%，员工人数双双下降",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipavkk1264276.shtml",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新浪财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "省市场监管局暑期抽检商场电梯 现场科普乘梯安全知识",
+      "url": "https://m.21jingji.com/article/20260821/herald/01712e2623f7ef6ef98b0a66af061569.html",
+      "excerpt": "【21财经·粤港澳】省市场监管局暑期抽检商场电梯 现场科普乘梯安全知识",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "gz",
+      "source": "21世纪经济报道·金融",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "title": "【金融街发布】国家金融监管总局发布《保险公司资产负债管理办法》",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458876_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "首例！1年=2年=3年，银行存款利率“拉平”",
+      "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-inipavkf6384659.shtml",
+      "excerpt": "【财富管理】首例！1年=2年=3年，银行存款利率“拉平”",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [
+        "personal_credit",
+        "wealth_mgmt"
+      ],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "富达基金：仍将中国视为重要市场，战略或市场布局没",
+      "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-inipavkm8036217.shtml",
+      "excerpt": "【财富管理】富达基金：仍将中国视为重要市场，战略或市场布局没",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
       "tier": "T2",
       "filterBucket": "daily",
       "filterDimensions": [],
       "fetchedToday": true,
-      "subcategory": "cn-tech"
+      "subcategory": "cn-finance"
     }
   ]
 }

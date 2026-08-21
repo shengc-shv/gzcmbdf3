@@ -217,7 +217,9 @@
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
   }
   @media (min-width: 720px) {
-    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
+    /* 必读卡片自适应列数：不足 5 条时不再留白撑开（auto-fit 按条数收窄），
+       最多 5 列；避免「执行摘要条数少 → 版面被商机洞察撑大」的失衡。 */
+    .must-scroller { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
     .must-card { width: auto; max-width: none; }
   }
 
@@ -861,9 +863,10 @@
   .must-card strong { font-size: 0.92rem; }
   .must-card .must-why { font-size: 0.85rem; }
 
-  /* 商机洞察默认展开 + tag 中文（#5/#6） */
+  /* 商机洞察默认展开 + tag 中文（#5/#6）：桌面端双列网格压缩高度，
+     避免 5 条洞察单列纵向堆叠把执行摘要区撑高（与必读不足 5 条时一起失衡）。 */
   .exec-insights .insight-collapse { display: block; }
-  .insight-grid { display: flex; flex-direction: column; gap: 0.55rem; }
+  .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.55rem; }
   .insight-card, .insight { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.85rem; }
   .insight h3 { margin: 0.3rem 0 0.35rem; font-size: 0.98rem; line-height: 1.45; }
   .insight p { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--fg-soft); line-height: 1.6; }
@@ -909,10 +912,10 @@
 <main>
   <!-- 报头：今日定调 + 数据截至 -->
   <header class="masthead">
-    <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
+    <div class="eyebrow">广州地区 · 零售业务每日资信（个人整理，非本行立场）</div>
     <h1>8月21日 星期五</h1>
     <p class="hero-line">今日定调：LPR按兵不动+算力贷/Token贷成科技金融新战场，黄金避险升温——分行需加快科创信贷产品布局、抢抓黄金与养老配置窗口、动态管理房贷客群预期。</p>
-    <p class="meta-line">数据截至 20:14 · 去重后资讯 386 条 · 商机 5 条</p>
+    <p class="meta-line">数据截至 20:33 · 去重后资讯 386 条 · 商机 5 条</p>
   </header>
 
   <section class="exec-summary">
@@ -951,7 +954,7 @@
 
   <!-- 板块导航：单层 tab，移动端横滑不折行 -->
   <nav class="tabs">
-    <button class="tab active" data-target="p-gz" style="--cat:var(--c-gz)">广州本地<span class="n">12</span></button><button class="tab" data-target="p-biz" style="--cat:var(--c-biz)">业务启示<span class="n">51</span></button><button class="tab" data-target="p-pol" style="--cat:var(--c-pol)">政策与市场<span class="n">283</span></button><button class="tab" data-target="p-tech" style="--cat:var(--c-tech)">科技前沿<span class="n">10</span></button><button class="tab" data-target="p-ipo" style="--cat:var(--c-ipo)">IPO动态<span class="n">30</span></button>
+    <button class="tab active" data-target="p-gz" style="--cat:var(--c-gz)">广州本地<span class="n">12</span></button><button class="tab" data-target="p-biz" style="--cat:var(--c-biz)">业务启示<span class="n">53</span></button><button class="tab" data-target="p-pol" style="--cat:var(--c-pol)">政策与市场<span class="n">282</span></button><button class="tab" data-target="p-tech" style="--cat:var(--c-tech)">科技前沿<span class="n">9</span></button><button class="tab" data-target="p-ipo" style="--cat:var(--c-ipo)">IPO动态<span class="n">30</span></button>
   </nav>
 
   <section class="panel active" id="p-gz">
@@ -1031,6 +1034,18 @@
     
     <article class="brief">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经·理财保险</span><span>08/21</span></div>
+  <h3><a href="https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-inipavkf6384659.shtml" target="_blank" rel="noopener noreferrer">首例！1年=2年=3年，银行存款利率“拉平”</a></h3>
+  <p class="sum">【财富管理】首例！1年=2年=3年，银行存款利率“拉平”</p>
+  
+</article>
+<article class="brief">
+  <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经·理财保险</span><span>08/21</span></div>
+  <h3><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-inipavkm8036217.shtml" target="_blank" rel="noopener noreferrer">富达基金：仍将中国视为重要市场，战略或市场布局没</a></h3>
+  <p class="sum">【财富管理】富达基金：仍将中国视为重要市场，战略或市场布局没</p>
+  
+</article>
+<article class="brief">
+  <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经·理财保险</span><span>08/21</span></div>
   <h3><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1618709.shtml" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
   <p class="sum">险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。</p>
   <div class="tags"><span class="tag t-wealth">财富</span></div>
@@ -1046,19 +1061,19 @@
   <h3><a href="https://finance.sina.com.cn/money/forex/whqqscgd/2026-08-21/doc-ininzpqy1526181.shtml" target="_blank" rel="noopener noreferrer">中信建投：财政回购对美债、黄金和科技有何影响？</a></h3>
   <p class="sum">中信建投解读财政回购对美债、黄金和科技的影响；机构观点梳理资产传导路径，分行财富业务可参考其大类资产判断服务高净值客户。</p>
   <div class="tags"><span class="tag t-wealth">财富</span></div>
-</article>
-<article class="brief">
+</article><article class="brief more">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经·理财保险</span><span>08/21</span></div>
   <h3><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqz8310375.shtml" target="_blank" rel="noopener noreferrer">截至8月20日，全球最大黄金ETF——SPDR</a></h3>
   <p class="sum">全球最大黄金ETF——SPDR持仓受关注；ETF资金流向反映黄金配置情绪，分行可关注贵金属类理财与基金代销数据，把握客户配置热度。</p>
   <div class="tags"><span class="tag t-wealth">财富</span></div>
 </article>
-<article class="brief">
+<article class="brief more">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经·理财保险</span><span>08/21</span></div>
   <h3><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininywtm1779500.shtml" target="_blank" rel="noopener noreferrer">多只“固收+黄金”理财产品净值修复</a></h3>
   <p class="sum">多只固收+黄金理财产品净值修复；黄金挂钩理财需求回暖，分行财富业务可关注固收+与黄金主题产品配置，向客户提示波动风险。</p>
   <div class="tags"><span class="tag t-wealth">财富</span></div>
-</article><article class="brief more">
+</article>
+<article class="brief more">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>21世纪经济报道·金融</span><span>08/21</span></div>
   <h3><a href="https://m.21jingji.com/article/20260821/herald/3625b81fe26bcda2ddcda94da428ee30.html" target="_blank" rel="noopener noreferrer">27家中小金融机构获批解散 贵州农信改革迎来新进展</a></h3>
   <p class="sum">中小金融机构批量解散显示农信体系改革提速，区域金融风险持续出清。对分行而言，需关注同业生态变化，强化自身风控与合规经营，维护客户信心。</p>
@@ -1333,16 +1348,10 @@
   <h3><a href="https://m.21jingji.com/article/20260818/herald/4840c3cfc3b822ea1757447f8cb1dd72.html" target="_blank" rel="noopener noreferrer">重磅新政来了，《住房公积金管理条例》正式公布</a></h3>
   <p class="sum">《住房公积金管理条例》正式公布，公积金制度重大调整，对分行公积金委托业务与住房金融有直接参考。</p>
   <div class="tags"><span class="tag ">信贷</span></div>
-</article><button class="expand-btn" type="button">展开其余 46 条</button>
+</article><button class="expand-btn" type="button">展开其余 48 条</button>
   </section><section class="panel" id="p-pol">
     
     <article class="brief">
-  <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经</span><span>08/21</span></div>
-  <h3><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-iniparap8147752.shtml" target="_blank" rel="noopener noreferrer">财政支持如何更精准嵌入企业经营和居民消费场景？财政部、央行等三部门发布新举措</a></h3>
-  
-  
-</article>
-<article class="brief">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>Bloomberg Markets</span><span>08/21</span></div>
   <h3><a href="https://www.bloomberg.com/news/articles/2026-08-21/evergrande-creditors-owed-45-billion-now-face-more-complex-path" target="_blank" rel="noopener noreferrer">Evergrande Creditors Owed $45 Billion Now Face More Complex Path</a></h3>
   <p class="sum">恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。</p>
@@ -1365,13 +1374,13 @@
   <h3><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininzpqz8321881.shtml" target="_blank" rel="noopener noreferrer">日本通胀加速，为日本央行加息提供依据</a></h3>
   <p class="sum">日本通胀加速，为日本央行加息提供依据；海外利率上行影响全球资金流向，分行可关注日元资产与汇率波动对客户配置的影响。</p>
   
-</article><article class="brief more">
+</article>
+<article class="brief">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经</span><span>08/21</span></div>
   <h3><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqz8295879.shtml" target="_blank" rel="noopener noreferrer">美联储露出“鹰爪” 加息与否悬念重重</a></h3>
   <p class="sum">美联储政策立场偏鹰，加息与否悬念升温；海外利率路径影响全球资产定价，分行财富业务可关注美债与黄金配置节奏。</p>
   
-</article>
-<article class="brief more">
+</article><article class="brief more">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>新浪财经</span><span>08/21</span></div>
   <h3><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574735.shtml" target="_blank" rel="noopener noreferrer">股票私募仓位指数维持高位 大型机构加仓意愿强烈</a></h3>
   <p class="sum">股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。</p>
@@ -3032,16 +3041,10 @@
   <h3><a href="https://www.cls.cn/detail/2456430" target="_blank" rel="noopener noreferrer">债市早参8月18日|财政部今日将开展国债做市支持操作；分红险崛起，险资配债逻辑生变</a></h3>
   <p class="sum">债市早参：国债做市支持操作、分红险崛起险资配债逻辑生变，债市与保险配置动态，对财富配置有参考。</p>
   <div class="tags"><span class="tag t-wealth">财富</span></div>
-</article><button class="expand-btn" type="button">展开其余 278 条</button>
+</article><button class="expand-btn" type="button">展开其余 277 条</button>
   </section><section class="panel" id="p-tech">
     
     <article class="brief">
-  <div class="bm"><span class="src-badge src-media">媒体</span><span>量子位</span><span>08/21</span></div>
-  <h3><a href="https://www.qbitai.com/2026/08/476778.html" target="_blank" rel="noopener noreferrer">最大运力自动驾驶轻卡落地，来自无人车巨头</a></h3>
-  <p class="sum">载重4.2吨、容积19.32m³</p>
-  
-</article>
-<article class="brief">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>InfoQ 中国</span><span>08/21</span></div>
   <h3><a href="https://www.infoq.cn/article/D6IBeGO6rqVCjBDv1qwj?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Rust 再下一城：Astro 7 重写编译器与 Markdown 流水线</a></h3>
   <p class="sum">Astro用Rust重写编译器，反映开源高性能技术栈趋势。对分行技术团队具有性能优化借鉴意义，可支撑手机银行和数字化经营体验升级。</p>
@@ -3064,13 +3067,13 @@
   <h3><a href="https://www.infoq.cn/article/CPidTC2YJ7AvlU7jUgiq?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践</a></h3>
   <p class="sum">Coding Agent价值取决于对企业数据的理解，属AI工程实践，对分行AI应用与数据治理有参考。</p>
   
-</article><article class="brief more">
+</article>
+<article class="brief">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>InfoQ 中国</span><span>08/20</span></div>
   <h3><a href="https://www.infoq.cn/article/FjAtSWXLEfY3Iu4ThvJM?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">蚂蚁 AI 驱动的生产级软件交付基建和实践｜AICon深圳</a></h3>
   <p class="sum">蚂蚁AI驱动生产级软件交付实践，金融科技同业AI工程经验，对分行研发效能与AI落地有参考。</p>
   
-</article>
-<article class="brief more">
+</article><article class="brief more">
   <div class="bm"><span class="src-badge src-media">媒体</span><span>量子位</span><span>08/20</span></div>
   <h3><a href="https://www.qbitai.com/2026/08/476199.html" target="_blank" rel="noopener noreferrer">闭源RSI的严父：18个Agent自主科研，Kimi K3靠Harness逼近Opus 5</a></h3>
   <p class="sum">Kimi K3以18个Agent自主科研逼近前沿模型，AI Agent自主能力跃升，对银行数智化与智能服务应用有前沿参考。</p>
@@ -3093,7 +3096,7 @@
   <h3><a href="https://www.qbitai.com/2026/08/476070.html" target="_blank" rel="noopener noreferrer">华尔街实测8款全球主流Agent：千问办公综合排名第一</a></h3>
   <p class="sum">华尔街实测8款主流Agent：千问办公综合第一，AI Agent能力评测，对银行选型办公AI工具有参考。</p>
   
-</article><button class="expand-btn" type="button">展开其余 5 条</button>
+</article><button class="expand-btn" type="button">展开其余 4 条</button>
   </section><section class="panel" id="p-ipo">
     
     <article class="brief">
