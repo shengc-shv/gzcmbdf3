@@ -141,8 +141,8 @@ const SUBCATEGORY_ORDER: Partial<Record<Category, string[]>> = {
   // overseas-community (Hacker News / r/stocks).
   // 技术动态：国内技术 / 国外技术（2026-08-20 清理：去掉 AI媒体/热门论文/X 推文子类）
   tech: ["cn-tech", "overseas-tech"],
-  // 宏观政策：国内政策(权威) / 国内财经(媒体) / 广州政策 / 国际
-  finance: ["cn-policy", "cn-finance", "gz-policy", "news"],
+  // 宏观政策：国家政策 / 全国财富 / 全国零售信贷 / 全国私行 / 国内财经(综合) / 广州政策 / 国际
+  finance: ["cn-policy", "cn-wealth", "cn-credit", "cn-private", "cn-finance", "gz-policy", "news"],
   'gd-ipo': ["stage-listed", "stage-registered", "stage-reviewing", "stage-tutoring"],
   // 参考区·全国IPO/新股：全部交易所+辅导（非广州辖区的广东企业也归此）
   ipo: ["sse", "szse", "bse", "hkex", "ipo-tutoring", "overseas"],
@@ -163,6 +163,9 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "blog-weekly": STR.subBlogWeekly,
   news: STR.subFinanceNews,
   "cn-finance": STR.subFinanceCn,
+  "cn-wealth": "全国财富",
+  "cn-credit": "全国零售信贷",
+  "cn-private": "全国私行",
   "cn-policy": "国家政策",
   "gz-policy": "广州政策",
   world: STR.subWorld,
