@@ -35,6 +35,13 @@ export interface Pass1Input {
   raw_text: string;
   /** 软提示（不强制 AI 采用）：原始采集分类。 */
   category?: string;
+  /**
+   * 本地关键词提权（2026-08-21 第二梯队）：标题命中广州锚词
+   * （广州/穗/天河/海珠/琶洲 等，与 GZ_ANCHOR_RE 同源）→ true。
+   * 目的：标题含明确广州地名的条目，降低被「保留标准第2~4条」门槛
+   * 刷掉的概率（Pass 1 倾向判 locale=gz / section=gz_local）。
+   */
+  gz_hint?: boolean;
 }
 
 /** Pass 1 保留条目（标题/来源/日期/原文来自池，其余来自 AI 判断）。 */
@@ -114,6 +121,7 @@ async function runPass1Batch(
     date: a.date,
     raw_text: a.raw_text,
     ...(a.category ? { category: a.category } : {}),
+    ...(a.gz_hint ? { gz_hint: true } : {}),
   }));
   const userPrompt = buildPass1User(JSON.stringify(payload));
   try {
@@ -182,8 +190,13 @@ export async function runPass1(
       ? String(ai.locale_evidence)
       : undefined;
     // 早期校验③：locale=gz 但证据非原文子串 → 降级为 national（丢地域资格不丢内容）
+    // gz_hint 提权（2026-08-21）：标题命中广州锚词的条目，证据允许取自标题
+    // （本地媒体报道标题自带广州地名，无需正文重复出现）。
     if (locale === "gz") {
-      if (!locale_evidence || !a.raw_text.includes(locale_evidence)) {
+      const evidenceOk =
+        (locale_evidence && a.raw_text.includes(locale_evidence)) ||
+        (a.gz_hint && locale_evidence && a.title.includes(locale_evidence));
+      if (!evidenceOk) {
         locale = "national";
         locale_evidence = undefined;
         console.warn(`[pass1] locale=gz 证据非原文子串 → 降级 national: ${a.url}`);

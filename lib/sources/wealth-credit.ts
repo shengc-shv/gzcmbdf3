@@ -7,8 +7,9 @@ import { extractDateFromUrl } from "../utils";
  *
  * - fetchSinaMoney：新浪财经「理财/保险」频道（finance.sina.com.cn/money/），
  *   服务端渲染列表可抓，按关键词过滤出 理财/基金/保险/黄金/存款/利率 类 → 财富业务。
- * - fetch21jingji：21世纪经济报道·金融频道（21jingji.com/channel/finance），
- *   按关键词过滤出 房贷/消费贷/普惠/信贷/金融监管 类 → 个人信贷。
+ * - fetch21jingjiFinance：21世纪经济报道·金融频道（21jingji.com/channel/finance）+ 粤港澳频道
+ *   （21jingji.com/channel/GHM_GreaterBay，2026-08-21 第二梯队接入），
+ *   按关键词过滤出 房贷/消费贷/普惠/信贷/金融监管/大湾区经济 类 → 个人信贷。
  *
  * 两者归 category=gz（广州商机），子标签由启发式/AI 分类路由到 gz-wealth / gz-credit。
  */
@@ -56,29 +57,38 @@ export async function fetchSinaMoney(
   return out;
 }
 
+/** 21世纪经济报道 频道列表：金融 + 粤港澳（2026-08-21 第二梯队：加抓"焦点/区域"） */
+const JJJ_CHANNELS: { name: string; url: string }[] = [
+  { name: "金融", url: "https://www.21jingji.com/channel/finance" },
+  { name: "粤港澳", url: "https://www.21jingji.com/channel/GHM_GreaterBay" },
+];
+
 export async function fetch21jingjiFinance(
   sourceId: string,
   limit = 20,
 ): Promise<RawArticle[]> {
-  const html = await curlFetch("https://www.21jingji.com/channel/finance", HEADERS);
-  const re = /<a[^>]+href="([^"]+)"[^>]*title="([^"]{10,80})"[^>]*>/g;
   const out: RawArticle[] = [];
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(html)) !== null && out.length < limit) {
-    const href = m[1];
-    const title = clean(m[2]);
-    if (!CREDIT_KW.test(title)) continue; // 只留信贷/金融监管相关
-    const url = href.startsWith("http") ? href : `https://www.21jingji.com${href}`;
-    // 文章 URL 含 YYYYMMDD（m.21jingji.com/article/20260820/...）→ 兜底补日期
-    const d = extractDateFromUrl(url);
-    out.push({
-      sourceId,
-      title,
-      url,
-      excerpt: `【21财经】${title}`,
-      category: "gz",
-      ...(d ? { publishedAt: new Date(`${d}T00:00:00.000Z`) } : {}),
-    });
+  for (const ch of JJJ_CHANNELS) {
+    const html = await curlFetch(ch.url, HEADERS);
+    const re = /<a[^>]+href="([^"]+)"[^>]*title="([^"]{10,80})"[^>]*>/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(html)) !== null && out.length < limit) {
+      const href = m[1];
+      const title = clean(m[2]);
+      if (!CREDIT_KW.test(title)) continue; // 只留信贷/金融监管相关
+      const url = href.startsWith("http") ? href : `https://www.21jingji.com${href}`;
+      // 文章 URL 含 YYYYMMDD（m.21jingji.com/article/20260820/...）→ 兜底补日期
+      const d = extractDateFromUrl(url);
+      out.push({
+        sourceId,
+        title,
+        url,
+        excerpt: `【21财经·${ch.name}】${title}`,
+        category: "gz",
+        ...(d ? { publishedAt: new Date(`${d}T00:00:00.000Z`) } : {}),
+      });
+    }
+    console.log(`[21jingji] ${ch.name}频道 命中 ${out.length} 条`);
   }
   return out;
 }

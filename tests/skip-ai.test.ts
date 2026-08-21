@@ -42,6 +42,20 @@ test("PASS1: 裸数组提示被正确解析为全 keep 并按 category 归板块
   assert.equal(byUrl.get("https://a/4").section, "ipo");
 });
 
+test("PASS1: gz_hint 条目 → 广州本地板块 + locale=gz（提权生效）", async () => {
+  const runner = makeSkipAiRunner();
+  const gzHintArticles = [
+    { url: "https://dayoo/1", title: "琶洲算法大赛上线", source: "广州日报·大洋网", date: "08/21", raw_text: "琶洲算法大赛今日开幕", category: "gz", gz_hint: true },
+    { url: "https://southcn/2", title: "前7月广东规上工业增加值同比增长5.7%", source: "南方网", date: "08/21", raw_text: "广东工业数据", category: "gz" },
+  ];
+  const out: any = JSON.parse(await runner(PASS1_SYSTEM, buildPass1User(JSON.stringify(gzHintArticles))));
+  const byUrl = new Map<string, any>(out.items.map((i: any) => [i.url, i] as [string, any]));
+  assert.equal(byUrl.get("https://dayoo/1").section, "gz_local", "gz_hint → 广州本地");
+  assert.equal(byUrl.get("https://dayoo/1").locale, "gz", "gz_hint → locale=gz");
+  assert.equal(byUrl.get("https://southcn/2").section, "biz_insight", "无 gz_hint → gz 保守归业务启示");
+  assert.equal(byUrl.get("https://southcn/2").locale, "national");
+});
+
 test("PASS2: 裸数组提示产出非空 sections，summary 取 raw_text 前 90 字", async () => {
   const runner = makeSkipAiRunner();
   const out: any = JSON.parse(await runner(PASS2_SYSTEM, buildPass2User(JSON.stringify(pass2Items), "")));

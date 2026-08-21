@@ -21,6 +21,8 @@ export const PASS1_SYSTEM = `你是招商银行广州分行零售条线的资讯
 - locale_evidence：逐字摘录 raw_text 中证明广州关联的片段（含"广州/海珠/琶洲/广东"等，或明确的企业注册地信息）
 - 禁止凭企业名称猜测归属地，拿不准一律标 national
 - 这是全管线最重要的规则：地域标错一次，读者对整个产品的信任归零
+- 【gz_hint 提权】条目若带 gz_hint=true（标题已含广州/穗/天河/海珠/琶洲等明确广州地名），
+  属于广州本地媒体/政府源报道，locale 可放心判 gz，locale_evidence 摘录标题中的地名即可（不必等正文出现）
 
 【section分类】
 gz_local（须locale=gz）/ biz_insight（全国同业动态与方法论）/ policy_market（政策与市场）/ tech（科技前沿）/ ipo（IPO与资本市场公告）

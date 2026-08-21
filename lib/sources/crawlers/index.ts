@@ -20,6 +20,12 @@ import { CnfinCrawler } from "./sources/cnfin-web";
 import { StcnCrawler } from "./sources/stcn-web";
 import { SinaBankCrawler } from "./sources/sina-bank-web";
 import { GuanchaCrawler } from "./sources/guancha-web";
+// 2026-08-21 广州本地媒体第一梯队（解决"热点发现"）：大洋网广州/南方经济/中新网广东/央广网广东
+// （金羊网 ycwb.com 有 JS 反爬壳暂缓，后续专项处理）
+import { DayooGzCrawler } from "./sources/dayoo-gz";
+import { SouthcnEconomyCrawler } from "./sources/southcn-economy";
+import { ChinanewsGdCrawler } from "./sources/chinanews-gd";
+import { CnrGdCrawler } from "./sources/cnr-gd";
 // 2026-08-20 用户决定：取消南沙信息源（只看广州市政府 gz-gov），GzNanshaCrawler 停用，
 // 文件保留便于未来恢复。
 // 2026-08-20 本地化停用：TonghuashunIPOCrawler / NfraCrawler / PbcCrawler / ClsCrawler
@@ -77,6 +83,11 @@ export async function fetchCrawledArticles(): Promise<CrawledBundle> {
     new StcnCrawler(),
     new SinaBankCrawler(),
     new GuanchaCrawler(),
+    // 2026-08-21 广州本地媒体第一梯队（config enabled:false + 实测通过后启用）
+    new DayooGzCrawler(),
+    new SouthcnEconomyCrawler(),
+    new ChinanewsGdCrawler(),
+    new CnrGdCrawler(),
   ];
 
   const gz: CrawledArticle[] = [];

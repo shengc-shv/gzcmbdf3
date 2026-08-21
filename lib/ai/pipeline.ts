@@ -75,10 +75,12 @@ export function makeSkipAiRunner(cache: Map<string, string> = new Map()): LlmRun
         items: arr.map((it: any) => ({
           url: it.url,
           keep: true,
-          section: categoryToSection(it.category),
+          // gz_hint 提权（2026-08-21）：标题含广州锚词 → 广州本地板块 + locale=gz，
+          // 否则 gz 保守归业务启示（无法判断 locale 时宁缺毋滥）。
+          section: it.gz_hint ? "gz_local" : categoryToSection(it.category),
           source_type: "media",
-          locale: "national",
-          locale_evidence: "",
+          locale: it.gz_hint ? "gz" : "national",
+          locale_evidence: it.gz_hint ? (it.title || "").slice(0, 40) : "",
           tags: [],
           title_cn: it.title || "",
           title_orig: "",

@@ -54,7 +54,7 @@ import {
   mergeStoredExecutive,
 } from "../lib/output/render";
 import { loadStore } from "../lib/ai/executive-summary";
-import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
+import { DISPLAY_WINDOW_DAYS, GZ_ANCHOR_RE } from "../lib/output/render/cards";
 import {
   loadHistory,
   buildRolling,
@@ -280,7 +280,17 @@ function toPass1Input(a: ArticleInput): Pass1Input {
     ? `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`
     : "";
   const raw = (a.excerpt || a.summary || "").slice(0, 1200);
-  return { url: a.url, title: a.title, source: a.source, date, raw_text: raw, category: a.category };
+  return {
+    url: a.url,
+    title: a.title,
+    source: a.source,
+    date,
+    raw_text: raw,
+    category: a.category,
+    // gz_hint 提权（2026-08-21 第二梯队）：标题命中广州锚词 → 标记，降低被
+    // 保留标准第2~4条门槛刷掉的概率，Pass 1 倾向判 locale=gz / section=gz_local。
+    gz_hint: GZ_ANCHOR_RE.test(a.title) || undefined,
+  };
 }
 
 async function main() {

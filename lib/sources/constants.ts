@@ -62,6 +62,14 @@ export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: st
   "cls": { category: "finance", subcategory: "cn-finance" },
   // 观察者网·金融（GUANCHA）：金融评论/深度媒体，归 finance/cn-finance（国内财经新闻标签）
   "guancha": { category: "finance", subcategory: "cn-finance" },
+  // —— 广州本地媒体（2026-08-21 第一梯队，解决"热点发现"）——
+  // 广州日报·大洋网广州频道 / 南方网·南方经济 / 中新网广东 / 央广网广东，
+  // 归 gz 面板 gz-all 合并流（本地+全国+传导统一），subcategory=gz-media 供
+  // Pass 1 的 locale 判定更易通过证据校验（广州本地媒体报道自带广州地名）。
+  "dayoo-gz": { category: "gz", subcategory: "gz-media" },
+  "southcn": { category: "gz", subcategory: "gz-media" },
+  "chinanews-gd": { category: "gz", subcategory: "gz-media" },
+  "cnr-gd": { category: "gz", subcategory: "gz-media" },
   "gz-sse": { category: "gz", subcategory: "gz-ipo" },
   "gz-szse": { category: "gz", subcategory: "gz-ipo" },
   "gz-bse": { category: "gz", subcategory: "gz-ipo" },
