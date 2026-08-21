@@ -1,6 +1,22 @@
 {
-  "fetchedAt": "2026-08-21T09:17:42.225Z",
+  "fetchedAt": "2026-08-21T12:03:31.775Z",
   "items": [
+    {
+      "title": "国家金融监督管理总局贵州监管局行政处罚信息公开表\n（贵金罚决字〔2026〕30-31号）",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268766",
+      "excerpt": "国家金融监督管理总局贵州监管局行政处罚信息公开表 （贵金罚决字〔2026〕30-31号）",
+      "publishedAt": "2026-08-21",
+      "sourceId": "nfra",
+      "source": "国家金融监督管理总局"
+    },
+    {
+      "title": "国家金融监督管理总局浙江监管局行政处罚信息公开表",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268385",
+      "excerpt": "",
+      "publishedAt": "2026-08-21",
+      "sourceId": "nfra",
+      "source": "国家金融监督管理总局"
+    },
     {
       "title": "国家金融监督管理总局天津监管局行政处罚信息公开表",
       "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268926",
@@ -130,22 +146,6 @@
       "source": "国家金融监督管理总局"
     },
     {
-      "title": "文山金融监管分局行政处罚信息公示列表",
-      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268266",
-      "excerpt": "",
-      "publishedAt": "2026-08-17",
-      "sourceId": "nfra",
-      "source": "国家金融监督管理总局"
-    },
-    {
-      "title": "国家金融监督管理总局包头监管分局\n对马利波行政处罚事先告知书的送达公告",
-      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268244",
-      "excerpt": "国家金融监督管理总局包头监管分局对马利波行政处罚事先告知书的送达公告",
-      "publishedAt": "2026-08-17",
-      "sourceId": "nfra",
-      "source": "国家金融监督管理总局"
-    },
-    {
       "title": "中国人民银行行长潘功胜会见澳门银行公会代表团",
       "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081919184870631/index.html",
       "excerpt": "",
@@ -170,9 +170,73 @@
       "source": "中国人民银行"
     },
     {
+      "title": "规模齐涨时代落幕，“冷热不均”凸显！渤银理财增长12%，青银理财缩水近2成",
+      "url": "https://www.cls.cn/detail/2460849",
+      "excerpt": "①2026年上半年10家披露数据的理财公司中7家规模较2025年底正增长，渤银理财以12%增速领跑，青银理财规模同比下滑19.05%降幅最大。\n②4家披露净利润的理财公司分化显著，宁银理财上半年净利润6.14亿元同比增45.84%，平安理财净利润5.53亿元同比降21%。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "华融金融租赁被罚100万，涉直租回租业务不审慎",
+      "url": "https://www.cls.cn/detail/2460859",
+      "excerpt": "①华融金融租赁因直租业务不审慎等处罚；②罚款金额100万元。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "中信金融资产天津分公司被罚135万元，涉违规收购非金融机构不良资产等",
+      "url": "https://www.cls.cn/detail/2460822",
+      "excerpt": "①中信金融资产天津分公司因违规收购非金融机构不良资产等被处罚；②罚款金额135万元。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "恒大人寿被吊销业务许可证，涉保险资金运用严重不合规等",
+      "url": "https://www.cls.cn/detail/2460833",
+      "excerpt": "恒大人寿因保险资金运用严重不合规等被国家金融监管总局吊销业务许可证。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "新华人寿被罚327万，涉受托人投资行为监督不到位等",
+      "url": "https://www.cls.cn/detail/2460834",
+      "excerpt": "①新华人寿因受托人投资行为监督不到位等被处罚；②罚款金额327万元。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "仅15只收绿，最高单月涨超15%，FOF基金8月迎全面反弹",
+      "url": "https://www.cls.cn/detail/2460747",
+      "excerpt": "①截至8月20日，全市场637只FOF中618只8月实现正收益，占比97%，平均收益率2.68%，较7月-5.27%回升近8个百分点。\n②本轮FOF反弹核心驱动力为权益类产品，博时集兴配置优选6个月持有A以15.30%月度涨幅暂居榜首。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "债市收盘| 央行终结7天期逆回购连续8日的“零投放”，债市仍整体回调",
+      "url": "https://www.cls.cn/detail/2460801",
+      "excerpt": "业内人士认为，利率快速下行后止盈盘明显增多，叠加税期走款背景下资金面小幅收敛。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
       "title": "财政部：1—7月证券交易印花税1864亿元 同比增长99.2%",
       "url": "https://www.cls.cn/detail/2460738",
       "excerpt": "①1—7月全国一般公共预算收入143696亿元，同比增长5.8%；其中税收收入118381亿元增6.7%，非税收入25315亿元增1.6%。\n②证券交易印花税1864亿元，同比增长99.2%。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "“四肢”练熟了，“大脑”还饿着，具身智能千万小时数据缺口怎么填？｜WRC观察",
+      "url": "https://www.cls.cn/detail/2460732",
+      "excerpt": "①为具身智能构建数据底座，已是产业规模化落地的当务之急。\n②财联社记者在WRC现场采访了解到，面对海量数据缺口，行业正从多个方向突围，一是通过人类示范提供“教科书”，二是利用仿真打造“练兵场”。",
       "publishedAt": "2026-08-21",
       "sourceId": "cls",
       "source": "财联社"
@@ -194,6 +258,14 @@
       "source": "财联社"
     },
     {
+      "title": "“实景实训”新政落地，WRC风向骤变，机器人“花活”退场“真活”亮相",
+      "url": "https://www.cls.cn/detail/2460436",
+      "excerpt": "①翻跟头让位拧螺丝，真干活成主流；\n②多形态机器人同台竞技。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
       "title": "债市公告精选 | 万科 2026 年至今到期公开债全部完成展期；南京公用就 1.128 亿元借款违约提起诉讼",
       "url": "https://www.cls.cn/detail/2460386",
       "excerpt": "尽享债市公告，把握机会，有效避雷。",
@@ -205,6 +277,14 @@
       "title": "三部门：将符合条件的中小微民营企业的新发放流动资金贷款纳入中小微企业贷款贴息政策支持范围",
       "url": "https://www.cls.cn/detail/2460368",
       "excerpt": "财政部等三部门2026年8月17日发文扩大促内需财政金融协同政策：将符合条件的小微企业新流贷、信用卡各类分期纳入贴息范围，中央财政均按年化1%贴息，前者期限不超2年。",
+      "publishedAt": "2026-08-21",
+      "sourceId": "cls",
+      "source": "财联社"
+    },
+    {
+      "title": "财政部：消费者只要是用信用卡分期方式进行消费 都可以享受贴息优惠",
+      "url": "https://www.cls.cn/detail/2460292",
+      "excerpt": "财政部副部长廖岷表示，在先前固定资金贷款基础上，将新发放的流动资金贷款纳入中小微企业贷款贴息政策范围；更好贴近大众消费习惯，将包括购车、装修在内新发生的各类信用卡分期消费都纳入政策支持范围，按此，消费者只要是用信用卡分期方式进行消费，都可以享受贴息优惠。",
       "publishedAt": "2026-08-21",
       "sourceId": "cls",
       "source": "财联社"
@@ -554,6 +634,29 @@
       "source": "财联社"
     },
     {
+      "title": "深圳市艺感科技股份有限公司 [创业板] (预先披露更新)",
+      "url": "https://data.10jqka.com.cn/ipo/search/?keyword=%E6%B7%B1%E5%9C%B3%E5%B8%82%E8%89%BA%E6%84%9F%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8",
+      "excerpt": "同花顺新股预披露 | 板块: 创业板 | 类型: 预先披露更新 | 披露日期: 2026-08-21 | 募资: 9.51亿 | 发行: 1666.67万",
+      "publishedAt": "2026-08-21",
+      "sourceId": "gd-szse"
+    },
+    {
+      "title": "文山金融监管分局行政处罚信息公示列表",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268266",
+      "excerpt": "",
+      "publishedAt": "2026-08-17",
+      "sourceId": "nfra",
+      "source": "国家金融监督管理总局"
+    },
+    {
+      "title": "国家金融监督管理总局包头监管分局\n对马利波行政处罚事先告知书的送达公告",
+      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268244",
+      "excerpt": "国家金融监督管理总局包头监管分局对马利波行政处罚事先告知书的送达公告",
+      "publishedAt": "2026-08-17",
+      "sourceId": "nfra",
+      "source": "国家金融监督管理总局"
+    },
+    {
       "title": "30年美债利率狂飙破5.3%、央企点心债仅2.46%！南向通险资首单锚定离岸人民币资产",
       "url": "https://www.cls.cn/detail/2457163",
       "excerpt": "①国家电网通过境外子公司完成149亿元离岸人民币债券（点心债）定价，创央企单笔离岸人民币债发行规模新高。\n②本次发行峰值订单1938亿元，认购倍数超13倍刷新纪录。\n③截至今日，30年美债收益率隔夜盘中升至5.329%，而中国10年期国债收益率稳定在1.68%左右，成本优势明显。",
@@ -624,13 +727,6 @@
       "publishedAt": "2026-08-18",
       "sourceId": "cls",
       "source": "财联社"
-    },
-    {
-      "title": "深圳市艺感科技股份有限公司 [创业板] (预先披露更新)",
-      "url": "https://data.10jqka.com.cn/ipo/search/?keyword=%E6%B7%B1%E5%9C%B3%E5%B8%82%E8%89%BA%E6%84%9F%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8",
-      "excerpt": "同花顺新股预披露 | 板块: 创业板 | 类型: 预先披露更新 | 披露日期: 2026-08-21 | 募资: 9.51亿 | 发行: 1666.67万",
-      "publishedAt": "2026-08-21",
-      "sourceId": "gd-szse"
     },
     {
       "title": "债市早参8月18日|财政部今日将开展国债做市支持操作；分红险崛起，险资配债逻辑生变",
