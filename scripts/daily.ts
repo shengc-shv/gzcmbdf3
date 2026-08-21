@@ -639,6 +639,8 @@ async function main() {
     });
     if (execSummary) {
       report.executive_summary = execSummary;
+      // 今日定调（2026-08-21 重构 #3）：hero_line 写入 report.hero_headline，供报头 hero-line 与 markdown 引用
+      if (execSummary.hero_line) report.hero_headline = execSummary.hero_line;
       // 归档进 history/<date>/store.json，随 CI「Archive reports to history/」步骤提交，
       // 使后续 SKIP_AI / 正常模式重跑都能复用（真正的跨运行持久化）。覆盖写幂等。
       writeStore(date, execSummary);

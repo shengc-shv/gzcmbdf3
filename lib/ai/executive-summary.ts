@@ -20,9 +20,13 @@ export interface ExecInsight {
   impact: string;
   /** 建议动作（获客/产品/风险，可执行） */
   action: string;
+  /** 业务线标签（2026-08-21 重构）：从词表选 1-2 个，如 竞对动态/信贷/代发/私行/政银合作/住房金融/财富/客群 */
+  tag?: string[];
 }
 
 export interface ExecutiveSummary {
+  /** 今日定调（2026-08-21 重构）：一句话总编辑视角，3 秒 get 今天主题；无则页面不渲染 hero-line */
+  hero_line?: string;
   /** 今日必读：高影响事件 + 为何重要 + 源链接（可空：旧归档/AI 未回链时渲染不包 <a>） */
   must_read: Array<{ title: string; why: string; url?: string }>;
   /** 商机提示：对广州分行零售/对公的潜在影响与建议动作 */
@@ -45,10 +49,12 @@ const SYSTEM_PROMPT =
 
 const RULES = `你是招商银行广州分行零售决策简报的主编。系统面向分行信息技术部领导和分管零售的行领导，核心诉求：更快掌握宏观经济变化、政府政策变化、市场变化，从而挖掘更多客户、发现更多商机。
 
-基于输入的当日条目（宏观政策 + 广州商机 + 市场总览），输出两部分：
+基于输入的当日条目（宏观政策 + 广州商机 + 市场总览），输出三部分：
+
+0. hero_line（今日定调，1 句话）：以"总编辑"视角提炼今天最值得分行领导关注的一件事，50 字以内，一句话讲清"今天主题是什么、对分行意味着什么"。例："中行'算力Token贷'在穗抢跑落地，同业以新风控逻辑圈占科创轻资产客群，分行需尽快评估应对。" 若当日无突出主题可省略（输出空字符串）。
 
 1. must_read（今日必读，3-5 条）：从输入中挑出对广州分行领导"今天最该知道"的高影响事件（如降准降息、LPR、社融、广州产业政策、广州本地金融动态、重要市场转折）。每条：
-   - title：事件标题（15 字内，可精简）
+   - title：事件标题（15 字内，中文，可精简）
    - why：为什么重要——对广州分行零售/对公意味着什么（30-50 字）
    - url：源链接，从下方输入对应条目的 url 字段原样复制（若对不上可省略，留空）
 
@@ -56,13 +62,14 @@ const RULES = `你是招商银行广州分行零售决策简报的主编。系�
    - topic：主题（15 字内）
    - impact：对广州分行零售/对公业务的潜在影响（40-60 字）
    - action：建议动作——具体可执行（获客方向/产品配置/风险提示，40-60 字），如"关注消费贷客群、加大理财配置推荐、提示按揭风险"
+   - tag：业务线标签数组，从词表选 1-2 个（词表：竞对动态/信贷/代发/私行/政银合作/住房金融/财富/客群/监管/科技金融）
 
 要求：
 - 只基于输入信息，不要编造
 - 广州本地信息（南沙/广州企业/广州政策）优先于泛全国信息
 - 语言精炼，站在分行行长视角，不写空话套话
 - 输出 STRICTLY 一个 JSON 对象（无 markdown 代码块）：
-{"must_read":[{"title":"...","why":"...","url":"..."}],"insights":[{"topic":"...","impact":"...","action":"..."}]}
+{"hero_line":"...","must_read":[{"title":"...","why":"...","url":"..."}],"insights":[{"topic":"...","impact":"...","action":"...","tag":["..."]}]}
 注意：字符串内引号用单引号或中文引号，禁止裸双引号；url 字段原样复制输入中的链接。`;
 
 export async function generateExecutiveSummary(
@@ -80,7 +87,7 @@ export async function generateExecutiveSummary(
     `当日信息（JSON）：`,
     JSON.stringify(payload),
     "",
-    "请输出 {\"must_read\": [...], \"insights\": [...]}，must_read 3-5 条、insights 3-5 条。",
+    '请输出 {"hero_line": "...", "must_read": [...], "insights": [...]}，hero_line 1 句、must_read 3-5 条、insights 3-5 条。',
   ].join("\n");
   try {
     const { text } = await runLlm({ systemPrompt: SYSTEM_PROMPT, userPrompt, timeoutMs: 240_000 }, { stage: "executive" });
@@ -109,12 +116,18 @@ export async function generateExecutiveSummary(
       return undefined;
     };
     return {
+      hero_line: typeof parsed.hero_line === "string" ? parsed.hero_line : "",
       must_read: parsed.must_read.slice(0, 5).map((m) => ({
         title: m.title,
         why: m.why,
         url: m.url || resolveUrl(m.title),
       })),
-      insights: parsed.insights.slice(0, 5),
+      insights: parsed.insights.slice(0, 5).map((it) => ({
+        topic: it.topic,
+        impact: it.impact,
+        action: it.action,
+        ...(Array.isArray(it.tag) && it.tag.length > 0 ? { tag: it.tag.slice(0, 2) } : {}),
+      })),
     };
   } catch {
     return null;

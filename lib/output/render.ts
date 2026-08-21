@@ -14,11 +14,19 @@ import {
   CATEGORY_DIGEST_LABELS,
   TECH_MAIN_SUBS,
   sortByTierAndTime,
+  GZ_ANCHOR_RE,
+  renderCardList,
+  escapeHtml,
   type SourceGroup,
   type SubGroup,
   type RawByCategory,
 } from "./render/cards";
-import { renderTradingPanel, renderExecutiveSummary, TREND_LABEL } from "./render/sections";
+import {
+  renderTradingPanel,
+  renderExecutiveSummary,
+  renderMarketOverview,
+  TREND_LABEL,
+} from "./render/sections";
 export type { SourceGroup, SubGroup, RawByCategory } from "./render/cards";
 import { TIER_COLORS, THEME_CSS } from "./render/theme";
 import { getReportTz } from "../utils";
@@ -783,21 +791,50 @@ export function renderHtml(
   date: string,
 ): string {
   const trading = report.trading;
+  const exec = report.executive_summary;
 
-  // "tech" L1 panel shows the main subs; the community sub-sources
-  // (V2EX / LinuxDo) are not in this fork's default source config, so they
-  // are filtered out and the tech panel renders only the configured subs.
-  const techMainSubs = raw.tech.filter((s) => TECH_MAIN_SUBS.has(s.id));
+  // —— 2026-08-21 重构：五板块单层 tab（#8/#9/#10/#12）——
+  // 广州本地（严格锚）/ 业务启示（gz 面板非锚）/ 政策与市场（finance）/ 科技前沿 / IPO动态
+  const flattenRaw = (cat: keyof RawByCategory): ArticleInput[] =>
+    (raw[cat] ?? []).flatMap((sg) => sg.sources.flatMap((s) => s.items));
 
-  // 顶部 tab 计数：统一「最近 DISPLAY_WINDOW_DAYS 天」口径（与面板内容一致）
-  // 2026-08-20 用户决定：取消全国 IPO 展示，只保留广东相关 → tab 只统计 gd-ipo。
-  const counts = {
-    tech: countItemsRecent(techMainSubs),
-    finance: countItemsRecent(raw.finance),
-    'gd-ipo': countItemsRecent(raw['gd-ipo'] || []),
-    gz: countItemsRecent(raw['gz'] || []),
-    politics: countItemsRecent(raw.politics),
-  };
+  // 今日必读中文标题回写（#20：只对必读/商机选中条目注入 title_cn，卡片优先展示）
+  const urlCnMap = new Map<string, string>();
+  for (const m of exec?.must_read ?? []) {
+    if (m.url && m.title) urlCnMap.set(m.url, m.title);
+  }
+  const withCn = (list: ArticleInput[]): ArticleInput[] =>
+    list.map((a) =>
+      a.title_cn || !urlCnMap.has(a.url) ? a : { ...a, title_cn: urlCnMap.get(a.url) },
+    );
+
+  const gzAll = flattenRaw("gz");
+  const gzLocal = withCn(gzAll.filter((a) => GZ_ANCHOR_RE.test(a.title || "")));
+  const bizInsight = withCn(gzAll.filter((a) => !GZ_ANCHOR_RE.test(a.title || "")));
+  const financeAll = withCn(flattenRaw("finance"));
+  const techAll = withCn(flattenRaw("tech"));
+  const ipoAll = withCn(flattenRaw("gd-ipo"));
+
+  // 中文日期「8月21日 星期五」（#21 统一日期格式）
+  const zhDate = (() => {
+    const d = new Date(`${date}T00:00:00+08:00`);
+    const w = ["日", "一", "二", "三", "四", "五", "六"][d.getDay()];
+    const [, m, dd] = date.split("-");
+    return `${+m}月${+dd}日 星期${w}`;
+  })();
+
+  // 空板块自动隐藏（#10）：count 0 则 tab 与 panel 一并移除
+  const tabs = [
+    { id: "p-gz", label: "广州本地", cls: "var(--c-gz)", count: gzLocal.length, items: gzLocal },
+    { id: "p-biz", label: "业务启示", cls: "var(--c-biz)", count: bizInsight.length, items: bizInsight },
+    { id: "p-pol", label: "政策与市场", cls: "var(--c-pol)", count: financeAll.length, items: financeAll },
+    { id: "p-tech", label: "科技前沿", cls: "var(--c-tech)", count: techAll.length, items: techAll },
+    { id: "p-ipo", label: "IPO动态", cls: "var(--c-ipo)", count: ipoAll.length, items: ipoAll },
+  ].filter((t) => t.count > 0);
+
+  const marketCard = trading ? renderMarketOverview(trading, date) : "";
+  const totalItems = gzAll.length + financeAll.length + techAll.length + ipoAll.length;
+  const nowHm = new Date().toTimeString().slice(0, 5);
 
   return `<!doctype html>
 <html lang="${REPORT_LOCALE === "en" ? "en" : "zh-CN"}">
@@ -811,124 +848,58 @@ ${THEME_CSS}
 </head>
 <body>
 <main>
-  <header class="report-header">
-    <span class="eyebrow">${STR.siteTitle}</span>
-    <h1 class="report-title">${date}</h1>
-    ${process.env.WEB_MODE === "true" ? `<a class="archive-link" href="../archive.html">${STR.archiveLink}</a>` : ""}
+  <!-- 报头：今日定调 + 数据截至（#2/#3/#4/#21） -->
+  <header class="masthead">
+    <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
+    <h1>${zhDate}</h1>
+    ${exec?.hero_line ? `<p class="hero-line">今日定调：${escapeHtml(exec.hero_line)}</p>` : ""}
+    <p class="meta-line">数据截至 ${nowHm} · 资讯 ${totalItems} 条 · 商机 ${exec?.insights.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>
   </header>
 
-  ${report.executive_summary ? renderExecutiveSummary(report.executive_summary) : ""}
+  ${exec ? renderExecutiveSummary(exec) : ""}
 
-  <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="finance">${CATEGORY_LABELS.finance}<span class="count">${counts.finance}</span></button>
-    ${trading ? `<button class="tab" data-tab="trading">${STR.catTrading}<span class="count">${trading.tickers.length}</span></button>` : ""}
-    <button class="tab" data-tab="gz">${CATEGORY_LABELS['gz']}<span class="count">${counts['gz']}</span></button>
-    <button class="tab tab-fold" data-tab="gd-ipo">${CATEGORY_LABELS['gd-ipo']}<span class="count">${counts['gd-ipo']}</span></button>
-    <button class="tab tab-fold" data-tab="tech">${CATEGORY_LABELS.tech}<span class="count">${counts.tech}</span></button>
+  <!-- 板块导航：单层 tab，移动端横滑不折行（#11） -->
+  <nav class="tabs">
+    ${tabs.map((t, i) => `<button class="tab${i === 0 ? " active" : ""}" data-target="${t.id}" style="--cat:${t.cls}">${t.label}<span class="n">${t.count}</span></button>`).join("")}
   </nav>
 
-  <section class="panel active" data-panel="finance">
-    ${renderRawCategoryPanel("finance", raw.finance, date)}
-  </section>
-  ${trading ? `<section class="panel" data-panel="trading">${renderTradingPanel(trading)}</section>` : ""}
-  <section class="panel" data-panel="gz">
-    ${renderRawCategoryPanel("gz", raw["gz"] || [], date)}
-  </section>
-  <section class="panel" data-panel="gd-ipo">
-    ${renderRawCategoryPanel("gd-ipo", raw["gd-ipo"] || [], date)}
-  </section>
-  <section class="panel" data-panel="tech">
-    ${renderRawCategoryPanel("tech", techMainSubs, date)}
-  </section>
-  
-  
+  ${tabs.map((t, i) => `<section class="panel${i === 0 ? " active" : ""}" id="${t.id}">
+    ${t.id === "p-pol" && marketCard ? marketCard : ""}
+    ${renderCardList(t.items)}
+  </section>`).join("")}
 
   <footer>
-    ${STR.footer}
+    <p>免责声明：本页面为个人学习项目，内容基于公开信息整理，不代表任何机构立场；市场信息不构成投资建议。页面面向内部参考，请勿外传。</p>
+    ${process.env.WEB_MODE === "true" ? `<p><a class="archive" href="../archive.html">${STR.archiveLink}（8月20日 / 8月19日 / 更多 →）</a></p>` : ""}
   </footer>
 </main>
 <script>
+  // tab 切换（单层五板块）
   document.querySelectorAll('.tabs > .tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var target = btn.dataset.tab;
+      var target = btn.dataset.target;
       document.querySelectorAll('.tabs > .tab').forEach(function (b) {
         b.classList.toggle('active', b === btn);
       });
       document.querySelectorAll('.panel').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.panel === target);
+        p.classList.toggle('active', p.id === target);
       });
     });
   });
-  // Scope sub-tab toggles to the parent .panel so two L1 panels
-  // can share the same data-cat (e.g. tech main + community both data-cat=tech)
-  // without stomping on each other's active state.
-  document.querySelectorAll('.sub-tab').forEach(function (btn) {
+  // 空板块保险：panel 无卡片则连同 tab 移除（#10，渲染层已跳过，此处兜底旧快照）
+  document.querySelectorAll('.panel').forEach(function (panel) {
+    if (panel.querySelectorAll('.brief').length === 0) {
+      var tab = document.querySelector('.tab[data-target="' + panel.id + '"]');
+      if (tab) tab.remove();
+      panel.remove();
+    }
+  });
+  // 展开其余 N 条（#13）
+  document.querySelectorAll('.expand-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var panel = btn.closest('.panel');
-      if (!panel) return;
-      var sub = btn.dataset.sub;
-      panel.querySelectorAll('.sub-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      panel.querySelectorAll('.sub-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.subContent === sub);
-      });
-    });
-  });
-  // Time split (当天 / 过去7天) — scoped to the parent .sub-content so it
-  // doesn't interfere with sibling L2 tabs sharing the same data-cat.
-  document.querySelectorAll('.time-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var subContent = btn.closest('.sub-content');
-      if (!subContent) return;
-      var time = btn.dataset.time;
-      subContent.querySelectorAll('.time-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      subContent.querySelectorAll('.time-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.timeContent === time);
-      });
-    });
-  });
-  // L3 信息源 tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流）；
-  // source-content 结构不再产出，原 source-tab 切换逻辑一并删除。
-  // 官方/媒体 子标签内 tab（#43 改版：分带 → tab 页），按所在 .band-tabs 作用域切换
-  document.querySelectorAll('.band-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var tabs = btn.closest('.band-tabs');
-      if (!tabs) return;
-      var scope = tabs.parentElement;
-      if (!scope) return;
-      var band = btn.dataset.band;
-      tabs.querySelectorAll('.band-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      scope.querySelectorAll('.band-panel').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.bandPanel === band);
-      });
-    });
-  });
-  // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
-  document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var grp = btn.dataset.group;
-      document.querySelectorAll('.trading-group-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      document.querySelectorAll('.trading-group-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.group === grp);
-      });
-    });
-  });
-  // 执行摘要 · 商机提示折叠
-  document.querySelectorAll('.insight-toggle').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var body = document.getElementById(btn.getAttribute('aria-controls'));
-      if (!body) return;
-      var open = body.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      var label = btn.querySelector('.insight-toggle-label');
-      if (label) label.textContent = open ? (btn.dataset.hide || label.textContent) : (btn.dataset.show || label.textContent);
+      if (panel) panel.classList.add('expanded');
+      btn.remove();
     });
   });
 </script>

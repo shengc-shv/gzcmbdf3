@@ -119,57 +119,61 @@ export function formatDate(d: Date | undefined): string {
 
 // ----- raw article renderers -----
 
+/** 广州严格锚（2026-08-21 重构 #9：「广州本地」板块严格过滤，宁缺毋滥） */
+export const GZ_ANCHOR_RE =
+  /广州|穗|天河|海珠|越秀|荔湾|白云|黄埔|番禺|南沙|增城|从化|花都|琶洲|珠江新城|白鹅潭|广州开发区|中新知识城/;
+
+/** 来源徽章（2026-08-21 重构 #12：来源降级为卡片左上角徽章，扫一眼即知可信度） */
+export function srcBadgeOf(a: ArticleInput): { label: string; cls: string } {
+  const sid = a.sourceId || "";
+  if (a.tier === "T1") {
+    if (sid === "govcn-policy") return { label: "政策", cls: "src-official" };
+    if (sid === "pbc") return { label: "央行", cls: "src-official" };
+    if (sid === "nfra") return { label: "监管", cls: "src-official" };
+    if (sid === "fed-press") return { label: "央行", cls: "src-official" };
+    if (a.category === "ipo" || a.category === "gd-ipo") return { label: "交易所", cls: "src-official" };
+    return { label: "官方", cls: "src-official" };
+  }
+  if (a.tier === "T1.5") {
+    if (a.category === "ipo" || a.category === "gd-ipo") return { label: "交易所", cls: "src-official" };
+    return { label: "机构", cls: "src-official" };
+  }
+  if (a.subcategory === "news") return { label: "海外", cls: "src-media" };
+  return { label: "媒体", cls: "src-media" };
+}
+
 export function renderArticleHtml(a: ArticleInput, showSource = false): string {
-  const title = escapeHtml(a.title);
+  const title = escapeHtml(a.title_cn || a.title);
   const url = escapeHtml(a.url);
-  const excerpt = a.excerpt ? escapeHtml(a.excerpt) : "";
   // Backwards-compat: old sidecar JSON files may carry `cnSummary` instead.
   const summaryText = a.summary ?? (a as unknown as { cnSummary?: string }).cnSummary;
   const summary = summaryText ? escapeHtml(summaryText) : "";
-  const meta = a.meta ? escapeHtml(a.meta) : "";
   const time = formatDate(a.publishedAt ?? a.fetchedAt);
-  const sourceLabel = showSource && a.source ? escapeHtml(a.source) : "";
-  const alsoFrom = (a.alsoFrom ?? []).filter(Boolean);
-  const alsoLine =
-    alsoFrom.length > 0
-      ? `${escapeHtml("多家来源")}：${alsoFrom.map(escapeHtml).join("、")}`
-      : "";
-  // 源等级差异化角标（T6）：T1 官方一手（红）/ T1.5 准官方·机构一手（琥珀）/ T2 媒体·智库（灰）
-  const tierBadge = a.tier
-    ? `<span class="tier-badge tier-${escapeHtml(a.tier)}" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:${TIER_COLORS[a.tier]}">${escapeHtml(SOURCE_TIER_LABELS[a.tier] ?? a.tier)}</span>`
-    : "";
-  const metaLine = [tierBadge, sourceLabel, time, alsoLine].filter(Boolean).join(" · ");
-  // 多维度影响 chips（AI 多标签）：展示该条还影响的其他业务线，避免多归桶造成困惑
-  const subTags =
-    (a.subcategories && a.subcategories.length > 0
-      ? a.subcategories
-      : a.subcategory
-        ? [a.subcategory]
-        : []
-    ).length > 0
-      ? `<p class="article-subs">${(a.subcategories && a.subcategories.length > 0
-          ? a.subcategories
-          : a.subcategory
-            ? [a.subcategory]
-            : []
-        )
-          .map(
-            (s) =>
-              `<span class="sub-chip">${escapeHtml(SUBCATEGORY_LABELS[s] ?? s)}</span>`,
-          )
-          .join("")}</p>`
-      : "";
-  // News-style summary label for finance/politics, project-intro style for GH/tech.
-  const newsy = a.category === "finance" || a.category === "politics";
-  const summaryLabel = newsy ? STR.summaryLabelNews : STR.summaryLabelIntro;
-  return `<article class="article">
-  <h3 class="article-title"><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
-  ${meta ? `<p class="article-stats">${meta}</p>` : ""}
-  ${metaLine ? `<p class="article-meta">${metaLine}</p>` : ""}
-  ${subTags}
-  ${excerpt ? `<p class="article-excerpt">${excerpt}</p>` : ""}
-  ${summary ? `<p class="article-summary"><span class="summary-label">${summaryLabel}</span> ${summary}</p>` : ""}
+  const badge = srcBadgeOf(a);
+  const srcName = showSource && a.source ? escapeHtml(a.source) : "";
+  const bm = [badge.label, srcName, time].filter(Boolean);
+  return `<article class="brief">
+  <div class="bm"><span class="src-badge ${badge.cls}">${badge.label}</span>${srcName ? `<span>${srcName}</span>` : ""}${time ? `<span>${time}</span>` : ""}</div>
+  <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+  ${summary ? `<p class="sum">${summary}</p>` : ""}
 </article>`;
+}
+
+/**
+ * 面板卡片列表（2026-08-21 重构 #13：每板块默认 Top 5 + 「展开其余 N 条」）。
+ * 前 5 条直接展示；多于 5 条的隐藏于 .brief.more，底部虚线按钮点击展开（panel 加 expanded）。
+ */
+export function renderCardList(items: ArticleInput[], showSource = true): string {
+  if (items.length === 0) return `<p class="empty">${STR.emptySource}</p>`;
+  const top = items.slice(0, 5);
+  const more = items.slice(5);
+  let html = top.map((a) => renderArticleHtml(a, showSource)).join("\n");
+  if (more.length > 0) {
+    html +=
+      more.map((a) => renderArticleHtml(a, showSource).replace('<article class="brief">', '<article class="brief more">')).join("\n") +
+      `<button class="expand-btn" type="button">展开其余 ${more.length} 条</button>`;
+  }
+  return html;
 }
 
 export function renderSourceContent(

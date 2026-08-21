@@ -146,8 +146,17 @@ export function renderCryptoWidgets(t: TradingSection): string {
   return `<div class="crypto-widgets">${items.join("")}</div>`;
 }
 
+/** 商机 tag 色系（2026-08-21 重构 #6：统一 cmb 红及衍生色系，业务线可辨识） */
+function tagClsOf(tag: string): string {
+  if (/财富|私行/.test(tag)) return "t-wealth";
+  if (/代发|客群/.test(tag)) return "t-mass";
+  if (/政银|住房|监管|政策/.test(tag)) return "t-policy";
+  return "";
+}
+
 /**
- * 执行摘要板块：今日必读 + 商机提示（页面顶部横幅）。
+ * 执行摘要板块：今日必读 + 商机洞察（页面顶部横幅）。
+ * 2026-08-21 重构 #5/#6：商机洞察默认展开（去折叠）；insights 带业务线中文 tag。
  */
 export function renderExecutiveSummary(exec: ExecutiveSummary): string {
   const must = exec.must_read
@@ -164,35 +173,83 @@ export function renderExecutiveSummary(exec: ExecutiveSummary): string {
     .join("");
   const insights = exec.insights
     .map(
-      (it) => `<div class="insight-card">
-        <h4 class="insight-topic">${escapeHtml(it.topic)}</h4>
-        <p class="insight-impact"><span class="tag">影响</span>${escapeHtml(it.impact)}</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>${escapeHtml(it.action)}</p>
-      </div>`,
+      (it) => `<article class="insight">
+        ${(it.tag ?? []).length > 0
+          ? `<div class="insight-tags">${(it.tag ?? [])
+              .map((t) => `<span class="tag ${tagClsOf(t)}">${escapeHtml(t)}</span>`)
+              .join("")}</div>`
+          : ""}
+        <h3>${escapeHtml(it.topic)}</h3>
+        <p><b>影响：</b>${escapeHtml(it.impact)}</p>
+        <p><b>建议：</b>${escapeHtml(it.action)}</p>
+      </article>`,
     )
     .join("");
-  const n = exec.insights.length;
-  const showLabel = `查看 ${n} ${STR.execInsightsShow}`;
   return `<section class="exec-summary">
     <div class="exec-head">
       <h2 class="exec-title">执行摘要</h2>
-      <span class="exec-sub">今日必读 · 商机提示（AI 生成）</span>
+      <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
     </div>
     <div class="exec-must">
       <h3 class="exec-col-title">📌 今日必读</h3>
       <ul class="must-scroller">${must}</ul>
     </div>
     <div class="exec-insights">
-      <button class="insight-toggle" type="button" aria-expanded="false" aria-controls="exec-insights-body" data-show="${showLabel}" data-hide="${STR.execInsightsHide}">
-        <span class="insight-toggle-label">${showLabel}</span>
-        <span class="insight-caret" aria-hidden="true">▾</span>
-      </button>
-      <div class="insight-collapse" id="exec-insights-body">
-        <h3 class="exec-col-title">💡 商机提示</h3>
-        <div class="insight-grid">${insights}</div>
-      </div>
+      <h3 class="exec-col-title">💡 商机洞察（默认展开）</h3>
+      <div class="insight-grid">${insights}</div>
     </div>
   </section>`;
+}
+
+/**
+ * 市场总览卡（2026-08-21 重构 #17/#18/#19）：用 tickers 结构化渲染 A股/汇率/商品/海外
+ * 四条 bullet，替代 300 字技术流长文；不渲染货币符号（修 $4.70/$16.01 bug）。
+ * 行情语言规则化人话化：多头/空头/中性 + RSI 超买/超卖 + 52周位次。
+ */
+export function renderMarketOverview(trading: TradingSection, date: string): string {
+  const tickers = trading.tickers ?? [];
+  if (tickers.length === 0) return "";
+  const fmtPct = (v?: number): string =>
+    v === undefined || Number.isNaN(v) ? "" : `${v > 0 ? "+" : ""}${v.toFixed(1)}%`;
+  const trendLabel = (t: TickerAnalysis): string =>
+    t.trend === "bullish" ? "多头排列" : t.trend === "bearish" ? "空头排列" : "方向待定";
+  const rsiLabel = (t: TickerAnalysis): string =>
+    t.rsiState === "overbought" ? "RSI 超买" : t.rsiState === "oversold" ? "深度超卖" : "RSI 中性";
+  const pos52 = (t: TickerAnalysis): string => {
+    if (t.pct52WeekHigh === undefined || Number.isNaN(t.pct52WeekHigh)) return "";
+    return t.pct52WeekHigh > -3 ? "贴近52周高位" : "远离52周高位";
+  };
+  const cnEq = tickers.filter((t) => t.group === "china-equity");
+  const fx = tickers.filter((t) => /CNY|CNH/.test(t.symbol));
+  const comm = tickers.filter((t) => t.group === "commodity-fx" && !/CNY|CNH/.test(t.symbol));
+  const oseas = tickers.filter((t) => t.group === "macro" || t.group === "us-equity");
+  const bullets: string[] = [];
+  if (cnEq.length) {
+    bullets.push(`<li><b>A股：</b>${cnEq
+      .map((t) => `${t.displayName} ${t.currentPrice?.toFixed(0) ?? ""}（${fmtPct(t.pct1Day)}，${trendLabel(t)}）`)
+      .join("；")}</li>`);
+  }
+  if (fx.length) {
+    bullets.push(`<li><b>汇率：</b>${fx
+      .map((t) => `${t.displayName} ${t.currentPrice?.toFixed(2) ?? ""}（${fmtPct(t.pct1Day)}，${rsiLabel(t)}，${pos52(t)}）`)
+      .join("；")}</li>`);
+  }
+  if (comm.length) {
+    bullets.push(`<li><b>商品：</b>${comm
+      .map((t) => `${t.displayName} ${t.currentPrice?.toFixed(2) ?? ""}（5日${fmtPct(t.pct5Day)}，${rsiLabel(t)}）`)
+      .join("；")}</li>`);
+  }
+  if (oseas.length) {
+    bullets.push(`<li><b>海外：</b>${oseas
+      .map((t) => `${t.displayName} ${t.currentPrice?.toFixed(2) ?? ""}（单日${fmtPct(t.pct1Day)}${t.symbol.includes("VIX") ? "" : `，${pos52(t)}`}）`)
+      .join("；")}</li>`);
+  }
+  if (bullets.length === 0) return "";
+  return `<section class="brief market-card">
+  <div class="bm"><span class="src-badge src-official">市场</span><span>截至 ${escapeHtml(date)}</span></div>
+  <h3>市场总览</h3>
+  <ul class="market-bullets">${bullets.join("")}</ul>
+</section>`;
 }
 
 export function renderTradingPanel(trading: TradingSection): string {

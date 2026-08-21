@@ -86,7 +86,7 @@ test("#33 LLM 候选清单：RULES 含全国三项业务线标签 + 更新口诀
   );
 });
 
-test("#33 端到端：cn-* 与 gz-* 文章合并进 gz-all，官方/媒体 tab 展现", () => {
+test("#33/#9 端到端：gz-all 文章按广州锚拆分为 广州本地 / 业务启示（2026-08-21 重构单层 tab）", () => {
   const raw = emptyRaw();
   raw.gz = [
     {
@@ -107,16 +107,12 @@ test("#33 端到端：cn-* 与 gz-* 文章合并进 gz-all，官方/媒体 tab �
     },
   ];
   const html = renderHtml(report(), raw, REPORT_DATE);
-  assert.ok(
-    html.includes('data-sub="gz-all"') || html.includes('data-sub-content="gz-all"'),
-    "应渲染 广州商机 子标签",
-  );
-  assert.ok(html.includes("广州商机"), "子标签应显示中文名 广州商机");
-  // 面板内官方/媒体 tab（#43 结构）：官方 tab 含 T1 条目、媒体 tab 含 T2 条目
-  assert.ok(html.includes("官方 / 政府一手来源"), "应渲染 官方 tab");
-  assert.ok(html.includes("媒体 / 智库解读"), "应渲染 媒体 tab");
-  const officialPanel = html.split('data-band-panel="official"')[1]?.split('data-band-panel="media"')[0] ?? "";
-  const mediaPanel = html.split('data-band-panel="media"')[1] ?? "";
-  assert.ok(officialPanel.includes("广州市政府发布金融支持政策"), "T1 官方文章应在官方 tab");
-  assert.ok(mediaPanel.includes("全国理财市场规模突破新高") && mediaPanel.includes("全国消费贷利率下调"), "T2 全国文章应在媒体 tab");
+  // 单层 tab：广州本地 + 业务启示
+  assert.ok(html.includes('data-target="p-gz"') && html.includes("广州本地"), "应渲染 广州本地 tab");
+  assert.ok(html.includes('data-target="p-biz"') && html.includes("业务启示"), "应渲染 业务启示 tab");
+  // 广州锚文章进 广州本地 面板；全国文章进 业务启示 面板
+  const gzPanel = html.split('id="p-gz"')[1]?.split('id="p-biz"')[0] ?? "";
+  const bizPanel = html.split('id="p-biz"')[1]?.split('id="p-pol"')[0] ?? "";
+  assert.ok(gzPanel.includes("广州市政府发布金融支持政策"), "广州锚文章应在 广州本地 面板");
+  assert.ok(bizPanel.includes("全国理财市场规模突破新高") && bizPanel.includes("全国消费贷利率下调"), "全国文章应在 业务启示 面板");
 });

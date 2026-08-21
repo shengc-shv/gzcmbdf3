@@ -70,8 +70,8 @@ test("renderHtml: 文章卡片渲染关键 CSS class 与文本", () => {
     },
   ];
   const html = renderHtml(report(), raw, "2026-08-19");
-  assert.ok(html.includes('class="article"'), "卡片容器 class");
-  assert.ok(html.includes('class="article-title"'), "标题 class");
+  assert.ok(html.includes('class="brief"'), "卡片容器 class");
+  assert.ok(html.includes("<h3><a"), "标题 class");
   assert.ok(html.includes("广州房贷利率下调"), "文章标题文本");
   assert.ok(html.includes("https://x/u1"), "文章链接");
   assert.ok(html.includes("AI 摘要"), "摘要文本");
@@ -110,7 +110,7 @@ test("renderHtml: CSS class 清单快照（防渲染回归）", () => {
   toMatchSnapshot("render-zh-class-inventory", [...classes].sort().join("\n"));
 });
 
-test("renderHtml: 源等级 tier 角标差异化（T6）", () => {
+test("renderHtml: 源等级差异化来源徽章（2026-08-21 重构：tier-badge → src-badge）", () => {
   const raw = emptyRaw();
   raw.finance = [
     {
@@ -125,13 +125,13 @@ test("renderHtml: 源等级 tier 角标差异化（T6）", () => {
       ],
     },
   ];
-  // 无 tier → 不渲染角标
+  // 无 tier → 仍渲染默认媒体徽章（不渲染旧 tier-badge）
   assert.ok(!renderHtml(report(), raw, "2026-08-19").includes("tier-badge"));
-  // 带 tier=T1 → 出现角标 class 与中文标签
+  // 带 tier=T1 → 渲染官方徽章 src-official
   raw.finance[0].sources[0].items[0].tier = "T1";
   const html = renderHtml(report(), raw, "2026-08-19");
-  assert.ok(html.includes('class="tier-badge tier-T1"'), "应渲染 T1 角标 class");
-  assert.ok(html.includes("官方一手"), "应渲染 T1 中文标签");
+  assert.ok(html.includes('class="src-badge src-official"'), "应渲染 T1 官方徽章");
+  assert.ok(html.includes(">官方<"), "应渲染 官方 徽章文案");
 });
 
 test("技术动态 sub-tab 计数与内容口径一致：只算最近 3 天（统一展示窗口）", () => {

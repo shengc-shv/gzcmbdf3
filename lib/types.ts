@@ -47,4 +47,6 @@ export interface TradingSection {
 
 export interface ArticleInput extends RawArticle {
   source: string;
+  /** 外文标题中文化（2026-08-21 重构 #20）：仅今日必读/商机洞察选中的条目由主编回写中文标题 */
+  title_cn?: string;
 }
