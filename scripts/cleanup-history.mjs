@@ -33,6 +33,18 @@ function keyOf(e) {
   return `${src}|${title}|${t}`;
 }
 
+// 安全网（2026-08-21 固化）：无 publishedAt 且标题含「旧年份」（<= 今年-2）的条目视为陈旧内容，直接移除。
+// 背景：这类条目 lastSeenAt 近期（过 7 天窗口）但实为往年旧闻，曾人工清理（5d4ff47）。
+// 与 daily.ts 兜底（无 publishedAt 不进 AI）互补——本脚本是历史库的独立防线。
+// 阈值用 <= 今年-2（而非 < 今年）以保守处理：避免误删标题写「回顾2025」的当年新文。
+function hasStaleYearTitle(entry) {
+  if (entry.publishedAt) return false;
+  const years = String(entry.title || '').match(/\b(?:19|20)\d{2}\b/g);
+  if (!years) return false;
+  const floor = new Date().getFullYear() - 2;
+  return years.some((y) => Number(y) <= floor);
+}
+
 // 读取已有备份（对象或数组），返回 Map<key, entry>
 function loadBackup() {
   const map = new Map();
@@ -62,6 +74,7 @@ const dropped = [];
 if (isArray) {
   kept = [];
   for (const e of raw) {
+    if (hasStaleYearTitle(e)) { dropped.push(e); continue; } // 旧年份陈旧内容直接移除
     const t = tsOf(e);
     if (t !== null && t >= cutoff) kept.push(e);
     else dropped.push(e);
@@ -69,6 +82,7 @@ if (isArray) {
 } else {
   kept = {};
   for (const [k, e] of Object.entries(raw)) {
+    if (hasStaleYearTitle(e)) { dropped.push(e); continue; } // 旧年份陈旧内容直接移除
     const t = tsOf(e);
     if (t !== null && t >= cutoff) kept[k] = e;
     else dropped.push(e);
