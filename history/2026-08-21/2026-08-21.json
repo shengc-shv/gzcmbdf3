@@ -1,260 +1,16 @@
 {
-  "hero_headline": "",
-  "daily_overview": "",
-  "tech_briefs": [
-    {
-      "title": "派早报：华为发布 Pura X View、享界 G9 等多款新品",
-      "url": "https://sspai.com/post/113666",
-      "source": "少数派",
-      "summary": "派早报：华为发布Pura X View、享界G9等多款新品；消费电子新品发布，与银行零售业务无直接关联。",
-      "importance": 1
-    },
-    {
-      "title": "CFP 开放 | KCD 杭州站邀您共议 Agent 时代的云原生、可观测与大模型推理",
-      "url": "https://www.infoq.cn/article/LpNjOA7au7WIhTBmVcJo?utm_source=rss&utm_medium=article",
-      "source": "InfoQ 中国",
-      "summary": "KCD杭州站技术会议CFP开放，属开发者活动招募，与银行零售业务无关。",
-      "importance": 1
-    },
-    {
-      "title": "AI Infra 正在诞生自己的石油期货？GPU 不够买之后，华尔街开始交易算力",
-      "url": "https://www.infoq.cn/article/qaWyth5P4tZE1CQhhaGq?utm_source=rss&utm_medium=article",
-      "source": "InfoQ 中国",
-      "summary": "AI Infra算力开始被华尔街当作可交易资产，算力金融化趋势浮现，对分行科技金融与AI基础设施信贷布局有前沿参考。",
-      "importance": 1
-    },
-    {
-      "title": "CloudFlare 预览网页 WebMCP 自动支持功能",
-      "url": "https://www.infoq.cn/article/pKbwv6YkdSE1UdCiKl2F?utm_source=rss&utm_medium=article",
-      "source": "InfoQ 中国",
-      "summary": "CloudFlare预览网页WebMCP自动支持功能，属技术产品更新，与银行零售业务无直接关联。",
-      "importance": 1
-    },
-    {
-      "title": "你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践",
-      "url": "https://www.infoq.cn/article/CPidTC2YJ7AvlU7jUgiq?utm_source=rss&utm_medium=article",
-      "source": "InfoQ 中国",
-      "summary": "Coding Agent价值取决于对企业数据的理解，属AI工程实践，对分行AI应用与数据治理有参考。",
-      "importance": 1
-    }
-  ],
-  "finance_briefs": [
-    {
-      "title": "常州金融监管分局行政处罚信息公开表",
-      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642",
-      "source": "国家金融监督管理总局",
-      "summary": "常州金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
-      "importance": 1
-    },
-    {
-      "title": "中国人民银行行长潘功胜会见澳门银行公会代表团",
-      "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081919184870631/index.html",
-      "source": "中国人民银行",
-      "summary": "央行行长潘功胜会见澳门银行公会代表团，跨境金融合作动向，对分行跨境业务与区域合作有参考。",
-      "importance": 1
-    },
-    {
-      "title": "中澳（大利亚）两国央行续签双边本币互换协议",
-      "url": "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081915294182128/index.html",
-      "source": "中国人民银行",
-      "summary": "中澳两国央行续签双边本币互换协议，人民币国际化推进，对跨境人民币业务与外汇配置有参考。",
-      "importance": 1
-    },
-    {
-      "title": "国务院关于修改《住房公积金管理条例》的决定",
-      "url": "https://www.gov.cn/zhengce/content/202608/content_7078477.htm",
-      "source": "中国政府网·国务院政策",
-      "summary": "国务院修改《住房公积金管理条例》，公积金制度调整影响住房金融，对分行公积金业务与住房信贷有直接参考。",
-      "importance": 1
-    },
-    {
-      "title": "国家金融监督管理总局廊坊监管分局行政处罚信息公开表（廊金罚决字〔2026〕37号）",
-      "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268480",
-      "source": "国家金融监督管理总局",
-      "summary": "廊坊金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
-      "importance": 1
-    }
-  ],
-  "politics_briefs": [],
-  "gd_ipo_briefs": [
-    {
-      "title": "高凯技术 (688835)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483508.PDF",
-      "source": "上交所IPO公告",
-      "summary": "高凯技术（688835）公告披露，科创板公司动态，广东科技企业资本运作，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "马矿股份 (601123)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483441.PDF",
-      "source": "上交所IPO公告",
-      "summary": "马矿股份（601123）公告披露，沪市公司动态，可关注其公司金融与结算合作机会。",
-      "importance": 1
-    },
-    {
-      "title": "甘李药业 (603087)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225480319.PDF",
-      "source": "上交所IPO公告",
-      "summary": "甘李药业（603087）公告披露，生物医药上市公司动态，可关注医药行业客群金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "协昌科技 (301418)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225484911.PDF",
-      "source": "深交所IPO公告",
-      "summary": "协昌科技上市前股份流通核查意见披露，广东企业IPO进程推进，分行可关注其募资与结算合作机会。",
-      "importance": 1
-    },
-    {
-      "title": "电科思仪 (301689)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225483835.PDF",
-      "source": "深交所IPO公告",
-      "summary": "电科思仪（301689）公告披露，深市公司动态，可关注其资本运作与金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "贝特利 (301697)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-20/1225482235.PDF",
-      "source": "深交所IPO公告",
-      "summary": "贝特利（301697）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "真兰仪表 (301303)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481620.PDF",
-      "source": "深交所IPO公告",
-      "summary": "真兰仪表（301303）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "绿控传动 (301655)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225481019.PDF",
-      "source": "深交所IPO公告",
-      "summary": "绿控传动（301655）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "英特科技 (301399)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479686.PDF",
-      "source": "深交所IPO公告",
-      "summary": "英特科技（301399）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "波长光电 (301421)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479343.PDF",
-      "source": "深交所IPO公告",
-      "summary": "波长光电（301421）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "和泰机电 (001225)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479214.PDF",
-      "source": "深交所IPO公告",
-      "summary": "和泰机电（001225）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "格林生物 (301688)",
-      "url": "https://static.cninfo.com.cn/finalpage/2026-08-19/1225479054.PDF",
-      "source": "深交所IPO公告",
-      "summary": "格林生物（301688）公告披露，深市公司动态，可关注其金融服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "千岸科技 (920065)",
-      "url": "https://www.bse.cn/disclosure/2026/2026-08-20/064acdc191f94de5bc8eb23d635a1513.pdf",
-      "source": "北交所IPO公告",
-      "summary": "千岸科技（920065）变更注册资本及修订章程，公司治理动态，提示广东企业上市后持续综合服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "中诚咨询 (920003)",
-      "url": "https://www.bse.cn/disclosure/2026/2026-08-20/2ee05ed4d39d4e10ab07c4ccfc45f41b.pdf",
-      "source": "北交所IPO公告",
-      "summary": "中诚咨询（920003）变更注册资本及修订章程公告，公司治理动态，提示广东企业上市后持续综合服务需求。",
-      "importance": 1
-    },
-    {
-      "title": "珈凯生物 (920165)",
-      "url": "https://www.bse.cn/disclosure/2026/2026-08-20/d9b4c8261b334554b5ae168651b40d98.pdf",
-      "source": "北交所IPO公告",
-      "summary": "北交所公司珈凯生物(920165)披露公告；北交所挂牌公司动态，供广东地区IPO与北交所投资参考。",
-      "importance": 1
-    },
-    {
-      "title": "CITIC (00267) — Announcement - 2026 Interim Results Announcement of CITIC Securities Company Limited",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001159.pdf",
-      "source": "港交所IPO公告",
-      "summary": "中信股份（00267.HK）发布2026年中期业绩公告，香港上市中资企业动态，可关注其金融板块业绩对行业参考。",
-      "importance": 1
-    },
-    {
-      "title": "PING AN, PING AN-R (02318, 82318) — Announcement of Unaudited Results for the Six Months Ended June 30, 2026",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082000761.pdf",
-      "source": "港交所IPO公告",
-      "summary": "中国平安（02318.HK）发布未经审计中期业绩公告，综合金融龙头业绩，对保险银行板块与财富配置参考。",
-      "importance": 1
-    },
-    {
-      "title": "GREENTECH INTL (00195) — Cancellation of listing",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082000517.pdf",
-      "source": "港交所IPO公告",
-      "summary": "格林国际控股（00195.HK）取消上市地位公告，港股退市动态，提示港股风险与投资者保护，可作风险教育素材。",
-      "importance": 1
-    },
-    {
-      "title": "TONTINE WINES (00389) — TERMINATION OF PLACING AGREEMENT IN RELATION TO PLACING OF\nNEW SHARES UNDER GENERAL MANDATE",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001841.pdf",
-      "source": "港交所IPO公告",
-      "summary": "TONTINE WINES(00389)公告终止配售协议；港股公司资本运作动态，反映再融资市场变化，供关注港股融资环境参考。",
-      "importance": 1
-    },
-    {
-      "title": "ENVISION GREEN (01783) — (1) COMPLETION OF PLACING OF EXISTING SHARES AND TOP-UP\nSUBSCRIPTION OF NEW SHARES UNDER GENERAL MANDATE;\n(2) COMPLETION OF THE CONCURRENT ISSUE OF RMB472.00 MILLION\nUSD SETTLED 5.00 PER CENT. GUARANTEED CONVERTIBLE BONDS DUE\n2027 BY A SUBSIDIARY UNDER GENERAL MANDATE; AND\n(3) SUPPLEMENTAL INFORMATION ON USE OF PROCEEDS FROM THE\nPLACING AND THE CB SUBSCRIPTION",
-      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0820/2026082001571.pdf",
-      "source": "港交所IPO公告",
-      "summary": "远景绿色(01783)公告完成配售现有股份；港股再融资落地，体现机构配置动向，可关注新能源板块港股融资活跃度。",
-      "importance": 1
-    }
-  ],
-  "editor_note": "",
-  "keywords": [],
+  "date": "2026-08-21",
+  "hero_line": "今日暂无可推送重点，详见各板块资讯。",
+  "must_read": [],
+  "insights": [],
+  "sections": {
+    "gz_local": [],
+    "biz_insight": [],
+    "policy_market": [],
+    "tech": [],
+    "ipo": []
+  },
   "trading": {
-    "market_overview": "本期覆盖美股、加密、中概A股与商品外汇四类资产，技术面分化显著。加密板块动量最强：BTC 5日涨19.5%、ETH 5日涨25.71%，RSI分别高达83.1与85.3，MACD均呈金叉扩张；与加密恐慌贪婪指数72（贪婪）、总市值2.55万亿美元及24小时增3.87%的背景相互印证。美股中性偏整理：SPY维持多头排列、距52周高仅2.15%，但MACD死叉、5日跌1.96%。中概A股承压：上证指数均线空头排列，沪深300贴近52周高但方向待定。商品外汇分化：黄金RSI 72超买、5日涨5.04%；原油多头排列，MACD线1.24高于信号线0.64；美元/人民币RSI 20.8深度超卖且贴近52周低。宏观面，VIX单日涨7.52%至16.01仍处低位，10年期美债收益率4.7%贴近52周高。综合看，上行setup集中在加密与商品，下行setup集中于汇率与A股，美股多空交织。",
-    "watchlist": [
-      {
-        "symbol": "BTC-USD",
-        "display_name": "比特币（BTC-USD）",
-        "stance": "偏上行",
-        "rationale": "现价75312.47高于SMA20（64705.14）、SMA50（64279.15）与SMA200（68986.76），5日涨19.5%、1日涨8.73%；MACD线1192.55远高于信号线239.44，金叉扩张，RSI 83.1进入超买。技术setup偏上行，但超买程度较高。"
-      },
-      {
-        "symbol": "ETH-USD",
-        "display_name": "以太坊（ETH-USD）",
-        "stance": "偏上行",
-        "rationale": "现价2364.58站上SMA200（2003.75）与SMA50（1877.93），5日涨25.71%、1日涨5.02%；MACD线68.96高于信号线27.73，金叉扩张，RSI 85.3极端超买。距52周低点反弹56.96%，技术setup偏上行但短线过热。"
-      },
-      {
-        "symbol": "USDCNY=X",
-        "display_name": "美元/人民币（USDCNY=X）",
-        "stance": "偏下行",
-        "rationale": "现价6.72低于SMA20（6.75）、SMA50（6.77）与SMA200（6.88），均线空头排列；RSI 20.8深度超卖，距52周低点仅0.16%，1日跌0.11%、5日跌0.32%。技术setup偏下行，超卖区间或伴随修复波动。"
-      },
-      {
-        "symbol": "000001.SS",
-        "display_name": "上证指数（000001.SS）",
-        "stance": "偏下行",
-        "rationale": "现价3887.8低于SMA20（3891.5）、SMA50（3966.22）与SMA200（4015.08），呈空头排列；RSI 45.8处50下方，5日跌1%。MACD -5.659高于信号线-11.30，负值区间动能边际改善。整体技术setup偏下行但斜率略有钝化。"
-      },
-      {
-        "symbol": "SPY",
-        "display_name": "标普500（SPY）",
-        "stance": "中性",
-        "rationale": "现价762.6高于SMA200（707.13），距52周高仅2.15%，中期多头排列未破坏；但MACD线6.23已低于信号线6.79形成死叉，1日跌0.84%、5日跌1.96%，RSI 51.7处中性。多空信号并存，技术状态中性。"
-      }
-    ],
-    "risk_caveat": "本报告仅基于当前公开行情的技术指标进行客观转述，不构成任何投资建议或涨跌预测。过去走势不代表未来表现，各类资产价格受多重因素影响可能剧烈波动。所有指标读数请谨慎参考，仅供技术指标解读参考。",
     "tickers": [
       {
         "symbol": "000001.SS",
@@ -262,18 +18,18 @@
         "group": "china-equity",
         "currency": "CNY",
         "exchangeName": "SHH",
-        "currentPrice": 3887.796,
-        "pct1Day": -0.40794276744550256,
-        "pct5Day": -1.0027814364756058,
-        "pct52WeekHigh": -8.712818421254697,
-        "pct52WeekLow": 4.151155688430248,
-        "sma20": 3891.5044189453124,
-        "sma50": 3966.220390625,
-        "sma200": 4015.083684082031,
-        "rsi14": 45.83158705557446,
-        "macd": -5.658964642811043,
-        "macdSignal": -11.3006070241911,
-        "macdHistogram": 5.641642381380057,
+        "currentPrice": 3905.203,
+        "pct1Day": 0.037965130048885375,
+        "pct5Day": -0.5595368363126126,
+        "pct52WeekHigh": -8.304094308739217,
+        "pct52WeekLow": 4.617476237931436,
+        "sma20": 3893.2779541015625,
+        "sma50": 3958.0363427734374,
+        "sma200": 4013.3116259765625,
+        "rsi14": 48.22512285645729,
+        "macd": 0.3601514716569909,
+        "macdSignal": -5.609001560249135,
+        "macdHistogram": 5.969153031906126,
         "trend": "bearish",
         "rsiState": "normal",
         "signals": [
@@ -289,18 +45,18 @@
         "group": "china-equity",
         "currency": "CNY",
         "exchangeName": "SHH",
-        "currentPrice": 4587.428,
-        "pct1Day": 0,
-        "pct5Day": 0,
-        "pct52WeekHigh": -0.11536937556875426,
-        "pct52WeekLow": 0.17835411729234085,
-        "sma20": null,
-        "sma50": null,
-        "sma200": null,
-        "rsi14": null,
-        "macd": null,
-        "macdSignal": null,
-        "macdHistogram": null,
+        "currentPrice": 4618.895,
+        "pct1Day": 1.9826212803337715,
+        "pct5Day": -1.6289391853569395,
+        "pct52WeekHigh": -0.21828691059481561,
+        "pct52WeekLow": 33.554290373694506,
+        "sma20": 4822.125732421875,
+        "sma50": 4855.11689453125,
+        "sma200": 4694.4800708007815,
+        "rsi14": 40.775983211647045,
+        "macd": -59.586806109734425,
+        "macdSignal": -30.18018211181346,
+        "macdHistogram": -29.406623997920967,
         "trend": "neutral",
         "rsiState": "normal",
         "signals": [
@@ -316,18 +72,18 @@
         "group": "commodity-fx",
         "currency": "CNY",
         "exchangeName": "CCY",
-        "currentPrice": 6.7219,
-        "pct1Day": -0.11293286427398375,
-        "pct5Day": -0.31735146313480495,
-        "pct52WeekHigh": -6.522132139231533,
-        "pct52WeekLow": 0.15943497437119938,
-        "sma20": 6.750839948654175,
-        "sma50": 6.7680339527130124,
-        "sma200": 6.881827983856201,
-        "rsi14": 20.808855022114372,
-        "macd": -0.011170135706697337,
-        "macdSignal": -0.00934468258411236,
-        "macdHistogram": -0.001825453122584978,
+        "currentPrice": 6.7192,
+        "pct1Day": -0.1530547169148223,
+        "pct5Day": -0.35000645018622756,
+        "pct52WeekHigh": -6.55967959504374,
+        "pct52WeekLow": 0.15502027188170375,
+        "sma20": 6.749219965934754,
+        "sma50": 6.767325963973999,
+        "sma200": 6.87993198633194,
+        "rsi14": 19.513369529550488,
+        "macd": -0.01107906036616324,
+        "macdSignal": -0.009324666116067241,
+        "macdHistogram": -0.0017543942500959989,
         "trend": "bearish",
         "rsiState": "oversold",
         "signals": [
@@ -351,18 +107,18 @@
         "group": "commodity-fx",
         "currency": "USD",
         "exchangeName": "CMX",
-        "currentPrice": 4583.7,
-        "pct1Day": 2.1005056289821544,
-        "pct5Day": 5.043998015811956,
-        "pct52WeekHigh": -17.946009809888654,
-        "pct52WeekLow": 36.85137636591627,
-        "sma20": 4253.724987792969,
-        "sma50": 4166.97400390625,
-        "sma200": 4495.887989501953,
-        "rsi14": 72.00876206012104,
-        "macd": 96.29005795902322,
-        "macdSignal": 62.77505567307916,
-        "macdHistogram": 33.51500228594406,
+        "currentPrice": 4639.9,
+        "pct1Day": 2.736757980154774,
+        "pct5Day": 5.924118880502283,
+        "pct52WeekHigh": -16.9399591851348,
+        "pct52WeekLow": 38.52928882784975,
+        "sma20": 4278.969958496094,
+        "sma50": 4176.259990234375,
+        "sma200": 4498.748986816407,
+        "rsi14": 74.26121359790383,
+        "macd": 106.03088217258028,
+        "macdSignal": 70.56595380903792,
+        "macdHistogram": 35.464928363542356,
         "trend": "neutral",
         "rsiState": "overbought",
         "signals": [
@@ -378,18 +134,18 @@
         "group": "commodity-fx",
         "currency": "USD",
         "exchangeName": "NYM",
-        "currentPrice": 86.87,
-        "pct1Day": 1.2116953824519539,
-        "pct5Day": 6.916923076923083,
-        "pct52WeekHigh": -27.293270840307997,
-        "pct52WeekLow": 58.00291014914516,
-        "sma20": 82.2544994354248,
-        "sma50": 79.13239990234375,
-        "sma200": 77.33704988479614,
-        "rsi14": 59.44804299415696,
-        "macd": 1.240196894197112,
-        "macdSignal": 0.642239145851822,
-        "macdHistogram": 0.59795774834529,
+        "currentPrice": 86.1,
+        "pct1Day": -1.9697162643608233,
+        "pct5Day": 4.490289327190182,
+        "pct52WeekHigh": -27.9377301640442,
+        "pct52WeekLow": 56.60240087304474,
+        "sma20": 82.14199943542481,
+        "sma50": 79.07299987792969,
+        "sma200": 77.46709987640381,
+        "rsi14": 57.0245261143239,
+        "macd": 1.4198731608782538,
+        "macdSignal": 0.8100189307451751,
+        "macdHistogram": 0.6098542301330787,
         "trend": "bullish",
         "rsiState": "normal",
         "signals": [
@@ -409,7 +165,7 @@
         "pct1Day": 0.9241376144081217,
         "pct5Day": 1.1850939115464405,
         "pct52WeekHigh": -1.074362755424482,
-        "pct52WeekLow": 18.976437800861405,
+        "pct52WeekLow": 0,
         "sma20": 4.669749975204468,
         "sma50": 4.5747599792480464,
         "sma200": 4.3255249893665315,
@@ -436,25 +192,25 @@
         "group": "macro",
         "currency": "USD",
         "exchangeName": "CXI",
-        "currentPrice": 16.01,
-        "pct1Day": 7.521824250188808,
-        "pct5Day": 9.432671734547146,
-        "pct52WeekHigh": -54.64589235127478,
-        "pct52WeekLow": 19.65620328849029,
-        "sma20": 16.311499977111815,
-        "sma50": 17.11619997024536,
-        "sma200": 18.50655005455017,
-        "rsi14": 49.40613290723232,
-        "macd": -0.5683200683140281,
-        "macdSignal": -0.5707910999934489,
-        "macdHistogram": 0.0024710316794207543,
+        "currentPrice": 15.78,
+        "pct1Day": -1.4366035327527298,
+        "pct5Day": 10.736842105263152,
+        "pct52WeekHigh": -55.297450424929174,
+        "pct52WeekLow": 17.937219730941692,
+        "sma20": 16.035999917984007,
+        "sma50": 16.774999923706055,
+        "sma200": 18.481250042915345,
+        "rsi14": 48.61947055868163,
+        "macd": -0.48509473535436953,
+        "macdSignal": -0.5510459271356115,
+        "macdHistogram": 0.06595119178124198,
         "trend": "bearish",
         "rsiState": "normal",
         "signals": [
           {
             "type": "macd-bull-cross",
             "label": "MACD 金叉",
-            "daysAgo": 0
+            "daysAgo": 1
           },
           {
             "type": "below-sma50-sma200",
@@ -497,137 +253,8 @@
             "label": "多头排列"
           }
         ]
-      },
-      {
-        "symbol": "BTC-USD",
-        "displayName": "Bitcoin",
-        "group": "crypto",
-        "currency": "USD",
-        "exchangeName": "CCC",
-        "currentPrice": 75312.47,
-        "pct1Day": 8.72905340719092,
-        "pct5Day": 19.497472763800385,
-        "pct52WeekHigh": -40.32201126372218,
-        "pct52WeekLow": 30.416248483101487,
-        "sma20": 64705.140234375,
-        "sma50": 64279.1525,
-        "sma200": 68986.75931640626,
-        "rsi14": 83.11563707852507,
-        "macd": 1192.5523498120383,
-        "macdSignal": 239.43852933339807,
-        "macdHistogram": 953.1138204786403,
-        "trend": "neutral",
-        "rsiState": "overbought",
-        "signals": [
-          {
-            "type": "macd-bull-cross",
-            "label": "MACD 金叉",
-            "daysAgo": 2
-          },
-          {
-            "type": "rsi-overbought",
-            "label": "RSI 超买"
-          }
-        ]
-      },
-      {
-        "symbol": "ETH-USD",
-        "displayName": "Ethereum",
-        "group": "crypto",
-        "currency": "USD",
-        "exchangeName": "CCC",
-        "currentPrice": 2364.58,
-        "pct1Day": 5.0243882761734655,
-        "pct5Day": 25.714792599180146,
-        "pct52WeekHigh": -52.266704725507005,
-        "pct52WeekLow": 56.9579192431864,
-        "sma20": 1929.6820190429687,
-        "sma50": 1877.9309130859374,
-        "sma200": 2003.7504217529297,
-        "rsi14": 85.31072563697529,
-        "macd": 68.9595819856188,
-        "macdSignal": 27.730374047546235,
-        "macdHistogram": 41.22920793807256,
-        "trend": "neutral",
-        "rsiState": "overbought",
-        "signals": [
-          {
-            "type": "macd-bull-cross",
-            "label": "MACD 金叉",
-            "daysAgo": 1
-          },
-          {
-            "type": "rsi-overbought",
-            "label": "RSI 超买"
-          }
-        ]
       }
     ],
-    "crypto_fear_greed": {
-      "value": 72,
-      "classification": "Greed",
-      "classificationCn": "贪婪",
-      "timestamp": "2026-08-21T00:00:00.000Z"
-    },
-    "crypto_global": {
-      "totalMarketCapUsd": 2545109342571.7188,
-      "total24hVolumeUsd": 135681924246.75381,
-      "marketCapChangePct24h": 3.8693590621672094,
-      "btcDominance": 59.23409442267632,
-      "ethDominance": 11.183633783326153,
-      "activeCryptocurrencies": 18518
-    },
-    "generated_at": "2026-08-21T01:58:10.758Z"
-  },
-  "executive_summary": {
-    "must_read": [
-      {
-        "title": "8月LPR不变，房贷或续降",
-        "why": "LPR维持不变但年内下调预期升温，影响按揭存量竞争与提前还贷节奏，需动态调整广州分行房贷定价与客户经营策略。"
-      },
-      {
-        "title": "公积金条例修改",
-        "why": "国务院修改住房公积金管理条例，直接影响广州公积金贷款及缴存业务，需及时评估制度调整对住房金融结构的影响。"
-      },
-      {
-        "title": "加密资产疯涨，风险积聚",
-        "why": "加密市场五日大涨超20%且严重超买，居民另类投资偏好升温，需警惕传导至理财代销端的风险与合规挑战。"
-      },
-      {
-        "title": "定存利率‘一条直线’",
-        "why": "各期限定存利率趋同，客户定期收益预期走低，存款留存压力上升，需加快引导客户转向中长期理财与保险配置。"
-      },
-      {
-        "title": "黄金新底仓，客群避险升",
-        "why": "黄金作为多极时代底仓价值凸显，叠加金价五日涨超5%且超买，客户避险与保值需求上升，需做好贵金属供给与风险提示。"
-      }
-    ],
-    "insights": [
-      {
-        "topic": "存款利率扁平化",
-        "impact": "客户定存收益预期走低，可能出现存款搬家，需以财富配置承接资金；息差收窄下中收重要性提升。",
-        "action": "在网点主推中长期固收+理财与高价值期交保险，结合客户资金到期日开展定向营销，并加大保险服务场景渗透。"
-      },
-      {
-        "topic": "黄金资产配置",
-        "impact": "避险和保值需求上升，黄金作为底仓资产受关注；金价高位波动，贵金属代销空间与风险并存，需把握节奏。",
-        "action": "加大积存金与黄金基金配置推介，针对高净值客户做黄金定投与实物金组合方案，并提示回调风险。"
-      },
-      {
-        "topic": "房贷下调预期",
-        "impact": "LPR年内下调预期将影响按揭客户行为，或加剧提前还贷与定价竞争，需平衡规模与收益并提升客户综合贡献。",
-        "action": "动态调整按揭利率审批策略，对已提前还贷客户交叉营销消费贷、代发工资和财富产品，提升客户综合贡献。"
-      },
-      {
-        "topic": "硬科技投资热",
-        "impact": "宇树科技IPO暴涨显示硬科技资本热度，高净值客户对一级市场投资兴趣提升，可能带动私行业务与企业服务机会。",
-        "action": "联合合作机构推科技主题资管产品，主动对接本地智能产业链企业，关注融资与员工持股需求并设计公私联动方案。"
-      },
-      {
-        "topic": "涉房风险与地产债",
-        "impact": "恒大境外债处置复杂化，涉房资产质量承压，客户对地产类投资风险偏好下降，需动态应对并重检存量。",
-        "action": "排查存量对公和零售涉房业务担保物，代销端提示地产债风险；开展私行客户持仓重检与稳健替代配置，加强贷后监控。"
-      }
-    ]
+    "generated_at": "2026-08-21T08:57:53.082Z"
   }
 }

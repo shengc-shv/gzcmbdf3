@@ -12,8 +12,7 @@
       "source": "MIT Tech Review AI",
       "fetchedToday": false,
       "subcategory": "overseas-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "mit-tech-review-ai",
@@ -26,8 +25,7 @@
       "source": "MIT Tech Review AI",
       "fetchedToday": false,
       "subcategory": "overseas-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "mit-tech-review-ai",
@@ -40,8 +38,7 @@
       "source": "MIT Tech Review AI",
       "fetchedToday": false,
       "subcategory": "overseas-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "mit-tech-review-ai",
@@ -54,8 +51,7 @@
       "source": "MIT Tech Review AI",
       "fetchedToday": false,
       "subcategory": "overseas-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -68,8 +64,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -82,8 +77,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -96,8 +90,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -110,8 +103,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -124,8 +116,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cnbc-top",
@@ -138,8 +129,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -152,8 +142,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -165,8 +154,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -178,8 +166,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -191,8 +178,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -203,9 +189,11 @@
       "summary": "中国平安中期成绩单：寿险稳、银行回血、产险增收不增利，综合金融同业经营样本，对分行协同经营有参考。",
       "source": "新浪财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -217,8 +205,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -230,8 +217,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -243,8 +229,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -256,8 +241,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -269,8 +253,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -282,8 +265,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -294,9 +276,11 @@
       "summary": "二季度人身险公司偿付能力透视：权益投资成「胜负手」，保险资金配置动向对财富端权益与固收配置参考。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -307,9 +291,11 @@
       "summary": "上海「沪八条」推进收购二手住房用作保障性租赁住房，一线楼市政策持续加码，对广州房贷与住房金融预期有参考。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -321,8 +307,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -334,8 +319,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -347,8 +331,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cctv-finance",
@@ -360,8 +343,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -373,8 +355,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
@@ -386,8 +367,7 @@
       "source": "央视财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cctv-finance",
@@ -398,9 +378,11 @@
       "summary": "险企起诉代理人追讨百万佣金，保险销售进入「责任绑定」时代，分行代销保险业务需强化销售合规与责任追溯。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "govcn-policy",
@@ -413,8 +395,7 @@
       "source": "中国政府网·国务院政策",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": false,
-      "tier": "T1"
+      "relevant": false
     },
     {
       "sourceId": "govcn-policy",
@@ -427,8 +408,7 @@
       "source": "中国政府网·国务院政策",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -441,8 +421,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-ipo",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -455,8 +434,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -469,8 +447,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -483,8 +460,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -497,8 +473,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-money",
@@ -511,8 +486,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -525,8 +499,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -539,8 +512,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -553,8 +525,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -567,8 +538,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -581,8 +551,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -595,8 +564,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-credit",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -608,9 +576,11 @@
       "summary": "LPR连续15个月按兵不动，年内降息预期分歧，对分行房贷定价与信贷投放节奏判断有参考。",
       "source": "证券时报",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -623,8 +593,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-credit",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -637,8 +606,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -651,8 +619,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -665,8 +632,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": false,
       "subcategory": "gz-credit",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "infoq-cn",
@@ -679,8 +645,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -693,8 +658,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "infoq-cn",
@@ -707,8 +671,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -721,8 +684,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "infoq-cn",
@@ -735,8 +697,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -749,8 +710,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -763,8 +723,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -777,8 +736,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -791,8 +749,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "infoq-cn",
@@ -805,8 +762,7 @@
       "source": "InfoQ 中国",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -819,8 +775,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -833,8 +788,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -847,8 +801,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "qbitai",
@@ -861,8 +814,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -875,8 +827,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -889,8 +840,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "qbitai",
@@ -903,8 +853,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -917,8 +866,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "qbitai",
@@ -931,8 +879,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "qbitai",
@@ -945,8 +892,7 @@
       "source": "量子位",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -959,8 +905,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -973,8 +918,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -987,8 +931,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1001,8 +944,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1015,8 +957,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1029,8 +970,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1043,8 +983,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1057,8 +996,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1071,8 +1009,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sspai",
@@ -1085,8 +1022,7 @@
       "source": "少数派",
       "fetchedToday": false,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "fed-press",
@@ -1099,8 +1035,7 @@
       "source": "Federal Reserve Press Releases",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -1113,8 +1048,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": false,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -1127,8 +1061,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": false,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -1141,8 +1074,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": false,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-sse",
@@ -1155,8 +1087,7 @@
       "source": "上交所IPO公告",
       "fetchedToday": false,
       "subcategory": "sse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-sse",
@@ -1169,8 +1100,7 @@
       "source": "上交所IPO公告",
       "fetchedToday": false,
       "subcategory": "sse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-sse",
@@ -1183,8 +1113,7 @@
       "source": "上交所IPO公告",
       "fetchedToday": false,
       "subcategory": "sse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1197,8 +1126,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1211,8 +1139,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1225,8 +1152,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1239,8 +1165,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1253,8 +1178,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1267,8 +1191,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1281,8 +1204,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1295,8 +1217,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-szse",
@@ -1309,8 +1230,7 @@
       "source": "深交所IPO公告",
       "fetchedToday": false,
       "subcategory": "szse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-bse",
@@ -1323,8 +1243,7 @@
       "source": "北交所IPO公告",
       "fetchedToday": false,
       "subcategory": "bse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-bse",
@@ -1337,8 +1256,7 @@
       "source": "北交所IPO公告",
       "fetchedToday": false,
       "subcategory": "bse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gz-gov",
@@ -1351,8 +1269,7 @@
       "source": "广州市政府",
       "fetchedToday": false,
       "subcategory": "gz-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1365,8 +1282,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1379,8 +1295,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1393,8 +1308,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1407,8 +1321,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1421,8 +1334,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1435,8 +1347,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1449,8 +1360,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1463,8 +1373,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1476,9 +1385,11 @@
       "summary": "商品市场贵金属集体大涨、农产品延续强势，通胀与避险情绪升温，财富端可关注黄金等大宗商品配置机会。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1491,8 +1402,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1505,8 +1415,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1519,8 +1428,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1533,8 +1441,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1547,8 +1454,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1561,8 +1467,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1575,8 +1480,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1589,8 +1493,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1603,8 +1506,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1617,8 +1519,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1630,9 +1531,11 @@
       "summary": "上海「沪八条」更趋精细化差异化、蓄势金九银十，一线楼市政策持续细化，对广州房贷与改善型按揭预期有参考。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1645,8 +1548,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1658,9 +1560,11 @@
       "summary": "上海优化房地产政策措施、精准施策促进合理购房需求，一线楼市宽松延续，对广州房贷预期与改善型需求有参考。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1673,8 +1577,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1687,8 +1590,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1701,8 +1603,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1715,8 +1616,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1729,8 +1629,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1743,8 +1642,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1757,8 +1655,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1771,8 +1668,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1785,8 +1681,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -1799,8 +1694,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1813,8 +1707,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1827,8 +1720,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1841,8 +1733,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1855,8 +1746,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1869,8 +1759,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1883,8 +1772,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1897,8 +1785,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1911,8 +1798,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1925,8 +1811,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1939,8 +1824,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -1953,8 +1837,7 @@
       "source": "新华财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -1967,8 +1850,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -1981,8 +1863,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -1995,8 +1876,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2009,8 +1889,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2023,8 +1902,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2037,8 +1915,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2050,9 +1927,11 @@
       "summary": "上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。",
       "source": "证券时报",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2065,8 +1944,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2079,8 +1957,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2093,8 +1970,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2107,8 +1983,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2121,8 +1996,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2135,8 +2009,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2149,8 +2022,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2163,8 +2035,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2177,8 +2048,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2191,8 +2061,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2205,8 +2074,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2219,8 +2087,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2233,8 +2100,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2247,8 +2113,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2261,8 +2126,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -2275,8 +2139,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2289,8 +2152,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -2303,8 +2165,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2316,9 +2177,11 @@
       "summary": "中行张兴荣：大型银行发展资管业务意义重大，银行资管转型方向，对分行财富管理与资管布局有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2330,8 +2193,7 @@
       "summary": "监管持续整治虚增存贷款，分行应严守存贷真实性合规红线，防范规模冲动与考核违规。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "tier": "T2"
+      "subcategory": "cn-finance"
     },
     {
       "sourceId": "sina-bank",
@@ -2344,8 +2206,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2358,8 +2219,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2372,8 +2232,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2386,8 +2245,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2400,8 +2258,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
@@ -2414,8 +2271,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2427,9 +2283,11 @@
       "summary": "五年期大额存单回归、中小银行上调存款利率打响留客战，存款竞争加剧，分行应关注负债端定价与客户留存。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2441,9 +2299,11 @@
       "summary": "提前还贷挤压信贷，前7个月居民贷款同比多减1.5万亿，居民信贷需求偏弱，分行应加强按揭与消费贷获客。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2455,9 +2315,11 @@
       "summary": "小贷公司利率上限降至12%，普惠金融竞争加剧，对分行普惠小微定价与客群经营有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2470,8 +2332,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2484,8 +2345,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
@@ -2498,8 +2358,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2512,8 +2371,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2526,8 +2384,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2539,9 +2396,11 @@
       "summary": "晋商消金增资至10亿元获批，消费金融行业增资赛，对消金竞争格局与分行消费信贷合作有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2554,8 +2413,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2568,8 +2426,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2582,8 +2439,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2596,8 +2452,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2610,8 +2465,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -2623,9 +2477,11 @@
       "summary": "银行业内首现1年、2年、3年定存利率持平，存款期限溢价消失，对分行负债端定价与客户存款结构有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "guancha",
@@ -2638,8 +2494,7 @@
       "source": "观察者网·金融",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guancha",
@@ -2651,9 +2506,11 @@
       "summary": "汇丰启动存量排查、内地投资客户面临合规限制，跨境财富管理合规趋严，分行跨境业务应强化合规审查。",
       "source": "观察者网·金融",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "nfra",
@@ -2666,8 +2523,7 @@
       "source": "国家金融监督管理总局",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "nfra",
@@ -2680,8 +2536,7 @@
       "source": "国家金融监督管理总局",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "pbc",
@@ -2694,8 +2549,7 @@
       "source": "中国人民银行",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "pbc",
@@ -2708,8 +2562,7 @@
       "source": "中国人民银行",
       "fetchedToday": false,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2722,8 +2575,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2736,8 +2588,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2749,9 +2600,11 @@
       "summary": "美元储备占比降至57%、人民币创3年半新高，美元信用稀释强化黄金重估逻辑，分行可关注外汇与黄金类财富产品营销窗口。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2764,8 +2617,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2778,8 +2630,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2792,8 +2643,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2806,8 +2656,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2820,8 +2669,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2834,8 +2682,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2847,9 +2694,11 @@
       "summary": "8月LPR报价出炉：5年期和1年期均维持不变，LPR连续按兵不动，对房贷定价与信贷环境判断有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2862,8 +2711,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2876,8 +2724,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2889,9 +2736,11 @@
       "summary": "监管支持险资参与南向ETF通、呼吁放松债券ETF，保险资金跨境配置政策动向，对财富端跨境产品布局有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2903,9 +2752,11 @@
       "summary": "江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2918,8 +2769,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2932,8 +2782,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cls",
@@ -2945,9 +2794,11 @@
       "summary": "农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-private",
+      "subcategories": [
+        "cn-private"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2959,9 +2810,11 @@
       "summary": "宇树科技首日暴涨456%、信托自营揽收、理财斩获浮盈，新股赚钱效应强，财富端可关注打新与科技主题配置。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2974,8 +2827,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -2988,8 +2840,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3002,8 +2853,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3016,8 +2866,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3030,8 +2879,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3043,9 +2891,11 @@
       "summary": "基金投顾申报冲刺、20多家券商等拿业务牌照，基金投顾扩容提速，对分行财富管理与投顾业务布局有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3058,8 +2908,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3072,8 +2921,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3086,8 +2934,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cls",
@@ -3100,8 +2947,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3113,9 +2959,11 @@
       "summary": "10余家银行系机构扎堆理财节、3家理财子首入券商IP，财富营销节点密集，分行可借鉴理财节营销打法。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3128,8 +2976,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3142,8 +2989,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3156,8 +3002,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3170,8 +3015,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3184,8 +3028,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3198,8 +3041,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3212,8 +3054,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3226,8 +3067,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3240,8 +3080,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3254,8 +3093,7 @@
       "source": "财联社",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -3267,9 +3105,11 @@
       "summary": "债市早参：国债做市支持操作、分红险崛起险资配债逻辑生变，债市与保险配置动态，对财富配置有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "ft-companies",
@@ -3282,8 +3122,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bloomberg-markets",
@@ -3296,8 +3135,7 @@
       "source": "Bloomberg Markets",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "bloomberg-markets",
@@ -3310,8 +3148,7 @@
       "source": "Bloomberg Markets",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "ft-companies",
@@ -3324,8 +3161,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3338,8 +3174,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3352,8 +3187,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3366,8 +3200,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3380,8 +3213,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3394,8 +3226,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3408,8 +3239,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ft-companies",
@@ -3422,8 +3252,7 @@
       "source": "Financial Times",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3436,8 +3265,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3450,8 +3278,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -3464,8 +3291,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3478,8 +3304,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3492,8 +3317,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3506,8 +3330,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3520,8 +3343,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3534,8 +3356,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -3548,8 +3369,7 @@
       "source": "BBC Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "economist-finance",
@@ -3562,8 +3382,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "economist-finance",
@@ -3576,8 +3395,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "economist-finance",
@@ -3590,8 +3408,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "economist-finance",
@@ -3604,8 +3421,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "economist-finance",
@@ -3618,8 +3434,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "economist-finance",
@@ -3632,8 +3447,7 @@
       "source": "The Economist Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "yahoo-finance",
@@ -3646,8 +3460,7 @@
       "source": "Yahoo Finance",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -3659,8 +3472,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -3672,8 +3484,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -3685,8 +3496,7 @@
       "source": "新浪财经",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -3699,8 +3509,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -3713,8 +3522,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "guardian-business",
@@ -3727,8 +3535,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "guardian-business",
@@ -3741,8 +3548,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "guardian-business",
@@ -3755,8 +3561,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -3769,8 +3574,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "guardian-business",
@@ -3783,8 +3587,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "guardian-business",
@@ -3797,8 +3600,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -3811,8 +3613,7 @@
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "ftchinese",
@@ -3825,8 +3626,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ftchinese",
@@ -3839,8 +3639,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ftchinese",
@@ -3853,8 +3652,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ftchinese",
@@ -3867,8 +3665,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "ftchinese",
@@ -3881,8 +3678,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "ftchinese",
@@ -3895,8 +3691,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "ftchinese",
@@ -3909,8 +3704,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ftchinese",
@@ -3923,8 +3717,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "ftchinese",
@@ -3937,8 +3730,7 @@
       "source": "FT中文网",
       "fetchedToday": false,
       "subcategory": "news",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "arxiv-fintech",
@@ -3951,8 +3743,7 @@
       "source": "arXiv 金融科技论文 (cs.AI·cs.LG·q-fin)",
       "fetchedToday": false,
       "subcategory": "overseas-tech",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -3965,8 +3756,7 @@
       "source": "证券时报",
       "fetchedToday": false,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -3979,8 +3769,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "mit-tech-review-ai",
@@ -3993,8 +3782,7 @@
       "source": "MIT Tech Review AI",
       "fetchedToday": true,
       "subcategory": "overseas-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -4007,8 +3795,7 @@
       "source": "CNBC Top Stories",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4020,8 +3807,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4033,8 +3819,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -4046,8 +3831,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -4059,8 +3843,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -4072,8 +3855,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4085,8 +3867,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -4098,8 +3879,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -4110,9 +3890,11 @@
       "summary": "股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -4124,9 +3906,11 @@
       "summary": "险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。",
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
-      "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -4139,8 +3923,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -4153,8 +3936,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -4167,8 +3949,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -4181,8 +3962,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -4195,8 +3975,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
@@ -4209,8 +3988,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "21jingji-finance",
@@ -4223,8 +4001,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": true,
       "subcategory": "gz-credit",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sspai",
@@ -4237,8 +4014,7 @@
       "source": "少数派",
       "fetchedToday": true,
       "subcategory": "cn-tech",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "fed-press",
@@ -4251,8 +4027,7 @@
       "source": "Federal Reserve Press Releases",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "fed-press",
@@ -4265,8 +4040,7 @@
       "source": "Federal Reserve Press Releases",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "fed-press",
@@ -4279,8 +4053,7 @@
       "source": "Federal Reserve Press Releases",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true,
-      "tier": "T1"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -4293,8 +4066,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": true,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -4307,8 +4079,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": true,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -4321,8 +4092,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": true,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-hkex",
@@ -4335,8 +4105,7 @@
       "source": "港交所IPO公告",
       "fetchedToday": true,
       "subcategory": "hkex",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "gd-bse",
@@ -4349,8 +4118,7 @@
       "source": "北交所IPO公告",
       "fetchedToday": true,
       "subcategory": "bse",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4363,8 +4131,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4377,8 +4144,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4390,9 +4156,11 @@
       "summary": "新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4405,8 +4173,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4419,8 +4186,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4433,8 +4199,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4447,8 +4212,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4461,8 +4225,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4475,8 +4238,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-policy",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4489,8 +4251,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4503,8 +4264,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4516,12 +4276,11 @@
       "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5",
-      "alsoFrom": [
-        "证券时报"
-      ]
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4533,9 +4292,11 @@
       "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4548,8 +4309,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4562,8 +4322,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4575,9 +4334,11 @@
       "summary": "上海优化个人住房信贷政策，部分区域二套房首付比例低至15%；一线城市房贷政策松绑，分行个人房贷业务可关注政策传导与客户需求释放。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -4590,8 +4351,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4604,8 +4364,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4618,8 +4377,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4632,8 +4390,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4646,8 +4403,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4660,8 +4416,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4674,8 +4429,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4688,8 +4442,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4702,8 +4455,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4716,8 +4468,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4729,9 +4480,11 @@
       "summary": "低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4744,8 +4497,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4758,8 +4510,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4772,8 +4523,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4786,8 +4536,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4799,9 +4548,11 @@
       "summary": "主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4814,8 +4565,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4828,8 +4578,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4842,8 +4591,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -4856,8 +4604,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -4870,8 +4617,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -4884,8 +4630,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
@@ -4898,8 +4643,7 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "guancha",
@@ -4911,9 +4655,11 @@
       "summary": "友邦香港第二季增速骤降至个位数、较首季21%明显放缓；香港保险销售降温，分行可关注保险代销与跨境财富配置趋势变化。",
       "source": "观察者网·金融",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "guancha",
@@ -4926,8 +4672,7 @@
       "source": "观察者网·金融",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cls",
@@ -4940,8 +4685,7 @@
       "source": "财联社",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -4953,9 +4697,11 @@
       "summary": "连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T1.5"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4966,9 +4712,11 @@
       "summary": "俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4979,9 +4727,11 @@
       "summary": "中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -4993,8 +4743,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -5006,8 +4755,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -5019,8 +4767,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
@@ -5032,8 +4779,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "sina-money",
@@ -5046,8 +4792,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
@@ -5060,8 +4805,7 @@
       "source": "新浪财经·理财保险",
       "fetchedToday": true,
       "subcategory": "gz-wealth",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
@@ -5074,8 +4818,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -5088,8 +4831,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T1.5"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5102,8 +4844,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5115,9 +4856,11 @@
       "summary": "30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -5130,8 +4873,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5144,8 +4886,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -5158,8 +4899,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5172,8 +4912,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -5186,8 +4925,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "stcn",
@@ -5200,8 +4938,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5214,8 +4951,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5228,8 +4964,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5242,8 +4977,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5256,8 +4990,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5270,8 +5003,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5284,8 +5016,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5298,8 +5029,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5312,8 +5042,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5326,8 +5055,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": false,
-      "tier": "T2"
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5340,8 +5068,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -5353,9 +5080,11 @@
       "summary": "LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -5367,9 +5096,11 @@
       "summary": "双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -5381,9 +5112,11 @@
       "summary": "市场热议年内是否还会降息、政策利率走向存分歧；降息预期影响存款与理财收益，分行可提前布局利率下行环境下的资产负债配置。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
@@ -5396,49 +5129,39 @@
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true,
-      "tier": "T2"
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
       "title": "27家中小金融机构获批解散 贵州农信改革迎来新进展",
       "url": "https://m.21jingji.com/article/20260821/herald/3625b81fe26bcda2ddcda94da428ee30.html",
       "excerpt": "【21财经】27家中小金融机构获批解散 贵州农信改革迎来新进展",
-      "category": "gz",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "gz",
+      "summary": "中小金融机构批量解散显示农信体系改革提速，区域金融风险持续出清。对分行而言，需关注同业生态变化，强化自身风控与合规经营，维护客户信心。",
       "source": "21世纪经济报道·金融",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "中小金融机构批量解散显示农信体系改革提速，区域金融风险持续出清。对分行而言，需关注同业生态变化，强化自身风控与合规经营，维护客户信心。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
       "title": "上海优化个人住房信贷政策 部分区域二套房贷款首付比例低至15%",
       "url": "https://m.21jingji.com/article/20260821/herald/b105ce8225f4b4869c98d95bab89d138.html",
       "excerpt": "【21财经】上海优化个人住房信贷政策 部分区域二套房贷款首付比例低至15%",
-      "category": "gz",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "21世纪经济报道·金融",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "personal_credit",
-        "macro_policy"
-      ],
-      "subcategories": [
-        "cn-finance"
-      ],
-      "subcategory": "cn-finance",
-      "relevant": true,
+      "category": "gz",
       "summary": "上海二套房首付比例下调释放信贷宽松信号，或成为其他一线城市政策参照。分行应跟踪广州房贷政策空间，提前做好按揭定价与房贷客群储备。",
-      "fetchedToday": true
+      "source": "21世纪经济报道·金融",
+      "fetchedToday": true,
+      "subcategory": "cn-credit",
+      "subcategories": [
+        "cn-credit"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "bloomberg-markets",
@@ -5447,18 +5170,15 @@
       "excerpt": "China Evergrande Group’s creditors have known for years they’ll only get pennies on the dollar back in one of the country’s biggest ever liquidations. Now, getting even just that has become more complex.",
       "publishedAt": "2026-08-21T01:25:12.000Z",
       "category": "finance",
+      "summary": "恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。",
       "source": "Bloomberg Markets",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance",
         "news"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bloomberg-markets",
@@ -5467,17 +5187,14 @@
       "excerpt": "Anthropic PBC is set to add Citigroup Inc. to the banks working on its initial public offering, according to people familiar with the matter, as Wall Street jostles for roles on the artificial intelligence firm’s debut.",
       "publishedAt": "2026-08-20T21:29:58.000Z",
       "category": "finance",
+      "summary": "Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。",
       "source": "Bloomberg Markets",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "ft-companies",
@@ -5486,17 +5203,14 @@
       "excerpt": "Chief executive Mark Walter’s business empire has come under pressure amid probe into his insurance holdings",
       "publishedAt": "2026-08-20T18:43:46.000Z",
       "category": "finance",
+      "summary": "Guggenheim贷款交易陷入困境，提示海外信用市场风险升温。分行在代销固收、债券类产品时应加强底层资产审查，做好客户适当性管理和风险收益提示。",
       "source": "Financial Times",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "Guggenheim贷款交易陷入困境，提示海外信用市场风险升温。分行在代销固收、债券类产品时应加强底层资产审查，做好客户适当性管理和风险收益提示。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "ft-companies",
@@ -5505,17 +5219,14 @@
       "excerpt": "Tumultuous session puts further pressure on momentum trades that have been unsettled since AI-related stock sell-off",
       "publishedAt": "2026-08-20T18:00:58.000Z",
       "category": "finance",
+      "summary": "美债回购与个股异动冲击量化策略，全球市场波动加大。对财富管理而言，需提示权益类产品回撤风险，引导客户分散配置并坚持长期投资。",
       "source": "Financial Times",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "美债回购与个股异动冲击量化策略，全球市场波动加大。对财富管理而言，需提示权益类产品回撤风险，引导客户分散配置并坚持长期投资。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "ft-companies",
@@ -5524,17 +5235,14 @@
       "excerpt": "Plan would create an Italian banking group with a combined market valuation of about €70bn",
       "publishedAt": "2026-08-20T17:06:58.000Z",
       "category": "finance",
+      "summary": "意大利银行并购整合升温，反映欧洲银行业低利率下的规模竞争。分行可借鉴同业零售与财富管理协同经验，关注跨境市场动态对客户资产配置的影响。",
       "source": "Financial Times",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "意大利银行并购整合升温，反映欧洲银行业低利率下的规模竞争。分行可借鉴同业零售与财富管理协同经验，关注跨境市场动态对客户资产配置的影响。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -5543,14 +5251,11 @@
       "excerpt": "Holidaymakers tell the BBC they paid for luxury breaks but faulty air conditioning left them in sweltering heat.",
       "publishedAt": "2026-08-20T22:59:35.000Z",
       "category": "finance",
-      "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
       "summary": "游轮乘客体验纠纷属消费服务事件，与金融政策、客群经济或零售业务无直接关联，对广州分行经营决策不构成参考价值，无需纳入简报。",
+      "source": "BBC Business",
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -5559,17 +5264,14 @@
       "excerpt": "Twenty-somethings are much less likely to own a home than previous generations. But data suggests things may be turning a corner.",
       "publishedAt": "2026-08-20T23:10:58.000Z",
       "category": "finance",
+      "summary": "海外年轻群体购房困境成为关注焦点，住房可及性影响按揭需求。对分行开展青年客群经营、设计安居信贷产品及投资者教育具有一定借鉴意义。",
       "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "海外年轻群体购房困境成为关注焦点，住房可及性影响按揭需求。对分行开展青年客群经营、设计安居信贷产品及投资者教育具有一定借鉴意义。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -5578,17 +5280,14 @@
       "excerpt": "The US hit a debt milestone this week, but just how worried should we be about the world's largest economy?",
       "publishedAt": "2026-08-20T23:15:15.000Z",
       "category": "finance",
+      "summary": "美国经济衰退警报增强，可能引发全球风险资产波动。分行应关注客户避险需求，加大存款、黄金、稳健理财配置，同时提示海外投资不确定性。",
       "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "美国经济衰退警报增强，可能引发全球风险资产波动。分行应关注客户避险需求，加大存款、黄金、稳健理财配置，同时提示海外投资不确定性。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -5597,17 +5296,14 @@
       "excerpt": "Iran has so far proved adept at finding ways around years of already punishing sanctions on its economy.",
       "publishedAt": "2026-08-20T23:16:45.000Z",
       "category": "finance",
+      "summary": "美国对伊朗经济施压可能推升地缘风险和能源价格，影响全球通胀与市场情绪。财富管理需重视黄金、能源类资产配置价值，做好客户风险提示。",
       "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "美国对伊朗经济施压可能推升地缘风险和能源价格，影响全球通胀与市场情绪。财富管理需重视黄金、能源类资产配置价值，做好客户风险提示。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -5616,14 +5312,11 @@
       "excerpt": "The switch to quieter electric equipment is not going as fast as some would like.",
       "publishedAt": "2026-08-20T23:12:38.000Z",
       "category": "finance",
-      "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
       "summary": "园艺电动化属产业技术话题，不涉及金融信贷、财富管理或区域客群经营，对银行零售业务参考价值有限，无需重点关注。",
+      "source": "BBC Business",
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "relevant": false
     },
     {
       "sourceId": "bbc-business",
@@ -5632,17 +5325,14 @@
       "excerpt": "High gas prices and weaker pharmacy sales pushed Walmart's growth to its slowest pace in six years",
       "publishedAt": "2026-08-20T17:59:59.000Z",
       "category": "finance",
+      "summary": "沃尔玛销售承压显示美国消费动能减弱，全球需求或受拖累。对零售客群经营有借鉴意义，分行可关注消费信贷资产质量和促消费政策节奏。",
       "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "沃尔玛销售承压显示美国消费动能减弱，全球需求或受拖累。对零售客群经营有借鉴意义，分行可关注消费信贷资产质量和促消费政策节奏。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "bbc-business",
@@ -5651,14 +5341,11 @@
       "excerpt": "Bernard Matthews Foods says its Shaftesbury Street factory will close by the end of 2026.",
       "publishedAt": "2026-08-20T16:27:26.000Z",
       "category": "finance",
-      "source": "BBC Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
       "summary": "工厂关闭属单一企业经营事件，不涉及金融产品或区域经济政策，与银行零售业务及分行经营决策无直接关联，可不予重点关注。",
+      "source": "BBC Business",
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "relevant": false
     },
     {
       "sourceId": "cnbc-top",
@@ -5667,17 +5354,14 @@
       "excerpt": "Japan's historic effort to prop up the yen may have had an unintended consequence: giving investors a better opportunity to put the carry trade back on.",
       "publishedAt": "2026-08-21T00:00:01.000Z",
       "category": "finance",
+      "summary": "日本央行干预后套利交易活跃，日元汇率不确定性上升。分行应加强代客外汇及跨境财富业务的风险提示，引导客户合理管理汇率波动风险。",
       "source": "CNBC Top Stories",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "日本央行干预后套利交易活跃，日元汇率不确定性上升。分行应加强代客外汇及跨境财富业务的风险提示，引导客户合理管理汇率波动风险。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "yahoo-finance",
@@ -5686,17 +5370,14 @@
       "excerpt": "",
       "publishedAt": "2026-08-19T13:56:06.000Z",
       "category": "finance",
+      "summary": "国产机器人公司宇树科技IPO首日大涨，显示硬科技资本热度。分行可关注本地智能产业链企业融资需求，挖掘私行客户股权投资与综合服务机会。",
       "source": "Yahoo Finance",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "国产机器人公司宇树科技IPO首日大涨，显示硬科技资本热度。分行可关注本地智能产业链企业融资需求，挖掘私行客户股权投资与综合服务机会。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "yahoo-finance",
@@ -5705,232 +5386,188 @@
       "excerpt": "",
       "publishedAt": "2026-08-19T14:03:06.000Z",
       "category": "finance",
+      "summary": "美元贬值压力上升，外汇市场波动加大。高净值客户可考虑多币种配置与外汇避险工具，分行需强化汇率风险揭示和产品适配。",
       "source": "Yahoo Finance",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "美元贬值压力上升，外汇市场波动加大。高净值客户可考虑多币种配置与外汇避险工具，分行需强化汇率风险揭示和产品适配。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
       "title": "李迅雷：“资产荒”的债市映射与破解之道",
       "url": "http://finance.sina.com.cn/zl/china/2026-08-21/zl-ininztww1490019.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "subcategories": [
-        "cn-finance"
-      ],
-      "subcategory": "cn-finance",
-      "relevant": true,
+      "category": "finance",
       "summary": "李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。",
-      "fetchedToday": true
+      "source": "新浪财经",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
       "title": "曾刚：完善治理，金融机构防风险的关键招",
       "url": "http://finance.sina.com.cn/zl/bank/2026-08-21/zl-ininztww1485728.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "完善公司治理是金融机构防风险关键，监管对内控合规要求趋严。分行应持续强化风险治理、贷后管理与员工行为规范，保障零售业务稳健发展。",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "完善公司治理是金融机构防风险关键，监管对内控合规要求趋严。分行应持续强化风险治理、贷后管理与员工行为规范，保障零售业务稳健发展。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
       "title": "面对美国，日本政府连“遗憾”都不敢说了",
       "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininztww1492802.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "category": "finance",
       "summary": "本条为日美外交关系时政新闻，不涉及金融信贷政策或客群经济数据，与银行零售业务及分行经营决策无直接关联，无需重点关注。",
+      "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
       "title": "李扬：“十五五”时期的经济发展与金融改革",
       "url": "http://finance.sina.com.cn/zl/bank/2026-08-21/zl-ininztww1482627.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "“十五五”经济与金融改革方向为中长期布局提供宏观参考。分行可结合区域产业升级，前瞻规划零售信贷、财富管理和私行业务发展策略。",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "“十五五”经济与金融改革方向为中长期布局提供宏观参考。分行可结合区域产业升级，前瞻规划零售信贷、财富管理和私行业务发展策略。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-finance",
       "title": "慧闻机器人刘天纬：让大模型进入工业现场，从AMR业务到工业智能体的产品化路径",
       "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininztww1464330.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "category": "finance",
       "summary": "本则内容为工业机器人及大模型技术产品化访谈，属科技产业信息，未涉及金融政策或区域经济，对银行零售业务及分行经营参考价值有限。",
+      "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
       "title": "途见科技赖建诚：柔性电子皮肤——重塑机器人触觉感知新边界",
       "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininztwt6406605.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "category": "finance",
       "summary": "柔性电子皮肤属前沿技术研发动态，尚未形成金融产品或客群经营场景，与广州分行零售业务决策无直接关联，可不予重点关注。",
+      "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
       "title": "半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定",
       "url": "https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。",
       "source": "新浪财经",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "macro_policy"
-      ],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
       "title": "8月LPR保持不变，今年房贷还能否下调？",
       "url": "https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。",
       "source": "央视财经",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "personal_credit",
-        "macro_policy"
-      ],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance",
         "cn-policy"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
       "title": "黄金，多极时代的新底仓？",
       "url": "https://finance.cctv.com/2026/08/21/ARTIGQzuwQEMAeE7ZbdyeVmJ260821.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-21T00:00:00.000Z",
-      "source": "央视财经",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "subcategories": [
-        "cn-finance"
-      ],
-      "subcategory": "cn-finance",
-      "relevant": true,
+      "category": "finance",
       "summary": "黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。",
-      "fetchedToday": true
+      "source": "央视财经",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "cctv-finance",
       "title": "财报透视丨首份保险半年报出炉 友邦人寿三大引擎共振 新业务价值增长20%",
       "url": "https://finance.cctv.com/2026/08/20/ARTIiJoyj99SsnGGb5bi7Obq260820.shtml",
-      "category": "finance",
       "publishedAt": "2026-08-20T00:00:00.000Z",
-      "source": "央视财经",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "subcategories": [
-        "cn-finance"
-      ],
-      "subcategory": "cn-finance",
-      "relevant": true,
+      "category": "finance",
       "summary": "友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。",
-      "fetchedToday": true
+      "source": "央视财经",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
     },
     {
       "sourceId": "sina-money",
       "title": "正收益占比不足四成！次新基金为何一登场就沦为“毛基”",
       "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininynci6686043.shtml",
       "excerpt": "【财富管理】正收益占比不足四成！次新基金为何一登场就沦为“毛基”",
-      "category": "gz",
       "publishedAt": "2026-08-20T00:00:00.000Z",
+      "category": "gz",
+      "summary": "次新基金正收益占比不足四成，投资者新基体验不佳。分行代销基金时应强化产品筛选和风险揭示，避免误导销售，维护零售客户信任。",
       "source": "新浪财经·理财保险",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "次新基金正收益占比不足四成，投资者新基体验不佳。分行代销基金时应强化产品筛选和风险揭示，避免误导销售，维护零售客户信任。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "21jingji-finance",
       "title": "上银国际亏损 上海银行提级收编",
       "url": "https://m.21jingji.com/article/20260821/herald/8038e9a45039fcf4d07436e2d2aee041.html",
       "excerpt": "【21财经】上银国际亏损 上海银行提级收编",
-      "category": "gz",
       "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "gz",
+      "summary": "上银国际亏损后由母行提级收编，显示银行子公司治理重要性。对分行提示综合化经营需强化风险隔离、并表管控和境外业务审慎评估。",
       "source": "21世纪经济报道·金融",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "summary": "上银国际亏损后由母行提级收编，显示银行子公司治理重要性。对分行提示综合化经营需强化风险隔离、并表管控和境外业务审慎评估。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "infoq-cn",
@@ -5939,17 +5576,14 @@
       "excerpt": "点击查看原文>",
       "publishedAt": "2026-08-21T09:16:00.000Z",
       "category": "tech",
+      "summary": "Astro用Rust重写编译器，反映开源高性能技术栈趋势。对分行技术团队具有性能优化借鉴意义，可支撑手机银行和数字化经营体验升级。",
       "source": "InfoQ 中国",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "overseas-tech",
       "subcategories": [
         "overseas-tech"
       ],
-      "subcategory": "overseas-tech",
-      "relevant": true,
-      "summary": "Astro用Rust重写编译器，反映开源高性能技术栈趋势。对分行技术团队具有性能优化借鉴意义，可支撑手机银行和数字化经营体验升级。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -5958,17 +5592,14 @@
       "excerpt": "The enormous US debt under Trump will hobble the next Democratic administration – just as the GOP planned Why is the Trump administration causing turmoil in the bond markets? You could pin the US’s staggering $40tn in government debt to Donald Trump’s Keystone Cops-style governance. Tariffs he sold ",
       "publishedAt": "2026-08-20T15:21:38.000Z",
       "category": "finance",
+      "summary": "美国债务扩张与减支承诺矛盾加剧财政可持续性担忧，利率与美元波动或上升。对分行研判全球市场、管理客户海外资产配置风险有参考。",
       "source": "The Guardian Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "美国债务扩张与减支承诺矛盾加剧财政可持续性担忧，利率与美元波动或上升。对分行研判全球市场、管理客户海外资产配置风险有参考。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -5977,17 +5608,14 @@
       "excerpt": "As yields are dragged higher in the UK, Europe and Japan, the impact for consumers and businesses will be far-reaching ‘Starve the beast’? The $40tn cost of Republicans’ false promises to cut spending Government borrowing costs around the world have surged to the highest levels in decades amid growi",
       "publishedAt": "2026-08-20T16:14:59.000Z",
       "category": "finance",
+      "summary": "特朗普政策引发美债市场动荡并传导全球，利率与汇率风险加大。分行应关注代销固收产品波动，引导客户多元化资产配置并加强压力测试。",
       "source": "The Guardian Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "summary": "特朗普政策引发美债市场动荡并传导全球，利率与汇率风险加大。分行应关注代销固收产品波动，引导客户多元化资产配置并加强压力测试。",
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "guardian-business",
@@ -5996,541 +5624,2024 @@
       "excerpt": "Christine Hunsicker, former CEO of CaaStle, gave investors falsified documents that overstated profit and cash reserves A fashion tech founder was sentenced to five years in federal prison for her involvement in a $300m “fraud scheme” spanning from 2019 to 2025, the Manhattan US attorney’s office an",
       "publishedAt": "2026-08-20T22:27:41.000Z",
       "category": "finance",
-      "source": "The Guardian Business",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
       "summary": "时尚科技创始人因3亿美元欺诈被判刑，属海外司法个案。不涉及金融产品或区域客群经营，对银行零售业务及广州分行决策无参考价值。",
+      "source": "The Guardian Business",
       "fetchedToday": true,
-      "subcategory": "news"
+      "subcategory": "news",
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "【环球财经】日本核心CPI连续59个月同比上涨",
       "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458366_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "macro_policy"
-      ],
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "国家能源局：7月份全社会用电量10400亿千瓦时 同比增长1.7%",
       "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458363_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "7月全社会用电量同比增长显示经济恢复平稳，企业开工活跃度有支撑。分行可参考宏观数据安排信贷投放节奏，关注区域产业用电变化挖掘客户需求。",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "我国合成世界上最长单原子直径“金属线”",
       "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458350_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "我国合成单原子金属线属基础材料科研突破，距离金融应用场景较远，对零售银行产品设计或客群经营无直接参考价值，无需重点关注。",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "美国重大计划曝光！特朗普，刚刚签署",
       "url": "https://www.stcn.com/article/detail/4095793.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "特朗普签署重大计划的具体影响有待观察，若涉及经贸政策将扰动全球市场。分行应密切跟踪政策落地情况，提前做好风险预案与客户沟通。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "news",
       "subcategories": [
         "news"
       ],
-      "subcategory": "news",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "8年投出41家专精特新！解码毅达资本的湾区“突围战”",
       "url": "https://www.stcn.com/article/detail/4095672.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "人民财讯·大观丨重阳投资董事长王庆：长期主义是一场价值接力",
       "url": "https://www.stcn.com/article/detail/4095670.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "重阳投资强调长期价值投资，对当前市场情绪具有引导作用。分行财富管理投教可传递长期配置理念，引导客户减少短期博弈，提升持有体验。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "博俊科技：目前有小鹏汽车部分车型产品正在项目开发阶段",
       "url": "https://www.stcn.com/article/detail/4095677.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "博俊科技与小鹏项目合作尚处开发阶段，属于个股产业链动态。不涉及信贷、财富管理或区域经济政策，对银行零售业务参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "“多点支撑”对冲地缘风险，道明光学全球化布局进入收获期",
       "url": "https://www.stcn.com/article/detail/4095706.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "该新闻聚焦道明光学个股经营与全球化战略，不涉及零售银行财富管理、信贷或客群相关数据，对分行经营决策参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "元立光电首发获北交所上市委会议通过",
       "url": "https://www.stcn.com/article/detail/4095724.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "元立光电获北交所上市委通过，反映中小企业融资活跃，提示关注科创企业信贷与上市服务机会，但非广州本地项目。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "证券时报",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "23家港股公司回购 斥资6.52亿港元",
       "url": "https://www.stcn.com/article/detail/4095722.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "该报道汇总23家港股公司回购金额，属于资本市场资金面信息，对分行零售财富管理及信贷决策参考价值较弱。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "松延动力仿生机器人产品亮相2026世界机器人大会",
       "url": "https://www.stcn.com/article/detail/4095747.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "松延动力仿生机器人产品亮相属科技产业动态，不涉及银行零售业务或本地落地，对分行决策参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "从蓄势到领跑，麦科田以硬核技术突围医疗器械赛道",
       "url": "https://www.stcn.com/article/detail/4095748.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "麦科田医疗器械技术突围报道聚焦企业个案，与银行零售财富管理、信贷及客群经营无直接关联，参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "斗鱼第二季度实现收入9.81亿元 毛利润增长12%至1.59亿元",
       "url": "https://www.stcn.com/article/detail/4095726.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "斗鱼季度财报属单一公司业绩披露，不涉及银行零售业务指标或行业趋势，对分行经营决策参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "范式智能上半年营收同比增长43.4%",
       "url": "https://www.stcn.com/article/detail/4095710.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "范式智能营收增长仅为公司个体业绩披露，与银行零售财富管理及信贷业务无直接关联，对分行决策参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "厦门钨业上半年计提减值12.78亿元 拟5.93亿元收购大湖塘钨矿开发运营权",
       "url": "https://www.stcn.com/article/detail/4095711.html",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "厦门钨业计提减值及收购事项系公司经营动态，与零售银行财富管理或信贷业务无直接关联，参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "五年亏损逾25亿港元，上海银行缘何全资“吞下”上银国际",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1948652.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "上海银行全资收购上银国际反映银行国际化与子公司整合趋势，提示分行关注跨境业务联动及海外投行布局带来的零售财富管理协同机会。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "8月消金不良转让潮持续，多家机构密集出清，有资产包利息竟高于本金",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncp8703306.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "8月消金不良密集出清表明消费信贷资产质量承压，提示分行加强个人信贷风险管控，关注不良资产处置渠道和定价策略。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-credit",
       "subcategories": [
-        "cn-finance"
+        "cn-credit"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "市净率倒数、股息率领先，华夏银行跌出了性价比？",
       "url": "https://finance.sina.com.cn/money/bank/gsdt/2026-08-20/doc-ininyfvm6729752.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "华夏银行估值分析属个股行情探讨，虽涉及银行股但非经营基本面，对分行零售业务决策参考价值有限。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
-      "relevant": false,
+      "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "银行“中收之战”：数据增长可观，有基层一线员工自掏腰包买保险、买基金、买理财",
       "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininxvfv8831529.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "银行中收增长背后现员工自购乱象，提示分行重视财富管理合规展业，杜绝为冲量诱导自购，强化专业投顾能力建设。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "33万亿理财市场大分化：头部公司狂飙，中小银行为何踩刹车？",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxvfu2020687.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "理财市场头部集中分化、中小银行收缩，启示分行需提升理财产品竞争力和投研能力，应对规模与收入双重挑战。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "央行：将招标发行2026年第七期和第八期中央银行票据",
       "url": "https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwz1600119.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "央行发行央票属流动性管理工具，影响市场利率与资金面，提示分行关注货币政策导向，合理安排资产负债和理财定价。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-policy",
       "subcategories": [
         "cn-policy"
       ],
-      "subcategory": "cn-policy",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "央行今日开展950亿元7天期逆回购操作",
       "url": "https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwx8250401.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "央行开展950亿元逆回购操作传递呵护流动性信号，启示分行关注资金利率走势，优化负债成本与信贷投放节奏。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "macro_policy"
-      ],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-policy",
       "subcategories": [
         "cn-policy"
       ],
-      "subcategory": "cn-policy",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "江阴银行上半年净利润增2.34% 拟参与投资新设江苏",
       "url": "https://finance.sina.com.cn/money/bank/gsdt/2026-08-21/doc-ininzpqy1560645.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "江阴银行净利润增长并拟参与新设机构，反映中小银行扩张态势，提示分行关注同业竞争格局，稳固本地零售客群优势。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "江苏银行2026年中报点评：净息差还没有止跌",
       "url": "https://finance.sina.com.cn/money/bank/gsdt/2026-08-21/doc-ininzpqz8344699.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-21T00:00:00.000Z",
       "category": "finance",
       "summary": "江苏银行中报显示净息差尚未止跌，印证行业息差压力，启示分行强化存款成本管控，优化贷款风险定价与结构。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "江苏银行规模5.6万亿居第一！4家城商行半年报出炉",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininysmk1838026.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "江苏银行规模位列城商行首位，4家城商行半年报显示规模竞争加剧，提示分行对标同业，提升零售业务贡献与经营质效。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "西北最大城商行长安银行“换帅”在即：“70后”李嘉辉",
       "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininyncn1944501.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "长安银行高层更迭可能影响战略走向，属银行治理动态，提示分行关注同行业绩与治理变化，及时调整竞争策略。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "南京银行非息收入走下神坛，谢宁守住大本营",
       "url": "https://finance.sina.com.cn/money/bank/gsdt/2026-08-20/doc-ininyfvr8732715.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "南京银行非息收入表现回落，凸显中收增长瓶颈，启示分行加强财富管理和中间业务产品创新，培育可持续收入来源。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
       "subcategories": [
         "cn-finance"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "五家持牌消金的上半年：招联三大指标下降，中银净",
       "url": "https://finance.sina.com.cn/money/bank/guangjiao/2026-08-20/doc-ininyfvm6667381.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "招联等持牌消金上半年指标下滑，显示消费金融行业承压，提示分行关注联合贷资产质量与消费信贷需求变化，慎控风险。",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-credit",
       "subcategories": [
-        "cn-finance"
+        "cn-credit"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "relevant": true
     },
     {
       "sourceId": "sina-bank",
-      "source": "新浪财经·银行频道",
       "title": "AI“换口气”，谁能来接力？银行理财产品7月榜单出",
       "url": "https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxqxq8079773.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-20T00:00:00.000Z",
       "category": "finance",
       "summary": "银行理财7月榜单显示AI主题产品热度起伏，启示分行关注市场热点，优化产品货架和营销策略，提升理财产品吸引力。",
+      "source": "新浪财经·银行频道",
+      "fetchedToday": true,
+      "subcategory": "cn-wealth",
+      "subcategories": [
+        "cn-wealth"
+      ],
+      "relevant": true
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "8月LPR保持不变，今年房贷还能否下调？",
+      "url": "https://m.21jingji.com/article/20260821/herald/005a5e48249017551b83edffb89bd7f4.html",
+      "excerpt": "【21财经】8月LPR保持不变，今年房贷还能否下调？",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
       "tier": "T2",
       "filterBucket": "daily",
       "filterDimensions": [
-        "wealth_mgmt"
+        "personal_credit",
+        "macro_policy"
       ],
-      "subcategories": [
-        "cn-finance"
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "What's Next Following Monte dei Paschi's High-Stakes Move?",
+      "url": "https://www.bloomberg.com/news/videos/2026-08-21/what-s-next-following-paschi-s-high-stakes-move-video",
+      "excerpt": "Banca Monte dei Paschi is seeking to buy two separate banks for a combined price of €34 billion ($40 billion) in a defensive move designed to ward off a takeover by rival Intesa Sanpaolo. The Italian lender said it’s launching an all-share bid for Banco BPM valuing it at €25.3 billion and another on",
+      "publishedAt": "2026-08-21T08:43:09.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Dollar Depreciation Is Sustainable: 3-Minutes MLIV",
+      "url": "https://www.bloomberg.com/news/videos/2026-08-21/dollar-depreciation-is-sustainable-3-minutes-mliv-video",
+      "excerpt": "Guy Johnson, Tom Mackenzie, Skylar Montgomery Koning and Mark Cudmore break down today's key themes for analysts and investors on \"Bloomberg: The Opening Trade.\" (Source: Bloomberg)",
+      "publishedAt": "2026-08-21T08:13:19.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Memory Stocks Struggle for Momentum With ‘Smart Money’ Moving On",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-21/memory-stocks-struggle-for-momentum-with-smart-money-moving-on",
+      "excerpt": "After ripping through the first half of the year, memory stocks are struggling to regain momentum as growing concerns about the state of the artificial intelligence trade overshadow their strong fundamental backdrop.",
+      "publishedAt": "2026-08-21T08:07:00.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Hua Medicine CEO Li Chen on Earnings",
+      "url": "https://www.bloomberg.com/news/videos/2026-08-21/hua-medicine-ceo-li-chen-on-earnings-video",
+      "excerpt": "Li Chen, Executive Director & CEO at Hua Medicine, discusses the Chinese biotech firm's growth plans exclusively on \"Bloomberg: The China Show\" following the company's first half results. (Source: Bloomberg)",
+      "publishedAt": "2026-08-21T07:32:56.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Ping An’s Profit Rises as Stock Market Rally Boosts Returns",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-20/ping-an-s-profit-rises-as-stock-market-rally-boosts-returns",
+      "excerpt": "Ping An Insurance (Group) Co.’s profit rose 36% in the first half, sending its shares higher, as China’s stock-market rally bolstered investment returns.",
+      "publishedAt": "2026-08-20T10:02:22.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Goldman Muscles Into Indian Banks’ Turf With State Share Deals",
+      "url": "https://www.bloomberg.com/news/articles/2026-08-21/goldman-muscles-into-indian-banks-turf-with-state-share-deals",
+      "excerpt": "Goldman Sachs Group Inc. is making inroads into a corner of India’s deal landscape that’s long been the near-exclusive hunting ground of local finance giants: government share sales.",
+      "publishedAt": "2026-08-21T07:04:38.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Alibaba Profit Takes A Beating Amid AI Spending | The China Show | 8/21/2026",
+      "url": "https://www.bloomberg.com/news/videos/2026-08-21/the-china-show-8-21-2026-video",
+      "excerpt": "“Bloomberg: The China Show” is your definitive source for news and analysis on the world's second-biggest economy. From politics and policy to tech and trends, Yvonne Man and David Ingles give global investors unique insight, delivering in-depth discussions with the newsmakers who matter. (Source: B",
+      "publishedAt": "2026-08-21T06:54:48.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bloomberg-markets",
+      "title": "Tech Firms, Govts. Clash For Capital: Market Snapshot",
+      "url": "https://www.bloomberg.com/news/videos/2026-08-21/tech-firms-govts-clash-for-capital-market-snapshot-video",
+      "excerpt": "As the AI buildout relies more heavily on credit and equity financing, access to capital is emerging as an another more acute pain point for the AI trade. Hyperscalers alongside specialized AI ventures are flooding credit markets with record amounts of new debt to pay for power-hungry data centers, ",
+      "publishedAt": "2026-08-21T06:32:54.000Z",
+      "category": "finance",
+      "source": "Bloomberg Markets",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "ft-companies",
+      "title": "Asia’s rising riches protect insurers against China’s policy shifts",
+      "url": "https://www.ft.com/content/e24984a3-b87b-40a0-a6db-5b5f028ed712?syn-25a6b1a6=1",
+      "excerpt": "So long as the region’s wealth accumulation continues to outpace that of most developed economies",
+      "publishedAt": "2026-08-21T04:00:21.000Z",
+      "category": "finance",
+      "source": "Financial Times",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "ft-companies",
+      "title": "HSBC spends $68mn on biggest cull of senior bankers since financial crisis",
+      "url": "https://www.ft.com/content/d8bc75ee-77c6-4810-967c-0c2cff69bf7a?syn-25a6b1a6=1",
+      "excerpt": "Reduction came as Europe’s largest lenders shed largest number of highly paid bankers since 2020",
+      "publishedAt": "2026-08-21T04:00:12.000Z",
+      "category": "finance",
+      "source": "Financial Times",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "ft-companies",
+      "title": "Shanghai’s answer to Nasdaq outstrips Hong Kong amid Chinese tech frenzy",
+      "url": "https://www.ft.com/content/83500ff8-31df-4031-9edd-8b3de5aff3e3?syn-25a6b1a6=1",
+      "excerpt": "Star 50 index up almost a quarter this year, leaving rivals behind",
+      "publishedAt": "2026-08-21T02:16:59.000Z",
+      "category": "finance",
+      "source": "Financial Times",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bbc-business",
+      "title": "UK borrows more than expected in July as Healey prepares for first Budget",
+      "url": "https://www.bbc.co.uk/news/articles/cly8kzkyvwgo?at_medium=RSS&at_campaign=rss",
+      "excerpt": "Chancellor John Healey said the government is 'committed to meeting our fiscal rules'",
+      "publishedAt": "2026-08-21T08:48:25.000Z",
+      "category": "finance",
+      "source": "BBC Business",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "bbc-business",
+      "title": "Panama Canal to cut number of ships passing through due to El Niño",
+      "url": "https://www.bbc.co.uk/news/articles/cwyl0jkxxryo?at_medium=RSS&at_campaign=rss",
+      "excerpt": "The crucial waterway's operator says low rainfall caused by the ocean pattern had led to the decision.",
+      "publishedAt": "2026-08-21T06:46:08.000Z",
+      "category": "finance",
+      "source": "BBC Business",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "cnbc-top",
+      "title": "Chinese humanoid robots' biggest obstacle: humans are still (mostly) better",
+      "url": "https://www.cnbc.com/2026/08/21/chinese-humanoid-robots-face-challenge-of-their-own-capabilities.html",
+      "excerpt": "Humanoid robots still struggle to perform as efficiently as humans in most labor scenarios.",
+      "publishedAt": "2026-08-21T08:52:53.000Z",
+      "category": "finance",
+      "source": "CNBC Top Stories",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "investing-news",
+      "title": "China, Indonesia agree to boost military ties, work closer on minerals, energy and tech",
+      "url": "https://www.investing.com/news/stock-market-news/china-indonesia-agree-to-boost-military-ties-work-closer-on-minerals-energy-and-tech-4871056",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T08:31:00.000Z",
+      "category": "finance",
+      "source": "Investing.com News",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "实探银行代理保险升温：中年客户成主力，理财经理一边冲业绩一边“压力山大”",
+      "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-inipakum6468963.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "财政部发布2026年1—7月财政收支情况",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1618894.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "欧元区7月份消费者通胀预期小幅走低 经济预期略有改善",
+      "url": "https://finance.sina.com.cn/world/2026-08-21/doc-inipakut1608644.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "直击WRC丨星海图发布“1+3+N”品牌战略，展出十余款“真实工作”Demo",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakuq1378540.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "英国8月份制造业采购经理指数初值报51.5 符合预估",
+      "url": "https://finance.sina.com.cn/world/2026-08-21/doc-inipakuq1378081.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "直击WRC丨众擎机器人发布“仿人脑”具身智能引擎EngineAI Awaken",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakuq1376828.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "LV回应“起诉国家知识产权局遭法院驳回”传闻：不实消息",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1598672.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "南部战区空军新闻发言人李健健空军大校发表谈话",
+      "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1600643.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-finance",
+      "title": "一年、两年、三年定存利率竟都是1.65%！这家银行已落地执行",
+      "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-inipakut1597333.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cctv-finance",
+      "title": "财报透视｜宁波银行：营收净利双提速“模范生”的增长新动能",
+      "url": "https://finance.cctv.com/2026/08/21/ARTIPNZz3QTOwp7tYlwWqF1I260821.shtml",
+      "category": "finance",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "央视财经",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "刚刚，通胀数据爆了！加息，突变！黄金、白银，大涨",
+      "url": "https://finance.sina.com.cn/money/future/fmnews/2026-08-21/doc-inipakuq1364890.shtml",
+      "excerpt": "【财富管理】刚刚，通胀数据爆了！加息，突变！黄金、白银，大涨",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "金玉堂:黄金仍需等回调后在跟进 周五交易尽量保持谨慎",
+      "url": "https://finance.sina.com.cn/money/nmetal/hjfx/2026-08-21/doc-inipaent8233759.shtml",
+      "excerpt": "【财富管理】金玉堂:黄金仍需等回调后在跟进 周五交易尽量保持谨慎",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "陈峻齐:黄金站上4500继续多",
+      "url": "https://finance.sina.com.cn/money/nmetal/hjfx/2026-08-21/doc-inipaens1459281.shtml",
+      "excerpt": "【财富管理】陈峻齐:黄金站上4500继续多",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "江阴银行上半年净利润微增2.34%，“零售弱”结构趋势未改",
+      "url": "https://m.21jingji.com/article/20260821/herald/8d5b0797412267ba53ebd129f36005ed.html",
+      "excerpt": "【21财经】江阴银行上半年净利润微增2.34%，“零售弱”结构趋势未改",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "上海新政：外环外二套首付降至15%",
+      "url": "https://m.21jingji.com/article/20260821/herald/9cd3a8736af0ec48731c0bd70013314a.html",
+      "excerpt": "【21财经】上海新政：外环外二套首付降至15%",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "财政部：今年下半年推出新政策新举措，将与央行、金融管理部门一道，推动财政金融联动的常态化、长效化",
+      "url": "https://m.21jingji.com/article/20260821/herald/cdc060841c304572fa1fa83195fd8071.html",
+      "excerpt": "【21财经】财政部：今年下半年推出新政策新举措，将与央行、金融管理部门一道，推动财政金融联动的常态化、长效化",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "财政部发布《关于进一步做好财政金融协同促内需政策有关工作的通知》",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458442_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "三部门：进一步做好财政金融协同促内需政策有关工作",
+      "url": "https://m.21jingji.com/article/20260821/herald/94bd45c0f03e7907c9d479500ae1b24f.html",
+      "excerpt": "【21财经】三部门：进一步做好财政金融协同促内需政策有关工作",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "21jingji-finance",
+      "title": "财政部：正在继续研究制定财政金融协同的新政策和新举措，预计今年下半年推出",
+      "url": "https://m.21jingji.com/article/20260821/herald/99b20dab3aabf20c7a6f871421eb3343.html",
+      "excerpt": "【21财经】财政部：正在继续研究制定财政金融协同的新政策和新举措，预计今年下半年推出",
+      "category": "gz",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "source": "21世纪经济报道·金融",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "不跟风、不堆模型，百度靠什么突围AI办公赛道？",
+      "url": "https://www.infoq.cn/article/9x1ohAMlMpMCLdygg8Yf?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T16:47:55.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "Vercel v0 API 正式发布：支持 MCP、流式响应和自动部署",
+      "url": "https://www.infoq.cn/article/v44qVA7JeYOckqlztLMP?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T14:25:00.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "初级岗位消失、高级人才断层：下一代高级工程师从哪里来？",
+      "url": "https://www.infoq.cn/article/xL611mlF8NKR0zTB7aMl?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T12:00:00.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "“Anthropic不再是AI圈的信仰”",
+      "url": "https://www.infoq.cn/article/hfJrKqqoww06UYcygUrJ?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T11:04:26.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "撞名Anthropic的“外挂”刷屏：让“DeepSeek V4‑Pro碾压 Fable 5”但无人能复现，Token开销反而翻倍",
+      "url": "https://www.infoq.cn/article/MKDQBpGhC5Uu3pB4kMbC?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T11:01:37.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "infoq-cn",
+      "title": "OpenAI 之后又是 Anthropic，Claude 将攻击延伸至公共互联网",
+      "url": "https://www.infoq.cn/article/9FZ8z60yB4tS4WQEP4dw?utm_source=rss&utm_medium=article",
+      "excerpt": "点击查看原文>",
+      "publishedAt": "2026-08-21T10:25:50.000Z",
+      "category": "tech",
+      "source": "InfoQ 中国",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "机器人的GPT-3时刻真·来了！卡卡西上身，看3秒就学会新动作",
+      "url": "https://www.qbitai.com/2026/08/476596.html",
+      "excerpt": "机器人看3秒演示就能学会",
+      "publishedAt": "2026-08-21T07:17:58.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "科学家只管提问题，AI负责跑实验：深势科技把科研全流程搬进桌面",
+      "url": "https://www.qbitai.com/2026/08/476591.html",
+      "excerpt": "让科学家的时间回到科学创造",
+      "publishedAt": "2026-08-21T06:40:34.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "WRC展会拿旧Demo炒冷饭？扒一扒千寻藏在水下的全栈底牌",
+      "url": "https://www.qbitai.com/2026/08/476532.html",
+      "excerpt": "一点新鲜变化都没有吗？",
+      "publishedAt": "2026-08-21T05:38:12.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "设计无边界！中坚科技旗下子公司桦之坚携巨型概念机器人ZERO惊艳2026世界机器人大会",
+      "url": "https://www.qbitai.com/2026/08/476525.html",
+      "excerpt": "中坚科技（002779.SZ）旗下桦之坚携概念人形机器人ZERO亮相2026世界机器人大会。",
+      "publishedAt": "2026-08-21T05:09:33.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "Jeff Dean离职后首次公开访谈火力有点猛。。。",
+      "url": "https://www.qbitai.com/2026/08/476468.html",
+      "excerpt": "离开谷歌的原因之一：小团队可以极致聚焦！",
+      "publishedAt": "2026-08-21T04:05:11.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "WRC最忙机器人：猛干15分钟家务，收纳、补货、叠衣服…",
+      "url": "https://www.qbitai.com/2026/08/476413.html",
+      "excerpt": "墨奇，开始加速了",
+      "publishedAt": "2026-08-21T03:14:40.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "国产“预制算力”来了：工厂预制率超90% 24小时内投运 交付效率提升70%",
+      "url": "https://www.qbitai.com/2026/08/476409.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T02:31:10.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "首批！优必选行者具身智能大模型完成生成式人工智能服务备案",
+      "url": "https://www.qbitai.com/2026/08/476406.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T02:26:49.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "三箭齐发！优必选WRC2026全方位展示人形机器人工业、商用、家庭消费应用成果",
+      "url": "https://www.qbitai.com/2026/08/476403.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T02:22:43.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "qbitai",
+      "title": "网易有道2026Q2财报：Q2净收入14.7亿元，AI原生战略加速兑现商业价值",
+      "url": "https://www.qbitai.com/2026/08/476400.html",
+      "excerpt": "8月20日，网易有道（NYSE：DAO）发布了2026年第二季度未经审计的财务业绩。",
+      "publishedAt": "2026-08-21T02:15:28.000Z",
+      "category": "tech",
+      "source": "量子位",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "sspai",
+      "title": "TDS REVIEW | Nothing Ear (3a) 降噪真无线耳机体验",
+      "url": "https://sspai.com/post/113586",
+      "excerpt": "Nothing Ear (3a) 保持了它作为 Nothing 产品的精良做工和标志性的外观设计，在操作等方面也做得不错，单元素质也在水平线之上，降噪等方面也并不差，至少在中价位产品中绝对不能算落后。查看全文",
+      "publishedAt": "2026-08-21T03:05:01.000Z",
+      "category": "tech",
+      "source": "少数派",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-tech"
+    },
+    {
+      "sourceId": "ftchinese",
+      "title": "投资者缩减对美英加息的押注",
+      "url": "https://www.ftchinese.com/story/001110680",
+      "excerpt": "经济数据变弱压倒对油价上涨的担忧，使交易员预计美联储将在今年剩余时间维持利率不变，而英国央行不太可能在未来一年加息超过两次。",
+      "publishedAt": "2026-08-20T16:00:00.000Z",
+      "category": "finance",
+      "source": "FT中文网",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "news"
+    },
+    {
+      "sourceId": "arxiv-fintech",
+      "title": "Filtering Credit Risk with Stochastic Discontinuities",
+      "url": "https://arxiv.org/abs/2608.19221",
+      "excerpt": "arXiv:2608.19221v1 Announce Type: new Abstract: We develop a structural credit-risk model under incomplete information in which investors observe firm value only indirectly through noisy market signals and scheduled corporate disclosures. While disclosure dates are known in advance, their informatio",
+      "publishedAt": "2026-08-21T04:00:00.000Z",
+      "category": "tech",
+      "source": "arXiv 金融科技论文 (cs.AI·cs.LG·q-fin)",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "overseas-tech"
+    },
+    {
+      "sourceId": "gd-bse",
+      "source": "北交所IPO公告",
+      "title": "诺思兰德 (920047)",
+      "url": "https://www.bse.cn/disclosure/2026/2026-08-21/63bf157c9fef4af5b5a28f2b7be812cf.pdf",
+      "excerpt": "北交所公告 | [临时公告]诺思兰德:关于收到北京证券交易所《关于北京诺思兰德生物技术股份有限公司向特定对象发行股票申请文件的审核问询函》的公告 | 日期: 2026-08-21",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "ipo",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "bse"
+    },
+    {
+      "sourceId": "gd-bse",
+      "source": "北交所IPO公告",
+      "title": "华洋赛车 (920058)",
+      "url": "https://www.bse.cn/disclosure/2026/2026-08-21/de7eff122cc04acd858e751454d82f57.pdf",
+      "excerpt": "北交所公告 | [临时公告]华洋赛车:关于发行股份购买资产并募集配套资金事项的进展公告 | 日期: 2026-08-21",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "ipo",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "bse"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【金融街发布】财政部：1-7月全国一般公共预算收入同比增长5.8%",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458692_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "欧元区制造业强劲复苏 企业信心走弱凸显前景分歧",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458670_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "新集能源：第二季度净利润同比增逾七成",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458663_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "债市日报：8月21日",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458594_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "收评：沪京深主要指数探底回升 成交额跌破2万亿",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458583_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【新华500】新华500指数（989001）21日涨0.48%",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458579_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "“十五五”时期如何提升财政宏观调控效能？财政部详解",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458569_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【今年以来消费品以旧换新政策惠及1.78亿人次】财政部副部长廖岷8月21日在国新办举行的“开局起步‘十五五’”系列主题新闻发布会上介绍，今年以来，财政部多措并举继续支持鼓励消费。下达消费品以旧换新资金1875亿元，带动相关商品销售额约1.32万亿元，惠及1.78亿人次。创新推出财政金融协同促内需一揽子政策，定向支持居民消费和消费行业经营主体，从供需两端同时发力，此项政策已惠及居民1.13亿人次。在50个试点城市开展有奖发票活动，带动相关领域销售额超3700亿元。",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458445_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [
+        "macro_policy"
       ],
-      "subcategory": "cn-finance",
-      "relevant": true,
-      "fetchedToday": true
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【财政部：今年将建立全国统一地方财政补贴负面清单管理机制】财政部副部长廖岷介绍说，今年，财政部已经会同国家发展改革委、工信部、商务部、海关总署、税务总局、市场监管总局等部门建立全国统一的地方财政补贴负面清单管理机制，清晰划定违规补贴的具体情形，坚决杜绝违规补贴增量，分类规范违规补贴存量。",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458433_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [
+        "macro_policy"
+      ],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "“十五五”期间我国将全力构建现代气候业务体系",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458686_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "亚太经合组织（APEC）汽车对话第44次会议在大连举办",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458685_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "新消费派丨亚宠展观察：宠物保险加速向刚需配置转变",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458672_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "广东：1-7月全省居民消费价格指数同比上涨0.8%",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458652_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广东：1—7月全省居民消费价格指数同比上涨0.8%",
+      "url": "https://www.stcn.com/article/detail/4096392.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "部署166项攻关任务 2026年质量强链十大项目启动",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458642_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【环球财经】英国7月公共财政现改善迹象",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458640_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【环球财经】英国7月份社会零售环比下跌0.5%",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458638_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "【环球财经】从苹果让步看欧盟《数字市场法》成效",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458632_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "上海市商务委：支持临港进一步优化“走出去”和“引进来”双向投资服务",
+      "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458603_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "一图读懂《上海市城市更新和住房发展“十五五”规划》",
+      "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458600_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "上海静安探索破解骑手“进门难、停车难、取餐难”",
+      "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458521_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "临港新片区“十五五”规划：开放更前沿、产业更硬核、城市更年轻",
+      "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458471_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "APEC能源智库论坛在大连成功举办",
+      "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458572_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "智库报告：四方面加快推进制造业与服务业深度融合",
+      "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458494_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "行业洞察丨多技术路线并行 核聚变产业生态加速成形",
+      "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458384_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "近距离挖掘投资价值 近30位新兴市场机构投资者代表调研9家科创板公司",
+      "url": "https://www.stcn.com/article/detail/4096258.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "上海自贸试验区临港新片区：率先开展离岸金融先行先试",
+      "url": "https://www.stcn.com/article/detail/4096126.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "青岛证监局召开辖区深交所重点拟上市企业座谈会",
+      "url": "https://www.stcn.com/article/detail/4096065.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "卫星物联网加速规模化商用，又一民企获批开展商用试验",
+      "url": "https://www.stcn.com/article/detail/4096083.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "“六张网”建设提速，新型电网何以成为协同枢纽",
+      "url": "https://www.stcn.com/article/detail/4096087.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "超维动力CEO喻杰：人形机器人行业要拒绝概念炒作，加速商业进程",
+      "url": "https://www.stcn.com/article/detail/4095746.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "规模超去年全年！前7个月前海综保区进出口突破4000亿元",
+      "url": "https://www.stcn.com/article/detail/4096078.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广东：1—7月全省固定资产投资同比下降11.3%",
+      "url": "https://www.stcn.com/article/detail/4096389.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广东：1—7月全省社会消费品零售总额同比增长1.2%",
+      "url": "https://www.stcn.com/article/detail/4096385.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广东：1—7月全省规模以上工业增加值同比增长5.7%",
+      "url": "https://www.stcn.com/article/detail/4096381.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "龙高股份与惠州地质调查中心签署战略合作协议",
+      "url": "https://www.stcn.com/article/detail/4096260.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广钢气体配套某重点半导体项目顺利通气",
+      "url": "https://www.stcn.com/article/detail/4096247.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "润和软件在广州成立数字科技公司",
+      "url": "https://www.stcn.com/article/detail/4096201.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广州工控集团到访金溢科技，探讨多维度合作路径",
+      "url": "https://www.stcn.com/article/detail/4096141.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "“场景+机器人+数据+AI”持续深化 拓斯达上半年归母净利润大增262.99%",
+      "url": "https://www.stcn.com/article/detail/4096082.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广州市中级人民法院依法受理恒大地产集团有限公司破产清算案",
+      "url": "https://www.stcn.com/article/detail/4096060.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "东南亚电商市场加速扩容 近万家天猫品牌借Lazada出海布局",
+      "url": "https://www.stcn.com/article/detail/4096552.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "比亚迪闪充技术上车提速",
+      "url": "https://www.stcn.com/article/detail/4096538.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "李子园2026年半年报：转型阵痛下分红与产业布局双线突围",
+      "url": "https://www.stcn.com/article/detail/4096226.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "今年以来新股发行募资1828.53亿元，科创板占比48.59%",
+      "url": "https://www.stcn.com/article/detail/4096238.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "N信胜收盘上涨61.60% 全天成交6.37亿元",
+      "url": "https://www.stcn.com/article/detail/4096222.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "永茂泰上半年净利增长306.94% 铝合金液板块放量、镁合金板块加速",
+      "url": "https://www.stcn.com/article/detail/4096210.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "广电计量上半年净利润增速持续跑赢营收增速，拟10派1.5元（含税）",
+      "url": "https://www.stcn.com/article/detail/4096186.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "蔚来秦力洪：预计年内纯电渗透率将超50% 纯电终局将加速到来",
+      "url": "https://www.stcn.com/article/detail/4096216.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-bank",
+      "source": "新浪财经·银行频道",
+      "title": "吴威：金融服务要跟上全球化步伐",
+      "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-inipaenv1613121.shtml",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-bank",
+      "source": "新浪财经·银行频道",
+      "title": "王干已出任国寿集团副总裁",
+      "url": "https://finance.sina.com.cn/jryx/hm/2026-08-21/doc-inipakum6397257.shtml",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-bank",
+      "source": "新浪财经·银行频道",
+      "title": "浦发银行调整个人信用卡到期还款日规则",
+      "url": "https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-inipaens1411225.shtml",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-bank",
+      "source": "新浪财经·银行频道",
+      "title": "长三角城商行的“三国杀”",
+      "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-ininzyex1566597.shtml",
+      "excerpt": "",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
     }
   ]
 }

@@ -192,18 +192,20 @@
   .exec-must { margin-bottom: 0.5rem; }
   .must-scroller {
     list-style: none; margin: 0; padding: 0 0 0.4rem;
-    display: flex; gap: 0.6rem; overflow-x: auto;
-    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    display: flex; flex-direction: row; gap: 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
-  .must-scroller::-webkit-scrollbar { display: none; }
   .must-card {
-    flex: 0 0 auto; width: 80%; max-width: 16.5rem; scroll-snap-align: start;
+    flex: 0 0 auto; width: 78vw; max-width: 300px;
     display: flex; gap: 0.55rem; align-items: flex-start;
     border: 1px solid var(--rule); border-radius: 12px;
     padding: 0.6rem 0.75rem; background: var(--bg-elevated);
     box-shadow: var(--shadow-sm);
   }
+  .must-link { text-decoration: none; color: inherit; border-radius: 8px; transition: border-color 0.15s ease; }
+  .must-link:hover strong { color: var(--accent-cmb); }
+  .must-card:hover { border-color: color-mix(in srgb, var(--accent-cmb) 40%, var(--rule)); }
   .must-index {
     flex: none; width: 1.2rem; height: 1.2rem; border-radius: 50%;
     background: var(--accent-cmb); color: #fff; font-size: 0.72rem; font-weight: 700;
@@ -213,10 +215,9 @@
   .must-body strong { font-size: 0.85rem; color: var(--fg); font-weight: 600; line-height: 1.35; }
   .must-why {
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
   @media (min-width: 720px) {
-    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
     .must-card { width: auto; max-width: none; }
   }
 
@@ -451,6 +452,16 @@
   }
   .sub-content { display: none; }
   .sub-content.active { display: block; animation: fade 0.2s ease; }
+  .biz-tip {
+    margin: 0 0 0.7rem;
+    padding: 0.5rem 0.7rem;
+    border-left: 3px solid var(--accent-cmb);
+    border-radius: 6px;
+    background: var(--bg-elevated);
+    font-size: 0.78rem;
+    color: var(--fg-soft);
+    line-height: 1.5;
+  }
 
   /* ===== time split (当天 / 过去7天) ===== */
   .time-tabs {
@@ -553,6 +564,25 @@
     border: 1px dashed var(--rule);
     border-radius: var(--r-md);
   }
+
+  /* ===== 合并流：官方 / 媒体 子标签 tab（任务三 #43 改版，长条带 → tab 页）===== */
+  .band-tabs {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0.2rem 0 0.55rem; padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .band-tab {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border: 1px solid var(--rule); background: var(--bg);
+    color: var(--fg-soft); font-size: 0.78rem; font-weight: 600;
+    border-radius: 999px; padding: 0.28rem 0.75rem; cursor: pointer;
+    font-family: inherit; transition: all 0.15s ease;
+  }
+  .band-tab:hover { border-color: var(--muted); color: var(--fg); transform: translateY(-1px); }
+  .band-tab.active { background: var(--accent-cmb); border-color: var(--accent-cmb); color: #fff; }
+  .band-tab .count { font-size: 0.7rem; opacity: 0.85; }
+  .band-panel { display: none; }
+  .band-panel.active { display: block; }
 
   /* ===== trading panel ===== */
   .crypto-widgets {
@@ -815,1305 +845,124 @@
     font-size: 0.82rem;
   }
 
+  /* ===== 2026-08-21 交互重构（demo 对齐）：报头 / 单层 tab / 卡片徽章 / 商机默认展开 / 字号体系 ===== */
+  html { font-size: 17px; }
+  body { line-height: 1.65; }
+  main { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 3.5rem; }
+
+  .masthead { border-bottom: 1px solid var(--rule); padding-bottom: 1.1rem; }
+  .masthead .eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; font-weight: 600; }
+  .masthead h1 { font-family: Georgia, "Songti SC", "Noto Serif CJK SC", serif; font-size: 2rem; margin: 0.35rem 0 0.1rem; letter-spacing: -0.01em; }
+  .hero-line { margin: 0.7rem 0 0; font-size: 1.02rem; line-height: 1.7; border-left: 3px solid var(--cmb, #e60012); padding-left: 0.8rem; }
+  .meta-line { margin: 0.6rem 0 0; font-size: 0.82rem; color: var(--muted); }
+  .meta-line .archive { color: var(--muted); }
+
+  /* 今日必读字号加大（#7） */
+  .must-card strong { font-size: 0.92rem; }
+  .must-card .must-why { font-size: 0.85rem; }
+
+  /* 商机洞察默认展开 + tag 中文（#5/#6） */
+  .exec-insights .insight-collapse { display: block; }
+  .insight-grid { display: flex; flex-direction: column; gap: 0.55rem; }
+  .insight-card, .insight { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.85rem; }
+  .insight h3 { margin: 0.3rem 0 0.35rem; font-size: 0.98rem; line-height: 1.45; }
+  .insight p { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--fg-soft); line-height: 1.6; }
+  .insight p b { color: var(--fg); }
+  .insight-tags { margin-bottom: 0.1rem; }
+  .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; border-radius: 4px; padding: 0.08rem 0.42rem; margin-right: 0.35rem; color: var(--cmb, #e60012); background: rgba(230, 0, 18, 0.1); }
+  .tag.t-wealth { color: #7c3aed; background: rgba(124, 58, 237, 0.12); }
+  .tag.t-mass { color: #059669; background: rgba(5, 150, 105, 0.12); }
+  .tag.t-policy { color: #b45309; background: rgba(180, 83, 9, 0.12); }
+
+  /* 单层 tab：横滑不折行（#11） */
+  .tabs { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0.1rem; margin: 1.4rem 0 0; padding: 0.6rem 0 0; border-bottom: 1px solid var(--rule); background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .tabs .tab { flex: none; background: none; border: none; font-family: inherit; cursor: pointer; padding: 0.6rem 0.9rem 0.75rem; font-size: 0.95rem; font-weight: 500; color: var(--muted); border-bottom: 2.5px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+  .tabs .tab .n { font-size: 0.72rem; color: var(--muted); margin-left: 0.2rem; }
+  .tabs .tab.active { color: var(--cat, var(--fg)); border-bottom-color: var(--cat, var(--fg)); font-weight: 600; }
+  .panel { display: none; padding-top: 1rem; }
+  .panel.active { display: block; }
+
+  /* 卡片：来源徽章 + 摘要平铺（#12/#15） */
+  .brief { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 0.8rem 0.95rem; margin-bottom: 0.55rem; box-shadow: var(--shadow); }
+  .brief .bm { display: flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; flex-wrap: wrap; }
+  .src-badge { font-size: 0.66rem; font-weight: 700; border-radius: 4px; padding: 0.06rem 0.35rem; }
+  .src-official { color: #b45309; background: rgba(217, 119, 6, 0.14); }
+  .src-media { color: #4f46e5; background: rgba(79, 70, 229, 0.12); }
+  .brief h3 { margin: 0; font-size: 0.98rem; line-height: 1.5; }
+  .brief .sum { margin: 0.35rem 0 0; font-size: 0.92rem; color: var(--fg-soft); line-height: 1.65; }
+  .brief .sum b { color: var(--fg); }
+  .brief.more { display: none; }
+  .panel.expanded .brief.more { display: block; }
+  .expand-btn { width: 100%; margin: 0.2rem 0 0.4rem; padding: 0.6rem; border: 1px dashed var(--rule); border-radius: 10px; background: var(--bg-elevated, var(--card)); color: var(--muted); font-size: 0.88rem; font-family: inherit; cursor: pointer; }
+  .expand-btn:hover { color: var(--fg); border-style: solid; }
+
+  /* 市场总览 bullet（#17/#18/#19） */
+  .market-card .bm { margin-bottom: 0.35rem; }
+  .market-bullets { margin: 0.35rem 0 0; padding-left: 1.1rem; font-size: 0.92rem; color: var(--fg-soft); line-height: 1.7; }
+  .market-bullets b { color: var(--fg); }
+
+  footer p { margin: 0.25rem 0; line-height: 1.7; }
+
   </style>
 </head>
 <body>
 <main>
-  <header class="report-header">
-    <span class="eyebrow">每日简报</span>
-    <h1 class="report-title">2026-08-21</h1>
-    <a class="archive-link" href="../archive.html">← 历史归档</a>
+  <!-- 报头：今日定调 + 数据截至 -->
+  <header class="masthead">
+    <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
+    <h1>8月21日 星期四</h1>
+    <p class="hero-line">今日定调：今日暂无可推送重点，详见各板块资讯。</p>
+    <p class="meta-line">数据截至 08:57 · 资讯 0 条 · 商机 0 条 · <a class="archive" href="../archive.html">← 历史归档</a></p>
   </header>
 
   <section class="exec-summary">
     <div class="exec-head">
       <h2 class="exec-title">执行摘要</h2>
-      <span class="exec-sub">今日必读 · 商机提示（AI 生成）</span>
+      <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
     </div>
-    <div class="exec-must">
-      <h3 class="exec-col-title">📌 今日必读</h3>
-      <ul class="must-scroller"><li class="must-card">
-        <span class="must-index">1</span>
-        <div class="must-body"><strong>8月LPR不变，房贷或续降</strong><span class="must-why">LPR维持不变但年内下调预期升温，影响按揭存量竞争与提前还贷节奏，需动态调整广州分行房贷定价与客户经营策略。</span></div>
-      </li><li class="must-card">
-        <span class="must-index">2</span>
-        <div class="must-body"><strong>公积金条例修改</strong><span class="must-why">国务院修改住房公积金管理条例，直接影响广州公积金贷款及缴存业务，需及时评估制度调整对住房金融结构的影响。</span></div>
-      </li><li class="must-card">
-        <span class="must-index">3</span>
-        <div class="must-body"><strong>加密资产疯涨，风险积聚</strong><span class="must-why">加密市场五日大涨超20%且严重超买，居民另类投资偏好升温，需警惕传导至理财代销端的风险与合规挑战。</span></div>
-      </li><li class="must-card">
-        <span class="must-index">4</span>
-        <div class="must-body"><strong>定存利率‘一条直线’</strong><span class="must-why">各期限定存利率趋同，客户定期收益预期走低，存款留存压力上升，需加快引导客户转向中长期理财与保险配置。</span></div>
-      </li><li class="must-card">
-        <span class="must-index">5</span>
-        <div class="must-body"><strong>黄金新底仓，客群避险升</strong><span class="must-why">黄金作为多极时代底仓价值凸显，叠加金价五日涨超5%且超买，客户避险与保值需求上升，需做好贵金属供给与风险提示。</span></div>
-      </li></ul>
-    </div>
-    <div class="exec-insights">
-      <button class="insight-toggle" type="button" aria-expanded="false" aria-controls="exec-insights-body" data-show="查看 5 条商机洞察" data-hide="收起商机洞察">
-        <span class="insight-toggle-label">查看 5 条商机洞察</span>
-        <span class="insight-caret" aria-hidden="true">▾</span>
-      </button>
-      <div class="insight-collapse" id="exec-insights-body">
-        <h3 class="exec-col-title">💡 商机提示</h3>
-        <div class="insight-grid"><div class="insight-card">
-        <h4 class="insight-topic">存款利率扁平化</h4>
-        <p class="insight-impact"><span class="tag">影响</span>客户定存收益预期走低，可能出现存款搬家，需以财富配置承接资金；息差收窄下中收重要性提升。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>在网点主推中长期固收+理财与高价值期交保险，结合客户资金到期日开展定向营销，并加大保险服务场景渗透。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">黄金资产配置</h4>
-        <p class="insight-impact"><span class="tag">影响</span>避险和保值需求上升，黄金作为底仓资产受关注；金价高位波动，贵金属代销空间与风险并存，需把握节奏。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>加大积存金与黄金基金配置推介，针对高净值客户做黄金定投与实物金组合方案，并提示回调风险。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">房贷下调预期</h4>
-        <p class="insight-impact"><span class="tag">影响</span>LPR年内下调预期将影响按揭客户行为，或加剧提前还贷与定价竞争，需平衡规模与收益并提升客户综合贡献。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>动态调整按揭利率审批策略，对已提前还贷客户交叉营销消费贷、代发工资和财富产品，提升客户综合贡献。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">硬科技投资热</h4>
-        <p class="insight-impact"><span class="tag">影响</span>宇树科技IPO暴涨显示硬科技资本热度，高净值客户对一级市场投资兴趣提升，可能带动私行业务与企业服务机会。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>联合合作机构推科技主题资管产品，主动对接本地智能产业链企业，关注融资与员工持股需求并设计公私联动方案。</p>
-      </div><div class="insight-card">
-        <h4 class="insight-topic">涉房风险与地产债</h4>
-        <p class="insight-impact"><span class="tag">影响</span>恒大境外债处置复杂化，涉房资产质量承压，客户对地产类投资风险偏好下降，需动态应对并重检存量。</p>
-        <p class="insight-action"><span class="tag tag-action">建议</span>排查存量对公和零售涉房业务担保物，代销端提示地产债风险；开展私行客户持仓重检与稳健替代配置，加强贷后监控。</p>
-      </div></div>
-      </div>
-    </div>
+    
+    
   </section>
 
-  <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="finance">宏观政策<span class="count">38</span></button>
-    <button class="tab" data-tab="trading">市场行情<span class="count">10</span></button>
-    <button class="tab" data-tab="gz">广州商机<span class="count">40</span></button>
-    <button class="tab tab-fold" data-tab="gd-ipo">广东地区IPO<span class="count">0</span></button>
-    <button class="tab tab-fold" data-tab="tech">技术动态<span class="count">16</span></button>
+  <!-- 板块导航：单层 tab，移动端横滑不折行 -->
+  <nav class="tabs">
+    
   </nav>
 
-  <section class="panel active" data-panel="finance">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-policy" data-cat="finance">国家政策<span class="count">8</span></button><button class="sub-tab" data-sub="cn-finance" data-cat="finance">国内财经<span class="count">19</span></button><button class="sub-tab" data-sub="gz-policy" data-cat="finance">广州政策<span class="count">1</span></button><button class="sub-tab" data-sub="news" data-cat="finance">国际财经<span class="count">10</span></button></nav>
-<div class="sub-contents"><div class="sub-content active" data-sub-content="cn-policy" data-cat="finance">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="cn-policy" data-cat="finance">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642" target="_blank" rel="noopener noreferrer">常州金融监管分局行政处罚信息公开表</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 国家金融监督管理总局 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 常州金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081919184870631/index.html" target="_blank" rel="noopener noreferrer">中国人民银行行长潘功胜会见澳门银行公会代表团</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 中国人民银行 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 央行行长潘功胜会见澳门银行公会代表团，跨境金融合作动向，对分行跨境业务与区域合作有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026081915294182128/index.html" target="_blank" rel="noopener noreferrer">中澳（大利亚）两国央行续签双边本币互换协议</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 中国人民银行 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中澳两国央行续签双边本币互换协议，人民币国际化推进，对跨境人民币业务与外汇配置有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458308_1.html" target="_blank" rel="noopener noreferrer">多地推进现代服务业创新发展</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 多地推进现代服务业创新发展；现代服务业客群成长，分行可关注服务业中小微企业信贷与结算需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458162_1.html" target="_blank" rel="noopener noreferrer">郑栅洁主持召开民营企业座谈会 围绕稳定经济运行促进有效投资听取意见建议</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 发改委主任郑栅洁主持民营企业座谈会，围绕稳定经济运行、促进有效投资听取意见；政策层稳增长信号明确，分行可关注民企融资支持与有效投资领域信贷机会。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwz1600119.shtml" target="_blank" rel="noopener noreferrer">央行：将招标发行2026年第七期和第八期中央银行票据</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 央行发行央票属流动性管理工具，影响市场利率与资金面，提示分行关注货币政策导向，合理安排资产负债和理财定价。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwx8250401.shtml" target="_blank" rel="noopener noreferrer">央行今日开展950亿元7天期逆回购操作</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 央行开展950亿元逆回购操作传递呵护流动性信号，启示分行关注资金利率走势，优化负债成本与信贷投放节奏。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="cn-finance" data-cat="finance">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="cn-finance" data-cat="finance">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-21/evergrande-creditors-owed-45-billion-now-face-more-complex-path" target="_blank" rel="noopener noreferrer">Evergrande Creditors Owed $45 Billion Now Face More Complex Path</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 09:25</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">China Evergrande Group’s creditors have known for years they’ll only get pennies on the dollar back in one of the country’s biggest ever liquidations. Now, getting even just that has become more complex.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.investors.com/news/tesla-unitree-optimus-robots-ai-china/?src=A00220&amp;yptr=yahoo" target="_blank" rel="noopener noreferrer">Chinese Robot Developer Unitree Soars 460% On Blockbuster IPO</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Yahoo Finance · 08/19 21:56</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 国产机器人公司宇树科技IPO首日大涨，显示硬科技资本热度。分行可关注本地智能产业链企业融资需求，挖掘私行客户股权投资与综合服务机会。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span><span class="sub-chip">国家政策</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIGQzuwQEMAeE7ZbdyeVmJ260821.shtml" target="_blank" rel="noopener noreferrer">黄金，多极时代的新底仓？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/qy-lb/detail/20260821/4458202_1.html" target="_blank" rel="noopener noreferrer">上海金融法院发布18条举措助力上海国际金融中心建设</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海金融法院发布18条举措助力上海国际金融中心建设；金融法治环境优化，分行可关注金融纠纷多元化解与跨境金融业务规范。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260821/4458290_1.html" target="_blank" rel="noopener noreferrer">【看新股】热联集团二次递表港交所：营收增速滞缓 近三年分红19.7亿元</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 热联集团二次递表港交所，营收增速滞缓但近三年分红19.7亿元；大宗供应链企业赴港上市，分行可关注供应链客户融资与结算需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260821/4458269_1.html" target="_blank" rel="noopener noreferrer">新政激活 需求释放——热点城市楼市迎结构性回暖</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458294_1.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21 · 多家来源：证券时报</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458274_1.html" target="_blank" rel="noopener noreferrer">27家中小金融机构获批解散 贵州农信改革迎来新进展</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 27家中小金融机构获批解散、贵州农信改革迎来新进展；中小银行整合提速，分行可关注同业格局变化与区域信贷市场机会。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIiJoyj99SsnGGb5bi7Obq260820.shtml" target="_blank" rel="noopener noreferrer">财报透视丨首份保险半年报出炉 友邦人寿三大引擎共振 新业务价值增长20%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574735.shtml" target="_blank" rel="noopener noreferrer">股票私募仓位指数维持高位 大型机构加仓意愿强烈</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininzprc1638101.shtml" target="_blank" rel="noopener noreferrer">俄罗斯今年减持160万盎司黄金 储备降至2020年以来最低水平</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6474567.shtml" target="_blank" rel="noopener noreferrer">中金 | 资产配置：被误读的“美债风暴”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6471212.shtml" target="_blank" rel="noopener noreferrer">中签率高，东南铁矿龙头今日申购！另有刺绣装备“小巨人”上市</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 东南铁矿龙头今日申购、刺绣装备小巨人上市；新股发行活跃，分行财富业务可关注打新客户服务与新股申购提示。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1624093.shtml" target="_blank" rel="noopener noreferrer">招商策略：恒科指数扩容，云厂价值重估</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 招商策略：恒生科技指数扩容、云厂价值重估；港股科技权重调整带来资金配置变化，分行财富业务可关注恒科ETF与科技主题配置。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095541.html" target="_blank" rel="noopener noreferrer">前7个月社会消费商品和服务零售总额同比增长2.6%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 前7个月社会消费商品和服务零售总额同比增长2.6%；消费延续温和修复，利好零售银行获客与消费信贷，分行可关注消费场景金融需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095542.html" target="_blank" rel="noopener noreferrer">从国债到地方债 离岸人民币债券供给持续增加</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 从国债到地方债，离岸人民币债券供给持续增加；离岸人民币市场扩容，分行可关注跨境金融与离岸债券投资机遇。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095545.html" target="_blank" rel="noopener noreferrer">年内上市银行股价走势分化 部分城商行表现亮眼</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 年内上市银行股价走势分化、部分城商行表现亮眼；银行板块估值分化，分行可参考同业经营与资本市场表现优化自身策略。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095549.html" target="_blank" rel="noopener noreferrer">多家上市券商上半年营收净利同比双增</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 多家上市券商上半年营收净利同比双增；资本市场景气回升，券商业绩改善反映市场活跃度提升，分行可关注银证合作与权益类代销机会。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-policy" data-cat="finance">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-policy" data-cat="finance">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10971333.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《海珠区赤沙涌以东储备用地（HZ0401单元）控制性详细规划》等3项规划成果的批复</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 广州市政府 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">广州政策</span></p>
-  <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《海珠区赤沙涌以东储备用地（HZ0401单元）控制性详细规划》等3项规划成果的批复</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府同意海珠区赤沙涌储备用地等3项规划批复，城市更新与土地开发推进，对区域客群与信贷需求有参考。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="news" data-cat="finance">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="news" data-cat="finance">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.federalreserve.gov/newsevents/pressreleases/orders20260820a.htm" target="_blank" rel="noopener noreferrer">Federal Reserve Board announces approval of application by National Westminster Bank Plc</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · Federal Reserve Press Releases · 08/21 04:00</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Federal Reserve Board announces approval of application by National Westminster Bank Plc</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美联储批准相关机构申请（T1官方发布）；海外监管审批动态，体现美联储政策节奏，对分行零售业务影响有限，作宏观背景参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260820b.htm" target="_blank" rel="noopener noreferrer">Federal Reserve Board issues enforcement action with SouthPoint Bancshares, Inc. and announces termination of enforcement action with Deutsche Bank AG, DB USA Corporation, and Deutsche Bank AG New York Branch</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · Federal Reserve Press Releases · 08/20 23:00</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Federal Reserve Board issues enforcement action with SouthPoint Bancshares, Inc. and announces termination of enforcement action with Deutsche Bank AG, DB USA Corporation, and Deutsche Bank AG New York Branch</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美联储对相关机构采取执法行动（T1官方发布）；海外银行监管趋严信号，分行可参考其合规风控口径。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260820a.htm" target="_blank" rel="noopener noreferrer">Federal Reserve Board issues enforcement actions with former employee of Regions Bank and former employee of United Community Bank</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · Federal Reserve Press Releases · 08/20 23:00</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Federal Reserve Board issues enforcement actions with former employee of Regions Bank and former employee of United Community Bank</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美联储对前任职员等采取执法行动；海外监管执法常态化，提示银行业合规与内控风险管理的重要性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-21/evergrande-creditors-owed-45-billion-now-face-more-complex-path" target="_blank" rel="noopener noreferrer">Evergrande Creditors Owed $45 Billion Now Face More Complex Path</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 09:25</p>
-  <p class="article-subs"><span class="sub-chip">国内财经</span><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">China Evergrande Group’s creditors have known for years they’ll only get pennies on the dollar back in one of the country’s biggest ever liquidations. Now, getting even just that has become more complex.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/20/us-japan-yen-intervention-bank-of-japan-carry-trade.html" target="_blank" rel="noopener noreferrer">Japan&#39;s historic yen intervention has ‘turbo-charged’ the carry trade</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/21 08:00</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Japan&#39;s historic effort to prop up the yen may have had an unintended consequence: giving investors a better opportunity to put the carry trade back on.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 日本央行干预后套利交易活跃，日元汇率不确定性上升。分行应加强代客外汇及跨境财富业务的风险提示，引导客户合理管理汇率波动风险。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bbc.co.uk/news/articles/cre4gdvlj9ro?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">How much could Trump&#39;s &#39;economic D-Day&#39; hurt Iran?</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · BBC Business · 08/21 07:16</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Iran has so far proved adept at finding ways around years of already punishing sanctions on its economy.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美国对伊朗经济施压可能推升地缘风险和能源价格，影响全球通胀与市场情绪。财富管理需重视黄金、能源类资产配置价值，做好客户风险提示。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bbc.co.uk/news/articles/c9d8z72nn02o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Why the US economy is ringing alarm bells</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · BBC Business · 08/21 07:15</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">The US hit a debt milestone this week, but just how worried should we be about the world&#39;s largest economy?</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美国经济衰退警报增强，可能引发全球风险资产波动。分行应关注客户避险需求，加大存款、黄金、稳健理财配置，同时提示海外投资不确定性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bbc.co.uk/news/articles/cgewlld498xo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener noreferrer">Millennials are struggling to buy a home - but is it actually getting easier?</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · BBC Business · 08/21 07:10</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Twenty-somethings are much less likely to own a home than previous generations. But data suggests things may be turning a corner.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 海外年轻群体购房困境成为关注焦点，住房可及性影响按揭需求。对分行开展青年客群经营、设计安居信贷产品及投资者教育具有一定借鉴意义。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnbc.com/2026/08/20/bessent-warsh-fed-bond-market-treasury-yields.html" target="_blank" rel="noopener noreferrer">Warsh faces Fed independence test as Bessent moves in on central bank&#39;s turf</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · CNBC Top Stories · 08/21 05:53</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Bessent’s effort to tamp down long-term Treasury yields could force Warsh to clarify how far the Fed should go in coordinating on bonds and the balance sheet.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 美财长Bessent介入美联储人事引发独立性担忧；海外货币政策不确定性上升，分行可提示客户关注美元资产与黄金配置平衡。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-20/anthropic-set-to-add-citigroup-to-top-ipo-banks-on-mega-listing" target="_blank" rel="noopener noreferrer">Anthropic Set to Add Citigroup to Top IPO Banks on Mega-Listing</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 05:29</p>
-  <p class="article-subs"><span class="sub-chip">国际财经</span></p>
-  <p class="article-excerpt">Anthropic PBC is set to add Citigroup Inc. to the banks working on its initial public offering, according to people familiar with the matter, as Wall Street jostles for roles on the artificial intelligence firm’s debut.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。</p>
-</article>
-  </div>
-  </div>
-  </div></div>
-  </section>
-  <section class="panel" data-panel="trading"><section class="trading-overview-card">
-    <span class="eyebrow">市场总览</span>
-    <p class="overview-text trading-overview-text">本期覆盖美股、加密、中概A股与商品外汇四类资产，技术面分化显著。加密板块动量最强：BTC 5日涨19.5%、ETH 5日涨25.71%，RSI分别高达83.1与85.3，MACD均呈金叉扩张；与加密恐慌贪婪指数72（贪婪）、总市值2.55万亿美元及24小时增3.87%的背景相互印证。美股中性偏整理：SPY维持多头排列、距52周高仅2.15%，但MACD死叉、5日跌1.96%。中概A股承压：上证指数均线空头排列，沪深300贴近52周高但方向待定。商品外汇分化：黄金RSI 72超买、5日涨5.04%；原油多头排列，MACD线1.24高于信号线0.64；美元/人民币RSI 20.8深度超卖且贴近52周低。宏观面，VIX单日涨7.52%至16.01仍处低位，10年期美债收益率4.7%贴近52周高。综合看，上行setup集中在加密与商品，下行setup集中于汇率与A股，美股多空交织。</p>
-  </section>
-
-  <section class="trading-watchlist">
-    <h2 class="category-title trading-section-title">今日关注</h2>
-    <div class="trading-picks">
-      <article class="trading-pick stance-bull">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">BTC-USD</span>
-        <span class="pick-name">比特币（BTC-USD）</span>
-      </div>
-      <span class="pick-stance pick-stance-bull">偏上行</span>
-    </header>
-    <p class="pick-rationale">现价75312.47高于SMA20（64705.14）、SMA50（64279.15）与SMA200（68986.76），5日涨19.5%、1日涨8.73%；MACD线1192.55远高于信号线239.44，金叉扩张，RSI 83.1进入超买。技术setup偏上行，但超买程度较高。</p>
-  </article>
-<article class="trading-pick stance-bull">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">ETH-USD</span>
-        <span class="pick-name">以太坊（ETH-USD）</span>
-      </div>
-      <span class="pick-stance pick-stance-bull">偏上行</span>
-    </header>
-    <p class="pick-rationale">现价2364.58站上SMA200（2003.75）与SMA50（1877.93），5日涨25.71%、1日涨5.02%；MACD线68.96高于信号线27.73，金叉扩张，RSI 85.3极端超买。距52周低点反弹56.96%，技术setup偏上行但短线过热。</p>
-  </article>
-<article class="trading-pick stance-bear">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">USDCNY=X</span>
-        <span class="pick-name">美元/人民币（USDCNY=X）</span>
-      </div>
-      <span class="pick-stance pick-stance-bear">偏下行</span>
-    </header>
-    <p class="pick-rationale">现价6.72低于SMA20（6.75）、SMA50（6.77）与SMA200（6.88），均线空头排列；RSI 20.8深度超卖，距52周低点仅0.16%，1日跌0.11%、5日跌0.32%。技术setup偏下行，超卖区间或伴随修复波动。</p>
-  </article>
-<article class="trading-pick stance-bear">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">000001.SS</span>
-        <span class="pick-name">上证指数（000001.SS）</span>
-      </div>
-      <span class="pick-stance pick-stance-bear">偏下行</span>
-    </header>
-    <p class="pick-rationale">现价3887.8低于SMA20（3891.5）、SMA50（3966.22）与SMA200（4015.08），呈空头排列；RSI 45.8处50下方，5日跌1%。MACD -5.659高于信号线-11.30，负值区间动能边际改善。整体技术setup偏下行但斜率略有钝化。</p>
-  </article>
-<article class="trading-pick stance-neutral">
-    <header class="pick-head">
-      <div class="pick-symbol-block">
-        <span class="pick-symbol">SPY</span>
-        <span class="pick-name">标普500（SPY）</span>
-      </div>
-      <span class="pick-stance pick-stance-neutral">中性</span>
-    </header>
-    <p class="pick-rationale">现价762.6高于SMA200（707.13），距52周高仅2.15%，中期多头排列未破坏；但MACD线6.23已低于信号线6.79形成死叉，1日跌0.84%、5日跌1.96%，RSI 51.7处中性。多空信号并存，技术状态中性。</p>
-  </article>
-    </div>
-  </section>
-
-  <section class="trading-tickers">
-    <h2 class="category-title trading-section-title">全部资产</h2>
-    <nav class="trading-group-tabs"><button class="trading-group-tab active" data-group="china-equity">中概 / 港股<span class="count">2</span></button><button class="trading-group-tab" data-group="commodity-fx">商品 / 外汇<span class="count">3</span></button><button class="trading-group-tab" data-group="macro">宏观信号<span class="count">2</span></button><button class="trading-group-tab" data-group="us-equity">美股 / ETF<span class="count">1</span></button><button class="trading-group-tab" data-group="crypto">加密货币<span class="count">2</span></button></nav>
-    <div class="trading-group-contents"><div class="trading-group-content active" data-group="china-equity">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">000001.SS</h3>
-        <p class="ticker-name">上证指数</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥3,887.80</span>
-        <span class="ticker-pct negative">-0.41%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-1.00%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-8.7%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">45.8</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>3,891.50 / 3,966.22 / 4,015.08</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-5.659 / -11.301</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">空头排列</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">000300.SS</h3>
-        <p class="ticker-name">沪深300</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥4,587.43</span>
-        <span class="ticker-pct positive">+0.00%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+0.00%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-0.1%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">—</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>— / — / —</dd></div>
-      <div><dt>MACD / 信号</dt><dd>— / —</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="commodity-fx">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">USDCNY=X</h3>
-        <p class="ticker-name">美元 / 人民币</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">¥6.72</span>
-        <span class="ticker-pct negative">-0.11%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-0.32%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-6.5%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-oversold">20.8</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>6.75 / 6.77 / 6.88</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-0.011 / -0.009</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">RSI 超卖</span><span class="signal-pill tone-caution">接近 52 周低</span><span class="signal-pill tone-caution">空头排列</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">GC=F</h3>
-        <p class="ticker-name">黄金</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$4,583.70</span>
-        <span class="ticker-pct positive">+2.10%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+5.04%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-17.9%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-overbought">72.0</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>4,253.72 / 4,166.97 / 4,495.89</dd></div>
-      <div><dt>MACD / 信号</dt><dd>96.290 / 62.775</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">RSI 超买</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">CL=F</h3>
-        <p class="ticker-name">WTI 原油</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$86.87</span>
-        <span class="ticker-pct positive">+1.21%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+6.92%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-27.3%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">59.4</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bullish">多头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>82.25 / 79.13 / 77.34</dd></div>
-      <div><dt>MACD / 信号</dt><dd>1.240 / 0.642</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">多头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="macro">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">^TNX</h3>
-        <p class="ticker-name">10Y 美债收益率 (%)</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$4.70</span>
-        <span class="ticker-pct positive">+0.92%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+1.19%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-1.1%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">55.5</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bullish">多头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>4.67 / 4.57 / 4.33</dd></div>
-      <div><dt>MACD / 信号</dt><dd>0.030 / 0.034</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span><span class="signal-pill tone-caution">多头排列</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">^VIX</h3>
-        <p class="ticker-name">VIX 恐慌指数</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$16.01</span>
-        <span class="ticker-pct positive">+7.52%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+9.43%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-54.6%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">49.4</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bearish">空头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>16.31 / 17.12 / 18.51</dd></div>
-      <div><dt>MACD / 信号</dt><dd>-0.568 / -0.571</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 金叉 <span class="signal-age">(今天)</span></span><span class="signal-pill tone-caution">空头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="us-equity">
-      
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">SPY</h3>
-        <p class="ticker-name">S&amp;P 500</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$762.60</span>
-        <span class="ticker-pct negative">-0.84%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="negative">-1.96%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-2.2%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-normal">51.7</dd></div>
-      <div><dt>趋势</dt><dd class="trend-bullish">多头</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>760.99 / 750.94 / 707.13</dd></div>
-      <div><dt>MACD / 信号</dt><dd>6.226 / 6.793</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 死叉 <span class="signal-age">(今天)</span></span><span class="signal-pill tone-caution">接近 52 周高</span><span class="signal-pill tone-caution">多头排列</span></div>
-  </article>
-    </div><div class="trading-group-content" data-group="crypto">
-      <div class="crypto-widgets"><div class="crypto-widget fg-greed">
-      <div class="widget-label">加密恐慌贪婪</div>
-      <div class="widget-value">72</div>
-      <div class="widget-sub">贪婪</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">加密总市值</div>
-      <div class="widget-value">$2.55 T</div>
-      <div class="widget-sub positive">+3.87% / 24h</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">BTC 主导率</div>
-      <div class="widget-value">59.2%</div>
-      <div class="widget-sub">ETH 11.2%</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">24h 成交量</div>
-      <div class="widget-value">$135.7 B</div>
-      <div class="widget-sub">活跃币 18,518</div>
-    </div></div>
-      <article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">BTC-USD</h3>
-        <p class="ticker-name">Bitcoin</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$75,312.47</span>
-        <span class="ticker-pct positive">+8.73%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+19.50%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-40.3%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-overbought">83.1</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>64,705.14 / 64,279.15 / 68,986.76</dd></div>
-      <div><dt>MACD / 信号</dt><dd>1,192.552 / 239.439</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 金叉 <span class="signal-age">(2 天前)</span></span><span class="signal-pill tone-caution">RSI 超买</span></div>
-  </article><article class="ticker-card">
-    <header class="ticker-head">
-      <div class="ticker-id">
-        <h3 class="ticker-symbol">ETH-USD</h3>
-        <p class="ticker-name">Ethereum</p>
-      </div>
-      <div class="ticker-price-block">
-        <span class="ticker-price">$2,364.58</span>
-        <span class="ticker-pct positive">+5.02%</span>
-      </div>
-    </header>
-    <dl class="ticker-indicators">
-      <div><dt>5 日</dt><dd class="positive">+25.71%</dd></div>
-      <div><dt>距 52w 高</dt><dd>-52.3%</dd></div>
-      <div><dt>RSI(14)</dt><dd class="rsi-overbought">85.3</dd></div>
-      <div><dt>趋势</dt><dd class="trend-neutral">中性</dd></div>
-      <div><dt>SMA 20 / 50 / 200</dt><dd>1,929.68 / 1,877.93 / 2,003.75</dd></div>
-      <div><dt>MACD / 信号</dt><dd>68.960 / 27.730</dd></div>
-    </dl>
-    <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 金叉 <span class="signal-age">(1 天前)</span></span><span class="signal-pill tone-caution">RSI 超买</span></div>
-  </article>
-    </div></div>
-  </section>
-
-  <section class="trading-risk">
-    <span class="eyebrow">风险提示</span>
-    <p>本报告仅基于当前公开行情的技术指标进行客观转述，不构成任何投资建议或涨跌预测。过去走势不代表未来表现，各类资产价格受多重因素影响可能剧烈波动。所有指标读数请谨慎参考，仅供技术指标解读参考。</p>
-  </section></section>
-  <section class="panel" data-panel="gz">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">14</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">10</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">8</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">4</span></button><button class="sub-tab" data-sub="gz-ipo" data-cat="gz">广州IPO相关<span class="count">4</span></button></nav>
-<div class="sub-contents"><div class="sub-content active" data-sub-content="gz-wealth" data-cat="gz">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-wealth" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIGQzuwQEMAeE7ZbdyeVmJ260821.shtml" target="_blank" rel="noopener noreferrer">黄金，多极时代的新底仓？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458315_1.html" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIiJoyj99SsnGGb5bi7Obq260820.shtml" target="_blank" rel="noopener noreferrer">财报透视丨首份保险半年报出炉 友邦人寿三大引擎共振 新业务价值增长20%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininzprc1638101.shtml" target="_blank" rel="noopener noreferrer">俄罗斯今年减持160万盎司黄金 储备降至2020年以来最低水平</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6474567.shtml" target="_blank" rel="noopener noreferrer">中金 | 资产配置：被误读的“美债风暴”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1618709.shtml" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】连续五年下降 险资配置信托存量规模不足万亿</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxeix6794408.shtml" target="_blank" rel="noopener noreferrer">公募基金年内累计分红1094.63亿元</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】公募基金年内累计分红1094.63亿元</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 公募基金年内累计分红1094.63亿元，基金分红活跃，财富端可关注分红型基金配置与客户现金流需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-20/doc-ininxqxw2147964.shtml" target="_blank" rel="noopener noreferrer">存一年等于存两年等于存三年！银行业内首现定存利率“一条直线”，什么信号？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】存一年等于存两年等于存三年！银行业内首现定存利率“一条直线”，什么信号？</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 银行业内首现定存利率一条直线，各期限定存利率趋同；存款利率扁平化下客户收益预期走低，分行可引导客户关注中长期理财与保险配置。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/1c1bcbbc79de592bb8ffeee1ab686a49.html" target="_blank" rel="noopener noreferrer">贷款利息更难赚了，银行发力中间业务，员工称考核压力大：“扛不住自己买了1万”！反内</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】贷款利息更难赚了，银行发力中间业务，员工称考核压力大：“扛不住自己买了1万”！反内</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 息差收窄下银行发力中间业务增收、考核压力加大，分行可加大财富管理与代销等中收业务，缓解利率下行压力。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/c90e6b97f3eed5371043e308ab463dad.html" target="_blank" rel="noopener noreferrer">关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 监管提示防范冒用金融监管名义的新型「退保」诈骗，分行应加强客户反诈宣导与代销保单合规，防范声誉风险。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/5534ce05db447ac3439462c77a00bfa4.html" target="_blank" rel="noopener noreferrer">净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 净息差收窄6个基点，宁波银行营收净利仍双增超10%；中小银行经营韧性样本，分行可借鉴其零售转型与中收策略，关注息差管理与资产质量。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/b83e476d8a4baa0ce2aa3854fd1e4cc5.html" target="_blank" rel="noopener noreferrer">江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行规模增长、对公发力明显但中收变现艰难；银行中收承压共性显现，分行可加强财富管理中收业务、优化收入结构。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxvfu2020687.shtml" target="_blank" rel="noopener noreferrer">33万亿理财市场大分化：头部公司狂飙，中小银行为何踩刹车？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 理财市场头部集中分化、中小银行收缩，启示分行需提升理财产品竞争力和投研能力，应对规模与收入双重挑战。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458446" target="_blank" rel="noopener noreferrer">农商行竞逐38万亿私人银行赛道：从“慢半拍”到“加速跑”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">①咸阳农商行成立陕西农信首个私行部，打造六位一体服务体系。全国仅工行、农行、兴业持私行专营牌照（交行拟撤销），其余多推行“财私一体化”。多家农商行已布局但整体仍属少数。
-②农商行开展私行具地缘优势，但其他劣势突出。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-credit" data-cat="gz">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-credit" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458040_1.html" target="_blank" rel="noopener noreferrer">新华财经晚报：上海市下调购买外环外二套住房首付款比例</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海下调外环外二套住房首付比例，一线楼市松绑信号增强，广州房贷政策跟进预期升温，可提前储备改善型按揭需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4457998_1.html" target="_blank" rel="noopener noreferrer">瑞典央行维持利率1.75%不变 称若通胀加速仍准备收紧政策</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 瑞典央行维持利率不变但保留收紧可能，海外加息周期尾声信号，对全球流动性环境判断有参考价值。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 住房公积金提取和使用范围拓宽、9月20日起施行，公积金新政利好住房消费，对分行公积金联动业务与房贷有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095524.html" target="_blank" rel="noopener noreferrer">低利率叠加高波动 多资产多策略配置成破局关键</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095616.html" target="_blank" rel="noopener noreferrer">AI产业融资迎来新解法？多家银行落地算力贷，信贷评估锚点悄然生变</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 多家银行落地算力贷，信贷评估锚点悄然生变；算力资产纳入授信评估，分行可探索科技企业算力贷产品，服务数字经济客群。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzazf8462883.shtml" target="_blank" rel="noopener noreferrer">“双锚”并行助推贷款定价质效提升</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/9bcd82c795aa7f1ea4de9e01a6d44f7b.html" target="_blank" rel="noopener noreferrer">广东出台深化融资信用服务平台建设三年行动方案 助力中小微企业融资发展</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  <p class="article-excerpt">【21财经】广东出台深化融资信用服务平台建设三年行动方案 助力中小微企业融资发展</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 广东出台深化融资信用服务平台三年行动方案助力中小微融资，分行可对接平台信用数据完善小微风控与批量获客。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/fc9352f864836695603efc81e46daf1c.html" target="_blank" rel="noopener noreferrer">事关房贷，央行最新公布！</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  <p class="article-excerpt">【21财经】事关房贷，央行最新公布！</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 央行公布最新房贷相关数据，按揭市场动向明确，分行可据此跟踪广州房贷需求与定价环境变化。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4090505.html" target="_blank" rel="noopener noreferrer">上海出台楼市新政：外环外二套房首付门槛再降</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-customer" data-cat="gz">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-customer" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458366_1.html" target="_blank" rel="noopener noreferrer">【环球财经】日本核心CPI连续59个月同比上涨</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458118_1.html" target="_blank" rel="noopener noreferrer">阿里发布最新财报：AI相关收入连续3年3位数同比增长</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 阿里AI相关收入连续3年三位数增长，科技产业景气上行，分行可关注科技企业信贷与公私联动获客机会。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4458088_1.html" target="_blank" rel="noopener noreferrer">消费平台：七夕消费呈现个性化趋势 兴趣驱动成增长新引擎</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 七夕消费呈现个性化趋势、兴趣驱动成新引擎，年轻客群消费特征变化，可设计七夕等节点零售营销活动。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4457970_1.html" target="_blank" rel="noopener noreferrer">商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%，农村消费数据向好，对县域客群经营与信用卡营销参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml" target="_blank" rel="noopener noreferrer">半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095550.html" target="_blank" rel="noopener noreferrer">多地着力促进汽车消费 县域市场、二手车交易成重点</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 多地着力促进汽车消费、县域市场与二手车交易成重点；汽车消费政策加码利好车贷业务，分行可关注县域车贷与二手车金融需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1911481.shtml" target="_blank" rel="noopener noreferrer">息差收窄之下，南京银行利息净收入何以大增40%？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 息差收窄下南京银行利息净收入大增40%，同业降本增效与资产负债管理样本，对分行定价与中收经营有借鉴。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458705" target="_blank" rel="noopener noreferrer">零售信贷收缩，江苏银行对公信贷撑起上半年营收增速，净息差收窄9个BP</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span><span class="sub-chip">零售客群</span></p>
-  <p class="article-excerpt">①江苏银行上半年资产端发力对公的策略依旧明确。对公贷款余额达1.94万亿元，较上年末大增16.72%，成为拉动贷款扩张的绝对主力。
-②但零售信贷收缩，个人贷款余额6496亿元，较上年末下降1.65%。
-③净息差持续下探。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-private" data-cat="gz">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-private" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml" target="_blank" rel="noopener noreferrer">半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095672.html" target="_blank" rel="noopener noreferrer">8年投出41家专精特新！解码毅达资本的湾区“突围战”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.guancha.cn/GuanJinRong/2026_08_19_827900.shtml" target="_blank" rel="noopener noreferrer">上海银行获批收购上银国际100%股权</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 观察者网·金融 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海银行获批收购上银国际100%股权，城商行国际化布局，对同业跨境业务与综合化经营有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.ftchinese.com/story/001110654" target="_blank" rel="noopener noreferrer">中国开始放行英伟达H200芯片</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · FT中文网 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
-  <p class="article-excerpt">知情人士称，字节跳动和腾讯近几周已收到小批量H200芯片，这一进展将为力争追赶美国竞争对手的中国AI企业添加助力。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中国开始放行英伟达H200芯片，AI算力供给边际改善；算力产业催化下，分行可关注科技企业信贷与客户权益配置中的AI主题机会。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-ipo" data-cat="gz">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="gz-ipo" data-cat="gz">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-20/anthropic-set-to-add-citigroup-to-top-ipo-banks-on-mega-listing" target="_blank" rel="noopener noreferrer">Anthropic Set to Add Citigroup to Top IPO Banks on Mega-Listing</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 05:29</p>
-  <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  <p class="article-excerpt">Anthropic PBC is set to add Citigroup Inc. to the banks working on its initial public offering, according to people familiar with the matter, as Wall Street jostles for roles on the artificial intelligence firm’s debut.</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458294_1.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6471212.shtml" target="_blank" rel="noopener noreferrer">中签率高，东南铁矿龙头今日申购！另有刺绣装备“小巨人”上市</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 东南铁矿龙头今日申购、刺绣装备小巨人上市；新股发行活跃，分行财富业务可关注打新客户服务与新股申购提示。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwz1600119.shtml" target="_blank" rel="noopener noreferrer">央行：将招标发行2026年第七期和第八期中央银行票据</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">广州IPO相关</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 央行发行央票属流动性管理工具，影响市场利率与资金面，提示分行关注货币政策导向，合理安排资产负债和理财定价。</p>
-</article>
-  </div>
-  </div>
-  </div></div>
-  </section>
-  <section class="panel" data-panel="gd-ipo">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="szse" data-cat="gd-ipo">深交所<span class="count">0</span></button><button class="sub-tab" data-sub="sse" data-cat="gd-ipo">上交所<span class="count">0</span></button><button class="sub-tab" data-sub="bse" data-cat="gd-ipo">北交所<span class="count">0</span></button><button class="sub-tab" data-sub="hkex" data-cat="gd-ipo">港交所<span class="count">0</span></button><button class="sub-tab" data-sub="ipo-tutoring" data-cat="gd-ipo">IPO辅导<span class="count">0</span></button><button class="sub-tab" data-sub="overseas" data-cat="gd-ipo">境外<span class="count">0</span></button></nav>
-<div class="sub-contents"><div class="sub-content active" data-sub-content="szse" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div>
-<div class="sub-content" data-sub-content="sse" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div>
-<div class="sub-content" data-sub-content="bse" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div>
-<div class="sub-content" data-sub-content="hkex" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div>
-<div class="sub-content" data-sub-content="ipo-tutoring" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div>
-<div class="sub-content" data-sub-content="overseas" data-cat="gd-ipo"><p class="empty">该源今日无内容。</p></div></div>
-  </section>
-  <section class="panel" data-panel="tech">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-tech" data-cat="tech">国内技术<span class="count">10</span></button><button class="sub-tab" data-sub="overseas-tech" data-cat="tech">国外技术<span class="count">6</span></button></nav>
-<div class="sub-contents"><div class="sub-content active" data-sub-content="cn-tech" data-cat="tech">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="cn-tech" data-cat="tech">
-    <article class="article">
-  <h3 class="article-title"><a href="https://sspai.com/post/113666" target="_blank" rel="noopener noreferrer">派早报：华为发布 Pura X View、享界 G9 等多款新品</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 少数派 · 08/21 07:00</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">影石推出竖拍云台相机 Luna Pro，森海塞尔发布 MOMENTUM True Wireless 5 真无线耳机等。查看全文</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 派早报：华为发布Pura X View、享界G9等多款新品；消费电子新品发布，与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/LpNjOA7au7WIhTBmVcJo?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">CFP 开放 | KCD 杭州站邀您共议 Agent 时代的云原生、可观测与大模型推理</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 03:03</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> KCD杭州站技术会议CFP开放，属开发者活动招募，与银行零售业务无关。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/qaWyth5P4tZE1CQhhaGq?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">AI Infra 正在诞生自己的石油期货？GPU 不够买之后，华尔街开始交易算力</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 02:00</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> AI Infra算力开始被华尔街当作可交易资产，算力金融化趋势浮现，对分行科技金融与AI基础设施信贷布局有前沿参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/pKbwv6YkdSE1UdCiKl2F?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">CloudFlare 预览网页 WebMCP 自动支持功能</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 01:00</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> CloudFlare预览网页WebMCP自动支持功能，属技术产品更新，与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/CPidTC2YJ7AvlU7jUgiq?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">你的 Coding Agent 有多大价值，取决于它对你的数据了解多少 | 技术实践</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 00:12</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Coding Agent价值取决于对企业数据的理解，属AI工程实践，对分行AI应用与数据治理有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/8EPJjIlk5WwgiXphjxEW?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Buildpacks 将容器加固控制点从 Dockerfile 中移出</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/20 23:39</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Buildpacks将容器加固控制点移出Dockerfile，属容器技术实践，与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/476280.html" target="_blank" rel="noopener noreferrer">这届“WRC必看”：全栈AI、20+超难家务，8.99万带回家</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/20 18:17</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 具身智能机器人以8.99万价格带进入大众市场，属科技消费产品动态，与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/476281.html" target="_blank" rel="noopener noreferrer">光帆AI技术正式落地韶音OpenFit 2 AI耳机，携手突破AI边界</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/20 18:13</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">韶音宣布与光帆科技达成AI技术合作，将上线基于光帆自研AI OS的效率功能合集——&quot;AI 实验室&quot;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 光帆AI技术落地韶音AI耳机，属消费电子合作动态，与银行零售业务无关。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/476199.html" target="_blank" rel="noopener noreferrer">闭源RSI的严父：18个Agent自主科研，Kimi K3靠Harness逼近Opus 5</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/20 17:46</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">经典RSI剧本开始动摇</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Kimi K3以18个Agent自主科研逼近前沿模型，AI Agent自主能力跃升，对银行数智化与智能服务应用有前沿参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.qbitai.com/2026/08/476141.html" target="_blank" rel="noopener noreferrer">今年WRC最大展台，预告具身智能未来</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 量子位 · 08/20 17:42</p>
-  <p class="article-subs"><span class="sub-chip">国内技术</span></p>
-  <p class="article-excerpt">从自主泛化到真生产力</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> WRC具身智能展台预告，属科技展会动态，与银行零售业务无直接关联。</p>
-</article>
-  </div>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="overseas-tech" data-cat="tech">
-    
-  <div class="source-contents">
-    <div class="source-content active" data-source-content="_merged" data-sub="overseas-tech" data-cat="tech">
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.infoq.cn/article/D6IBeGO6rqVCjBDv1qwj?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Rust 再下一城：Astro 7 重写编译器与 Markdown 流水线</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 17:16</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">点击查看原文&gt;</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> Astro用Rust重写编译器，反映开源高性能技术栈趋势。对分行技术团队具有性能优化借鉴意义，可支撑手机银行和数字化经营体验升级。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/20/1142571/ai-consciousness-debate-trap/" target="_blank" rel="noopener noreferrer">Debates over AI consciousness are a trap</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/20 23:42</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">“Runaway” AI, “rogue” agents, and “autonomous” actors—the current rhetoric would have you believe that AI agents are not only awake and aware, but angry at their creators. Prominent tech leaders such as Demis Hassabis, Dario Amodei, and Sam Altman push for regulation of these seemingly “superhuman” </p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> MIT科技评论谈AI意识争论是个陷阱；AI哲学讨论，与银行零售业务无关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/20/1142070/unlocking-hidden-revenue-streams-with-market-models/" target="_blank" rel="noopener noreferrer">Unlocking hidden revenue streams with market models</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/20 17:47</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">Each day, an airline transports tens of thousands of passengers on hundreds of flights. Often these are not straightforward point-to-point routes, with passengers requiring multiple connections. The airline can consider potentially hundreds of variables to price each of these journeys: demand, seaso</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 国外AI应用文章，讨论航空公司以市场模型挖掘隐藏收入，属技术前沿但与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://arxiv.org/abs/2608.18136" target="_blank" rel="noopener noreferrer">FraudBench: Stress-Testing Policy-Grounded Banking Agents Against Adaptive Fraud</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · arXiv 金融科技论文 (cs.AI·cs.LG·q-fin) · 08/20 12:00</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">arXiv:2608.18136v1 Announce Type: new Abstract: Conversational agents now act for end users through tools while holding access to customer databases and internal policy documents that a caller can reach through dialogue alone. Banking is the clearest case: the same agent that answers a question can </p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 面向银行智能体的反欺诈压力测试基准FraudBench发布；银行AI风控可评估性与合规边界受关注，分行可关注智能风控与反欺诈技术演进。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142226/how-people-use-ai/" target="_blank" rel="noopener noreferrer">We still don’t know how people are really using AI</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 18:06</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">AI companies like Anthropic and OpenAI regularly publish reports on how people are using products like Claude and ChatGPT, but they only release the data they want us to see, AI researchers say. “There is no independent source to corroborate it,” says Anka Reuel, a computer science PhD candidate at </p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 探讨用户真实使用AI方式的研究观察，属技术研究话题，与银行零售业务无直接关联。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.technologyreview.com/2026/08/18/1142188/ai-recursive-self-improvement/" target="_blank" rel="noopener noreferrer">AI’s recursive self-improvement might not come so quickly after all</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · MIT Tech Review AI · 08/18 17:00</p>
-  <p class="article-subs"><span class="sub-chip">国外技术</span></p>
-  <p class="article-excerpt">The AI industry’s boldest promise right now is that AI will soon improve itself, with almost no need for human oversight. LLMs can already write code, generate synthetic data for training, and optimize the computer chips they run on. Forecasts of explosive AI progress predict that what researchers c</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 讨论AI递归自我改进的进度预期，属技术趋势话题，与银行零售业务无直接关联。</p>
-</article>
-  </div>
-  </div>
-  </div></div>
-  </section>
-  
   
 
   <footer>
-    内容均来自原媒体，本站仅作摘要整理与回链。
+    <p>免责声明：本页面为个人学习项目，内容基于公开信息整理，不代表任何机构立场；市场信息不构成投资建议。页面面向内部参考，请勿外传。</p>
+    <p><a class="archive" href="../archive.html">← 历史归档（8月20日 / 8月19日 / 更多 →）</a></p>
   </footer>
 </main>
 <script>
+  // tab 切换（单层五板块）
   document.querySelectorAll('.tabs > .tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var target = btn.dataset.tab;
+      var target = btn.dataset.target;
       document.querySelectorAll('.tabs > .tab').forEach(function (b) {
         b.classList.toggle('active', b === btn);
       });
       document.querySelectorAll('.panel').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.panel === target);
+        p.classList.toggle('active', p.id === target);
       });
     });
   });
-  // Scope sub-tab toggles to the parent .panel so two L1 panels
-  // can share the same data-cat (e.g. tech main + community both data-cat=tech)
-  // without stomping on each other's active state.
-  document.querySelectorAll('.sub-tab').forEach(function (btn) {
+  // 空板块保险：panel 无卡片则连同 tab 移除
+  document.querySelectorAll('.panel').forEach(function (panel) {
+    if (panel.querySelectorAll('.brief').length === 0) {
+      var tab = document.querySelector('.tab[data-target="' + panel.id + '"]');
+      if (tab) tab.remove();
+      panel.remove();
+    }
+  });
+  // 展开其余 N 条
+  document.querySelectorAll('.expand-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var panel = btn.closest('.panel');
-      if (!panel) return;
-      var sub = btn.dataset.sub;
-      panel.querySelectorAll('.sub-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      panel.querySelectorAll('.sub-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.subContent === sub);
-      });
-    });
-  });
-  // Time split (当天 / 过去7天) — scoped to the parent .sub-content so it
-  // doesn't interfere with sibling L2 tabs sharing the same data-cat.
-  document.querySelectorAll('.time-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var subContent = btn.closest('.sub-content');
-      if (!subContent) return;
-      var time = btn.dataset.time;
-      subContent.querySelectorAll('.time-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      subContent.querySelectorAll('.time-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.timeContent === time);
-      });
-    });
-  });
-  // L3 信息源 tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流）；
-  // source-content 结构不再产出，原 source-tab 切换逻辑一并删除。
-  // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
-  document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var grp = btn.dataset.group;
-      document.querySelectorAll('.trading-group-tab').forEach(function (b) {
-        b.classList.toggle('active', b === btn);
-      });
-      document.querySelectorAll('.trading-group-content').forEach(function (p) {
-        p.classList.toggle('active', p.dataset.group === grp);
-      });
-    });
-  });
-  // 执行摘要 · 商机提示折叠
-  document.querySelectorAll('.insight-toggle').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var body = document.getElementById(btn.getAttribute('aria-controls'));
-      if (!body) return;
-      var open = body.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      var label = btn.querySelector('.insight-toggle-label');
-      if (label) label.textContent = open ? (btn.dataset.hide || label.textContent) : (btn.dataset.show || label.textContent);
+      if (panel) panel.classList.add('expanded');
+      btn.remove();
     });
   });
 </script>
