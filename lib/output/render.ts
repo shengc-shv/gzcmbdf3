@@ -1,14 +1,17 @@
 import type {
   ArticleInput,
   DailyReport,
+  ReportInsight,
   ReportItem,
+  ReportMustRead,
   ReportSectionKey,
   TradingSection,
 } from "../types";
 import type { WatchlistPick } from "../ai/trading-commentary";
 import { REPORT_LOCALE,loadAllSources  } from "../sources/registry";
 import { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "./render/i18n";
-import { SECTIONS } from "../ai/validator";
+import { SECTIONS, BANNED_WORDS } from "../ai/validator";
+import { titleSimilarityDice } from "../ingest/dedup-similar";
 import {
   renderRawCategoryPanel,
   countItemsRecent,
@@ -1015,6 +1018,77 @@ export function mergeRollingIntoReport(
     // 重排 rank（今日条目已由 finalizeRanks 生成，历史追加后统一重编号）
     report.sections[sec].forEach((it, i) => (it.rank = i + 1));
   }
+  return report;
+}
+
+/**
+ * SKIP_AI 模式执行摘要回填（2026-08-21 修复：store.json 复用断链）。
+ *
+ * 背景：两阶段管线改造后 daily.ts 不再调用旧 selectExecutiveSummary，
+ * history/<date>/store.json（真实 AI 当日产物）成为死数据——SKIP_AI 本地预览
+ * 时 must_read/insights 恒空（PASS2 不产出），尽管 store.json 里有当日 executive。
+ *
+ * 本函数把 store 的 ExecutiveSummary（旧 schema：must_read{title,why,url?} /
+ * insights{topic,impact,action,tag?}）适配为 report 的新 schema：
+ * - must_read：url 缺失时按标题在 report.sections 回匹配（Dice≥0.5），仍无则丢弃
+ *   （宁缺毋滥，避免空链接卡片）；why 保留
+ * - insights：tag[] → tags[]，topic/impact/action 照搬
+ * - 违禁词过滤：命中 BANNED_WORDS 的 must_read/insights 丢弃（P0 合规，
+ *   store 里「加密资产疯涨」这类旧产物不回流）
+ */
+export function mergeStoredExecutive(
+  report: DailyReport,
+  exec: { hero_line?: string; must_read: Array<{ title: string; why: string; url?: string }>; insights: Array<{ topic: string; impact: string; action: string; tag?: string[] }> },
+): DailyReport {
+  const banned = new Set(BANNED_WORDS);
+  const bannedIn = (s: string): boolean => banned.has(s) || BANNED_WORDS.some((w) => s.includes(w));
+
+  // 标题 → url 回匹配：先宽松前缀包含（store 标题常是 sections 标题的精简版，
+  // 如「8月LPR不变，房贷或续降」⊂「8月LPR保持不变，今年房贷还能否下调？」），
+  // 再 Dice≥0.4 兜底（措辞改写宽容）。
+  const allItems: ReportItem[] = SECTIONS.flatMap((s) => report.sections[s] ?? []);
+  const matchUrl = (title: string): string | undefined => {
+    if (!title) return undefined;
+    const norm = (s: string): string => s.replace(/[^\p{L}\p{N}]+/gu, "").toLowerCase();
+    const nt = norm(title);
+    if (!nt) return undefined;
+    let best: { url: string; score: number } | undefined;
+    for (const it of allItems) {
+      const t = it.title_cn || it.title_orig || "";
+      if (!t) continue;
+      const nti = norm(t);
+      if (nti.includes(nt) || nt.includes(nti)) return it.url; // 包含关系直接命中
+      const score = titleSimilarityDice(title, t);
+      if (score >= 0.4 && (!best || score > best.score)) best = { url: it.url, score };
+    }
+    return best?.url;
+  };
+
+  // must_read 回填（保留 url 显式携带的，其余按标题回匹配，无匹配丢弃）
+  const must: ReportMustRead[] = [];
+  for (const m of exec.must_read ?? []) {
+    if (!m || !m.why || bannedIn(`${m.title} ${m.why}`)) continue;
+    const url = m.url || matchUrl(m.title);
+    if (!url) continue; // 无法定位到报告内条目 → 丢弃（宁缺毋滥）
+    must.push({ url, why: m.why });
+  }
+  if (must.length > 0) report.must_read = must;
+
+  // insights 回填（tag[] → tags[]，违禁过滤）
+  const insights: ReportInsight[] = [];
+  for (const it of exec.insights ?? []) {
+    if (!it || !it.topic || bannedIn(JSON.stringify(it))) continue;
+    insights.push({
+      topic: it.topic,
+      tags: Array.isArray(it.tag) ? it.tag.slice(0, 6) : [],
+      impact: it.impact || "",
+      action: it.action || "",
+    });
+  }
+  if (insights.length > 0) report.insights = insights;
+
+  // hero_line 回填（仅当 report 缺省时）
+  if (exec.hero_line && !report.hero_line) report.hero_line = exec.hero_line;
   return report;
 }
 

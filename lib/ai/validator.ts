@@ -31,7 +31,8 @@ export const ALLOWED_TAGS = [
 ] as const;
 export type AllowedTag = (typeof ALLOWED_TAGS)[number];
 
-/** 违禁词（R6）：全文禁止出现。 */
+/** 违禁词（R6）：全文禁止出现。含加密类变体（2026-08-21 补：P0 合规——
+ * 「加密资产疯涨」此前未被「加密货币」覆盖，store.json 里真实 AI 产物漏网）。 */
 export const BANNED_WORDS = [
   "比特币",
   "BTC",
@@ -39,6 +40,10 @@ export const BANNED_WORDS = [
   "以太坊",
   "加密货币",
   "虚拟货币",
+  "加密资产",
+  "加密市场",
+  "币圈",
+  "加密行情",
   "偏上行",
   "偏下行",
 ];

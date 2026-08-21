@@ -51,7 +51,9 @@ import {
   renderHtml,
   renderMarkdown,
   mergeRollingIntoReport,
+  mergeStoredExecutive,
 } from "../lib/output/render";
+import { loadStore } from "../lib/ai/executive-summary";
 import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import {
   loadHistory,
@@ -545,6 +547,29 @@ async function main() {
     );
   }
 
+  // —— SKIP_AI 执行摘要回填（2026-08-21 修复：store.json 复用断链）——
+  // SKIP_AI 下 PASS2 不产出 must_read/insights（无 LLM）；history/<date>/store.json
+  // 保存了当天真实 AI 的执行摘要（CI 正式跑生成、随报告提交进 main）。此处放在
+  // mergeRolling 之后执行：sections 已含近7天历史条目，store 的 must_read 标题
+  // （如「8月LPR不变」）能回匹配到更大标题池（316 条 vs 仅今日 31 条），匹配率更高。
+  if (SKIP_AI) {
+    try {
+      const stored = loadStore(date);
+      if (stored && (stored.must_read?.length || stored.insights?.length)) {
+        const before = { must: mergedReport.must_read.length, ins: mergedReport.insights.length };
+        mergeStoredExecutive(mergedReport, stored);
+        console.log(
+          `[daily] 🧠 SKIP_AI 复用 store.json 执行摘要：必读 ${before.must}→${mergedReport.must_read.length} / 商机 ${before.ins}→${mergedReport.insights.length}`,
+        );
+      } else {
+        console.log(`[daily] ℹ️ SKIP_AI 无 store.json 执行摘要可复用（history/${date}/store.json 缺失或为空）`);
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      console.warn(`[daily] ⚠️ SKIP_AI 执行摘要回填失败（继续）: ${msg}`);
+    }
+  }
+
   // —— M2-④：AI 资产账本写回（daily 级：仅 trading；正文已随 report.json 落盘）——
   const dk = dailyAssetKey(date);
   const dailyPrev = assetDaily(aiAssets, date);
@@ -560,12 +585,12 @@ async function main() {
   // data/history/reports/ 是唯一报告存储；daily_reports/（gh-pages 发布目录）
   // 由 build-site.mjs 在构建时从唯一存储同步，daily.ts 不再写旧目录。
   const html = renderHtml(mergedReport, date);
-  const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(report, date) : null;
+  const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(mergedReport, date) : null;
   const writeBundle = (dir: string) => {
     const d = path.join(dir, date);
     fs.mkdirSync(d, { recursive: true });
     const b = path.join(d, date);
-    fs.writeFileSync(`${b}.json`, JSON.stringify(report, null, 2), "utf8");
+    fs.writeFileSync(`${b}.json`, JSON.stringify(mergedReport, null, 2), "utf8");
     // Sidecar with the rolling article list (today + past-30d) + LLM-attached
     // summary, so scripts/render.ts can rebuild HTML/MD for UI iteration
     // without re-fetching or re-calling the LLM.
