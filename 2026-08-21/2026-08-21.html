@@ -192,10 +192,12 @@
   .exec-must { margin-bottom: 0.5rem; }
   .must-scroller {
     list-style: none; margin: 0; padding: 0 0 0.4rem;
-    display: flex; flex-direction: column; gap: 0.5rem;
+    display: flex; flex-direction: row; gap: 0.5rem;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
   .must-card {
-    flex: none; width: auto; max-width: none;
+    flex: 0 0 auto; width: 78vw; max-width: 300px;
     display: flex; gap: 0.55rem; align-items: flex-start;
     border: 1px solid var(--rule); border-radius: 12px;
     padding: 0.6rem 0.75rem; background: var(--bg-elevated);
@@ -215,7 +217,8 @@
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
   }
   @media (min-width: 720px) {
-    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; }
+    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
+    .must-card { width: auto; max-width: none; }
   }
 
   /* 商机提示：默认折叠，点击展开 */
@@ -562,35 +565,24 @@
     border-radius: var(--r-md);
   }
 
-  /* ===== 合并流：官方 / 媒体 分带（任务三 #43）===== */
-  .feed-band { margin: 0.2rem 0; }
-  .feed-band:first-child { margin-top: 0; }
-  .band-head {
-    display: flex; align-items: baseline; gap: 0.5rem;
-    margin: 0.9rem 0 0.55rem; padding-bottom: 0.35rem;
+  /* ===== 合并流：官方 / 媒体 子标签 tab（任务三 #43 改版，长条带 → tab 页）===== */
+  .band-tabs {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin: 0.2rem 0 0.55rem; padding-bottom: 0.3rem;
     border-bottom: 1px solid var(--rule);
   }
-  .feed-band:first-child .band-head { margin-top: 0.1rem; }
-  .band-label { position: relative; font-size: 0.82rem; font-weight: 600; color: var(--fg); letter-spacing: 0.03em; }
-  .band-label::before {
-    content: ""; display: inline-block; width: 3px; height: 0.82rem;
-    vertical-align: -0.1rem; margin-right: 0.5rem; border-radius: 2px; background: var(--muted);
+  .band-tab {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border: 1px solid var(--rule); background: var(--bg);
+    color: var(--fg-soft); font-size: 0.78rem; font-weight: 600;
+    border-radius: 999px; padding: 0.28rem 0.75rem; cursor: pointer;
+    font-family: inherit; transition: all 0.15s ease;
   }
-  .feed-band-official .band-label::before { background: var(--accent-cmb); }
-  .feed-band-media .band-label::before { background: var(--muted); }
-  .band-count {
-    font-size: 0.7rem; color: var(--muted);
-    background: var(--card-alt); padding: 0.08rem 0.45rem; border-radius: 999px;
-  }
-  /* 全局权威等级图例（标签栏下方，一次） */
-  .feed-legend {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem;
-    margin: 0.3rem 0 0.2rem; font-size: 0.76rem; color: var(--muted); line-height: 1.5;
-  }
-  .feed-legend .lg-item { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .feed-legend .lg-dot { width: 0.6rem; height: 0.6rem; border-radius: 2px; display: inline-block; }
-  .feed-legend .lg-note { color: var(--fg-soft); }
-  .feed-legend .lg-sep { opacity: 0.4; }
+  .band-tab:hover { border-color: var(--muted); color: var(--fg); transform: translateY(-1px); }
+  .band-tab.active { background: var(--accent-cmb); border-color: var(--accent-cmb); color: #fff; }
+  .band-tab .count { font-size: 0.7rem; opacity: 0.85; }
+  .band-panel { display: none; }
+  .band-panel.active { display: block; }
 
   /* ===== trading panel ===== */
   .crypto-widgets {
@@ -920,29 +912,21 @@
   </section>
 
   <nav class="tabs" role="tablist">
-    <button class="tab active" data-tab="finance">宏观政策<span class="count">73</span></button>
+    <button class="tab active" data-tab="finance">宏观政策<span class="count">39</span></button>
     <button class="tab" data-tab="trading">市场行情<span class="count">10</span></button>
-    <button class="tab" data-tab="gz">广州商机<span class="count">36</span></button>
+    <button class="tab" data-tab="gz">广州商机<span class="count">56</span></button>
     <button class="tab tab-fold" data-tab="gd-ipo">广东地区IPO<span class="count">0</span></button>
     <button class="tab tab-fold" data-tab="tech">技术动态<span class="count">16</span></button>
   </nav>
 
-  <div class="feed-legend">
-    <span class="lg-note">权威等级：</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#c0392b"></span>官方一手</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#b9770e"></span>准官方·机构</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#6b7280"></span>媒体·智库</span>
-    <span class="lg-sep">·</span>
-    <span class="lg-note">官方 / 政府一手来源默认置顶</span>
-  </div>
-
   <section class="panel active" data-panel="finance">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-policy" data-cat="finance">国家政策<span class="count">8</span></button><button class="sub-tab" data-sub="cn-wealth" data-cat="finance">全国财富<span class="count">20</span></button><button class="sub-tab" data-sub="cn-credit" data-cat="finance">全国零售信贷<span class="count">13</span></button><button class="sub-tab" data-sub="cn-private" data-cat="finance">全国私行<span class="count">1</span></button><button class="sub-tab" data-sub="cn-finance" data-cat="finance">国内财经<span class="count">20</span></button><button class="sub-tab" data-sub="gz-policy" data-cat="finance">广州政策<span class="count">1</span></button><button class="sub-tab" data-sub="news" data-cat="finance">国际财经<span class="count">10</span></button></nav>
+    <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-policy" data-cat="finance">国家政策<span class="count">8</span></button><button class="sub-tab" data-sub="cn-finance" data-cat="finance">国内财经<span class="count">20</span></button><button class="sub-tab" data-sub="gz-policy" data-cat="finance">广州政策<span class="count">1</span></button><button class="sub-tab" data-sub="news" data-cat="finance">国际财经<span class="count">10</span></button></nav>
 <div class="sub-contents"><div class="sub-content active" data-sub-content="cn-policy" data-cat="finance">
     
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">6</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">6</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">2</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><article class="article">
   <h3 class="article-title"><a href="https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268642" target="_blank" rel="noopener noreferrer">常州金融监管分局行政处罚信息公开表</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 国家金融监督管理总局 · 2026-08-20</p>
@@ -989,11 +973,7 @@
   <p class="article-subs"><span class="sub-chip">国家政策</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 发改委主任郑栅洁主持民营企业座谈会，围绕稳定经济运行、促进有效投资听取意见；政策层稳增长信号明确，分行可关注民企融资支持与有效投资领域信贷机会。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">2</span></div>
-    <article class="article">
+</article></div><div class="band-panel" data-band-panel="media"><article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/jryx/bank/2026-08-21/doc-ininztwz1600119.shtml" target="_blank" rel="noopener noreferrer">央行：将招标发行2026年第七期和第八期中央银行票据</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
@@ -1008,315 +988,14 @@
   <p class="article-subs"><span class="sub-chip">国家政策</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 央行开展950亿元逆回购操作传递呵护流动性信号，启示分行关注资金利率走势，优化负债成本与信贷投放节奏。</p>
-</article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="cn-wealth" data-cat="finance">
-    
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">6</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIGQzuwQEMAeE7ZbdyeVmJ260821.shtml" target="_blank" rel="noopener noreferrer">黄金，多极时代的新底仓？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458294_1.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21 · 多家来源：证券时报</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458315_1.html" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTI09gweZGKxnPSJjxVpJ4q260820.shtml" target="_blank" rel="noopener noreferrer">透视今年二季度人身险公司偿付能力 权益投资成“胜负手”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 二季度人身险公司偿付能力透视：权益投资成「胜负手」，保险资金配置动向对财富端权益与固收配置参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIiJoyj99SsnGGb5bi7Obq260820.shtml" target="_blank" rel="noopener noreferrer">财报透视丨首份保险半年报出炉 友邦人寿三大引擎共振 新业务价值增长20%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458021_1.html" target="_blank" rel="noopener noreferrer">商品日报（8月20日）：贵金属集体大涨 农产品延续强势</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 商品市场贵金属集体大涨、农产品延续强势，通胀与避险情绪升温，财富端可关注黄金等大宗商品配置机会。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">14</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574735.shtml" target="_blank" rel="noopener noreferrer">股票私募仓位指数维持高位 大型机构加仓意愿强烈</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininzprc1638101.shtml" target="_blank" rel="noopener noreferrer">俄罗斯今年减持160万盎司黄金 储备降至2020年以来最低水平</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6474567.shtml" target="_blank" rel="noopener noreferrer">中金 | 资产配置：被误读的“美债风暴”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="http://finance.sina.com.cn/zl/china/2026-08-21/zl-ininztww1490019.shtml" target="_blank" rel="noopener noreferrer">李迅雷：“资产荒”的债市映射与破解之道</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095522.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095524.html" target="_blank" rel="noopener noreferrer">低利率叠加高波动 多资产多策略配置成破局关键</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095556.html" target="_blank" rel="noopener noreferrer">主动型公募机构加快补齐ETF业务版图</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095657.html" target="_blank" rel="noopener noreferrer">近20年新高！30年期美债收益率攀升，全球资产迎来重估！来看最新解读</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095670.html" target="_blank" rel="noopener noreferrer">人民财讯·大观丨重阳投资董事长王庆：长期主义是一场价值接力</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 重阳投资强调长期价值投资，对当前市场情绪具有引导作用。分行财富管理投教可传递长期配置理念，引导客户减少短期博弈，提升持有体验。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-20/doc-ininynce7955738.shtml" target="_blank" rel="noopener noreferrer">中国平安中期“成绩单”：寿险稳、银行回血、产险“增收不增利”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中国平安中期成绩单：寿险稳、银行回血、产险增收不增利，综合金融同业经营样本，对分行协同经营有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-20/doc-ininxqxx8852442.shtml" target="_blank" rel="noopener noreferrer">中行张兴荣：大型银行发展资管业务意义重大</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 中行张兴荣：大型银行发展资管业务意义重大，银行资管转型方向，对分行财富管理与资管布局有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-20/doc-ininxvfv8831529.shtml" target="_blank" rel="noopener noreferrer">银行“中收之战”：数据增长可观，有基层一线员工自掏腰包买保险、买基金、买理财</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 银行中收增长背后现员工自购乱象，提示分行重视财富管理合规展业，杜绝为冲量诱导自购，强化专业投顾能力建设。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.guancha.cn/GuanJinRong/2026_08_20_828040.shtml" target="_blank" rel="noopener noreferrer">友邦香港第二季增速骤降至个位数，较首季21%明显放缓</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 观察者网·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 友邦香港第二季增速骤降至个位数、较首季21%明显放缓；香港保险销售降温，分行可关注保险代销与跨境财富配置趋势变化。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458707" target="_blank" rel="noopener noreferrer">监管支持险资参与南向ETF通，业内呼吁放松债券ETF与提升海外股票占比</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">全国财富</span></p>
-  <p class="article-excerpt">①支持内地保险资金参与内地与香港金融市场互联互通；
-②支持内地保险机构通过沪深港通投资香港交易所买卖基金（ETF）；
-③业界建言将债券ETF纳入投资范围、适当提高海外股票占比。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 监管支持险资参与南向ETF通、呼吁放松债券ETF，保险资金跨境配置政策动向，对财富端跨境产品布局有参考。</p>
-</article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="cn-credit" data-cat="finance">
-    
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">5</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260821/4458269_1.html" target="_blank" rel="noopener noreferrer">新政激活 需求释放——热点城市楼市迎结构性回暖</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458271_1.html" target="_blank" rel="noopener noreferrer">上海优化个人住房信贷政策 部分区域二套房贷款首付比例低至15%</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海优化个人住房信贷政策，部分区域二套房首付比例低至15%；一线城市房贷政策松绑，分行个人房贷业务可关注政策传导与客户需求释放。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIsqVaAudTeAWkdcflWr5W260820.shtml" target="_blank" rel="noopener noreferrer">上海出台楼市“沪八条”：加快推进收购二手住房用作保障性租赁住房</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海「沪八条」推进收购二手住房用作保障性租赁住房，一线楼市政策持续加码，对广州房贷与住房金融预期有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4458028_1.html" target="_blank" rel="noopener noreferrer">地产经纬丨蓄势“金九银十” 上海楼市“沪八条”更趋精细化差异化</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海「沪八条」更趋精细化差异化、蓄势金九银十，一线楼市政策持续细化，对广州房贷与改善型按揭预期有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/qy-lb/detail/20260820/4457826_1.html" target="_blank" rel="noopener noreferrer">上海优化房地产政策措施 精准施策促进合理购房需求积极释放</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海优化房地产政策措施、精准施策促进合理购房需求，一线楼市宽松延续，对广州房贷预期与改善型需求有参考。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">8</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574680.shtml" target="_blank" rel="noopener noreferrer">LPR连续15个月维持不变</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzazf8462883.shtml" target="_blank" rel="noopener noreferrer">“双锚”并行助推贷款定价质效提升</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4090505.html" target="_blank" rel="noopener noreferrer">上海出台楼市新政：外环外二套房首付门槛再降</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/wm/2026-08-20/doc-ininyfvr8773007.shtml" target="_blank" rel="noopener noreferrer">年内还会降息吗？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 市场热议年内是否还会降息、政策利率走向存分歧；降息预期影响存款与理财收益，分行可提前布局利率下行环境下的资产负债配置。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncp8703306.shtml" target="_blank" rel="noopener noreferrer">8月消金不良转让潮持续，多家机构密集出清，有资产包利息竟高于本金</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 8月消金不良密集出清表明消费信贷资产质量承压，提示分行加强个人信贷风险管控，关注不良资产处置渠道和定价策略。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/money/bank/guangjiao/2026-08-20/doc-ininyfvm6667381.shtml" target="_blank" rel="noopener noreferrer">五家持牌消金的上半年：招联三大指标下降，中银净</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 招联等持牌消金上半年指标下滑，显示消费金融行业承压，提示分行关注联合贷资产质量与消费信贷需求变化，慎控风险。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininuqvi9752407.shtml" target="_blank" rel="noopener noreferrer">晋商消金增资至10亿元获批 消金行业“增资赛”步入</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 晋商消金增资至10亿元获批，消费金融行业增资赛，对消金竞争格局与分行消费信贷合作有参考。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458705" target="_blank" rel="noopener noreferrer">零售信贷收缩，江苏银行对公信贷撑起上半年营收增速，净息差收窄9个BP</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">全国零售信贷</span></p>
-  <p class="article-excerpt">①江苏银行上半年资产端发力对公的策略依旧明确。对公贷款余额达1.94万亿元，较上年末大增16.72%，成为拉动贷款扩张的绝对主力。
-②但零售信贷收缩，个人贷款余额6496亿元，较上年末下降1.65%。
-③净息差持续下探。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。</p>
-</article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="cn-private" data-cat="finance">
-    
-    <div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">1</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458446" target="_blank" rel="noopener noreferrer">农商行竞逐38万亿私人银行赛道：从“慢半拍”到“加速跑”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">全国私行</span></p>
-  <p class="article-excerpt">①咸阳农商行成立陕西农信首个私行部，打造六位一体服务体系。全国仅工行、农行、兴业持私行专营牌照（交行拟撤销），其余多推行“财私一体化”。多家农商行已布局但整体仍属少数。
-②农商行开展私行具地缘优势，但其他劣势突出。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。</p>
-</article>
-  </div>
+</article></div>
   </div>
 <div class="sub-content" data-sub-content="cn-finance" data-cat="finance">
     
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">5</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">5</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">15</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
@@ -1355,11 +1034,7 @@
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 7月全社会用电量同比增长显示经济恢复平稳，企业开工活跃度有支撑。分行可参考宏观数据安排信贷投放节奏，关注区域产业用电变化挖掘客户需求。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">15</span></div>
-    <article class="article">
+</article></div><div class="band-panel" data-band-panel="media"><article class="article">
   <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-21/evergrande-creditors-owed-45-billion-now-face-more-complex-path" target="_blank" rel="noopener noreferrer">Evergrande Creditors Owed $45 Billion Now Face More Complex Path</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 09:25</p>
@@ -1478,28 +1153,28 @@
   <p class="article-subs"><span class="sub-chip">国内财经</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 江阴银行参与投资设立江苏徐州农商银行；中小银行整合扩张案例，分行可关注区域农商行改革动向与同业合作机会。</p>
-</article>
-  </div>
+</article></div>
   </div>
 <div class="sub-content" data-sub-content="gz-policy" data-cat="finance">
     
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">1</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">1</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">0</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><article class="article">
   <h3 class="article-title"><a href="https://www.gz.gov.cn/zwgk/fggw/szfwj/content/post_10971333.html" target="_blank" rel="noopener noreferrer">广州市人民政府关于同意《海珠区赤沙涌以东储备用地（HZ0401单元）控制性详细规划》等3项规划成果的批复</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · 广州市政府 · 2026-08-19</p>
   <p class="article-subs"><span class="sub-chip">广州政策</span></p>
   <p class="article-excerpt">【广州市政府】广州市人民政府关于同意《海珠区赤沙涌以东储备用地（HZ0401单元）控制性详细规划》等3项规划成果的批复</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广州市政府同意海珠区赤沙涌储备用地等3项规划批复，城市更新与土地开发推进，对区域客群与信贷需求有参考。</p>
-</article>
-  </div>
+</article></div><div class="band-panel" data-band-panel="media"><p class="empty">该源今日无内容。</p></div>
   </div>
 <div class="sub-content" data-sub-content="news" data-cat="finance">
     
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">3</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">3</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">7</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><article class="article">
   <h3 class="article-title"><a href="https://www.federalreserve.gov/newsevents/pressreleases/orders20260820a.htm" target="_blank" rel="noopener noreferrer">Federal Reserve Board announces approval of application by National Westminster Bank Plc</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#c0392b">官方一手</span> · Federal Reserve Press Releases · 08/21 04:00</p>
@@ -1522,11 +1197,7 @@
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   <p class="article-excerpt">Federal Reserve Board issues enforcement actions with former employee of Regions Bank and former employee of United Community Bank</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 美联储对前任职员等采取执法行动；海外监管执法常态化，提示银行业合规与内控风险管理的重要性。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">7</span></div>
-    <article class="article">
+</article></div><div class="band-panel" data-band-panel="media"><article class="article">
   <h3 class="article-title"><a href="https://www.bloomberg.com/news/articles/2026-08-21/evergrande-creditors-owed-45-billion-now-face-more-complex-path" target="_blank" rel="noopener noreferrer">Evergrande Creditors Owed $45 Billion Now Face More Complex Path</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · Bloomberg Markets · 08/21 09:25</p>
@@ -1581,8 +1252,7 @@
   <p class="article-subs"><span class="sub-chip">国际财经</span></p>
   <p class="article-excerpt">Anthropic PBC is set to add Citigroup Inc. to the banks working on its initial public offering, according to people familiar with the matter, as Wall Street jostles for roles on the artificial intelligence firm’s debut.</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。</p>
-</article>
-  </div>
+</article></div>
   </div></div>
   </section>
   <section class="panel" data-panel="trading"><section class="trading-overview-card">
@@ -1650,7 +1320,6 @@
     <h2 class="category-title trading-section-title">全部资产</h2>
     <nav class="trading-group-tabs"><button class="trading-group-tab active" data-group="china-equity">中概 / 港股<span class="count">2</span></button><button class="trading-group-tab" data-group="commodity-fx">商品 / 外汇<span class="count">3</span></button><button class="trading-group-tab" data-group="macro">宏观信号<span class="count">2</span></button><button class="trading-group-tab" data-group="us-equity">美股 / ETF<span class="count">1</span></button><button class="trading-group-tab" data-group="crypto">加密货币<span class="count">2</span></button></nav>
     <div class="trading-group-contents"><div class="trading-group-content active" data-group="china-equity">
-      
       <article class="ticker-card">
     <header class="ticker-head">
       <div class="ticker-id">
@@ -1693,7 +1362,6 @@
     <div class="ticker-signals"><span class="signal-pill tone-caution">接近 52 周高</span></div>
   </article>
     </div><div class="trading-group-content" data-group="commodity-fx">
-      
       <article class="ticker-card">
     <header class="ticker-head">
       <div class="ticker-id">
@@ -1756,7 +1424,6 @@
     <div class="ticker-signals"><span class="signal-pill tone-caution">多头排列</span></div>
   </article>
     </div><div class="trading-group-content" data-group="macro">
-      
       <article class="ticker-card">
     <header class="ticker-head">
       <div class="ticker-id">
@@ -1799,7 +1466,6 @@
     <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 金叉 <span class="signal-age">(今天)</span></span><span class="signal-pill tone-caution">空头排列</span></div>
   </article>
     </div><div class="trading-group-content" data-group="us-equity">
-      
       <article class="ticker-card">
     <header class="ticker-head">
       <div class="ticker-id">
@@ -1822,23 +1488,6 @@
     <div class="ticker-signals"><span class="signal-pill tone-caution">MACD 死叉 <span class="signal-age">(今天)</span></span><span class="signal-pill tone-caution">接近 52 周高</span><span class="signal-pill tone-caution">多头排列</span></div>
   </article>
     </div><div class="trading-group-content" data-group="crypto">
-      <div class="crypto-widgets"><div class="crypto-widget fg-greed">
-      <div class="widget-label">加密恐慌贪婪</div>
-      <div class="widget-value">72</div>
-      <div class="widget-sub">贪婪</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">加密总市值</div>
-      <div class="widget-value">$2.55 T</div>
-      <div class="widget-sub positive">+3.87% / 24h</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">BTC 主导率</div>
-      <div class="widget-value">59.2%</div>
-      <div class="widget-sub">ETH 11.2%</div>
-    </div><div class="crypto-widget">
-      <div class="widget-label">24h 成交量</div>
-      <div class="widget-value">$135.7 B</div>
-      <div class="widget-sub">活跃币 18,518</div>
-    </div></div>
       <article class="ticker-card">
     <header class="ticker-head">
       <div class="ticker-id">
@@ -1888,43 +1537,167 @@
     <p>本报告仅基于当前公开行情的技术指标进行客观转述，不构成任何投资建议或涨跌预测。过去走势不代表未来表现，各类资产价格受多重因素影响可能剧烈波动。所有指标读数请谨慎参考，仅供技术指标解读参考。</p>
   </section></section>
   <section class="panel" data-panel="gz">
-    <nav class="sub-tabs"><button class="sub-tab active" data-sub="gz-wealth" data-cat="gz">财富业务<span class="count">14</span></button><button class="sub-tab" data-sub="gz-credit" data-cat="gz">个人信贷<span class="count">10</span></button><button class="sub-tab" data-sub="gz-customer" data-cat="gz">零售客群<span class="count">8</span></button><button class="sub-tab" data-sub="gz-private" data-cat="gz">私行业务<span class="count">4</span></button></nav>
-<div class="sub-contents"><div class="sub-content active" data-sub-content="gz-wealth" data-cat="gz">
+    <div class="sub-content active" data-sub-content="gz-all" data-cat="gz">
     
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">3</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">18</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">38</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。</p>
+</article>
+<article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIGQzuwQEMAeE7ZbdyeVmJ260821.shtml" target="_blank" rel="noopener noreferrer">黄金，多极时代的新底仓？</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260821/4458269_1.html" target="_blank" rel="noopener noreferrer">新政激活 需求释放——热点城市楼市迎结构性回暖</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458294_1.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21 · 多家来源：证券时报</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458315_1.html" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458366_1.html" target="_blank" rel="noopener noreferrer">【环球财经】日本核心CPI连续59个月同比上涨</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTI09gweZGKxnPSJjxVpJ4q260820.shtml" target="_blank" rel="noopener noreferrer">透视今年二季度人身险公司偿付能力 权益投资成“胜负手”</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 二季度人身险公司偿付能力透视：权益投资成「胜负手」，保险资金配置动向对财富端权益与固收配置参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIsqVaAudTeAWkdcflWr5W260820.shtml" target="_blank" rel="noopener noreferrer">上海出台楼市“沪八条”：加快推进收购二手住房用作保障性租赁住房</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 上海「沪八条」推进收购二手住房用作保障性租赁住房，一线楼市政策持续加码，对广州房贷与住房金融预期有参考。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/20/ARTIiJoyj99SsnGGb5bi7Obq260820.shtml" target="_blank" rel="noopener noreferrer">财报透视丨首份保险半年报出炉 友邦人寿三大引擎共振 新业务价值增长20%</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。</p>
 </article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">11</span></div>
-    <article class="article">
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458118_1.html" target="_blank" rel="noopener noreferrer">阿里发布最新财报：AI相关收入连续3年3位数同比增长</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 阿里AI相关收入连续3年三位数增长，科技产业景气上行，分行可关注科技企业信贷与公私联动获客机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458040_1.html" target="_blank" rel="noopener noreferrer">新华财经晚报：上海市下调购买外环外二套住房首付款比例</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 上海下调外环外二套住房首付比例，一线楼市松绑信号增强，广州房贷政策跟进预期升温，可提前储备改善型按揭需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458021_1.html" target="_blank" rel="noopener noreferrer">商品日报（8月20日）：贵金属集体大涨 农产品延续强势</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 商品市场贵金属集体大涨、农产品延续强势，通胀与避险情绪升温，财富端可关注黄金等大宗商品配置机会。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4457998_1.html" target="_blank" rel="noopener noreferrer">瑞典央行维持利率1.75%不变 称若通胀加速仍准备收紧政策</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 瑞典央行维持利率不变但保留收紧可能，海外加息周期尾声信号，对全球流动性环境判断有参考价值。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4458088_1.html" target="_blank" rel="noopener noreferrer">消费平台：七夕消费呈现个性化趋势 兴趣驱动成增长新引擎</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 七夕消费呈现个性化趋势、兴趣驱动成新引擎，年轻客群消费特征变化，可设计七夕等节点零售营销活动。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4458028_1.html" target="_blank" rel="noopener noreferrer">地产经纬丨蓄势“金九银十” 上海楼市“沪八条”更趋精细化差异化</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 上海「沪八条」更趋精细化差异化、蓄势金九银十，一线楼市政策持续细化，对广州房贷与改善型按揭预期有参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4457970_1.html" target="_blank" rel="noopener noreferrer">商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%，农村消费数据向好，对县域客群经营与信用卡营销参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cnfin.com/qy-lb/detail/20260820/4457826_1.html" target="_blank" rel="noopener noreferrer">上海优化房地产政策措施 精准施策促进合理购房需求积极释放</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 上海优化房地产政策措施、精准施策促进合理购房需求，一线楼市宽松延续，对广州房贷预期与改善型需求有参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-19</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 住房公积金提取和使用范围拓宽、9月20日起施行，公积金新政利好住房消费，对分行公积金联动业务与房贷有参考。</p>
+</article></div><div class="band-panel" data-band-panel="media"><article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574735.shtml" target="_blank" rel="noopener noreferrer">股票私募仓位指数维持高位 大型机构加仓意愿强烈</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。</p>
+</article>
+<article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininzprc1638101.shtml" target="_blank" rel="noopener noreferrer">俄罗斯今年减持160万盎司黄金 储备降至2020年以来最低水平</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。</p>
 </article>
@@ -1932,153 +1705,159 @@
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzpqv6474567.shtml" target="_blank" rel="noopener noreferrer">中金 | 资产配置：被误读的“美债风暴”</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="http://finance.sina.com.cn/zl/china/2026-08-21/zl-ininztww1490019.shtml" target="_blank" rel="noopener noreferrer">李迅雷：“资产荒”的债市映射与破解之道</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml" target="_blank" rel="noopener noreferrer">半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span><span class="sub-chip">gz-private</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1618709.shtml" target="_blank" rel="noopener noreferrer">连续五年下降 险资配置信托存量规模不足万亿</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   <p class="article-excerpt">【财富管理】连续五年下降 险资配置信托存量规模不足万亿</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxeix6794408.shtml" target="_blank" rel="noopener noreferrer">公募基金年内累计分红1094.63亿元</a></h3>
+  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260821/herald/3625b81fe26bcda2ddcda94da428ee30.html" target="_blank" rel="noopener noreferrer">27家中小金融机构获批解散 贵州农信改革迎来新进展</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】公募基金年内累计分红1094.63亿元</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 公募基金年内累计分红1094.63亿元，基金分红活跃，财富端可关注分红型基金配置与客户现金流需求。</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
+  <p class="article-excerpt">【21财经】27家中小金融机构获批解散 贵州农信改革迎来新进展</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 中小金融机构批量解散显示农信体系改革提速，区域金融风险持续出清。对分行而言，需关注同业生态变化，强化自身风控与合规经营，维护客户信心。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-20/doc-ininxqxw2147964.shtml" target="_blank" rel="noopener noreferrer">存一年等于存两年等于存三年！银行业内首现定存利率“一条直线”，什么信号？</a></h3>
+  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260821/herald/8038e9a45039fcf4d07436e2d2aee041.html" target="_blank" rel="noopener noreferrer">上银国际亏损 上海银行提级收编</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【财富管理】存一年等于存两年等于存三年！银行业内首现定存利率“一条直线”，什么信号？</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 银行业内首现定存利率一条直线，各期限定存利率趋同；存款利率扁平化下客户收益预期走低，分行可引导客户关注中长期理财与保险配置。</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">国内财经</span></p>
+  <p class="article-excerpt">【21财经】上银国际亏损 上海银行提级收编</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 上银国际亏损后由母行提级收编，显示银行子公司治理重要性。对分行提示综合化经营需强化风险隔离、并表管控和境外业务审慎评估。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/1c1bcbbc79de592bb8ffeee1ab686a49.html" target="_blank" rel="noopener noreferrer">贷款利息更难赚了，银行发力中间业务，员工称考核压力大：“扛不住自己买了1万”！反内</a></h3>
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095522.html" target="_blank" rel="noopener noreferrer">险资7月以来“摸底”上市公司超千家次 硬科技是关注重点</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】贷款利息更难赚了，银行发力中间业务，员工称考核压力大：“扛不住自己买了1万”！反内</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 息差收窄下银行发力中间业务增收、考核压力加大，分行可加大财富管理与代销等中收业务，缓解利率下行压力。</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/c90e6b97f3eed5371043e308ab463dad.html" target="_blank" rel="noopener noreferrer">关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</a></h3>
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095550.html" target="_blank" rel="noopener noreferrer">多地着力促进汽车消费 县域市场、二手车交易成重点</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 监管提示防范冒用金融监管名义的新型「退保」诈骗，分行应加强客户反诈宣导与代销保单合规，防范声誉风险。</p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 多地着力促进汽车消费、县域市场与二手车交易成重点；汽车消费政策加码利好车贷业务，分行可关注县域车贷与二手车金融需求。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/5534ce05db447ac3439462c77a00bfa4.html" target="_blank" rel="noopener noreferrer">净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 净息差收窄6个基点，宁波银行营收净利仍双增超10%；中小银行经营韧性样本，分行可借鉴其零售转型与中收策略，关注息差管理与资产质量。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/b83e476d8a4baa0ce2aa3854fd1e4cc5.html" target="_blank" rel="noopener noreferrer">江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">【21财经】江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行规模增长、对公发力明显但中收变现艰难；银行中收承压共性显现，分行可加强财富管理中收业务、优化收入结构。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxvfu2020687.shtml" target="_blank" rel="noopener noreferrer">33万亿理财市场大分化：头部公司狂飙，中小银行为何踩刹车？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 理财市场头部集中分化、中小银行收缩，启示分行需提升理财产品竞争力和投研能力，应对规模与收入双重挑战。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458446" target="_blank" rel="noopener noreferrer">农商行竞逐38万亿私人银行赛道：从“慢半拍”到“加速跑”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">财富业务</span></p>
-  <p class="article-excerpt">①咸阳农商行成立陕西农信首个私行部，打造六位一体服务体系。全国仅工行、农行、兴业持私行专营牌照（交行拟撤销），其余多推行“财私一体化”。多家农商行已布局但整体仍属少数。
-②农商行开展私行具地缘优势，但其他劣势突出。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。</p>
-</article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-credit" data-cat="gz">
-    
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">4</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml" target="_blank" rel="noopener noreferrer">8月LPR保持不变，今年房贷还能否下调？</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458040_1.html" target="_blank" rel="noopener noreferrer">新华财经晚报：上海市下调购买外环外二套住房首付款比例</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 上海下调外环外二套住房首付比例，一线楼市松绑信号增强，广州房贷政策跟进预期升温，可提前储备改善型按揭需求。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4457998_1.html" target="_blank" rel="noopener noreferrer">瑞典央行维持利率1.75%不变 称若通胀加速仍准备收紧政策</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 瑞典央行维持利率不变但保留收紧可能，海外加息周期尾声信号，对全球流动性环境判断有参考价值。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://finance.cctv.com/2026/08/19/ARTI0RUauvuGgyhWQYuXaG8c260819.shtml" target="_blank" rel="noopener noreferrer">住房公积金提取和使用范围拓宽，9月20日起施行→</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 央视财经 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 住房公积金提取和使用范围拓宽、9月20日起施行，公积金新政利好住房消费，对分行公积金联动业务与房贷有参考。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">6</span></div>
-    <article class="article">
   <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095524.html" target="_blank" rel="noopener noreferrer">低利率叠加高波动 多资产多策略配置成破局关键</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095556.html" target="_blank" rel="noopener noreferrer">主动型公募机构加快补齐ETF业务版图</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095657.html" target="_blank" rel="noopener noreferrer">近20年新高！30年期美债收益率攀升，全球资产迎来重估！来看最新解读</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095616.html" target="_blank" rel="noopener noreferrer">AI产业融资迎来新解法？多家银行落地算力贷，信贷评估锚点悄然生变</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 多家银行落地算力贷，信贷评估锚点悄然生变；算力资产纳入授信评估，分行可探索科技企业算力贷产品，服务数字经济客群。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095672.html" target="_blank" rel="noopener noreferrer">8年投出41家专精特新！解码毅达资本的湾区“突围战”</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-private</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095670.html" target="_blank" rel="noopener noreferrer">人民财讯·大观丨重阳投资董事长王庆：长期主义是一场价值接力</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 重阳投资强调长期价值投资，对当前市场情绪具有引导作用。分行财富管理投教可传递长期配置理念，引导客户减少短期博弈，提升持有体验。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzprc1574680.shtml" target="_blank" rel="noopener noreferrer">LPR连续15个月维持不变</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-21/doc-ininzazf8462883.shtml" target="_blank" rel="noopener noreferrer">“双锚”并行助推贷款定价质效提升</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/roll/2026-08-20/doc-ininynce7955738.shtml" target="_blank" rel="noopener noreferrer">中国平安中期“成绩单”：寿险稳、银行回血、产险“增收不增利”</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 中国平安中期成绩单：寿险稳、银行回血、产险增收不增利，综合金融同业经营样本，对分行协同经营有参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1911481.shtml" target="_blank" rel="noopener noreferrer">息差收窄之下，南京银行利息净收入何以大增40%？</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-customer</span></p>
+  
+  <p class="article-summary"><span class="summary-label">AI分析</span> 息差收窄下南京银行利息净收入大增40%，同业降本增效与资产负债管理样本，对分行定价与中收经营有借鉴。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxeix6794408.shtml" target="_blank" rel="noopener noreferrer">公募基金年内累计分红1094.63亿元</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·理财保险 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  <p class="article-excerpt">【财富管理】公募基金年内累计分红1094.63亿元</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 公募基金年内累计分红1094.63亿元，基金分红活跃，财富端可关注分红型基金配置与客户现金流需求。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/9bcd82c795aa7f1ea4de9e01a6d44f7b.html" target="_blank" rel="noopener noreferrer">广东出台深化融资信用服务平台建设三年行动方案 助力中小微企业融资发展</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   <p class="article-excerpt">【21财经】广东出台深化融资信用服务平台建设三年行动方案 助力中小微企业融资发展</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 广东出台深化融资信用服务平台三年行动方案助力中小微融资，分行可对接平台信用数据完善小微风控与批量获客。</p>
 </article>
@@ -2086,133 +1865,134 @@
   <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/fc9352f864836695603efc81e46daf1c.html" target="_blank" rel="noopener noreferrer">事关房贷，央行最新公布！</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   <p class="article-excerpt">【21财经】事关房贷，央行最新公布！</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 央行公布最新房贷相关数据，按揭市场动向明确，分行可据此跟踪广州房贷需求与定价环境变化。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/c90e6b97f3eed5371043e308ab463dad.html" target="_blank" rel="noopener noreferrer">关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  <p class="article-excerpt">【21财经】关于警惕防范冒用金融监管名义实施新型“退保”诈骗的风险提示</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 监管提示防范冒用金融监管名义的新型「退保」诈骗，分行应加强客户反诈宣导与代销保单合规，防范声誉风险。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/5534ce05db447ac3439462c77a00bfa4.html" target="_blank" rel="noopener noreferrer">净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  <p class="article-excerpt">【21财经】净息差收窄6个基点，宁波银行为何营收、净利双增超10%？</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 净息差收窄6个基点，宁波银行营收净利仍双增超10%；中小银行经营韧性样本，分行可借鉴其零售转型与中收策略，关注息差管理与资产质量。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://m.21jingji.com/article/20260820/herald/b83e476d8a4baa0ce2aa3854fd1e4cc5.html" target="_blank" rel="noopener noreferrer">江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 21世纪经济报道·金融 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  <p class="article-excerpt">【21财经】江苏银行中报拆解：规模增长、对公发力明显，中收变现为何艰难</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行规模增长、对公发力明显但中收变现艰难；银行中收承压共性显现，分行可加强财富管理中收业务、优化收入结构。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4090505.html" target="_blank" rel="noopener noreferrer">上海出台楼市新政：外环外二套房首付门槛再降</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。</p>
 </article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-customer" data-cat="gz">
-    
-    <div class="feed-band feed-band-official">
-    <div class="band-head"><span class="band-label">官方 / 政府一手来源</span><span class="band-count">4</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260821/4458366_1.html" target="_blank" rel="noopener noreferrer">【环球财经】日本核心CPI连续59个月同比上涨</a></h3>
+<article class="article">
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-20/doc-ininxqxx8852442.shtml" target="_blank" rel="noopener noreferrer">中行张兴荣：大型银行发展资管业务意义重大</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 中行张兴荣：大型银行发展资管业务意义重大，银行资管转型方向，对分行财富管理与资管布局有参考。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/yw-lb/detail/20260820/4458118_1.html" target="_blank" rel="noopener noreferrer">阿里发布最新财报：AI相关收入连续3年3位数同比增长</a></h3>
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/wm/2026-08-20/doc-ininyfvr8773007.shtml" target="_blank" rel="noopener noreferrer">年内还会降息吗？</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 阿里AI相关收入连续3年三位数增长，科技产业景气上行，分行可关注科技企业信贷与公私联动获客机会。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 市场热议年内是否还会降息、政策利率走向存分歧；降息预期影响存款与理财收益，分行可提前布局利率下行环境下的资产负债配置。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4458088_1.html" target="_blank" rel="noopener noreferrer">消费平台：七夕消费呈现个性化趋势 兴趣驱动成增长新引擎</a></h3>
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncp8703306.shtml" target="_blank" rel="noopener noreferrer">8月消金不良转让潮持续，多家机构密集出清，有资产包利息竟高于本金</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 七夕消费呈现个性化趋势、兴趣驱动成新引擎，年轻客群消费特征变化，可设计七夕等节点零售营销活动。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 8月消金不良密集出清表明消费信贷资产质量承压，提示分行加强个人信贷风险管控，关注不良资产处置渠道和定价策略。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cnfin.com/hg-lb/detail/20260820/4457970_1.html" target="_blank" rel="noopener noreferrer">商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%</a></h3>
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininxvfu2020687.shtml" target="_blank" rel="noopener noreferrer">33万亿理财市场大分化：头部公司狂飙，中小银行为何踩刹车？</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T1.5" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#b9770e">准官方·机构一手</span> · 新华财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%，农村消费数据向好，对县域客群经营与信用卡营销参考。</p>
-</article>
-  </div>
-<div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">4</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml" target="_blank" rel="noopener noreferrer">半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 理财市场头部集中分化、中小银行收缩，启示分行需提升理财产品竞争力和投研能力，应对规模与收入双重挑战。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095550.html" target="_blank" rel="noopener noreferrer">多地着力促进汽车消费 县域市场、二手车交易成重点</a></h3>
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/money/bank/guangjiao/2026-08-20/doc-ininyfvm6667381.shtml" target="_blank" rel="noopener noreferrer">五家持牌消金的上半年：招联三大指标下降，中银净</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 多地着力促进汽车消费、县域市场与二手车交易成重点；汽车消费政策加码利好车贷业务，分行可关注县域车贷与二手车金融需求。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 招联等持牌消金上半年指标下滑，显示消费金融行业承压，提示分行关注联合贷资产质量与消费信贷需求变化，慎控风险。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-20/doc-ininyncn1911481.shtml" target="_blank" rel="noopener noreferrer">息差收窄之下，南京银行利息净收入何以大增40%？</a></h3>
+  <h3 class="article-title"><a href="https://www.guancha.cn/GuanJinRong/2026_08_20_828040.shtml" target="_blank" rel="noopener noreferrer">友邦香港第二季增速骤降至个位数，较首季21%明显放缓</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-20</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span></p>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 观察者网·金融 · 2026-08-20</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
   
-  <p class="article-summary"><span class="summary-label">AI分析</span> 息差收窄下南京银行利息净收入大增40%，同业降本增效与资产负债管理样本，对分行定价与中收经营有借鉴。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 友邦香港第二季增速骤降至个位数、较首季21%明显放缓；香港保险销售降温，分行可关注保险代销与跨境财富配置趋势变化。</p>
 </article>
 <article class="article">
-  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458705" target="_blank" rel="noopener noreferrer">零售信贷收缩，江苏银行对公信贷撑起上半年营收增速，净息差收窄9个BP</a></h3>
+  <h3 class="article-title"><a href="https://finance.sina.com.cn/jjxw/2026-08-19/doc-ininuqvi9752407.shtml" target="_blank" rel="noopener noreferrer">晋商消金增资至10亿元获批 消金行业“增资赛”步入</a></h3>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">个人信贷</span><span class="sub-chip">零售客群</span></p>
-  <p class="article-excerpt">①江苏银行上半年资产端发力对公的策略依旧明确。对公贷款余额达1.94万亿元，较上年末大增16.72%，成为拉动贷款扩张的绝对主力。
-②但零售信贷收缩，个人贷款余额6496亿元，较上年末下降1.65%。
-③净息差持续下探。</p>
-  <p class="article-summary"><span class="summary-label">AI分析</span> 江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。</p>
-</article>
-  </div>
-  </div>
-<div class="sub-content" data-sub-content="gz-private" data-cat="gz">
-    
-    <div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">4</span></div>
-    <article class="article">
-  <h3 class="article-title"><a href="https://finance.sina.com.cn/world/2026-08-21/doc-ininztww1444806.shtml" target="_blank" rel="noopener noreferrer">半导体提振韩国经济增长 央行副行长强调维护物价与金融稳定</a></h3>
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经·银行频道 · 2026-08-19</p>
+  <p class="article-subs"><span class="sub-chip">gz-credit</span></p>
   
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 新浪财经 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">零售客群</span><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。</p>
-</article>
-<article class="article">
-  <h3 class="article-title"><a href="https://www.stcn.com/article/detail/4095672.html" target="_blank" rel="noopener noreferrer">8年投出41家专精特新！解码毅达资本的湾区“突围战”</a></h3>
-  
-  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 证券时报 · 2026-08-21</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
-  
-  <p class="article-summary"><span class="summary-label">AI分析</span> 毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 晋商消金增资至10亿元获批，消费金融行业增资赛，对消金竞争格局与分行消费信贷合作有参考。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.guancha.cn/GuanJinRong/2026_08_19_827900.shtml" target="_blank" rel="noopener noreferrer">上海银行获批收购上银国际100%股权</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 观察者网·金融 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-private</span></p>
   
   <p class="article-summary"><span class="summary-label">AI分析</span> 上海银行获批收购上银国际100%股权，城商行国际化布局，对同业跨境业务与综合化经营有参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458707" target="_blank" rel="noopener noreferrer">监管支持险资参与南向ETF通，业内呼吁放松债券ETF与提升海外股票占比</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
+  <p class="article-subs"><span class="sub-chip">gz-wealth</span></p>
+  <p class="article-excerpt">①支持内地保险资金参与内地与香港金融市场互联互通；
+②支持内地保险机构通过沪深港通投资香港交易所买卖基金（ETF）；
+③业界建言将债券ETF纳入投资范围、适当提高海外股票占比。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 监管支持险资参与南向ETF通、呼吁放松债券ETF，保险资金跨境配置政策动向，对财富端跨境产品布局有参考。</p>
+</article>
+<article class="article">
+  <h3 class="article-title"><a href="https://www.cls.cn/detail/2458446" target="_blank" rel="noopener noreferrer">农商行竞逐38万亿私人银行赛道：从“慢半拍”到“加速跑”</a></h3>
+  
+  <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 财联社 · 2026-08-19</p>
+  <p class="article-subs"><span class="sub-chip">gz-private</span></p>
+  <p class="article-excerpt">①咸阳农商行成立陕西农信首个私行部，打造六位一体服务体系。全国仅工行、农行、兴业持私行专营牌照（交行拟撤销），其余多推行“财私一体化”。多家农商行已布局但整体仍属少数。
+②农商行开展私行具地缘优势，但其他劣势突出。</p>
+  <p class="article-summary"><span class="summary-label">AI分析</span> 农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。</p>
 </article>
 <article class="article">
   <h3 class="article-title"><a href="https://www.ftchinese.com/story/001110654" target="_blank" rel="noopener noreferrer">中国开始放行英伟达H200芯片</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · FT中文网 · 2026-08-19</p>
-  <p class="article-subs"><span class="sub-chip">私行业务</span></p>
+  <p class="article-subs"><span class="sub-chip">gz-private</span></p>
   <p class="article-excerpt">知情人士称，字节跳动和腾讯近几周已收到小批量H200芯片，这一进展将为力争追赶美国竞争对手的中国AI企业添加助力。</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 中国开始放行英伟达H200芯片，AI算力供给边际改善；算力产业催化下，分行可关注科技企业信贷与客户权益配置中的AI主题机会。</p>
-</article>
+</article></div>
   </div>
-  </div></div>
   </section>
   <section class="panel" data-panel="gd-ipo">
     <nav class="sub-tabs"><button class="sub-tab active" data-sub="stage-listed" data-cat="gd-ipo">已上市·新股<span class="count">0</span></button><button class="sub-tab" data-sub="stage-registered" data-cat="gd-ipo">注册生效·过会<span class="count">0</span></button><button class="sub-tab" data-sub="stage-reviewing" data-cat="gd-ipo">在审·已受理<span class="count">0</span></button><button class="sub-tab" data-sub="stage-tutoring" data-cat="gd-ipo">辅导备案·Pre-IPO<span class="count">0</span></button></nav>
@@ -2225,9 +2005,10 @@
     <nav class="sub-tabs"><button class="sub-tab active" data-sub="cn-tech" data-cat="tech">国内技术<span class="count">10</span></button><button class="sub-tab" data-sub="overseas-tech" data-cat="tech">国外技术<span class="count">6</span></button></nav>
 <div class="sub-contents"><div class="sub-content active" data-sub-content="cn-tech" data-cat="tech">
     
-    <div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">10</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">0</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">10</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><p class="empty">该源今日无内容。</p></div><div class="band-panel" data-band-panel="media"><article class="article">
   <h3 class="article-title"><a href="https://sspai.com/post/113666" target="_blank" rel="noopener noreferrer">派早报：华为发布 Pura X View、享界 G9 等多款新品</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · 少数派 · 08/21 07:00</p>
@@ -2306,14 +2087,14 @@
   <p class="article-subs"><span class="sub-chip">国内技术</span></p>
   <p class="article-excerpt">从自主泛化到真生产力</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> WRC具身智能展台预告，属科技展会动态，与银行零售业务无直接关联。</p>
-</article>
-  </div>
+</article></div>
   </div>
 <div class="sub-content" data-sub-content="overseas-tech" data-cat="tech">
     
-    <div class="feed-band feed-band-media">
-    <div class="band-head"><span class="band-label">媒体 / 智库解读</span><span class="band-count">6</span></div>
-    <article class="article">
+    <nav class="band-tabs">
+    <button class="band-tab active" data-band="official">官方 / 政府一手来源<span class="count">0</span></button>
+    <button class="band-tab" data-band="media">媒体 / 智库解读<span class="count">6</span></button>
+  </nav><div class="band-panel active" data-band-panel="official"><p class="empty">该源今日无内容。</p></div><div class="band-panel" data-band-panel="media"><article class="article">
   <h3 class="article-title"><a href="https://www.infoq.cn/article/D6IBeGO6rqVCjBDv1qwj?utm_source=rss&amp;utm_medium=article" target="_blank" rel="noopener noreferrer">Rust 再下一城：Astro 7 重写编译器与 Markdown 流水线</a></h3>
   
   <p class="article-meta"><span class="tier-badge tier-T2" style="display:inline-block;font-size:11px;line-height:1;padding:2px 6px;border-radius:8px;margin-right:6px;color:#fff;background:#6b7280">媒体·智库</span> · InfoQ 中国 · 08/21 17:16</p>
@@ -2360,8 +2141,7 @@
   <p class="article-subs"><span class="sub-chip">国外技术</span></p>
   <p class="article-excerpt">The AI industry’s boldest promise right now is that AI will soon improve itself, with almost no need for human oversight. LLMs can already write code, generate synthetic data for training, and optimize the computer chips they run on. Forecasts of explosive AI progress predict that what researchers c</p>
   <p class="article-summary"><span class="summary-label">AI分析</span> 讨论AI递归自我改进的进度预期，属技术趋势话题，与银行零售业务无直接关联。</p>
-</article>
-  </div>
+</article></div>
   </div></div>
   </section>
   
@@ -2416,6 +2196,22 @@
   });
   // L3 信息源 tabs 已移除（2026-08-21：渲染只到子标签，子标签内为单一合并流）；
   // source-content 结构不再产出，原 source-tab 切换逻辑一并删除。
+  // 官方/媒体 子标签内 tab（#43 改版：分带 → tab 页），按所在 .band-tabs 作用域切换
+  document.querySelectorAll('.band-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var tabs = btn.closest('.band-tabs');
+      if (!tabs) return;
+      var scope = tabs.parentElement;
+      if (!scope) return;
+      var band = btn.dataset.band;
+      tabs.querySelectorAll('.band-tab').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      scope.querySelectorAll('.band-panel').forEach(function (p) {
+        p.classList.toggle('active', p.dataset.bandPanel === band);
+      });
+    });
+  });
   // Trading panel: asset-group sub-tabs (US/crypto/china/commodity)
   document.querySelectorAll('.trading-group-tab').forEach(function (btn) {
     btn.addEventListener('click', function () {
