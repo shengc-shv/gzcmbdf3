@@ -203,9 +203,12 @@
       "summary": "中国平安中期成绩单：寿险稳、银行回血、产险增收不增利，综合金融同业经营样本，对分行协同经营有参考。",
       "source": "新浪财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-finance",
@@ -294,9 +297,12 @@
       "summary": "二季度人身险公司偿付能力透视：权益投资成「胜负手」，保险资金配置动向对财富端权益与固收配置参考。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cctv-finance",
@@ -307,9 +313,12 @@
       "summary": "上海「沪八条」推进收购二手住房用作保障性租赁住房，一线楼市政策持续加码，对广州房贷与住房金融预期有参考。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cctv-finance",
@@ -398,9 +407,12 @@
       "summary": "险企起诉代理人追讨百万佣金，保险销售进入「责任绑定」时代，分行代销保险业务需强化销售合规与责任追溯。",
       "source": "央视财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "govcn-policy",
@@ -608,9 +620,12 @@
       "summary": "LPR连续15个月按兵不动，年内降息预期分歧，对分行房贷定价与信贷投放节奏判断有参考。",
       "source": "证券时报",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "21jingji-finance",
@@ -1476,9 +1491,12 @@
       "summary": "商品市场贵金属集体大涨、农产品延续强势，通胀与避险情绪升温，财富端可关注黄金等大宗商品配置机会。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -1630,9 +1648,12 @@
       "summary": "上海「沪八条」更趋精细化差异化、蓄势金九银十，一线楼市政策持续细化，对广州房贷与改善型按揭预期有参考。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -1658,9 +1679,12 @@
       "summary": "上海优化房地产政策措施、精准施策促进合理购房需求，一线楼市宽松延续，对广州房贷预期与改善型需求有参考。",
       "source": "新华财经",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -2050,9 +2074,12 @@
       "summary": "上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。",
       "source": "证券时报",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "stcn",
@@ -2316,9 +2343,12 @@
       "summary": "中行张兴荣：大型银行发展资管业务意义重大，银行资管转型方向，对分行财富管理与资管布局有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -2427,9 +2457,12 @@
       "summary": "五年期大额存单回归、中小银行上调存款利率打响留客战，存款竞争加剧，分行应关注负债端定价与客户留存。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -2441,9 +2474,12 @@
       "summary": "提前还贷挤压信贷，前7个月居民贷款同比多减1.5万亿，居民信贷需求偏弱，分行应加强按揭与消费贷获客。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -2455,9 +2491,12 @@
       "summary": "小贷公司利率上限降至12%，普惠金融竞争加剧，对分行普惠小微定价与客群经营有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -2539,9 +2578,12 @@
       "summary": "晋商消金增资至10亿元获批，消费金融行业增资赛，对消金竞争格局与分行消费信贷合作有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -2623,9 +2665,12 @@
       "summary": "银行业内首现1年、2年、3年定存利率持平，存款期限溢价消失，对分行负债端定价与客户存款结构有参考。",
       "source": "新浪财经·银行频道",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "guancha",
@@ -2651,9 +2696,12 @@
       "summary": "汇丰启动存量排查、内地投资客户面临合规限制，跨境财富管理合规趋严，分行跨境业务应强化合规审查。",
       "source": "观察者网·金融",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "nfra",
@@ -2749,9 +2797,12 @@
       "summary": "美元储备占比降至57%、人民币创3年半新高，美元信用稀释强化黄金重估逻辑，分行可关注外汇与黄金类财富产品营销窗口。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cls",
@@ -2847,9 +2898,12 @@
       "summary": "8月LPR报价出炉：5年期和1年期均维持不变，LPR连续按兵不动，对房贷定价与信贷环境判断有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cls",
@@ -2889,9 +2943,12 @@
       "summary": "监管支持险资参与南向ETF通、呼吁放松债券ETF，保险资金跨境配置政策动向，对财富端跨境产品布局有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cls",
@@ -2903,9 +2960,12 @@
       "summary": "江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cls",
@@ -2945,9 +3005,12 @@
       "summary": "农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-private",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-private"
+      ]
     },
     {
       "sourceId": "cls",
@@ -2959,9 +3022,12 @@
       "summary": "宇树科技首日暴涨456%、信托自营揽收、理财斩获浮盈，新股赚钱效应强，财富端可关注打新与科技主题配置。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cls",
@@ -3043,9 +3109,12 @@
       "summary": "基金投顾申报冲刺、20多家券商等拿业务牌照，基金投顾扩容提速，对分行财富管理与投顾业务布局有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cls",
@@ -3113,9 +3182,12 @@
       "summary": "10余家银行系机构扎堆理财节、3家理财子首入券商IP，财富营销节点密集，分行可借鉴理财节营销打法。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cls",
@@ -3267,9 +3339,12 @@
       "summary": "债市早参：国债做市支持操作、分红险崛起险资配债逻辑生变，债市与保险配置动态，对财富配置有参考。",
       "source": "财联社",
       "fetchedToday": false,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "ft-companies",
@@ -4110,9 +4185,12 @@
       "summary": "股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-money",
@@ -4390,9 +4468,12 @@
       "summary": "新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -4516,11 +4597,14 @@
       "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "tier": "T1.5",
       "alsoFrom": [
         "证券时报"
+      ],
+      "subcategories": [
+        "cn-wealth"
       ]
     },
     {
@@ -4533,9 +4617,12 @@
       "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -4575,9 +4662,12 @@
       "summary": "上海优化个人住房信贷政策，部分区域二套房首付比例低至15%；一线城市房贷政策松绑，分行个人房贷业务可关注政策传导与客户需求释放。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "cnfin",
@@ -4729,9 +4819,12 @@
       "summary": "低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "stcn",
@@ -4799,9 +4892,12 @@
       "summary": "主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "stcn",
@@ -4911,9 +5007,12 @@
       "summary": "友邦香港第二季增速骤降至个位数、较首季21%明显放缓；香港保险销售降温，分行可关注保险代销与跨境财富配置趋势变化。",
       "source": "观察者网·金融",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "guancha",
@@ -4953,9 +5052,12 @@
       "summary": "连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T1.5"
+      "tier": "T1.5",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-finance",
@@ -4966,9 +5068,12 @@
       "summary": "俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-finance",
@@ -4979,9 +5084,12 @@
       "summary": "中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。",
       "source": "新浪财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "sina-finance",
@@ -5115,9 +5223,12 @@
       "summary": "30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。",
       "source": "证券时报",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-wealth"
+      ]
     },
     {
       "sourceId": "stcn",
@@ -5353,9 +5464,12 @@
       "summary": "LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -5367,9 +5481,12 @@
       "summary": "双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -5381,9 +5498,12 @@
       "summary": "市场热议年内是否还会降息、政策利率走向存分歧；降息预期影响存款与理财收益，分行可提前布局利率下行环境下的资产负债配置。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
-      "tier": "T2"
+      "tier": "T2",
+      "subcategories": [
+        "cn-credit"
+      ]
     },
     {
       "sourceId": "sina-bank",
@@ -5728,9 +5848,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "summary": "李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。",
       "fetchedToday": true
@@ -5869,9 +5989,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "summary": "黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。",
       "fetchedToday": true
@@ -5887,9 +6007,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "summary": "友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。",
       "fetchedToday": true
@@ -6112,9 +6232,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "fetchedToday": true
     },
@@ -6297,9 +6417,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-credit"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
       "fetchedToday": true
     },
@@ -6332,9 +6452,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "fetchedToday": true
     },
@@ -6351,9 +6471,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "fetchedToday": true
     },
@@ -6505,9 +6625,9 @@
       "filterBucket": "daily",
       "filterDimensions": [],
       "subcategories": [
-        "cn-finance"
+        "cn-credit"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-credit",
       "relevant": true,
       "fetchedToday": true
     },
@@ -6526,9 +6646,9 @@
         "wealth_mgmt"
       ],
       "subcategories": [
-        "cn-finance"
+        "cn-wealth"
       ],
-      "subcategory": "cn-finance",
+      "subcategory": "cn-wealth",
       "relevant": true,
       "fetchedToday": true
     }
