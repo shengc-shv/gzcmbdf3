@@ -568,6 +568,36 @@ export const THEME_CSS = `
     border-radius: var(--r-md);
   }
 
+  /* ===== 合并流：官方 / 媒体 分带（任务三 #43）===== */
+  .feed-band { margin: 0.2rem 0; }
+  .feed-band:first-child { margin-top: 0; }
+  .band-head {
+    display: flex; align-items: baseline; gap: 0.5rem;
+    margin: 0.9rem 0 0.55rem; padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .feed-band:first-child .band-head { margin-top: 0.1rem; }
+  .band-label { position: relative; font-size: 0.82rem; font-weight: 600; color: var(--fg); letter-spacing: 0.03em; }
+  .band-label::before {
+    content: ""; display: inline-block; width: 3px; height: 0.82rem;
+    vertical-align: -0.1rem; margin-right: 0.5rem; border-radius: 2px; background: var(--muted);
+  }
+  .feed-band-official .band-label::before { background: var(--accent-cmb); }
+  .feed-band-media .band-label::before { background: var(--muted); }
+  .band-count {
+    font-size: 0.7rem; color: var(--muted);
+    background: var(--card-alt); padding: 0.08rem 0.45rem; border-radius: 999px;
+  }
+  /* 全局权威等级图例（标签栏下方，一次） */
+  .feed-legend {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem;
+    margin: 0.3rem 0 0.2rem; font-size: 0.76rem; color: var(--muted); line-height: 1.5;
+  }
+  .feed-legend .lg-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .feed-legend .lg-dot { width: 0.6rem; height: 0.6rem; border-radius: 2px; display: inline-block; }
+  .feed-legend .lg-note { color: var(--fg-soft); }
+  .feed-legend .lg-sep { opacity: 0.4; }
+
   /* ===== trading panel ===== */
   .crypto-widgets {
     display: grid;

@@ -6,7 +6,7 @@ import type { ArticleInput } from "../../types";
 import type { Category } from "../../sources/types";
 import { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "./i18n";
 import { TIER_COLORS } from "./theme";
-import { SOURCE_TIER_LABELS, SOURCE_TIER_ORDER } from "../../sources/tiers";
+import { SOURCE_TIER_LABELS, SOURCE_TIER_ORDER, type SourceTier } from "../../sources/tiers";
 import { REPORT_LOCALE } from "../../sources/registry";
 import { getReportTz } from "../../utils";
 
@@ -184,6 +184,31 @@ export function renderSourceContent(
   </div>`;
 }
 
+/**
+ * 任务三（#43）：合并流按权威等级拆「官方 / 媒体」两视觉带，官方置顶。
+ * 官方带 = T1 官方一手 + T1.5 准官方·机构一手；媒体带 = T2 媒体·智库。
+ * 分带只在渲染层拆分，过滤/去重逻辑不变；带内仍按 sortByTierAndTime 排序。
+ */
+function isOfficialTier(tier?: SourceTier): boolean {
+  return tier === "T1" || tier === "T1.5";
+}
+
+function renderBand(kind: "official" | "media", label: string, items: ArticleInput[], showSource: boolean): string {
+  return `<div class="feed-band feed-band-${kind}">
+    <div class="band-head"><span class="band-label">${escapeHtml(label)}</span><span class="band-count">${items.length}</span></div>
+    ${items.map((a) => renderArticleHtml(a, showSource)).join("\n")}
+  </div>`;
+}
+
+export function renderBandedFeed(items: ArticleInput[], showSource = false): string {
+  const official = sortByTierAndTime(items.filter((a) => isOfficialTier(a.tier)));
+  const media = sortByTierAndTime(items.filter((a) => !isOfficialTier(a.tier)));
+  const parts: string[] = [];
+  if (official.length > 0) parts.push(renderBand("official", STR.bandOfficial, official, showSource));
+  if (media.length > 0) parts.push(renderBand("media", STR.bandMedia, media, showSource));
+  return parts.join("\n");
+}
+
 export function renderSourceTabs(
   category: Category,
   subId: string,
@@ -275,6 +300,10 @@ export function renderSourcesBlock(
 ): string {
   if (sources.length === 0) {
     return `<p class="empty">${STR.emptySource}</p>`;
+  }
+  // 合并流（子标签内单一 _merged 源）：按权威等级拆「官方/媒体」两带，官方置顶（任务三 #43）
+  if (sources.length === 1 && sources[0].merged === true) {
+    return renderBandedFeed(sources[0].items, true);
   }
   return `${renderSourceTabs(category, subId, sources)}
   <div class="source-contents">

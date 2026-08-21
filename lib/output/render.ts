@@ -782,6 +782,15 @@ ${THEME_CSS}
     <button class="tab tab-fold" data-tab="tech">${CATEGORY_LABELS.tech}<span class="count">${counts.tech}</span></button>
   </nav>
 
+  <div class="feed-legend">
+    <span class="lg-note">权威等级：</span>
+    <span class="lg-item"><span class="lg-dot" style="background:#c0392b"></span>官方一手</span>
+    <span class="lg-item"><span class="lg-dot" style="background:#b9770e"></span>准官方·机构</span>
+    <span class="lg-item"><span class="lg-dot" style="background:#6b7280"></span>媒体·智库</span>
+    <span class="lg-sep">·</span>
+    <span class="lg-note">官方 / 政府一手来源默认置顶</span>
+  </div>
+
   <section class="panel active" data-panel="finance">
     ${renderRawCategoryPanel("finance", raw.finance, date)}
   </section>
