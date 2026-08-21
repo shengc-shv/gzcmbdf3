@@ -400,11 +400,11 @@ export function groupRaw(
     if (a.tier === undefined && tierBySource.has(a.sourceId)) {
       a.tier = tierBySource.get(a.sourceId);
     }
-    // 条目级相关性过滤：AI/启发式判断「与银行业务无关」的条目不进任何面板。
-    // 仅对 广州商机(gz) 与 宏观政策(finance) 生效——这两个分类定位是"商机/政策"，
-    // 需要精准过滤（历史建筑/招聘/娱乐等）；tech/ipo/politics 参考区不做银行相关
-    // 过滤，避免 LLM 误判把 GitHub/论文/IPO 全清空。
-    if (a.relevant === false && (a.category === "gz" || a.category === "finance")) continue;
+    // 条目级相关性过滤（2026-08-21 重构 #23）：AI/启发式判断「与银行业务无关」的
+    // 条目不进任何面板——全板块生效（含 tech/ipo/politics）。重构后页面是
+    // 「业务启示/科技前沿」等对分行有价值的精选流，demo 要求科技前沿只留与分行
+    // 有真实连接点的内容（算力金融化/数据治理），故不再豁免参考区。
+    if (a.relevant === false) continue;
     // gz 杂讯兜底（不依赖 LLM）：AI 未明确判相关(relevant!==true) 且标题命中
     // 城市治理/民生杂讯词（电费补贴/招聘/摆卖/殡葬/诊所备案等）→ 过滤。
     // 南沙/政府列表页会长期挂旧政策文件库存，LLM 分类偶有漏网（ai_relevant=null），
@@ -798,6 +798,13 @@ export function renderHtml(
   const flattenRaw = (cat: keyof RawByCategory): ArticleInput[] =>
     (raw[cat] ?? []).flatMap((sg) => sg.sources.flatMap((s) => s.items));
 
+  // 跨板块去重（2026-08-21 重构 #14「一文一卡」）：同一 URL 只展示一次，
+  // 优先级 广州本地 > 业务启示 > 政策与市场 > 科技前沿 > IPO（传导镜像的 finance
+  // 条目已优先出现在 gz 面板，政策与市场不再重复展示）。
+  const seenUrls = new Set<string>();
+  const dedupe = (list: ArticleInput[]): ArticleInput[] =>
+    list.filter((a) => (seenUrls.has(a.url) ? false : (seenUrls.add(a.url), true)));
+
   // 今日必读中文标题回写（#20：只对必读/商机选中条目注入 title_cn，卡片优先展示）
   const urlCnMap = new Map<string, string>();
   for (const m of exec?.must_read ?? []) {
@@ -809,11 +816,11 @@ export function renderHtml(
     );
 
   const gzAll = flattenRaw("gz");
-  const gzLocal = withCn(gzAll.filter((a) => GZ_ANCHOR_RE.test(a.title || "")));
-  const bizInsight = withCn(gzAll.filter((a) => !GZ_ANCHOR_RE.test(a.title || "")));
-  const financeAll = withCn(flattenRaw("finance"));
-  const techAll = withCn(flattenRaw("tech"));
-  const ipoAll = withCn(flattenRaw("gd-ipo"));
+  const gzLocal = withCn(dedupe(gzAll.filter((a) => GZ_ANCHOR_RE.test(a.title || ""))));
+  const bizInsight = withCn(dedupe(gzAll.filter((a) => !GZ_ANCHOR_RE.test(a.title || ""))));
+  const financeAll = withCn(dedupe(flattenRaw("finance")));
+  const techAll = withCn(dedupe(flattenRaw("tech")));
+  const ipoAll = withCn(dedupe(flattenRaw("gd-ipo")));
 
   // 中文日期「8月21日 星期五」（#21 统一日期格式）
   const zhDate = (() => {
