@@ -97,6 +97,33 @@ test("hero_line 仅当 report 缺省时回填", () => {
   assert.equal(r2.hero_line, emptyReport.hero_line, "已有 hero_line 不被覆盖");
 });
 
+test("store 无 hero_line 时用 must_read 首条生成今日定调（替代 SKIP_AI 弱兜底）", () => {
+  const noHeroExec = { ...storeExec, hero_line: "" };
+  const noHeroReport = { ...emptyReport, hero_line: "" };
+  const r = mergeStoredExecutive(JSON.parse(JSON.stringify(noHeroReport)), JSON.parse(JSON.stringify(noHeroExec)));
+  assert.ok(r.hero_line, "应生成今日定调");
+  assert.ok(r.hero_line.includes("今日关注"), "以「今日关注」开头");
+  assert.ok(r.hero_line.includes("LPR"), "引用 must_read 首条标题");
+  assert.ok(!r.hero_line.includes("今日更新"), "不再是 SKIP_AI 弱兜底");
+});
+
+test("report 已有 SKIP_AI 弱兜底「今日更新 N 条资讯」时也覆盖为 store 定调", () => {
+  const weakHero = { ...emptyReport, hero_line: "今日更新 5 条资讯：直击WRC丨智平方张鹏" };
+  const r = mergeStoredExecutive(JSON.parse(JSON.stringify(weakHero)), JSON.parse(JSON.stringify(storeExec)));
+  assert.equal(r.hero_line, "今日主线：LPR 预期与黄金避险。", "store 有 hero_line 时覆盖弱兜底");
+  assert.ok(!r.hero_line.includes("今日更新"), "弱兜底被替换");
+});
+
+test("report 已有 HERO_FALLBACK「今日暂无可推送重点」时也覆盖为 must_read 首条定调", () => {
+  const fallbackHero = { ...emptyReport, hero_line: "今日暂无可推送重点，详见各板块资讯。" };
+  const noHeroExec = { ...storeExec, hero_line: "" };
+  const r = mergeStoredExecutive(JSON.parse(JSON.stringify(fallbackHero)), JSON.parse(JSON.stringify(noHeroExec)));
+  assert.ok(r.hero_line, "应生成今日定调");
+  assert.ok(r.hero_line.includes("今日关注"), "用 must_read 首条生成今日定调");
+  assert.ok(r.hero_line.includes("LPR"));
+  assert.ok(!r.hero_line.includes("今日暂无可推送"), "HERO_FALLBACK 被替换");
+});
+
 test("store 全违禁/全无匹配 → 不污染 report", () => {
   const bad = {
     hero_line: "",

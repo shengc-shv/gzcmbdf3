@@ -1087,8 +1087,22 @@ export function mergeStoredExecutive(
   }
   if (insights.length > 0) report.insights = insights;
 
-  // hero_line 回填（仅当 report 缺省时）
-  if (exec.hero_line && !report.hero_line) report.hero_line = exec.hero_line;
+  // hero_line 回填：SKIP_AI 的弱兜底非空但无定调价值 → 视为缺省，用 store 的 hero_line
+  //（真实 AI 当日定调）或回填成功的 must_read 首条生成「今日关注：xxx」覆盖（2026-08-21 用户反馈）。
+  // 弱兜底两种形态：pipeline.ts 的「今日更新 N 条资讯：<PASS2首条>」+ degrade ⑦ 的
+  // HERO_FALLBACK「今日暂无可推送重点」（SKIP_AI 下 PASS2 必读为空触发 R12 → 降级）。
+  const heroIsWeakFallback =
+    !report.hero_line ||
+    /^今日更新\s*\d+\s*条资讯/.test(report.hero_line) ||
+    /今日暂无可推送重点/.test(report.hero_line);
+  if (heroIsWeakFallback) {
+    if (exec.hero_line) {
+      report.hero_line = exec.hero_line;
+    } else if (must.length > 0) {
+      const it = allItems.find((x) => x.url === must[0].url);
+      if (it) report.hero_line = `今日关注：${it.title_cn || it.title_orig || ""}`.slice(0, 70);
+    }
+  }
   return report;
 }
 
