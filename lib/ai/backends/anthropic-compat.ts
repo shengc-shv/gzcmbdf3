@@ -58,7 +58,8 @@ export async function runAnthropicCompat(
   opts: LlmRunOptions,
   cfg: AnthropicCompatConfig,
 ): Promise<LlmRunResult> {
-  const { client, model } = getClient(cfg);
+  const { client } = getClient(cfg);
+  const model = opts.model?.trim() || process.env.LLM_MODEL?.trim() || cfg.defaultModel;
   const started = Date.now();
   const inputChars = opts.systemPrompt.length + opts.userPrompt.length;
   const timeoutMs = opts.timeoutMs ?? 180_000;

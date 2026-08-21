@@ -3,59 +3,14 @@ import "./_env";
 import fs from "node:fs";
 import path from "node:path";
 
-import { sources, loadAllSources } from "../lib/sources/registry";
+import { sources } from "../lib/sources/registry";
 import { fetchSource } from "../lib/sources/dispatch";
 import { fetchCrawledArticles } from "../lib/sources/crawlers";
 import type { ArticleInput } from "../lib/types";
-import { groupRaw, renderHtml } from "../lib/output/render";
+import { renderHtml } from "../lib/output/render";
+import { buildNoAiReport } from "../lib/output/report-from-articles";
 import { resolveDateDir } from "../lib/output/paths";
 import { todayKey } from "../lib/utils";
-
-// Build a report skeleton (no AI) for the re-render pass: the LLM digest
-// fields are left empty and the raw articles are rendered straight from the
-// fetchers / crawler sidecar. Used by `npm run render` to fix layout/HTML
-// bugs without re-running the model.
-function generateEmptyReport(articles: ArticleInput[]) {
-  const techArticles = articles.filter((a) => a.category === "tech");
-  const financeArticles = articles.filter((a) => a.category === "finance");
-  const politicsArticles = articles.filter((a) => a.category === "politics");
-  const gdIpoArticles = articles.filter((a) => a.category === "gd-ipo");
-
-  return {
-    hero_headline: "",
-    daily_overview: "",
-    tech_briefs: techArticles.slice(0, 5).map((a) => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    finance_briefs: financeArticles.slice(0, 5).map((a) => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    politics_briefs: politicsArticles.slice(0, 3).map((a) => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    gd_ipo_briefs: gdIpoArticles.slice(0, 20).map((a) => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    editor_note: "",
-    keywords: [],
-  };
-}
 
 async function main() {
   console.log("🚀 Dry-run 模式（无 AI）开始...\n");
@@ -112,14 +67,10 @@ async function main() {
   }
   console.log(`📈 分类统计:`, catCount);
 
-  // ----- 渲染 HTML（无 AI）-----
+  // ----- 渲染 HTML（无 AI，由文章池合成新 schema 报告）-----
   console.log(`\n🎨 渲染 HTML 报告 (${date})...`);
-  const raw = groupRaw(articles, loadAllSources());
-
-  // 生成空报告（不含 AI 摘要）
-  const report = generateEmptyReport(articles);
-
-  const html = renderHtml(report, raw, date);
+  const report = buildNoAiReport(articles);
+  const html = renderHtml(report, date);
 
   // 写入文件（读路径解析：优先 data/history/reports，回退 daily_reports）
   const dateDir = resolveDateDir(date);

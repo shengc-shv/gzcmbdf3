@@ -77,7 +77,8 @@ export async function runOpenAICompat(
   opts: LlmRunOptions,
   cfg: OpenAICompatConfig,
 ): Promise<LlmRunResult> {
-  const { client, model } = getClient(cfg);
+  const { client } = getClient(cfg);
+  const model = opts.model?.trim() || process.env.LLM_MODEL?.trim() || cfg.defaultModel;
   const started = Date.now();
   const inputChars = opts.systemPrompt.length + opts.userPrompt.length;
   const timeoutMs = opts.timeoutMs ?? 180_000;

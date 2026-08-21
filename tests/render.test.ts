@@ -1,32 +1,43 @@
 /**
  * renderHtml 快照/结构测试（zh 默认 locale）：
  * 结构存在性 / 关键 CSS class / 关键文本 / 空数据兜底 / 日期。
+ * 新管线 schema：renderHtml(report, date) 消费 report.sections（ReportItem[]）。
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { renderHtml, type RawByCategory } from "../lib/output/render";
+import { renderHtml } from "../lib/output/render";
 import { renderRawCategoryPanel, formatDate, isDateOnly, sortByTierAndTime, type SubGroup } from "../lib/output/render/cards";
-import type { DailyReport, ArticleInput } from "../lib/types";
+import type { DailyReport, ArticleInput, ReportItem } from "../lib/types";
 import { toMatchSnapshot } from "./snapshot";
 
-const emptyRaw = (): RawByCategory => ({
-  tech: [],
-  finance: [],
-  politics: [],
-  "gd-ipo": [],
-  ipo: [],
-  gz: [],
+const report = (): DailyReport => ({
+  date: "",
+  hero_line: "",
+  must_read: [],
+  insights: [],
+  sections: { gz_local: [], biz_insight: [], policy_market: [], tech: [], ipo: [] },
 });
 
-const report = (): DailyReport => ({
-  hero_headline: "",
-  daily_overview: "",
-  tech_briefs: [],
-  finance_briefs: [],
-  politics_briefs: [],
-  gd_ipo_briefs: [],
-  editor_note: "",
-  keywords: [],
+const withSection = (key: keyof DailyReport["sections"], items: ReportItem[]): DailyReport => ({
+  date: "",
+  hero_line: "",
+  must_read: [],
+  insights: [],
+  sections: { gz_local: [], biz_insight: [], policy_market: [], tech: [], ipo: [], [key]: items },
+});
+
+const mkItem = (over: Partial<ReportItem> = {}): ReportItem => ({
+  url: "https://x/u1",
+  title_cn: "广州房贷利率下调",
+  source: "测试源",
+  source_type: "media",
+  date: "08/19",
+  summary: "AI 摘要",
+  importance: 2,
+  rank: 1,
+  tags: [],
+  locale: "national",
+  ...over,
 });
 
 const item = (
@@ -46,7 +57,7 @@ const item = (
 });
 
 test("renderHtml: 基础结构存在性（html/style/script/zh locale）", () => {
-  const html = renderHtml(report(), emptyRaw(), "2026-08-19");
+  const html = renderHtml(report(), "2026-08-19");
   assert.ok(html.includes("<!doctype html>"));
   assert.ok(html.includes("</html>"));
   assert.ok(html.includes("<style>"));
@@ -55,21 +66,7 @@ test("renderHtml: 基础结构存在性（html/style/script/zh locale）", () =>
 });
 
 test("renderHtml: 文章卡片渲染关键 CSS class 与文本", () => {
-  const raw = emptyRaw();
-  raw.finance = [
-    {
-      id: "news",
-      name: "要闻",
-      sources: [
-        {
-          sourceId: "test-src",
-          sourceName: "测试源",
-          items: [item("https://x/u1", "广州房贷利率下调", "finance")],
-        },
-      ],
-    },
-  ];
-  const html = renderHtml(report(), raw, "2026-08-19");
+  const html = renderHtml(withSection("policy_market", [mkItem()]), "2026-08-19");
   assert.ok(html.includes('class="brief"'), "卡片容器 class");
   assert.ok(html.includes("<h3><a"), "标题 class");
   assert.ok(html.includes("广州房贷利率下调"), "文章标题文本");
@@ -78,31 +75,23 @@ test("renderHtml: 文章卡片渲染关键 CSS class 与文本", () => {
 });
 
 test("renderHtml: 空数据兜底不抛错", () => {
-  const html = renderHtml(report(), emptyRaw(), "2026-08-19");
+  const html = renderHtml(report(), "2026-08-19");
   assert.ok(html.includes("</html>"));
 });
 
 test("renderHtml: 日期出现在标题", () => {
-  const html = renderHtml(report(), emptyRaw(), "2026-08-19");
+  const html = renderHtml(report(), "2026-08-19");
   assert.ok(html.includes("2026-08-19"));
 });
 
 test("renderHtml: CSS class 清单快照（防渲染回归）", () => {
-  const raw = emptyRaw();
-  raw.finance = [
-    {
-      id: "news",
-      name: "要闻",
-      sources: [
-        {
-          sourceId: "test-src",
-          sourceName: "测试源",
-          items: [item("https://x/u1", "广州房贷利率下调", "finance")],
-        },
-      ],
-    },
-  ];
-  const html = renderHtml(report(), raw, "2026-08-19");
+  const html = renderHtml(
+    withSection("policy_market", [
+      mkItem({ source_type: "official", importance: 3, tags: ["政银"] }),
+      mkItem({ url: "https://x/u2", title_cn: "另一则消息" }),
+    ]),
+    "2026-08-19",
+  );
   const classes = new Set<string>();
   for (const m of html.matchAll(/class="([^"]+)"/g)) {
     for (const c of m[1].split(/\s+/)) if (c) classes.add(c);
@@ -110,27 +99,12 @@ test("renderHtml: CSS class 清单快照（防渲染回归）", () => {
   toMatchSnapshot("render-zh-class-inventory", [...classes].sort().join("\n"));
 });
 
-test("renderHtml: 源等级差异化来源徽章（2026-08-21 重构：tier-badge → src-badge）", () => {
-  const raw = emptyRaw();
-  raw.finance = [
-    {
-      id: "news",
-      name: "要闻",
-      sources: [
-        {
-          sourceId: "test-src",
-          sourceName: "测试源",
-          items: [item("https://x/u1", "广州房贷利率下调", "finance")],
-        },
-      ],
-    },
-  ];
-  // 无 tier → 仍渲染默认媒体徽章（不渲染旧 tier-badge）
-  assert.ok(!renderHtml(report(), raw, "2026-08-19").includes("tier-badge"));
-  // 带 tier=T1 → 渲染官方徽章 src-official
-  raw.finance[0].sources[0].items[0].tier = "T1";
-  const html = renderHtml(report(), raw, "2026-08-19");
-  assert.ok(html.includes('class="src-badge src-official"'), "应渲染 T1 官方徽章");
+test("renderHtml: 来源徽章按 source_type 区分（src-badge，2026-08-21 重构去 tier-badge）", () => {
+  // 媒体 → src-media（不再渲染旧 tier-badge）
+  assert.ok(!renderHtml(withSection("policy_market", [mkItem({ source_type: "media" })]), "2026-08-19").includes("tier-badge"));
+  // 官方 → src-official + 官方 文案
+  const html = renderHtml(withSection("policy_market", [mkItem({ source_type: "official" })]), "2026-08-19");
+  assert.ok(html.includes('class="src-badge src-official"'), "应渲染 官方 徽章");
   assert.ok(html.includes(">官方<"), "应渲染 官方 徽章文案");
 });
 
@@ -259,7 +233,6 @@ test("filterRecentDays: 无发布时间 → 按采集时间 fetchedAt 排序与�
 });
 
 test("formatDate: 只有日期（UTC零点/北京零点）→ 展示日期；有真实时分 → 展示时分", () => {
-  
   // 国内爬虫源形态：UTC 零点 → 只有日期 → YYYY-MM-DD
   const utcZero = new Date("2026-08-21T00:00:00.000Z");
   assert.equal(isDateOnly(utcZero), true, "UTC 零点应判定只有日期");
@@ -275,7 +248,6 @@ test("formatDate: 只有日期（UTC零点/北京零点）→ 展示日期；有
 });
 
 test("sortByTierAndTime: tier 权威等级 + 时间排序，只有日期沉底", () => {
-  
   const mk = (title: string, publishedAt: Date | undefined, tier?: string): ArticleInput => ({
     sourceId: "s",
     source: "源",

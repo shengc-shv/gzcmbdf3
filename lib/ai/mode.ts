@@ -15,6 +15,8 @@ export type AiStage =
   | "executive" // 执行摘要
   | "trading" // 交易点评
   | "credentials" // 启动凭证校验
+  | "pass1" // 两阶段管线：PASS1 筛选分类
+  | "pass2" // 两阶段管线：PASS2 总编辑成稿
   | "other";
 
 /** AI 是否启用（SKIP_AI !== "true"）。 */

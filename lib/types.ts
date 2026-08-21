@@ -19,19 +19,77 @@ export interface BriefItem {
   importance: number;
 }
 
+// —— 新管线 schema（2026-08-21 改造：两阶段 AI + 13 条确定性校验）——
+// 对外 report 以 sections 驱动渲染；AI 只创作、代码校验证伪。
+
+export type ReportSectionKey =
+  | "gz_local"
+  | "biz_insight"
+  | "policy_market"
+  | "tech"
+  | "ipo";
+
+export type SourceType = "official" | "media";
+export type Locale = "gz" | "national" | "overseas";
+
+/** 单条成稿条目（最终落盘结构，无内部字段）。 */
+export interface ReportItem {
+  /** 必填，逐字来自输入池。 */
+  url: string;
+  /** 必填，外文标题必须翻译为中文。 */
+  title_cn: string;
+  /** 可选，外文原标题。 */
+  title_orig?: string;
+  /** 必填。 */
+  source: string;
+  /** official | media。 */
+  source_type: SourceType;
+  /** MM/DD。 */
+  date: string;
+  /** 必填，≤90字，结构=发生了什么+关键数字+所以呢。 */
+  summary: string;
+  /** 3=今日必知 / 2=默认展示 / 1=折叠区。 */
+  importance: 1 | 2 | 3;
+  /** 板块内排序，从1开始，由代码生成不交给模型。 */
+  rank: number;
+  /** 封闭词表。 */
+  tags: string[];
+  /** gz | national | overseas。 */
+  locale: Locale;
+  /** locale=gz 时必填，必须是该条 raw_text 的逐字子串。 */
+  locale_evidence?: string;
+}
+
+export interface ReportInsight {
+  topic: string;
+  tags: string[];
+  impact: string;
+  action: string;
+  related_url?: string;
+}
+
+export interface ReportMustRead {
+  url: string;
+  why: string;
+}
+
+export interface ReportSections {
+  gz_local: ReportItem[];
+  biz_insight: ReportItem[];
+  policy_market: ReportItem[];
+  tech: ReportItem[];
+  ipo: ReportItem[];
+}
+
 export interface DailyReport {
-  hero_headline: string;
-  daily_overview: string;
-  tech_briefs: BriefItem[];
-  finance_briefs: BriefItem[];
-  politics_briefs: BriefItem[];
-  gd_ipo_briefs: BriefItem[]; // 广东地区 IPO
-  editor_note: string;
-  keywords: string[];
+  date: string;
+  /** 今日定调一句话，15~70字，必填（为空时由管线兜底）。 */
+  hero_line?: string;
+  must_read: ReportMustRead[];
+  insights: ReportInsight[];
+  sections: ReportSections;
   /** Optional trading-signals section, present when scripts/daily.ts ran successfully. */
   trading?: TradingSection;
-  /** Optional executive summary (今日必读 + 商机提示), present when LLM call succeeded. */
-  executive_summary?: import("./ai/executive-summary").ExecutiveSummary;
 }
 
 export interface TradingSection {

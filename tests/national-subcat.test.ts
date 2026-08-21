@@ -2,62 +2,41 @@
  * #33 回归（2026-08-21 三次更新）：全国 cn-wealth/cn-credit/cn-private 业务线报道
  * 移入广州商机(gz)面板。gz 面板合并为单一 gz-all 合并流（「广州能参考的商机」），
  * 面板内仅按「官方政府 / 媒体智库」两类 tab 展现（不再按业务线/本地全国分层）。
- * 锁定：① 渲染契约（finance 不含 cn-*、gz 仅 gz-all）；② LLM 候选清单含三项；
- * ③ 端到端：cn-wealth 文章（移入 gz）渲染进 gz-all 子标签并出现官方/媒体 tab。
+ *
+ * 渲染契约（新管线 schema）：renderHtml 消费 report.sections，由上游管线（PASS1
+ * locale=gz 判定）决定条目进入 gz_local（广州本地）还是 biz_insight（业务启示）。
+ * 本文件锁定：① 渲染板块契约（gz_local 进广州本地 / biz_insight 进业务启示）；
+ * ② LLM 候选清单含三项；③ i18n 子标签名保留。
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { renderHtml, type RawByCategory } from "../lib/output/render";
+import { renderHtml } from "../lib/output/render";
 import { SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "../lib/output/render/i18n";
 import { RULES } from "../lib/ai/item-classifier";
-import type { DailyReport, ArticleInput } from "../lib/types";
+import type { DailyReport, ReportItem } from "../lib/types";
 
 const REPORT_DATE = "2026-08-19";
 
-const emptyRaw = (): RawByCategory => ({
-  tech: [],
-  finance: [],
-  politics: [],
-  "gd-ipo": [],
-  ipo: [],
-  gz: [],
+const mk = (over: Partial<ReportItem>): ReportItem => ({
+  url: "https://x/u",
+  title_cn: "标题",
+  source: "源",
+  source_type: "media",
+  date: "08/19",
+  summary: "摘要",
+  importance: 2,
+  rank: 1,
+  tags: [],
+  locale: "national",
+  ...over,
 });
 
 const report = (): DailyReport => ({
-  hero_headline: "",
-  daily_overview: "",
-  tech_briefs: [],
-  finance_briefs: [],
-  politics_briefs: [],
-  gd_ipo_briefs: [],
-  editor_note: "",
-  keywords: [],
-});
-
-const finItem = (
-  url: string,
-  title: string,
-  subcategory: string,
-  tier: "T1" | "T1.5" | "T2" = "T2",
-): ArticleInput => ({
-  sourceId: "test-src",
-  source: "测试源",
-  title,
-  url,
-  excerpt: "摘要内容",
-  summary: "AI 摘要",
-  category: "finance",
-  subcategories: [subcategory],
-  tier,
-  publishedAt: new Date(`${REPORT_DATE}T08:00:00Z`),
-  fetchedToday: true,
-});
-
-test("#33 渲染契约：finance 面板不再含 cn-* 三项", () => {
-  const order = SUBCATEGORY_ORDER.finance ?? [];
-  assert.ok(!order.includes("cn-wealth"), "finance 不应再包含 全国财富");
-  assert.ok(!order.includes("cn-credit"), "finance 不应再包含 全国零售信贷");
-  assert.ok(!order.includes("cn-private"), "finance 不应再包含 全国私行");
+  date: "",
+  hero_line: "",
+  must_read: [],
+  insights: [],
+  sections: { gz_local: [], biz_insight: [], policy_market: [], tech: [], ipo: [] },
 });
 
 test("#33 渲染契约：gz 面板合并为单一 gz-all 合并流", () => {
@@ -86,27 +65,30 @@ test("#33 LLM 候选清单：RULES 含全国三项业务线标签 + 更新口诀
   );
 });
 
-test("#33/#9 端到端：gz-all 文章按广州锚拆分为 广州本地 / 业务启示（2026-08-21 重构单层 tab）", () => {
-  const raw = emptyRaw();
-  raw.gz = [
-    {
-      id: "gz-all",
-      name: "广州商机",
-      sources: [
-        {
-          sourceId: "_merged",
-          sourceName: "广州商机",
-          items: [
-            finItem("https://x/w1", "全国理财市场规模突破新高", "gz-wealth", "T2"),
-            finItem("https://x/g1", "广州市政府发布金融支持政策", "gz-policy", "T1"),
-            finItem("https://x/c1", "全国消费贷利率下调", "gz-credit", "T2"),
-          ],
-          merged: true,
-        },
+test("#33/#9 端到端：gz_local 文章进广州本地、biz_insight 文章进业务启示（新 schema 渲染契约）", () => {
+  const r: DailyReport = {
+    ...report(),
+    sections: {
+      ...report().sections,
+      gz_local: [
+        mk({
+          url: "https://x/g1",
+          title_cn: "广州市政府发布金融支持政策",
+          source: "广州市政府",
+          source_type: "official",
+          tags: ["政银"],
+          importance: 3,
+          locale: "gz",
+          locale_evidence: "广州市",
+        }),
+      ],
+      biz_insight: [
+        mk({ url: "https://x/w1", title_cn: "全国理财市场规模突破新高", tags: ["财富"] }),
+        mk({ url: "https://x/c1", title_cn: "全国消费贷利率下调", tags: ["信贷"] }),
       ],
     },
-  ];
-  const html = renderHtml(report(), raw, REPORT_DATE);
+  };
+  const html = renderHtml(r, REPORT_DATE);
   // 单层 tab：广州本地 + 业务启示
   assert.ok(html.includes('data-target="p-gz"') && html.includes("广州本地"), "应渲染 广州本地 tab");
   assert.ok(html.includes('data-target="p-biz"') && html.includes("业务启示"), "应渲染 业务启示 tab");
@@ -114,5 +96,8 @@ test("#33/#9 端到端：gz-all 文章按广州锚拆分为 广州本地 / 业�
   const gzPanel = html.split('id="p-gz"')[1]?.split('id="p-biz"')[0] ?? "";
   const bizPanel = html.split('id="p-biz"')[1]?.split('id="p-pol"')[0] ?? "";
   assert.ok(gzPanel.includes("广州市政府发布金融支持政策"), "广州锚文章应在 广州本地 面板");
-  assert.ok(bizPanel.includes("全国理财市场规模突破新高") && bizPanel.includes("全国消费贷利率下调"), "全国文章应在 业务启示 面板");
+  assert.ok(
+    bizPanel.includes("全国理财市场规模突破新高") && bizPanel.includes("全国消费贷利率下调"),
+    "全国文章应在 业务启示 面板",
+  );
 });

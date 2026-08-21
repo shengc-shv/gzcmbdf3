@@ -8,7 +8,8 @@ import { SOURCE_ROUTE } from "../lib/sources/constants";
 import { fetchSource } from "../lib/sources/dispatch";
 import { fetchCrawledArticles } from "../lib/sources/crawlers";
 import type { ArticleInput } from "../lib/types";
-import { groupRaw, renderHtml } from "../lib/output/render";
+import { renderHtml } from "../lib/output/render";
+import { buildNoAiReport } from "../lib/output/report-from-articles";
 import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import { loadHistory, buildRolling, saveHistory } from "../lib/output/history";
 import { applyKeywordFilter } from "../lib/filters/keyword-filter";
@@ -31,49 +32,6 @@ import { todayKey } from "../lib/utils";
 
 // 本地验证工具（无 AI）。写盘走唯一存储 data/history/reports/，
 // 与 daily.ts 一致；build-site 会从唯一存储同步到发布目录。
-
-// 生成一个空报告（不调用 AI）
-function generateEmptyReport(articles: ArticleInput[]) {
-  const techArticles = articles.filter(a => a.category === 'tech');
-  const financeArticles = articles.filter(a => a.category === 'finance');
-  const politicsArticles = articles.filter(a => a.category === 'politics');
-  const gdIpoArticles = articles.filter(a => a.category === 'gd-ipo' || a.category === 'ipo');
-
-  return {
-    hero_headline: "",
-    daily_overview: "",
-    tech_briefs: techArticles.slice(0, 5).map(a => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    finance_briefs: financeArticles.slice(0, 5).map(a => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    politics_briefs: politicsArticles.slice(0, 3).map(a => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    gd_ipo_briefs: gdIpoArticles.slice(0, 20).map(a => ({
-      title: a.title,
-      url: a.url,
-      source: a.source,
-      summary: a.summary || a.excerpt || "",
-      importance: 1,
-    })),
-    editor_note: "",
-    keywords: [],
-  };
-}
 
 async function main() {
   console.log("🚀 Dry-run 模式（无 AI）开始...\n");
@@ -258,14 +216,10 @@ async function main() {
   }
   console.log(`📈 分类统计:`, catCount);
 
-  // ----- 渲染 HTML（无 AI）-----
+  // ----- 渲染 HTML（无 AI，由滚动文章池合成新 schema 报告）-----
   console.log(`\n🎨 渲染 HTML 报告 (${date})...`);
-  const raw = groupRaw(rolling, sources);
-  
-  // 生成空报告（不含 AI 摘要）
-  const report = generateEmptyReport(rolling);
-  
-  const html = renderHtml(report, raw, date);
+  const report = buildNoAiReport(rolling);
+  const html = renderHtml(report, date);
 
   // 写入文件
   const dateDir = path.join(REPORTS_DIR, date);

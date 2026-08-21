@@ -25,12 +25,14 @@ export function runClaudeCli({
   systemPrompt,
   userPrompt,
   timeoutMs = 180_000,
+  model,
 }: LlmRunOptions): Promise<LlmRunResult> {
   const cli = resolveCliPath();
+  const resolvedModel = model?.trim() || CLAUDE_MODEL;
   const args = [
     "--print",
     "--model",
-    CLAUDE_MODEL,
+    resolvedModel,
     "--append-system-prompt",
     systemPrompt,
   ];

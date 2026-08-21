@@ -5,7 +5,6 @@ import path from "node:path";
 
 import { sources, loadAllSources, REPORT_LOCALE } from "../lib/sources/registry";
 import { SOURCE_ROUTE } from "../lib/sources/constants";
-import type { Category } from "../lib/sources/types";
 import { fetchSource } from "../lib/sources/dispatch";
 import {
   toMergeArticle,
@@ -34,23 +33,23 @@ import {
 import type { FilterResult, RawArticleInput } from "../lib/filters/types";
 import {
   type ArticleInput,
-  type BriefItem,
   type DailyReport,
+  type ReportItem,
 } from "../lib/types";
 import { validateBackendCredentials } from "../lib/ai/llm";
+import { generateDaily, skipAiRunner } from "../lib/ai/pipeline";
+import type { Pass1Input } from "../lib/ai/pass1";
 import {
   enrichFinanceNewsSummaries,
   enrichGithubTrendingSummaries,
 } from "../lib/ai/enrich";
 import {
-  groupRaw,
   isSportsArticle,
   MERGED_SUBGROUP_LIMITS,
   MERGE_PER_SOURCE_CAP,
   SOURCE_DISPLAY_LIMITS,
   renderHtml,
   renderMarkdown,
-  type RawByCategory,
 } from "../lib/output/render";
 import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import {
@@ -61,8 +60,6 @@ import {
   type HistoryStore,
 } from "../lib/output/history";
 import { analyzeWatchlist } from "../lib/trading/runner";
-import { classifyItemsWithLlm } from "../lib/ai/item-classifier";
-import { generateExecutiveSummary, selectExecutiveSummary, writeStore, loadStore } from "../lib/ai/executive-summary";
 import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
 import {
@@ -74,7 +71,6 @@ import {
   type AiAssetStore,
   type ArticleAiAsset,
 } from "../lib/ai/assets";
-import type { ExecutiveSummary } from "../lib/ai/executive-summary";
 import { REPORTS_DIR } from "../lib/output/paths";
 
 // SKIP_AI 开关已收敛到 lib/ai/mode.ts（唯一 env 读取点，行为不变；stage 维度供 M2-③ 埋点复用）。
@@ -274,37 +270,14 @@ async function runTrading(): Promise<TradingSection | null> {
   };
 }
 
-/**
- * Cheap, AI-free DailyReport builder used once the per-item summaries are
- * attached (and the market/trading section, if any, is ready).
- *
- * This REPLACES the old `generateDailyReport` cross-category LLM digest:
- * we no longer spend a large Sonnet call re-synthesizing items that were
- * already summarized one-by-one. The digest now just mirrors the FINAL
- * displayed sets (grouped by category) using each article's own summary /
- * excerpt, so the markdown export stays useful at zero extra token cost.
- * (The HTML site never rendered the digest anyway.)
- */
-function buildReportFromRaw(raw: RawByCategory): DailyReport {
-  const flatten = (cat: Category): ArticleInput[] =>
-    (raw[cat] ?? []).flatMap((sg) => sg.sources.flatMap((s) => s.items));
-  const toBrief = (a: ArticleInput): BriefItem => ({
-    title: a.title,
-    url: a.url,
-    source: a.source,
-    summary: a.summary || a.excerpt || "",
-    importance: 1,
-  });
-  return {
-    hero_headline: "",
-    daily_overview: "",
-    tech_briefs: flatten("tech").slice(0, 5).map(toBrief),
-    finance_briefs: flatten("finance").slice(0, 5).map(toBrief),
-    politics_briefs: flatten("politics").slice(0, 3).map(toBrief),
-    gd_ipo_briefs: [...flatten("gd-ipo"), ...flatten("ipo")].slice(0, 20).map(toBrief),
-    editor_note: "",
-    keywords: [],
-  };
+/** 归一化 ArticleInput → Pass1Input（新管线输入）：raw_text 截断 1200 字、date 转 MM/DD。 */
+function toPass1Input(a: ArticleInput): Pass1Input {
+  const d = a.publishedAt ?? a.fetchedAt;
+  const date = d
+    ? `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`
+    : "";
+  const raw = (a.excerpt || a.summary || "").slice(0, 1200);
+  return { url: a.url, title: a.title, source: a.source, date, raw_text: raw, category: a.category };
 }
 
 async function main() {
@@ -515,34 +488,23 @@ async function main() {
   // Enrich tech / politics subgroups with summaries (tech/politics 不参与银行相关分类，
   // 走各自专属摘要 prompt)。finance 不再单独 enrich——其摘要+分类统一由下方
   // classifyItemsWithLlm 一次批量调用完成（中文/英文源全覆盖，省一次重复调用）。
-  await enrichGhTrending(articles);
-  await enrichPolitics(articles);
-  await enrichOverseasTech(articles);
-  
-  // ===== 为 gd-ipo / 全国ipo 数据生成中文摘要（复用历史缓存去重）=====
-  const gdIpoArticles = articles.filter(a => a.category === 'gd-ipo' || a.category === 'ipo');
-  if (gdIpoArticles.length > 0) {
-    const pending = applyCache(gdIpoArticles);
-    if (pending.length === 0) {
-      console.log(`[daily] enriching gd-ipo+ipo: ${gdIpoArticles.length} 条全部命中历史缓存，跳过 LLM`);
-    } else if (SKIP_AI) {
-      console.log(`[daily] SKIP_AI: 跳过 gd-ipo+ipo LLM 富集（${pending.length} 条仅用历史缓存摘要）`);
-    } else {
-      console.log(`[daily] enriching ${pending.length}/${gdIpoArticles.length} gd-ipo+ipo items with ${REPORT_LOCALE} summaries…`);
-      const t0 = Date.now();
-      const summaries = await enrichFinanceNewsSummaries(pending);
-      for (const a of pending) {
-        const s = summaries.get(a.url);
-        if (s) a.summary = s;
-      }
-      console.log(
-        `[daily] enrichment done in ${((Date.now() - t0) / 1000).toFixed(1)}s, matched ${summaries.size}/${pending.length}`,
-      );
-    }
+  // ===== 新管线：两阶段 AI 生成 + 13 条确定性校验（取代旧 enrich/classify/executive）=====
+  const inputs: Pass1Input[] = articles.map(toPass1Input);
+  console.log(`[daily] 进入两阶段 AI 管线：${inputs.length} 条（PASS1 筛选 + PASS2 成稿 + 校验回炉/降级）`);
+  const runner = SKIP_AI ? skipAiRunner : undefined;
+  let report: DailyReport;
+  try {
+    report = await generateDaily(inputs, date, { runner });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    throw new Error(`[daily] 管线生成失败：${msg}`);
   }
-  // Trading signals: Yahoo fetch + indicators. Non-fatal —
-  // if it errors, we still ship the news digest.
-  // 2026-08-21 用户：去掉 LLM 点评与加密，仅保留宏观资产技术指标，故 SKIP_AI 下也渲染。
+  const totalKept = (Object.values(report.sections) as ReportItem[][]).reduce((n, s) => n + s.length, 0);
+  console.log(
+    `[daily] 管线产出：必读 ${report.must_read.length} 条 / 商机 ${report.insights.length} 条 / 正文 ${totalKept} 条`,
+  );
+  
+  // Trading signals：与 AI 管线无关，独立抓取渲染（SKIP_AI 下也渲染）。
   let trading: TradingSection | null = null;
   try {
     trading = await runTrading();
@@ -550,48 +512,7 @@ async function main() {
     const msg = e instanceof Error ? e.message : String(e);
     console.warn(`[daily] trading section failed: ${msg}`);
   }
-
-  // 条目级 LLM 分类：对**所有类别**的「全新条目」（历史库未命中）做 AI 分析，
-  // 由 AI 决定进入哪个子标签(subcategory) + 写银行视角摘要(summary) + 银行相关性(relevant)。
-  // 这是用户设计核心：所有信息都经 AI 打标，不依赖源配置的硬编码子类。
-  // - gz/finance：AI 判银行相关性(relevant) + 业务线子标签(gz-*/cn-* 等)。
-  // - tech/ipo/gd-ipo/politics 等参考区：relevant 固定 true（不按银行相关性过滤），
-  //   AI 仅决定 subcategory（各自标签体系，见 item-classifier 的 RULES）。
-  // - gd-ipo 渲染路由最终由三道闸区域分类器(classifyGdIpo)裁定，此处 AI 标注仅作初步。
-  // 摘要：gz/finance 无独立 enrich，由本分类器输出 summary；tech/ipo/gd-ipo 已有各自 enrich
-  // 摘要，循环中仅在条目确实无摘要时(!a.summary)用分类器摘要兜底，避免覆盖。
-  // 历史命中(已分析过)一律跳过，绝不复选。
-  // 失败（如 LLM 余额不足）→ 自动跳过，降级到启发式/注册表分类，绝不影响主流程。
-  const classifyPending = articles.filter((a) => !history[a.url]);
-  if (classifyPending.length > 0) {
-    if (SKIP_AI) {
-      console.log(`[daily] SKIP_AI: 跳过 ${classifyPending.length} 条新条目 LLM 分类（仅用历史缓存摘要）`);
-    } else {
-      console.log(`[daily] classifying ${classifyPending.length} new items (LLM per-item tag)…`);
-      try {
-        const cls = await classifyItemsWithLlm(
-          classifyPending.map((a) => ({ url: a.url, title: a.title, source: a.source, category: a.category })),
-        );
-        let tagged = 0;
-        for (const a of classifyPending) {
-          const r = cls.get(a.url);
-          if (r) {
-            if (r.subcategories.length > 0) {
-              a.subcategories = r.subcategories;
-              a.subcategory = r.subcategories[0]; // 兼容旧消费方（主标签）
-            }
-            a.relevant = r.relevant;
-            if (r.summary && r.summary.length > 10 && !a.summary) a.summary = r.summary;
-            tagged++;
-          }
-        }
-        console.log(`[daily] item classification done: ${tagged}/${classifyPending.length} tagged`);
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : String(e);
-        console.warn(`[daily] item classification skipped (${msg}) — falling back to heuristic/registry`);
-      }
-    }
-  }
+  if (trading) report.trading = trading;
 
   // 回写历史缓存（含今日 AI 摘要），并构建「当天 + 过去30天」滚动列表用于渲染。
   const nowIso = new Date().toISOString();
@@ -601,96 +522,11 @@ async function main() {
     `[daily] 历史缓存已更新: ${Object.keys(history).length} 条（含今日 ${articles.length} 条）；渲染滚动列表 ${rolling.length} 条`,
   );
 
-  // 组装最终报告：仅用「最终展示数据」的摘要（不调用 AI）。
-  // 旧逻辑会再发一次大 LLM 请求做跨分类摘要（generateDailyReport），现已移除以省钱。
-  const raw = groupRaw(rolling, sources);
-  const report = buildReportFromRaw(raw);
-  if (trading) report.trading = trading;
-
-  // ===== 执行摘要 / 商机提示（每天一次 LLM 调用；失败不崩、页面不渲染该板块）=====
-  try {
-    const flat = (cat: Category) =>
-      (raw[cat] ?? [])
-        .flatMap((sg) => sg.sources.flatMap((s) => s.items))
-        .slice(0, 12)
-        .map((a) => ({ title: a.title, summary: a.summary, subcategory: a.subcategory, url: a.url }));
-    // 持久化执行摘要源（2026-08-20 扩展）：history/<date>/store.json 优先
-    // （随报告提交进 main，CI 跨运行可复用），其次 data/ai-assets 的 daily:<date>.executive。
-    const persistedExec =
-      loadStore(date) ??
-      (assetDaily(aiAssets, date)?.executive as ExecutiveSummary | undefined);
-    // 强制重生成开关：REGEN_STORE=1 → 忽略已存在归档、重新调 LLM 并覆盖写。
-    // 仅在非 SKIP_AI 模式有意义；SKIP_AI 下矛盾，忽略并告警。
-    const forceRegen = !!process.env.REGEN_STORE && !SKIP_AI;
-    if (process.env.REGEN_STORE && SKIP_AI) {
-      console.warn("[daily] REGEN_STORE 仅在非 SKIP_AI 模式生效，已忽略（保留复用）");
-    }
-    const execSummary = await selectExecutiveSummary({
-      skipAi: SKIP_AI,
-      persisted: persistedExec,
-      forceRegen,
-      generate: () =>
-        generateExecutiveSummary({
-          date,
-          finance: flat("finance"),
-          gz: flat("gz"),
-          marketOverview: trading?.market_overview,
-        }),
-    });
-    if (execSummary) {
-      report.executive_summary = execSummary;
-      // 今日定调（2026-08-21 重构 #3）：hero_line 写入 report.hero_headline，供报头 hero-line 与 markdown 引用
-      if (execSummary.hero_line) report.hero_headline = execSummary.hero_line;
-      // #22 importance 强制分布（2026-08-21 重构）：每日 high 至多 3 条——
-      // 今日必读前 3 条标 importance=3（high），其余保持 1，让优先级体系真正生效
-      const top3 = new Set(
-        execSummary.must_read
-          .slice(0, 3)
-          .map((m) => m.url)
-          .filter(Boolean),
-      );
-      for (const list of [
-        report.tech_briefs,
-        report.finance_briefs,
-        report.politics_briefs,
-        report.gd_ipo_briefs,
-      ]) {
-        for (const b of list) {
-          if (b.url && top3.has(b.url)) b.importance = 3;
-        }
-      }
-      // 归档进 history/<date>/store.json，随 CI「Archive reports to history/」步骤提交，
-      // 使后续 SKIP_AI / 正常模式重跑都能复用（真正的跨运行持久化）。覆盖写幂等。
-      writeStore(date, execSummary);
-      const tag = SKIP_AI ? "已复用(持久化)" : forceRegen ? "已重新生成(覆盖)" : persistedExec ? "已复用(持久化)" : "已生成";
-      console.log(
-        `[daily] 执行摘要${tag}: 必读 ${execSummary.must_read.length} 条 / 商机提示 ${execSummary.insights.length} 条`,
-      );
-    } else if (!SKIP_AI) {
-      console.warn("[daily] 执行摘要生成失败（LLM 不可用或解析失败），跳过该板块");
-    }
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    console.warn(`[daily] 执行摘要生成异常（${msg}），跳过该板块`);
-  }
-
-  // —— M2-④：AI 资产账本写回（append-only，永不 7 天裁剪；PERSIST_AI=off 旁路）——
-  for (const a of articles) {
-    const prev = aiAssets[a.url] as ArticleAiAsset | undefined;
-    aiAssets[a.url] = {
-      ...(prev ?? {}),
-      summary: a.summary || prev?.summary,
-      subcategory: a.subcategory ?? prev?.subcategory,
-      subcategories: a.subcategories ?? prev?.subcategories,
-      relevant: a.relevant ?? prev?.relevant,
-      updatedAt: nowIso,
-    };
-  }
+  // —— M2-④：AI 资产账本写回（daily 级：仅 trading；正文已随 report.json 落盘）——
   const dk = dailyAssetKey(date);
   const dailyPrev = assetDaily(aiAssets, date);
   aiAssets[dk] = {
     ...(dailyPrev ?? {}),
-    ...(report.executive_summary ? { executive: report.executive_summary } : {}),
     ...(trading ? { trading } : {}),
     updatedAt: nowIso,
   };
@@ -700,7 +536,7 @@ async function main() {
   // —— M2-⑤ 存储合并（去双写，2026-08-19 用户确认未上线）——
   // data/history/reports/ 是唯一报告存储；daily_reports/（gh-pages 发布目录）
   // 由 build-site.mjs 在构建时从唯一存储同步，daily.ts 不再写旧目录。
-  const html = renderHtml(report, raw, date);
+  const html = renderHtml(report, date);
   const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(report, date) : null;
   const writeBundle = (dir: string) => {
     const d = path.join(dir, date);
@@ -722,12 +558,10 @@ async function main() {
   const base = writeBundle(REPORTS_DIR);
   console.log(`[daily] wrote ${base}.{json,html${md ? ",md" : ""},articles.json}（唯一存储 data/history/reports/）`);
 
-  // 导出信息源抓取结果（排除爬虫产物 gd-*/gz-*），供「预 AI 分析加载」任务拉回比对：
-  // 识别历史库中不存在的信息源新增条目 → AI 分析打标。与 dry-run 导出逻辑一致（漏斗后）。
-  const fetched = articles.filter((a) => !/^(gd-|gz-)/.test(a.sourceId || ""));
+  // 导出归一化后的全量池（关键词漏斗后），供「预分析」任务或人工核查比对。
   fs.mkdirSync("data", { recursive: true });
-  fs.writeFileSync("data/fetched-articles.json", JSON.stringify(fetched, null, 2), "utf8");
-  console.log(`[daily] 📤 信息源抓取结果导出: ${fetched.length} 条 → data/fetched-articles.json`);
+  fs.writeFileSync("data/fetched-articles.json", JSON.stringify(articles, null, 2), "utf8");
+  console.log(`[daily] 📤 归一化全量池导出: ${articles.length} 条 → data/fetched-articles.json`);
 
   console.log(`[daily] done.`);
 }

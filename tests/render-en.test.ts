@@ -6,30 +6,18 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import type { RawByCategory } from "../lib/output/render";
 import type { DailyReport } from "../lib/types";
 
 test("renderHtml: en locale 输出 lang=en", async () => {
   process.env.REPORT_LOCALE = "en";
   const { renderHtml } = await import("../lib/output/render");
-  const raw: RawByCategory = {
-    tech: [],
-    finance: [],
-    politics: [],
-    "gd-ipo": [],
-    ipo: [],
-    gz: [],
-  };
   const report: DailyReport = {
-    hero_headline: "",
-    daily_overview: "",
-    tech_briefs: [],
-    finance_briefs: [],
-    politics_briefs: [],
-    gd_ipo_briefs: [],
-    editor_note: "",
-    keywords: [],
+    date: "",
+    hero_line: "",
+    must_read: [],
+    insights: [],
+    sections: { gz_local: [], biz_insight: [], policy_market: [], tech: [], ipo: [] },
   };
-  const html = renderHtml(report, raw, "2026-08-19");
+  const html = renderHtml(report, "2026-08-19");
   assert.ok(html.includes('lang="en"'), "en locale 应输出 lang=en");
 });

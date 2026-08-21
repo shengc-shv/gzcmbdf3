@@ -1,7 +1,8 @@
 import type {
   ArticleInput,
-  BriefItem,
   DailyReport,
+  ReportItem,
+  ReportSectionKey,
   TradingSection,
 } from "../types";
 import type { WatchlistPick } from "../ai/trading-commentary";
@@ -783,46 +784,122 @@ export function groupRaw(
 }
 
 
+// ----- report-item card renderer（新管线 schema: ReportItem）-----
+
+/** 商机 tag 色系（与 sections.ts 保持一致） */
+function tagClsOf(tag: string): string {
+  if (/财富|私行/.test(tag)) return "t-wealth";
+  if (/代发|客群/.test(tag)) return "t-mass";
+  if (/政银|住房|监管|政策/.test(tag)) return "t-policy";
+  return "";
+}
+
+export function renderReportItemHtml(item: ReportItem, showSource = true): string {
+  const title = escapeHtml(item.title_cn || item.title_orig || "");
+  const url = escapeHtml(item.url);
+  const summary = item.summary ? escapeHtml(item.summary) : "";
+  const time = item.date ? escapeHtml(item.date) : "";
+  const official = item.source_type === "official";
+  const badge = official ? { label: "官方", cls: "src-official" } : { label: "媒体", cls: "src-media" };
+  const tags = (item.tags ?? [])
+    .map((t) => `<span class="tag ${tagClsOf(t)}">${escapeHtml(t)}</span>`)
+    .join("");
+  return `<article class="brief${item.importance === 3 ? " must" : ""}">
+  <div class="bm"><span class="src-badge ${badge.cls}">${badge.label}</span>${showSource && item.source ? `<span>${escapeHtml(item.source)}</span>` : ""}${time ? `<span>${time}</span>` : ""}${item.importance === 3 ? `<span class="imp-badge">必知</span>` : ""}</div>
+  <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
+  ${summary ? `<p class="sum">${summary}</p>` : ""}
+  ${tags ? `<div class="tags">${tags}</div>` : ""}
+</article>`;
+}
+
+export function renderReportCardList(items: ReportItem[], showSource = true): string {
+  if (items.length === 0) return `<p class="empty">${STR.emptySource}</p>`;
+  const top = items.slice(0, 5);
+  const more = items.slice(5);
+  let html = top.map((a) => renderReportItemHtml(a, showSource)).join("\n");
+  if (more.length > 0) {
+    html +=
+      more
+        .map((a) => renderReportItemHtml(a, showSource).replace('<article class="brief', '<article class="brief more'))
+        .join("\n") +
+      `<button class="expand-btn" type="button">展开其余 ${more.length} 条</button>`;
+  }
+  return html;
+}
+
+/** 构造 url → 中文标题 映射（供 must_read 回写标题）。 */
+function resolveTitleMap(report: DailyReport): Map<string, string> {
+  const m = new Map<string, string>();
+  const secs: ReportSectionKey[] = ["gz_local", "biz_insight", "policy_market", "tech", "ipo"];
+  for (const s of secs) {
+    for (const it of report.sections?.[s] ?? []) {
+      if (it.url && it.title_cn) m.set(it.url, it.title_cn);
+    }
+  }
+  return m;
+}
+
+/**
+ * 顶部执行摘要：今日定调 + 今日必读 + 商机洞察（消费新 report 结构：
+ * hero_line / must_read / insights）。must_read 仅含 url+why，按 url 回写标题。
+ */
+function renderReportExec(report: DailyReport): string {
+  const titleMap = resolveTitleMap(report);
+  const must = report.must_read
+    .map((m, i) => {
+      const title = titleMap.get(m.url) || m.url;
+      const body = `<strong>${escapeHtml(title)}</strong><span class="must-why">${escapeHtml(m.why)}</span>`;
+      const inner = m.url
+        ? `<a class="must-body must-link" href="${escapeHtml(m.url)}" target="_blank" rel="noopener">${body}</a>`
+        : `<div class="must-body">${body}</div>`;
+      return `<li class="must-card"><span class="must-index">${i + 1}</span>${inner}</li>`;
+    })
+    .join("");
+  const insights = report.insights
+    .map(
+      (it) => `<article class="insight">
+        ${(it.tags ?? []).length > 0
+          ? `<div class="insight-tags">${(it.tags ?? [])
+              .map((t) => `<span class="tag ${tagClsOf(t)}">${escapeHtml(t)}</span>`)
+              .join("")}</div>`
+          : ""}
+        <h3>${escapeHtml(it.topic)}</h3>
+        ${it.impact ? `<p><b>影响：</b>${escapeHtml(it.impact)}</p>` : ""}
+        ${it.action ? `<p><b>建议：</b>${escapeHtml(it.action)}</p>` : ""}
+      </article>`,
+    )
+    .join("");
+  return `<section class="exec-summary">
+    <div class="exec-head">
+      <h2 class="exec-title">执行摘要</h2>
+      <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
+    </div>
+    ${must ? `<div class="exec-must"><h3 class="exec-col-title">📌 今日必读</h3><ul class="must-scroller">${must}</ul></div>` : ""}
+    ${insights ? `<div class="exec-insights"><h3 class="exec-col-title">💡 商机洞察（默认展开）</h3><div class="insight-grid">${insights}</div></div>` : ""}
+  </section>`;
+}
+
 // ----- top-level renderer -----
 
 export function renderHtml(
   report: DailyReport,
-  raw: RawByCategory,
   date: string,
 ): string {
   const trading = report.trading;
-  const exec = report.executive_summary;
 
-  // —— 2026-08-21 重构：五板块单层 tab（#8/#9/#10/#12）——
-  // 广州本地（严格锚）/ 业务启示（gz 面板非锚）/ 政策与市场（finance）/ 科技前沿 / IPO动态
-  const flattenRaw = (cat: keyof RawByCategory): ArticleInput[] =>
-    (raw[cat] ?? []).flatMap((sg) => sg.sources.flatMap((s) => s.items));
+  // 跨板块去重（一文一卡）：同一 URL 只展示一次，优先级
+  // 广州本地 > 业务启示 > 政策与市场 > 科技前沿 > IPO。
+  const seen = new Set<string>();
+  const dedupe = (list: ReportItem[]): ReportItem[] =>
+    list.filter((it) => (!it.url || seen.has(it.url) ? false : (seen.add(it.url), true)));
 
-  // 跨板块去重（2026-08-21 重构 #14「一文一卡」）：同一 URL 只展示一次，
-  // 优先级 广州本地 > 业务启示 > 政策与市场 > 科技前沿 > IPO（传导镜像的 finance
-  // 条目已优先出现在 gz 面板，政策与市场不再重复展示）。
-  const seenUrls = new Set<string>();
-  const dedupe = (list: ArticleInput[]): ArticleInput[] =>
-    list.filter((a) => (seenUrls.has(a.url) ? false : (seenUrls.add(a.url), true)));
+  const gzLocal = dedupe(report.sections?.gz_local ?? []);
+  const bizInsight = dedupe(report.sections?.biz_insight ?? []);
+  const policyMarket = dedupe(report.sections?.policy_market ?? []);
+  const techAll = dedupe(report.sections?.tech ?? []);
+  const ipoAll = dedupe(report.sections?.ipo ?? []);
 
-  // 今日必读中文标题回写（#20：只对必读/商机选中条目注入 title_cn，卡片优先展示）
-  const urlCnMap = new Map<string, string>();
-  for (const m of exec?.must_read ?? []) {
-    if (m.url && m.title) urlCnMap.set(m.url, m.title);
-  }
-  const withCn = (list: ArticleInput[]): ArticleInput[] =>
-    list.map((a) =>
-      a.title_cn || !urlCnMap.has(a.url) ? a : { ...a, title_cn: urlCnMap.get(a.url) },
-    );
-
-  const gzAll = flattenRaw("gz");
-  const gzLocal = withCn(dedupe(gzAll.filter((a) => GZ_ANCHOR_RE.test(a.title || ""))));
-  const bizInsight = withCn(dedupe(gzAll.filter((a) => !GZ_ANCHOR_RE.test(a.title || ""))));
-  const financeAll = withCn(dedupe(flattenRaw("finance")));
-  const techAll = withCn(dedupe(flattenRaw("tech")));
-  const ipoAll = withCn(dedupe(flattenRaw("gd-ipo")));
-
-  // 中文日期「8月21日 星期五」（#21 统一日期格式）
+  // 中文日期「8月21日 星期五」
   const zhDate = (() => {
     const d = new Date(`${date}T00:00:00+08:00`);
     const w = ["日", "一", "二", "三", "四", "五", "六"][d.getDay()];
@@ -830,18 +907,18 @@ export function renderHtml(
     return `${+m}月${+dd}日 星期${w}`;
   })();
 
-  // 空板块自动隐藏（#10）：count 0 则 tab 与 panel 一并移除
   const tabs = [
     { id: "p-gz", label: "广州本地", cls: "var(--c-gz)", count: gzLocal.length, items: gzLocal },
     { id: "p-biz", label: "业务启示", cls: "var(--c-biz)", count: bizInsight.length, items: bizInsight },
-    { id: "p-pol", label: "政策与市场", cls: "var(--c-pol)", count: financeAll.length, items: financeAll },
+    { id: "p-pol", label: "政策与市场", cls: "var(--c-pol)", count: policyMarket.length, items: policyMarket },
     { id: "p-tech", label: "科技前沿", cls: "var(--c-tech)", count: techAll.length, items: techAll },
     { id: "p-ipo", label: "IPO动态", cls: "var(--c-ipo)", count: ipoAll.length, items: ipoAll },
   ].filter((t) => t.count > 0);
 
   const marketCard = trading ? renderMarketOverview(trading, date) : "";
-  const totalItems = gzAll.length + financeAll.length + techAll.length + ipoAll.length;
+  const totalItems = gzLocal.length + bizInsight.length + policyMarket.length + techAll.length + ipoAll.length;
   const nowHm = new Date().toTimeString().slice(0, 5);
+  const hero = report.hero_line?.trim();
 
   return `<!doctype html>
 <html lang="${REPORT_LOCALE === "en" ? "en" : "zh-CN"}">
@@ -855,24 +932,24 @@ ${THEME_CSS}
 </head>
 <body>
 <main>
-  <!-- 报头：今日定调 + 数据截至（#2/#3/#4/#21） -->
+  <!-- 报头：今日定调 + 数据截至 -->
   <header class="masthead">
     <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
     <h1>${zhDate}</h1>
-    ${exec?.hero_line ? `<p class="hero-line">今日定调：${escapeHtml(exec.hero_line)}</p>` : ""}
-    <p class="meta-line">数据截至 ${nowHm} · 资讯 ${totalItems} 条 · 商机 ${exec?.insights.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>
+    ${hero ? `<p class="hero-line">今日定调：${escapeHtml(hero)}</p>` : ""}
+    <p class="meta-line">数据截至 ${nowHm} · 资讯 ${totalItems} 条 · 商机 ${report.insights?.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>
   </header>
 
-  ${exec ? renderExecutiveSummary(exec) : ""}
+  ${renderReportExec(report)}
 
-  <!-- 板块导航：单层 tab，移动端横滑不折行（#11） -->
+  <!-- 板块导航：单层 tab，移动端横滑不折行 -->
   <nav class="tabs">
     ${tabs.map((t, i) => `<button class="tab${i === 0 ? " active" : ""}" data-target="${t.id}" style="--cat:${t.cls}">${t.label}<span class="n">${t.count}</span></button>`).join("")}
   </nav>
 
   ${tabs.map((t, i) => `<section class="panel${i === 0 ? " active" : ""}" id="${t.id}">
     ${t.id === "p-pol" && marketCard ? marketCard : ""}
-    ${renderCardList(t.items)}
+    ${renderReportCardList(t.items)}
   </section>`).join("")}
 
   <footer>
@@ -893,7 +970,7 @@ ${THEME_CSS}
       });
     });
   });
-  // 空板块保险：panel 无卡片则连同 tab 移除（#10，渲染层已跳过，此处兜底旧快照）
+  // 空板块保险：panel 无卡片则连同 tab 移除
   document.querySelectorAll('.panel').forEach(function (panel) {
     if (panel.querySelectorAll('.brief').length === 0) {
       var tab = document.querySelector('.tab[data-target="' + panel.id + '"]');
@@ -901,7 +978,7 @@ ${THEME_CSS}
       panel.remove();
     }
   });
-  // 展开其余 N 条（#13）
+  // 展开其余 N 条
   document.querySelectorAll('.expand-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var panel = btn.closest('.panel');
@@ -929,52 +1006,44 @@ const SIGNAL_TONE: Record<string, "bull" | "bear" | "caution"> = {
   "rsi-oversold": "caution",
 };
 
-// ----- markdown -----
-
-function renderBriefMarkdown(b: BriefItem): string {
-  const importance = Number.isFinite(b.importance) ? b.importance : 0;
-  return `### [${b.title}](${b.url})\n${b.source} · ${STR.mdImportance} ${importance}/10\n\n${b.summary}\n`;
-}
-
-function renderSectionMarkdown(title: string, briefs: BriefItem[]): string {
-  if (briefs.length === 0) return "";
-  return `## ${title}\n\n${briefs.map(renderBriefMarkdown).join("\n")}\n`;
-}
+// ----- markdown（新管线 schema: report.sections）-----
 
 export function renderMarkdown(report: DailyReport, date: string): string {
   const blocks: string[] = [];
   blocks.push(`# ${STR.siteTitle} · ${date}\n`);
-  if (report.hero_headline) blocks.push(`> ${report.hero_headline}\n`);
-  if (report.daily_overview) {
-    blocks.push(`## ${STR.mdTodayOverview}\n\n${report.daily_overview}\n`);
+  if (report.hero_line) blocks.push(`> ${report.hero_line}\n`);
+
+  const secMap: [string, ReportSectionKey][] = [
+    ["广州本地", "gz_local"],
+    ["业务启示", "biz_insight"],
+    ["政策与市场", "policy_market"],
+    ["科技前沿", "tech"],
+    ["IPO动态", "ipo"],
+  ];
+  for (const [label, key] of secMap) {
+    const items = report.sections?.[key] ?? [];
+    if (items.length === 0) continue;
+    const body = items
+      .map(
+        (it) =>
+          `### [${it.title_cn || it.title_orig || ""}](${it.url})\n${it.source} · ${it.source_type === "official" ? "官方" : "媒体"} · 重要度 ${it.importance}/3\n\n${it.summary}\n`,
+      )
+      .join("\n");
+    blocks.push(`## ${label}\n\n${body}\n`);
   }
-  blocks.push(
-    renderSectionMarkdown(CATEGORY_DIGEST_LABELS.tech, report.tech_briefs),
-  );
-  blocks.push(
-    renderSectionMarkdown(
-      CATEGORY_DIGEST_LABELS.finance,
-      report.finance_briefs,
-    ),
-  );
-  blocks.push(
-    renderSectionMarkdown(
-      CATEGORY_DIGEST_LABELS.politics,
-      report.politics_briefs,
-    ),
-  );
-  blocks.push(
-    renderSectionMarkdown(
-      CATEGORY_DIGEST_LABELS['gd-ipo'],
-      report.gd_ipo_briefs,
-    ),
-  );
-  if (report.editor_note) {
-    blocks.push(`## ${STR.mdEditorNote}\n\n${report.editor_note}\n`);
-  }
-  if (report.keywords.length > 0) {
+
+  if (report.must_read.length > 0) {
     blocks.push(
-      `## ${STR.mdTodayKeywords}\n\n${report.keywords.map((k) => `\`#${k}\``).join(" ")}\n`,
+      `## 今日必读\n\n${report.must_read
+        .map((m, i) => `${i + 1}. ${m.url}${m.why ? ` — ${m.why}` : ""}`)
+        .join("\n")}\n`,
+    );
+  }
+  if (report.insights.length > 0) {
+    blocks.push(
+      `## 商机洞察\n\n${report.insights
+        .map((it) => `- **${it.topic}**${it.impact ? `：影响 ${it.impact}` : ""}${it.action ? ` → 动作 ${it.action}` : ""}`)
+        .join("\n")}\n`,
     );
   }
   return blocks.filter(Boolean).join("\n");

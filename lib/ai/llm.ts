@@ -35,6 +35,8 @@ export interface LlmRunOptions {
   systemPrompt: string;
   userPrompt: string;
   timeoutMs?: number;
+  /** 覆盖后端默认模型（两阶段管线：PASS1 用便宜模型、PASS2 用强模型）。 */
+  model?: string;
 }
 
 export interface LlmRunResult {
