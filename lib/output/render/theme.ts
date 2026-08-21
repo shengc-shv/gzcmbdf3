@@ -589,15 +589,6 @@ export const THEME_CSS = `
   .band-tab .count { font-size: 0.7rem; opacity: 0.85; }
   .band-panel { display: none; }
   .band-panel.active { display: block; }
-  /* 全局权威等级图例（标签栏下方，一次） */
-  .feed-legend {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.85rem;
-    margin: 0.3rem 0 0.2rem; font-size: 0.76rem; color: var(--muted); line-height: 1.5;
-  }
-  .feed-legend .lg-item { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .feed-legend .lg-dot { width: 0.6rem; height: 0.6rem; border-radius: 2px; display: inline-block; }
-  .feed-legend .lg-note { color: var(--fg-soft); }
-  .feed-legend .lg-sep { opacity: 0.4; }
 
   /* ===== trading panel ===== */
   .crypto-widgets {

@@ -74,9 +74,14 @@ export function conductToGzSubs(title: string): string[] {
 /**
  * 全国业务线子标签（2026-08-21 用户：从宏观政策面板移入广州商机面板）：
  * finance 文章命中这些 subcategory 时改写 category=gz 进入广州商机面板，
- * 与 gz-* 广州业务线子标签成对展示（全国财富 / 广州财富 …）。
+ * 并映射回对应业务线子标签（cn-wealth→gz-wealth 等），以 region="cn" 标记
+ * 全国，渲染层在业务线子标签内拆「本地 / 全国」tab（与 gz-* 本地条目区分）。
  */
-const CN_BIZ_SUBS = ["cn-wealth", "cn-credit", "cn-private"];
+const CN_BIZ_MAP: Record<string, string> = {
+  "cn-wealth": "gz-wealth",
+  "cn-credit": "gz-credit",
+  "cn-private": "gz-private",
+};
 
 /**
  * 标签内主题去重词表（2026-08-19 用户要求）：同一子标签下「类似主题」最多展示
@@ -452,8 +457,9 @@ export function groupRaw(
     }
     // —— 全国业务线子标签移入广州商机面板（2026-08-21 用户）——
     // 宏观政策(finance)不再承载 cn-wealth/cn-credit/cn-private：这类全国性业务线
-    // 报道（理财/信贷/私行）并入广州商机(gz)面板，与 gz-* 广州业务线子标签成对展示。
-    // 文章改写 category=gz 后继续，不进 finance 桶（宏观政策面板不再显示）。
+    // 报道（理财/信贷/私行）并入广州商机(gz)面板，映射回对应业务线子标签
+    // （gz-wealth/gz-credit/gz-private）并以 region="cn" 标记全国；渲染层在业务线
+    // 子标签内拆「本地 / 全国」tab。文章改写 category=gz 后继续，不进 finance 桶。
     if (a.category === "finance") {
       const subsArr =
         a.subcategories && a.subcategories.length > 0
@@ -461,8 +467,9 @@ export function groupRaw(
           : a.subcategory
             ? [a.subcategory]
             : [];
-      const cnSubs = subsArr.filter((s) => CN_BIZ_SUBS.includes(s));
-      if (cnSubs.length > 0) {
+      const cnSub = subsArr.find((s) => CN_BIZ_MAP[s]);
+      if (cnSub) {
+        const biz = CN_BIZ_MAP[cnSub];
         const gzMap = buckets["gz"];
         let gzb = gzMap.get(a.sourceId);
         if (!gzb) {
@@ -472,8 +479,9 @@ export function groupRaw(
         gzb.items.push({
           ...a,
           category: "gz" as const,
-          subcategory: cnSubs[0],
-          subcategories: cnSubs,
+          subcategory: biz,
+          subcategories: [biz],
+          region: "cn" as const,
         });
         continue;
       }
@@ -643,10 +651,12 @@ export function groupRaw(
                 : a.subcategory
                   ? [a.subcategory]
                   : [];
-            // gz 板块补判（上位法传导，防御老数据）：见非 merge 分支注释。
+            // gz 板块补判（上位法传导，防御老数据）：region=cn 的全国条目已有明确
+            // 业务线标签（cn-* 移入时映射），不再按标题词表二次分流；仅本地/无 region
+            // 条目走词表补判（历史库老条目 category=gz 的错标兜底）。见非 merge 分支注释。
             return subs.length > 0
               ? subs.includes(subId) ||
-                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
+                  (cat === "gz" && a.region !== "cn" && conductToGzSubs(a.title).includes(subId))
               : subcatOf.get(id) === subId;
           },
           );
@@ -702,9 +712,10 @@ export function groupRaw(
             // gz 板块补判（上位法传导，防御老数据）：条目带的是非 gz 标签（cn-*，
             // 全国性政策/财经，历史库老条目 category=gz 的错标）→ 按业务线词表补判归属，
             // 不因标签不匹配被吞掉。新数据（category=finance）已在归桶时镜像进 gz。
+            // region=cn 的全国条目已有明确业务线标签，不再标题词表二次分流。
             return subs.length > 0
               ? subs.includes(subId) ||
-                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
+                  (cat === "gz" && a.region !== "cn" && conductToGzSubs(a.title).includes(subId))
               : subcatOf.get(id) === subId;
           },
         );
@@ -816,15 +827,6 @@ ${THEME_CSS}
     <button class="tab tab-fold" data-tab="gd-ipo">${CATEGORY_LABELS['gd-ipo']}<span class="count">${counts['gd-ipo']}</span></button>
     <button class="tab tab-fold" data-tab="tech">${CATEGORY_LABELS.tech}<span class="count">${counts.tech}</span></button>
   </nav>
-
-  <div class="feed-legend">
-    <span class="lg-note">权威等级：</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#c0392b"></span>官方一手</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#b9770e"></span>准官方·机构</span>
-    <span class="lg-item"><span class="lg-dot" style="background:#6b7280"></span>媒体·智库</span>
-    <span class="lg-sep">·</span>
-    <span class="lg-note">官方 / 政府一手来源默认置顶</span>
-  </div>
 
   <section class="panel active" data-panel="finance">
     ${renderRawCategoryPanel("finance", raw.finance, date)}
