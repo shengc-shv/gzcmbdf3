@@ -1,9 +1,9 @@
 /**
- * #33 回归（2026-08-21 二次更新）：全国 cn-wealth/cn-credit/cn-private 业务线报道
- * 从宏观政策(finance)面板移入广州商机(gz)面板，groupRaw 映射回业务线子标签
- * （cn-wealth→gz-wealth 等）并置 region="cn"；渲染层在业务线子标签内拆「本地/全国」tab。
- * 锁定：① 渲染契约（finance 不含 cn-*、gz 仅 4 业务线）；② LLM 候选清单含三项；
- * ③ 端到端：cn-wealth 文章（region=cn）渲染进 gz 面板「财富业务」子标签的全国 tab。
+ * #33 回归（2026-08-21 三次更新）：全国 cn-wealth/cn-credit/cn-private 业务线报道
+ * 移入广州商机(gz)面板。gz 面板合并为单一 gz-all 合并流（「广州能参考的商机」），
+ * 面板内仅按「官方政府 / 媒体智库」两类 tab 展现（不再按业务线/本地全国分层）。
+ * 锁定：① 渲染契约（finance 不含 cn-*、gz 仅 gz-all）；② LLM 候选清单含三项；
+ * ③ 端到端：cn-wealth 文章（移入 gz）渲染进 gz-all 子标签并出现官方/媒体 tab。
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -38,7 +38,7 @@ const finItem = (
   url: string,
   title: string,
   subcategory: string,
-  region?: "gz" | "cn",
+  tier: "T1" | "T1.5" | "T2" = "T2",
 ): ArticleInput => ({
   sourceId: "test-src",
   source: "测试源",
@@ -48,7 +48,7 @@ const finItem = (
   summary: "AI 摘要",
   category: "finance",
   subcategories: [subcategory],
-  region,
+  tier,
   publishedAt: new Date(`${REPORT_DATE}T08:00:00Z`),
   fetchedToday: true,
 });
@@ -60,19 +60,13 @@ test("#33 渲染契约：finance 面板不再含 cn-* 三项", () => {
   assert.ok(!order.includes("cn-private"), "finance 不应再包含 全国私行");
 });
 
-test("#33 渲染契约：gz 面板恢复 4 个业务线子标签（不含 cn-* 平铺）", () => {
+test("#33 渲染契约：gz 面板合并为单一 gz-all 合并流", () => {
   const order = SUBCATEGORY_ORDER.gz ?? [];
-  assert.deepEqual(order, ["gz-wealth", "gz-credit", "gz-customer", "gz-private"]);
-  assert.ok(!order.includes("cn-wealth"), "gz 不应平铺 全国财富");
-  assert.ok(!order.includes("cn-credit"), "gz 不应平铺 全国零售信贷");
-  assert.ok(!order.includes("cn-private"), "gz 不应平铺 全国私行");
+  assert.deepEqual(order, ["gz-all"], "gz 面板应为单一 gz-all 子标签");
+  assert.equal(SUBCATEGORY_LABELS["gz-all"], "广州商机");
 });
 
-test("#33 渲染契约：业务线标签名（财富业务/个人信贷/零售客群/私行业务）", () => {
-  assert.equal(SUBCATEGORY_LABELS["gz-wealth"], "财富业务");
-  assert.equal(SUBCATEGORY_LABELS["gz-credit"], "个人信贷");
-  assert.equal(SUBCATEGORY_LABELS["gz-customer"], "零售客群");
-  assert.equal(SUBCATEGORY_LABELS["gz-private"], "私行业务");
+test("#33 渲染契约：cn-* 标签名保留（全国财富/全国零售信贷/全国私行）", () => {
   assert.equal(SUBCATEGORY_LABELS["cn-wealth"], "全国财富");
   assert.equal(SUBCATEGORY_LABELS["cn-credit"], "全国零售信贷");
   assert.equal(SUBCATEGORY_LABELS["cn-private"], "全国私行");
@@ -92,19 +86,20 @@ test("#33 LLM 候选清单：RULES 含全国三项业务线标签 + 更新口诀
   );
 });
 
-test("#33 端到端：cn-wealth 文章（region=cn）渲染进 gz「财富业务」子标签的全国 tab", () => {
+test("#33 端到端：cn-* 与 gz-* 文章合并进 gz-all，官方/媒体 tab 展现", () => {
   const raw = emptyRaw();
   raw.gz = [
     {
-      id: "gz-wealth",
-      name: "财富业务",
+      id: "gz-all",
+      name: "广州商机",
       sources: [
         {
           sourceId: "_merged",
-          sourceName: "财富业务",
+          sourceName: "广州商机",
           items: [
-            finItem("https://x/w1", "全国理财市场规模突破新高", "gz-wealth", "cn"),
-            finItem("https://x/w2", "广州银行理财代销数据", "gz-wealth"),
+            finItem("https://x/w1", "全国理财市场规模突破新高", "gz-wealth", "T2"),
+            finItem("https://x/g1", "广州市政府发布金融支持政策", "gz-policy", "T1"),
+            finItem("https://x/c1", "全国消费贷利率下调", "gz-credit", "T2"),
           ],
           merged: true,
         },
@@ -113,51 +108,15 @@ test("#33 端到端：cn-wealth 文章（region=cn）渲染进 gz「财富业务
   ];
   const html = renderHtml(report(), raw, REPORT_DATE);
   assert.ok(
-    html.includes('data-sub="gz-wealth"') || html.includes('data-sub-content="gz-wealth"'),
-    "应渲染 财富业务 子标签",
+    html.includes('data-sub="gz-all"') || html.includes('data-sub-content="gz-all"'),
+    "应渲染 广州商机 子标签",
   );
-  assert.ok(html.includes("财富业务"), "子标签应显示中文名 财富业务");
-  // 业务线子标签内应有 本地/全国 tab
-  assert.ok(html.includes("本地") && html.includes("全国"), "应渲染 本地/全国 tab");
-  assert.ok(html.includes('data-band="local"') && html.includes('data-band="national"'), "tab data-band");
-  // 全国 tab 默认不激活（本地优先），本地 tab 默认 active
-  assert.ok(
-    html.includes('class="band-panel active" data-band-panel="local"'),
-    "本地 tab 默认 active（分行视角优先）",
-  );
-});
-
-test("#33 端到端：cn-credit / cn-private 映射进 个人信贷 / 私行业务 子标签", () => {
-  const raw = emptyRaw();
-  raw.gz = [
-    {
-      id: "gz-credit",
-      name: "个人信贷",
-      sources: [
-        {
-          sourceId: "_merged",
-          sourceName: "个人信贷",
-          items: [finItem("https://x/c1", "全国消费贷利率下调", "gz-credit", "cn")],
-          merged: true,
-        },
-      ],
-    },
-    {
-      id: "gz-private",
-      name: "私行业务",
-      sources: [
-        {
-          sourceId: "_merged",
-          sourceName: "私行业务",
-          items: [finItem("https://x/p1", "全国家族信托规模增长", "gz-private", "cn")],
-          merged: true,
-        },
-      ],
-    },
-  ];
-  const html = renderHtml(report(), raw, REPORT_DATE);
-  assert.ok(html.includes("个人信贷"), "应渲染 个人信贷 标签");
-  assert.ok(html.includes("私行业务"), "应渲染 私行业务 标签");
-  assert.ok(html.includes("全国消费贷利率下调"), "全国信贷内容在 个人信贷 子标签内");
-  assert.ok(html.includes("全国家族信托规模增长"), "全国私行内容在 私行业务 子标签内");
+  assert.ok(html.includes("广州商机"), "子标签应显示中文名 广州商机");
+  // 面板内官方/媒体 tab（#43 结构）：官方 tab 含 T1 条目、媒体 tab 含 T2 条目
+  assert.ok(html.includes("官方 / 政府一手来源"), "应渲染 官方 tab");
+  assert.ok(html.includes("媒体 / 智库解读"), "应渲染 媒体 tab");
+  const officialPanel = html.split('data-band-panel="official"')[1]?.split('data-band-panel="media"')[0] ?? "";
+  const mediaPanel = html.split('data-band-panel="media"')[1] ?? "";
+  assert.ok(officialPanel.includes("广州市政府发布金融支持政策"), "T1 官方文章应在官方 tab");
+  assert.ok(mediaPanel.includes("全国理财市场规模突破新高") && mediaPanel.includes("全国消费贷利率下调"), "T2 全国文章应在媒体 tab");
 });

@@ -30,8 +30,6 @@ const TEXTS_ZH = {
   subWorld: "国际要闻",
   bandOfficial: "官方 / 政府一手来源",
   bandMedia: "媒体 / 智库解读",
-  bandLocal: "本地",
-  bandNational: "全国",
   subOverseasNews: "海外科技",
   subOverseas: "海外",
   emptySource: "该源今日无内容。",
@@ -93,8 +91,6 @@ const TEXTS_EN: typeof TEXTS_ZH = {
   subWorld: "World News",
   bandOfficial: "Official / Government sources",
   bandMedia: "Media / Think-tank",
-  bandLocal: "Local",
-  bandNational: "National",
   subOverseasNews: "Overseas Tech",
   subOverseas: "Overseas",
   emptySource: "No content from this source today.",
@@ -151,9 +147,9 @@ const SUBCATEGORY_ORDER: Partial<Record<Category, string[]>> = {
   'gd-ipo': ["stage-listed", "stage-registered", "stage-reviewing", "stage-tutoring"],
   // 参考区·全国IPO/新股：全部交易所+辅导（非广州辖区的广东企业也归此）
   ipo: ["sse", "szse", "bse", "hkex", "ipo-tutoring", "overseas"],
-  // 广州商机：按分行零售业务线组织（业务线子标签内再拆「本地 / 全国」tab，
-  // 2026-08-21 用户：参考「广州商机 → 财富业务 → 全国/本地」三层结构）
-  gz: ["gz-wealth", "gz-credit", "gz-customer", "gz-private"],
+  // 广州商机：合并为单一「广州能参考的商机」流（2026-08-21 用户：不再按业务线/
+  // 本地全国分层，面板内仅按「官方政府 / 媒体智库」两类 tab 展现）
+  gz: ["gz-all"],
   politics: ["world"],
 };
 
@@ -187,12 +183,8 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   "stage-registered": "注册生效·过会",
   "stage-reviewing": "在审·已受理",
   "stage-tutoring": "辅导备案·Pre-IPO",
-  // 广州商机 子维度（按分行零售业务线，2026-08-21：业务线内再分「本地/全国」tab）
-  "gz-wealth": "财富业务",
-  "gz-credit": "个人信贷",
-  "gz-customer": "零售客群",
-  "gz-private": "私行业务",
-  "gz-ipo": "广州IPO相关",
+  // 广州商机（合并流：广州可参考的商机，官方/媒体两 tab）
+  "gz-all": "广州商机",
 };
 
 export { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS, TEXTS_ZH, TEXTS_EN };

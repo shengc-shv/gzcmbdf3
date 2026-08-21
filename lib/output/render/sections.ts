@@ -206,18 +206,17 @@ export function renderTradingPanel(trading: TradingSection): string {
   };
   for (const t of tickers) groupCounts[t.group as AssetGroup] = (groupCounts[t.group as AssetGroup] ?? 0) + 1;
 
-  const groupTabs = ASSET_GROUP_ORDER.map(
+  // 2026-08-21：过滤无 ticker 的分组（加密组已移除），只渲染有资产的组 tab
+  const activeGroups = ASSET_GROUP_ORDER.filter((g) => (groupCounts[g] ?? 0) > 0);
+
+  const groupTabs = activeGroups.map(
     (g, i) =>
       `<button class="trading-group-tab${i === 0 ? " active" : ""}" data-group="${g}">${escapeHtml(ASSET_GROUP_LABELS_LOCALIZED[g])}<span class="count">${groupCounts[g] ?? 0}</span></button>`,
   ).join("");
 
-  const groupPanels = ASSET_GROUP_ORDER.map((g, i) => {
+  const groupPanels = activeGroups.map((g, i) => {
     const groupTickers = tickers.filter((t) => t.group === g);
-    // Crypto sub-tab carries an extra header widget panel (F&G + global stats)
-    const cryptoWidgets =
-      g === "crypto" ? renderCryptoWidgets(trading) : "";
     return `<div class="trading-group-content${i === 0 ? " active" : ""}" data-group="${g}">
-      ${cryptoWidgets}
       ${groupTickers.length === 0 ? `<p class="empty">${STR.emptyGroup}</p>` : groupTickers.map(renderTickerCard).join("")}
     </div>`;
   }).join("");
@@ -225,10 +224,10 @@ export function renderTradingPanel(trading: TradingSection): string {
   const overview = escapeHtml(trading.market_overview ?? "");
   const risk = escapeHtml(trading.risk_caveat ?? "");
 
-  return `<section class="trading-overview-card">
+  return `${overview ? `<section class="trading-overview-card">
     <span class="eyebrow">${STR.tradingMarketOverview}</span>
     <p class="overview-text trading-overview-text">${overview}</p>
-  </section>
+  </section>` : ""}
 
   ${
     (trading.watchlist ?? []).length > 0

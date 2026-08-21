@@ -85,16 +85,16 @@ test("groupRaw: 全国公积金政策（finance/cn-policy）传导镜像到 广�
     cnPolicy!.sources.some((src) => src.items.some((a) => a.url === url)),
     "宏观板块应保留原条目",
   );
-  // 广州商机板块传导一条（个人信贷）
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  assert.ok(gzCredit, "gz 板块应构建 gz-credit 子组");
-  const mirrored = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.url === url);
-  assert.equal(mirrored.length, 1, "广州商机·个人信贷应恰好出现 1 条传导条目");
+  // 广州商机板块合并流（gz-all）应含传导条目（2026-08-21：不再分业务线子标签）
+  const gzAll = findSub(raw, "gz", "gz-all");
+  assert.ok(gzAll, "gz 板块应构建 gz-all 合并子组");
+  const mirrored = gzAll!.sources.flatMap((s) => s.items).filter((a) => a.url === url);
+  assert.equal(mirrored.length, 1, "广州商机合并流应恰好出现 1 条传导条目");
   assert.equal(mirrored[0]!.category, "gz", "镜像条目 category 应覆盖为 gz");
   assert.deepEqual(mirrored[0]!.subcategories, ["gz-credit"]);
 });
 
-test("groupRaw: 上位政策命中多个业务线 → 广州商机多子标签传导", () => {
+test("groupRaw: 上位政策命中多个业务线 → 广州商机合并流传导", () => {
   const url = "https://x/multi-line";
   const articles: ArticleInput[] = [
     {
@@ -110,13 +110,12 @@ test("groupRaw: 上位政策命中多个业务线 → 广州商机多子标签�
     },
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  const gzCustomer = findSub(raw, "gz", "gz-customer");
-  assert.ok(gzCredit && gzCustomer, "应构建 gz-credit/gz-customer 子组");
-  const inCredit = gzCredit!.sources.some((src) => src.items.some((a) => a.url === url));
-  const inCustomer = gzCustomer!.sources.some((src) => src.items.some((a) => a.url === url));
-  assert.ok(inCredit, "公积金贷款 → gz-credit");
-  assert.ok(inCustomer, "住房消费 → gz-customer");
+  const gzAll = findSub(raw, "gz", "gz-all");
+  assert.ok(gzAll, "应构建 gz-all 合并子组");
+  assert.ok(
+    gzAll!.sources.some((src) => src.items.some((a) => a.url === url)),
+    "命中多个业务线的上位政策应出现在 gz-all 合并流",
+  );
 });
 
 test("groupRaw: 与广州业务线无关的 finance 条目不传导", () => {
@@ -162,8 +161,8 @@ test("groupRaw: relevant=false 的 finance 条目不传导也不进宏观面板"
   assert.ok(!inGz, "relevant=false 不传导到广州商机");
 });
 
-// —— 标签内主题去重（同主题 ≤2 条、2 条必须 tier 不同）——
-test("groupRaw: gz-credit 内 4 条公积金同主题 → 只留 2 条且 tier 不同", () => {
+// —— 标签内主题去重（同主题 ≤2 条、2 条必须 tier 不同；2026-08-21 起在广州商机 gz-all 合并流内）——
+test("groupRaw: gz-all 内 4 条公积金同主题 → 只留 2 条且 tier 不同", () => {
   const mk = (title: string, sourceId: string, source: string, tier: any, url: string): ArticleInput => ({
     sourceId, source, title, url, excerpt: "",
     category: "finance", subcategory: "cn-policy", tier,
@@ -176,9 +175,9 @@ test("groupRaw: gz-credit 内 4 条公积金同主题 → 只留 2 条且 tier �
     mk("住房公积金政策迎大变化！9月20日起施行", "21jingji-finance", "21财经", "T2", "https://x/gjj4"),
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  assert.ok(gzCredit, "应构建 gz-credit 子组");
-  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  const gzAll = findSub(raw, "gz", "gz-all");
+  assert.ok(gzAll, "应构建 gz-all 合并子组");
+  const items = gzAll!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
   assert.ok(items.length <= 2, `同主题应 ≤2 条，实际 ${items.length} 条`);
   if (items.length === 2) {
     assert.notEqual(items[0]!.tier, items[1]!.tier, "2 条必须来源等级不同");
@@ -186,7 +185,7 @@ test("groupRaw: gz-credit 内 4 条公积金同主题 → 只留 2 条且 tier �
   assert.ok(items.some((a) => a.tier === "T1"), "应保留 T1 国务院原文");
 });
 
-test("groupRaw: gz-credit 内同 tier 同主题只留 1 条", () => {
+test("groupRaw: gz-all 内同 tier 同主题只留 1 条", () => {
   const mk = (title: string, url: string, tier: any): ArticleInput => ({
     sourceId: "21jingji-finance", source: "21财经", title, url, excerpt: "",
     category: "finance", subcategory: "cn-policy", tier,
@@ -197,8 +196,8 @@ test("groupRaw: gz-credit 内同 tier 同主题只留 1 条", () => {
     mk("住房公积金政策迎大变化！9月20日起施行", "https://x/b", "T2"),
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  const gzAll = findSub(raw, "gz", "gz-all");
+  const items = gzAll!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
   assert.equal(items.length, 1, "同 tier 同主题只留 1 条");
 });
 
@@ -218,8 +217,8 @@ test("groupRaw: 不同主题（公积金 vs 房贷）各自保留", () => {
     },
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  const urls = gzCredit!.sources.flatMap((s) => s.items).map((a) => a.url);
+  const gzAll = findSub(raw, "gz", "gz-all");
+  const urls = gzAll!.sources.flatMap((s) => s.items).map((a) => a.url);
   assert.ok(urls.includes("https://x/gjj"), "公积金主题保留");
   assert.ok(urls.includes("https://x/fangdai"), "房贷主题保留（不同主题不互删）");
 });
@@ -258,8 +257,8 @@ test("groupRaw: 历史条目无 tier → 按 registry 补齐后主题去重保�
     mk("国务院关于修改《住房公积金管理条例》的决定", "govcn-policy", "中国政府网", "https://x/c"),
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  const gzAll = findSub(raw, "gz", "gz-all");
+  const items = gzAll!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
   assert.ok(items.length === 2, `应保留 2 条不同 tier，实际 ${items.length}`);
   const tiers = items.map((a) => a.tier).sort();
   assert.deepEqual(tiers, ["T1", "T1.5"], "应补 tier 并保留 T1 国务院 + T1.5 央视");
@@ -279,8 +278,8 @@ test("groupRaw: 簇满时 tier 高的替换 tier 低的（T1 原文不被 T2 媒
     mk("国务院关于修改《住房公积金管理条例》的决定", "govcn-policy", "中国政府网", "T1", "2026-08-18T00:00:00Z", "https://x/t1"),
   ];
   const raw = groupRaw(articles, registry);
-  const gzCredit = findSub(raw, "gz", "gz-credit");
-  const items = gzCredit!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
+  const gzAll = findSub(raw, "gz", "gz-all");
+  const items = gzAll!.sources.flatMap((s) => s.items).filter((a) => a.title.includes("公积金"));
   assert.equal(items.length, 2);
   const hasT1 = items.some((a) => a.tier === "T1" && a.sourceId === "govcn-policy");
   const hasT15 = items.some((a) => a.tier === "T1.5");

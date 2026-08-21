@@ -185,9 +185,9 @@ export function renderSourceContent(
 }
 
 /**
- * 任务三（#43 改版）：合并流按权威等级拆「官方 / 媒体」两个子标签 tab，
+ * 合并流按权威等级拆「官方 / 媒体」两个子标签 tab（任务三 #43 改版）：
  * 官方 tab 默认展示（T1 官方一手 + T1.5 准官方·机构），媒体 tab（T2 媒体·智库）。
- * tab 化替代原上下长条分带（2026-08-21 用户反馈：数据多时长条不友好）。
+ * 广州商机面板（单一 gz-all 合并流）同样采用此结构（2026-08-21 用户）。
  * 拆分只在渲染层，过滤/去重逻辑不变；tab 内仍按 sortByTierAndTime 排序。
  */
 function isOfficialTier(tier?: SourceTier): boolean {
@@ -210,21 +210,6 @@ export function renderBandedFeed(items: ArticleInput[], showSource = false): str
     <button class="band-tab" data-band="media">${escapeHtml(STR.bandMedia)}<span class="count">${media.length}</span></button>
   </nav>`;
   return `${tabs}${renderBandPanel("official", official, showSource, true)}${renderBandPanel("media", media, showSource)}`;
-}
-
-/**
- * 广州商机面板业务线子标签内的「本地 / 全国」tab（2026-08-21 用户）：
- * 本地 = gz-* 广州落地条目（region 非 "cn"）；全国 = cn-* 全国业务线报道
- * （groupRaw 移入 gz 面板时置 region="cn"）。默认展示本地（分行视角优先）。
- */
-export function renderRegionFeed(items: ArticleInput[], showSource = false): string {
-  const local = sortByTierAndTime(items.filter((a) => a.region !== "cn"));
-  const national = sortByTierAndTime(items.filter((a) => a.region === "cn"));
-  const tabs = `<nav class="band-tabs">
-    <button class="band-tab active" data-band="local">${escapeHtml(STR.bandLocal)}<span class="count">${local.length}</span></button>
-    <button class="band-tab" data-band="national">${escapeHtml(STR.bandNational)}<span class="count">${national.length}</span></button>
-  </nav>`;
-  return `${tabs}${renderBandPanel("local", local, showSource, true)}${renderBandPanel("national", national, showSource)}`;
 }
 
 export function renderSourceTabs(
@@ -319,11 +304,9 @@ export function renderSourcesBlock(
   if (sources.length === 0) {
     return `<p class="empty">${STR.emptySource}</p>`;
   }
-  // 合并流（子标签内单一 _merged 源）：
-  // 广州商机面板 → 业务线子标签内拆「本地 / 全国」tab（2026-08-21 用户三层结构）；
-  // 其他面板 → 按权威等级拆「官方 / 媒体」tab（任务三 #43 改版）。
+  // 合并流（子标签内单一 _merged 源）：按权威等级拆「官方 / 媒体」tab（任务三 #43 改版）
+  // 广州商机面板的单一 gz-all 合并流同样走此结构（2026-08-21 用户）。
   if (sources.length === 1 && sources[0].merged === true) {
-    if (category === "gz") return renderRegionFeed(sources[0].items, true);
     return renderBandedFeed(sources[0].items, true);
   }
   return `${renderSourceTabs(category, subId, sources)}

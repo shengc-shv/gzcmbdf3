@@ -60,7 +60,5 @@ export const WATCHLIST: TickerDef[] = [
   { symbol: "^VIX", displayName: "VIX 恐慌指数", displayNameEn: "VIX (Volatility)", group: "macro" },
   // === 全球风向（S&P500）===
   { symbol: "SPY", displayName: "S&P 500", group: "us-equity" },
-  // === 加密货币（风险情绪参考）===
-  { symbol: "BTC-USD", displayName: "Bitcoin", group: "crypto" },
-  { symbol: "ETH-USD", displayName: "Ethereum", group: "crypto" },
+  // 2026-08-21 用户：移除加密资产（境内零售无产品线、无业务参考价值）
 ];

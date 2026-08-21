@@ -37,7 +37,7 @@ import {
   type BriefItem,
   type DailyReport,
 } from "../lib/types";
-import { getModelTag, validateBackendCredentials } from "../lib/ai/llm";
+import { validateBackendCredentials } from "../lib/ai/llm";
 import {
   enrichFinanceNewsSummaries,
   enrichGithubTrendingSummaries,
@@ -62,9 +62,6 @@ import {
 } from "../lib/output/history";
 import { analyzeWatchlist } from "../lib/trading/runner";
 import { classifyItemsWithLlm } from "../lib/ai/item-classifier";
-import { fetchCryptoFearGreed } from "../lib/trading/fear-greed";
-import { fetchCryptoGlobal } from "../lib/trading/coingecko";
-import { generateTradingCommentary } from "../lib/ai/trading-commentary";
 import { generateExecutiveSummary, selectExecutiveSummary, writeStore, loadStore } from "../lib/ai/executive-summary";
 import type { TradingSection } from "../lib/types";
 import { todayKey } from "../lib/utils";
@@ -259,45 +256,20 @@ async function enrichMergedSubgroup(
 }
 
 /**
- * Pull daily OHLCV from Yahoo for every ticker in the watchlist, compute
- * indicators + signals, then ask Sonnet for a market overview + a
- * picks-to-watch list. Returns null if no ticker came back.
+ * 市场行情（2026-08-21 用户：去加密、去 LLM 点评，保留宏观资产技术指标）。
+ * 从 Yahoo 拉取宏观资产 OHLCV，计算指标 + 信号；不再抓取加密恐慌贪婪/总市值，
+ * 不再调用 LLM 生成点评（速览职能由「今日必读」承担）。返回 null 表示无 ticker。
  */
 async function runTrading(): Promise<TradingSection | null> {
-  console.log(`[daily] analyzing watchlist + crypto context (Yahoo / alt.me / CoinGecko)…`);
+  console.log(`[daily] analyzing watchlist (Yahoo indicators)…`);
   const t0 = Date.now();
-  const [tickers, cryptoFearGreed, cryptoGlobal] = await Promise.all([
-    analyzeWatchlist(),
-    fetchCryptoFearGreed(),
-    fetchCryptoGlobal(),
-  ]);
+  const tickers = await analyzeWatchlist();
   console.log(
-    `[daily] indicators ready in ${((Date.now() - t0) / 1000).toFixed(1)}s — ${tickers.length} tickers` +
-      (cryptoFearGreed ? `, F&G ${cryptoFearGreed.value}` : ", F&G ✗") +
-      (cryptoGlobal
-        ? `, BTC dom ${cryptoGlobal.btcDominance.toFixed(1)}%`
-        : ", CG ✗"),
+    `[daily] indicators ready in ${((Date.now() - t0) / 1000).toFixed(1)}s — ${tickers.length} tickers`,
   );
   if (tickers.length === 0) return null;
-  console.log(`[daily] generating trading commentary${SKIP_AI ? " (SKIP_AI: 跳过)" : ` with ${getModelTag()}`}…`);
-  const t1 = Date.now();
-  const commentary = SKIP_AI
-    ? null
-    : await generateTradingCommentary({
-        tickers,
-        cryptoFearGreed: cryptoFearGreed ?? undefined,
-        cryptoGlobal: cryptoGlobal ?? undefined,
-      });
-  if (!SKIP_AI) {
-    console.log(
-      `[daily] trading commentary ready in ${((Date.now() - t1) / 1000).toFixed(1)}s`,
-    );
-  }
   return {
-    ...commentary,
     tickers,
-    crypto_fear_greed: cryptoFearGreed ?? undefined,
-    crypto_global: cryptoGlobal ?? undefined,
     generated_at: new Date().toISOString(),
   };
 }
@@ -568,20 +540,15 @@ async function main() {
       );
     }
   }
-  // Trading signals: Yahoo fetch + indicators + commentary. Non-fatal —
+  // Trading signals: Yahoo fetch + indicators. Non-fatal —
   // if it errors, we still ship the news digest.
-  // SKIP_AI 模式下跳过整个交易板块：其点评(market_overview/picks)由 LLM 生成，
-  // 仅指标无点评时 renderTradingPanel 会因读取 commentary.picks 等字段崩溃。
+  // 2026-08-21 用户：去掉 LLM 点评与加密，仅保留宏观资产技术指标，故 SKIP_AI 下也渲染。
   let trading: TradingSection | null = null;
-  if (SKIP_AI) {
-    console.log(`[daily] SKIP_AI: 跳过交易分析板块（含 LLM 点评）`);
-  } else {
-    try {
-      trading = await runTrading();
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      console.warn(`[daily] trading section failed: ${msg}`);
-    }
+  try {
+    trading = await runTrading();
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.warn(`[daily] trading section failed: ${msg}`);
   }
 
   // 条目级 LLM 分类：对**所有类别**的「全新条目」（历史库未命中）做 AI 分析，

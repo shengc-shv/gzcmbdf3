@@ -110,13 +110,6 @@ export interface RawArticle {
    */
   relevant?: boolean;
   /**
-   * 业务线子标签内的地域维度（2026-08-21）：仅广州商机面板使用。
-   * 全国性业务线报道（cn-wealth/cn-credit/cn-private）移入广州商机面板时
-   * 由 groupRaw 置 "cn"，渲染层在业务线子标签内拆「本地 / 全国」tab；
-   * 广州本地条目（gz-*）不设此字段（默认本地）。
-   */
-  region?: "gz" | "cn";
-  /**
    * Populated by render's cross-source story dedup: when several sources
    * cover the same story inside a merged subgroup, the kept item lists the
    * other source names here so the renderer can show "多家来源" (multi-source).

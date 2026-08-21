@@ -73,9 +73,9 @@ export function conductToGzSubs(title: string): string[] {
 
 /**
  * 全国业务线子标签（2026-08-21 用户：从宏观政策面板移入广州商机面板）：
- * finance 文章命中这些 subcategory 时改写 category=gz 进入广州商机面板，
- * 并映射回对应业务线子标签（cn-wealth→gz-wealth 等），以 region="cn" 标记
- * 全国，渲染层在业务线子标签内拆「本地 / 全国」tab（与 gz-* 本地条目区分）。
+ * finance 文章命中这些 subcategory 时改写 category=gz 进入广州商机面板的
+ * 单一合并流（gz-all），由渲染层按权威等级拆「官方 / 媒体」tab。
+ * 映射到业务线 id 仅为保留原业务线信息（渲染不再按业务线分桶）。
  */
 const CN_BIZ_MAP: Record<string, string> = {
   "cn-wealth": "gz-wealth",
@@ -457,9 +457,8 @@ export function groupRaw(
     }
     // —— 全国业务线子标签移入广州商机面板（2026-08-21 用户）——
     // 宏观政策(finance)不再承载 cn-wealth/cn-credit/cn-private：这类全国性业务线
-    // 报道（理财/信贷/私行）并入广州商机(gz)面板，映射回对应业务线子标签
-    // （gz-wealth/gz-credit/gz-private）并以 region="cn" 标记全国；渲染层在业务线
-    // 子标签内拆「本地 / 全国」tab。文章改写 category=gz 后继续，不进 finance 桶。
+    // 报道（理财/信贷/私行）并入广州商机(gz)面板的单一合并流（gz-all），
+    // 由渲染层按权威等级拆「官方 / 媒体」tab。文章改写 category=gz 后继续。
     if (a.category === "finance") {
       const subsArr =
         a.subcategories && a.subcategories.length > 0
@@ -469,7 +468,6 @@ export function groupRaw(
             : [];
       const cnSub = subsArr.find((s) => CN_BIZ_MAP[s]);
       if (cnSub) {
-        const biz = CN_BIZ_MAP[cnSub];
         const gzMap = buckets["gz"];
         let gzb = gzMap.get(a.sourceId);
         if (!gzb) {
@@ -479,9 +477,8 @@ export function groupRaw(
         gzb.items.push({
           ...a,
           category: "gz" as const,
-          subcategory: biz,
-          subcategories: [biz],
-          region: "cn" as const,
+          subcategory: CN_BIZ_MAP[cnSub],
+          subcategories: [CN_BIZ_MAP[cnSub]],
         });
         continue;
       }
@@ -651,12 +648,13 @@ export function groupRaw(
                 : a.subcategory
                   ? [a.subcategory]
                   : [];
-            // gz 板块补判（上位法传导，防御老数据）：region=cn 的全国条目已有明确
-            // 业务线标签（cn-* 移入时映射），不再按标题词表二次分流；仅本地/无 region
-            // 条目走词表补判（历史库老条目 category=gz 的错标兜底）。见非 merge 分支注释。
+            // 广州商机面板为单一合并流（gz-all）：收该桶全部文章（含 cn-* 移入与上位法镜像）。
+            // 其余子标签：条目级 subcategory 优先（AI/启发式分类），注册表源级兜底；
+            // gz 板块标题词表补判（上位法传导，防御老数据）见非 merge 分支注释。
+            if (cat === "gz" && subId === "gz-all") return true;
             return subs.length > 0
               ? subs.includes(subId) ||
-                  (cat === "gz" && a.region !== "cn" && conductToGzSubs(a.title).includes(subId))
+                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
               : subcatOf.get(id) === subId;
           },
           );
@@ -709,13 +707,14 @@ export function groupRaw(
                 : a.subcategory
                   ? [a.subcategory]
                   : [];
-            // gz 板块补判（上位法传导，防御老数据）：条目带的是非 gz 标签（cn-*，
-            // 全国性政策/财经，历史库老条目 category=gz 的错标）→ 按业务线词表补判归属，
-            // 不因标签不匹配被吞掉。新数据（category=finance）已在归桶时镜像进 gz。
-            // region=cn 的全国条目已有明确业务线标签，不再标题词表二次分流。
+            // 广州商机面板为单一合并流（gz-all）：收该桶全部文章。
+            // 其余子标签：条目级 subcategory 优先，注册表源级兜底；gz 板块补判
+            // （上位法传导，防御老数据）：条目带的是非 gz 标签（cn-*，全国性政策/财经，
+            // 历史库老条目 category=gz 的错标）→ 按业务线词表补判归属，不因标签不匹配被吞掉。
+            if (cat === "gz" && subId === "gz-all") return true;
             return subs.length > 0
               ? subs.includes(subId) ||
-                  (cat === "gz" && a.region !== "cn" && conductToGzSubs(a.title).includes(subId))
+                  (cat === "gz" && conductToGzSubs(a.title).includes(subId))
               : subcatOf.get(id) === subId;
           },
         );
