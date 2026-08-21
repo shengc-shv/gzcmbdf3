@@ -50,6 +50,7 @@ import {
   SOURCE_DISPLAY_LIMITS,
   renderHtml,
   renderMarkdown,
+  mergeRollingIntoReport,
 } from "../lib/output/render";
 import { DISPLAY_WINDOW_DAYS } from "../lib/output/render/cards";
 import {
@@ -530,6 +531,20 @@ async function main() {
     `[daily] 历史缓存已更新: ${Object.keys(history).length} 条（含今日 ${articles.length} 条）；渲染滚动列表 ${rolling.length} 条`,
   );
 
+  // —— 近7天历史并入（2026-08-21 用户：过去符合要求的都展示 + 区分零售各部门）——
+  // renderHtml 只消费 report.sections（今日 AI 成稿）；此处把 rolling 中近7天符合要求的
+  // 条目（AI 判相关、有摘要/可摘录）并入对应板块，有摘要用摘要、无则摘录，卡片带部门 tag。
+  const mergedReport = mergeRollingIntoReport(report, rolling, tierBySource);
+  const mergedCount = (Object.values(mergedReport.sections) as ReportItem[][]).reduce(
+    (n, s) => n + s.length,
+    0,
+  );
+  if (mergedCount !== totalKept) {
+    console.log(
+      `[daily] 🕘 近7天历史并入: ${totalKept} → ${mergedCount} 条（追加 ${mergedCount - totalKept} 条历史符合要求条目）`,
+    );
+  }
+
   // —— M2-④：AI 资产账本写回（daily 级：仅 trading；正文已随 report.json 落盘）——
   const dk = dailyAssetKey(date);
   const dailyPrev = assetDaily(aiAssets, date);
@@ -544,7 +559,7 @@ async function main() {
   // —— M2-⑤ 存储合并（去双写，2026-08-19 用户确认未上线）——
   // data/history/reports/ 是唯一报告存储；daily_reports/（gh-pages 发布目录）
   // 由 build-site.mjs 在构建时从唯一存储同步，daily.ts 不再写旧目录。
-  const html = renderHtml(report, date);
+  const html = renderHtml(mergedReport, date);
   const md = process.env.OUTPUT_MARKDOWN === "true" ? renderMarkdown(report, date) : null;
   const writeBundle = (dir: string) => {
     const d = path.join(dir, date);

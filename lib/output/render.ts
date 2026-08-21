@@ -8,6 +8,7 @@ import type {
 import type { WatchlistPick } from "../ai/trading-commentary";
 import { REPORT_LOCALE,loadAllSources  } from "../sources/registry";
 import { STR, SUBCATEGORY_ORDER, SUBCATEGORY_LABELS } from "./render/i18n";
+import { SECTIONS } from "../ai/validator";
 import {
   renderRawCategoryPanel,
   countItemsRecent,
@@ -881,6 +882,142 @@ function renderReportExec(report: DailyReport): string {
 
 // ----- top-level renderer -----
 
+/**
+ * 外地地名锚（广州本地严格过滤用）：标题命中任一外地省/市/地名 → 该条为全国/外地
+ * 政策（上海/北京/深圳/江苏/浙江…），即使 category=gz 也不进 gz_local，归政策与市场。
+ * 广州本地板块宁缺毋滥：领导冲着「广州」点进来，看到的必须是广州事件本身。
+ */
+const FOREIGN_REGION_RE =
+  /上海|北京|深圳|江苏|浙江|南京|苏州|杭州|宁波|成都|重庆|天津|武汉|长沙|合肥|青岛|济南|福州|厦门|昆明|西安|郑州|东莞|佛山|珠海|中山|惠州|汕头|湛江|茂名|肇庆|江门|清远|韶关|梅州|河源|阳江|揭阳|汕尾|潮州|云浮|广东/;
+
+/**
+ * subcategory → 部门中文 tag（历史条目并入渲染时使用，2026-08-21 用户：
+ * 「区分零售各部门数据的呈现」——卡片 tag 显示财富/信贷/私行/客群，
+ * 不再外露 gz-wealth 这类原始字段）。
+ */
+const SUB_TO_TAG: Record<string, string> = {
+  "gz-wealth": "财富",
+  "cn-wealth": "财富",
+  "gz-credit": "信贷",
+  "cn-credit": "信贷",
+  "gz-private": "私行",
+  "cn-private": "私行",
+  "gz-customer": "客群",
+  "cn-customer": "客群",
+};
+
+/** 由条目级 subcategory 推导部门中文 tag（无则空数组）。 */
+function deptTagsOf(a: ArticleInput): string[] {
+  const subs = a.subcategories && a.subcategories.length > 0
+    ? a.subcategories
+    : a.subcategory
+      ? [a.subcategory]
+      : [];
+  return Array.from(new Set(subs.map((s) => SUB_TO_TAG[s]).filter((t): t is string => Boolean(t))));
+}
+
+/**
+ * 把滚动历史（近 7 天，buildRolling 产物）中「符合要求」的条目并入 report.sections，
+ * 使渲染展示过去符合要求的资讯（有摘要用摘要、无则摘录原文前 90 字），而非仅今日 AI 成稿。
+ * （2026-08-21 用户：过去符合要求的都展示 + 区分零售各部门呈现。）
+ *
+ * 规则：
+ * - 与今日成稿 URL 去重（今日优先）；
+ * - 历史条目按发布时间倒序追加到板块末尾（今日 AI 条目保持 rank 在前）；
+ * - ai_relevant===false（AI 判无关）的历史条目不并入；
+ * - summary 优先取历史库缓存摘要（预分析回填），否则摘录 excerpt；
+ * - source_type 按源等级 tier 推断（T1/T1.5 → official，其余 → media）；
+ * - tags 由 subcategory 映射为中文部门 tag（财富/信贷/私行/客群）。
+ */
+export function mergeRollingIntoReport(
+  report: DailyReport,
+  rolling: ArticleInput[],
+  tierBySource: Map<string, SourceTier | undefined>,
+): DailyReport {
+  const sectionOf = (a: ArticleInput): ReportSectionKey | null => {
+    const title = a.title_cn || a.title || "";
+    // 广州本地严格过滤（demo 整改点④：宁缺毋滥）。判定只看**标题**——
+    // 事件主体必须本身含广州锚（广州/海珠/琶洲/天河等），与采集分类无关：
+    // 广州市政府批复（SOURCE_ROUTE 归 finance/gz-policy）标题含「广州」→ 进 gz_local。
+    // 摘要里的「广州」是 AI 解读视角（「分行应跟踪广州房贷…」），不代表事件在广州。
+    // tech/ipo 保持独立板块（demo：科技前沿、IPO动态 各自成栏）。
+    if (a.category !== "tech" && a.category !== "ipo" && a.category !== "gd-ipo") {
+      if (GZ_ANCHOR_RE.test(title)) return "gz_local";
+    }
+    switch (a.category) {
+      case "gz": {
+        // 本地采集源混入的全国财经（财联社/同花顺）：标题含外地地名 → 全国政策；
+        // 无锚（黄金/理财等）→ 业务启示。避免「点进去全是上海/江苏/黄金理财」。
+        if (FOREIGN_REGION_RE.test(title)) return "policy_market";
+        return "biz_insight";
+      }
+      case "finance":
+      case "politics":
+        return "policy_market";
+      case "tech":
+        return "tech";
+      case "ipo":
+      case "gd-ipo":
+        return "ipo";
+      default:
+        return "biz_insight";
+    }
+  };
+  const seen = new Set<string>();
+  for (const sec of SECTIONS) {
+    for (const it of report.sections[sec] ?? []) {
+      if (it.url) seen.add(it.url);
+    }
+  }
+  const extra: Record<ReportSectionKey, ReportItem[]> = {
+    gz_local: [],
+    biz_insight: [],
+    policy_market: [],
+    tech: [],
+    ipo: [],
+  };
+  const rankKey = new Map<string, number>(); // url → 发布时间戳，用于板块内排序
+  for (const a of rolling) {
+    if (!a.url || seen.has(a.url)) continue; // 今日已展示 → 跳过
+    // 「符合要求」= AI 判定与银行业务相关（预分析打标 ai_relevant=true）。
+    // 未打标（None）与明确无关（false）一律不并入——宁缺毋滥，
+    // 避免比亚迪车展/科大讯飞这类未判条目混入政策与市场面板（2026-08-21 用户）。
+    if (a.relevant !== true) continue;
+    const sec = sectionOf(a);
+    if (!sec) continue;
+    const d = a.publishedAt ?? a.fetchedAt;
+    const mmdd = d
+      ? `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`
+      : "";
+    const tier = a.tier ?? tierBySource.get(a.sourceId);
+    const summary = (a.summary || (a.excerpt || "").slice(0, 90) || "").trim();
+    if (!summary) continue; // 无摘要且无正文 → 跳过（避免空卡片）
+    extra[sec].push({
+      url: a.url,
+      title_cn: a.title_cn || a.title || "",
+      title_orig: a.title_cn ? a.title : undefined,
+      source: a.source || "",
+      source_type: tier === "T1" || tier === "T1.5" ? "official" : "media",
+      date: mmdd,
+      summary,
+      importance: 2,
+      rank: 0,
+      tags: deptTagsOf(a),
+      locale: a.category === "gz" ? "gz" : "national",
+    });
+    rankKey.set(a.url, (a.publishedAt ?? a.fetchedAt)?.getTime() ?? 0);
+    seen.add(a.url);
+  }
+  // 板块内历史条目按发布时间倒序追加（今日 AI 条目已在数组头部保持 rank）
+  for (const sec of SECTIONS) {
+    extra[sec].sort((x, y) => (rankKey.get(y.url) ?? 0) - (rankKey.get(x.url) ?? 0));
+    report.sections[sec] = [...report.sections[sec], ...extra[sec]];
+    // 重排 rank（今日条目已由 finalizeRanks 生成，历史追加后统一重编号）
+    report.sections[sec].forEach((it, i) => (it.rank = i + 1));
+  }
+  return report;
+}
+
 export function renderHtml(
   report: DailyReport,
   date: string,
@@ -937,7 +1074,7 @@ ${THEME_CSS}
     <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
     <h1>${zhDate}</h1>
     ${hero ? `<p class="hero-line">今日定调：${escapeHtml(hero)}</p>` : ""}
-    <p class="meta-line">数据截至 ${nowHm} · 资讯 ${totalItems} 条 · 商机 ${report.insights?.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>
+    <p class="meta-line">数据截至 ${nowHm} · 去重后资讯 ${totalItems} 条 · 商机 ${report.insights?.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>
   </header>
 
   ${renderReportExec(report)}

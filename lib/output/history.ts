@@ -192,7 +192,13 @@ export function saveHistory(
       // 条目级 AI 分类优先，注册表源级兜底
       subcategory: a.subcategory ?? subcatOf(a),
       ...(a.subcategories ? { subcategories: a.subcategories } : {}),
-      ...(a.relevant !== undefined ? { ai_relevant: a.relevant } : {}),
+      // 相关性判定：本轮有判定用本轮（AI 重跑可更新），本轮无判定（SKIP_AI/
+      // dry-run）保留历史打标——避免预分析回的 ai_relevant=false 被 SKIP_AI 覆盖丢失。
+      ...(a.relevant !== undefined
+        ? { ai_relevant: a.relevant }
+        : prev?.ai_relevant !== undefined
+          ? { ai_relevant: prev.ai_relevant }
+          : {}),
       excerpt: a.excerpt,
       publishedAt: a.publishedAt?.toISOString(),
       // Keep a previously-cached summary if this run produced none
