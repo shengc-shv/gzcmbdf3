@@ -1,8 +1,48 @@
 {
   "date": "2026-08-21",
-  "hero_line": "今日更新 18 条资讯：Latest Oil Market News and Analysis for Aug. 21",
-  "must_read": [],
-  "insights": [],
+  "hero_line": "今日关注：8月LPR保持不变，今年房贷还能否下调？",
+  "must_read": [
+    {
+      "url": "https://finance.cctv.com/2026/08/21/ARTIqTT8nmb1sW4deFXG7Qp3260821.shtml",
+      "why": "LPR维持不变但年内下调预期升温，影响按揭存量竞争与提前还贷节奏，需动态调整广州分行房贷定价与客户经营策略。"
+    },
+    {
+      "url": "https://finance.sina.com.cn/roll/2026-08-20/doc-ininxqxw2147964.shtml",
+      "why": "各期限定存利率趋同，客户定期收益预期走低，存款留存压力上升，需加快引导客户转向中长期理财与保险配置。"
+    }
+  ],
+  "insights": [
+    {
+      "topic": "存款利率扁平化",
+      "tags": [],
+      "impact": "客户定存收益预期走低，可能出现存款搬家，需以财富配置承接资金；息差收窄下中收重要性提升。",
+      "action": "在网点主推中长期固收+理财与高价值期交保险，结合客户资金到期日开展定向营销，并加大保险服务场景渗透。"
+    },
+    {
+      "topic": "黄金资产配置",
+      "tags": [],
+      "impact": "避险和保值需求上升，黄金作为底仓资产受关注；金价高位波动，贵金属代销空间与风险并存，需把握节奏。",
+      "action": "加大积存金与黄金基金配置推介，针对高净值客户做黄金定投与实物金组合方案，并提示回调风险。"
+    },
+    {
+      "topic": "房贷下调预期",
+      "tags": [],
+      "impact": "LPR年内下调预期将影响按揭客户行为，或加剧提前还贷与定价竞争，需平衡规模与收益并提升客户综合贡献。",
+      "action": "动态调整按揭利率审批策略，对已提前还贷客户交叉营销消费贷、代发工资和财富产品，提升客户综合贡献。"
+    },
+    {
+      "topic": "硬科技投资热",
+      "tags": [],
+      "impact": "宇树科技IPO暴涨显示硬科技资本热度，高净值客户对一级市场投资兴趣提升，可能带动私行业务与企业服务机会。",
+      "action": "联合合作机构推科技主题资管产品，主动对接本地智能产业链企业，关注融资与员工持股需求并设计公私联动方案。"
+    },
+    {
+      "topic": "涉房风险与地产债",
+      "tags": [],
+      "impact": "恒大境外债处置复杂化，涉房资产质量承压，客户对地产类投资风险偏好下降，需动态应对并重检存量。",
+      "action": "排查存量对公和零售涉房业务担保物，代销端提示地产债风险；开展私行客户持仓重检与稳健替代配置，加强贷后监控。"
+    }
+  ],
   "sections": {
     "gz_local": [
       {
@@ -352,223 +392,28 @@
     ],
     "policy_market": [
       {
-        "url": "https://www.bloomberg.com/news/articles/2026-08-20/latest-oil-market-news-and-analysis-for-aug-21",
-        "title_cn": "Latest Oil Market News and Analysis for Aug. 21",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/xp-inc-xp-beat-estimates-005034022.html",
+        "title_cn": "XP Inc. (XP) Beat Estimates. Is a U.S. Banking Operation Growth or Distraction?",
         "title_orig": "",
-        "source": "Bloomberg Markets",
+        "source": "Yahoo Finance",
         "source_type": "media",
         "date": "08/20",
-        "summary": "Oil headed for a significant weekly increase as traders awaited details on a US campaign t",
+        "summary": "",
         "importance": 2,
         "rank": 1,
         "tags": [],
         "locale": "national"
       },
       {
-        "url": "https://www.bloomberg.com/news/articles/2026-08-21/india-economic-growth-may-beat-rbi-s-6-7-forecast-gupta-says",
-        "title_cn": "RBI Deputy Gupta Sounds Upbeat on Economy, Sees 7% Growth",
+        "url": "http://finance.sina.com.cn/zl/china/2026-08-21/zl-iniparap8129109.shtml",
+        "title_cn": "余敬中：从关闸到定向开放——公募摊余债基的行政配给与市场后果",
         "title_orig": "",
-        "source": "Bloomberg Markets",
+        "source": "新浪财经",
         "source_type": "media",
         "date": "08/21",
-        "summary": "India’s economy may outperform the central bank’s forecasts this financial year, according",
+        "summary": "",
         "importance": 2,
         "rank": 2,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.bloomberg.com/news/articles/2026-08-21/bofa-s-hartnett-sees-pressure-on-risk-assets-if-bond-plan-fails",
-        "title_cn": "BofA’s Hartnett Sees Pressure on Risk Assets If Bond Plan Fails",
-        "title_orig": "",
-        "source": "Bloomberg Markets",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "A failure in the US Treasury’s plan to tame long-term bond yields would pressure the dolla",
-        "importance": 2,
-        "rank": 3,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-iniparar1567377.shtml",
-        "title_cn": "【国泰海通|海外科枝】腾讯游戏流水月度追踪：7月国内总流水同比+5.4%，海外总流水同比-17.6%。",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 4,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-iniparar1563148.shtml",
-        "title_cn": "腾讯控股资本开支大幅加码，国内游戏与广告增长强劲",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 5,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-iniparan1310224.shtml",
-        "title_cn": "TCL科技93.25亿元并购获证监会注册，100%控股t9产线",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 6,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-iniparap8080944.shtml",
-        "title_cn": "美财政部欲砸钱救美债，摩根大通怒批饮鸩止渴，高盛开出“药方”",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 7,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-iniparan1302729.shtml",
-        "title_cn": "量化也搞“重仓押注”？珏朔资产旗下产品中报持仓两家公司合计超43亿",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 8,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-iniparar1557967.shtml",
-        "title_cn": "破解身故后金融资产查询难题 三部门发文推广浙江青岛试点经验 查询覆盖保险、理财、积存金等",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 9,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-inipakur8199610.shtml",
-        "title_cn": "源达策略周报：关注资源品与红利再配置",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 10,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-inipakuq1423797.shtml",
-        "title_cn": "比亚迪王朝成都车展：大汉EV 24.99万起，第三代唐四季度上市",
-        "title_orig": "",
-        "source": "新浪财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 11,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458733_1.html",
-        "title_cn": "新华财经晚报：金融监管总局规范互联网平台利用“流量优势”收取不合理费用行为",
-        "title_orig": "",
-        "source": "新华财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 12,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458748_1.html",
-        "title_cn": "国家发展改革委就《对外投资管理办法（修订征求意见稿）》公开征求意见",
-        "title_orig": "",
-        "source": "新华财经",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 13,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.stcn.com/article/detail/4096479.html",
-        "title_cn": "建工修复2026年上半年扭亏为盈 新签合同额增长304.29%",
-        "title_orig": "",
-        "source": "证券时报",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 14,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://finance.sina.com.cn/jinrong/bx/2026-08-21/doc-iniparan1309618.shtml",
-        "title_cn": "民生人寿“生肖不合裁员”？多名属蛇员工被辞，组织资源会常开至凌晨",
-        "title_orig": "",
-        "source": "新浪财经·银行频道",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 15,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.guancha.cn/GuanJinRong/2026_08_21_828147.shtml",
-        "title_cn": "网传民生人寿董事长因生肖不合裁员",
-        "title_orig": "",
-        "source": "观察者网·金融",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 16,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.guancha.cn/GuanJinRong/2026_08_21_828144.shtml",
-        "title_cn": "日赚5.1亿，但中国平安主业只增长了8.3%",
-        "title_orig": "",
-        "source": "观察者网·金融",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "",
-        "importance": 2,
-        "rank": 17,
         "tags": [],
         "locale": "national"
       },
@@ -580,7 +425,7 @@
         "date": "08/21",
         "summary": "恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。",
         "importance": 2,
-        "rank": 18,
+        "rank": 3,
         "tags": [],
         "locale": "national"
       },
@@ -592,7 +437,7 @@
         "date": "08/21",
         "summary": "日本央行干预后套利交易活跃，日元汇率不确定性上升。分行应加强代客外汇及跨境财富业务的风险提示，引导客户合理管理汇率波动风险。",
         "importance": 2,
-        "rank": 19,
+        "rank": 4,
         "tags": [],
         "locale": "national"
       },
@@ -604,7 +449,7 @@
         "date": "08/21",
         "summary": "上海金融法院发布18条举措助力上海国际金融中心建设；金融法治环境优化，分行可关注金融纠纷多元化解与跨境金融业务规范。",
         "importance": 2,
-        "rank": 20,
+        "rank": 5,
         "tags": [],
         "locale": "national"
       },
@@ -616,7 +461,7 @@
         "date": "08/21",
         "summary": "日本通胀加速，为日本央行加息提供依据；海外利率上行影响全球资金流向，分行可关注日元资产与汇率波动对客户配置的影响。",
         "importance": 2,
-        "rank": 21,
+        "rank": 6,
         "tags": [],
         "locale": "national"
       },
@@ -628,7 +473,7 @@
         "date": "08/21",
         "summary": "美联储政策立场偏鹰，加息与否悬念升温；海外利率路径影响全球资产定价，分行财富业务可关注美债与黄金配置节奏。",
         "importance": 2,
-        "rank": 22,
+        "rank": 7,
         "tags": [],
         "locale": "national"
       },
@@ -640,7 +485,7 @@
         "date": "08/21",
         "summary": "股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。",
         "importance": 2,
-        "rank": 23,
+        "rank": 8,
         "tags": [
           "财富"
         ],
@@ -654,7 +499,7 @@
         "date": "08/21",
         "summary": "热联集团二次递表港交所，营收增速滞缓但近三年分红19.7亿元；大宗供应链企业赴港上市，分行可关注供应链客户融资与结算需求。",
         "importance": 2,
-        "rank": 24,
+        "rank": 9,
         "tags": [],
         "locale": "national"
       },
@@ -666,7 +511,7 @@
         "date": "08/21",
         "summary": "新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。",
         "importance": 2,
-        "rank": 25,
+        "rank": 10,
         "tags": [
           "信贷"
         ],
@@ -680,7 +525,7 @@
         "date": "08/21",
         "summary": "多地推进现代服务业创新发展；现代服务业客群成长，分行可关注服务业中小微企业信贷与结算需求。",
         "importance": 2,
-        "rank": 26,
+        "rank": 11,
         "tags": [],
         "locale": "national"
       },
@@ -692,7 +537,7 @@
         "date": "08/21",
         "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。",
         "importance": 2,
-        "rank": 27,
+        "rank": 12,
         "tags": [
           "财富"
         ],
@@ -706,7 +551,7 @@
         "date": "08/21",
         "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。",
         "importance": 2,
-        "rank": 28,
+        "rank": 13,
         "tags": [
           "财富"
         ],
@@ -720,7 +565,7 @@
         "date": "08/21",
         "summary": "27家中小金融机构获批解散、贵州农信改革迎来新进展；中小银行整合提速，分行可关注同业格局变化与区域信贷市场机会。",
         "importance": 2,
-        "rank": 29,
+        "rank": 14,
         "tags": [],
         "locale": "national"
       },
@@ -732,7 +577,7 @@
         "date": "08/21",
         "summary": "上海优化个人住房信贷政策，部分区域二套房首付比例低至15%；一线城市房贷政策松绑，分行个人房贷业务可关注政策传导与客户需求释放。",
         "importance": 2,
-        "rank": 30,
+        "rank": 15,
         "tags": [
           "信贷"
         ],
@@ -746,7 +591,7 @@
         "date": "08/21",
         "summary": "前7个月社会消费商品和服务零售总额同比增长2.6%；消费延续温和修复，利好零售银行获客与消费信贷，分行可关注消费场景金融需求。",
         "importance": 2,
-        "rank": 31,
+        "rank": 16,
         "tags": [],
         "locale": "national"
       },
@@ -758,7 +603,7 @@
         "date": "08/21",
         "summary": "从国债到地方债，离岸人民币债券供给持续增加；离岸人民币市场扩容，分行可关注跨境金融与离岸债券投资机遇。",
         "importance": 2,
-        "rank": 32,
+        "rank": 17,
         "tags": [],
         "locale": "national"
       },
@@ -770,7 +615,7 @@
         "date": "08/21",
         "summary": "年内上市银行股价走势分化、部分城商行表现亮眼；银行板块估值分化，分行可参考同业经营与资本市场表现优化自身策略。",
         "importance": 2,
-        "rank": 33,
+        "rank": 18,
         "tags": [],
         "locale": "national"
       },
@@ -782,7 +627,7 @@
         "date": "08/21",
         "summary": "多家上市券商上半年营收净利同比双增；资本市场景气回升，券商业绩改善反映市场活跃度提升，分行可关注银证合作与权益类代销机会。",
         "importance": 2,
-        "rank": 34,
+        "rank": 19,
         "tags": [],
         "locale": "national"
       },
@@ -794,7 +639,7 @@
         "date": "08/21",
         "summary": "多地着力促进汽车消费、县域市场与二手车交易成重点；汽车消费政策加码利好车贷业务，分行可关注县域车贷与二手车金融需求。",
         "importance": 2,
-        "rank": 35,
+        "rank": 20,
         "tags": [],
         "locale": "national"
       },
@@ -806,7 +651,7 @@
         "date": "08/21",
         "summary": "低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。",
         "importance": 2,
-        "rank": 36,
+        "rank": 21,
         "tags": [
           "财富"
         ],
@@ -820,7 +665,7 @@
         "date": "08/21",
         "summary": "主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。",
         "importance": 2,
-        "rank": 37,
+        "rank": 22,
         "tags": [
           "财富"
         ],
@@ -834,7 +679,7 @@
         "date": "08/21",
         "summary": "长江存储IPO通过辅导验收、耐心资本加持半导体龙头；存储芯片龙头上市推进，分行可关注硬科技企业上市融资与综合金融服务。",
         "importance": 2,
-        "rank": 38,
+        "rank": 23,
         "tags": [],
         "locale": "national"
       },
@@ -846,7 +691,7 @@
         "date": "08/21",
         "summary": "招商证券：恒生科技指数扩容、产业趋势利好云厂；港股科技指数调整带来资金配置变化，分行财富业务可关注恒科ETF与科技主题配置。",
         "importance": 2,
-        "rank": 39,
+        "rank": 24,
         "tags": [],
         "locale": "national"
       },
@@ -858,7 +703,7 @@
         "date": "08/21",
         "summary": "连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。",
         "importance": 2,
-        "rank": 40,
+        "rank": 25,
         "tags": [
           "财富"
         ],
@@ -872,7 +717,7 @@
         "date": "08/21",
         "summary": "俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。",
         "importance": 2,
-        "rank": 41,
+        "rank": 26,
         "tags": [
           "财富"
         ],
@@ -886,7 +731,7 @@
         "date": "08/21",
         "summary": "中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。",
         "importance": 2,
-        "rank": 42,
+        "rank": 27,
         "tags": [
           "财富"
         ],
@@ -900,7 +745,7 @@
         "date": "08/21",
         "summary": "东南铁矿龙头今日申购、刺绣装备小巨人上市；新股发行活跃，分行财富业务可关注打新客户服务与新股申购提示。",
         "importance": 2,
-        "rank": 43,
+        "rank": 28,
         "tags": [],
         "locale": "national"
       },
@@ -912,7 +757,7 @@
         "date": "08/21",
         "summary": "招商策略：恒生科技指数扩容、云厂价值重估；港股科技权重调整带来资金配置变化，分行财富业务可关注恒科ETF与科技主题配置。",
         "importance": 2,
-        "rank": 44,
+        "rank": 29,
         "tags": [],
         "locale": "national"
       },
@@ -924,7 +769,7 @@
         "date": "08/21",
         "summary": "30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。",
         "importance": 2,
-        "rank": 45,
+        "rank": 30,
         "tags": [
           "财富"
         ],
@@ -938,7 +783,7 @@
         "date": "08/21",
         "summary": "我国长期国债走出独立行情具备三大支撑；国内债市独立性增强，分行可关注债券配置与理财收益变化，向客户解读债市逻辑。",
         "importance": 2,
-        "rank": 46,
+        "rank": 31,
         "tags": [],
         "locale": "national"
       },
@@ -950,7 +795,7 @@
         "date": "08/21",
         "summary": "村镇银行处置现贵州样本，7家农信系村镇银行纳入地市级统一法人；中小金融机构改革化险提速，分行可关注区域银行整合与存款市场格局变化。",
         "importance": 2,
-        "rank": 47,
+        "rank": 32,
         "tags": [],
         "locale": "national"
       },
@@ -962,7 +807,7 @@
         "date": "08/21",
         "summary": "多家银行落地算力贷，信贷评估锚点悄然生变；算力资产纳入授信评估，分行可探索科技企业算力贷产品，服务数字经济客群。",
         "importance": 2,
-        "rank": 48,
+        "rank": 33,
         "tags": [],
         "locale": "national"
       },
@@ -974,7 +819,7 @@
         "date": "08/21",
         "summary": "超30家上市公司十大流通股东出现券商身影；券商持仓活跃反映机构资金动向，分行财富业务可参考机构偏好优化权益类产品配置。",
         "importance": 2,
-        "rank": 49,
+        "rank": 34,
         "tags": [],
         "locale": "national"
       },
@@ -986,7 +831,7 @@
         "date": "08/21",
         "summary": "LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。",
         "importance": 2,
-        "rank": 50,
+        "rank": 35,
         "tags": [
           "信贷"
         ],
@@ -1000,7 +845,7 @@
         "date": "08/21",
         "summary": "双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。",
         "importance": 2,
-        "rank": 51,
+        "rank": 36,
         "tags": [
           "信贷"
         ],
@@ -1014,7 +859,7 @@
         "date": "08/21",
         "summary": "7天期逆回购持续零投放，央行灵活精准调控流动性；公开市场操作精细化、流动性合理充裕，分行可关注资金面变化对存款与同业业务影响。",
         "importance": 2,
-        "rank": 52,
+        "rank": 37,
         "tags": [],
         "locale": "national"
       },
@@ -1026,7 +871,7 @@
         "date": "08/21",
         "summary": "上海二套房首付比例下调释放信贷宽松信号，或成为其他一线城市政策参照。分行应跟踪广州房贷政策空间，提前做好按揭定价与房贷客群储备。",
         "importance": 2,
-        "rank": 53,
+        "rank": 38,
         "tags": [
           "信贷"
         ],
@@ -1040,7 +885,7 @@
         "date": "08/21",
         "summary": "李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。",
         "importance": 2,
-        "rank": 54,
+        "rank": 39,
         "tags": [
           "财富"
         ],
@@ -1054,7 +899,7 @@
         "date": "08/21",
         "summary": "完善公司治理是金融机构防风险关键，监管对内控合规要求趋严。分行应持续强化风险治理、贷后管理与员工行为规范，保障零售业务稳健发展。",
         "importance": 2,
-        "rank": 55,
+        "rank": 40,
         "tags": [],
         "locale": "national"
       },
@@ -1066,7 +911,7 @@
         "date": "08/21",
         "summary": "“十五五”经济与金融改革方向为中长期布局提供宏观参考。分行可结合区域产业升级，前瞻规划零售信贷、财富管理和私行业务发展策略。",
         "importance": 2,
-        "rank": 56,
+        "rank": 41,
         "tags": [],
         "locale": "national"
       },
@@ -1078,7 +923,7 @@
         "date": "08/21",
         "summary": "半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。",
         "importance": 2,
-        "rank": 57,
+        "rank": 42,
         "tags": [],
         "locale": "national"
       },
@@ -1090,7 +935,7 @@
         "date": "08/21",
         "summary": "8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。",
         "importance": 2,
-        "rank": 58,
+        "rank": 43,
         "tags": [],
         "locale": "national"
       },
@@ -1102,7 +947,7 @@
         "date": "08/21",
         "summary": "黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。",
         "importance": 2,
-        "rank": 59,
+        "rank": 44,
         "tags": [
           "财富"
         ],
@@ -1116,7 +961,7 @@
         "date": "08/21",
         "summary": "上银国际亏损后由母行提级收编，显示银行子公司治理重要性。对分行提示综合化经营需强化风险隔离、并表管控和境外业务审慎评估。",
         "importance": 2,
-        "rank": 60,
+        "rank": 45,
         "tags": [],
         "locale": "gz"
       },
@@ -1128,7 +973,7 @@
         "date": "08/21",
         "summary": "日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。",
         "importance": 2,
-        "rank": 61,
+        "rank": 46,
         "tags": [],
         "locale": "national"
       },
@@ -1140,7 +985,7 @@
         "date": "08/21",
         "summary": "7月全社会用电量同比增长显示经济恢复平稳，企业开工活跃度有支撑。分行可参考宏观数据安排信贷投放节奏，关注区域产业用电变化挖掘客户需求。",
         "importance": 2,
-        "rank": 62,
+        "rank": 47,
         "tags": [],
         "locale": "national"
       },
@@ -1152,7 +997,7 @@
         "date": "08/21",
         "summary": "特朗普签署重大计划的具体影响有待观察，若涉及经贸政策将扰动全球市场。分行应密切跟踪政策落地情况，提前做好风险预案与客户沟通。",
         "importance": 2,
-        "rank": 63,
+        "rank": 48,
         "tags": [],
         "locale": "national"
       },
@@ -1164,7 +1009,7 @@
         "date": "08/21",
         "summary": "毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。",
         "importance": 2,
-        "rank": 64,
+        "rank": 49,
         "tags": [],
         "locale": "national"
       },
@@ -1176,7 +1021,7 @@
         "date": "08/21",
         "summary": "重阳投资强调长期价值投资，对当前市场情绪具有引导作用。分行财富管理投教可传递长期配置理念，引导客户减少短期博弈，提升持有体验。",
         "importance": 2,
-        "rank": 65,
+        "rank": 50,
         "tags": [
           "财富"
         ],
@@ -1190,7 +1035,7 @@
         "date": "08/21",
         "summary": "元立光电获北交所上市委通过，反映中小企业融资活跃，提示关注科创企业信贷与上市服务机会，但非广州本地项目。",
         "importance": 2,
-        "rank": 66,
+        "rank": 51,
         "tags": [],
         "locale": "national"
       },
@@ -1202,7 +1047,7 @@
         "date": "08/21",
         "summary": "央行发行央票属流动性管理工具，影响市场利率与资金面，提示分行关注货币政策导向，合理安排资产负债和理财定价。",
         "importance": 2,
-        "rank": 67,
+        "rank": 52,
         "tags": [],
         "locale": "national"
       },
@@ -1214,7 +1059,7 @@
         "date": "08/21",
         "summary": "央行开展950亿元逆回购操作传递呵护流动性信号，启示分行关注资金利率走势，优化负债成本与信贷投放节奏。",
         "importance": 2,
-        "rank": 68,
+        "rank": 53,
         "tags": [],
         "locale": "national"
       },
@@ -1226,7 +1071,7 @@
         "date": "08/21",
         "summary": "江阴银行净利润增长并拟参与新设机构，反映中小银行扩张态势，提示分行关注同业竞争格局，稳固本地零售客群优势。",
         "importance": 2,
-        "rank": 69,
+        "rank": 54,
         "tags": [],
         "locale": "national"
       },
@@ -1238,7 +1083,7 @@
         "date": "08/21",
         "summary": "江苏银行中报显示净息差尚未止跌，印证行业息差压力，启示分行强化存款成本管控，优化贷款风险定价与结构。",
         "importance": 2,
-        "rank": 70,
+        "rank": 55,
         "tags": [],
         "locale": "national"
       },
@@ -1250,7 +1095,7 @@
         "date": "08/21",
         "summary": "北京现代艾尼氪V以双AI大模型为卖点开启预售，智能汽车成消费新热点；分行可联动汽车分期与信用卡权益，捕捉新能源车主客群。",
         "importance": 2,
-        "rank": 71,
+        "rank": 56,
         "tags": [
           "信贷"
         ],
@@ -1264,7 +1109,7 @@
         "date": "08/21",
         "summary": "美财长回购未消市场疑虑，30年美债持稳5.24%、美元走软、金价涨油价跌；分行结售汇与贵金属窗口可提示客户关注汇率与避险资产波动。",
         "importance": 2,
-        "rank": 72,
+        "rank": 57,
         "tags": [],
         "locale": "national"
       },
@@ -1276,7 +1121,7 @@
         "date": "08/21",
         "summary": "碳酸锂与贵金属走强、集运欧线涨超11%，大宗商品波动加剧；分行可提示客户关注贵金属配置与汇率风险，财富条线把握贵金属销售窗口。",
         "importance": 2,
-        "rank": 73,
+        "rank": 58,
         "tags": [],
         "locale": "national"
       },
@@ -1288,7 +1133,7 @@
         "date": "08/21",
         "summary": "金融监管总局出台非车险综合治理行动方案，整治车险以外财险乱象；分行代理保险业务需关注合规与产品结构优化，防范销售风险。",
         "importance": 2,
-        "rank": 74,
+        "rank": 59,
         "tags": [],
         "locale": "national"
       },
@@ -1300,7 +1145,7 @@
         "date": "08/21",
         "summary": "前7月全国实际吸收外资4383亿元，外资企稳；利好外向型企业信心，分行可关注外贸与跨境客群的结算及融资需求。",
         "importance": 2,
-        "rank": 75,
+        "rank": 60,
         "tags": [],
         "locale": "national"
       },
@@ -1312,7 +1157,7 @@
         "date": "08/21",
         "summary": "服贸会将于9月9日启幕，多家银行展示AI最新应用；反映银行业AI落地加速，分行可借鉴同业智能客服与风控成果，提速自身数字化。",
         "importance": 2,
-        "rank": 76,
+        "rank": 61,
         "tags": [],
         "locale": "national"
       },
@@ -1324,7 +1169,7 @@
         "date": "08/21",
         "summary": "浙商期货协助上期所完成首次跨境交割，期货国际化提速；分行可关注外贸企业套保与跨境结算需求。",
         "importance": 2,
-        "rank": 77,
+        "rank": 62,
         "tags": [],
         "locale": "national"
       },
@@ -1336,7 +1181,7 @@
         "date": "08/21",
         "summary": "监管总局公布新一批行政处罚，覆盖机构合规问题；分行应举一反三排查代销、消保等合规短板，守住风控底线。",
         "importance": 2,
-        "rank": 78,
+        "rank": 63,
         "tags": [],
         "locale": "national"
       },
@@ -1348,7 +1193,7 @@
         "date": "08/21",
         "summary": "监管总局办公厅印发非车险综合治理行动方案，明确车险外财险治理路径；分行代理保险条线须同步规范销售与披露。",
         "importance": 2,
-        "rank": 79,
+        "rank": 64,
         "tags": [],
         "locale": "national"
       },
@@ -1360,7 +1205,7 @@
         "date": "08/21",
         "summary": "前7月证券交易印花税1864亿、同比增99.2%，股市活跃度显著提升；分行财富管理可借市场情绪回暖加大客户激活与配置转化。",
         "importance": 2,
-        "rank": 80,
+        "rank": 65,
         "tags": [],
         "locale": "national"
       },
@@ -1372,7 +1217,7 @@
         "date": "08/21",
         "summary": "大宗商品多头旗手连续发声看多商品结构性牛市，实物紧缺与货币贬值共振；分行提示客户关注贵金属与商品基金配置机会及波动风险。",
         "importance": 2,
-        "rank": 81,
+        "rank": 66,
         "tags": [],
         "locale": "national"
       },
@@ -1384,7 +1229,7 @@
         "date": "08/21",
         "summary": "美债避险光环减弱，长端抛压持续；分行需重估客户外币资产配置，结售汇与避险建议应更审慎。",
         "importance": 2,
-        "rank": 82,
+        "rank": 67,
         "tags": [],
         "locale": "national"
       },
@@ -1396,7 +1241,7 @@
         "date": "08/21",
         "summary": "万科年内到期公开债全部展期、南京公用涉借款违约诉讼；地产链信用风险仍存，分行需排查相关授信与理财持仓敞口。",
         "importance": 2,
-        "rank": 83,
+        "rank": 68,
         "tags": [],
         "locale": "national"
       },
@@ -1408,7 +1253,7 @@
         "date": "08/21",
         "summary": "三部门扩围促内需财政金融协同：小微新流贷及信用卡分期纳入贴息、中央财政年贴息1%，限2年；分行应抢抓小微与消费信贷贴息红利，扩量提质。",
         "importance": 2,
-        "rank": 84,
+        "rank": 69,
         "tags": [
           "信贷"
         ],
@@ -1422,7 +1267,7 @@
         "date": "08/21",
         "summary": "美财长救市工具效力有限，市场信心偏弱；对分行主要影响在美元与美债波动，结售汇客户需关注。",
         "importance": 2,
-        "rank": 85,
+        "rank": 70,
         "tags": [],
         "locale": "national"
       },
@@ -1434,7 +1279,7 @@
         "date": "08/21",
         "summary": "16家公募上半年营收净利普增，头部领跑；资管回暖利好代销与财富中收，分行可优选合作产品、强化客户配置。",
         "importance": 2,
-        "rank": 86,
+        "rank": 71,
         "tags": [
           "财富"
         ],
@@ -1448,7 +1293,7 @@
         "date": "08/21",
         "summary": "美财长回购仅撑一日，股债双杀再现；全球风险偏好受压，分行提示客户分散配置、关注黄金与美元波动。",
         "importance": 2,
-        "rank": 87,
+        "rank": 72,
         "tags": [],
         "locale": "national"
       },
@@ -1460,7 +1305,7 @@
         "date": "08/21",
         "summary": "10家券商上半年承销科创债超百亿，恒大案一审宣判；科创债扩容利好科技客群债融，地产风险出清仍需时，分行审慎。",
         "importance": 2,
-        "rank": 88,
+        "rank": 73,
         "tags": [],
         "locale": "national"
       },
@@ -1472,7 +1317,7 @@
         "date": "08/20",
         "summary": "美国对伊朗经济施压可能推升地缘风险和能源价格，影响全球通胀与市场情绪。财富管理需重视黄金、能源类资产配置价值，做好客户风险提示。",
         "importance": 2,
-        "rank": 89,
+        "rank": 74,
         "tags": [],
         "locale": "national"
       },
@@ -1484,7 +1329,7 @@
         "date": "08/20",
         "summary": "美国经济衰退警报增强，可能引发全球风险资产波动。分行应关注客户避险需求，加大存款、黄金、稳健理财配置，同时提示海外投资不确定性。",
         "importance": 2,
-        "rank": 90,
+        "rank": 75,
         "tags": [],
         "locale": "national"
       },
@@ -1496,7 +1341,7 @@
         "date": "08/20",
         "summary": "美财长Bessent介入美联储人事引发独立性担忧；海外货币政策不确定性上升，分行可提示客户关注美元资产与黄金配置平衡。",
         "importance": 2,
-        "rank": 91,
+        "rank": 76,
         "tags": [],
         "locale": "national"
       },
@@ -1508,7 +1353,7 @@
         "date": "08/20",
         "summary": "Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。",
         "importance": 2,
-        "rank": 92,
+        "rank": 77,
         "tags": [],
         "locale": "national"
       },
@@ -1520,7 +1365,7 @@
         "date": "08/20",
         "summary": "美联储批准相关机构申请（T1官方发布）；海外监管审批动态，体现美联储政策节奏，对分行零售业务影响有限，作宏观背景参考。",
         "importance": 2,
-        "rank": 93,
+        "rank": 78,
         "tags": [],
         "locale": "national"
       },
@@ -1532,7 +1377,7 @@
         "date": "08/20",
         "summary": "Guggenheim贷款交易陷入困境，提示海外信用市场风险升温。分行在代销固收、债券类产品时应加强底层资产审查，做好客户适当性管理和风险收益提示。",
         "importance": 2,
-        "rank": 94,
+        "rank": 79,
         "tags": [],
         "locale": "national"
       },
@@ -1544,7 +1389,7 @@
         "date": "08/20",
         "summary": "美债回购与个股异动冲击量化策略，全球市场波动加大。对财富管理而言，需提示权益类产品回撤风险，引导客户分散配置并坚持长期投资。",
         "importance": 2,
-        "rank": 95,
+        "rank": 80,
         "tags": [],
         "locale": "national"
       },
@@ -1556,7 +1401,7 @@
         "date": "08/20",
         "summary": "沃尔玛销售承压显示美国消费动能减弱，全球需求或受拖累。对零售客群经营有借鉴意义，分行可关注消费信贷资产质量和促消费政策节奏。",
         "importance": 2,
-        "rank": 96,
+        "rank": 81,
         "tags": [],
         "locale": "national"
       },
@@ -1568,7 +1413,7 @@
         "date": "08/20",
         "summary": "意大利银行并购整合升温，反映欧洲银行业低利率下的规模竞争。分行可借鉴同业零售与财富管理协同经验，关注跨境市场动态对客户资产配置的影响。",
         "importance": 2,
-        "rank": 97,
+        "rank": 82,
         "tags": [],
         "locale": "national"
       },
@@ -1580,7 +1425,7 @@
         "date": "08/20",
         "summary": "特朗普政策引发美债市场动荡并传导全球，利率与汇率风险加大。分行应关注代销固收产品波动，引导客户多元化资产配置并加强压力测试。",
         "importance": 2,
-        "rank": 98,
+        "rank": 83,
         "tags": [],
         "locale": "national"
       },
@@ -1592,7 +1437,7 @@
         "date": "08/20",
         "summary": "美国债务扩张与减支承诺矛盾加剧财政可持续性担忧，利率与美元波动或上升。对分行研判全球市场、管理客户海外资产配置风险有参考。",
         "importance": 2,
-        "rank": 99,
+        "rank": 84,
         "tags": [],
         "locale": "national"
       },
@@ -1604,7 +1449,7 @@
         "date": "08/20",
         "summary": "美联储对相关机构采取执法行动（T1官方发布）；海外银行监管趋严信号，分行可参考其合规风控口径。",
         "importance": 2,
-        "rank": 100,
+        "rank": 85,
         "tags": [],
         "locale": "national"
       },
@@ -1616,7 +1461,7 @@
         "date": "08/20",
         "summary": "美联储对前任职员等采取执法行动；海外监管执法常态化，提示银行业合规与内控风险管理的重要性。",
         "importance": 2,
-        "rank": 101,
+        "rank": 86,
         "tags": [],
         "locale": "national"
       },
@@ -1628,7 +1473,7 @@
         "date": "08/20",
         "summary": "分析师指美财政部国债回购不改9月美联储政策路径，市场降息预期趋稳；海外利率环境平稳利好资产配置，分行可关注客户对美元债与黄金的配置需求。",
         "importance": 2,
-        "rank": 102,
+        "rank": 87,
         "tags": [],
         "locale": "national"
       },
@@ -1640,7 +1485,7 @@
         "date": "08/20",
         "summary": "经济学人指中国就业市场持续偏弱，青年与服务业就业压力凸显；就业疲软影响居民收入与消费贷需求，分行零售信贷可关注风险防控与客群变化。",
         "importance": 2,
-        "rank": 103,
+        "rank": 88,
         "tags": [],
         "locale": "national"
       },
@@ -1652,7 +1497,7 @@
         "date": "08/20",
         "summary": "美国国债突破40万亿美元、十年翻番；美债规模高企推升全球利率与避险资产配置需求，分行财富业务可关注黄金等避险配置与海外资产波动提示。",
         "importance": 2,
-        "rank": 104,
+        "rank": 89,
         "tags": [],
         "locale": "national"
       },
@@ -1664,7 +1509,7 @@
         "date": "08/20",
         "summary": "全球债市收益率飙升下中国债市独立走强，人民币资产避险属性凸显，对分行债券投资与跨境配置有参考。",
         "importance": 2,
-        "rank": 105,
+        "rank": 90,
         "tags": [],
         "locale": "national"
       },
@@ -1676,7 +1521,7 @@
         "date": "08/20",
         "summary": "券商中报披露高峰来临、百亿营收券商已达3家，资本市场景气回暖，对分行财富业务与券商合作环境有参考。",
         "importance": 2,
-        "rank": 106,
+        "rank": 91,
         "tags": [],
         "locale": "national"
       },
@@ -1688,7 +1533,7 @@
         "date": "08/20",
         "summary": "中国平安中期成绩单：寿险稳、银行回血、产险增收不增利，综合金融同业经营样本，对分行协同经营有参考。",
         "importance": 2,
-        "rank": 107,
+        "rank": 92,
         "tags": [
           "财富"
         ],
@@ -1702,7 +1547,7 @@
         "date": "08/20",
         "summary": "息差收窄下南京银行利息净收入大增40%，同业降本增效与资产负债管理样本，对分行定价与中收经营有借鉴。",
         "importance": 2,
-        "rank": 108,
+        "rank": 93,
         "tags": [],
         "locale": "national"
       },
@@ -1714,7 +1559,7 @@
         "date": "08/20",
         "summary": "永辉超市上半年扭亏为盈、归母净利2.53亿元，零售龙头经营改善，反映消费复苏信号，可作零售客群参考。",
         "importance": 2,
-        "rank": 109,
+        "rank": 94,
         "tags": [],
         "locale": "national"
       },
@@ -1726,7 +1571,7 @@
         "date": "08/20",
         "summary": "泡泡玛特乐园新区域客流环比增超一倍，IP线下场景消费热度延续，反映年轻客群体验型消费趋势，可作客群经营参考。",
         "importance": 2,
-        "rank": 110,
+        "rank": 95,
         "tags": [],
         "locale": "national"
       },
@@ -1738,7 +1583,7 @@
         "date": "08/20",
         "summary": "阿里AI年化收入突破495亿元，AI产业景气度持续上行，分行可关注科技企业信贷需求与公私联动获客机会。",
         "importance": 2,
-        "rank": 111,
+        "rank": 96,
         "tags": [],
         "locale": "national"
       },
@@ -1750,7 +1595,7 @@
         "date": "08/20",
         "summary": "探讨量化投资「信仰」的起源与走向，属资本市场方法论话题，对分行财富投教与客户理性投资引导有参考。",
         "importance": 2,
-        "rank": 112,
+        "rank": 97,
         "tags": [],
         "locale": "national"
       },
@@ -1762,7 +1607,7 @@
         "date": "08/20",
         "summary": "二季度人身险公司偿付能力透视：权益投资成「胜负手」，保险资金配置动向对财富端权益与固收配置参考。",
         "importance": 2,
-        "rank": 113,
+        "rank": 98,
         "tags": [
           "财富"
         ],
@@ -1776,7 +1621,7 @@
         "date": "08/20",
         "summary": "上海「沪八条」推进收购二手住房用作保障性租赁住房，一线楼市政策持续加码，对广州房贷与住房金融预期有参考。",
         "importance": 2,
-        "rank": 114,
+        "rank": 99,
         "tags": [
           "信贷"
         ],
@@ -1790,7 +1635,7 @@
         "date": "08/20",
         "summary": "「算力贷」成科技金融赛道新焦点，商业银行布局算力资产融资，分行可借鉴探索科技企业算力购置等新型信贷产品。",
         "importance": 2,
-        "rank": 115,
+        "rank": 100,
         "tags": [],
         "locale": "national"
       },
@@ -1802,7 +1647,7 @@
         "date": "08/20",
         "summary": "广东出台深化融资信用服务平台三年行动方案助力中小微融资，分行可对接平台信用数据完善小微风控与批量获客。",
         "importance": 2,
-        "rank": 116,
+        "rank": 101,
         "tags": [
           "信贷"
         ],
@@ -1816,7 +1661,7 @@
         "date": "08/20",
         "summary": "LPR连续15个月按兵不动，年内降息预期分歧，对分行房贷定价与信贷投放节奏判断有参考。",
         "importance": 2,
-        "rank": 117,
+        "rank": 102,
         "tags": [
           "信贷"
         ],
@@ -1830,7 +1675,7 @@
         "date": "08/20",
         "summary": "中信证券净利润超230亿多项指标创历史最佳，券商龙头景气度高，资本市场回暖对分行财富业务有参考。",
         "importance": 2,
-        "rank": 118,
+        "rank": 103,
         "tags": [],
         "locale": "national"
       },
@@ -1842,7 +1687,7 @@
         "date": "08/20",
         "summary": "阿里AI相关收入连续3年三位数增长，科技产业景气上行，分行可关注科技企业信贷与公私联动获客机会。",
         "importance": 2,
-        "rank": 119,
+        "rank": 104,
         "tags": [],
         "locale": "national"
       },
@@ -1854,7 +1699,7 @@
         "date": "08/20",
         "summary": "货币市场日报显示8月20日资金面平稳、银行间流动性维持宽松，对分行负债端定价与资金头寸管理有日常参考。",
         "importance": 2,
-        "rank": 120,
+        "rank": 105,
         "tags": [],
         "locale": "national"
       },
@@ -1866,7 +1711,7 @@
         "date": "08/20",
         "summary": "美联储与财政部政策方向现分歧、杰克逊霍尔年会成观察窗口，全球利率与美元波动加大，对分行外汇及贵金属配置建议有参考。",
         "importance": 2,
-        "rank": 121,
+        "rank": 106,
         "tags": [],
         "locale": "national"
       },
@@ -1878,7 +1723,7 @@
         "date": "08/20",
         "summary": "40万亿美元美债信用透支敲响警钟，美元资产风险上升，提示客户关注美债敞口与黄金等避险资产配置。",
         "importance": 2,
-        "rank": 122,
+        "rank": 107,
         "tags": [],
         "locale": "national"
       },
@@ -1890,7 +1735,7 @@
         "date": "08/20",
         "summary": "上海下调外环外二套住房首付比例，一线楼市松绑信号增强，广州房贷政策跟进预期升温，可提前储备改善型按揭需求。",
         "importance": 2,
-        "rank": 123,
+        "rank": 108,
         "tags": [],
         "locale": "national"
       },
@@ -1902,7 +1747,7 @@
         "date": "08/20",
         "summary": "商品市场贵金属集体大涨、农产品延续强势，通胀与避险情绪升温，财富端可关注黄金等大宗商品配置机会。",
         "importance": 2,
-        "rank": 124,
+        "rank": 109,
         "tags": [
           "财富"
         ],
@@ -1916,7 +1761,7 @@
         "date": "08/20",
         "summary": "瑞典央行维持利率不变但保留收紧可能，海外加息周期尾声信号，对全球流动性环境判断有参考价值。",
         "importance": 2,
-        "rank": 125,
+        "rank": 110,
         "tags": [],
         "locale": "national"
       },
@@ -1928,7 +1773,7 @@
         "date": "08/20",
         "summary": "泡泡玛特上半年营收171.7亿元、星星人收入增速超580%，IP消费高景气，年轻客群黏性强，可设计潮玩客群权益联动。",
         "importance": 2,
-        "rank": 126,
+        "rank": 111,
         "tags": [],
         "locale": "national"
       },
@@ -1940,7 +1785,7 @@
         "date": "08/20",
         "summary": "能源推升英国7月通胀逆转上行，海外通胀粘性制约央行宽松，对全球利率与资产配置判断有参考。",
         "importance": 2,
-        "rank": 127,
+        "rank": 112,
         "tags": [],
         "locale": "national"
       },
@@ -1952,7 +1797,7 @@
         "date": "08/20",
         "summary": "七夕消费呈现个性化趋势、兴趣驱动成新引擎，年轻客群消费特征变化，可设计七夕等节点零售营销活动。",
         "importance": 2,
-        "rank": 128,
+        "rank": 113,
         "tags": [],
         "locale": "national"
       },
@@ -1964,7 +1809,7 @@
         "date": "08/20",
         "summary": "上海「沪八条」更趋精细化差异化、蓄势金九银十，一线楼市政策持续细化，对广州房贷与改善型按揭预期有参考。",
         "importance": 2,
-        "rank": 129,
+        "rank": 114,
         "tags": [
           "信贷"
         ],
@@ -1978,7 +1823,7 @@
         "date": "08/20",
         "summary": "商务部：1-7月农产品和农村商品网上零售额分别增长12.8%和5%，农村消费数据向好，对县域客群经营与信用卡营销参考。",
         "importance": 2,
-        "rank": 130,
+        "rank": 115,
         "tags": [],
         "locale": "national"
       },
@@ -1990,7 +1835,7 @@
         "date": "08/20",
         "summary": "上海优化房地产政策措施、精准施策促进合理购房需求，一线楼市宽松延续，对广州房贷预期与改善型需求有参考。",
         "importance": 2,
-        "rank": 131,
+        "rank": 116,
         "tags": [
           "信贷"
         ],
@@ -2004,7 +1849,7 @@
         "date": "08/20",
         "summary": "金饰克价一夜大涨近45元、低克重低总价饰品受青睐，黄金消费热度延续，分行可结合金饰热推黄金积存与投资金条。",
         "importance": 2,
-        "rank": 132,
+        "rank": 117,
         "tags": [
           "财富"
         ],
@@ -2018,7 +1863,7 @@
         "date": "08/20",
         "summary": "深圳前7月进出口规模创新高，广东区域外贸景气，对分行研判区域经济与贸易客群经营环境有参考。",
         "importance": 2,
-        "rank": 133,
+        "rank": 118,
         "tags": [],
         "locale": "national"
       },
@@ -2030,7 +1875,7 @@
         "date": "08/20",
         "summary": "纯电大型SUV销量爆发、大五座纯电首超插混，汽车消费结构变化，对车贷与汽车分期业务有参考。",
         "importance": 2,
-        "rank": 134,
+        "rank": 119,
         "tags": [],
         "locale": "national"
       },
@@ -2042,7 +1887,7 @@
         "date": "08/20",
         "summary": "上海外环外二套房首付门槛再降，一线楼市宽松加码，对广州房贷与改善型按揭预期有参考。",
         "importance": 2,
-        "rank": 135,
+        "rank": 120,
         "tags": [
           "信贷"
         ],
@@ -2056,7 +1901,7 @@
         "date": "08/20",
         "summary": "东莞农商银行迎来新任行长，广东本地农商行人事动态，对分行了解区域同业经营与竞争格局有参考。",
         "importance": 2,
-        "rank": 136,
+        "rank": 121,
         "tags": [],
         "locale": "national"
       },
@@ -2068,7 +1913,7 @@
         "date": "08/20",
         "summary": "阿里巴巴单季度净利207亿元，AI与电商主业高景气，分行可关注科技企业信贷与公私联动获客机会。",
         "importance": 2,
-        "rank": 137,
+        "rank": 122,
         "tags": [],
         "locale": "national"
       },
@@ -2080,7 +1925,7 @@
         "date": "08/20",
         "summary": "泡泡玛特拟不低于20亿元回购股份，强化股东回报，消费龙头现金流充沛，可作客群与消费趋势参考。",
         "importance": 2,
-        "rank": 138,
+        "rank": 123,
         "tags": [],
         "locale": "national"
       },
@@ -2092,7 +1937,7 @@
         "date": "08/20",
         "summary": "粤开证券以产业投行深耕新质生产力、上半年净利3.04亿，广东本地券商经营样本，对分行同业与投行业务参考。",
         "importance": 2,
-        "rank": 139,
+        "rank": 124,
         "tags": [],
         "locale": "national"
       },
@@ -2104,7 +1949,7 @@
         "date": "08/20",
         "summary": "中行张兴荣：大型银行发展资管业务意义重大，银行资管转型方向，对分行财富管理与资管布局有参考。",
         "importance": 2,
-        "rank": 140,
+        "rank": 125,
         "tags": [
           "财富"
         ],
@@ -2118,7 +1963,7 @@
         "date": "08/20",
         "summary": "净息差四年来首度环比增长，银行业盈利模式亟待重构，对分行资产负债管理与转型方向有参考。",
         "importance": 2,
-        "rank": 141,
+        "rank": 126,
         "tags": [],
         "locale": "national"
       },
@@ -2130,7 +1975,7 @@
         "date": "08/20",
         "summary": "下半年82家银行获批增资、农商行扎堆，中小银行资本补充压力，对同业格局与资本工具发行环境有参考。",
         "importance": 2,
-        "rank": 142,
+        "rank": 127,
         "tags": [],
         "locale": "national"
       },
@@ -2142,7 +1987,7 @@
         "date": "08/20",
         "summary": "江阴银行上半年归母净利8.66亿元同比增2.34%，区域银行经营样本，可对比关注息差与资产质量表现。",
         "importance": 2,
-        "rank": 143,
+        "rank": 128,
         "tags": [],
         "locale": "national"
       },
@@ -2154,7 +1999,7 @@
         "date": "08/20",
         "summary": "招商银行任命王小青为执行董事，本行高层人事调整，分行应关注总行战略方向与治理动态。",
         "importance": 2,
-        "rank": 144,
+        "rank": 129,
         "tags": [],
         "locale": "national"
       },
@@ -2166,7 +2011,7 @@
         "date": "08/20",
         "summary": "中国银行将派发「中行优4」优先股股息每股3.27元，同业资本工具运作动态，对关注银行资本补充与股东回报有参考。",
         "importance": 2,
-        "rank": 145,
+        "rank": 130,
         "tags": [],
         "locale": "national"
       },
@@ -2178,7 +2023,7 @@
         "date": "08/20",
         "summary": "重庆银行上半年归母净利35.18亿元同比增10.29%，区域银行经营样本，可对比关注息差与资产质量表现。",
         "importance": 2,
-        "rank": 146,
+        "rank": 131,
         "tags": [],
         "locale": "national"
       },
@@ -2190,7 +2035,7 @@
         "date": "08/20",
         "summary": "银行业内首现1年、2年、3年定存利率持平，存款期限溢价消失，对分行负债端定价与客户存款结构有参考。",
         "importance": 2,
-        "rank": 147,
+        "rank": 132,
         "tags": [
           "财富"
         ],
@@ -2204,7 +2049,7 @@
         "date": "08/20",
         "summary": "常州金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
         "importance": 2,
-        "rank": 148,
+        "rank": 133,
         "tags": [],
         "locale": "national"
       },
@@ -2216,7 +2061,7 @@
         "date": "08/20",
         "summary": "广东华兴银行本土化ESG全路径实践，本地同业社会责任与品牌经营样本，对分行ESG经营与品牌建设有参考。",
         "importance": 2,
-        "rank": 149,
+        "rank": 134,
         "tags": [],
         "locale": "national"
       },
@@ -2228,7 +2073,7 @@
         "date": "08/20",
         "summary": "美国财长贝森特扩大购债干预长债市场，美元走弱预期升温，黄金与人民币资产重估逻辑强化，财富端可提示相关配置。",
         "importance": 2,
-        "rank": 150,
+        "rank": 135,
         "tags": [],
         "locale": "national"
       },
@@ -2240,7 +2085,7 @@
         "date": "08/20",
         "summary": "美元储备占比降至57%、人民币创3年半新高，美元信用稀释强化黄金重估逻辑，分行可关注外汇与黄金类财富产品营销窗口。",
         "importance": 2,
-        "rank": 151,
+        "rank": 136,
         "tags": [
           "财富"
         ],
@@ -2254,7 +2099,7 @@
         "date": "08/20",
         "summary": "陆家嘴金融沙龙聚焦投资者为本与理性投资，资本市场监管导向明晰，对分行财富投教与客户理性投资引导有参考。",
         "importance": 2,
-        "rank": 152,
+        "rank": 137,
         "tags": [],
         "locale": "national"
       },
@@ -2266,7 +2111,7 @@
         "date": "08/20",
         "summary": "7天期逆回购连续8日零投放、债市窄幅震荡，资金面平稳偏紧，分行关注流动性环境对负债定价影响。",
         "importance": 2,
-        "rank": 153,
+        "rank": 138,
         "tags": [],
         "locale": "national"
       },
@@ -2278,7 +2123,7 @@
         "date": "08/20",
         "summary": "50亿银行转债近乎零转股落幕，转债供给格局切换，对银行资本工具与转债市场环境有参考。",
         "importance": 2,
-        "rank": 154,
+        "rank": 139,
         "tags": [],
         "locale": "national"
       },
@@ -2290,7 +2135,7 @@
         "date": "08/20",
         "summary": "贝森特稳定美债被称「变相OT」，美债市场干预加深，美元资产波动加大，对财富端海外配置建议有参考。",
         "importance": 2,
-        "rank": 155,
+        "rank": 140,
         "tags": [],
         "locale": "national"
       },
@@ -2302,7 +2147,7 @@
         "date": "08/20",
         "summary": "40万亿美元美债「债务大山」解析，美国债务风险深度内容，提示客户关注美债敞口与避险配置。",
         "importance": 2,
-        "rank": 156,
+        "rank": 141,
         "tags": [],
         "locale": "national"
       },
@@ -2314,7 +2159,7 @@
         "date": "08/20",
         "summary": "金饰克价一夜大涨46元，黄金消费热度延续，分行可结合金饰热推黄金积存与投资金条。",
         "importance": 2,
-        "rank": 157,
+        "rank": 142,
         "tags": [
           "财富"
         ],
@@ -2328,7 +2173,7 @@
         "date": "08/20",
         "summary": "8月LPR报价出炉：5年期和1年期均维持不变，LPR连续按兵不动，对房贷定价与信贷环境判断有参考。",
         "importance": 2,
-        "rank": 158,
+        "rank": 143,
         "tags": [
           "信贷"
         ],
@@ -2342,7 +2187,7 @@
         "date": "08/20",
         "summary": "债市早参：美国财政部紧急下场、券商承销科创债破5000亿，债市与科创金融动态，对分行债券投资与科创客群参考。",
         "importance": 2,
-        "rank": 159,
+        "rank": 144,
         "tags": [],
         "locale": "national"
       },
@@ -2354,7 +2199,7 @@
         "date": "08/20",
         "summary": "贝森特一己之力稳债市被称变相OT，美债干预持续，全球利率环境复杂化，对分行配置建议有参考。",
         "importance": 2,
-        "rank": 160,
+        "rank": 145,
         "tags": [],
         "locale": "national"
       },
@@ -2366,7 +2211,7 @@
         "date": "08/20",
         "summary": "上海金融法院发布18条举措护航国际金融中心建设，规则更明、预期更稳；金融法治环境优化利好银行业务合规与创新，分行可关注跨境金融与金融纠纷化解新规。",
         "importance": 2,
-        "rank": 161,
+        "rank": 146,
         "tags": [],
         "locale": "national"
       },
@@ -2378,7 +2223,7 @@
         "date": "08/20",
         "summary": "净息差收窄6个基点，宁波银行营收净利仍双增超10%；中小银行经营韧性样本，分行可借鉴其零售转型与中收策略，关注息差管理与资产质量。",
         "importance": 2,
-        "rank": 162,
+        "rank": 147,
         "tags": [
           "财富"
         ],
@@ -2392,7 +2237,7 @@
         "date": "08/20",
         "summary": "江苏银行规模增长、对公发力明显但中收变现艰难；银行中收承压共性显现，分行可加强财富管理中收业务、优化收入结构。",
         "importance": 2,
-        "rank": 163,
+        "rank": 148,
         "tags": [
           "财富"
         ],
@@ -2406,7 +2251,7 @@
         "date": "08/20",
         "summary": "发改委主任郑栅洁主持民营企业座谈会，围绕稳定经济运行、促进有效投资听取意见；政策层稳增长信号明确，分行可关注民企融资支持与有效投资领域信贷机会。",
         "importance": 2,
-        "rank": 164,
+        "rank": 149,
         "tags": [],
         "locale": "national"
       },
@@ -2418,7 +2263,7 @@
         "date": "08/20",
         "summary": "江阴银行参与投资设立江苏徐州农商银行；中小银行整合扩张案例，分行可关注区域农商行改革动向与同业合作机会。",
         "importance": 2,
-        "rank": 165,
+        "rank": 150,
         "tags": [],
         "locale": "national"
       },
@@ -2430,7 +2275,7 @@
         "date": "08/20",
         "summary": "友邦香港第二季增速骤降至个位数、较首季21%明显放缓；香港保险销售降温，分行可关注保险代销与跨境财富配置趋势变化。",
         "importance": 2,
-        "rank": 166,
+        "rank": 151,
         "tags": [
           "财富"
         ],
@@ -2444,7 +2289,7 @@
         "date": "08/20",
         "summary": "兴业证券净利重返20亿、投行毛利率不足2%；券商投行承压但整体盈利改善，反映资本市场景气与投行业务竞争加剧。",
         "importance": 2,
-        "rank": 167,
+        "rank": 152,
         "tags": [],
         "locale": "national"
       },
@@ -2456,7 +2301,7 @@
         "date": "08/20",
         "summary": "市场热议年内是否还会降息、政策利率走向存分歧；降息预期影响存款与理财收益，分行可提前布局利率下行环境下的资产负债配置。",
         "importance": 2,
-        "rank": 168,
+        "rank": 153,
         "tags": [
           "信贷"
         ],
@@ -2470,7 +2315,7 @@
         "date": "08/20",
         "summary": "友邦人寿新业务价值高增显示保障型寿险和“保险+”模式空间大。分行代销保险可聚焦高价值期交产品，结合健康、养老场景提升客户黏性。",
         "importance": 2,
-        "rank": 169,
+        "rank": 154,
         "tags": [
           "财富"
         ],
@@ -2484,7 +2329,7 @@
         "date": "08/20",
         "summary": "上海银行全资收购上银国际反映银行国际化与子公司整合趋势，提示分行关注跨境业务联动及海外投行布局带来的零售财富管理协同机会。",
         "importance": 2,
-        "rank": 170,
+        "rank": 155,
         "tags": [],
         "locale": "national"
       },
@@ -2496,7 +2341,7 @@
         "date": "08/20",
         "summary": "8月消金不良密集出清表明消费信贷资产质量承压，提示分行加强个人信贷风险管控，关注不良资产处置渠道和定价策略。",
         "importance": 2,
-        "rank": 171,
+        "rank": 156,
         "tags": [
           "信贷"
         ],
@@ -2510,7 +2355,7 @@
         "date": "08/20",
         "summary": "银行中收增长背后现员工自购乱象，提示分行重视财富管理合规展业，杜绝为冲量诱导自购，强化专业投顾能力建设。",
         "importance": 2,
-        "rank": 172,
+        "rank": 157,
         "tags": [
           "财富"
         ],
@@ -2524,7 +2369,7 @@
         "date": "08/20",
         "summary": "理财市场头部集中分化、中小银行收缩，启示分行需提升理财产品竞争力和投研能力，应对规模与收入双重挑战。",
         "importance": 2,
-        "rank": 173,
+        "rank": 158,
         "tags": [
           "财富"
         ],
@@ -2538,7 +2383,7 @@
         "date": "08/20",
         "summary": "江苏银行规模位列城商行首位，4家城商行半年报显示规模竞争加剧，提示分行对标同业，提升零售业务贡献与经营质效。",
         "importance": 2,
-        "rank": 174,
+        "rank": 159,
         "tags": [],
         "locale": "national"
       },
@@ -2550,7 +2395,7 @@
         "date": "08/20",
         "summary": "长安银行高层更迭可能影响战略走向，属银行治理动态，提示分行关注同行业绩与治理变化，及时调整竞争策略。",
         "importance": 2,
-        "rank": 175,
+        "rank": 160,
         "tags": [],
         "locale": "national"
       },
@@ -2562,7 +2407,7 @@
         "date": "08/20",
         "summary": "南京银行非息收入表现回落，凸显中收增长瓶颈，启示分行加强财富管理和中间业务产品创新，培育可持续收入来源。",
         "importance": 2,
-        "rank": 176,
+        "rank": 161,
         "tags": [],
         "locale": "national"
       },
@@ -2574,7 +2419,7 @@
         "date": "08/20",
         "summary": "招联等持牌消金上半年指标下滑，显示消费金融行业承压，提示分行关注联合贷资产质量与消费信贷需求变化，慎控风险。",
         "importance": 2,
-        "rank": 177,
+        "rank": 162,
         "tags": [
           "信贷"
         ],
@@ -2588,7 +2433,7 @@
         "date": "08/20",
         "summary": "银行理财7月榜单显示AI主题产品热度起伏，启示分行关注市场热点，优化产品货架和营销策略，提升理财产品吸引力。",
         "importance": 2,
-        "rank": 178,
+        "rank": 163,
         "tags": [
           "财富"
         ],
@@ -2602,7 +2447,7 @@
         "date": "08/20",
         "summary": "南京银行以资产+负债两端稳息差、以财富管理与托管修复非息，零售加速财富转型；同业打法可作分行对标参考。",
         "importance": 2,
-        "rank": 179,
+        "rank": 164,
         "tags": [
           "财富"
         ],
@@ -2616,7 +2461,7 @@
         "date": "08/19",
         "summary": "美国财政部意外债券操作压低美债收益率，金价逼近4500美元/盎司；黄金强势延续，分行财富业务可关注贵金属配置热度，并向客户提示高位波动风险。",
         "importance": 2,
-        "rank": 180,
+        "rank": 165,
         "tags": [],
         "locale": "national"
       },
@@ -2628,7 +2473,7 @@
         "date": "08/19",
         "summary": "美国国债首次突破40万亿美元；美债规模创新高推升全球利率与避险需求，分行财富业务可关注黄金等避险资产配置与海外资产风险提示。",
         "importance": 2,
-        "rank": 181,
+        "rank": 166,
         "tags": [],
         "locale": "national"
       },
@@ -2640,7 +2485,7 @@
         "date": "08/19",
         "summary": "债券收益率高企令发达国家财政承压，全球利率中枢抬升；海外利率上行影响理财与信贷定价，分行可关注利率联动下的资产负债配置。",
         "importance": 2,
-        "rank": 182,
+        "rank": 167,
         "tags": [],
         "locale": "national"
       },
@@ -2652,7 +2497,7 @@
         "date": "08/19",
         "summary": "美联储7月FOMC会议纪要公布，利率路径与缩表信号明确，对全球流动性环境与分行资产配置判断有参考。",
         "importance": 2,
-        "rank": 183,
+        "rank": 168,
         "tags": [],
         "locale": "national"
       },
@@ -2664,7 +2509,7 @@
         "date": "08/19",
         "summary": "美国财政部宣布将长期国债回购规模至少扩大一倍以稳定债市；美债利率回落利好黄金等避险资产，分行财富业务可关注贵金属配置窗口与客户海外资产建议。",
         "importance": 2,
-        "rank": 184,
+        "rank": 169,
         "tags": [],
         "locale": "national"
       },
@@ -2676,7 +2521,7 @@
         "date": "08/19",
         "summary": "美国财政部将长期国债回购规模扩大一倍以稳定债市、压低收益率；美债利率回落利好黄金等避险资产，分行财富业务可跟进贵金属与海外固收配置窗口。",
         "importance": 2,
-        "rank": 185,
+        "rank": 170,
         "tags": [],
         "locale": "national"
       },
@@ -2688,7 +2533,7 @@
         "date": "08/19",
         "summary": "美元贬值压力上升，外汇市场波动加大。高净值客户可考虑多币种配置与外汇避险工具，分行需强化汇率风险揭示和产品适配。",
         "importance": 2,
-        "rank": 186,
+        "rank": 171,
         "tags": [],
         "locale": "national"
       },
@@ -2700,7 +2545,7 @@
         "date": "08/19",
         "summary": "国产机器人公司宇树科技IPO首日大涨，显示硬科技资本热度。分行可关注本地智能产业链企业融资需求，挖掘私行客户股权投资与综合服务机会。",
         "importance": 2,
-        "rank": 187,
+        "rank": 172,
         "tags": [],
         "locale": "national"
       },
@@ -2712,7 +2557,7 @@
         "date": "08/19",
         "summary": "美国通胀升温但市场预期不会重演危机；通胀粘性支撑美联储谨慎降息，分行可关注通胀与利率环境对客户资产配置及信贷成本的影响。",
         "importance": 2,
-        "rank": 188,
+        "rank": 173,
         "tags": [],
         "locale": "national"
       },
@@ -2724,7 +2569,7 @@
         "date": "08/19",
         "summary": "住房公积金提取和使用范围拓宽、9月20日起施行，公积金新政利好住房消费，对分行公积金联动业务与房贷有参考。",
         "importance": 2,
-        "rank": 189,
+        "rank": 174,
         "tags": [],
         "locale": "national"
       },
@@ -2736,7 +2581,7 @@
         "date": "08/19",
         "summary": "上市银行首份半年报：平安银行营收、净利重回正增长，同业零售转型样本，对分行零售经营与资产质量有参考。",
         "importance": 2,
-        "rank": 190,
+        "rank": 175,
         "tags": [],
         "locale": "national"
       },
@@ -2748,7 +2593,7 @@
         "date": "08/19",
         "summary": "监管从「罚业务」到「罚机制」整治银行规模情结，一日三张罚单剑指考核指标，分行应检视考核合规与规模质量平衡。",
         "importance": 2,
-        "rank": 191,
+        "rank": 176,
         "tags": [],
         "locale": "national"
       },
@@ -2760,7 +2605,7 @@
         "date": "08/19",
         "summary": "宇树科技上市定价分析：具身智能迎来「定价尺」，机器人产业资本化进程，对科技金融与股权投资参考。",
         "importance": 2,
-        "rank": 192,
+        "rank": 177,
         "tags": [],
         "locale": "national"
       },
@@ -2772,7 +2617,7 @@
         "date": "08/19",
         "summary": "上海金洽会首办校园行、金融活水滴灌高校科创，金融赋能科创活动，对高校客群与科创金融合作有参考。",
         "importance": 2,
-        "rank": 193,
+        "rank": 178,
         "tags": [],
         "locale": "national"
       },
@@ -2784,7 +2629,7 @@
         "date": "08/19",
         "summary": "贵州27家农村中小金融机构同日获批解散，中小银行改革化险提速，对同业格局与区域风险研判有参考。",
         "importance": 2,
-        "rank": 194,
+        "rank": 179,
         "tags": [],
         "locale": "national"
       },
@@ -2796,7 +2641,7 @@
         "date": "08/19",
         "summary": "长鑫、宇树两大IPO下银行系资本布局分工论，银行参与科技股权投资趋势，对分行科技金融与投贷联动参考。",
         "importance": 2,
-        "rank": 195,
+        "rank": 180,
         "tags": [],
         "locale": "national"
       },
@@ -2808,7 +2653,7 @@
         "date": "08/19",
         "summary": "晋商消金增资至10亿元获批，消费金融行业增资赛，对消金竞争格局与分行消费信贷合作有参考。",
         "importance": 2,
-        "rank": 196,
+        "rank": 181,
         "tags": [
           "信贷"
         ],
@@ -2822,7 +2667,7 @@
         "date": "08/19",
         "summary": "上海银行获批收购上银国际100%股权，城商行国际化布局，对同业跨境业务与综合化经营有参考。",
         "importance": 2,
-        "rank": 197,
+        "rank": 182,
         "tags": [],
         "locale": "national"
       },
@@ -2834,7 +2679,7 @@
         "date": "08/19",
         "summary": "央行行长潘功胜会见澳门银行公会代表团，跨境金融合作动向，对分行跨境业务与区域合作有参考。",
         "importance": 2,
-        "rank": 198,
+        "rank": 183,
         "tags": [],
         "locale": "national"
       },
@@ -2846,7 +2691,7 @@
         "date": "08/19",
         "summary": "中澳两国央行续签双边本币互换协议，人民币国际化推进，对跨境人民币业务与外汇配置有参考。",
         "importance": 2,
-        "rank": 199,
+        "rank": 184,
         "tags": [],
         "locale": "national"
       },
@@ -2858,7 +2703,7 @@
         "date": "08/19",
         "summary": "监管支持险资参与南向ETF通、呼吁放松债券ETF，保险资金跨境配置政策动向，对财富端跨境产品布局有参考。",
         "importance": 2,
-        "rank": 200,
+        "rank": 185,
         "tags": [
           "财富"
         ],
@@ -2872,7 +2717,7 @@
         "date": "08/19",
         "summary": "江苏银行零售信贷收缩、对公信贷撑起营收增速，零售信贷需求偏弱，对分行零售信贷经营与结构调整有参考。",
         "importance": 2,
-        "rank": 201,
+        "rank": 186,
         "tags": [
           "信贷"
         ],
@@ -2886,7 +2731,7 @@
         "date": "08/19",
         "summary": "央行7天期逆回购连续7日零投放、隔夜逆回购补位成核心工具，央行流动性投放方式变化，对资金面判断有参考。",
         "importance": 2,
-        "rank": 202,
+        "rank": 187,
         "tags": [],
         "locale": "national"
       },
@@ -2898,7 +2743,7 @@
         "date": "08/19",
         "summary": "农商行竞逐38万亿私人银行赛道，中小银行私行布局加速，对分行私行业务与财富客群经营有参考。",
         "importance": 2,
-        "rank": 203,
+        "rank": 188,
         "tags": [
           "私行"
         ],
@@ -2912,7 +2757,7 @@
         "date": "08/19",
         "summary": "宇树科技首日暴涨456%、信托自营揽收、理财斩获浮盈，新股赚钱效应强，财富端可关注打新与科技主题配置。",
         "importance": 2,
-        "rank": 204,
+        "rank": 189,
         "tags": [
           "财富"
         ],
@@ -2926,7 +2771,7 @@
         "date": "08/19",
         "summary": "上市期货公司集体业绩高增，期货行业景气上行，对分行同业与期货保证金业务有参考。",
         "importance": 2,
-        "rank": 205,
+        "rank": 190,
         "tags": [],
         "locale": "national"
       },
@@ -2938,7 +2783,7 @@
         "date": "08/19",
         "summary": "新型电网建设发债潮涌、单月融资近500亿，电力行业融资活跃，对分行对公与债券承销业务有参考。",
         "importance": 2,
-        "rank": 206,
+        "rank": 191,
         "tags": [],
         "locale": "national"
       },
@@ -2950,7 +2795,7 @@
         "date": "08/19",
         "summary": "债市收盘：长端利率显著回调、10年国债上行1BP，债市波动加大，对固收类理财净值与配置建议有参考。",
         "importance": 2,
-        "rank": 207,
+        "rank": 192,
         "tags": [],
         "locale": "national"
       },
@@ -2962,7 +2807,7 @@
         "date": "08/19",
         "summary": "美债冲击波及亚洲科技股、AI债务风险再引关注，美债利率上行外溢，对全球资产配置与科技股风险提示有参考。",
         "importance": 2,
-        "rank": 208,
+        "rank": 193,
         "tags": [],
         "locale": "national"
       },
@@ -2974,7 +2819,7 @@
         "date": "08/19",
         "summary": "美债又将迎「大考」，美债拍卖与利率波动前瞻，对全球利率环境与避险配置判断有参考。",
         "importance": 2,
-        "rank": 209,
+        "rank": 194,
         "tags": [],
         "locale": "national"
       },
@@ -2986,7 +2831,7 @@
         "date": "08/19",
         "summary": "基金投顾申报冲刺、20多家券商等拿业务牌照，基金投顾扩容提速，对分行财富管理与投顾业务布局有参考。",
         "importance": 2,
-        "rank": 210,
+        "rank": 195,
         "tags": [
           "财富"
         ],
@@ -3000,7 +2845,7 @@
         "date": "08/19",
         "summary": "美债抛售恐慌外溢、AI牛股齐跌，全球风险资产波动加大，财富端应提示客户控制权益仓位与回撤风险。",
         "importance": 2,
-        "rank": 211,
+        "rank": 196,
         "tags": [],
         "locale": "national"
       },
@@ -3012,7 +2857,7 @@
         "date": "08/19",
         "summary": "债市早参：公积金可购政策性金融债、30年美债利率破5.3%创新高，债市与公积金政策动态，对财富配置有参考。",
         "importance": 2,
-        "rank": 212,
+        "rank": 197,
         "tags": [],
         "locale": "national"
       },
@@ -3024,7 +2869,7 @@
         "date": "08/18",
         "summary": "经济学人指股指集中度升高、与实体经济脱节；权益市场结构性分化，分行财富业务可提示客户关注指数化投资与主动管理差异。",
         "importance": 2,
-        "rank": 213,
+        "rank": 198,
         "tags": [],
         "locale": "national"
       },
@@ -3036,7 +2881,7 @@
         "date": "08/18",
         "summary": "宇树科技上市首日一度大涨600%，机器人赛道受资本热捧；科技股打新与权益配置热度升温，分行财富业务可关注客户对新兴赛道权益类产品的兴趣。",
         "importance": 2,
-        "rank": 214,
+        "rank": 199,
         "tags": [],
         "locale": "national"
       },
@@ -3048,7 +2893,7 @@
         "date": "08/18",
         "summary": "中国开始放行英伟达H200芯片，AI算力供给边际改善；算力产业催化下，分行可关注科技企业信贷与客户权益配置中的AI主题机会。",
         "importance": 2,
-        "rank": 215,
+        "rank": 200,
         "tags": [],
         "locale": "national"
       },
@@ -3060,7 +2905,7 @@
         "date": "08/18",
         "summary": "美伊停火到期后地缘紧张推升油价，通胀预期再起；油价上行影响通胀与利率路径，分行可关注大宗商品相关理财与贵金属配置。",
         "importance": 2,
-        "rank": 216,
+        "rank": 201,
         "tags": [],
         "locale": "national"
       },
@@ -3072,7 +2917,7 @@
         "date": "08/18",
         "summary": "发达经济体政府借款成本升至数十年高位；全球利率上行背景下，分行财富业务可关注固收类产品配置与客户风险偏好变化。",
         "importance": 2,
-        "rank": 217,
+        "rank": 202,
         "tags": [],
         "locale": "national"
       },
@@ -3084,7 +2929,7 @@
         "date": "08/18",
         "summary": "国务院部署及时谋划出台增量政策，宏观政策发力信号明确，对分行把握信贷投放与经营环境有参考。",
         "importance": 2,
-        "rank": 218,
+        "rank": 203,
         "tags": [],
         "locale": "national"
       },
@@ -3096,7 +2941,7 @@
         "date": "08/18",
         "summary": "险企起诉代理人追讨百万佣金，保险销售进入「责任绑定」时代，分行代销保险业务需强化销售合规与责任追溯。",
         "importance": 2,
-        "rank": 219,
+        "rank": 204,
         "tags": [
           "财富"
         ],
@@ -3110,7 +2955,7 @@
         "date": "08/18",
         "summary": "国务院修改《住房公积金管理条例》，公积金制度调整影响住房金融，对分行公积金业务与住房信贷有直接参考。",
         "importance": 2,
-        "rank": 220,
+        "rank": 205,
         "tags": [],
         "locale": "national"
       },
@@ -3122,7 +2967,7 @@
         "date": "08/18",
         "summary": "梅卡曼德成为首家自雄安申报并通过港交所聆讯的企业，机器人企业IPO进展，对科技产业客群与IPO金融参考。",
         "importance": 2,
-        "rank": 221,
+        "rank": 206,
         "tags": [],
         "locale": "national"
       },
@@ -3134,7 +2979,7 @@
         "date": "08/18",
         "summary": "银行「规模情结」迎监管重拳，考核导向向质量转变，分行应优化考核体系、平衡规模与效益。",
         "importance": 2,
-        "rank": 222,
+        "rank": 207,
         "tags": [],
         "locale": "national"
       },
@@ -3146,7 +2991,7 @@
         "date": "08/18",
         "summary": "五年期大额存单回归、中小银行上调存款利率打响留客战，存款竞争加剧，分行应关注负债端定价与客户留存。",
         "importance": 2,
-        "rank": 223,
+        "rank": 208,
         "tags": [
           "财富"
         ],
@@ -3160,7 +3005,7 @@
         "date": "08/18",
         "summary": "提前还贷挤压信贷，前7个月居民贷款同比多减1.5万亿，居民信贷需求偏弱，分行应加强按揭与消费贷获客。",
         "importance": 2,
-        "rank": 224,
+        "rank": 209,
         "tags": [
           "信贷"
         ],
@@ -3174,7 +3019,7 @@
         "date": "08/18",
         "summary": "小贷公司利率上限降至12%，普惠金融竞争加剧，对分行普惠小微定价与客群经营有参考。",
         "importance": 2,
-        "rank": 225,
+        "rank": 210,
         "tags": [
           "信贷"
         ],
@@ -3188,7 +3033,7 @@
         "date": "08/18",
         "summary": "南海农商行7300万股寻买家、IPO之路添变数，广东本地农商行股权动态，对区域同业与股权合作有参考。",
         "importance": 2,
-        "rank": 226,
+        "rank": 211,
         "tags": [],
         "locale": "national"
       },
@@ -3200,7 +3045,7 @@
         "date": "08/18",
         "summary": "南京银行上半年净息差再降3BP、利息净收入却大增，同业资产负债经营样本，对分行定价与中收策略有借鉴。",
         "importance": 2,
-        "rank": 227,
+        "rank": 212,
         "tags": [],
         "locale": "national"
       },
@@ -3212,7 +3057,7 @@
         "date": "08/18",
         "summary": "8000亿东莞农商银行迎来首位女行长谢丹，广东本地农商行人事与经营动态，对区域同业竞争格局有参考。",
         "importance": 2,
-        "rank": 228,
+        "rank": 213,
         "tags": [],
         "locale": "national"
       },
@@ -3224,7 +3069,7 @@
         "date": "08/18",
         "summary": "平安银行「追回」增长但快速增长短期难再现，同业零售转型深度样本，对分行零售增速预期与策略有参考。",
         "importance": 2,
-        "rank": 229,
+        "rank": 214,
         "tags": [],
         "locale": "national"
       },
@@ -3236,7 +3081,7 @@
         "date": "08/18",
         "summary": "银行业务口社招要求熟悉AI，银行数字化人才需求上升，对分行人才结构与数字化能力建设有参考。",
         "importance": 2,
-        "rank": 230,
+        "rank": 215,
         "tags": [],
         "locale": "national"
       },
@@ -3248,7 +3093,7 @@
         "date": "08/18",
         "summary": "汇丰启动存量排查、内地投资客户面临合规限制，跨境财富管理合规趋严，分行跨境业务应强化合规审查。",
         "importance": 2,
-        "rank": 231,
+        "rank": 216,
         "tags": [
           "财富"
         ],
@@ -3262,7 +3107,7 @@
         "date": "08/18",
         "summary": "廊坊金融监管分局行政处罚信息公开，监管处罚案例，分行可对照检视合规薄弱环节。",
         "importance": 2,
-        "rank": 232,
+        "rank": 217,
         "tags": [],
         "locale": "national"
       },
@@ -3274,7 +3119,7 @@
         "date": "08/18",
         "summary": "债市多头延续、10年国债期货创历史新高，债市强势延续，对固收类理财与债券配置建议有参考。",
         "importance": 2,
-        "rank": 233,
+        "rank": 218,
         "tags": [],
         "locale": "national"
       },
@@ -3286,7 +3131,7 @@
         "date": "08/18",
         "summary": "10余家银行系机构扎堆理财节、3家理财子首入券商IP，财富营销节点密集，分行可借鉴理财节营销打法。",
         "importance": 2,
-        "rank": 234,
+        "rank": 219,
         "tags": [
           "财富"
         ],
@@ -3300,7 +3145,7 @@
         "date": "08/18",
         "summary": "大行由卖转买、保险增配近千亿、基金久期高企，长端利率逼空行情下配置力量解析，对债市研判有参考。",
         "importance": 2,
-        "rank": 235,
+        "rank": 220,
         "tags": [],
         "locale": "national"
       },
@@ -3312,7 +3157,7 @@
         "date": "08/18",
         "summary": "30年美债利率破5.3%、南向通险资首单锚定离岸人民币资产，跨境配置动态，对财富端离岸资产配置有参考。",
         "importance": 2,
-        "rank": 236,
+        "rank": 221,
         "tags": [],
         "locale": "national"
       },
@@ -3324,7 +3169,7 @@
         "date": "08/18",
         "summary": "债市收盘：市场继续升温、10年国债收益率接近1.66%，债市强势，对固收理财净值与配置建议有参考。",
         "importance": 2,
-        "rank": 237,
+        "rank": 222,
         "tags": [],
         "locale": "national"
       },
@@ -3336,7 +3181,7 @@
         "date": "08/18",
         "summary": "陆家嘴金融沙龙：政银保担协同重构农村信用体系，普惠金融协同模式，对分行农村金融与信用体系建设有参考。",
         "importance": 2,
-        "rank": 238,
+        "rank": 223,
         "tags": [],
         "locale": "national"
       },
@@ -3348,7 +3193,7 @@
         "date": "08/18",
         "summary": "G10长债全崩、全球债市利率飙升，全球债券市场剧烈波动，对海外资产配置与风险提示有参考。",
         "importance": 2,
-        "rank": 239,
+        "rank": 224,
         "tags": [],
         "locale": "national"
       },
@@ -3360,7 +3205,7 @@
         "date": "08/18",
         "summary": "汇车退债3.54亿元回售本息无法兑付，信用债违约案例，财富端应关注债券基金底层信用风险。",
         "importance": 2,
-        "rank": 240,
+        "rank": 225,
         "tags": [],
         "locale": "national"
       },
@@ -3372,7 +3217,7 @@
         "date": "08/18",
         "summary": "数据中心靠高收益率债券吸金，产业债定价与风险探讨，对债券投资风险识别有参考。",
         "importance": 2,
-        "rank": 241,
+        "rank": 226,
         "tags": [],
         "locale": "national"
       },
@@ -3384,7 +3229,7 @@
         "date": "08/18",
         "summary": "美国前三大海外债主6月美债持仓齐降、日本减持最大，美债需求格局变化，对美元资产配置有参考。",
         "importance": 2,
-        "rank": 242,
+        "rank": 227,
         "tags": [],
         "locale": "national"
       },
@@ -3396,7 +3241,7 @@
         "date": "08/18",
         "summary": "华瑞银行数字化普惠激活「两司两员」金融活水，同业普惠数字化样本，对分行普惠金融与数字化经营有参考。",
         "importance": 2,
-        "rank": 243,
+        "rank": 228,
         "tags": [],
         "locale": "national"
       },
@@ -3408,7 +3253,7 @@
         "date": "08/18",
         "summary": "美债抛售潮加剧、30年期美债收益率创2007年以来最高，全球利率大幅上行，对海外配置与避险建议有参考。",
         "importance": 2,
-        "rank": 244,
+        "rank": 229,
         "tags": [],
         "locale": "national"
       },
@@ -3420,7 +3265,7 @@
         "date": "08/18",
         "summary": "债市早参：国债做市支持操作、分红险崛起险资配债逻辑生变，债市与保险配置动态，对财富配置有参考。",
         "importance": 2,
-        "rank": 245,
+        "rank": 230,
         "tags": [
           "财富"
         ],
@@ -3539,19 +3384,6 @@
     ],
     "ipo": [
       {
-        "url": "https://www.bse.cn/disclosure/2026/2026-08-21/d317ce67b1754d3fa57fba09ba85322d.pdf",
-        "title_cn": "凯华材料 (920526)",
-        "title_orig": "",
-        "source": "北交所IPO公告",
-        "source_type": "media",
-        "date": "08/21",
-        "summary": "北交所公告 | [临时公告]凯华材料:关于参加天津辖区上市公司2026年投资者网上集体接待日活动暨半年报业绩说明会预告公告 | 日期: 2026-08-21",
-        "importance": 2,
-        "rank": 1,
-        "tags": [],
-        "locale": "national"
-      },
-      {
         "url": "https://data.10jqka.com.cn/ipo/search/?keyword=%E6%B7%B1%E5%9C%B3%E5%B8%82%E8%89%BA%E6%84%9F%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8",
         "title_cn": "深圳市艺感科技股份有限公司 [创业板] (预先披露更新)",
         "source": "广东本地爬虫",
@@ -3559,7 +3391,7 @@
         "date": "08/21",
         "summary": "深圳艺感科技创业板IPO预先披露更新，募资9.51亿；广东本地拟上市企业梯队扩充，分行可前置介入上市辅导与募资账户服务。",
         "importance": 2,
-        "rank": 2,
+        "rank": 1,
         "tags": [],
         "locale": "national"
       },
@@ -3571,7 +3403,7 @@
         "date": "08/20",
         "summary": "中信股份（00267.HK）发布2026年中期业绩公告，香港上市中资企业动态，可关注其金融板块业绩对行业参考。",
         "importance": 2,
-        "rank": 3,
+        "rank": 2,
         "tags": [],
         "locale": "national"
       },
@@ -3583,7 +3415,7 @@
         "date": "08/20",
         "summary": "中国平安（02318.HK）发布未经审计中期业绩公告，综合金融龙头业绩，对保险银行板块与财富配置参考。",
         "importance": 2,
-        "rank": 4,
+        "rank": 3,
         "tags": [],
         "locale": "national"
       },
@@ -3595,7 +3427,7 @@
         "date": "08/20",
         "summary": "格林国际控股（00195.HK）取消上市地位公告，港股退市动态，提示港股风险与投资者保护，可作风险教育素材。",
         "importance": 2,
-        "rank": 5,
+        "rank": 4,
         "tags": [],
         "locale": "national"
       },
@@ -3607,7 +3439,7 @@
         "date": "08/20",
         "summary": "协昌科技上市前股份流通核查意见披露，广东企业IPO进程推进，分行可关注其募资与结算合作机会。",
         "importance": 2,
-        "rank": 6,
+        "rank": 5,
         "tags": [],
         "locale": "national"
       },
@@ -3619,7 +3451,7 @@
         "date": "08/20",
         "summary": "千岸科技（920065）变更注册资本及修订章程，公司治理动态，提示广东企业上市后持续综合服务需求。",
         "importance": 2,
-        "rank": 7,
+        "rank": 6,
         "tags": [],
         "locale": "national"
       },
@@ -3631,7 +3463,7 @@
         "date": "08/20",
         "summary": "中诚咨询（920003）变更注册资本及修订章程公告，公司治理动态，提示广东企业上市后持续综合服务需求。",
         "importance": 2,
-        "rank": 8,
+        "rank": 7,
         "tags": [],
         "locale": "national"
       },
@@ -3643,7 +3475,7 @@
         "date": "08/20",
         "summary": "TONTINE WINES(00389)公告终止配售协议；港股公司资本运作动态，反映再融资市场变化，供关注港股融资环境参考。",
         "importance": 2,
-        "rank": 9,
+        "rank": 8,
         "tags": [],
         "locale": "national"
       },
@@ -3655,7 +3487,7 @@
         "date": "08/20",
         "summary": "远景绿色(01783)公告完成配售现有股份；港股再融资落地，体现机构配置动向，可关注新能源板块港股融资活跃度。",
         "importance": 2,
-        "rank": 10,
+        "rank": 9,
         "tags": [],
         "locale": "national"
       },
@@ -3667,7 +3499,7 @@
         "date": "08/20",
         "summary": "WECON HOLDINGS(01793)发布规则3.7条公告；港股公司重大事项披露、涉并购交易进展，供关注港股资本运作参考。",
         "importance": 2,
-        "rank": 11,
+        "rank": 10,
         "tags": [],
         "locale": "national"
       },
@@ -3679,7 +3511,7 @@
         "date": "08/20",
         "summary": "浩富期货(03678)公布2026年第二次股东特别大会投票结果；港股公司治理常规披露，反映股东结构动态。",
         "importance": 2,
-        "rank": 12,
+        "rank": 11,
         "tags": [],
         "locale": "national"
       },
@@ -3691,7 +3523,7 @@
         "date": "08/20",
         "summary": "北交所公司珈凯生物(920165)披露公告；北交所挂牌公司动态，供广东地区IPO与北交所投资参考。",
         "importance": 2,
-        "rank": 13,
+        "rank": 12,
         "tags": [],
         "locale": "national"
       },
@@ -3703,7 +3535,7 @@
         "date": "08/19",
         "summary": "高凯技术（688835）公告披露，科创板公司动态，广东科技企业资本运作，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 14,
+        "rank": 13,
         "tags": [],
         "locale": "national"
       },
@@ -3715,7 +3547,7 @@
         "date": "08/19",
         "summary": "马矿股份（601123）公告披露，沪市公司动态，可关注其公司金融与结算合作机会。",
         "importance": 2,
-        "rank": 15,
+        "rank": 14,
         "tags": [],
         "locale": "national"
       },
@@ -3727,7 +3559,7 @@
         "date": "08/19",
         "summary": "电科思仪（301689）公告披露，深市公司动态，可关注其资本运作与金融服务需求。",
         "importance": 2,
-        "rank": 16,
+        "rank": 15,
         "tags": [],
         "locale": "national"
       },
@@ -3739,7 +3571,7 @@
         "date": "08/19",
         "summary": "贝特利（301697）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 17,
+        "rank": 16,
         "tags": [],
         "locale": "national"
       },
@@ -3751,7 +3583,7 @@
         "date": "08/19",
         "summary": "真兰仪表（301303）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 18,
+        "rank": 17,
         "tags": [],
         "locale": "national"
       },
@@ -3763,7 +3595,7 @@
         "date": "08/18",
         "summary": "甘李药业（603087）公告披露，生物医药上市公司动态，可关注医药行业客群金融服务需求。",
         "importance": 2,
-        "rank": 19,
+        "rank": 18,
         "tags": [],
         "locale": "national"
       },
@@ -3775,7 +3607,7 @@
         "date": "08/18",
         "summary": "绿控传动（301655）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 20,
+        "rank": 19,
         "tags": [],
         "locale": "national"
       },
@@ -3787,7 +3619,7 @@
         "date": "08/18",
         "summary": "英特科技（301399）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 21,
+        "rank": 20,
         "tags": [],
         "locale": "national"
       },
@@ -3799,7 +3631,7 @@
         "date": "08/18",
         "summary": "波长光电（301421）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 22,
+        "rank": 21,
         "tags": [],
         "locale": "national"
       },
@@ -3811,7 +3643,7 @@
         "date": "08/18",
         "summary": "和泰机电（001225）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 23,
+        "rank": 22,
         "tags": [],
         "locale": "national"
       },
@@ -3823,7 +3655,7 @@
         "date": "08/18",
         "summary": "格林生物（301688）公告披露，深市公司动态，可关注其金融服务需求。",
         "importance": 2,
-        "rank": 24,
+        "rank": 23,
         "tags": [],
         "locale": "national"
       }
@@ -3865,17 +3697,17 @@
         "currency": "CNY",
         "exchangeName": "SHH",
         "currentPrice": 4618.895,
-        "pct1Day": 1.9826212803337715,
-        "pct5Day": -1.6289391853569395,
+        "pct1Day": 0,
+        "pct5Day": 0,
         "pct52WeekHigh": -0.21828691059481561,
-        "pct52WeekLow": 33.554290373694506,
-        "sma20": 4822.125732421875,
-        "sma50": 4855.11689453125,
-        "sma200": 4694.4800708007815,
-        "rsi14": 40.775983211647045,
-        "macd": -59.586806109734425,
-        "macdSignal": -30.18018211181346,
-        "macdHistogram": -29.406623997920967,
+        "pct52WeekLow": 0.865517440402566,
+        "sma20": null,
+        "sma50": null,
+        "sma200": null,
+        "rsi14": null,
+        "macd": null,
+        "macdSignal": null,
+        "macdHistogram": null,
         "trend": "neutral",
         "rsiState": "normal",
         "signals": [
@@ -3926,18 +3758,18 @@
         "group": "commodity-fx",
         "currency": "USD",
         "exchangeName": "CMX",
-        "currentPrice": 4642.5,
-        "pct1Day": 2.7943272318085683,
-        "pct5Day": 5.9834741918429035,
-        "pct52WeekHigh": -16.893415917797427,
-        "pct52WeekLow": 38.6069146712844,
-        "sma20": 4279.099963378906,
-        "sma50": 4176.3119921875,
-        "sma200": 4498.761987304688,
-        "rsi14": 74.349175515427,
-        "macd": 106.23829737022879,
-        "macdSignal": 70.60743684856763,
-        "macdHistogram": 35.63086052166116,
+        "currentPrice": 4652,
+        "pct1Day": 3.0046764205435563,
+        "pct5Day": 6.200349367895139,
+        "pct52WeekHigh": -16.723353979449353,
+        "pct52WeekLow": 38.89054756075715,
+        "sma20": 4279.574963378906,
+        "sma50": 4176.5019921875,
+        "sma200": 4498.8094873046875,
+        "rsi14": 74.66551445722459,
+        "macd": 106.99613212806435,
+        "macdSignal": 70.75900380013474,
+        "macdHistogram": 36.23712832792961,
         "trend": "neutral",
         "rsiState": "overbought",
         "signals": [
@@ -3953,18 +3785,18 @@
         "group": "commodity-fx",
         "currency": "USD",
         "exchangeName": "NYM",
-        "currentPrice": 87.1,
-        "pct1Day": -0.8311531547715181,
-        "pct5Day": 5.703881537726653,
-        "pct52WeekHigh": -27.100770003347847,
-        "pct52WeekLow": 58.42124408875955,
-        "sma20": 82.1919994354248,
-        "sma50": 79.09299987792969,
-        "sma200": 77.4720998764038,
-        "rsi14": 59.17473903528703,
-        "macd": 1.499645240650338,
-        "macdSignal": 0.8259733466995919,
-        "macdHistogram": 0.6736718939507461,
+        "currentPrice": 87.18,
+        "pct1Day": -0.7400681060043596,
+        "pct5Day": 5.800968914569586,
+        "pct52WeekHigh": -27.03381319049213,
+        "pct52WeekLow": 58.56675154601676,
+        "sma20": 82.19599952697754,
+        "sma50": 79.09459991455078,
+        "sma200": 77.47249988555909,
+        "rsi14": 59.35378648503506,
+        "macd": 1.50602715309914,
+        "macdSignal": 0.8272497291893524,
+        "macdHistogram": 0.6787774239097877,
         "trend": "bullish",
         "rsiState": "normal",
         "signals": [
@@ -4011,18 +3843,18 @@
         "group": "macro",
         "currency": "USD",
         "exchangeName": "CXI",
-        "currentPrice": 15.74,
-        "pct1Day": -1.6864473767761652,
-        "pct5Day": 10.456140350877194,
-        "pct52WeekHigh": -55.410764872521234,
-        "pct52WeekLow": 17.638266068759336,
-        "sma20": 16.033999919891357,
-        "sma50": 16.774199924468995,
-        "sma200": 18.48105004310608,
-        "rsi14": 48.442747159152304,
-        "macd": -0.4882856155021891,
-        "macdSignal": -0.5516841031651755,
-        "macdHistogram": 0.06339848766298639,
+        "currentPrice": 15.67,
+        "pct1Day": -2.1236741038171876,
+        "pct5Day": 9.964912280701753,
+        "pct52WeekHigh": -55.60906515580736,
+        "pct52WeekLow": 17.115097159940202,
+        "sma20": 16.030499935150146,
+        "sma50": 16.77279993057251,
+        "sma200": 18.48070004463196,
+        "rsi14": 48.13655405985534,
+        "macd": -0.4938696367417279,
+        "macdSignal": -0.5528009074130832,
+        "macdHistogram": 0.058931270671355285,
         "trend": "bearish",
         "rsiState": "normal",
         "signals": [
@@ -4074,6 +3906,6 @@
         ]
       }
     ],
-    "generated_at": "2026-08-21T10:29:23.476Z"
+    "generated_at": "2026-08-21T11:28:17.440Z"
   }
 }
