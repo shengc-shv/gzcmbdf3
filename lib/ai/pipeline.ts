@@ -41,61 +41,85 @@ function categoryToSection(cat?: string): ReportSectionKey {
 }
 
 /**
- * SKIP_AI 确定性降级 runner：不调用任何 LLM，纯靠输入池字段构造合法 JSON。
- * - PASS1（条目含 raw_text/category）：全部 keep，按原始 category 启发式归板块。
- * - PASS2（条目含 section）：照抄字段，summary 取 raw_text 前 90 字，importance=2。
- * 使 SKIP_AI 模式（CI 失败恢复 / 预分析取全量）仍能产出可读报告。
+ * SKIP_AI 确定性降级 runner 工厂：不调用任何 LLM，纯靠输入池字段构造合法 JSON。
+ * - PASS1（提示为裸数组、元素含 category 无 section）：全部 keep，按原始 category 启发式归板块。
+ * - PASS2（提示为裸数组、元素含 section + raw_text）：照抄字段；
+ *   summary 优先取 cache（预分析回填的 article-history.json 摘要），否则取 raw_text 前 90 字；
+ *   importance 恒 2。
+ * 使 SKIP_AI 模式（CI 失败恢复 / 预分析取全量 / 用户本地预览）仍能产出可读报告。
+ *
+ * @param cache url→已分析摘要（来自 data/article-history.json / ai-assets）。
+ *             使「预加载分析报告」后 SKIP_AI 重跑能直接展示预填解读，零重复 AI。
+ *
+ * 注意：runPass1 / runPass2 把文章/保留条目以**裸 JSON 数组**注入提示（见 buildPass1User/
+ * buildPass2User 的 __ARTICLES_JSON__ / __ITEMS_JSON__），因此此处必须抽取「第一个平衡
+ * JSON 数组」并按 `section` 字段区分两阶段，不能用 parsed.items（裸数组无 items 键）。
  */
-export const skipAiRunner: LlmRunner = async (_system, userPrompt) => {
-  let parsed: any = {};
-  try {
-    parsed = JSON.parse(extractJson(userPrompt));
-  } catch {
-    parsed = {};
-  }
-  const items: any[] = Array.isArray(parsed?.items) ? parsed.items : [];
-  const isPass2 = items.length > 0 && items[0]?.section !== undefined;
-  if (!isPass2) {
-    return JSON.stringify({
-      items: items.map((it) => ({
+export function makeSkipAiRunner(cache: Map<string, string> = new Map()): LlmRunner {
+  return async (_system, userPrompt) => {
+    let arr: any[] = [];
+    try {
+      const parsed = JSON.parse(extractJson(userPrompt));
+      if (Array.isArray(parsed)) arr = parsed;
+      else if (Array.isArray(parsed?.items)) arr = parsed.items;
+    } catch {
+      arr = [];
+    }
+    if (arr.length === 0) {
+      return JSON.stringify({ items: [] });
+    }
+    const isPass2 = arr[0]?.section !== undefined;
+    if (!isPass2) {
+      // PASS1：元素含 category，无 section → 全部 keep，按原始 category 启发式归板块
+      return JSON.stringify({
+        items: arr.map((it: any) => ({
+          url: it.url,
+          keep: true,
+          section: categoryToSection(it.category),
+          source_type: "media",
+          locale: "national",
+          locale_evidence: "",
+          tags: [],
+          title_cn: it.title || "",
+          title_orig: "",
+          importance_candidate: 2,
+        })),
+      });
+    }
+    // PASS2：元素含 section + raw_text → 照抄字段，summary 优先用预填缓存
+    const sections: Record<ReportSectionKey, any[]> = {
+      gz_local: [],
+      biz_insight: [],
+      policy_market: [],
+      tech: [],
+      ipo: [],
+    };
+    for (const it of arr) {
+      const sec: ReportSectionKey = SECTIONS.includes(it.section) ? it.section : "biz_insight";
+      const cached = cache.get(it.url);
+      sections[sec].push({
         url: it.url,
-        keep: true,
-        section: categoryToSection(it.category),
-        source_type: "media",
-        locale: "national",
-        locale_evidence: "",
-        tags: [],
-        title_cn: it.title || "",
-        title_orig: "",
-        importance_candidate: 2,
-      })),
-    });
-  }
-  const sections: Record<ReportSectionKey, any[]> = {
-    gz_local: [],
-    biz_insight: [],
-    policy_market: [],
-    tech: [],
-    ipo: [],
+        title_cn: it.title_cn || "",
+        title_orig: it.title_orig || "",
+        source: it.source || "",
+        source_type: it.source_type || "media",
+        date: it.date || "",
+        summary: cached ?? (it.raw_text || "").slice(0, 90),
+        importance: 2,
+        tags: Array.isArray(it.tags) ? it.tags : [],
+        locale: it.locale || "national",
+        locale_evidence: it.locale_evidence || "",
+      });
+    }
+    // SKIP_AI 无 AI 写 hero_line：用首条标题兜底一条 15~70 字定调，避免 R4 空 hero_line block。
+    const heroTitle = arr[0]?.title_cn || arr[0]?.title_orig || "";
+    const hero_line = heroTitle ? `今日更新 ${arr.length} 条资讯：${heroTitle}`.slice(0, 70) : "";
+    return JSON.stringify({ hero_line, must_read: [], insights: [], sections });
   };
-  for (const it of items) {
-    const sec: ReportSectionKey = SECTIONS.includes(it.section) ? it.section : "biz_insight";
-    sections[sec].push({
-      url: it.url,
-      title_cn: it.title_cn || "",
-      title_orig: it.title_orig || "",
-      source: it.source || "",
-      source_type: it.source_type || "media",
-      date: it.date || "",
-      summary: (it.raw_text || "").slice(0, 90),
-      importance: 2,
-      tags: Array.isArray(it.tags) ? it.tags : [],
-      locale: it.locale || "national",
-      locale_evidence: it.locale_evidence || "",
-    });
-  }
-  return JSON.stringify({ hero_line: "", must_read: [], insights: [], sections });
-};
+}
+
+/** 向后兼容：无缓存的默认 SKIP_AI runner（测试 / 兜底用）。 */
+export const skipAiRunner: LlmRunner = makeSkipAiRunner();
 
 export interface PipelineOptions {
   /** 注入 mock LLM 便于测试。 */

@@ -37,7 +37,7 @@ import {
   type ReportItem,
 } from "../lib/types";
 import { validateBackendCredentials } from "../lib/ai/llm";
-import { generateDaily, skipAiRunner } from "../lib/ai/pipeline";
+import { generateDaily, makeSkipAiRunner } from "../lib/ai/pipeline";
 import type { Pass1Input } from "../lib/ai/pass1";
 import {
   enrichFinanceNewsSummaries,
@@ -491,7 +491,15 @@ async function main() {
   // ===== 新管线：两阶段 AI 生成 + 13 条确定性校验（取代旧 enrich/classify/executive）=====
   const inputs: Pass1Input[] = articles.map(toPass1Input);
   console.log(`[daily] 进入两阶段 AI 管线：${inputs.length} 条（PASS1 筛选 + PASS2 成稿 + 校验回炉/降级）`);
-  const runner = SKIP_AI ? skipAiRunner : undefined;
+
+  // —— 预分析缓存：article-history.json / ai-assets 中已回填的摘要，供 SKIP_AI 重跑直接展示 ——
+  // 使「预加载分析报告」后本地 SKIP_AI 预览能显示预填解读，无需再调 LLM。
+  const summaryCache = new Map<string, string>();
+  for (const url of new Set([...Object.keys(history), ...Object.keys(aiAssets)])) {
+    const s = assetSummary(aiAssets, url) ?? history[url]?.summary;
+    if (s && s.trim()) summaryCache.set(url, s);
+  }
+  const runner = SKIP_AI ? makeSkipAiRunner(summaryCache) : undefined;
   let report: DailyReport;
   try {
     report = await generateDaily(inputs, date, { runner });
