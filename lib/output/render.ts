@@ -1159,7 +1159,7 @@ ${THEME_CSS}
 <main>
   <!-- 报头：今日定调 + 数据截至 -->
   <header class="masthead">
-    <div class="eyebrow">广州分行 · 零售条线每日资信（个人整理，非本行立场）</div>
+    <div class="eyebrow">广州地区 · 零售业务每日资信（个人整理，非本行立场）</div>
     <h1>${zhDate}</h1>
     ${hero ? `<p class="hero-line">今日定调：${escapeHtml(hero)}</p>` : ""}
     <p class="meta-line">数据截至 ${nowHm} · 去重后资讯 ${totalItems} 条 · 商机 ${report.insights?.length ?? 0} 条${process.env.WEB_MODE === "true" ? ` · <a class="archive" href="../archive.html">${STR.archiveLink}</a>` : ""}</p>

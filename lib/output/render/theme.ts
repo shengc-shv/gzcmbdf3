@@ -223,7 +223,9 @@ export const THEME_CSS = `
     font-size: 0.74rem; color: var(--fg-soft); line-height: 1.45; margin-top: 0.2rem;
   }
   @media (min-width: 720px) {
-    .must-scroller { display: grid; grid-template-columns: repeat(5, 1fr); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
+    /* 必读卡片自适应列数：不足 5 条时不再留白撑开（auto-fit 按条数收窄），
+       最多 5 列；避免「执行摘要条数少 → 版面被商机洞察撑大」的失衡。 */
+    .must-scroller { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
     .must-card { width: auto; max-width: none; }
   }
 
@@ -867,9 +869,10 @@ export const THEME_CSS = `
   .must-card strong { font-size: 0.92rem; }
   .must-card .must-why { font-size: 0.85rem; }
 
-  /* 商机洞察默认展开 + tag 中文（#5/#6） */
+  /* 商机洞察默认展开 + tag 中文（#5/#6）：桌面端双列网格压缩高度，
+     避免 5 条洞察单列纵向堆叠把执行摘要区撑高（与必读不足 5 条时一起失衡）。 */
   .exec-insights .insight-collapse { display: block; }
-  .insight-grid { display: flex; flex-direction: column; gap: 0.55rem; }
+  .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.55rem; }
   .insight-card, .insight { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.85rem; }
   .insight h3 { margin: 0.3rem 0 0.35rem; font-size: 0.98rem; line-height: 1.45; }
   .insight p { margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--fg-soft); line-height: 1.6; }
