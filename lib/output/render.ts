@@ -851,7 +851,7 @@ function renderReportExec(report: DailyReport): string {
   const titleMap = resolveTitleMap(report);
   const must = report.must_read
     .map((m, i) => {
-      const title = titleMap.get(m.url) || m.url;
+      const title = m.title || titleMap.get(m.url) || m.url;
       const body = `<strong>${escapeHtml(title)}</strong><span class="must-why">${escapeHtml(m.why)}</span>`;
       const inner = m.url
         ? `<a class="must-body must-link" href="${escapeHtml(m.url)}" target="_blank" rel="noopener">${body}</a>`
@@ -1071,7 +1071,7 @@ export function mergeStoredExecutive(
     if (!m || !m.why || bannedIn(`${m.title} ${m.why}`)) continue;
     const url = m.url || matchUrl(m.title);
     if (!url) continue; // 无法定位到报告内条目 → 丢弃（宁缺毋滥）
-    must.push({ url, why: m.why });
+    must.push({ url, why: m.why, ...(m.title ? { title: m.title } : {}) });
   }
   if (must.length > 0) report.must_read = must;
 

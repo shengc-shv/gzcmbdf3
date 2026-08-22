@@ -74,6 +74,8 @@ export interface ReportInsight {
 export interface ReportMustRead {
   url: string;
   why: string;
+  /** 可选：AI 生成的精炼标题（store.json 携带）。渲染优先用它，缺则按 url 回查 sections 标题，再不行回退 url。 */
+  title?: string;
 }
 
 export interface ReportSections {

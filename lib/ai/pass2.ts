@@ -139,7 +139,7 @@ export async function runPass2(
     ? parsed.must_read
         .filter((x: any) => x && typeof x.url === "string")
         .slice(0, 5)
-        .map((x: any) => ({ url: String(x.url), why: String(x.why ?? "") }))
+        .map((x: any) => ({ url: String(x.url), why: String(x.why ?? ""), ...(x.title ? { title: String(x.title) } : {}) }))
     : [];
 
   return {
