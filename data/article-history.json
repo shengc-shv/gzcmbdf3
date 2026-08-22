@@ -41,20 +41,6 @@
     "summary": "伊朗经济在制裁压力下恶化，属国际时政议题，与银行零售业务无关。",
     "ai_relevant": false
   },
-  "https://www.cnbc.com/2026/08/20/china-defies-global-bond-yield-surge-safe-haven.html": {
-    "title": "China is defying the global bond yield surge, boosting its diversification appeal",
-    "url": "https://www.cnbc.com/2026/08/20/china-defies-global-bond-yield-surge-safe-haven.html",
-    "sourceId": "cnbc-top",
-    "source": "CNBC Top Stories",
-    "category": "finance",
-    "subcategory": "news",
-    "excerpt": "Chinese government bond yields have remained low amid a global surge.",
-    "publishedAt": "2026-08-20T02:39:14.000Z",
-    "firstSeenAt": "2026-08-20T12:26:15.584Z",
-    "lastSeenAt": "2026-08-20T12:26:15.584Z",
-    "summary": "全球债市收益率飙升下中国债市独立走强，人民币资产避险属性凸显，对分行债券投资与跨境配置有参考。",
-    "ai_relevant": true
-  },
   "https://www.infoq.cn/article/LpNjOA7au7WIhTBmVcJo?utm_source=rss&utm_medium=article": {
     "title": "CFP 开放 | KCD 杭州站邀您共议 Agent 时代的云原生、可观测与大模型推理",
     "url": "https://www.infoq.cn/article/LpNjOA7au7WIhTBmVcJo?utm_source=rss&utm_medium=article",
@@ -305,20 +291,6 @@
     "firstSeenAt": "2026-08-20T12:26:15.584Z",
     "lastSeenAt": "2026-08-20T12:26:15.584Z",
     "summary": "十年阅读历程阅读工具推荐，属个人效率工具内容，与银行零售业务无关。",
-    "ai_relevant": false
-  },
-  "https://sspai.com/post/113497": {
-    "title": "「务实且高效」的日系次旗舰：夏普 AQUOS R9 评测",
-    "url": "https://sspai.com/post/113497",
-    "sourceId": "sspai",
-    "source": "少数派",
-    "category": "tech",
-    "subcategory": "cn-tech",
-    "excerpt": "在 R9 身上，我竟依稀能感到夏普正在谋求一种仰望星空和脚踏实地间的精妙平衡。查看全文",
-    "publishedAt": "2026-08-20T02:41:31.000Z",
-    "firstSeenAt": "2026-08-20T12:26:15.584Z",
-    "lastSeenAt": "2026-08-20T12:26:15.584Z",
-    "summary": "夏普AQUOS R9手机评测，属数码测评内容，与银行零售业务无关。",
     "ai_relevant": false
   },
   "https://www.ft.com/content/91e95fcd-00ac-45d0-a4cf-a28a941f8a2c?syn-25a6b1a6=1": {
@@ -8404,5 +8376,160 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T02:38:50.665Z",
     "lastSeenAt": "2026-08-22T02:38:50.665Z"
+  },
+  "https://finance.yahoo.com/technology/ai/articles/coatue-management-opens-position-amd-214733476.html": {
+    "title": "Coatue Management Opens New Position in AMD Stock. View This as a Renewed Bet on the AI Trade.",
+    "url": "https://finance.yahoo.com/technology/ai/articles/coatue-management-opens-position-amd-214733476.html",
+    "sourceId": "yahoo-finance",
+    "source": "Yahoo Finance",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "",
+    "publishedAt": "2026-08-20T21:47:33.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://finance.sina.com.cn/wm/2026-08-22/doc-inipeccv7592475.shtml": {
+    "title": "金价、银价、油价，集体上涨",
+    "url": "https://finance.sina.com.cn/wm/2026-08-22/doc-inipeccv7592475.shtml",
+    "sourceId": "sina-finance",
+    "source": "新浪财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://finance.sina.com.cn/roll/2026-08-22/doc-inipeccv7596649.shtml": {
+    "title": "桥水基金达利欧预警：美国债务危机3年左右将到来，最快1年，建议抛美债增配黄金",
+    "url": "https://finance.sina.com.cn/roll/2026-08-22/doc-inipeccv7596649.shtml",
+    "sourceId": "sina-money",
+    "source": "新浪财经·理财保险",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【财富管理】桥水基金达利欧预警：美国债务危机3年左右将到来，最快1年，建议抛美债增配黄金",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://finance.sina.com.cn/stock/bxjj/2026-08-22/doc-inipeccr6130357.shtml": {
+    "title": "贝森特“止痛药”失效！达里欧预警美债危机：卖债券、买黄金比特币",
+    "url": "https://finance.sina.com.cn/stock/bxjj/2026-08-22/doc-inipeccr6130357.shtml",
+    "sourceId": "sina-money",
+    "source": "新浪财经·理财保险",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【财富管理】贝森特“止痛药”失效！达里欧预警美债危机：卖债券、买黄金比特币",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1307486.shtml": {
+    "title": "宏利基金：李辉接替丁闻聪出任总经理",
+    "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1307486.shtml",
+    "sourceId": "sina-money",
+    "source": "新浪财经·理财保险",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【财富管理】宏利基金：李辉接替丁闻聪出任总经理",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.infoq.cn/article/fPGPEF2hwCKtz3PTg69C?utm_source=rss&utm_medium=article": {
+    "title": "npm 终于动手了：默认封杀 postinstall 脚本",
+    "url": "https://www.infoq.cn/article/fPGPEF2hwCKtz3PTg69C?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-22T11:05:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260822/4458976_1.html": {
+    "title": "伊朗外交部：美国对伊朗实施新制裁毫无国际法依据",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458976_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260822/4458975_1.html": {
+    "title": "【财经分析】意大利暑期旅游热度不减 高温与成本或重塑出行选择",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458975_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.stcn.com/article/detail/4102426.html": {
+    "title": "5A新国标构建建陶量化评价体系 东鹏控股率先推动标准产业化落地",
+    "url": "https://www.stcn.com/article/detail/4102426.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.stcn.com/article/detail/4102449.html": {
+    "title": "加速矿山智能化建设 梅安森拟1.65亿元控股华洋通信",
+    "url": "https://www.stcn.com/article/detail/4102449.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.stcn.com/article/detail/4102446.html": {
+    "title": "复宏汉霖上半年营收35.9亿元，获纳入恒生综合指数，有望纳入港股通",
+    "url": "https://www.stcn.com/article/detail/4102446.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.gd.chinanews.com.cn/2026/2026-08-22/449248.shtml": {
+    "title": "广外青年赴粤东乡村 解陆河服装产业富民密码",
+    "url": "https://www.gd.chinanews.com.cn/2026/2026-08-22/449248.shtml",
+    "sourceId": "chinanews-gd",
+    "source": "中新网·广东",
+    "category": "gz",
+    "subcategory": "gz-media",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.gd.chinanews.com.cn/2026/2026-08-22/449252.shtml": {
+    "title": "百里瑶乡抢农时 广东连南“三夏”有序推进",
+    "url": "https://www.gd.chinanews.com.cn/2026/2026-08-22/449252.shtml",
+    "sourceId": "chinanews-gd",
+    "source": "中新网·广东",
+    "category": "gz",
+    "subcategory": "gz-media",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:09:34.422Z",
+    "lastSeenAt": "2026-08-22T03:09:34.422Z"
   }
 }
