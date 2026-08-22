@@ -1308,11 +1308,18 @@ ${THEME_CSS}
   function applyFilter(panel, bar) {
     var chips = bar.querySelectorAll('.filter-chip');
     var active = Array.prototype.filter.call(chips, function (c) { return c.classList.contains('active'); });
-    // 全不选（重置）或全选 → 全部显示
+    var btn = panel.querySelector('.expand-btn');
+    // 全不选（重置）或全选 → 全部显示，并恢复「前 5 展示 + 其余折叠」的默认布局
     if (active.length === 0 || active.length === chips.length) {
+      panel.classList.remove('expanded');
+      if (btn) btn.style.display = '';
       panel.querySelectorAll('.brief').forEach(function (card) { card.classList.remove('filtered-out'); });
       return;
     }
+    // 筛选生效：自动展开折叠区——命中项（含原折叠区内）无需再点「展开」即可见，
+    // 与查询结果刷新的预期联动；隐藏展开按钮，避免出现「仍提示折叠 N 条」的错位。
+    panel.classList.add('expanded');
+    if (btn) btn.style.display = 'none';
     // 按维度（data-group）分组收集选中值
     var selByGroup = {};
     active.forEach(function (c) {
