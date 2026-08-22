@@ -8736,16 +8736,12 @@
     },
     {
       "sourceId": "stcn",
-      "source": "证券时报",
       "title": "长存控股来了！金融机构股东图谱浮现：银行系扎堆，多家券商隐现",
       "url": "https://www.stcn.com/article/detail/4102604.html",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "finance",
-      "summary": "",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance"
     }
