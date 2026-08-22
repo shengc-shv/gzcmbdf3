@@ -235,10 +235,37 @@ export function renderSourceTabs(
 }
 
 /**
- * 子标签内统一排序（2026-08-21 用户要求）：
- * ① 时间精度：有真实时分 > 只有日期 > 无发布时间（「只有日期的放最后」）；
- * ② 同精度内按 信息源权威等级（T1 > T1.5 > T2）升序；
- * ③ 同等级内按发布时间倒序（最新在前）。
+ * 部门中文 tag 映射（与 render.ts SUB_TO_TAG 同源，避免跨模块循环依赖）。
+ * 4 大零售部门 = 财富 / 私行 / 客群 / 信贷（2026-08-22 用户口径）。
+ */
+const DEPT_SUB_TO_TAG: Record<string, string> = {
+  "gz-wealth": "财富",
+  "cn-wealth": "财富",
+  "gz-credit": "信贷",
+  "cn-credit": "信贷",
+  "gz-private": "私行",
+  "cn-private": "私行",
+  "gz-customer": "客群",
+  "cn-customer": "客群",
+};
+
+/** 是否命中 4 大零售部门标签（subcategory 映射）。 */
+export function hasDeptTag(a: ArticleInput): boolean {
+  const subs =
+    a.subcategories && a.subcategories.length > 0
+      ? a.subcategories
+      : a.subcategory
+        ? [a.subcategory]
+        : [];
+  return subs.some((s) => DEPT_SUB_TO_TAG[s] !== undefined);
+}
+
+/**
+ * 子标签内统一排序（2026-08-22 用户：无 4 部门标签的条目排最后，优先展示带标签的）：
+ * ① 4 部门标签命中优先（带标签 > 无标签）；
+ * ② 时间精度：有真实时分 > 只有日期 > 无发布时间（「只有日期的放最后」）；
+ * ③ 同精度内按 信息源权威等级（T1 > T1.5 > T2）升序；
+ * ④ 同等级内按发布时间倒序（最新在前）。
  */
 export function sortByTierAndTime<T extends ArticleInput>(list: T[]): T[] {
   const precision = (a: ArticleInput): number => {
@@ -246,6 +273,9 @@ export function sortByTierAndTime<T extends ArticleInput>(list: T[]): T[] {
     return isDateOnly(a.publishedAt) ? 1 : 0; // 只有日期 → 次沉底
   };
   return [...list].sort((a, b) => {
+    const da = hasDeptTag(a) ? 0 : 1;
+    const db = hasDeptTag(b) ? 0 : 1;
+    if (da !== db) return da - db; // 带标签优先
     const pa = precision(a);
     const pb = precision(b);
     if (pa !== pb) return pa - pb;

@@ -815,10 +815,17 @@ export function renderReportItemHtml(item: ReportItem, showSource = true): strin
 </article>`;
 }
 
+/** 4 大零售部门标签（2026-08-22 用户：无这 4 个标签的条目排最后，优先展示带标签的）。 */
+const DEPT_TAGS = new Set(["财富", "私行", "客群", "信贷"]);
+
 export function renderReportCardList(items: ReportItem[], showSource = true): string {
   if (items.length === 0) return `<p class="empty">${STR.emptySource}</p>`;
-  const top = items.slice(0, 5);
-  const more = items.slice(5);
+  // 稳定排序：带 4 部门零售标签的排前，无标签的沉底（同组内保持原顺序：今日 rank / 时间）。
+  const hasTag = (it: ReportItem): number =>
+    (it.tags ?? []).some((t) => DEPT_TAGS.has(t)) ? 0 : 1;
+  const sorted = [...items].sort((a, b) => hasTag(a) - hasTag(b));
+  const top = sorted.slice(0, 5);
+  const more = sorted.slice(5);
   let html = top.map((a) => renderReportItemHtml(a, showSource)).join("\n");
   if (more.length > 0) {
     html +=
@@ -866,6 +873,9 @@ export const DEFAULT_FILTER_GROUPS: FilterGroupDef[] = [
       { label: "私行", value: "私行", group: "tag" },
       { label: "财富", value: "财富", group: "tag" },
       { label: "信贷", value: "信贷", group: "tag" },
+      // 「其他」= 未命中 4 部门零售标签的条目（2026-08-22 用户：无标签信息放队列
+      // 最后，想看才通过此选项查看）。
+      { label: "其他", value: "__none__", group: "tag" },
     ],
   },
 ];
@@ -1223,7 +1233,14 @@ export function renderHtml(
   ].filter((t) => t.count > 0);
 
   const totalItems = gzLocal.length + bizInsight.length + policyMarket.length + techAll.length + ipoAll.length;
-  const nowHm = new Date().toTimeString().slice(0, 5);
+  // 数据截止时间用北京时间（Asia/Shanghai，UTC+8 无夏令时）。此前 toTimeString()
+  // 在 CI（ubuntu=UTC）下显示 UTC 时间（如 11:14 实为北京 19:14），误导读者。
+  const nowHm = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Shanghai",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date());
   const hero = report.hero_line?.trim();
 
   return `<!doctype html>
@@ -1336,8 +1353,11 @@ ${THEME_CSS}
           // 维度内 OR：命中官方 / 媒体 其一即满足
           if (sel.indexOf(src) < 0) { ok = false; break; }
         } else {
-          // 维度内 OR：命中业务线其一即满足
-          var hit = sel.some(function (f) { return tags.indexOf(f) >= 0; });
+          // 维度内 OR：命中业务线其一即满足；「__none__」（其他）命中空标签卡片
+          var hit = sel.some(function (f) {
+            if (f === '__none__') return tags.length === 0; // 其他 = 无 4 部门标签
+            return tags.indexOf(f) >= 0;
+          });
           if (!hit) { ok = false; break; }
         }
       }
