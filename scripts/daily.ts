@@ -39,6 +39,7 @@ import {
 import { validateBackendCredentials } from "../lib/ai/llm";
 import { generateDaily, makeSkipAiRunner } from "../lib/ai/pipeline";
 import type { Pass1Input } from "../lib/ai/pass1";
+import { LIGHT_AI_SOURCES, LIGHT_AI_MAX_PER_SOURCE, LIGHT_AI_RAW_CAP, capLightAiSources } from "../lib/ai/light-ai";
 import {
   enrichFinanceNewsSummaries,
   enrichGithubTrendingSummaries,
@@ -279,7 +280,8 @@ function toPass1Input(a: ArticleInput): Pass1Input {
   const date = d
     ? `${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}`
     : "";
-  const raw = (a.excerpt || a.summary || "").slice(0, 1200);
+  const isLight = LIGHT_AI_SOURCES.has(a.sourceId ?? "");
+  const raw = (a.excerpt || a.summary || "").slice(0, isLight ? LIGHT_AI_RAW_CAP : 1200);
   return {
     url: a.url,
     title: a.title,
@@ -495,6 +497,16 @@ async function main() {
   if (articles.length < noDateBefore) {
     console.log(
       `[daily] ⏭ 无发布时间/日期条目 ${noDateBefore - articles.length} 条跳过 AI 分析（兜底丢弃）`,
+    );
+  }
+
+  // —— 降本（2026-08-22）：lightAi 源（命中率低但保留热点发现）每源每天最多取 N 条，
+  // 减少进 PASS1 的总量；其 raw_text 在 toPass1Input 已截断到 LIGHT_AI_RAW_CAP 字。 ——
+  const beforeLight = articles.length;
+  articles = capLightAiSources(articles, LIGHT_AI_SOURCES, LIGHT_AI_MAX_PER_SOURCE);
+  if (articles.length < beforeLight) {
+    console.log(
+      `[daily] 🔻 lightAi 限流: 移除 ${beforeLight - articles.length} 条（cnfin/stcn/dayoo-gz/southcn/cnr-gd 每源≤${LIGHT_AI_MAX_PER_SOURCE}）`,
     );
   }
 

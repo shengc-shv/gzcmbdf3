@@ -480,6 +480,7 @@
     "category": "finance",
     "subcategory": "cn-finance",
     "enabled": false,
+    "lightAi": true,
     "lang": "zh",
     "locales": [
       "zh"
@@ -496,6 +497,7 @@
     "category": "finance",
     "subcategory": "cn-finance",
     "enabled": false,
+    "lightAi": true,
     "lang": "zh",
     "locales": [
       "zh"
@@ -559,6 +561,7 @@
     "category": "gz",
     "subcategory": "gz-media",
     "enabled": false,
+    "lightAi": true,
     "lang": "zh",
     "locales": [
       "zh"
@@ -575,27 +578,12 @@
     "category": "gz",
     "subcategory": "gz-media",
     "enabled": false,
+    "lightAi": true,
     "lang": "zh",
     "locales": [
       "zh"
     ],
     "notes": "广州本地媒体（爬虫产物，2026-08-21 第一梯队接入）：lib/sources/crawlers/sources/southcn-economy.ts 抓 economy.southcn.com 经济频道（正文列表 <li><a href=news.southcn.com/node_*/<hash>.shtml>，URL 无日期→publishedAt 用抓取当天近似）；实测广州频道 dishi.southcn.com 内容偏政务科普改用经济频道（含 Token贷/金饰/广州写字楼）；归 gz 面板 gz-all（subcategory=gz-media）。南方日报 8-17 有广州深度稿"
-  },
-  {
-    "id": "chinanews-gd",
-    "role": "crawled-input",
-    "tier": "T1.5",
-    "name": "中新网·广东频道",
-    "type": "scrape",
-    "url": "https://www.gd.chinanews.com.cn/",
-    "category": "gz",
-    "subcategory": "gz-media",
-    "enabled": false,
-    "lang": "zh",
-    "locales": [
-      "zh"
-    ],
-    "notes": "广州本地媒体（爬虫产物，2026-08-21 第一梯队接入）：lib/sources/crawlers/sources/chinanews-gd.ts 抓 gd.chinanews.com.cn 首页+要闻(index/yw.html)静态列表页（/YYYY/YYYY-MM-DD/ 路径推导日期），归 gz 面板 gz-all（subcategory=gz-media）。央媒省级频道 T+0 跟进"
   },
   {
     "id": "cnr-gd",
@@ -607,6 +595,7 @@
     "category": "gz",
     "subcategory": "gz-media",
     "enabled": false,
+    "lightAi": true,
     "lang": "zh",
     "locales": [
       "zh"
