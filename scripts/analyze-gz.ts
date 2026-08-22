@@ -25,7 +25,7 @@ const BATCH = 40;
 // 注意：claude-cli 的 --append-system-prompt 走 argv+shell，多行/特殊字符会被 shell 拆解；
 // 详细规则必须放 userPrompt（走 stdin，安全），systemPrompt 只留单行。
 const SYSTEM_PROMPT =
-  "你是招商银行广州分行零售决策简报编辑。逐条判断相关性、归类业务线子标签、写银行视角摘要，严格按用户要求输出 JSON。";
+  "你是股份行广州分行零售决策简报编辑。逐条判断相关性、归类业务线子标签、写银行视角摘要，严格按用户要求输出 JSON。";
 
 /**
  * 启发式分类（--heuristic，零成本，AI 余额不足时的降级方案）：
@@ -74,7 +74,7 @@ function classifyHeuristic(title: string, sourceId: string): { relevant: boolean
   return { relevant: true, subcategory: "" };
 }
 
-const ANALYSIS_RULES = `你是招商银行广州分行零售决策简报的编辑。系统面向分行信息技术部领导和分管零售的行领导，核心诉求：更快掌握宏观经济/政府政策/市场变化，挖掘更多客户、发现更多商机。
+const ANALYSIS_RULES = `你是股份行广州分行零售决策简报的编辑。系统面向分行信息技术部领导和分管零售的行领导，核心诉求：更快掌握宏观经济/政府政策/市场变化，挖掘更多客户、发现更多商机。
 
 对每条信息逐条判断：
 

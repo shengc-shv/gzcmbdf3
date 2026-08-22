@@ -26,7 +26,7 @@ export interface CrawledArticle {
   url?: string;
   excerpt?: string;
   publishedAt?: string;
-  /** 来源地域标记：gz（招行广州分行辖区）/ gd / nation / 其它或缺省。 */
+  /** 来源地域标记：gz（股份行广州分行辖区）/ gd / nation / 其它或缺省。 */
   region?: string;
   category?: string;
   summary?: string;

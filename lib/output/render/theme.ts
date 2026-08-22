@@ -220,16 +220,13 @@ export const THEME_CSS = `
     width: 3.25rem; pointer-events: none; z-index: 3;
     background: linear-gradient(to left, color-mix(in srgb, var(--accent-cmb) 16%, var(--bg)) 0%, color-mix(in srgb, var(--accent-cmb) 4%, transparent) 55%, transparent 100%);
   }
-  /* 末尾「滑动查看 →」提示卡（移动端横向滑动时可见；桌面网格下隐藏） */
-  .must-hint {
-    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 0.3rem;
-    align-self: center; white-space: nowrap; position: relative; z-index: 4;
-    color: var(--accent-cmb); font-size: 0.78rem; font-weight: 600;
-    border: 1px dashed color-mix(in srgb, var(--accent-cmb) 55%, var(--rule));
-    border-radius: 999px; padding: 0.35rem 0.7rem; margin-left: 0.25rem;
-    background: color-mix(in srgb, var(--accent-cmb) 7%, var(--bg));
+  /* 今日必读标题旁的滑动提示（移动端横向滑动时可见；桌面网格下隐藏） */
+  .must-hint-inline {
+    display: inline-block; margin-left: 0.45rem; vertical-align: middle;
+    font-size: 0.68rem; font-weight: 500; color: var(--accent-cmb);
+    white-space: nowrap;
   }
-  .must-hint .hint-arrow { font-size: 0.95rem; line-height: 1; animation: nudge 1.1s ease-in-out infinite; }
+  .must-hint-inline .hint-arrow { display: inline-block; animation: nudge 1.1s ease-in-out infinite; }
   @keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
   .must-link { text-decoration: none; color: inherit; border-radius: 8px; transition: border-color 0.15s ease; }
   .must-link:hover strong { color: var(--accent-cmb); }
@@ -251,7 +248,7 @@ export const THEME_CSS = `
     .must-card { width: auto; max-width: none; }
     /* 桌面转为网格后无横向滑动，渐隐遮罩与滑动提示均隐藏 */
     .exec-must::after { display: none; }
-    .must-hint { display: none; }
+    .must-hint-inline { display: none; }
   }
 
   /* 商机提示：默认折叠，点击展开 */

@@ -146,6 +146,50 @@ function buildPool(inputs: Pass1Input[]): ValidationPool {
   };
 }
 
+/**
+ * 正文指纹归一化：折叠空白 + 转小写。仅当去除无关字符后仍 >80 字才返回有效指纹，
+ * 避免把「短摘要/空正文」的多条不同文章误判为同一篇而误删。
+ */
+function contentFingerprint(s: string): string {
+  const n = s.replace(/\s+/g, " ").trim().toLowerCase();
+  return n.length > 80 ? n : "";
+}
+
+/**
+ * AI 前置低成本过滤（零 LLM 调用）：在把文章池交给 PASS1 之前先砍掉两类本就会被丢弃的条目，
+ * 省下对应的 AI token。
+ *  - 违禁词（BANNED_WORDS）命中：原逻辑要到 PASS1 早筛才丢，现提前拦截，输出零变化。
+ *  - 完全相同正文（归一化指纹一致，常因同源多端转发/镜像）：只保留首条，避免重复分析同一篇。
+ * 返回过滤后输入与丢弃计数（仅用于日志）。
+ */
+export function preFilterForAi(inputs: Pass1Input[]): {
+  kept: Pass1Input[];
+  droppedBanned: number;
+  droppedDup: number;
+} {
+  const seen = new Set<string>();
+  const kept: Pass1Input[] = [];
+  let droppedBanned = 0;
+  let droppedDup = 0;
+  for (const it of inputs) {
+    const blob = `${it.title ?? ""}\n${it.raw_text ?? ""}`;
+    if (BANNED_WORDS.some((w) => blob.includes(w))) {
+      droppedBanned++;
+      continue;
+    }
+    const fp = contentFingerprint(it.raw_text ?? "");
+    if (fp) {
+      if (seen.has(fp)) {
+        droppedDup++;
+        continue;
+      }
+      seen.add(fp);
+    }
+    kept.push(it);
+  }
+  return { kept, droppedBanned, droppedDup };
+}
+
 function allItems(report: DailyReport): ReportItem[] {
   return SECTIONS.flatMap((s) => report.sections[s]);
 }
@@ -280,8 +324,16 @@ export async function generateDaily(
   const maxRetry = opts.maxPass2Retry ?? MAX_PASS2_RETRY;
   const pool = buildPool(inputs);
 
+  // AI 前置低成本过滤（零 LLM）：违禁词 + 同正文指纹去重，省 token
+  const pre = preFilterForAi(inputs);
+  if (pre.droppedBanned > 0 || pre.droppedDup > 0) {
+    console.log(
+      `[pipeline] 🤖 AI 前置过滤: 输入 ${inputs.length} → ${pre.kept.length} 条（违禁词 ${pre.droppedBanned} / 同内容重复 ${pre.droppedDup}，零 LLM 成本）`,
+    );
+  }
+
   // 空输入（PASS1 全丢弃）→ 合法空报告，不抛异常
-  const kept = await runPass1(inputs, runner);
+  const kept = await runPass1(pre.kept, runner);
   if (kept.length === 0) {
     return {
       date,

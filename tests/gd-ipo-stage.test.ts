@@ -98,7 +98,7 @@ test("groupRaw: gd-ipo 按上市阶段归桶（不再按交易所分栏）", () 
   assert.ok(listed && listed.sources[0].items.length >= 1);
 });
 
-test("renderRawCategoryPanel: gd-ipo 阶段栏渲染含标签 + 招行广州分行商机线索", () => {
+test("renderRawCategoryPanel: gd-ipo 阶段栏渲染含标签 + 股份行广州分行商机线索", () => {
   const registry = loadAllSources();
   const articles: ArticleInput[] = [
     base({ title: "广东某科技企业挂牌上市", sourceId: "gd-sse", category: "gd-ipo", stockCode: "300001" }),
@@ -112,7 +112,7 @@ test("renderRawCategoryPanel: gd-ipo 阶段栏渲染含标签 + 招行广州分�
   assert.ok(html.includes("注册生效·过会"));
   assert.ok(html.includes("在审·已受理"));
   assert.ok(html.includes("辅导备案·Pre-IPO"));
-  // 各阶段栏顶部注入招行广州分行商机线索提示
-  assert.ok(html.includes("商机线索"), "应注入招行广州分行商机线索提示");
+  // 各阶段栏顶部注入股份行广州分行商机线索提示
+  assert.ok(html.includes("商机线索"), "应注入股份行广州分行商机线索提示");
   assert.ok(html.includes('class="biz-tip"'), "应渲染 biz-tip 样式容器");
 });

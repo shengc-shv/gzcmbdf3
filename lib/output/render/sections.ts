@@ -191,8 +191,8 @@ export function renderExecutiveSummary(exec: ExecutiveSummary): string {
       <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
     </div>
     <div class="exec-must">
-      <h3 class="exec-col-title">📌 今日必读</h3>
-      <ul class="must-scroller">${must}<li class="must-hint" aria-hidden="true">滑动查看 ›</li></ul>
+      <h3 class="exec-col-title">📌 今日必读<span class="must-hint-inline" aria-hidden="true">← 左右滑动查看 →</span></h3>
+      <ul class="must-scroller">${must}</ul>
     </div>
     <div class="exec-insights">
       <h3 class="exec-col-title">💡 商机洞察（默认展开）</h3>

@@ -4,7 +4,7 @@ import { parseGovList, absUrl } from "../gz-utils";
 /**
  * 广州南沙区人民政府 - 通知公告 + 政策文件
  * 站点: http://www.gzns.gov.cn/zwgk/tzgg/  /  http://www.gzns.gov.cn/zwgk/zcwjjjd/zcwj/
- * 内容: 南沙自贸片区金融/产业/招商动态（招行广州分行辖区内的政策热点）
+ * 内容: 南沙自贸片区金融/产业/招商动态（股份行广州分行辖区内的政策热点）
  *
  * M3-A 移植：原 scripts/crawlers/sources/gz-nansha.mjs 逐字移植。
  */

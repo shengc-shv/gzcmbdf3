@@ -256,12 +256,13 @@
     "url": "https://www.economist.com/finance-and-economics/rss.xml",
     "category": "finance",
     "subcategory": "news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "命中率过低(可用率33.3%，n=3)：采集3条仅1条相关，低于50%阈值依规关闭"
   },
   {
     "id": "cnbc-top",
@@ -331,12 +332,12 @@
       "trade",
       "tariff"
     ],
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
-    "disabledReason": "恢复：#45 CI 实测拉到 30 条（沙箱403仅为环境拦截，非源失效）",
+    "disabledReason": "命中率过低(可用率0%，n=2)：采集2条0条相关，低于50%阈值依规关闭",
     "notes": "CI 沙箱实测可获取（非 403 拦截）"
   },
   {
@@ -385,12 +386,13 @@
     "url": "https://www.nbd.com.cn/",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
     ],
-    "notes": "全国权威财经媒体（2026-08-21 接入）：深度报道银行/科技金融/产业动态，算力贷/Token贷/词元贷等热点报道主力；首页服务端渲染可静态抓（articles/YYYY-MM-DD/<id>.html），频道页有 302 反爬 v1 只抓首页"
+    "notes": "全国权威财经媒体（2026-08-21 接入）：深度报道银行/科技金融/产业动态，算力贷/Token贷/词元贷等热点报道主力；首页服务端渲染可静态抓（articles/YYYY-MM-DD/<id>.html），频道页有 302 反爬 v1 只抓首页",
+    "disabledReason": "命中率过低(可用率27.3%，n=11)：每经采集11条仅3条相关，低于50%阈值依规关闭（注：原为补足国内源接入，按规则一并关闭，需恢复请手动启用）"
   },
   {
     "id": "sina-finance",
@@ -400,12 +402,13 @@
     "url": "https://finance.sina.com.cn/roll/index.shtml",
     "category": "finance",
     "subcategory": "cn-finance",
-    "enabled": true,
+    "enabled": false,
     "lang": "zh",
     "locales": [
       "zh"
     ],
-    "notes": "人民网财经 RSS 停滞于 2025-06，改用新浪财经滚动新闻页（服务端渲染，实时）"
+    "notes": "人民网财经 RSS 停滞于 2025-06，改用新浪财经滚动新闻页（服务端渲染，实时）",
+    "disabledReason": "命中率过低(可用率32.9%，n=70)：新浪财经采集70条仅23条相关，低于50%阈值依规关闭"
   },
   {
     "id": "cctv-finance",
@@ -721,13 +724,14 @@
     "url": "https://www.infoq.cn/feed",
     "category": "tech",
     "subcategory": "cn-tech",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh"
     ],
     "lang": "zh",
     "useCurl": true,
-    "note": "国内权威的软件开发/架构/工程实践媒体，已验证 RSS 可用。"
+    "note": "国内权威的软件开发/架构/工程实践媒体，已验证 RSS 可用。",
+    "disabledReason": "命中率过低(可用率16.7%，n=24)：InfoQ采集24条仅4条相关，低于50%阈值依规关闭"
   },
   {
     "id": "qbitai",
@@ -737,13 +741,14 @@
     "url": "https://www.qbitai.com/feed",
     "category": "tech",
     "subcategory": "cn-tech",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh"
     ],
     "lang": "zh",
     "useCurl": true,
-    "note": "国内权威 AI/前沿科技媒体，已验证 RSS 可用。"
+    "note": "国内权威 AI/前沿科技媒体，已验证 RSS 可用。",
+    "disabledReason": "命中率过低(可用率15.8%，n=19)：量子位采集19条仅3条相关，低于50%阈值依规关闭"
   },
   {
     "id": "sspai",
@@ -770,13 +775,14 @@
     "url": "https://www.theguardian.com/business/rss",
     "category": "finance",
     "subcategory": "news",
-    "enabled": true,
+    "enabled": false,
     "locales": [
       "zh",
       "en"
     ],
     "note": "已验证可用。英美市场与经济新闻，无付费墙。",
-    "notes": "CI 沙箱实测可获取（非 403 拦截）"
+    "notes": "CI 沙箱实测可获取（非 403 拦截）",
+    "disabledReason": "命中率过低(可用率33.3%，n=6)：卫报商业采集6条仅2条相关，低于50%阈值依规关闭"
   },
   {
     "id": "fed-press",

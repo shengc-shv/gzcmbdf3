@@ -118,7 +118,7 @@ export async function addressOf(
   }
 }
 
-/** 招行广州分行辖区城市（广州市区含南沙；湛江/清远为分行辖内异地支行城市） */
+/** 股份行广州分行辖区城市（广州市区含南沙；湛江/清远为分行辖内异地支行城市） */
 const GZ_BRANCH_CITIES = ["广州", "湛江", "清远"];
 
 function isGzCity(city: string): boolean {
@@ -134,7 +134,7 @@ function isGzAddress(addr: string): boolean {
 }
 
 /**
- * 判断股票注册归属区域：'gz'（招行广州分行辖区）| 'gd'（广东非广州辖区）| 'nation'（全国其他）| ''（未知）。
+ * 判断股票注册归属区域：'gz'（股份行广州分行辖区）| 'gd'（广东非广州辖区）| 'nation'（全国其他）| ''（未知）。
  * 一次 F10 请求同时判定城市与省份，避免 gz/gd 判断各请求一次。
  * 优先本地粤企注册表（离线秒级）：命中即广东；city 有值直接判辖区，city 为空回退 F10 地址解析。
  */
@@ -157,7 +157,7 @@ export async function regionOf(
   return "nation";
 }
 
-/** 是否为招行广州分行辖区企业（广州市区/南沙/湛江/清远）。 */
+/** 是否为股份行广州分行辖区企业（广州市区/南沙/湛江/清远）。 */
 export async function isGzBranch(
   stockCode: string,
   exchange?: string,

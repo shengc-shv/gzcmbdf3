@@ -1,6 +1,6 @@
 # gzcmbdf3
 
-招商银行广州分行 · 零售业务决策商机简报（银行零售领域定制版 DailyBrief）。
+股份行广州分行 · 零售业务决策商机简报（银行零售领域定制版 DailyBrief）。
 
 > 上游归属：leiting-eric/DailyBrief（DailyBrief 项目本身），本仓库为其 fork 演进，
 > 融入「gd-ipo / 广州商机」扩展并整体更名 gzcmbdf3。

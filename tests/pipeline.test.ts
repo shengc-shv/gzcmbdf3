@@ -8,7 +8,7 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { generateDaily } from "../lib/ai/pipeline";
+import { generateDaily, preFilterForAi } from "../lib/ai/pipeline";
 import { validateReport, SECTIONS } from "../lib/ai/validator";
 import type { Pass1Input } from "../lib/ai/pass1";
 import type { DailyReport, ReportItem, ReportSectionKey } from "../lib/types";
@@ -258,3 +258,27 @@ function blocksOf(report: DailyReport): ReturnType<typeof validateReport> {
     get: () => ({ raw_text: "" }),
   }).filter((i) => i.level === "block");
 }
+
+test("preFilterForAi：零 LLM 前置过滤掉违禁词与同正文重复，输出零变化", () => {
+  const clean1 = mkInput("u1", "finance", "LPR 年内第三次下调");
+  const banned = mkInput("u2", "tech", "某项目进展");
+  banned.raw_text = "本报告涉及加密资产的炒作风险提示。";
+  const clean2 = mkInput("u3", "finance", "广州发布促消费新政");
+  const longText = "x".repeat(120);
+  const dupA = mkInput("u5", "tech", "A");
+  const dupB = mkInput("u6", "tech", "B");
+  dupA.raw_text = longText;
+  dupB.raw_text = longText; // 与 dupA 同正文指纹
+
+  const { kept, droppedBanned, droppedDup } = preFilterForAi([
+    clean1,
+    banned,
+    clean2,
+    dupA,
+    dupB,
+  ]);
+  assert.equal(droppedBanned, 1);
+  assert.equal(droppedDup, 1);
+  const urls = kept.map((k) => k.url).sort();
+  assert.deepEqual(urls, ["u1", "u3", "u5"].sort());
+});

@@ -73,7 +73,6 @@ const CANDIDATES = [
   { name: "广汽集团", codes: ["601238"], type: "a", aliases: ["GAC"] },
   { name: "工业富联", codes: ["601138"], type: "a", aliases: ["Foxconn Industrial"] },
   { name: "中国平安", codes: ["601318", "2318.HK"], type: "a", aliases: ["Ping An"] },
-  { name: "招商银行", codes: ["600036", "3968.HK"], type: "a", aliases: ["China Merchants Bank", "CMB"] },
   { name: "招商证券", codes: ["600999"], type: "a", aliases: ["CMS"] },
   { name: "中信证券", codes: ["600030"], type: "a", aliases: ["CITIC Securities"] },
   { name: "锦龙股份", codes: ["000712"], type: "a", aliases: ["Jinlong"] },

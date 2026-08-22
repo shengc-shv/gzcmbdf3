@@ -6,7 +6,7 @@
  */
 import type { Category } from "./types";
 
-/** 爬虫产物 sourceId 前缀：gd-（广东全省）/ gz-（广州辖区，招行广州分行重点）。 */
+/** 爬虫产物 sourceId 前缀：gd-（广东全省）/ gz-（广州辖区，股份行广州分行重点）。 */
 export const GD_PREFIX = "gd-";
 export const GZ_PREFIX = "gz-";
 
@@ -45,7 +45,7 @@ export function rewriteGzPrefix(sourceId: string): string {
  * 路由判定以本表为准。
  */
 export const SOURCE_ROUTE: Record<string, { category: Category; subcategory?: string }> = {
-  // 广州辖区（gz- 前缀）：招行广州分行重点
+  // 广州辖区（gz- 前缀）：股份行广州分行重点
   "gz-stats": { category: "gz", subcategory: "gz-customer" },
   "gz-gov": { category: "finance", subcategory: "gz-policy" },
   // 国家金融监督管理总局（NFRA）：部委级宏观政策/行政处罚，归 finance/cn-policy（国家政策标签）

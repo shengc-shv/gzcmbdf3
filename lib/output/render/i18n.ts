@@ -178,7 +178,7 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
   hkex: "港交所",
   "ipo-tutoring": "IPO辅导",
   overseas: "境外",
-  // 广东地区IPO 按「上市进度」分栏（任务二：看已上市 / 准备IPO 两类，找招行广州分行商机）
+  // 广东地区IPO 按「上市进度」分栏（任务二：看已上市 / 准备IPO 两类，找股份行广州分行商机）
   "stage-listed": "已上市·新股",
   "stage-registered": "注册生效·过会",
   "stage-reviewing": "在审·已受理",

@@ -321,7 +321,7 @@ export function renderSourcesBlock(
 }
 
 /**
- * 广东地区 IPO 各上市阶段对应的「招行广州分行商机线索」（任务二）。
+ * 广东地区 IPO 各上市阶段对应的「股份行广州分行商机线索」（任务二）。
  * 静态规则提示，帮助零售条线领导从 IPO 动态中快速定位可跟进的商机动作。
  */
 const GD_IPO_STAGE_BIZ: Record<string, string> = {
@@ -347,7 +347,7 @@ export function renderSubContent(category: Category, sub: SubGroup, isActive: bo
   // 统一展示窗口（2026-08-19 用户调整）：所有分类展示最近 DISPLAY_WINDOW_DAYS 天
   // 发布的内容，按发布时间倒序；不再区分「当天 / 过去7天」时间拆分。
   const recent = filterRecentDays(sub.sources, DISPLAY_WINDOW_DAYS);
-  // 任务二：广东地区 IPO 各阶段栏顶部注入「招行广州分行商机线索」提示
+  // 任务二：广东地区 IPO 各阶段栏顶部注入「股份行广州分行商机线索」提示
   const bizTip = category === "gd-ipo" ? GD_IPO_STAGE_BIZ[sub.id] : undefined;
   return `<div class="sub-content${activeCls}" ${subAttr}>
     ${bizTip ? `<p class="biz-tip">${escapeHtml(bizTip)}</p>` : ""}
