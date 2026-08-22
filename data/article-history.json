@@ -39,7 +39,7 @@
     "firstSeenAt": "2026-08-20T12:26:15.584Z",
     "lastSeenAt": "2026-08-20T12:26:15.584Z",
     "summary": "AI Infra算力开始被华尔街当作可交易资产，算力金融化趋势浮现，对分行科技金融与AI基础设施信贷布局有前沿参考。",
-    "ai_relevant": true
+    "ai_relevant": false
   },
   "https://www.infoq.cn/article/pKbwv6YkdSE1UdCiKl2F?utm_source=rss&utm_medium=article": {
     "title": "CloudFlare 预览网页 WebMCP 自动支持功能",
@@ -111,6 +111,20 @@
     "summary": "Pod作为worker部署AI智能体，属云原生AI工程实践，与银行零售业务无直接关联。",
     "ai_relevant": false
   },
+  "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article": {
+    "title": "从中文到小语种都能无痕修改，美图影像研究院（MT Lab）提出全新场景文本编辑方案 | ICML 2026",
+    "url": "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article",
+    "sourceId": "infoq-cn",
+    "source": "InfoQ 中国",
+    "category": "tech",
+    "subcategory": "cn-tech",
+    "excerpt": "点击查看原文>",
+    "publishedAt": "2026-08-20T11:10:13.000Z",
+    "firstSeenAt": "2026-08-20T12:26:15.584Z",
+    "lastSeenAt": "2026-08-20T12:26:15.584Z",
+    "summary": "美图影像研究院提出场景文本编辑方案，属CV技术研究，与银行零售业务无直接关联。",
+    "ai_relevant": false
+  },
   "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video": {
     "title": "Treasury Action Not a Fed Game Changer for September, Says Evercore’s Guha",
     "url": "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video",
@@ -153,6 +167,20 @@
     "summary": "达能10亿欧元收购Huel获监管批准；海外消费品牌并购，与分行零售业务无关联。",
     "ai_relevant": false
   },
+  "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss": {
+    "title": "Carney asks for end to US alcohol ban, province leader says, as trade deal nears",
+    "url": "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss",
+    "sourceId": "bbc-business",
+    "source": "BBC Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "An agreement preventing a new wave of US tariffs is close and could include an end to Canada's boycott of US whiskey.",
+    "publishedAt": "2026-08-20T11:10:25.000Z",
+    "firstSeenAt": "2026-08-20T12:32:59.612Z",
+    "lastSeenAt": "2026-08-20T12:32:59.612Z",
+    "summary": "加拿大省长卡尼呼吁结束美国酒类禁令；北美贸易议题，与银行零售业务无关。",
+    "ai_relevant": false
+  },
   "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates": {
     "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
     "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
@@ -165,6 +193,20 @@
     "firstSeenAt": "2026-08-20T12:32:59.612Z",
     "lastSeenAt": "2026-08-20T12:32:59.612Z",
     "summary": "Travelodge老板因性侵事件处理争议辞职；英国企业治理事件，与银行零售业务无关。",
+    "ai_relevant": false
+  },
+  "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats": {
+    "title": "From McDonald’s to Congress: can a former fry cook flip a key district for Democrats?",
+    "url": "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats",
+    "sourceId": "guardian-business",
+    "source": "The Guardian Business",
+    "category": "finance",
+    "subcategory": "news",
+    "excerpt": "Manny Rutinel hopes price-tag politics can win key voters in Colorado House race During his presidential campaign in October 2024, Donald Trump staged a photo op at a McDonald’s franchise in Pennsylvania, where he was briefly taught how to work the fryer and drive-thru window at the closed restauran",
+    "publishedAt": "2026-08-20T11:00:50.000Z",
+    "firstSeenAt": "2026-08-20T12:32:59.612Z",
+    "lastSeenAt": "2026-08-20T12:32:59.612Z",
+    "summary": "从麦当劳员工到国会：前炸薯条工能否翻转关键选区；美国政治新闻，与银行业务无关。",
     "ai_relevant": false
   },
   "https://www.cnfin.com/qy-lb/detail/20260821/4458202_1.html": {
@@ -440,7 +482,7 @@
     "firstSeenAt": "2026-08-21T00:20:08.374Z",
     "lastSeenAt": "2026-08-21T00:20:08.374Z",
     "summary": "热联集团二次递表港交所，营收增速滞缓但近三年分红19.7亿元；大宗供应链企业赴港上市，分行可关注供应链客户融资与结算需求。",
-    "ai_relevant": true
+    "ai_relevant": false
   },
   "https://www.cnfin.com/yw-lb/detail/20260821/4458285_1.html": {
     "title": "新华财经早报：8月21日",
@@ -3105,7 +3147,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3118,7 +3160,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3132,7 +3174,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3145,7 +3187,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3158,7 +3200,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3558,7 +3600,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3573,7 +3615,7 @@
     "firstSeenAt": "2026-08-21T09:20:28.798Z",
     "lastSeenAt": "2026-08-21T09:20:28.798Z",
     "summary": "北京现代艾尼氪V以双AI大模型为卖点开启预售，智能汽车成消费新热点；分行可联动汽车分期与信用卡权益，捕捉新能源车主客群。",
-    "ai_relevant": true
+    "ai_relevant": false
   },
   "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipakut1631800.shtml": {
     "title": "视频 | 李尚龙：新冠留给人类的遗产 莫德纳新冠期间两天设计疫苗 疫情后投入数百亿攻克癌症 今日见证历史！",
@@ -4280,7 +4322,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T10:29:23.476Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -4294,7 +4336,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T10:29:23.476Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5620,7 +5662,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "家居品牌战略升级新闻，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5647,7 +5689,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "奶牛产业科普报道，与银行零售业务无关。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5674,7 +5716,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "唯品会营销活动，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5812,7 +5854,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "新能源产业评论，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5825,7 +5867,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "手机新品发布，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5838,7 +5880,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "汽车产业评论，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5851,7 +5893,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "世界人工智能大会行业观察，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5891,7 +5933,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "美的置业年报动态，非银行零售业务直接相关。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5917,7 +5959,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "医疗早筛学术大会，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5943,7 +5985,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "荣耀CEO AI战略访谈，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5969,7 +6011,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "技工学校活动报道，与银行零售业务无关。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5982,7 +6024,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "佛山十四五成绩单，非广州辖区，与分行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6022,7 +6064,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "南方电网 IEC 国标立项，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6035,7 +6077,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "南方电网机器人展示，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6102,7 +6144,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "药企慰问环卫工人公益活动，与银行零售业务无关。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6293,7 +6335,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:11:16.404Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6383,7 +6425,7 @@
     "firstSeenAt": "2026-08-21T12:31:01.342Z",
     "lastSeenAt": "2026-08-21T12:31:01.342Z",
     "summary": "国际机构预警粮食危机风险，全球通胀与供应链扰动对资产配置有间接影响，财富条线可提示客群均衡配置。",
-    "ai_relevant": true
+    "ai_relevant": false
   },
   "https://finance.sina.com.cn/jjxw/2026-08-21/doc-inipavkk1260850.shtml": {
     "title": "光纤大牛股，净利暴增888.88%",
@@ -6693,7 +6735,7 @@
     "publishedAt": "2026-08-21T17:00:33.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "Tracking the cost of Donald Trump’s tari…。对广州分行研判外部环境与大类资产走势具参考"
   },
   "https://www.nbd.com.cn/articles/2026-08-21/4550896.html": {
@@ -6719,7 +6761,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "北方“双子星”，撑起“算力第一大省”。对广州分行研判市场与同业动态具参考"
   },
   "https://www.nbd.com.cn/articles/2026-08-22/4551129.html": {
@@ -6732,7 +6774,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "全链条布局 48家央企首次组团参展世界机器人大会。对广州分行研判市场与同业动态具参考"
   },
   "https://www.nbd.com.cn/articles/2026-08-21/4550983.html": {
@@ -6758,7 +6800,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "星忆智能李当当：未来一到三年具身机器人将告别表演模式，真正落地产生价值。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/wm/2026-08-22/doc-inipcwvt6205128.shtml": {
@@ -6771,7 +6813,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "30亿元账面浮亏吞噬利润，网易Q2交出平淡成绩单，丁磊称对《遗忘之海》长期运营有信心。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipcwvt6171962.shtml": {
@@ -6784,7 +6826,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "“枕头被子”收入逼近主业，亚朵能筑牢利润护城河吗。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/world/2026-08-22/doc-inipcwvz1327789.shtml": {
@@ -6810,7 +6852,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "秘鲁因液化石油气短缺对五地区宣布紧急状态。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/yw-lb/detail/20260822/4458943_1.html": {
@@ -6822,7 +6864,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "【环球财经】日媒：日本新财年预算申请额或超130万亿日元。对广州分行研判外部环境与大类资产走势具参考"
@@ -6837,7 +6879,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "日本下财年预算申请据悉将超130万亿日元。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/world/2026-08-22/doc-inipcsqc1411867.shtml": {
@@ -6864,7 +6906,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "达利欧：美债危机临近，囤点黄金和比特币吧。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipcwvz1372065.shtml": {
@@ -6962,7 +7004,7 @@
     "publishedAt": "2026-08-22T09:05:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "JetBrains详细阐述了控制AI支出快速增长的首批举措。对广州分行研判市场与同业动态具参考"
   },
   "https://www.theguardian.com/business/2026/aug/21/tyson-foods-close-facilities-beef-prices-cattle-shortage": {
@@ -6976,7 +7018,7 @@
     "publishedAt": "2026-08-21T16:01:43.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "What does Tyson’s shutdown of two US bee…。对广州分行研判外部环境与大类资产走势具参考"
   },
   "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082101751.pdf": {
@@ -6988,7 +7030,7 @@
     "subcategory": "hkex",
     "excerpt": "港交所公告 | 代码: 00874 | 公司: BAIYUNSHAN PH | 时间: 21/08/2026 21:41 | 格式: PDF",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "BAIYUNSHAN PH (00874) — SUMMARY OF THE 2…。对广州分行跟踪港交所IPO与跨境资本具参考"
@@ -7002,7 +7044,7 @@
     "subcategory": "gz-ipo",
     "excerpt": "深交所公告 | 国泰海通证券股份有限公司关于聚胶新材料股份有限公司<em>首次公开发行</em>股票总部募投项目节余募集资金永久补充流动资金的核查意见 | 日期: 2026-08-21",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "聚胶股份 (301283)。对广州分行企业金融（IPO/投贷联动）获客具参考"
@@ -7016,7 +7058,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "【环球财经】美国服务业活动加速叠加超跌反弹 纽约股市三大股指21日集体收涨。对广州分行研判外部环境与大类资产走势具参考"
@@ -7044,7 +7086,7 @@
     "subcategory": "cn-policy",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "国务院常务会议解读｜国务院常务会议部署新一代通信网建设。对广州分行研判宏观政策与监管导向具参考"
@@ -7088,7 +7130,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "东方甄选2026财年营收增长36.3% 经营利润达6.6亿元。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/yw-lb/detail/20260821/4458891_1.html": {
@@ -7102,7 +7144,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "受益于主营业务收入结构持续优化 长飞光纤上半年扣非净利润同比增长1680.48%。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458960_1.html": {
@@ -7144,7 +7186,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "土耳其寻求对内塔尼亚胡发布“红色通缉令”。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458926_1.html": {
@@ -7172,7 +7214,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "刘国中在安排部署秋粮生产和农业防灾减灾工作时强调 扎实做好农业防灾减灾工作 全力…。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260821/4458879_1.html": {
@@ -7186,7 +7228,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "破瓶颈 强联动 质量强链“成绩单”公布。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102329.html": {
@@ -7198,7 +7240,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "翁燕珊：撕掉性别标签，做期市交易的趋势追踪者。对广州分行研判市场与同业动态具参考"
@@ -7240,7 +7282,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "铜价，再度大涨！供应缺口扩大。对广州分行研判市场与同业动态具参考"
@@ -7256,7 +7298,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "多晶硅企业少量恢复报价 硅片与电池环节价格涨幅明显。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4099593.html": {
@@ -7282,7 +7324,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "一批车辆被召回！涉及特斯拉、小米、小鹏、零跑，还有张雪机车。对广州分行研判市场与同业动态具参考"
@@ -7338,7 +7380,7 @@
     "subcategory": "gz-policy",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "宝莱特：短期业绩承压不改基本盘 政策与创新蓄力长期成长。对广州分行把握地方政策红利与监管导向具参考"
@@ -7354,7 +7396,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "太力科技：公司STF相关材料可适配防摔服装应用场景。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102420.html": {
@@ -7368,7 +7410,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "大金重工2026年中报出炉，量利双升，新业务增长曲线成型。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102424.html": {
@@ -7382,7 +7424,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "光峰科技上半年营收4.77亿元 推进优化业务结构。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102413.html": {
@@ -7396,7 +7438,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "天娱数科上半年归母净利润同比增长72.41%，AI技术落地多个实体业务场景。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102414.html": {
@@ -7424,7 +7466,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "一线调研：超强厄尔尼诺风险下，粮食生产如何应对。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102408.html": {
@@ -7438,7 +7480,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "超19万人爆仓！加密货币，全线拉升！黄金、油价走强。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102401.html": {
@@ -7452,7 +7494,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "8月再添回A药企！康诺亚拟登陆科创板，心玮医疗同步推进回归。对广州分行研判市场与同业动态具参考"
   },
   "https://news.dayoo.com/guangzhou/202608/22/139995_54993634.htm": {
@@ -7478,7 +7520,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "巨型机甲熊猫、张雪机车、街头篮球，8月28日广报潮玩嘉年华等你来“潮”玩。对广州分行相关业务研判具参考"
@@ -7562,7 +7604,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "花都花城街：夜间督导“不打烊”，织密辖区安全防护网。对广州分行相关业务研判具参考"
@@ -7576,7 +7618,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "进出番禺海鸥岛的唯一主干道，扩建提速！8.3公里主干道拓宽为双向四车道。对广州分行相关业务研判具参考"
@@ -7648,7 +7690,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "三小孩凑10.5元“天使投资”挽留便利店，善意在汇聚：小孩帮补货，营收增两倍。对广州分行零售客群（代发/收单/活跃提升）经营具参考"
   },
   "https://news.dayoo.com/guangzhou/202608/21/139995_54993516.htm": {
@@ -7662,7 +7704,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "越秀区新时代文明实践中心对外试运营。对广州分行零售客群（代发/收单/活跃提升）经营具参考"
   },
   "https://news.dayoo.com/guangzhou/202608/21/139995_54993515.htm": {
@@ -7674,7 +7716,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "广东实验中学国际部预计明年一季度完工。对广州分行研判外部环境与大类资产走势具参考；立足湾区区位，兼具政策与客群红利"
@@ -7703,7 +7745,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "修正集团落子天河，重磅布局“一基地两中心”。对广州分行零售客群（代发/收单/活跃提升）经营具参考"
   },
   "https://news.dayoo.com/guangzhou/202608/21/139995_54993511.htm": {
@@ -7743,7 +7785,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "安永华明以全域服务能力助推现代服务业发展。对广州分行相关业务研判具参考"
@@ -7856,7 +7898,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T02:24:14.552Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "2026绿色算力（人工智能）大会在呼和浩特举行。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102405.html": {
@@ -7868,7 +7910,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "天创时尚：2026年上半年净利润同比增长316.20%，布局精密制造新业务。对广州分行研判市场与同业动态具参考"
@@ -7884,7 +7926,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T02:24:14.552Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "聚焦“高价值客户、高价值项目” 博腾股份上半年营收增长约10%。对广州分行研判市场与同业动态具参考"
   },
   "https://news.dayoo.com/guangzhou/202608/22/139995_54993662.htm": {
@@ -7952,7 +7994,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "逾5000家企业携创新成果参加广博会 1万多家专业采购商纷至沓来。对广州分行相关业务研判具参考"
@@ -7966,7 +8008,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "奶茶店，现在不流行卖奶茶了。对广州分行相关业务研判具参考"
@@ -7980,7 +8022,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "前7个月我国吸收外资4383.3亿元。对广州分行相关业务研判具参考"
@@ -7994,7 +8036,7 @@
     "subcategory": "hkex",
     "excerpt": "港交所公告 | 代码: 01461 | 公司: ZHONGTAIFUTURES | 时间: 21/08/2026 20:46 | 格式: PDF",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "ZHONGTAIFUTURES (01461) — ANNOUNCEMENT O…。对广州分行跟踪港交所IPO与跨境资本具参考"
@@ -8008,7 +8050,7 @@
     "subcategory": "hkex",
     "excerpt": "港交所公告 | 代码: 03366 | 公司: OCT (ASIA) | 时间: 21/08/2026 17:43 | 格式: PDF",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "OCT (ASIA) (03366) — POLL RESULTS OF THE…。对广州分行跟踪港交所IPO与跨境资本具参考"
@@ -8022,7 +8064,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "新华指数监测：8月21日中国能化现货估价指数环比上涨1.47%。对广州分行研判市场与同业动态具参考"
@@ -8036,7 +8078,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "新华指数监测：8月21日山东港口石油焦现货交易价格环比持平。对广州分行研判市场与同业动态具参考"
@@ -8050,7 +8092,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "新华指数监测：8月21日山东港口大商中心钢坯、热轧C料价格微幅上涨。对广州分行研判市场与同业动态具参考"
@@ -8064,7 +8106,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "新华指数监测：8月20日山东港口原油价格指数环比上涨2.27%。对广州分行研判市场与同业动态具参考"
@@ -8078,7 +8120,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:32:52.715Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "8月20日中国汽、柴油批发价格分别为8997、7922元／吨。对广州分行研判市场与同业动态具参考"
@@ -8149,7 +8191,7 @@
     "publishedAt": "2026-08-20T21:47:33.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "Coatue Management Opens New Position in …。对广州分行研判外部环境与大类资产走势具参考"
   },
   "https://finance.sina.com.cn/wm/2026-08-22/doc-inipeccv7592475.shtml": {
@@ -8190,7 +8232,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "贝森特“止痛药”失效！达里欧预警美债危机：卖债券、买黄金比特币。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1307486.shtml": {
@@ -8218,7 +8260,7 @@
     "publishedAt": "2026-08-22T11:05:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "npm 终于动手了：默认封杀 postinstall 脚本。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458976_1.html": {
@@ -8257,7 +8299,7 @@
     "subcategory": "gz-policy",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "5A新国标构建建陶量化评价体系 东鹏控股率先推动标准产业化落地。对广州分行把握地方政策红利与监管导向具参考"
@@ -8273,7 +8315,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "加速矿山智能化建设 梅安森拟1.65亿元控股华洋通信。对广州分行研判市场与同业动态具参考"
   },
   "https://www.stcn.com/article/detail/4102446.html": {
@@ -8287,7 +8329,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "复宏汉霖上半年营收35.9亿元，获纳入恒生综合指数，有望纳入港股通。对广州分行研判市场与同业动态具参考"
   },
   "https://www.gd.chinanews.com.cn/2026/2026-08-22/449248.shtml": {
@@ -8301,7 +8343,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "广外青年赴粤东乡村 解陆河服装产业富民密码。对广州分行把握地方政策红利与监管导向具参考"
   },
   "https://www.gd.chinanews.com.cn/2026/2026-08-22/449252.shtml": {
@@ -8522,7 +8564,7 @@
     "subcategory": "gz-ipo",
     "excerpt": "IPO辅导备案 | 辅导机构: 国投证券股份有限公司 | 备案时间: 2026-08-21 00:00:00 | 状态: 辅导备案 | 报告: 辅导备案报告",
     "publishedAt": "2026-08-21T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "辉芒微电子(深圳)股份有限公司 (辅导备案) [深圳证监局]。对广州分行企业金融（IPO/投贷联动）获客具参考"
@@ -8592,7 +8634,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "锂电负极面临成本挑战 硅基负极将成未来竞争的“胜负手”。对广州分行研判市场与同业动态具参考"
@@ -8634,7 +8676,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "【环球财经】加拿大宣布暂停加美贸易谈判并实施对等反制。对广州分行研判市场与同业动态具参考"
@@ -8648,7 +8690,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "数读我国绿色算力：十组数据背后的时代答卷。对广州分行研判市场与同业动态具参考"
@@ -8676,7 +8718,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "中泰证券出手回购。对广州分行研判市场与同业动态具参考"
@@ -8718,7 +8760,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "丽珠集团上半年归母净利润9.32亿元 国际化成寻找增量重要抓手。对广州分行研判外部环境与大类资产走势具参考"
@@ -8746,7 +8788,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "非法改装无牌“电鸡”、号牌折叠变“隐藏款”……多名骑行者被查处。对广州分行相关业务研判具参考"
@@ -8788,7 +8830,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "“城脉千年”开幕 约上小伙伴一起去打卡吧。对广州分行相关业务研判具参考"
@@ -8816,7 +8858,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "泡泡玛特，跌掉一个泡泡玛特！CEO王宁：今年大概率完不成20%增长目标。对广州分行相关业务研判具参考"
@@ -8857,7 +8899,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8897,7 +8939,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8926,7 +8968,7 @@
     "subcategory": "gz-private",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "1361亿元！ 2026绿色算力（人工智能）大会百亿级项目集中签约。对广州分行私行（高净值）客户拓展与资产配置具参考"
@@ -8967,7 +9009,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8981,7 +9023,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8996,7 +9038,7 @@
     "subcategory": "gz-private",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "多项算力成果在2026绿色算力（人工智能）大会发布。对广州分行私行（高净值）客户拓展与资产配置具参考"
@@ -9051,7 +9093,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9065,7 +9107,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9080,7 +9122,7 @@
     "subcategory": "gz-customer",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "科沃斯2026年上半年营收突破百亿元 二季度海外收入占比首超51%。对广州分行零售客群（代发/收单/活跃提升）经营具参考"
@@ -9093,7 +9135,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9107,7 +9149,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9121,7 +9163,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9149,7 +9191,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9233,7 +9275,7 @@
     "category": "ipo",
     "excerpt": "",
     "publishedAt": "2026-08-21",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "hkex",
@@ -9247,7 +9289,7 @@
     "category": "ipo",
     "excerpt": "",
     "publishedAt": "2026-08-21",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "hkex",
@@ -9261,7 +9303,7 @@
     "category": "ipo",
     "excerpt": "",
     "publishedAt": "2026-08-21",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "hkex",
