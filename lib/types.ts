@@ -6,6 +6,7 @@
  * daily/history/render 等依赖的类型保留于此。
  */
 import type { RawArticle } from "./sources/types";
+import type { SourceTier } from "./sources/tiers";
 import type { TickerAnalysis } from "./trading/signals";
 import type { CryptoGlobalStats } from "./trading/coingecko";
 import type { FearGreedSnapshot } from "./trading/fear-greed";
@@ -58,6 +59,8 @@ export interface ReportItem {
   locale: Locale;
   /** locale=gz 时必填，必须是该条 raw_text 的逐字子串。 */
   locale_evidence?: string;
+  /** 源权威等级（T1/T1.5/T2），由 mergeRollingIntoReport 透传，供同权威等级标题去重。 */
+  tier?: SourceTier;
 }
 
 export interface ReportInsight {

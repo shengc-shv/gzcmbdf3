@@ -27,17 +27,17 @@ function mk(url: string, over: Partial<HistoryEntry> = {}): HistoryEntry {
   };
 }
 
-test("pruneHistory: 7天边界——窗口内保留、窗口外剔除", () => {
+test("pruneHistory: 抓取窗口边界——窗口内保留、窗口外剔除", () => {
   const now = Date.now();
   const store: HistoryStore = {
-    fresh: mk("fresh", { publishedAt: iso(now - 6 * DAY) }), // 6天 → 保留
-    boundary: mk("boundary", { publishedAt: iso(now - 7 * DAY + 60_000) }), // 7天-1min → 保留
-    stale: mk("stale", { publishedAt: iso(now - 8 * DAY) }), // 8天 → 剔除
+    fresh: mk("fresh", { publishedAt: iso(now - 1 * DAY) }), // 1天 → 保留
+    boundary: mk("boundary", { publishedAt: iso(now - 2 * DAY + 60_000) }), // 2天-1min → 保留
+    stale: mk("stale", { publishedAt: iso(now - 3 * DAY) }), // 3天 → 剔除
   };
   const out = pruneHistory(store);
-  assert.ok(out.fresh, "6天前应保留");
-  assert.ok(out.boundary, "7天边界内应保留");
-  assert.ok(!out.stale, "8天前应剔除");
+  assert.ok(out.fresh, "1天前应保留");
+  assert.ok(out.boundary, "2天边界内应保留");
+  assert.ok(!out.stale, "3天前应剔除");
 });
 
 test("pruneHistory: 无 publishedAt 回退 lastSeenAt", () => {
@@ -132,17 +132,17 @@ test("buildRolling: 历史中重复 URL 只保留一条", () => {
 test("buildRolling: 历史条目 lastSeenAt=今天 → 标记 fetchedToday=true（预分析/当天早跑内容当天展示）", () => {
   const dayAgo = iso(Date.now() - 86_400_000);
   const h: HistoryStore = {
-    // 预分析/今天早跑写入：lastSeenAt 今天
+    // 预分析/今天早跑写入：lastSeenAt 今天，publishedAt 1 天前（在 2 天抓取窗口内）
     pre: mk("https://x/pre", {
       subcategory: "cn-policy",
       ai_relevant: true,
       summary: "公积金政策解读",
-      publishedAt: iso(Date.now() - 3 * 86_400_000),
+      publishedAt: iso(Date.now() - 1 * 86_400_000),
     }),
-    // 昨天写入：lastSeenAt 昨天 → 不标记当天
+    // 昨天写入：lastSeenAt 昨天 → 不标记当天（publishedAt 仍在窗口内）
     old: mk("https://x/old", {
       lastSeenAt: dayAgo,
-      publishedAt: iso(Date.now() - 3 * 86_400_000),
+      publishedAt: iso(Date.now() - 1 * 86_400_000),
     }),
   };
   const out = buildRolling([], h);

@@ -1,12 +1,12 @@
 /**
- * Rolling 7-day article history + AI-summary cache.
+ * Rolling article history (抓取窗口 = 今天+昨天) + AI-summary cache.
  *
  * Single source of truth on disk (`data/article-history.json`) that the
  * report entrypoints (daily.ts / dry-run.ts) use for two purposes:
  *
- *  1. **"过去7天" tab** — every article published in the last 7 days is
- *     kept here, so the renderer can show a rolling backlog alongside the
- *     freshly-fetched "当天" items.
+ *  1. **滚动 backlog** — every article published within the fetch window
+ *     (最近 2 天) is kept here, so the renderer can show a rolling backlog
+ *     alongside the freshly-fetched "当天" items.
  *  2. **AI 解读去重** — when an article's URL already has a `summary` in the
  *     history, daily.ts reuses it instead of calling the LLM again, saving
  *     cost. The summary is the "AI 解读结果" the user referred to.
@@ -24,9 +24,10 @@ import { loadAllSources } from "../sources/registry";
 import { todayKey } from "../utils";
 
 const HISTORY_PATH = path.resolve(process.cwd(), "data/article-history.json");
-/** 历史库保留天数（也用作 daily 源层前置窗口过滤的窗口）。 */
-export const HISTORY_DAYS = 7;
-const MAX_AGE_MS = HISTORY_DAYS * 86_400_000;
+/** 抓取窗口（天）：daily 源层前置窗口过滤 + 滚动历史(buildRolling/pruneHistory)
+ *  均以此为准——只抓取/展示今天 + 昨天的日期范围（用户 2026-08-22 要求：抓 2 天）。 */
+export const FETCH_WINDOW_DAYS = 2;
+const MAX_AGE_MS = FETCH_WINDOW_DAYS * 86_400_000;
 
 export interface HistoryEntry {
   title: string;
@@ -80,7 +81,7 @@ export function loadHistory(): HistoryStore {
  *
  * The window is measured by the article's **occurrence time** (`publishedAt`),
  * NOT the analysis time (`lastSeenAt`). An item is "fresh" if its publish date
- * is within the last HISTORY_DAYS. Items with no publish date (e.g. some
+ * is within the last FETCH_WINDOW_DAYS. Items with no publish date (e.g. some
  * crawled datasets) fall back to `lastSeenAt` so they aren't silently dropped.
  */
 function isFreshEntry(e: HistoryEntry): boolean {

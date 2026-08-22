@@ -108,8 +108,8 @@ test("renderHtml: 来源徽章按 source_type 区分（src-badge，2026-08-21 �
   assert.ok(html.includes(">官方<"), "应渲染 官方 徽章文案");
 });
 
-test("技术动态 sub-tab 计数与内容口径一致：只算最近 3 天（统一展示窗口）", () => {
-  // 两个子组触发 sub-tabs 渲染；每组混入 3 天前的旧条目（超窗口，不计入）
+test("技术动态 sub-tab 计数与内容口径一致：只算最近 2 天（统一展示窗口）", () => {
+  // 两个子组触发 sub-tabs 渲染；每组混入 5 天前的旧条目（超窗口，不计入）
   const now = new Date();
   const oldDate = new Date(now.getTime() - 5 * 86_400_000).toISOString();
   const subs: SubGroup[] = [
@@ -144,14 +144,14 @@ test("技术动态 sub-tab 计数与内容口径一致：只算最近 3 天（�
     },
   ];
   const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
-  // 计数应只统计最近 3 天：cn-tech=1、ai-news=1（而非全量 2/3）
-  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">1</span>'), "cn-tech 计数应只算最近 3 天 1 条");
-  assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算最近 3 天 1 条");
+  // 计数应只统计最近 2 天：cn-tech=1、ai-news=1（而非全量 2/3）
+  assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">1</span>'), "cn-tech 计数应只算最近 2 天 1 条");
+  assert.ok(html.includes('data-sub="ai-news" data-cat="tech">AI 动态<span class="count">1</span>'), "ai-news 计数应只算最近 2 天 1 条");
   assert.ok(!html.includes('<span class="count">3</span>'), "不应把超窗口条目计入 tab 计数");
 });
 
-test("财经面板「国家政策」sub-tab 计数同口径：只算最近 3 天", () => {
-  // 用户场景：finance 面板 cn-policy 子组，2 条超窗口旧文 + 1 条 3 天内
+test("财经面板「国家政策」sub-tab 计数同口径：只算最近 2 天", () => {
+  // 用户场景：finance 面板 cn-policy 子组，2 条超窗口旧文 + 1 条 2 天内
   const now = new Date();
   const oldDate = new Date(now.getTime() - 5 * 86_400_000).toISOString();
   const subs: SubGroup[] = [
@@ -183,8 +183,8 @@ test("财经面板「国家政策」sub-tab 计数同口径：只算最近 3 天
     },
   ];
   const html = renderRawCategoryPanel("finance", subs, "2026-08-19");
-  // cn-policy 计数应为最近 3 天 1 条（而非全量 3 条）
-  assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算最近 3 天 1 条");
+  // cn-policy 计数应为最近 2 天 1 条（而非全量 3 条）
+  assert.ok(html.includes('data-sub="cn-policy" data-cat="finance">国家政策<span class="count">1</span>'), "cn-policy 计数应只算最近 2 天 1 条");
   assert.ok(!html.includes('<span class="count">3</span>'), "不应把超窗口条目计入 cn-policy 计数");
 });
 
@@ -224,7 +224,7 @@ test("filterRecentDays: 无发布时间 → 按采集时间 fetchedAt 排序与�
     },
   ];
   const html = renderRawCategoryPanel("tech", subs, "2026-08-19");
-  // 计数只算 3 天窗口内（1h + 2h = 2 条，5 天前采集的不计）
+  // 计数只算 2 天窗口内（1h + 2h = 2 条，5 天前采集的不计）
   assert.ok(html.includes('data-sub="cn-tech" data-cat="tech">技术动态<span class="count">2</span>'), "无发布时间条目按 fetchedAt 判定窗口（5天前采集不计入）");
   // 顺序（2026-08-21 用户规则）：有发布时间(2h前) 优先；无发布时间(采集1h前) 沉底
   const order = html.indexOf("无发布时间·今天采集");
@@ -273,6 +273,7 @@ test("sortByTierAndTime: tier 权威等级 + 时间排序，只有日期沉底",
 
 test("子标签合并输出：无 L3 信息源 tabs（只到子标签）", () => {
   // 模拟 groupRaw 合并流输出（2026-08-21 起所有子标签均构造成单 _merged source）
+  const now = new Date();
   const subs: SubGroup[] = [
     {
       id: "cn-policy",
@@ -283,9 +284,9 @@ test("子标签合并输出：无 L3 信息源 tabs（只到子标签）", () =>
           sourceName: "国家政策",
           merged: true,
           items: [
-            { ...item("https://x/p1", "国务院政策文件", "finance"), tier: "T1", source: "国务院" },
-            { ...item("https://x/p2", "央视解读政策", "finance"), tier: "T1.5", source: "央视" },
-            { ...item("https://x/p3", "新浪报道政策", "finance"), tier: "T2", source: "新浪" },
+            { ...item("https://x/p1", "国务院政策文件", "finance"), publishedAt: now, tier: "T1", source: "国务院" },
+            { ...item("https://x/p2", "央视解读政策", "finance"), publishedAt: now, tier: "T1.5", source: "央视" },
+            { ...item("https://x/p3", "新浪报道政策", "finance"), publishedAt: now, tier: "T2", source: "新浪" },
           ],
         },
       ],

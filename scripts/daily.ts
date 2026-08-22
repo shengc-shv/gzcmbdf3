@@ -59,7 +59,7 @@ import {
   loadHistory,
   buildRolling,
   saveHistory,
-  HISTORY_DAYS,
+  FETCH_WINDOW_DAYS,
   type HistoryStore,
 } from "../lib/output/history";
 import { analyzeWatchlist } from "../lib/trading/runner";
@@ -391,15 +391,15 @@ async function main() {
     throw new Error("no articles fetched — aborting");
   }
 
-  // —— 源层前置窗口过滤（2026-08-20 用户决策：减少滚动列表白抓）——
-  // RSS/爬虫抓的是滚动列表，天然混入大量超 7 天旧文（本次 519→前置砍 215）。
-  // 在进入关键词漏斗/标题去重前，先按「保留 7 天」窗口丢弃，减少无效处理量；
-  // 展示窗口（3 天）仍由后段 filterByWindow(DISPLAY_WINDOW_DAYS) 保证。
+  // —— 源层前置窗口过滤（2026-08-20 用户决策：减少滚动列表白抓；2026-08-22 改为抓 2 天）——
+  // RSS/爬虫抓的是滚动列表，天然混入大量超窗口旧文。在进入关键词漏斗/标题去重前，
+  // 先按「抓取窗口（今天+昨天，共 ${FETCH_WINDOW_DAYS} 天）」丢弃，减少无效处理量；
+  // 展示窗口（${DISPLAY_WINDOW_DAYS} 天）仍由后段 filterByWindow(DISPLAY_WINDOW_DAYS) 保证，但数据已被前置截断到 ${FETCH_WINDOW_DAYS} 天。
   const preW = articles.length;
-  articles = filterByWindow(articles, HISTORY_DAYS);
+  articles = filterByWindow(articles, FETCH_WINDOW_DAYS);
   if (articles.length !== preW) {
     console.log(
-      `[daily] 🧹 源层前置窗口过滤: ${preW} → ${articles.length} 条（移除 ${preW - articles.length} 条超 7 天旧文）`,
+      `[daily] 🧹 源层前置窗口过滤: ${preW} → ${articles.length} 条（移除 ${preW - articles.length} 条超 ${FETCH_WINDOW_DAYS} 天旧文）`,
     );
   }
 
@@ -458,13 +458,13 @@ async function main() {
     articles = kept;
   }
 
-  // —— 超窗口旧文过滤（归一化②）：rss 流混入的 7 天前旧文不进 AI、不展示（展示窗口 {{DISPLAY}} 天）——
-  // 否则旧文 URL 不在 7 天历史缓存，会被误判为「新条目」进 AI 分类（白花钱）。
+  // —— 超窗口旧文过滤（归一化②）：rss 流混入的超展示窗口旧文不进 AI、不展示（展示窗口 ${DISPLAY_WINDOW_DAYS} 天）——
+  // 否则旧文 URL 不在历史缓存，会被误判为「新条目」进 AI 分类（白花钱）。
   const wBefore = articles.length;
   articles = filterByWindow(articles, DISPLAY_WINDOW_DAYS);
   if (articles.length !== wBefore) {
     console.log(
-      `[daily] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条 7 天前旧文）`,
+      `[daily] 🗓 超窗口旧文过滤: ${wBefore} → ${articles.length} 条（移除 ${wBefore - articles.length} 条超 ${DISPLAY_WINDOW_DAYS} 天窗口旧文）`,
     );
   }
 

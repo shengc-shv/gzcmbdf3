@@ -195,19 +195,34 @@ export const THEME_CSS = `
   .exec-col-title { margin: 0 0 0.45rem; font-size: 0.8rem; color: var(--muted); font-weight: 600; }
 
   /* 今日必读：横向滑动卡片（Apple News 风），桌面转为 5 列网格 */
-  .exec-must { margin-bottom: 0.5rem; }
+  .exec-must { position: relative; margin-bottom: 0.5rem; }
   .must-scroller {
-    list-style: none; margin: 0; padding: 0 0 0.4rem;
+    list-style: none; margin: 0; padding: 0 0.75rem 0.5rem 0;
     display: flex; flex-direction: row; gap: 0.5rem;
     overflow-x: auto; -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    scrollbar-width: thin; scrollbar-color: var(--rule) transparent;
   }
+  .must-scroller::-webkit-scrollbar { height: 5px; }
+  .must-scroller::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
   .must-card {
-    flex: 0 0 auto; width: 78vw; max-width: 300px;
+    flex: 0 0 auto; width: 80vw; max-width: 300px;
     display: flex; gap: 0.55rem; align-items: flex-start;
     border: 1px solid var(--rule); border-radius: 12px;
     padding: 0.6rem 0.75rem; background: var(--bg-elevated);
     box-shadow: var(--shadow-sm);
+  }
+  /* 移动端横向滑动提示：右侧渐隐遮罩，暗示右侧还有更多必读卡片 */
+  .exec-must::after {
+    content: ""; position: absolute; top: 1.7rem; right: 0; bottom: 0.5rem;
+    width: 2rem; pointer-events: none; z-index: 3;
+    background: linear-gradient(to left, color-mix(in srgb, var(--accent-cmb) 5%, var(--bg)) 0%, transparent 100%);
+  }
+  /* 末尾「滑动查看 ›」提示卡（移动端横向滑动时可见；桌面网格下隐藏） */
+  .must-hint {
+    flex: 0 0 auto; display: flex; align-items: center; gap: 0.15rem;
+    align-self: stretch; padding: 0 0.3rem; white-space: nowrap;
+    color: var(--muted); font-size: 0.74rem; position: relative; z-index: 4;
   }
   .must-link { text-decoration: none; color: inherit; border-radius: 8px; transition: border-color 0.15s ease; }
   .must-link:hover strong { color: var(--accent-cmb); }
@@ -225,8 +240,11 @@ export const THEME_CSS = `
   @media (min-width: 720px) {
     /* 必读卡片自适应列数：不足 5 条时不再留白撑开（auto-fit 按条数收窄），
        最多 5 列；避免「执行摘要条数少 → 版面被商机洞察撑大」的失衡。 */
-    .must-scroller { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); overflow: visible; padding-bottom: 0; scroll-snap-type: none; }
+    .must-scroller { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); overflow: visible; padding-bottom: 0; padding-right: 0; scroll-snap-type: none; }
     .must-card { width: auto; max-width: none; }
+    /* 桌面转为网格后无横向滑动，渐隐遮罩与滑动提示均隐藏 */
+    .exec-must::after { display: none; }
+    .must-hint { display: none; }
   }
 
   /* 商机提示：默认折叠，点击展开 */

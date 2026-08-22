@@ -51,9 +51,10 @@ export const CATEGORY_DIGEST_LABELS: Record<Category, string> = {
 
 /**
  * 展示窗口（天）：所有面板统一展示最近 N 天发布的内容，按发布时间倒序。
- * （2026-08-19 用户调整：不再区分「当天/过去7天」时间拆分，全部展示最近 3 天。）
+ * （2026-08-19 用户调整：不再区分「当天/过去7天」时间拆分；2026-08-22 改为与
+ * 抓取窗口一致，只展示最近 2 天发布的内容，抓取窗口见 history.ts 的 FETCH_WINDOW_DAYS。）
  */
-export const DISPLAY_WINDOW_DAYS = 3;
+export const DISPLAY_WINDOW_DAYS = 2;
 
 
 

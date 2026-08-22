@@ -878,7 +878,7 @@ function renderReportExec(report: DailyReport): string {
       <h2 class="exec-title">执行摘要</h2>
       <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
     </div>
-    ${must ? `<div class="exec-must"><h3 class="exec-col-title">📌 今日必读</h3><ul class="must-scroller">${must}</ul></div>` : ""}
+    ${must ? `<div class="exec-must"><h3 class="exec-col-title">📌 今日必读</h3><ul class="must-scroller">${must}<li class="must-hint" aria-hidden="true">滑动查看 ›</li></ul></div>` : ""}
     ${insights ? `<div class="exec-insights"><h3 class="exec-col-title">💡 商机洞察（默认展开）</h3><div class="insight-grid">${insights}</div></div>` : ""}
   </section>`;
 }
@@ -1001,6 +1001,7 @@ export function mergeRollingIntoReport(
       title_orig: a.title_cn ? a.title : undefined,
       source: a.source || "",
       source_type: tier === "T1" || tier === "T1.5" ? "official" : "media",
+      tier,
       date: mmdd,
       summary,
       importance: 2,
@@ -1115,8 +1116,26 @@ export function renderHtml(
   // 跨板块去重（一文一卡）：同一 URL 只展示一次，优先级
   // 广州本地 > 业务启示 > 政策与市场 > 科技前沿 > IPO。
   const seen = new Set<string>();
-  const dedupe = (list: ReportItem[]): ReportItem[] =>
-    list.filter((it) => (!it.url || seen.has(it.url) ? false : (seen.add(it.url), true)));
+  const dedupe = (list: ReportItem[]): ReportItem[] => {
+    // 同板块内二次去重：来自不同源、标题完全一致（归一化后）、且权威等级
+    // 相同的条目只留一条（用户规则：同权威等级留一个，避免通稿被多源重复刷屏）。
+    const seenTitleTier = new Set<string>();
+    const normTitle = (t: string): string =>
+      (t || "")
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/[^\p{L}\p{N}]+/gu, "");
+    const authorityOf = (it: ReportItem): string =>
+      it.tier ?? (it.source_type === "official" ? "T1" : "T2");
+    return list.filter((it) => {
+      if (it.url && seen.has(it.url)) return false;
+      const key = `${normTitle(it.title_cn || it.title_orig || "")}|${authorityOf(it)}`;
+      if (seenTitleTier.has(key)) return false;
+      if (it.url) seen.add(it.url);
+      seenTitleTier.add(key);
+      return true;
+    });
+  };
 
   const gzLocal = dedupe(report.sections?.gz_local ?? []);
   const bizInsight = dedupe(report.sections?.biz_insight ?? []);
@@ -1124,12 +1143,12 @@ export function renderHtml(
   const techAll = dedupe(report.sections?.tech ?? []);
   const ipoAll = dedupe(report.sections?.ipo ?? []);
 
-  // 中文日期「8月21日 星期五」
+  // 中文日期「8月22日 星期六」：用 UTC 解析避免 CI(UTC) runner 的本地时区偏移
+  // 导致 getDay() 算错一天（例：2026-08-22 在 UTC 下被当作 8/21 星期五）。
   const zhDate = (() => {
-    const d = new Date(`${date}T00:00:00+08:00`);
-    const w = ["日", "一", "二", "三", "四", "五", "六"][d.getDay()];
-    const [, m, dd] = date.split("-");
-    return `${+m}月${+dd}日 星期${w}`;
+    const [yy, mm, dd] = date.split("-").map(Number);
+    const w = ["日", "一", "二", "三", "四", "五", "六"][new Date(Date.UTC(yy, mm - 1, dd)).getUTCDay()];
+    return `${mm}月${dd}日 星期${w}`;
   })();
 
   const tabs = [
