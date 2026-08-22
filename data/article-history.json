@@ -125,20 +125,6 @@
     "summary": "沃尔玛承诺降价以应对销售增速放缓至六年最低；美国零售巨头经营压力，反映海外消费走弱，与本地银行零售业务关联弱，作背景参考。",
     "ai_relevant": false
   },
-  "https://www.bbc.co.uk/news/articles/crl7y671w8go?at_medium=RSS&at_campaign=rss": {
-    "title": "Danone €1bn takeover of Huel approved by watchdog",
-    "url": "https://www.bbc.co.uk/news/articles/crl7y671w8go?at_medium=RSS&at_campaign=rss",
-    "sourceId": "bbc-business",
-    "source": "BBC Business",
-    "category": "finance",
-    "subcategory": "news",
-    "excerpt": "French firm says the acquisition of Huel will help it grow in the nutritional sector.",
-    "publishedAt": "2026-08-20T11:41:01.000Z",
-    "firstSeenAt": "2026-08-20T12:32:59.612Z",
-    "lastSeenAt": "2026-08-20T12:32:59.612Z",
-    "summary": "达能10亿欧元收购Huel获监管批准；海外消费品牌并购，与分行零售业务无关联。",
-    "ai_relevant": false
-  },
   "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates": {
     "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
     "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
@@ -9423,5 +9409,17 @@
     "firstSeenAt": "2026-08-22T11:35:28.246Z",
     "lastSeenAt": "2026-08-22T11:35:28.246Z",
     "ai_relevant": false
+  },
+  "https://www.stcn.com/article/detail/4102604.html": {
+    "title": "长存控股来了！金融机构股东图谱浮现：银行系扎堆，多家券商隐现",
+    "url": "https://www.stcn.com/article/detail/4102604.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:41:22.087Z",
+    "lastSeenAt": "2026-08-22T11:41:22.087Z"
   }
 }

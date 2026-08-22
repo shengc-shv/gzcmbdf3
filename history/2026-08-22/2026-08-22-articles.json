@@ -119,19 +119,6 @@
       "relevant": false
     },
     {
-      "sourceId": "bbc-business",
-      "title": "Danone €1bn takeover of Huel approved by watchdog",
-      "url": "https://www.bbc.co.uk/news/articles/crl7y671w8go?at_medium=RSS&at_campaign=rss",
-      "excerpt": "French firm says the acquisition of Huel will help it grow in the nutritional sector.",
-      "publishedAt": "2026-08-20T11:41:01.000Z",
-      "category": "finance",
-      "summary": "达能10亿欧元收购Huel获监管批准；海外消费品牌并购，与分行零售业务无关联。",
-      "source": "BBC Business",
-      "fetchedToday": false,
-      "subcategory": "news",
-      "relevant": false
-    },
-    {
       "sourceId": "guardian-business",
       "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
       "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
@@ -2865,7 +2852,7 @@
       "summary": "与银行零售业务无直接关联，不纳入商机。",
       "source": "新华财经",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -3262,7 +3249,7 @@
       "summary": "与银行零售业务无直接关联，不纳入商机。",
       "source": "新浪财经·银行频道",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "sina-bank",
@@ -5271,7 +5258,7 @@
       "summary": "佛山产业园建设动态，非广州辖区，与分行零售业务无直接关联。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5339,7 +5326,7 @@
       "source": "南方网·经济",
       "fetchedToday": true,
       "subcategory": "gz-policy",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5351,7 +5338,7 @@
       "summary": "大湾区能源基建工程动态，与银行零售业务无直接关联。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5363,7 +5350,7 @@
       "summary": "大湾区自然教育活动，与银行零售业务无关。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5472,7 +5459,7 @@
       "summary": "抗衰老科研学术活动，与银行零售业务无直接关联。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5520,7 +5507,7 @@
       "summary": "无废湾区环保项目签约，与银行零售业务无直接关联。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5557,7 +5544,7 @@
       "source": "南方网·经济",
       "fetchedToday": true,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -5569,7 +5556,7 @@
       "summary": "老字号智造县域发展报道，与银行零售业务无直接关联。",
       "source": "南方网·经济",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnr-gd",
@@ -5631,7 +5618,7 @@
       "summary": "广州玫瑰合伙人计划（活动），与银行零售业务无直接关联。",
       "source": "央广网·广东",
       "fetchedToday": true,
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnr-gd",
@@ -6919,7 +6906,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "dayoo-gz",
@@ -7049,7 +7036,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": true,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "dayoo-gz",
@@ -7165,7 +7152,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": true,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnr-gd",
@@ -8654,7 +8641,8 @@
       "category": "finance",
       "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8694,15 +8682,9 @@
       "title": "太罕见！有银行一年期、两年期和三年期存款利率竟均为1.65%，什么信号？",
       "url": "https://m.21jingji.com/article/20260822/herald/7ef188b4e8122b39f44074dc90a5b3f5.html",
       "excerpt": "【21财经·金融】太罕见！有银行一年期、两年期和三年期存款利率竟均为1.65%，什么信号？",
-      "category": "gz",
       "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "gz",
       "source": "21世纪经济报道·金融",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "personal_credit",
-        "wealth_mgmt"
-      ],
       "fetchedToday": true,
       "subcategory": "cn-finance"
     },
@@ -8711,58 +8693,57 @@
       "title": "存1年=存2年=存3年，存款利率罕见“持平”",
       "url": "https://m.21jingji.com/article/20260822/herald/cb1ebbc36420fc52692c11cf36d09ac9.html",
       "excerpt": "【21财经·金融】存1年=存2年=存3年，存款利率罕见“持平”",
-      "category": "gz",
       "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "gz",
       "source": "21世纪经济报道·金融",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "personal_credit",
-        "wealth_mgmt"
-      ],
       "fetchedToday": true,
       "subcategory": "cn-finance"
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "算电协同筑底座 词元经济开新局——2026绿色算力（人工智能）大会召开",
       "url": "https://www.cnfin.com/yw-lb/detail/20260822/4459049_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "finance",
-      "summary": "",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新华财经",
       "fetchedToday": true,
-      "subcategory": "cn-finance"
+      "subcategory": "cn-finance",
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "报告显示：我国算力全链条绿色化成效初显",
       "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459050_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "finance",
-      "summary": "",
-      "tier": "T1.5",
-      "filterBucket": "daily",
-      "filterDimensions": [],
+      "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance"
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "“创新培育新动能 壮大绿色算力产业链”专项活动在呼和浩特举行",
       "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459047_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance",
+      "relevant": false
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "长存控股来了！金融机构股东图谱浮现：银行系扎堆，多家券商隐现",
+      "url": "https://www.stcn.com/article/detail/4102604.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "finance",
       "summary": "",
-      "tier": "T1.5",
+      "tier": "T2",
       "filterBucket": "daily",
       "filterDimensions": [],
       "fetchedToday": true,
