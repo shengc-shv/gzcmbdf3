@@ -55,7 +55,10 @@ function categoryToSection(cat?: string): ReportSectionKey {
  * buildPass2User 的 __ARTICLES_JSON__ / __ITEMS_JSON__），因此此处必须抽取「第一个平衡
  * JSON 数组」并按 `section` 字段区分两阶段，不能用 parsed.items（裸数组无 items 键）。
  */
-export function makeSkipAiRunner(cache: Map<string, string> = new Map()): LlmRunner {
+export function makeSkipAiRunner(
+  cache: Map<string, string> = new Map(),
+  relevantUrls?: Set<string>,
+): LlmRunner {
   return async (_system, userPrompt) => {
     let arr: any[] = [];
     try {
@@ -70,22 +73,30 @@ export function makeSkipAiRunner(cache: Map<string, string> = new Map()): LlmRun
     }
     const isPass2 = arr[0]?.section !== undefined;
     if (!isPass2) {
-      // PASS1：元素含 category，无 section → 全部 keep，按原始 category 启发式归板块
+      // PASS1：元素含 category，无 section。
+      // 2026-08-22 修复：SKIP_AI 不再「全部 keep」——若提供了 relevantUrls（历史库
+      // ai_relevant=true 的 url 集合），只保留其中的条目，与 render mergeRolling 的
+      // 「未打标/无关一律不并入」口径一致，防止今天新抓的非 L0 垃圾（绿色算力/
+      // 银行中报/科技公司业绩）在预览/发布时混入板块。未提供时保持旧行为（全 keep，
+      // 供无缓存兜底/测试）。
+      const keepAll = !relevantUrls;
       return JSON.stringify({
-        items: arr.map((it: any) => ({
-          url: it.url,
-          keep: true,
-          // gz_hint 提权（2026-08-21）：标题含广州锚词 → 广州本地板块 + locale=gz，
-          // 否则 gz 保守归业务启示（无法判断 locale 时宁缺毋滥）。
-          section: it.gz_hint ? "gz_local" : categoryToSection(it.category),
-          source_type: "media",
-          locale: it.gz_hint ? "gz" : "national",
-          locale_evidence: it.gz_hint ? (it.title || "").slice(0, 40) : "",
-          tags: [],
-          title_cn: it.title || "",
-          title_orig: "",
-          importance_candidate: 2,
-        })),
+        items: arr
+          .filter((it: any) => keepAll || relevantUrls.has(it.url))
+          .map((it: any) => ({
+            url: it.url,
+            keep: true,
+            // gz_hint 提权（2026-08-21）：标题含广州锚词 → 广州本地板块 + locale=gz，
+            // 否则 gz 保守归业务启示（无法判断 locale 时宁缺毋滥）。
+            section: it.gz_hint ? "gz_local" : categoryToSection(it.category),
+            source_type: "media",
+            locale: it.gz_hint ? "gz" : "national",
+            locale_evidence: it.gz_hint ? (it.title || "").slice(0, 40) : "",
+            tags: [],
+            title_cn: it.title || "",
+            title_orig: "",
+            importance_candidate: 2,
+          })),
       });
     }
     // PASS2：元素含 section + raw_text → 照抄字段，summary 优先用预填缓存

@@ -3077,7 +3077,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -3505,7 +3505,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "与银行零售业务无直接关联，不纳入商机。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T08:57:53.082Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5673,7 +5673,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "佛山产业园建设动态，非广州辖区，与分行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5746,7 +5746,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "大湾区规则软联通标准化进展，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5759,7 +5759,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "大湾区能源基建工程动态，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5772,7 +5772,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "大湾区自然教育活动，与银行零售业务无关。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5890,7 +5890,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "抗衰老科研学术活动，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5942,7 +5942,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "无废湾区环保项目签约，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5982,7 +5982,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "消费帮扶乡村振兴报道，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -5995,7 +5995,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "老字号智造县域发展报道，与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6062,7 +6062,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "广州玫瑰合伙人计划（活动），与银行零售业务无直接关联。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -7450,7 +7450,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "孙志洋到广州博览会、国际发明展调研。对广州分行研判外部环境与大类资产走势具参考；立足湾区区位，兼具政策与客群红利"
@@ -7592,7 +7592,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "一站式品鉴岭南珍味！广州优质农产品亮相第34届广州博览会。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利"
   },
   "https://news.dayoo.com/guangzhou/202608/21/139995_54993518.htm": {
@@ -7717,7 +7717,7 @@
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "南沙“智造”闪耀第34届广州博览会。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利"
   },
   "https://www.cnr.cn/gd/guangdongyaowen/20260822/t20260822_527786367.shtml": {
@@ -9323,7 +9323,8 @@
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T11:14:43.113Z",
-    "lastSeenAt": "2026-08-22T11:14:43.113Z"
+    "lastSeenAt": "2026-08-22T11:14:43.113Z",
+    "ai_relevant": false
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4459039_1.html": {
     "title": "未来智造局丨AI成“新标配” 可穿戴产业生态重构",
@@ -9370,8 +9371,8 @@
     "subcategory": "cn-finance",
     "excerpt": "【21财经·金融】太罕见！有银行一年期、两年期和三年期存款利率竟均为1.65%，什么信号？",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "firstSeenAt": "2026-08-22T11:31:30.133Z",
-    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+    "firstSeenAt": "2026-08-22T11:35:28.246Z",
+    "lastSeenAt": "2026-08-22T11:35:28.246Z"
   },
   "https://m.21jingji.com/article/20260822/herald/cb1ebbc36420fc52692c11cf36d09ac9.html": {
     "title": "存1年=存2年=存3年，存款利率罕见“持平”",
@@ -9382,8 +9383,8 @@
     "subcategory": "cn-finance",
     "excerpt": "【21财经·金融】存1年=存2年=存3年，存款利率罕见“持平”",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "firstSeenAt": "2026-08-22T11:31:30.133Z",
-    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+    "firstSeenAt": "2026-08-22T11:35:28.246Z",
+    "lastSeenAt": "2026-08-22T11:35:28.246Z"
   },
   "https://www.cnfin.com/yw-lb/detail/20260822/4459049_1.html": {
     "title": "算电协同筑底座 词元经济开新局——2026绿色算力（人工智能）大会召开",
@@ -9394,8 +9395,9 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "firstSeenAt": "2026-08-22T11:31:30.133Z",
-    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+    "firstSeenAt": "2026-08-22T11:35:28.246Z",
+    "lastSeenAt": "2026-08-22T11:35:28.246Z",
+    "ai_relevant": false
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4459050_1.html": {
     "title": "报告显示：我国算力全链条绿色化成效初显",
@@ -9406,8 +9408,8 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "firstSeenAt": "2026-08-22T11:31:30.133Z",
-    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+    "firstSeenAt": "2026-08-22T11:35:28.246Z",
+    "lastSeenAt": "2026-08-22T11:35:28.246Z"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4459047_1.html": {
     "title": "“创新培育新动能 壮大绿色算力产业链”专项活动在呼和浩特举行",
@@ -9418,7 +9420,8 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "firstSeenAt": "2026-08-22T11:31:30.133Z",
-    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+    "firstSeenAt": "2026-08-22T11:35:28.246Z",
+    "lastSeenAt": "2026-08-22T11:35:28.246Z",
+    "ai_relevant": false
   }
 }

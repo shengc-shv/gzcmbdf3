@@ -42,6 +42,19 @@ test("PASS1: 裸数组提示被正确解析为全 keep 并按 category 归板块
   assert.equal(byUrl.get("https://a/4").section, "ipo");
 });
 
+test("PASS1: relevantUrls 白名单 → 只保留历史库 ai_relevant=true 的条目（2026-08-22 防垃圾混入）", async () => {
+  // 模拟历史库：仅 a/1、a/2 被 AI 判相关；a/3（AI 芯片）、a/4（IPO）未判/无关
+  const relevant = new Set(["https://a/1", "https://a/2"]);
+  const runner = makeSkipAiRunner(new Map(), relevant);
+  const out: any = JSON.parse(await runner(PASS1_SYSTEM, buildPass1User(JSON.stringify(pass1Articles))));
+  const urls = out.items.map((i: any) => i.url);
+  assert.deepEqual(urls, ["https://a/1", "https://a/2"], "只保留白名单内条目（宁缺毋滥）");
+  // 不提供白名单 → 保持旧行为全 keep（无缓存兜底/测试）
+  const runner2 = makeSkipAiRunner();
+  const out2: any = JSON.parse(await runner2(PASS1_SYSTEM, buildPass1User(JSON.stringify(pass1Articles))));
+  assert.equal(out2.items.length, 4);
+});
+
 test("PASS1: gz_hint 条目 → 广州本地板块 + locale=gz（提权生效）", async () => {
   const runner = makeSkipAiRunner();
   const gzHintArticles = [

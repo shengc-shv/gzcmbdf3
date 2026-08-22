@@ -524,7 +524,16 @@ async function main() {
     const s = assetSummary(aiAssets, url) ?? history[url]?.summary;
     if (s && s.trim()) summaryCache.set(url, s);
   }
-  const runner = SKIP_AI ? makeSkipAiRunner(summaryCache) : undefined;
+  // 相关性白名单（2026-08-22）：历史库 ai_relevant===true 的 url 集合。SKIP_AI 的
+  // PASS1 只保留白名单内条目（宁缺毋滥），防止今天新抓的非 L0 垃圾（绿色算力/
+  // 银行中报/科技公司业绩）在预览/发布时混入板块——此前 SKIP_AI 是「全部 keep」，
+  // ai_relevant 只挡滚动合并，不挡当日板块，是「数据清了还显示」的真根因。
+  const relevantUrls = new Set(
+    Object.entries(history)
+      .filter(([, e]) => e?.ai_relevant === true)
+      .map(([url]) => url),
+  );
+  const runner = SKIP_AI ? makeSkipAiRunner(summaryCache, relevantUrls) : undefined;
   let report: DailyReport;
   try {
     report = await generateDaily(inputs, date, { runner });
