@@ -8531,5 +8531,41 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z"
+  },
+  "https://www.stcn.com/article/detail/4102462.html": {
+    "title": "东方财富，大赚超80亿元！13家券商，中考成绩出炉",
+    "url": "https://www.stcn.com/article/detail/4102462.html",
+    "sourceId": "stcn",
+    "source": "证券时报",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:25:15.362Z",
+    "lastSeenAt": "2026-08-22T03:25:15.362Z"
+  },
+  "https://news.dayoo.com/guangzhou/202608/21/139995_54993681.htm": {
+    "title": "湾区流行音乐夜开票，来广州音乐公园唱响湾区狂欢之夜",
+    "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993681.htm",
+    "sourceId": "dayoo-gz",
+    "source": "广州日报·大洋网",
+    "category": "gz",
+    "subcategory": "gz-media",
+    "excerpt": "",
+    "publishedAt": "2026-08-21T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:25:15.362Z",
+    "lastSeenAt": "2026-08-22T03:25:15.362Z"
+  },
+  "https://news.dayoo.com/guangzhou/202608/22/139995_54993678.htm": {
+    "title": "广州强化科技创新和产业创新深度融合",
+    "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993678.htm",
+    "sourceId": "dayoo-gz",
+    "source": "广州日报·大洋网",
+    "category": "gz",
+    "subcategory": "gz-media",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T03:25:15.362Z",
+    "lastSeenAt": "2026-08-22T03:25:15.362Z"
   }
 }
