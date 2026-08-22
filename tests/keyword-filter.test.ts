@@ -41,8 +41,8 @@ test("weak 共现：消费贷款命中个人信贷；纯弱词无共现不命中
   assert.ok(hit.dimensions.includes("personal_credit"));
 
   const miss = applyKeywordFilter(art("信贷规模持续增长"), cfg);
-  assert.equal(miss.pass, true, "L0-only：未命中维度也放行（宏观财经保留）");
-  assert.ok(!miss.dimensions.includes("personal_credit"), "无共现词不应打维度标签");
+  assert.equal(miss.pass, true, "L0 放行进 AI：纯『信贷规模』无地域/商机信号，相关性交由 PASS1/PASS2 裁决");
+  assert.ok(!miss.dimensions.includes("personal_credit"), "无共现词仍不应打维度标签");
 });
 
 test("商机S：上市辅导备案 → listing_pipeline（需地域命中 geo_lock）", () => {
@@ -67,11 +67,11 @@ test("商机A：落户广州设立研发中心 → branch_expansion；北京被 
 test("修复#32：纯招聘软文（招聘仅在正文、无地理锚定）不再误判为机构扩张商机", () => {
   // 此前 branch_expansion 含 "招聘.*人" token，会导致正文中出现「招聘…人」的纯招聘
   // 软文（标题无「招聘」故 L0 拦不到）被误判为机构扩张商机保留进池。移除该冲突
-  // token 后，纯招聘噪声不再触发 branch_expansion，落回 daily 兜底（仍由 AI 判相关性）。
+  // token 后，纯招聘噪声不再触发 branch_expansion，落回 daily 兜底（相关性交由 AI 裁决）。
   const r = applyKeywordFilter(art("某公司发布人才发展计划", "公司拟招聘200名新员工填补岗位空缺"), cfg);
-  assert.equal(r.pass, true, "L0 标题无招聘 → 不丢弃");
+  assert.equal(r.pass, true, "L0 仅匹配标题，『招聘』在正文中不触发排除 → 放行进 AI 研判");
   assert.equal((r.opportunities ?? []).length, 0, "移除 招聘.*人 后 branch_expansion 不再误收纯招聘");
-  assert.equal(r.bucket, "daily", "无商机 → daily 兜底");
+  assert.equal(r.bucket, "daily", "无商机命中 → daily 兜底（相关性交由 AI）");
 });
 
 test("修复#32：广州地理锚定的扩张线索（招聘在正文）仍正确命中 branch_expansion", () => {
@@ -101,24 +101,23 @@ test("多商机：一条信息同时命中 listing_pipeline 与 funding_mileston
   assert.equal(r.opportunities?.[0]?.priority, "S", "优先级 S 应排在最前");
 });
 
-test("L0-only：无噪声词的财经内容放行（宏观财经保留，维度未命中不丢）", () => {
+test("漏斗 L0 放行：纯科技产品/通用新闻不命中 L0 → 放行进 AI（相关性由 AI 裁决）", () => {
   const r = applyKeywordFilter(art("某科技公司发布新款手机"), cfg);
-  assert.equal(r.pass, true, "L0-only 策略下未命中维度不再丢弃");
+  assert.equal(r.pass, true, "L0 仅拦明显噪声；纯科技无零售信号条目放行进 AI 研判");
   assert.equal(r.bucket, "daily");
-  assert.equal(r.dimensions.length, 0, "无维度标签");
 });
 
-test("L0-only：宏观财经（美联储/GDP/货币政策）放行——修复 finance 面板被清空", () => {
-  const macro = [
+test("漏斗 L0 放行宏观政策类进 AI：利率/货币信贷/总量宏观均放行进 PASS1/PASS2 研判", () => {
+  // 2026-08-22 回退：漏斗只做 L0 明显噪声排除，不再对宏观做相关性预判。
+  // 「纯总量/就业类宏观是否相关」交由 PASS1/PASS2 AI 回检裁决（准确性第一）。
+  for (const t of [
     "美联储宣布加息25个基点，利率升至5.5%",
-    "美国非农就业数据超预期，经济保持韧性",
     "央行发布2026年第二季度货币政策执行报告",
+    "美国非农就业数据超预期，经济保持韧性",
     "国内生产总值上半年同比增长",
-  ];
-  for (const t of macro) {
+  ]) {
     const r = applyKeywordFilter(art(t), cfg);
-    assert.equal(r.pass, true, `宏观财经应放行: ${t}`);
-    assert.notEqual(r.bucket, "dropped");
+    assert.equal(r.pass, true, `宏观类应放行进 AI 研判（相关性由 AI 裁决）: ${t}`);
   }
 });
 
@@ -152,15 +151,47 @@ test("参考区豁免：ipo/gd-ipo/politics 同样放行", () => {
   }
 });
 
-test("L0-only：finance/gz 的硬闸是 L0 噪声排除（维度不决定 pass）", () => {
-  // 无 L0 噪声 → 放行（宏观财经保留）
+test("相关性闸门：finance/gz 命中维度即放行；含 L0 噪声词丢弃", () => {
+  // 维度命中（加息 = macro_policy strong）→ 放行
   for (const category of ["finance", "gz"]) {
     const r = applyKeywordFilter({ ...art("美联储宣布加息25个基点"), category }, cfg);
-    assert.equal(r.pass, true, `${category} 无噪声词应放行`);
+    assert.equal(r.pass, true, `${category} 命中维度应放行`);
   }
   // L0 噪声（个股行情）→ 仍 DROP
   for (const category of ["finance", "gz"]) {
     const r = applyKeywordFilter({ ...art("A股今日涨停，沪指报3400点"), category }, cfg);
     assert.equal(r.pass, false, `${category} 含 L0 噪声词应丢弃`);
+  }
+});
+
+test("相关性闸门：纯国际政治/军事（无零售传导）丢弃", () => {
+  for (const t of [
+    "特朗普称不会放弃对伊朗的军事选项",
+    "广州下半年女兵征集体检完成",
+    "以色列空袭黎巴嫩南部",
+  ]) {
+    const r = applyKeywordFilter(art(t), cfg);
+    assert.equal(r.pass, false, `国际政治/军事应丢弃: ${t}`);
+    assert.equal(r.bucket, "dropped");
+  }
+});
+
+test("相关性闸门：广州本地非业务新闻（征兵/天气）丢弃，本地零售业务新闻放行", () => {
+  // 本地非业务 → 丢弃
+  for (const t of [
+    "广州下半年女兵征集体检完成",
+    "台风回旋蓄势，未来几天广州阴雨天气持续",
+  ]) {
+    const r = applyKeywordFilter(art(t), cfg);
+    assert.equal(r.pass, false, `广州本地非业务应丢弃: ${t}`);
+    assert.equal(r.bucket, "dropped");
+  }
+  // 本地零售业务（地域 + 本地业务信号）→ 放行
+  for (const t of [
+    "广州举办国际消费节促零售回暖",
+    "番禺区举办轨道交通产业链招商大会系列活动",
+  ]) {
+    const r = applyKeywordFilter(art(t), cfg);
+    assert.equal(r.pass, true, `广州本地零售业务应放行: ${t}`);
   }
 });

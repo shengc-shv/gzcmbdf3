@@ -978,7 +978,7 @@
     "firstSeenAt": "2026-08-21T00:50:05.593Z",
     "lastSeenAt": "2026-08-21T00:50:05.593Z",
     "summary": "俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "subcategories": [
       "cn-wealth"
     ]
@@ -1909,7 +1909,7 @@
     "subcategories": [
       "news"
     ],
-    "ai_relevant": true,
+    "ai_relevant": false,
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "特朗普签署重大计划的具体影响有待观察，若涉及经贸政策将扰动全球市场。分行应密切跟踪政策落地情况，提前做好风险预案与客户沟通。",
@@ -5607,7 +5607,7 @@
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-21T12:05:14.946Z",
     "summary": "广博会与发明展在穗开幕，汇聚产业与消费客群，分行可借展会场景营销对公结算与个人消费金融。",
-    "ai_relevant": true
+    "ai_relevant": false
   },
   "https://news.dayoo.com/guangzhou/202608/21/139995_54993289.htm": {
     "title": "广州增城陆续上新三批“电子警察”，具体路段→",
@@ -5703,7 +5703,7 @@
     "excerpt": "",
     "publishedAt": "2026-08-21T00:00:00.000Z",
     "summary": "龙湖天街轻资产项目落地番禺，区域商业升级带动消费客群与商户结算需求，分行可跟进商业体联名卡与收单。",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-21T12:05:14.946Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z"
   },
@@ -6839,7 +6839,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "伊朗外交部回应美对伊经济制裁：远非延续针对单一国家非法“经济战”。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/world/2026-08-22/doc-inipcwvx7649943.shtml": {
@@ -6892,7 +6892,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "8月22日隔夜要闻：道指涨约1% 油价录得周涨幅 锌价走高 金价大涨 特朗普称并…。对广州分行研判市场与同业动态具参考"
   },
   "https://finance.sina.com.cn/wm/2026-08-22/doc-inipcwvw0908361.shtml": {
@@ -6990,7 +6990,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "30个托位、12月龄即可入托！广州南沙横沥第二家普惠托育园正式揭牌。对广州分行研判市场与同业动态具参考；指向小微普惠金融与经营贷机遇"
   },
   "https://www.infoq.cn/article/CQhb4TOREpEZshtqWZMy?utm_source=rss&utm_medium=article": {
@@ -7116,7 +7116,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "【环球财经】卢拉与特朗普通话 反对美国对巴商品加征关税。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/yw-lb/detail/20260821/4458903_1.html": {
@@ -7158,7 +7158,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "伊朗议长：必须制定计划应对制裁。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458937_1.html": {
@@ -7172,7 +7172,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "阿巴斯呼吁以色列停止并取消“E1区”定居点招标。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458936_1.html": {
@@ -7200,7 +7200,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T01:56:42.342Z",
     "lastSeenAt": "2026-08-22T01:56:42.342Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "【环球财经】美媒：美计划偿还联合国8.5亿美元欠款。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260821/4458888_1.html": {
@@ -7842,7 +7842,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T02:24:14.552Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "美法官推翻特朗普政府暂停向75国发放移民签证的政策。对广州分行研判宏观政策与监管导向具参考"
   },
   "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1273428.shtml": {
@@ -7952,7 +7952,7 @@
     "subcategory": "gz-media",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T02:24:14.552Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "广州下半年女兵征集体检完成。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利"
@@ -8274,7 +8274,7 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T03:09:34.422Z",
     "lastSeenAt": "2026-08-22T03:09:34.422Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "summary": "伊朗外交部：美国对伊朗实施新制裁毫无国际法依据。对广州分行研判市场与同业动态具参考"
   },
   "https://www.cnfin.com/hg-lb/detail/20260822/4458975_1.html": {
@@ -8648,7 +8648,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "美国对伊朗“史上最严制裁”能奏效吗。对广州分行研判外部环境与大类资产走势具参考"
@@ -8662,7 +8662,7 @@
     "subcategory": "cn-finance",
     "excerpt": "",
     "publishedAt": "2026-08-22T00:00:00.000Z",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:16:31.841Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "阿曼与伊朗外长讨论恢复霍尔木兹海峡自由航行。对广州分行研判市场与同业动态具参考"
@@ -8925,7 +8925,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8953,7 +8953,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -8982,7 +8982,7 @@
     "subcategory": "news",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "summary": "美国对伊朗“史上最严制裁”能奏效吗。对广州分行研判外部环境与大类资产走势具参考"
@@ -8995,7 +8995,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9051,7 +9051,7 @@
     "category": "finance",
     "excerpt": "",
     "publishedAt": "2026-08-22",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "cn-finance",
@@ -9233,7 +9233,7 @@
     "category": "gz",
     "excerpt": "",
     "publishedAt": "2026-08-21",
-    "ai_relevant": true,
+    "ai_relevant": false,
     "firstSeenAt": "2026-08-22T10:17:33.931Z",
     "lastSeenAt": "2026-08-22T10:17:33.931Z",
     "subcategory": "gz-customer",

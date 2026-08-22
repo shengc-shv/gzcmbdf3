@@ -142,8 +142,6 @@ export function applyKeywordFilter(
 
   // 参考区豁免：tech/ipo/gd-ipo/politics 不过银行零售漏斗（技术动态/IPO/时政
   // 是参考展示区，有自己的 AI enrich），仅扫描商机追踪器。
-  // 修复 2026-08-19：此前漏斗对全部条目应用，技术动态/IPO 参考区被银行零售
-  // 词表硬过滤 → 当天面板永远为空。
   if (article.category && REFERENCE_CATEGORIES.has(article.category)) {
     // 仍跑 geo 判定：商机追踪器里 geo_lock=true 的（上市/融资/扩张等）依赖地域命中
     const geo = matchGeo(config, full);
@@ -158,7 +156,7 @@ export function applyKeywordFilter(
     };
   }
 
-  // L0 全局硬排除（仅标题，命中即丢，负向优先；finance/gz 主战场的唯一硬闸）
+  // —— L0 全局硬排除（仅标题，命中即丢，负向优先；finance/gz 主战场的唯一硬闸）——
   for (const group of Object.values(config.global_exclude ?? {})) {
     if (!Array.isArray(group)) continue; // 跳过 _note 等描述字段
     for (const w of group) {
@@ -171,10 +169,7 @@ export function applyKeywordFilter(
 
   const geo = matchGeo(config, full);
 
-  // 维度命中（multi_dimension: all_hit — 允许多维度同时命中）。
-  // L0-only 策略（用户 2026-08-19 决策）：维度仅用于打标签/排序（dimensions/score），
-  // **不再决定 pass** —— 宏观财经参考（美联储/GDP/货币政策等未命中银行零售维度）
-  // 也保留进报告，避免 finance 面板被词表清空。
+  // 维度命中（multi_dimension: all_hit）。任一维度命中（含宏观政策·零售传导弱共现）即视为相关。
   const hitDims: string[] = [];
   let dimScore = 0;
   let weekly = false;
@@ -189,16 +184,21 @@ export function applyKeywordFilter(
     }
   }
 
-  // 商机追踪（多值：命中即全部收录，按 S>A>B 排序；一条信息可进多个商机池）
+  // 商机追踪（多值：命中即全部收录，按 S>A>B 排序）
   const opportunities = scanOpportunities(config, full, geo.hit, matched);
 
-  // bucket：opportunity > weekly > daily（L0-only 下未命中维度也进 daily）
+  // 漏斗只做 L0 明显噪声硬排除（零成本预过滤），真正的「相关性准度」交由
+  // PASS1/PASS2 AI 回检裁决。2026-08-22 回退：此前的相关性闸门误杀了
+  // 「央行货币政策执行报告」「落户…研发中心」等本应进 AI 研判的条目，违背
+  // 用户「准确性第一、宁花 AI 成本换准确」的取舍。finance/gz 主战场在 L0 之后
+  // 一律放行进 AI；参考区（tech/ipo/gd-ipo/politics）本就豁免。
+  // bucket：opportunity > weekly > daily
   let bucket: FilterResult["bucket"] = "daily";
   if (opportunities.length > 0) bucket = "opportunity";
   else if (weekly) bucket = "weekly";
 
   return {
-    pass: true, // 已通过 L0 噪声闸；维度未命中不再丢弃
+    pass: true,
     score: geo.score + dimScore + (opportunities.length > 0 ? 1000 : 0),
     dimensions: hitDims,
     ...(opportunities.length > 0 ? { opportunities } : {}),
