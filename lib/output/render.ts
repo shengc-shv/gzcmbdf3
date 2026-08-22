@@ -29,7 +29,6 @@ import {
 import {
   renderTradingPanel,
   renderExecutiveSummary,
-  renderMarketOverview,
   TREND_LABEL,
 } from "./render/sections";
 export type { SourceGroup, SubGroup, RawByCategory } from "./render/cards";
@@ -808,7 +807,7 @@ export function renderReportItemHtml(item: ReportItem, showSource = true): strin
   const tags = (item.tags ?? [])
     .map((t) => `<span class="tag ${tagClsOf(t)}">${escapeHtml(t)}</span>`)
     .join("");
-  return `<article class="brief${item.importance === 3 ? " must" : ""}">
+  return `<article class="brief${item.importance === 3 ? " must" : ""}" data-source="${item.source_type}" data-tags="${(item.tags ?? []).join(" ")}">
   <div class="bm"><span class="src-badge ${badge.cls}">${badge.label}</span>${showSource && item.source ? `<span>${escapeHtml(item.source)}</span>` : ""}${time ? `<span>${time}</span>` : ""}${item.importance === 3 ? `<span class="imp-badge">必知</span>` : ""}</div>
   <h3><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h3>
   ${summary ? `<p class="sum">${summary}</p>` : ""}
@@ -829,6 +828,72 @@ export function renderReportCardList(items: ReportItem[], showSource = true): st
       `<button class="expand-btn" type="button">展开其余 ${more.length} 条</button>`;
   }
   return html;
+}
+
+/** 筛选维度定义：供「板块内筛选条」复用。 */
+export interface FilterChipDef {
+  /** 展示文案 */
+  label: string;
+  /** 与卡片 data-source / data-tags 对应的匹配值 */
+  value: string;
+  /** 维度分组键（同组 OR，不同组 AND） */
+  group: string;
+}
+export interface FilterGroupDef {
+  /** 维度标题（仅在 UI 展示，如「来源」「业务线」） */
+  title: string;
+  chips: FilterChipDef[];
+}
+
+/**
+ * 默认筛选维度（业务资讯板块统一复用，2026-08-22 用户规则）：
+ * - 第一维度「来源」：官方 / 媒体 —— 组内 OR；
+ * - 第二维度「业务线」：客群 / 私行 / 财富 / 信贷 —— 组内 OR；
+ * - 两维度之间取交集（AND）；无任何选中或全选 → 全部显示。
+ */
+export const DEFAULT_FILTER_GROUPS: FilterGroupDef[] = [
+  {
+    title: "来源",
+    chips: [
+      { label: "官方", value: "official", group: "src" },
+      { label: "媒体", value: "media", group: "src" },
+    ],
+  },
+  {
+    title: "业务线",
+    chips: [
+      { label: "客群", value: "客群", group: "tag" },
+      { label: "私行", value: "私行", group: "tag" },
+      { label: "财富", value: "财富", group: "tag" },
+      { label: "信贷", value: "信贷", group: "tag" },
+    ],
+  },
+];
+
+/**
+ * 渲染板块内筛选条（可复用组件：传入自定义 groups 即可用于其它板块）。
+ * 默认渲染 DEFAULT_FILTER_GROUPS；维度内 OR、维度间 AND；全空 / 全选 → 全部显示。
+ */
+export function renderFilterBar(groups: FilterGroupDef[] = DEFAULT_FILTER_GROUPS): string {
+  const groupsHtml = groups
+    .map((g) => {
+      const chips = g.chips
+        .map(
+          (c) =>
+            `<button type="button" class="filter-chip" data-group="${c.group}" data-filter="${escapeHtml(c.value)}">${escapeHtml(c.label)}</button>`,
+        )
+        .join("");
+      return `<div class="filter-group">
+        <span class="filter-gtitle">${escapeHtml(g.title)}</span>
+        ${chips}
+      </div>`;
+    })
+    .join("");
+  return `<div class="filter-bar">
+    <span class="filter-label">筛选</span>
+    ${groupsHtml}
+    <button type="button" class="filter-reset">重置</button>
+  </div>`;
 }
 
 /** 构造 url → 中文标题 映射（供 must_read 回写标题）。 */
@@ -1111,8 +1176,6 @@ export function renderHtml(
   report: DailyReport,
   date: string,
 ): string {
-  const trading = report.trading;
-
   // 跨板块去重（一文一卡）：同一 URL 只展示一次，优先级
   // 广州本地 > 业务启示 > 政策与市场 > 科技前沿 > IPO。
   const seen = new Set<string>();
@@ -1159,7 +1222,6 @@ export function renderHtml(
     { id: "p-ipo", label: "IPO动态", cls: "var(--c-ipo)", count: ipoAll.length, items: ipoAll },
   ].filter((t) => t.count > 0);
 
-  const marketCard = trading ? renderMarketOverview(trading, date) : "";
   const totalItems = gzLocal.length + bizInsight.length + policyMarket.length + techAll.length + ipoAll.length;
   const nowHm = new Date().toTimeString().slice(0, 5);
   const hero = report.hero_line?.trim();
@@ -1192,7 +1254,7 @@ ${THEME_CSS}
   </nav>
 
   ${tabs.map((t, i) => `<section class="panel${i === 0 ? " active" : ""}" id="${t.id}">
-    ${t.id === "p-pol" && marketCard ? marketCard : ""}
+    ${renderFilterBar()}
     ${renderReportCardList(t.items)}
   </section>`).join("")}
 
@@ -1230,6 +1292,51 @@ ${THEME_CSS}
       btn.remove();
     });
   });
+  // 板块内标签筛选（两维度：来源 OR、业务线 OR；维度间 AND；全不选 / 全选 = 全部显示）
+  document.querySelectorAll('.filter-bar').forEach(function (bar) {
+    var panel = bar.closest('.panel');
+    if (!panel) return;
+    bar.addEventListener('click', function (e) {
+      var chip = e.target.closest('.filter-chip');
+      if (chip) { chip.classList.toggle('active'); applyFilter(panel, bar); return; }
+      if (e.target.closest('.filter-reset')) {
+        bar.querySelectorAll('.filter-chip.active').forEach(function (c) { c.classList.remove('active'); });
+        applyFilter(panel, bar);
+      }
+    });
+  });
+  function applyFilter(panel, bar) {
+    var chips = bar.querySelectorAll('.filter-chip');
+    var active = Array.prototype.filter.call(chips, function (c) { return c.classList.contains('active'); });
+    // 全不选（重置）或全选 → 全部显示
+    if (active.length === 0 || active.length === chips.length) {
+      panel.querySelectorAll('.brief').forEach(function (card) { card.classList.remove('filtered-out'); });
+      return;
+    }
+    // 按维度（data-group）分组收集选中值
+    var selByGroup = {};
+    active.forEach(function (c) {
+      var g = c.getAttribute('data-group');
+      (selByGroup[g] = selByGroup[g] || []).push(c.getAttribute('data-filter'));
+    });
+    panel.querySelectorAll('.brief').forEach(function (card) {
+      var src = card.getAttribute('data-source');
+      var tags = (card.getAttribute('data-tags') || '').split(' ').filter(Boolean);
+      var ok = true;
+      for (var g in selByGroup) {
+        var sel = selByGroup[g];
+        if (g === 'src') {
+          // 维度内 OR：命中官方 / 媒体 其一即满足
+          if (sel.indexOf(src) < 0) { ok = false; break; }
+        } else {
+          // 维度内 OR：命中业务线其一即满足
+          var hit = sel.some(function (f) { return tags.indexOf(f) >= 0; });
+          if (!hit) { ok = false; break; }
+        }
+      }
+      card.classList.toggle('filtered-out', !ok);
+    });
+  }
 </script>
 </body>
 </html>`;

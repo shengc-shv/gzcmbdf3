@@ -525,16 +525,6 @@ async function main() {
     `[daily] 管线产出：必读 ${report.must_read.length} 条 / 商机 ${report.insights.length} 条 / 正文 ${totalKept} 条`,
   );
   
-  // Trading signals：与 AI 管线无关，独立抓取渲染（SKIP_AI 下也渲染）。
-  let trading: TradingSection | null = null;
-  try {
-    trading = await runTrading();
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    console.warn(`[daily] trading section failed: ${msg}`);
-  }
-  if (trading) report.trading = trading;
-
   // 回写历史缓存（含今日 AI 摘要），并构建「当天 + 过去30天」滚动列表用于渲染。
   const nowIso = new Date().toISOString();
   history = saveHistory(articles, history, nowIso);
@@ -585,7 +575,6 @@ async function main() {
   const dailyPrev = assetDaily(aiAssets, date);
   aiAssets[dk] = {
     ...(dailyPrev ?? {}),
-    ...(trading ? { trading } : {}),
     updatedAt: nowIso,
   };
   saveAiAssets(aiAssets);

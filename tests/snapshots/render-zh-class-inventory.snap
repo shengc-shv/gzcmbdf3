@@ -6,6 +6,12 @@ exec-sub
 exec-summary
 exec-title
 eyebrow
+filter-bar
+filter-chip
+filter-group
+filter-gtitle
+filter-label
+filter-reset
 imp-badge
 masthead
 meta-line

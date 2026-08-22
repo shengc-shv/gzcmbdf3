@@ -922,6 +922,18 @@ export const THEME_CSS = `
   .panel.expanded .brief.more { display: block; }
   .expand-btn { width: 100%; margin: 0.2rem 0 0.4rem; padding: 0.6rem; border: 1px dashed var(--rule); border-radius: 10px; background: var(--bg-elevated, var(--card)); color: var(--muted); font-size: 0.88rem; font-family: inherit; cursor: pointer; }
   .expand-btn:hover { color: var(--fg); border-style: solid; }
+  /* 板块内标签筛选条（2026-08-22 用户） */
+  .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.4rem 0 0.9rem; padding: 0.5rem 0.65rem; background: var(--bg-elevated, var(--card)); border: 1px solid var(--rule); border-radius: 12px; }
+  .filter-label { font-size: 0.82rem; color: var(--fg-soft, var(--muted)); margin-right: 0.15rem; }
+  .filter-group { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .filter-group + .filter-group { padding-left: 0.7rem; margin-left: 0.35rem; border-left: 1px solid var(--rule); }
+  .filter-gtitle { font-size: 0.8rem; color: var(--fg-soft, var(--muted)); }
+  .filter-chip { border: 1px solid var(--rule); background: var(--bg, var(--card)); color: var(--fg-soft, var(--muted)); border-radius: 999px; padding: 0.28rem 0.8rem; font-size: 0.84rem; cursor: pointer; user-select: none; transition: all 0.15s; font-family: inherit; }
+  .filter-chip:hover { border-color: var(--c-pol); color: var(--c-pol); }
+  .filter-chip.active { background: var(--c-pol); border-color: var(--c-pol); color: #fff; }
+  .filter-reset { margin-left: auto; border: 1px solid var(--rule); background: transparent; color: var(--fg-soft, var(--muted)); border-radius: 999px; padding: 0.28rem 0.8rem; font-size: 0.84rem; cursor: pointer; font-family: inherit; }
+  .filter-reset:hover { border-color: var(--c-pol); color: var(--c-pol); }
+  .brief.filtered-out { display: none !important; }
 
   /* 市场总览 bullet（#17/#18/#19） */
   .market-card .bm { margin-bottom: 0.35rem; }
