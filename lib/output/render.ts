@@ -943,7 +943,7 @@ function renderReportExec(report: DailyReport): string {
       <h2 class="exec-title">执行摘要</h2>
       <span class="exec-sub">今日必读 · 商机洞察（AI 生成）</span>
     </div>
-    ${must ? `<div class="exec-must"><h3 class="exec-col-title">📌 今日必读</h3><ul class="must-scroller">${must}<li class="must-hint" aria-hidden="true">滑动查看 ›</li></ul></div>` : ""}
+    ${must ? `<div class="exec-must"><h3 class="exec-col-title">📌 今日必读</h3><ul class="must-scroller">${must}<li class="must-hint" aria-hidden="true">滑动查看 <span class="hint-arrow">→</span></li></ul></div>` : ""}
     ${insights ? `<div class="exec-insights"><h3 class="exec-col-title">💡 商机洞察（默认展开）</h3><div class="insight-grid">${insights}</div></div>` : ""}
   </section>`;
 }
