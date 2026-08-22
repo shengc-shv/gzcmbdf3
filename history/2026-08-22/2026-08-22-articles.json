@@ -106,19 +106,6 @@
       "relevant": false
     },
     {
-      "sourceId": "infoq-cn",
-      "title": "从中文到小语种都能无痕修改，美图影像研究院（MT Lab）提出全新场景文本编辑方案 | ICML 2026",
-      "url": "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article",
-      "excerpt": "点击查看原文>",
-      "publishedAt": "2026-08-20T11:10:13.000Z",
-      "category": "tech",
-      "summary": "美图影像研究院提出场景文本编辑方案，属CV技术研究，与银行零售业务无直接关联。",
-      "source": "InfoQ 中国",
-      "fetchedToday": false,
-      "subcategory": "cn-tech",
-      "relevant": false
-    },
-    {
       "sourceId": "bloomberg-markets",
       "title": "Treasury Action Not a Fed Game Changer for September, Says Evercore’s Guha",
       "url": "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video",
@@ -158,19 +145,6 @@
       "relevant": false
     },
     {
-      "sourceId": "bbc-business",
-      "title": "Carney asks for end to US alcohol ban, province leader says, as trade deal nears",
-      "url": "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss",
-      "excerpt": "An agreement preventing a new wave of US tariffs is close and could include an end to Canada's boycott of US whiskey.",
-      "publishedAt": "2026-08-20T11:10:25.000Z",
-      "category": "finance",
-      "summary": "加拿大省长卡尼呼吁结束美国酒类禁令；北美贸易议题，与银行零售业务无关。",
-      "source": "BBC Business",
-      "fetchedToday": false,
-      "subcategory": "news",
-      "relevant": false
-    },
-    {
       "sourceId": "guardian-business",
       "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
       "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
@@ -178,19 +152,6 @@
       "publishedAt": "2026-08-20T11:48:23.000Z",
       "category": "finance",
       "summary": "Travelodge老板因性侵事件处理争议辞职；英国企业治理事件，与银行零售业务无关。",
-      "source": "The Guardian Business",
-      "fetchedToday": false,
-      "subcategory": "news",
-      "relevant": false
-    },
-    {
-      "sourceId": "guardian-business",
-      "title": "From McDonald’s to Congress: can a former fry cook flip a key district for Democrats?",
-      "url": "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats",
-      "excerpt": "Manny Rutinel hopes price-tag politics can win key voters in Colorado House race During his presidential campaign in October 2024, Donald Trump staged a photo op at a McDonald’s franchise in Pennsylvania, where he was briefly taught how to work the fryer and drive-thru window at the closed restauran",
-      "publishedAt": "2026-08-20T11:00:50.000Z",
-      "category": "finance",
-      "summary": "从麦当劳员工到国会：前炸薯条工能否翻转关键选区；美国政治新闻，与银行业务无关。",
       "source": "The Guardian Business",
       "fetchedToday": false,
       "subcategory": "news",
@@ -914,7 +875,7 @@
       "subcategories": [
         "cn-wealth"
       ],
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -1785,7 +1746,7 @@
       "subcategories": [
         "news"
       ],
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -5208,7 +5169,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": false,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "dayoo-gz",
@@ -5299,7 +5260,7 @@
       "source": "南方网·经济",
       "fetchedToday": true,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -6350,7 +6311,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "sina-finance",
@@ -6399,7 +6360,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "sina-money",
@@ -6490,7 +6451,7 @@
       "source": "21世纪经济报道·金融",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "infoq-cn",
@@ -6607,7 +6568,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -6646,7 +6607,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -6659,7 +6620,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -6685,7 +6646,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -7281,7 +7242,7 @@
       "source": "新浪财经",
       "fetchedToday": true,
       "subcategory": "cn-policy",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "sina-money",
@@ -7385,7 +7346,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": true,
       "subcategory": "gz-media",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "dayoo-gz",
@@ -7682,7 +7643,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8031,7 +7992,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8044,7 +8005,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8289,7 +8250,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8315,7 +8276,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8341,7 +8302,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "news",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8354,7 +8315,7 @@
       "source": "新华财经",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "cnfin",
@@ -8406,7 +8367,7 @@
       "source": "证券时报",
       "fetchedToday": true,
       "subcategory": "cn-finance",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "stcn",
@@ -8575,7 +8536,7 @@
       "source": "广州日报·大洋网",
       "fetchedToday": true,
       "subcategory": "gz-customer",
-      "relevant": true
+      "relevant": false
     },
     {
       "sourceId": "southcn",
@@ -8655,31 +8616,113 @@
     },
     {
       "sourceId": "southcn",
-      "source": "南方网·经济",
       "title": "提上限、扩范围，多家银行更新个人消费贷贴息细则",
       "url": "https://news.southcn.com/node_812903b83a/7044cc7d7b.shtml",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "gz",
-      "summary": "",
-      "tier": "T2",
-      "filterBucket": "daily",
-      "filterDimensions": [
-        "personal_credit"
-      ],
+      "source": "南方网·经济",
       "fetchedToday": true,
       "subcategory": "gz-media"
     },
     {
       "sourceId": "cnfin",
-      "source": "新华财经",
       "title": "从“东数西算”到“才聚青城” 呼和浩特如何打造人才“引力场”",
       "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459033_1.html",
       "excerpt": "",
       "publishedAt": "2026-08-22T00:00:00.000Z",
       "category": "finance",
+      "source": "新华财经",
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "周评：老美40万亿债务压顶，黄金或已开启新一轮爆涨？",
+      "url": "https://finance.sina.com.cn/money/nmetal/2026-08-22/doc-inipetzr1200484.shtml",
+      "excerpt": "【财富管理】周评：老美40万亿债务压顶，黄金或已开启新一轮爆涨？",
+      "category": "gz",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [
+        "wealth_mgmt"
+      ],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "sina-money",
+      "title": "黄铜价拿下十公斤镀金料，能提炼出多少黄金？",
+      "url": "https://video.sina.com.cn/p/finance/2026-08-22/detail-inipetzn0635860.d.html",
+      "excerpt": "【财富管理】黄铜价拿下十公斤镀金料，能提炼出多少黄金？",
+      "category": "gz",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "source": "新浪财经·理财保险",
+      "tier": "T2",
+      "filterBucket": "daily",
+      "filterDimensions": [
+        "wealth_mgmt"
+      ],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "世界机器人大会成全球观察中国“机”遇窗口",
+      "url": "https://www.cnfin.com/yw-lb/detail/20260822/4459041_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "finance",
       "summary": "",
       "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "未来智造局丨AI成“新标配” 可穿戴产业生态重构",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459039_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "cnfin",
+      "source": "新华财经",
+      "title": "中国电信内蒙古分公司：计划在算力领域累计投入超百亿元 建设吉瓦级超大规模绿色智算枢纽",
+      "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459038_1.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T1.5",
+      "filterBucket": "daily",
+      "filterDimensions": [],
+      "fetchedToday": true,
+      "subcategory": "cn-finance"
+    },
+    {
+      "sourceId": "stcn",
+      "source": "证券时报",
+      "title": "翟相栋“奔私”尘埃落定！与鲍无可同框高瓴系私募",
+      "url": "https://www.stcn.com/article/detail/4102586.html",
+      "excerpt": "",
+      "publishedAt": "2026-08-22T00:00:00.000Z",
+      "category": "finance",
+      "summary": "",
+      "tier": "T2",
       "filterBucket": "daily",
       "filterDimensions": [],
       "fetchedToday": true,
