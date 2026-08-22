@@ -1,80 +1,266 @@
 {
   "date": "2026-08-22",
-  "hero_line": "存款利率曲线走平+基金延长募集倒逼财富经营转型；广博会/琶洲/番禺科创与消费场景密集落地，代发与科创客群获客窗口开启。",
+  "hero_line": "广东升级小微融资协调机制、广州立法促跨境电商，零售信贷与跨境金融机遇凸显；前7月广东规上工业增5.7%，客群基本盘稳固。",
   "must_read": [
     {
-      "url": "https://m.21jingji.com/article/20260821/herald/95176312612733e7890581e926446481.html",
-      "why": "期限溢价消失，长期定存吸引力下降，负债成本结构与客户留存逻辑生变，需提前调整策略。",
-      "title": "存款利率1年=3年"
+      "url": "https://m.21jingji.com/article/20260821/herald/4199bffd4d9dfb5ec7e2db21e409c00b.html",
+      "why": "小微融资协调机制升级，经营贷与普惠拓客政策红利明确，须抢抓窗口期。",
+      "title": "广东出台17条措施升级小微企业融资协调机制"
     },
     {
-      "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipcwvz1372065.shtml",
-      "why": "新发基金去化放缓、客户风险偏好偏弱，财富销售遇冷信号，需检视在售产品与客户陪伴。",
-      "title": "多只基金延长募集"
+      "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993219.htm",
+      "why": "跨境电商立法打开跨境收单、结算与外汇综合服务场景，利好交易银行联动零售。",
+      "title": "广州拟立法促进跨境电子商务发展"
     },
     {
-      "url": "https://m.21jingji.com/article/20260821/herald/0a9203b0bebfdc016240b9dd93deb78f.html",
-      "why": "四大行集中展示AI能力、人保推“算力保”，科技金融打法升级，需对标同业抢客逻辑。",
-      "title": "四大行服贸会秀AI"
+      "url": "https://news.southcn.com/node_812903b83a/215fb87f22.shtml",
+      "why": "工业稳增长夯实对公与零售客群基本盘，代发工资与收单抓手可强化渗透。",
+      "title": "前7月广东规上工业增加值同比增长5.7%"
     },
     {
-      "url": "https://m.21jingji.com/article/20260821/herald/94bd45c0f03e7907c9d479500ae1b24f.html",
-      "why": "三部门推财政金融协同促内需、消费贷贴息上限提升，零售信贷政策环境转暖，需抢抓窗口。",
-      "title": "财政金融协同促内需"
+      "url": "https://www.cnr.cn/gd/guangdonglueying/20260822/t20260822_527786349.shtml",
+      "why": "银发经济升温，财富管理与私行资产配置、养老理财需求迎来契机。",
+      "title": "中国（广州）国际养老健康产业博览会开幕"
     },
     {
-      "url": "https://www.cnr.cn/gd/guangdongyaowen/20260820/t20260820_527783309.shtml",
-      "why": "同业广发银行广州分行发力养老金融，养老赛道竞争加剧，分行需加快养老金账户与养老理财布局。",
-      "title": "广发发力养老金融"
+      "url": "https://www.cnr.cn/gd/xgyxgd/20260821/t20260821_527785637.shtml",
+      "why": "同业加码涉农金融，县域与普惠客群竞争加剧，需对标抢抓。",
+      "title": "农行广东分行举办金融服务广东农业农村现代化对接会"
     }
   ],
   "insights": [
     {
-      "topic": "存款利率曲线走平",
-      "tags": [
-        "财富"
-      ],
-      "impact": "1年期与3年期存款利率持平，零售客户长期定存吸引力下降，负债成本结构与客户留存承压。",
-      "action": "零售金融部一周内重检定期产品定价与到期承接话术，优先覆盖临期大额存单客户。"
-    },
-    {
-      "topic": "基金延长募集",
-      "tags": [
-        "财富"
-      ],
-      "impact": "多只基金延长募集，反映新发基金去化慢、客户风险偏好低，财富中收短期承压。",
-      "action": "财富管理部两周内梳理延长募集产品名单，暂停低效加推，强化持仓检视与固收+配置陪伴。"
-    },
-    {
-      "topic": "养老金融竞速",
-      "tags": [
-        "养老",
-        "客群"
-      ],
-      "impact": "广博会开幕叠加广发发力养老金融，银发客群与养老金账户争夺升温，社保卡场景价值凸显。",
-      "action": "零售银行部联合机构条线展会驻场，一周内建立参展机构合作名单并跟进引流社保卡与养老理财。"
-    },
-    {
-      "topic": "财政金融协同促内需",
+      "topic": "小微融资协调机制升级",
       "tags": [
         "信贷",
-        "客群"
+        "普惠"
       ],
-      "impact": "消费贷贴息上限提升、零售信贷政策环境转暖，消费金融与信用卡获客窗口打开。",
-      "action": "加大消费贷与信用卡营销力度，提前储备贴息产品申报与客户名单。"
+      "impact": "广东17条措施升级小微融资协调机制，经营贷与普惠拓客政策红利明确。",
+      "action": "零售信贷条线一周内梳理辖内小微清单，对接协调机制批量获客。"
     },
     {
-      "topic": "四大行AI竞对",
+      "topic": "跨境电商立法",
       "tags": [
-        "科技金融",
-        "竞对动态"
+        "跨境金融",
+        "支付结算"
       ],
-      "impact": "四大行及险企亮相AI与“算力保”，科技金融服务标准被抬高，影响优质企业客户竞争。",
-      "action": "科技金融/对公条线一个月内对标服贸会案例，结合本地科创企业需求形成AI+算力保险组合方案。"
+      "impact": "广州拟立法促跨境电商，跨境收单、结算与外汇场景扩容。",
+      "action": "交易银行联动零售，摸排广州跨境电商卖家提供一站式跨境服务。"
+    },
+    {
+      "topic": "养老健康产业",
+      "tags": [
+        "财富管理",
+        "私行"
+      ],
+      "impact": "广州养老健康产业博览会开幕，银发经济与财富传承需求升温。",
+      "action": "财富/私行结合养老理财与保险金信托，锁定高净值银发客群。"
+    },
+    {
+      "topic": "工业稳增长",
+      "tags": [
+        "对公",
+        "零售客群"
+      ],
+      "impact": "前7月广东规上工业增5.7%，企业与员工客群基本盘稳固。",
+      "action": "以代发工资与收单为抓手渗透制造业企业及员工零售。"
+    },
+    {
+      "topic": "同业涉农布局",
+      "tags": [
+        "普惠",
+        "客群"
+      ],
+      "impact": "农行广东分行加码农业农村金融，县域与普惠客群竞争加剧。",
+      "action": "对标竞品涉农服务，强化我行县域网点与普惠信贷差异化。"
     }
   ],
   "sections": {
     "gz_local": [
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/efbb457b871e683a752cb85bbbe09a6d.html",
+        "title_cn": "30个托位、12月龄即可入托！广州南沙横沥第二家普惠托育园正式揭牌",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "30个托位、12月龄即可入托！广州南沙横沥第二家普惠托育园正式揭牌。对广州分行研判市场与同业动态具参考；指向小微普惠金融与经营贷机遇",
+        "importance": 2,
+        "rank": 1,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099588.html",
+        "title_cn": "达实智能签约广州地铁2号线综合监控更新项目",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "达实智能签约广州地铁2号线综合监控更新项目。对广州分行研判市场与同业动态具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 2,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993634.htm",
+        "title_cn": "孙志洋到广州博览会、国际发明展调研",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "孙志洋到广州博览会、国际发明展调研。对广州分行研判外部环境与大类资产走势具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 3,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/guangdonglueying/20260822/t20260822_527786349.shtml",
+        "title_cn": "中国（广州）国际养老健康产业博览会开幕",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "中国（广州）国际养老健康产业博览会开幕。对广州分行研判外部环境与大类资产走势具参考；养老金融与财富管理长期资金契机",
+        "importance": 2,
+        "rank": 4,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/fxgz/20260822/t20260822_527786143.shtml",
+        "title_cn": "2026“桂字号”农业品牌湾区嘉年华广州启幕",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "2026“桂字号”农业品牌湾区嘉年华广州启幕。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 5,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/fxgz/20260822/t20260822_527786134.shtml",
+        "title_cn": "2026协作帮扶促消费产销对接活动在广州启幕",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "2026协作帮扶促消费产销对接活动在广州启幕。对广州分行零售客群（代发/收单/活跃提升）经营具参考；关联消费金融与信用卡场景",
+        "importance": 2,
+        "rank": 6,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993662.htm",
+        "title_cn": "方志专家解码广州城脉文脉商脉",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "方志专家解码广州城脉文脉商脉。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 7,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993661.htm",
+        "title_cn": "广州下半年女兵征集体检完成",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "广州下半年女兵征集体检完成。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 8,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993653.htm",
+        "title_cn": "广州打造数智化健康服务新范式",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "广州打造数智化健康服务新范式。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 9,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993678.htm",
+        "title_cn": "广州强化科技创新和产业创新深度融合",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "广州强化科技创新和产业创新深度融合。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 10,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993743.htm",
+        "title_cn": "广州一仙人掌疯长24年超6层楼高，网友：它的花能煲猪骨汤吗",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "广州一仙人掌疯长24年超6层楼高，网友：它的花能煲猪骨汤吗。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 11,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993728.htm",
+        "title_cn": "了解广州的历史，这个重磅新展一定要看！",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "了解广州的历史，这个重磅新展一定要看。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 12,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993716.htm",
+        "title_cn": "​“城脉千年”今日开幕 一展看懂广州建城2240年得名1800年",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "​“城脉千年”今日开幕 一展看懂广州建城2240年得名1800年。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 13,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/guangdongyaowen/20260822/t20260822_527786133.shtml",
+        "title_cn": "广州在全国首创商业文化遗产保护利用体系",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "广州在全国首创商业文化遗产保护利用体系。对广州分行把握地方政策红利与监管导向具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 14,
+        "tags": [],
+        "locale": "gz"
+      },
       {
         "url": "https://www.stcn.com/article/detail/4096201.html",
         "title_cn": "润和软件在广州成立数字科技公司",
@@ -84,7 +270,7 @@
         "date": "08/21",
         "summary": "润和软件在广州设立数字科技公司，科技企业落户广州，科创客群扩容，分行可对接企业开户与员工代发。",
         "importance": 2,
-        "rank": 1,
+        "rank": 15,
         "tags": [
           "客群"
         ],
@@ -99,7 +285,7 @@
         "date": "08/21",
         "summary": "广州工控到访金溢科技洽谈合作，本地国企与上市公司联动，分行可关注产业链金融与供应链合作机会。",
         "importance": 2,
-        "rank": 2,
+        "rank": 16,
         "tags": [
           "客群"
         ],
@@ -114,7 +300,7 @@
         "date": "08/21",
         "summary": "广州中院受理恒大地产破产清算，涉房风险持续出清，分行需关注房地产链资产质量与客户风险传导。",
         "importance": 2,
-        "rank": 3,
+        "rank": 17,
         "tags": [
           "客群",
           "信贷"
@@ -130,7 +316,7 @@
         "date": "08/21",
         "summary": "琶洲算法大赛聚焦人本世界模型，AI 产业生态活跃利好分行科创客群经营，可借势对接琶洲 AI 企业客户。",
         "importance": 2,
-        "rank": 4,
+        "rank": 18,
         "tags": [
           "客群",
           "信贷"
@@ -146,7 +332,7 @@
         "date": "08/21",
         "summary": "番禺轨道交通产业链招商，产业集聚带动上下游企业落户，分行可跟进园区代发与供应链金融服务机会。",
         "importance": 2,
-        "rank": 5,
+        "rank": 19,
         "tags": [
           "客群",
           "信贷"
@@ -162,7 +348,7 @@
         "date": "08/21",
         "summary": "番禺高校成果转化项目集中落地，科创企业融资需求上升，分行可对接高校系科创客群与投贷联动机会。",
         "importance": 2,
-        "rank": 6,
+        "rank": 20,
         "tags": [
           "信贷",
           "客群"
@@ -178,7 +364,7 @@
         "date": "08/21",
         "summary": "广博会与发明展在穗开幕，汇聚产业与消费客群，分行可借展会场景营销对公结算与个人消费金融。",
         "importance": 2,
-        "rank": 7,
+        "rank": 21,
         "tags": [
           "客群"
         ],
@@ -193,7 +379,7 @@
         "date": "08/21",
         "summary": "广州拟立法支持跨境电商，跨境结算与外汇服务需求上升，分行可前瞻布局跨境商户收单与融资产品。",
         "importance": 2,
-        "rank": 8,
+        "rank": 22,
         "tags": [
           "信贷",
           "客群"
@@ -209,7 +395,285 @@
         "date": "08/21",
         "summary": "龙湖天街轻资产项目落地番禺，区域商业升级带动消费客群与商户结算需求，分行可跟进商业体联名卡与收单。",
         "importance": 2,
-        "rank": 9,
+        "rank": 23,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_54a44f01a2/ff6c901b40.shtml",
+        "title_cn": "249项标准，39张认证，广州书写粤港澳大湾区“软联通”新篇章",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "大湾区规则软联通标准化进展，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 24,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_d5a62a3867/ba9d0f595d.shtml",
+        "title_cn": "多学科权威齐聚广州 共绘抗衰老研究产学研创新蓝图",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "抗衰老科研学术活动，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 25,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_d5a62a3867/1776ae6677.shtml",
+        "title_cn": "中西合璧绘就健康蓝图 2025 ZAODX早筛大会在穗举行",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "医疗早筛学术大会，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 26,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/meiliguangdong/20260821/t20260821_527785369.shtml",
+        "title_cn": "广州启动“玫瑰合伙人”计划",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "广州玫瑰合伙人计划（活动），与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 27,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/fxgz/20260821/t20260821_527785629.shtml",
+        "title_cn": "白云山和黄中药携手康泰东方医药慰问环卫工人",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "药企慰问环卫工人公益活动，与银行零售业务无关。",
+        "importance": 2,
+        "rank": 28,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993607.htm",
+        "title_cn": "寻味中国，食在湾区！2026年全国“土特产”走进大湾区活动在穗启幕",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "寻味中国，食在湾区！2026年全国“土特产”走进大湾区活动在穗启幕。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 29,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993575.htm",
+        "title_cn": "从“盲投”到“实探”！广州“见企面岗”首发启航，就业服务搬到企业一线",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "从“盲投”到“实探”！广州“见企面岗”首发启航，就业服务搬到企业一线。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 30,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993584.htm",
+        "title_cn": "全城钓友看过来！2026年大湾区（南沙）龙腾 “渔” 跃嘉年华来袭",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "全城钓友看过来！2026年大湾区（南沙）龙腾 “渔” 跃嘉年华来袭。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 31,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993552.htm",
+        "title_cn": "9月开学，广州一大波新学校（校区）上新",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "9月开学，广州一大波新学校（校区）上新。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 32,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993550.htm",
+        "title_cn": "花都花城街：夜间督导“不打烊”，织密辖区安全防护网",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "花都花城街：夜间督导“不打烊”，织密辖区安全防护网。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 33,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993546.htm",
+        "title_cn": "进出番禺海鸥岛的唯一主干道，扩建提速！8.3公里主干道拓宽为双向四车道",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "进出番禺海鸥岛的唯一主干道，扩建提速！8.3公里主干道拓宽为双向四车道。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 34,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993545.htm",
+        "title_cn": "广州从化聚力打造世界级森林温泉康养目的地",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "广州从化聚力打造世界级森林温泉康养目的地。对广州分行相关业务研判具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 35,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993528.htm",
+        "title_cn": "一站式品鉴岭南珍味！广州优质农产品亮相第34届广州博览会",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "一站式品鉴岭南珍味！广州优质农产品亮相第34届广州博览会。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 36,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993518.htm",
+        "title_cn": "清北等高校学子逐梦湾区！2026年南沙“百企千人”“图南展翅”实习圆满结业",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "清北等高校学子逐梦湾区！2026年南沙“百企千人”“图南展翅”实习圆满结业。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 37,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993517.htm",
+        "title_cn": "黄浦江→珠江潮，共启中国赛季！下一站，来南沙看广网",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "黄浦江→珠江潮，共启中国赛季！下一站，来南沙看广网。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 38,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993516.htm",
+        "title_cn": "越秀区新时代文明实践中心对外试运营",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "越秀区新时代文明实践中心对外试运营。对广州分行零售客群（代发/收单/活跃提升）经营具参考",
+        "importance": 2,
+        "rank": 39,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993512.htm",
+        "title_cn": "修正集团落子天河，重磅布局“一基地两中心”",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "修正集团落子天河，重磅布局“一基地两中心”。对广州分行零售客群（代发/收单/活跃提升）经营具参考",
+        "importance": 2,
+        "rank": 40,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993511.htm",
+        "title_cn": "广州南沙⇌深圳蛇口，海上游航线周六首航！",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "广州南沙⇌深圳蛇口，海上游航线周六首航。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 41,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993444.htm",
+        "title_cn": "南沙“智造”闪耀第34届广州博览会",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "南沙“智造”闪耀第34届广州博览会。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 42,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993510.htm",
+        "title_cn": "台风回旋蓄势，未来几天广州阴雨天气持续",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "台风回旋蓄势，未来几天广州阴雨天气持续。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 43,
         "tags": [
           "客群"
         ],
@@ -218,17 +682,237 @@
     ],
     "biz_insight": [
       {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1618709.shtml",
-        "title_cn": "连续五年下降 险资配置信托存量规模不足万亿",
+        "url": "https://news.southcn.com/node_812903b83a/7044cc7d7b.shtml",
+        "title_cn": "提上限、扩范围，多家银行更新个人消费贷贴息细则",
+        "title_orig": "",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "date": "08/22",
+        "summary": "",
+        "importance": 2,
+        "rank": 1,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/wm/2026-08-22/doc-inipcwvw0908361.shtml",
+        "title_cn": "达利欧：美债危机临近，囤点黄金和比特币吧",
         "source": "新浪财经·理财保险",
         "source_type": "media",
         "tier": "T2",
-        "date": "08/21",
-        "summary": "险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。",
+        "date": "08/22",
+        "summary": "达利欧：美债危机临近，囤点黄金和比特币吧。对广州分行研判市场与同业动态具参考",
         "importance": 2,
-        "rank": 1,
+        "rank": 2,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipcwvz1372065.shtml",
+        "title_cn": "多只基金，延长募集期",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "多只基金，延长募集期。对广州分行研判市场与同业动态具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 3,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/guangdongyaowen/20260822/t20260822_527786367.shtml",
+        "title_cn": "安永华明以全域服务能力助推现代服务业发展",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "安永华明以全域服务能力助推现代服务业发展。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 4,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1273428.shtml",
+        "title_cn": "美债破40万亿美元，黄金配置机会来了？",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "美债破40万亿美元，黄金配置机会来了。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 5,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/stock/stockzmt/2026-08-22/doc-inipcwvt6226162.shtml",
+        "title_cn": "华泰研究 | 本周精选：AI电源、策略、美债利率、经济数据、巴菲特",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "华泰研究 | 本周精选：AI电源、策略、美债利率、经济数据、巴菲特。对广州分行研判市场与同业动态具参考；利率动向直接影响房贷定价与存款成本",
+        "importance": 2,
+        "rank": 6,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993654.htm",
+        "title_cn": "从一场产业博览会看养老新方向 “科技+养老”加速落地",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "从一场产业博览会看养老新方向 “科技+养老”加速落地。对广州分行相关业务研判具参考；养老金融与财富管理长期资金契机",
+        "importance": 2,
+        "rank": 7,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993652.htm",
+        "title_cn": "逾5000家企业携创新成果参加广博会 1万多家专业采购商纷至沓来",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "逾5000家企业携创新成果参加广博会 1万多家专业采购商纷至沓来。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 8,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/57cde83093.shtml",
+        "title_cn": "奶茶店，现在不流行卖奶茶了？",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "奶茶店，现在不流行卖奶茶了。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 9,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/a79d039874.shtml",
+        "title_cn": "前7个月我国吸收外资4383.3亿元",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "前7个月我国吸收外资4383.3亿元。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 10,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-22/doc-inipeccv7596649.shtml",
+        "title_cn": "桥水基金达利欧预警：美国债务危机3年左右将到来，最快1年，建议抛美债增配黄金",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "桥水基金达利欧预警：美国债务危机3年左右将到来，最快1年，建议抛美债增配黄金。对广州分行研判市场与同业动态具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 11,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/stock/bxjj/2026-08-22/doc-inipeccr6130357.shtml",
+        "title_cn": "贝森特“止痛药”失效！达里欧预警美债危机：卖债券、买黄金比特币",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "贝森特“止痛药”失效！达里欧预警美债危机：卖债券、买黄金比特币。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 12,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccx1307486.shtml",
+        "title_cn": "宏利基金：李辉接替丁闻聪出任总经理",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "宏利基金：李辉接替丁闻聪出任总经理。对广州分行研判市场与同业动态具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 13,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.gd.chinanews.com.cn/2026/2026-08-22/449248.shtml",
+        "title_cn": "广外青年赴粤东乡村 解陆河服装产业富民密码",
+        "source": "中新网·广东",
+        "source_type": "media",
+        "date": "08/22",
+        "summary": "广外青年赴粤东乡村 解陆河服装产业富民密码。对广州分行把握地方政策红利与监管导向具参考",
+        "importance": 2,
+        "rank": 14,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993762.htm",
+        "title_cn": "非法改装无牌“电鸡”、号牌折叠变“隐藏款”……多名骑行者被查处",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "非法改装无牌“电鸡”、号牌折叠变“隐藏款”……多名骑行者被查处。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 15,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/22/139995_54993718.htm",
+        "title_cn": "“城脉千年”开幕 约上小伙伴一起去打卡吧",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "“城脉千年”开幕 约上小伙伴一起去打卡吧。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 16,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/f9e92896af.shtml",
+        "title_cn": "泡泡玛特，跌掉一个泡泡玛特！CEO王宁：今年大概率完不成20%增长目标",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "泡泡玛特，跌掉一个泡泡玛特！CEO王宁：今年大概率完不成20%增长目标。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 17,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_de9aedeec1/fa7436a025.shtml",
+        "title_cn": "消费贷贴息“国补”升级！一年可省5000元利息",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "消费贷贴息“国补”升级！一年可省5000元利息。对广州分行个人信贷（房贷/消费贷/经营贷）拓客与风控具参考；关联消费金融与信用卡场景",
+        "importance": 2,
+        "rank": 18,
         "tags": [
-          "财富"
+          "信贷"
         ],
         "locale": "gz"
       },
@@ -241,7 +925,7 @@
         "date": "08/21",
         "summary": "市场权衡美财政部救市效果，金价高位震荡、涨势能否延续存分歧；分行财富业务可提示客户金价波动风险，关注贵金属定投与积存金配置。",
         "importance": 2,
-        "rank": 2,
+        "rank": 19,
         "tags": [
           "财富"
         ],
@@ -256,7 +940,7 @@
         "date": "08/21",
         "summary": "中信建投解读财政回购对美债、黄金和科技的影响；机构观点梳理资产传导路径，分行财富业务可参考其大类资产判断服务高净值客户。",
         "importance": 2,
-        "rank": 3,
+        "rank": 20,
         "tags": [
           "财富"
         ],
@@ -271,22 +955,7 @@
         "date": "08/21",
         "summary": "全球最大黄金ETF——SPDR持仓受关注；ETF资金流向反映黄金配置情绪，分行可关注贵金属类理财与基金代销数据，把握客户配置热度。",
         "importance": 2,
-        "rank": 4,
-        "tags": [
-          "财富"
-        ],
-        "locale": "gz"
-      },
-      {
-        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininywtm1779500.shtml",
-        "title_cn": "多只“固收+黄金”理财产品净值修复",
-        "source": "新浪财经·理财保险",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/21",
-        "summary": "多只固收+黄金理财产品净值修复；黄金挂钩理财需求回暖，分行财富业务可关注固收+与黄金主题产品配置，向客户提示波动风险。",
-        "importance": 2,
-        "rank": 5,
+        "rank": 21,
         "tags": [
           "财富"
         ],
@@ -301,7 +970,7 @@
         "date": "08/21",
         "summary": "中小金融机构批量解散显示农信体系改革提速，区域金融风险持续出清。对分行而言，需关注同业生态变化，强化自身风控与合规经营，维护客户信心。",
         "importance": 2,
-        "rank": 6,
+        "rank": 22,
         "tags": [],
         "locale": "gz"
       },
@@ -314,7 +983,7 @@
         "date": "08/21",
         "summary": "LPR连续15个月不变，房贷利率下调预期仍在，影响按揭存量竞争与提前还贷节奏，分行需动态管理房贷客群预期。",
         "importance": 2,
-        "rank": 7,
+        "rank": 23,
         "tags": [
           "信贷"
         ],
@@ -329,7 +998,7 @@
         "date": "08/21",
         "summary": "海外通胀数据超预期、加息预期突变，黄金白银大涨，避险资产波动加大，黄金理财与贵金属营销窗口打开。",
         "importance": 2,
-        "rank": 8,
+        "rank": 24,
         "tags": [
           "财富"
         ],
@@ -344,7 +1013,7 @@
         "date": "08/21",
         "summary": "金价高位震荡回调预期升温，黄金交易提示谨慎，财富条线提示客群理性配置贵金属、控制追高。",
         "importance": 2,
-        "rank": 9,
+        "rank": 25,
         "tags": [
           "财富"
         ],
@@ -359,7 +1028,7 @@
         "date": "08/21",
         "summary": "金价站上4500美元继续走强，黄金避险配置价值凸显，黄金理财与积存金销售可顺势推进。",
         "importance": 2,
-        "rank": 10,
+        "rank": 26,
         "tags": [
           "财富"
         ],
@@ -374,7 +1043,7 @@
         "date": "08/21",
         "summary": "江阴银行零售弱化结构未改，区域银行零售业务承压信号，分行可对比审视自身零售转型成效与短板。",
         "importance": 2,
-        "rank": 11,
+        "rank": 27,
         "tags": [],
         "locale": "gz"
       },
@@ -387,7 +1056,7 @@
         "date": "08/21",
         "summary": "财政部将联合央行推动财政金融联动常态化，财政贴息+金融协同政策可期，分行应预判消费贷/普惠贴息类产品申报窗口。",
         "importance": 2,
-        "rank": 12,
+        "rank": 28,
         "tags": [],
         "locale": "gz"
       },
@@ -400,7 +1069,7 @@
         "date": "08/21",
         "summary": "三部门推进财政金融协同促内需，消费贷贴息上限提升，零售信贷政策环境转暖，分行可加大消费贷与信用卡营销。",
         "importance": 2,
-        "rank": 13,
+        "rank": 29,
         "tags": [
           "信贷"
         ],
@@ -415,7 +1084,7 @@
         "date": "08/21",
         "summary": "财政部拟下半年再推财政金融协同新政，政策预期升温，分行应提前储备消费贷贴息产品与客户名单。",
         "importance": 2,
-        "rank": 14,
+        "rank": 30,
         "tags": [],
         "locale": "gz"
       },
@@ -428,7 +1097,7 @@
         "date": "08/21",
         "summary": "国家质量强链二期将具身智能、固态电池等前沿制造列为攻关方向，广州本地机器人及新能源产业链企业融资与投贷联动需求上升，分行可前置对接科创客群。",
         "importance": 2,
-        "rank": 15,
+        "rank": 31,
         "tags": [
           "信贷"
         ],
@@ -443,7 +1112,7 @@
         "date": "08/21",
         "summary": "农行私行部总裁更替，同业私行条线人事变动频繁，反映财富管理竞争加剧；分行私行应关注客户稳定性，借机争揽高净值客户。",
         "importance": 2,
-        "rank": 16,
+        "rank": 32,
         "tags": [
           "私行"
         ],
@@ -458,7 +1127,7 @@
         "date": "08/21",
         "summary": "美债救市一日游后黄金获新交易逻辑，避险配置需求上升，黄金理财与积存金进入营销窗口。",
         "importance": 2,
-        "rank": 17,
+        "rank": 33,
         "tags": [
           "财富"
         ],
@@ -473,7 +1142,7 @@
         "date": "08/21",
         "summary": "数字人民币运营机构扩容，支付生态扩大，分行可关注数字人民币在零售支付与代发场景的落地机会。",
         "importance": 2,
-        "rank": 18,
+        "rank": 34,
         "tags": [],
         "locale": "gz"
       },
@@ -486,7 +1155,7 @@
         "date": "08/21",
         "summary": "两部门打击非法买卖人民币，维护人民币流通秩序，涉及现金与反洗钱合规，分行需配合做好异常交易监测。",
         "importance": 2,
-        "rank": 19,
+        "rank": 35,
         "tags": [],
         "locale": "gz"
       },
@@ -499,7 +1168,7 @@
         "date": "08/21",
         "summary": "中行详解消费贷财政贴息政策，贴息申领流程更清晰，分行可借鉴优化本地消费贷贴息营销话术与客户触达。",
         "importance": 2,
-        "rank": 20,
+        "rank": 36,
         "tags": [
           "信贷"
         ],
@@ -514,7 +1183,7 @@
         "date": "08/21",
         "summary": "金融监管总局吊销恒大人寿业务许可证，保险业风险处置深化，影响保险代销市场格局，需关注客户保单服务衔接。",
         "importance": 2,
-        "rank": 21,
+        "rank": 37,
         "tags": [],
         "locale": "gz"
       },
@@ -527,7 +1196,7 @@
         "date": "08/21",
         "summary": "金融监管总局发布非车险综合治理方案，财险业务监管细化，保险代销合规要求提升，分行需同步更新销售规范。",
         "importance": 2,
-        "rank": 22,
+        "rank": 38,
         "tags": [],
         "locale": "gz"
       },
@@ -540,7 +1209,7 @@
         "date": "08/21",
         "summary": "金融监管总局规范互联网平台不合理收费，金融业务获客合规趋严，分行线上获客需确保渠道合规。",
         "importance": 2,
-        "rank": 23,
+        "rank": 39,
         "tags": [],
         "locale": "gz"
       },
@@ -553,7 +1222,7 @@
         "date": "08/21",
         "summary": "美债变局点燃有色行情，黄金锂业走强，商品与避险资产活跃，客户资产配置结构或调整，可提示相关机会。",
         "importance": 2,
-        "rank": 24,
+        "rank": 40,
         "tags": [
           "财富"
         ],
@@ -568,7 +1237,7 @@
         "date": "08/21",
         "summary": "美债变局下黄金有色走强，机构提示配置窗口，财富条线可结合客户风险偏好提示商品类资产机会。",
         "importance": 2,
-        "rank": 25,
+        "rank": 41,
         "tags": [
           "财富"
         ],
@@ -583,7 +1252,7 @@
         "date": "08/21",
         "summary": "消费贷贴息上限提至5000元，政策加码扩内需，直接利好消费贷投放，分行应抓住贴息窗口加大消费贷营销。",
         "importance": 2,
-        "rank": 26,
+        "rank": 42,
         "tags": [
           "信贷"
         ],
@@ -598,7 +1267,7 @@
         "date": "08/21",
         "summary": "三部门优化财政金融协同促内需政策，消费贷贴息扩容至5000元，分行应抢抓贴息窗口扩大消费贷规模。",
         "importance": 2,
-        "rank": 27,
+        "rank": 43,
         "tags": [
           "信贷"
         ],
@@ -613,11 +1282,24 @@
         "date": "08/21",
         "summary": "粤港养老通让香港津贴在内地使用，大湾区跨境养老金融落地，广州养老客群受益，分行可布局跨境养老产品。",
         "importance": 2,
-        "rank": 28,
+        "rank": 44,
         "tags": [
           "财富",
           "私行"
         ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_71505a4d28/de38af5865.shtml",
+        "title_cn": "科创者（KCZ）品牌战略升维：从“高端智能窗帘”到“全屋AI智能窗帘专家”",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "家居品牌战略升级新闻，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 45,
+        "tags": [],
         "locale": "gz"
       },
       {
@@ -629,10 +1311,36 @@
         "date": "08/21",
         "summary": "友邦人寿业绩稳健，保险行业景气提升，可为财富管理客群配置保险产品提供市场信心参考。",
         "importance": 2,
-        "rank": 29,
+        "rank": 46,
         "tags": [
           "财富"
         ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_810c33d731/a22199607f.shtml",
+        "title_cn": "中国牛，特别牛！中国奶牛“能力值”高起来了",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "奶牛产业科普报道，与银行零售业务无关。",
+        "importance": 2,
+        "rank": 47,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_c41bb0e5e3/b8fc1a5b0e.shtml",
+        "title_cn": "唯品会年度特卖大会高潮期开幕：限量爆款低至85折，大牌狂秒年度低价",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "唯品会营销活动，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 48,
+        "tags": [],
         "locale": "gz"
       },
       {
@@ -644,10 +1352,8 @@
         "date": "08/21",
         "summary": "下半年财政政策要点：扩内需与财政金融协同加码，利好消费信贷与普惠融资，分行可关注贴息类产品申报窗口。",
         "importance": 2,
-        "rank": 30,
-        "tags": [
-          "信贷"
-        ],
+        "rank": 49,
+        "tags": [],
         "locale": "gz"
       },
       {
@@ -659,7 +1365,7 @@
         "date": "08/21",
         "summary": "金饰克价月内大涨，避险与保值需求升温，黄金理财与积存金营销窗口打开，可向财富客群提示配置价值。",
         "importance": 2,
-        "rank": 31,
+        "rank": 50,
         "tags": [
           "财富"
         ],
@@ -674,10 +1380,88 @@
         "date": "08/21",
         "summary": "多家银行落地 Token贷/算力贷，以算力资产为抵押的创新融资模式兴起，分行可研究跟进科创与数字经济客群新产品。",
         "importance": 2,
-        "rank": 32,
+        "rank": 51,
         "tags": [
           "信贷"
         ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_52c906c8ec/c943bcf5d4.shtml",
+        "title_cn": "助力粤港澳大湾区清洁能源建设 国内最大换流站导管架发运",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "大湾区能源基建工程动态，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 52,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_54a44f01a2/3da68b6cd7.shtml",
+        "title_cn": "粤港澳大湾区“一城一策”自然教育“各展所长”",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "大湾区自然教育活动，与银行零售业务无关。",
+        "importance": 2,
+        "rank": 53,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_b416e11004/2dabbb42e7.shtml",
+        "title_cn": "评论｜新能源渗透率突破65%之后，必须正视两个问题",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "新能源产业评论，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 54,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_b416e11004/6d3b1d1687.shtml",
+        "title_cn": "荣耀Robot Phone 9999元起售，全球首款机器人手机落地",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "手机新品发布，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 55,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_b416e11004/3b69f6215a.shtml",
+        "title_cn": "评论｜造车，技术可以快，品质必须稳",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "汽车产业评论，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 56,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/ca7522351b.shtml",
+        "title_cn": "WAIC 2026今天落幕，AI走向物理世界，汽车成核心试验场",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "世界人工智能大会行业观察，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 57,
+        "tags": [],
         "locale": "gz"
       },
       {
@@ -689,10 +1473,103 @@
         "date": "08/21",
         "summary": "广百股份一季报显示百货经营回暖，广州本地消费复苏信号，分行可关注商圈商户收单与消费贷投放节奏。",
         "importance": 2,
-        "rank": 33,
+        "rank": 58,
         "tags": [
           "客群"
         ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_b416e11004/7a0437cd0f.shtml",
+        "title_cn": "美的置业：重组后首年实现营收净利双增",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "美的置业年报动态，非银行零售业务直接相关。",
+        "importance": 2,
+        "rank": 59,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_d5a62a3867/81b3b4a7f2.shtml",
+        "title_cn": "荣耀CEO李健：打通“三个闭环”，让AI走进生活",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "荣耀CEO AI战略访谈，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 60,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_d5a62a3867/a2b19372c2.shtml",
+        "title_cn": "“应用场景支持企业库”首批入库单位完成签约，助力“无废湾区”建设",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "无废湾区环保项目签约，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 61,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_17f55ea8c0/727baa1e49.shtml",
+        "title_cn": "“赶集”新花样！这群技工学子太会“整活”了",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "技工学校活动报道，与银行零售业务无关。",
+        "importance": 2,
+        "rank": 62,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_17f55ea8c0/0855bdfc55.shtml",
+        "title_cn": "国企担当·“百千万工程”之岭南答卷｜从田间到餐桌：消费帮扶如何用“一碗好面”打通乡村振兴之路",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "消费帮扶乡村振兴报道，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 63,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/guangdongyaowen/20260821/t20260821_527784781.shtml",
+        "title_cn": "南网数字集团立项电算协同领域IEC国标",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "南方电网 IEC 国标立项，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 64,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnr.cn/gd/guangdonglueying/20260821/t20260821_527784782.shtml",
+        "title_cn": "南方电网多款自研机器人亮相2026世界机器人大会",
+        "source": "央广网·广东",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "南方电网机器人展示，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 65,
+        "tags": [],
         "locale": "gz"
       },
       {
@@ -704,10 +1581,9 @@
         "date": "08/21",
         "summary": "跨境养老金融双轮驱动发展，大湾区养老客群跨境服务需求上升，私行与财富条线可布局跨境养老产品。",
         "importance": 2,
-        "rank": 34,
+        "rank": 66,
         "tags": [
-          "私行",
-          "财富"
+          "私行"
         ],
         "locale": "gz"
       },
@@ -720,7 +1596,7 @@
         "date": "08/21",
         "summary": "美债干预效果存疑、利率波动加大，影响全球资产定价与固收理财净值，财富条线需加强净值波动提示。",
         "importance": 2,
-        "rank": 35,
+        "rank": 67,
         "tags": [],
         "locale": "gz"
       },
@@ -733,7 +1609,7 @@
         "date": "08/21",
         "summary": "银行存款利率期限拉平，定存收益预期走低、存款搬家风险上升，分行需以固收+理财承接到期资金。",
         "importance": 2,
-        "rank": 36,
+        "rank": 68,
         "tags": [
           "财富"
         ],
@@ -748,24 +1624,1343 @@
         "date": "08/21",
         "summary": "外资基金看好中国市场，外资配置中国资产意愿，财富管理市场环境参考。",
         "importance": 2,
-        "rank": 37,
+        "rank": 69,
         "tags": [
           "财富"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://static.cninfo.com.cn/finalpage/2026-08-22/1225490527.PDF",
+        "title_cn": "聚胶股份 (301283)",
+        "source": "深交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "聚胶股份 (301283)。对广州分行企业金融（IPO/投贷联动）获客具参考",
+        "importance": 2,
+        "rank": 70,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993611.htm",
+        "title_cn": "巨型机甲熊猫、张雪机车、街头篮球，8月28日广报潮玩嘉年华等你来“潮”玩",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "巨型机甲熊猫、张雪机车、街头篮球，8月28日广报潮玩嘉年华等你来“潮”玩。对广州分行相关业务研判具参考",
+        "importance": 2,
+        "rank": 71,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993608.htm",
+        "title_cn": "900个岗位！“湾区就业巴士”抵达东山口",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "900个岗位！“湾区就业巴士”抵达东山口。对广州分行零售客群（代发/收单/活跃提升）经营具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 72,
+        "tags": [
+          "客群"
+        ],
+        "locale": "gz"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993513.htm",
+        "title_cn": "三小孩凑10.5元“天使投资”挽留便利店，善意在汇聚：小孩帮补货，营收增两倍",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "三小孩凑10.5元“天使投资”挽留便利店，善意在汇聚：小孩帮补货，营收增两倍。对广州分行零售客群（代发/收单/活跃提升）经营具参考",
+        "importance": 2,
+        "rank": 73,
+        "tags": [
+          "客群"
         ],
         "locale": "gz"
       }
     ],
     "policy_market": [
       {
-        "url": "https://www.stcn.com/article/detail/4102462.html",
-        "title_cn": "东方财富，大赚超80亿元！13家券商，中考成绩出炉",
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459033_1.html",
+        "title_cn": "从“东数西算”到“才聚青城” 呼和浩特如何打造人才“引力场”",
         "title_orig": "",
-        "source": "证券时报",
+        "source": "新华财经",
         "source_type": "media",
         "date": "08/22",
         "summary": "",
         "importance": 2,
         "rank": 1,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nbd.com.cn/articles/2026-08-22/4551084.html",
+        "title_cn": "北方“双子星”，撑起“算力第一大省”？",
+        "source": "每日经济新闻",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "北方“双子星”，撑起“算力第一大省”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 2,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nbd.com.cn/articles/2026-08-22/4551129.html",
+        "title_cn": "全链条布局 48家央企首次组团参展世界机器人大会",
+        "source": "每日经济新闻",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "全链条布局 48家央企首次组团参展世界机器人大会。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 3,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-22/doc-inipcwvx7685452.shtml",
+        "title_cn": "星忆智能李当当：未来一到三年具身机器人将告别表演模式，真正落地产生价值",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "星忆智能李当当：未来一到三年具身机器人将告别表演模式，真正落地产生价值。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 4,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/wm/2026-08-22/doc-inipcwvt6205128.shtml",
+        "title_cn": "30亿元账面浮亏吞噬利润，网易Q2交出平淡成绩单，丁磊称对《遗忘之海》长期运营有信心",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "30亿元账面浮亏吞噬利润，网易Q2交出平淡成绩单，丁磊称对《遗忘之海》长期运营有信心。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 5,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipcwvt6171962.shtml",
+        "title_cn": "“枕头被子”收入逼近主业，亚朵能筑牢利润护城河吗？",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "“枕头被子”收入逼近主业，亚朵能筑牢利润护城河吗。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 6,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/world/2026-08-22/doc-inipcwvz1327789.shtml",
+        "title_cn": "伊朗外交部回应美对伊经济制裁：远非延续针对单一国家非法“经济战”",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "伊朗外交部回应美对伊经济制裁：远非延续针对单一国家非法“经济战”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 7,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/world/2026-08-22/doc-inipcwvx7649943.shtml",
+        "title_cn": "秘鲁因液化石油气短缺对五地区宣布紧急状态",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "秘鲁因液化石油气短缺对五地区宣布紧急状态。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 8,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458943_1.html",
+        "title_cn": "【环球财经】日媒：日本新财年预算申请额或超130万亿日元",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】日媒：日本新财年预算申请额或超130万亿日元。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 9,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/world/2026-08-22/doc-inipcwvx7640016.shtml",
+        "title_cn": "日本下财年预算申请据悉将超130万亿日元",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "日本下财年预算申请据悉将超130万亿日元。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 10,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/world/2026-08-22/doc-inipcsqc1411867.shtml",
+        "title_cn": "8月22日隔夜要闻：道指涨约1% 油价录得周涨幅 锌价走高 金价大涨 特朗普称并未指示贝森特干预债券市场",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "8月22日隔夜要闻：道指涨约1% 油价录得周涨幅 锌价走高 金价大涨 特朗普称并…。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 11,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/825f53620cdccd23b537447f87e3a2a0.html",
+        "title_cn": "农行甘肃分行副行长董东渊出任甘肃农商银行董事长",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "农行甘肃分行副行长董东渊出任甘肃农商银行董事长。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 12,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458958_1.html",
+        "title_cn": "【环球财经】美国服务业活动加速叠加超跌反弹 纽约股市三大股指21日集体收涨",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】美国服务业活动加速叠加超跌反弹 纽约股市三大股指21日集体收涨。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 13,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458955_1.html",
+        "title_cn": "事关人民币买卖，这些监管要求有何考量",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "事关人民币买卖，这些监管要求有何考量。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 14,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458952_1.html",
+        "title_cn": "国务院常务会议解读｜国务院常务会议部署新一代通信网建设",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "国务院常务会议解读｜国务院常务会议部署新一代通信网建设。对广州分行研判宏观政策与监管导向具参考",
+        "importance": 2,
+        "rank": 15,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458934_1.html",
+        "title_cn": "减负增效并行 银行外汇展业改革成效渐显",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "减负增效并行 银行外汇展业改革成效渐显。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 16,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458931_1.html",
+        "title_cn": "【环球财经】卢拉与特朗普通话 反对美国对巴商品加征关税",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】卢拉与特朗普通话 反对美国对巴商品加征关税。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 17,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458960_1.html",
+        "title_cn": "伊朗议长：必须制定计划应对制裁",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "伊朗议长：必须制定计划应对制裁。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 18,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458937_1.html",
+        "title_cn": "阿巴斯呼吁以色列停止并取消“E1区”定居点招标",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "阿巴斯呼吁以色列停止并取消“E1区”定居点招标。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 19,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458936_1.html",
+        "title_cn": "土耳其寻求对内塔尼亚胡发布“红色通缉令”",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "土耳其寻求对内塔尼亚胡发布“红色通缉令”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 20,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458926_1.html",
+        "title_cn": "【环球财经】美媒：美计划偿还联合国8.5亿美元欠款",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】美媒：美计划偿还联合国8.5亿美元欠款。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 21,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102329.html",
+        "title_cn": "翁燕珊：撕掉性别标签，做期市交易的趋势追踪者",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "翁燕珊：撕掉性别标签，做期市交易的趋势追踪者。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 22,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102328.html",
+        "title_cn": "两部门发文：禁止非法买卖人民币！这些情况除外",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "两部门发文：禁止非法买卖人民币！这些情况除外。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 23,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102325.html",
+        "title_cn": "溢价八成！保单权益公开拍卖，5人争抢、41轮竞价",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "溢价八成！保单权益公开拍卖，5人争抢、41轮竞价。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 24,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102322.html",
+        "title_cn": "铜价，再度大涨！供应缺口扩大？",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "铜价，再度大涨！供应缺口扩大。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 25,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099715.html",
+        "title_cn": "多晶硅企业少量恢复报价 硅片与电池环节价格涨幅明显",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "多晶硅企业少量恢复报价 硅片与电池环节价格涨幅明显。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 26,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099593.html",
+        "title_cn": "清雁科技完成数亿元A轮融资 用微分几何给物理AI重打“地基”",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "清雁科技完成数亿元A轮融资 用微分几何给物理AI重打“地基”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 27,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099496.html",
+        "title_cn": "一批车辆被召回！涉及特斯拉、小米、小鹏、零跑，还有张雪机车",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "一批车辆被召回！涉及特斯拉、小米、小鹏、零跑，还有张雪机车。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 28,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099251.html",
+        "title_cn": "青藏两地成功举办上市公司高质量发展专题培训暨党建研学活动",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "青藏两地成功举办上市公司高质量发展专题培训暨党建研学活动。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 29,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099660.html",
+        "title_cn": "锦龙股份，筹划重大资产重组！公司参控两家券商",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "锦龙股份，筹划重大资产重组！公司参控两家券商。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 30,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099432.html",
+        "title_cn": "宝莱特：短期业绩承压不改基本盘 政策与创新蓄力长期成长",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "宝莱特：短期业绩承压不改基本盘 政策与创新蓄力长期成长。对广州分行把握地方政策红利与监管导向具参考",
+        "importance": 2,
+        "rank": 31,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4099473.html",
+        "title_cn": "太力科技：公司STF相关材料可适配防摔服装应用场景",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "太力科技：公司STF相关材料可适配防摔服装应用场景。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 32,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102420.html",
+        "title_cn": "大金重工2026年中报出炉，量利双升，新业务增长曲线成型",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "大金重工2026年中报出炉，量利双升，新业务增长曲线成型。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 33,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102424.html",
+        "title_cn": "光峰科技上半年营收4.77亿元 推进优化业务结构",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "光峰科技上半年营收4.77亿元 推进优化业务结构。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 34,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102413.html",
+        "title_cn": "天娱数科上半年归母净利润同比增长72.41%，AI技术落地多个实体业务场景",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "天娱数科上半年归母净利润同比增长72.41%，AI技术落地多个实体业务场景。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 35,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102414.html",
+        "title_cn": "银监法修订草案下周将二审",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "银监法修订草案下周将二审。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 36,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102407.html",
+        "title_cn": "一线调研：超强厄尔尼诺风险下，粮食生产如何应对？",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "一线调研：超强厄尔尼诺风险下，粮食生产如何应对。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 37,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102408.html",
+        "title_cn": "超19万人爆仓！加密货币，全线拉升！黄金、油价走强",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "超19万人爆仓！加密货币，全线拉升！黄金、油价走强。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 38,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102401.html",
+        "title_cn": "8月再添回A药企！康诺亚拟登陆科创板，心玮医疗同步推进回归",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "8月再添回A药企！康诺亚拟登陆科创板，心玮医疗同步推进回归。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 39,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-22/doc-inipeccr6114532.shtml",
+        "title_cn": "美法官推翻特朗普政府暂停向75国发放移民签证的政策",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "美法官推翻特朗普政府暂停向75国发放移民签证的政策。对广州分行研判宏观政策与监管导向具参考",
+        "importance": 2,
+        "rank": 40,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458966_1.html",
+        "title_cn": "发挥积极财政政策作用 推动经济社会高质量发展——财政部介绍“十五五”财政改革发展有关情况",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "发挥积极财政政策作用 推动经济社会高质量发展——财政部介绍“十五五”财政改革发展…。对广州分行研判宏观政策与监管导向具参考",
+        "importance": 2,
+        "rank": 41,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458969_1.html",
+        "title_cn": "2026绿色算力（人工智能）大会在呼和浩特举行",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "2026绿色算力（人工智能）大会在呼和浩特举行。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 42,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102405.html",
+        "title_cn": "天创时尚：2026年上半年净利润同比增长316.20%，布局精密制造新业务",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "天创时尚：2026年上半年净利润同比增长316.20%，布局精密制造新业务。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 43,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102423.html",
+        "title_cn": "聚焦“高价值客户、高价值项目” 博腾股份上半年营收增长约10%",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "聚焦“高价值客户、高价值项目” 博腾股份上半年营收增长约10%。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 44,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/wm/2026-08-22/doc-inipeccv7592475.shtml",
+        "title_cn": "金价、银价、油价，集体上涨",
+        "source": "新浪财经",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "金价、银价、油价，集体上涨。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 45,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458976_1.html",
+        "title_cn": "伊朗外交部：美国对伊朗实施新制裁毫无国际法依据",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "伊朗外交部：美国对伊朗实施新制裁毫无国际法依据。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 46,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102426.html",
+        "title_cn": "5A新国标构建建陶量化评价体系 东鹏控股率先推动标准产业化落地",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "5A新国标构建建陶量化评价体系 东鹏控股率先推动标准产业化落地。对广州分行把握地方政策红利与监管导向具参考",
+        "importance": 2,
+        "rank": 47,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102449.html",
+        "title_cn": "加速矿山智能化建设 梅安森拟1.65亿元控股华洋通信",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "加速矿山智能化建设 梅安森拟1.65亿元控股华洋通信。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 48,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102446.html",
+        "title_cn": "复宏汉霖上半年营收35.9亿元，获纳入恒生综合指数，有望纳入港股通",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "复宏汉霖上半年营收35.9亿元，获纳入恒生综合指数，有望纳入港股通。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 49,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.gd.chinanews.com.cn/2026/2026-08-22/449252.shtml",
+        "title_cn": "百里瑶乡抢农时 广东连南“三夏”有序推进",
+        "source": "中新网·广东",
+        "source_type": "media",
+        "date": "08/22",
+        "summary": "百里瑶乡抢农时 广东连南“三夏”有序推进。对广州分行把握地方政策红利与监管导向具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 50,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102462.html",
+        "title_cn": "东方财富，大赚超80亿元！13家券商，中考成绩出炉",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "东方财富，大赚超80亿元！13家券商，中考成绩出炉。对广州分行财富管理（理财/基金/保险/贵金属）配置与客群经营具参考",
+        "importance": 2,
+        "rank": 51,
+        "tags": [
+          "财富"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://video.sina.com.cn/p/finance/2026-08-22/detail-inipetzs3100032.d.html",
+        "title_cn": "黄金上涨的主要原因是什么？",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "黄金上涨的主要原因是什么。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 52,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://video.sina.com.cn/p/finance/2026-08-22/detail-inipetzp7371309.d.html",
+        "title_cn": "2026年8月22日黄金白银形态推演",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "2026年8月22日黄金白银形态推演。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 53,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://video.sina.com.cn/p/finance/2026-08-22/detail-inipetzp7363643.d.html",
+        "title_cn": "黄金冲上4600美元 真正考验才刚开始2026.8.22",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "黄金冲上4600美元 真正考验才刚开始2026.8.22。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 54,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-22/doc-inipetzs3099385.shtml",
+        "title_cn": "四年三任，李辉出任总经理，宏利基金权益短板、ET",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "四年三任，李辉出任总经理，宏利基金权益短板、ET。对广州分行研判市场与同业动态具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 55,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/c6d9dbdcfbabe79e267bad8f39ea6394.html",
+        "title_cn": "亲人离世，存款查询难？三部门联合推广试点",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "亲人离世，存款查询难？三部门联合推广试点。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 56,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/8c5a16f099db04f429abd12b24a5158c.html",
+        "title_cn": "中国人民银行、市场监管总局发文！打击非法买卖人民币活动",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "中国人民银行、市场监管总局发文！打击非法买卖人民币活动。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 57,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/7d2be2abe0dfbfbfaedb9c5d517d277f.html",
+        "title_cn": "工商银行：优化完善贴息配套政策 贴息上限由每年3000元提高至5000元",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "工商银行：优化完善贴息配套政策 贴息上限由每年3000元提高至5000元。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 58,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/9964d05a849bfe2e02d4a1dda36bb7a1.html",
+        "title_cn": "信用卡分期也能贴息，六大行纷纷响应",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "信用卡分期也能贴息，六大行纷纷响应。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 59,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/0228d7cd9cba92d3bbaf83e54fc4f12d.html",
+        "title_cn": "建设银行、农业银行、中国银行最新通知：个人消费贷和信用卡分期累计贴息上限提高至每年5000元",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "建设银行、农业银行、中国银行最新通知：个人消费贷和信用卡分期累计贴息上限提高至每…。对广州分行研判市场与同业动态具参考；关联消费金融与信用卡场景",
+        "importance": 2,
+        "rank": 60,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260822/herald/edcfb4415977eac2b2743cc1e010e7fb.html",
+        "title_cn": "又见定存利率倒挂，上海一银行存3年跟1年一个样！河南有银行存5年不如存3年",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "又见定存利率倒挂，上海一银行存3年跟1年一个样！河南有银行存5年不如存3年。对广州分行研判市场与同业动态具参考；利率动向直接影响房贷定价与存款成本",
+        "importance": 2,
+        "rank": 61,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4459025_1.html",
+        "title_cn": "提上限、扩范围 多家银行更新个人消费贷贴息细则",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "提上限、扩范围 多家银行更新个人消费贷贴息细则。对广州分行个人信贷（房贷/消费贷/经营贷）拓客与风控具参考；关联消费金融与信用卡场景",
+        "importance": 2,
+        "rank": 62,
+        "tags": [
+          "信贷"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4459003_1.html",
+        "title_cn": "锂电负极面临成本挑战 硅基负极将成未来竞争的“胜负手”",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "锂电负极面临成本挑战 硅基负极将成未来竞争的“胜负手”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 63,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458994_1.html",
+        "title_cn": "美国对伊朗“史上最严制裁”能奏效吗",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "美国对伊朗“史上最严制裁”能奏效吗。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 64,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458990_1.html",
+        "title_cn": "阿曼与伊朗外长讨论恢复霍尔木兹海峡自由航行",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "阿曼与伊朗外长讨论恢复霍尔木兹海峡自由航行。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 65,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458988_1.html",
+        "title_cn": "【环球财经】加拿大宣布暂停加美贸易谈判并实施对等反制",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】加拿大宣布暂停加美贸易谈判并实施对等反制。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 66,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458983_1.html",
+        "title_cn": "数读我国绿色算力：十组数据背后的时代答卷",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "数读我国绿色算力：十组数据背后的时代答卷。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 67,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102546.html",
+        "title_cn": "工行、农行、中行、建行、交行、邮储银行等，集体发布",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "工行、农行、中行、建行、交行、邮储银行等，集体发布。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 68,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102543.html",
+        "title_cn": "中泰证券出手回购！",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "中泰证券出手回购。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 69,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102540.html",
+        "title_cn": "进军一级市场！AI制药第一股设立产业基金",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "进军一级市场！AI制药第一股设立产业基金。对广州分行财富管理（理财/基金/保险/贵金属）配置与客群经营具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 70,
+        "tags": [
+          "财富"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102530.html",
+        "title_cn": "多重因素影响美债市场，公募最新观点来了",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "多重因素影响美债市场，公募最新观点来了。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 71,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102562.html",
+        "title_cn": "丽珠集团上半年归母净利润9.32亿元 国际化成寻找增量重要抓手",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "丽珠集团上半年归母净利润9.32亿元 国际化成寻找增量重要抓手。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 72,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102536.html",
+        "title_cn": "广东省发展改革委出台推动信用服务业扩能提质若干措施",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "广东省发展改革委出台推动信用服务业扩能提质若干措施。对广州分行把握地方政策红利与监管导向具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 73,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260822/4458949_1.html",
+        "title_cn": "新华财经早报：8月22日",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "新华财经早报：8月22日。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 74,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459020_1.html",
+        "title_cn": "水利部针对广东广西海南启动洪水防御Ⅳ级应急响应",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "水利部针对广东广西海南启动洪水防御Ⅳ级应急响应。对广州分行研判市场与同业动态具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 75,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459010_1.html",
+        "title_cn": "亚太共议电动汽车“畅充之道”",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "亚太共议电动汽车“畅充之道”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 76,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459000_1.html",
+        "title_cn": "特朗普称不会放弃对伊朗的军事选项",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "特朗普称不会放弃对伊朗的军事选项。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 77,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458998_1.html",
+        "title_cn": "1361亿元！ 2026绿色算力（人工智能）大会百亿级项目集中签约",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "1361亿元！ 2026绿色算力（人工智能）大会百亿级项目集中签约。对广州分行私行（高净值）客户拓展与资产配置具参考",
+        "importance": 2,
+        "rank": 78,
+        "tags": [
+          "私行"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458993_1.html",
+        "title_cn": "美国对伊朗“史上最严制裁”能奏效吗",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "美国对伊朗“史上最严制裁”能奏效吗。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 79,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458989_1.html",
+        "title_cn": "阿曼与伊朗外长讨论恢复霍尔木兹海峡自由航行",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "阿曼与伊朗外长讨论恢复霍尔木兹海峡自由航行。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 80,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458986_1.html",
+        "title_cn": "【环球财经】加拿大宣布暂停加美贸易谈判并实施对等反制",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "【环球财经】加拿大宣布暂停加美贸易谈判并实施对等反制。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 81,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458981_1.html",
+        "title_cn": "数读我国绿色算力：十组数据背后的时代答卷",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "数读我国绿色算力：十组数据背后的时代答卷。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 82,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260822/4458979_1.html",
+        "title_cn": "多项算力成果在2026绿色算力（人工智能）大会发布",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/22",
+        "summary": "多项算力成果在2026绿色算力（人工智能）大会发布。对广州分行私行（高净值）客户拓展与资产配置具参考",
+        "importance": 2,
+        "rank": 83,
+        "tags": [
+          "私行"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102583.html",
+        "title_cn": "水利部对广东、广西、海南启动洪水防御Ⅳ级应急响应",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "水利部对广东、广西、海南启动洪水防御Ⅳ级应急响应。对广州分行研判市场与同业动态具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 84,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102517.html",
+        "title_cn": "四川省自然资源投资集团到访广东宏大",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "四川省自然资源投资集团到访广东宏大。对广州分行研判市场与同业动态具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 85,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102565.html",
+        "title_cn": "创远信科：推进收购微宇天导100%股权事项",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "创远信科：推进收购微宇天导100%股权事项。对广州分行私行（高净值）客户拓展与资产配置具参考",
+        "importance": 2,
+        "rank": 86,
+        "tags": [
+          "私行"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102578.html",
+        "title_cn": "国晟科技，起诉参股公司“不分红”！要求其近4倍市价“回购”，8年前已埋伏笔",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "国晟科技，起诉参股公司“不分红”！要求其近4倍市价“回购”，8年前已埋伏笔。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 87,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102568.html",
+        "title_cn": "10股筹码连续多期集中！下周2股解禁比例超50%（附股）",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "10股筹码连续多期集中！下周2股解禁比例超50%（附股）。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 88,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102560.html",
+        "title_cn": "科沃斯2026年上半年营收突破百亿元 二季度海外收入占比首超51%",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "科沃斯2026年上半年营收突破百亿元 二季度海外收入占比首超51%。对广州分行零售客群（代发/收单/活跃提升）经营具参考",
+        "importance": 2,
+        "rank": 89,
+        "tags": [
+          "客群"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102541.html",
+        "title_cn": "跳过中间商！宁德时代启动储能电芯等直销",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "跳过中间商！宁德时代启动储能电芯等直销。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 90,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102516.html",
+        "title_cn": "威力传动2026年半年报：营收同比增71.97%，紧抓风电产业机遇，精密传动主业夯实增长根基",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "威力传动2026年半年报：营收同比增71.97%，紧抓风电产业机遇，精密传动主业…。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 91,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102509.html",
+        "title_cn": "盈新发展：加速科技转型 上半年实现扭亏为盈",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "盈新发展：加速科技转型 上半年实现扭亏为盈。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 92,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102512.html",
+        "title_cn": "一不小心少赚70个百分点！买基金，别忽视它背后的玄机",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "一不小心少赚70个百分点！买基金，别忽视它背后的玄机。对广州分行财富管理（理财/基金/保险/贵金属）配置与客群经营具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 93,
+        "tags": [
+          "财富"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.stcn.com/article/detail/4102506.html",
+        "title_cn": "固态电池新进展，多只业绩高增长概念股“超跌”",
+        "source": "证券时报",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "固态电池新进展，多只业绩高增长概念股“超跌”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 94,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/215fb87f22.shtml",
+        "title_cn": "前7月广东规上工业增加值同比增长5.7%",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "前7月广东规上工业增加值同比增长5.7%。对广州分行把握地方政策红利与监管导向具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 95,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.economist.com/interactive/trump-tariff-costs-tracker",
+        "title_cn": "Tracking the cost of Donald Trump’s tariffs",
+        "source": "The Economist Finance",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "Tracking the cost of Donald Trump’s tari…。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 96,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.theguardian.com/business/2026/aug/21/tyson-foods-close-facilities-beef-prices-cattle-shortage",
+        "title_cn": "What does Tyson’s shutdown of two US beef plants mean for grocery costs?",
+        "source": "The Guardian Business",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "What does Tyson’s shutdown of two US bee…。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 97,
         "tags": [],
         "locale": "national"
       },
@@ -778,7 +2973,7 @@
         "date": "08/21",
         "summary": "恒大境外债务处置趋复杂，影响离岸地产债信用预期与投资者风险偏好。分行需关注涉房资产质量，向客户提示相关投资风险，稳健推进零售信贷。",
         "importance": 2,
-        "rank": 2,
+        "rank": 98,
         "tags": [],
         "locale": "national"
       },
@@ -791,7 +2986,7 @@
         "date": "08/21",
         "summary": "日本央行干预后套利交易活跃，日元汇率不确定性上升。分行应加强代客外汇及跨境财富业务的风险提示，引导客户合理管理汇率波动风险。",
         "importance": 2,
-        "rank": 3,
+        "rank": 99,
         "tags": [],
         "locale": "national"
       },
@@ -804,7 +2999,7 @@
         "date": "08/21",
         "summary": "上海金融法院发布18条举措助力上海国际金融中心建设；金融法治环境优化，分行可关注金融纠纷多元化解与跨境金融业务规范。",
         "importance": 2,
-        "rank": 4,
+        "rank": 100,
         "tags": [],
         "locale": "national"
       },
@@ -817,7 +3012,7 @@
         "date": "08/21",
         "summary": "日本通胀加速，为日本央行加息提供依据；海外利率上行影响全球资金流向，分行可关注日元资产与汇率波动对客户配置的影响。",
         "importance": 2,
-        "rank": 5,
+        "rank": 101,
         "tags": [],
         "locale": "national"
       },
@@ -830,7 +3025,7 @@
         "date": "08/21",
         "summary": "美联储政策立场偏鹰，加息与否悬念升温；海外利率路径影响全球资产定价，分行财富业务可关注美债与黄金配置节奏。",
         "importance": 2,
-        "rank": 6,
+        "rank": 102,
         "tags": [],
         "locale": "national"
       },
@@ -843,10 +3038,23 @@
         "date": "08/21",
         "summary": "股票私募仓位指数维持高位、大型机构加仓意愿强烈；权益市场情绪偏暖，风险偏好回升利于财富业务权益类产品销售。",
         "importance": 2,
-        "rank": 7,
+        "rank": 103,
         "tags": [
           "财富"
         ],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininzprc1618709.shtml",
+        "title_cn": "连续五年下降 险资配置信托存量规模不足万亿",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "险资配置信托规模连续五年下降、存量不足万亿；机构非标收缩转向标准化资产，分行财富业务可关注稳健型产品配置与资管合作机会。",
+        "importance": 2,
+        "rank": 104,
+        "tags": [],
         "locale": "national"
       },
       {
@@ -858,7 +3066,7 @@
         "date": "08/21",
         "summary": "热联集团二次递表港交所，营收增速滞缓但近三年分红19.7亿元；大宗供应链企业赴港上市，分行可关注供应链客户融资与结算需求。",
         "importance": 2,
-        "rank": 8,
+        "rank": 105,
         "tags": [],
         "locale": "national"
       },
@@ -871,7 +3079,7 @@
         "date": "08/21",
         "summary": "新政激活需求，热点城市楼市迎结构性回暖；房地产政策效果显现，分行个人住房贷款可关注回暖城市房贷需求与投放节奏。",
         "importance": 2,
-        "rank": 9,
+        "rank": 106,
         "tags": [
           "信贷"
         ],
@@ -886,7 +3094,7 @@
         "date": "08/21",
         "summary": "多地推进现代服务业创新发展；现代服务业客群成长，分行可关注服务业中小微企业信贷与结算需求。",
         "importance": 2,
-        "rank": 10,
+        "rank": 107,
         "tags": [],
         "locale": "national"
       },
@@ -899,7 +3107,7 @@
         "date": "08/21",
         "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金加码科技赛道，分行财富业务可关注权益配置中的硬科技主题与代销产品。",
         "importance": 2,
-        "rank": 11,
+        "rank": 108,
         "tags": [
           "财富"
         ],
@@ -914,7 +3122,7 @@
         "date": "08/21",
         "summary": "险资7月以来摸底上市公司超千家次、硬科技是关注重点；机构资金偏好科技赛道，分行财富业务可关注硬科技主题权益产品配置。",
         "importance": 2,
-        "rank": 12,
+        "rank": 109,
         "tags": [
           "财富"
         ],
@@ -929,7 +3137,7 @@
         "date": "08/21",
         "summary": "27家中小金融机构获批解散、贵州农信改革迎来新进展；中小银行整合提速，分行可关注同业格局变化与区域信贷市场机会。",
         "importance": 2,
-        "rank": 13,
+        "rank": 110,
         "tags": [],
         "locale": "national"
       },
@@ -942,7 +3150,7 @@
         "date": "08/21",
         "summary": "上海优化个人住房信贷政策，部分区域二套房首付比例低至15%；一线城市房贷政策松绑，分行个人房贷业务可关注政策传导与客户需求释放。",
         "importance": 2,
-        "rank": 14,
+        "rank": 111,
         "tags": [
           "信贷"
         ],
@@ -957,7 +3165,7 @@
         "date": "08/21",
         "summary": "前7个月社会消费商品和服务零售总额同比增长2.6%；消费延续温和修复，利好零售银行获客与消费信贷，分行可关注消费场景金融需求。",
         "importance": 2,
-        "rank": 15,
+        "rank": 112,
         "tags": [],
         "locale": "national"
       },
@@ -970,7 +3178,7 @@
         "date": "08/21",
         "summary": "从国债到地方债，离岸人民币债券供给持续增加；离岸人民币市场扩容，分行可关注跨境金融与离岸债券投资机遇。",
         "importance": 2,
-        "rank": 16,
+        "rank": 113,
         "tags": [],
         "locale": "national"
       },
@@ -983,7 +3191,7 @@
         "date": "08/21",
         "summary": "年内上市银行股价走势分化、部分城商行表现亮眼；银行板块估值分化，分行可参考同业经营与资本市场表现优化自身策略。",
         "importance": 2,
-        "rank": 17,
+        "rank": 114,
         "tags": [],
         "locale": "national"
       },
@@ -996,7 +3204,7 @@
         "date": "08/21",
         "summary": "多家上市券商上半年营收净利同比双增；资本市场景气回升，券商业绩改善反映市场活跃度提升，分行可关注银证合作与权益类代销机会。",
         "importance": 2,
-        "rank": 18,
+        "rank": 115,
         "tags": [],
         "locale": "national"
       },
@@ -1009,7 +3217,7 @@
         "date": "08/21",
         "summary": "多地着力促进汽车消费、县域市场与二手车交易成重点；汽车消费政策加码利好车贷业务，分行可关注县域车贷与二手车金融需求。",
         "importance": 2,
-        "rank": 19,
+        "rank": 116,
         "tags": [],
         "locale": "national"
       },
@@ -1022,7 +3230,7 @@
         "date": "08/21",
         "summary": "低利率叠加高波动，多资产多策略配置成破局关键；大类资产配置需求上升，分行财富业务可向客户推荐多元配置组合与组合型产品。",
         "importance": 2,
-        "rank": 20,
+        "rank": 117,
         "tags": [
           "财富"
         ],
@@ -1037,7 +3245,7 @@
         "date": "08/21",
         "summary": "主动型公募机构加快补齐ETF业务版图；指数化投资扩容，分行财富业务可关注ETF代销与定投场景，丰富客户配置工具。",
         "importance": 2,
-        "rank": 21,
+        "rank": 118,
         "tags": [
           "财富"
         ],
@@ -1052,7 +3260,7 @@
         "date": "08/21",
         "summary": "长江存储IPO通过辅导验收、耐心资本加持半导体龙头；存储芯片龙头上市推进，分行可关注硬科技企业上市融资与综合金融服务。",
         "importance": 2,
-        "rank": 22,
+        "rank": 119,
         "tags": [],
         "locale": "national"
       },
@@ -1065,7 +3273,7 @@
         "date": "08/21",
         "summary": "招商证券：恒生科技指数扩容、产业趋势利好云厂；港股科技指数调整带来资金配置变化，分行财富业务可关注恒科ETF与科技主题配置。",
         "importance": 2,
-        "rank": 23,
+        "rank": 120,
         "tags": [],
         "locale": "national"
       },
@@ -1078,7 +3286,7 @@
         "date": "08/21",
         "summary": "连续五年下降，险资配置信托存量规模不足万亿；险资非标配置收缩、资金流向标准化资产，分行可关注资管与财富配置趋势。",
         "importance": 2,
-        "rank": 24,
+        "rank": 121,
         "tags": [
           "财富"
         ],
@@ -1093,7 +3301,7 @@
         "date": "08/21",
         "summary": "俄罗斯今年减持160万盎司黄金、储备降至2020年以来最低；央行购金降温或影响金价预期，分行财富业务可关注贵金属市场供需变化。",
         "importance": 2,
-        "rank": 25,
+        "rank": 122,
         "tags": [
           "财富"
         ],
@@ -1108,7 +3316,7 @@
         "date": "08/21",
         "summary": "中金指美债风暴被误读，资产配置视角看美债收益率上行实质；机构观点提示海外利率与资产重估逻辑，分行可参考其大类资产配置建议。",
         "importance": 2,
-        "rank": 26,
+        "rank": 123,
         "tags": [
           "财富"
         ],
@@ -1123,7 +3331,7 @@
         "date": "08/21",
         "summary": "东南铁矿龙头今日申购、刺绣装备小巨人上市；新股发行活跃，分行财富业务可关注打新客户服务与新股申购提示。",
         "importance": 2,
-        "rank": 27,
+        "rank": 124,
         "tags": [],
         "locale": "national"
       },
@@ -1136,7 +3344,20 @@
         "date": "08/21",
         "summary": "招商策略：恒生科技指数扩容、云厂价值重估；港股科技权重调整带来资金配置变化，分行财富业务可关注恒科ETF与科技主题配置。",
         "importance": 2,
-        "rank": 28,
+        "rank": 125,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininywtm1779500.shtml",
+        "title_cn": "多只“固收+黄金”理财产品净值修复",
+        "source": "新浪财经·理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "多只固收+黄金理财产品净值修复；黄金挂钩理财需求回暖，分行财富业务可关注固收+与黄金主题产品配置，向客户提示波动风险。",
+        "importance": 2,
+        "rank": 126,
         "tags": [],
         "locale": "national"
       },
@@ -1149,7 +3370,7 @@
         "date": "08/21",
         "summary": "30年期美债收益率攀升至近20年新高，全球资产迎来重估；长端美债利率上行影响全球估值，分行财富业务可提示客户关注海外资产波动与配置再平衡。",
         "importance": 2,
-        "rank": 29,
+        "rank": 127,
         "tags": [
           "财富"
         ],
@@ -1164,7 +3385,7 @@
         "date": "08/21",
         "summary": "我国长期国债走出独立行情具备三大支撑；国内债市独立性增强，分行可关注债券配置与理财收益变化，向客户解读债市逻辑。",
         "importance": 2,
-        "rank": 30,
+        "rank": 128,
         "tags": [],
         "locale": "national"
       },
@@ -1177,7 +3398,7 @@
         "date": "08/21",
         "summary": "村镇银行处置现贵州样本，7家农信系村镇银行纳入地市级统一法人；中小金融机构改革化险提速，分行可关注区域银行整合与存款市场格局变化。",
         "importance": 2,
-        "rank": 31,
+        "rank": 129,
         "tags": [],
         "locale": "national"
       },
@@ -1190,7 +3411,7 @@
         "date": "08/21",
         "summary": "多家银行落地算力贷，信贷评估锚点悄然生变；算力资产纳入授信评估，分行可探索科技企业算力贷产品，服务数字经济客群。",
         "importance": 2,
-        "rank": 32,
+        "rank": 130,
         "tags": [],
         "locale": "national"
       },
@@ -1203,7 +3424,7 @@
         "date": "08/21",
         "summary": "超30家上市公司十大流通股东出现券商身影；券商持仓活跃反映机构资金动向，分行财富业务可参考机构偏好优化权益类产品配置。",
         "importance": 2,
-        "rank": 33,
+        "rank": 131,
         "tags": [],
         "locale": "national"
       },
@@ -1216,7 +3437,7 @@
         "date": "08/21",
         "summary": "LPR连续15个月维持不变，货币政策保持稳健；贷款利率锚定稳定，分行可关注存量房贷与信贷定价政策，存款利率调整空间有限。",
         "importance": 2,
-        "rank": 34,
+        "rank": 132,
         "tags": [
           "信贷"
         ],
@@ -1231,7 +3452,7 @@
         "date": "08/21",
         "summary": "双锚并行助推贷款定价质效提升；贷款定价机制优化，分行可关注新发放贷款利率趋势与净息差管理。",
         "importance": 2,
-        "rank": 35,
+        "rank": 133,
         "tags": [
           "信贷"
         ],
@@ -1246,7 +3467,7 @@
         "date": "08/21",
         "summary": "7天期逆回购持续零投放，央行灵活精准调控流动性；公开市场操作精细化、流动性合理充裕，分行可关注资金面变化对存款与同业业务影响。",
         "importance": 2,
-        "rank": 36,
+        "rank": 134,
         "tags": [],
         "locale": "national"
       },
@@ -1259,7 +3480,7 @@
         "date": "08/21",
         "summary": "上海二套房首付比例下调释放信贷宽松信号，或成为其他一线城市政策参照。分行应跟踪广州房贷政策空间，提前做好按揭定价与房贷客群储备。",
         "importance": 2,
-        "rank": 37,
+        "rank": 135,
         "tags": [
           "信贷"
         ],
@@ -1274,7 +3495,7 @@
         "date": "08/21",
         "summary": "李迅雷分析资产荒的债市映射，低利率环境下收益与风险平衡更难。财富管理需优化产品供给，主动管理客户回报预期并加大稳健型资产配置。",
         "importance": 2,
-        "rank": 38,
+        "rank": 136,
         "tags": [
           "财富"
         ],
@@ -1289,7 +3510,7 @@
         "date": "08/21",
         "summary": "完善公司治理是金融机构防风险关键，监管对内控合规要求趋严。分行应持续强化风险治理、贷后管理与员工行为规范，保障零售业务稳健发展。",
         "importance": 2,
-        "rank": 39,
+        "rank": 137,
         "tags": [],
         "locale": "national"
       },
@@ -1302,7 +3523,7 @@
         "date": "08/21",
         "summary": "“十五五”经济与金融改革方向为中长期布局提供宏观参考。分行可结合区域产业升级，前瞻规划零售信贷、财富管理和私行业务发展策略。",
         "importance": 2,
-        "rank": 40,
+        "rank": 138,
         "tags": [],
         "locale": "national"
       },
@@ -1315,7 +3536,7 @@
         "date": "08/21",
         "summary": "半导体产业提振韩国经济，央行强调物价与金融稳定，反映科技与宏观政策平衡。对分行研判亚洲经济与跨境客户投资环境具有一定参考价值。",
         "importance": 2,
-        "rank": 41,
+        "rank": 139,
         "tags": [],
         "locale": "national"
       },
@@ -1328,7 +3549,7 @@
         "date": "08/21",
         "summary": "8月LPR维持不变，但年内房贷利率仍有下调预期。分行应动态调整按揭定价策略，关注提前还贷趋势，并通过财富配置提升客户综合贡献。",
         "importance": 2,
-        "rank": 42,
+        "rank": 140,
         "tags": [],
         "locale": "national"
       },
@@ -1341,7 +3562,7 @@
         "date": "08/21",
         "summary": "黄金作为多极时代底仓资产的价值凸显，客群避险和保值需求上升。分行可加强实物金、积存金及黄金基金代销，满足客户资产配置需求。",
         "importance": 2,
-        "rank": 43,
+        "rank": 141,
         "tags": [
           "财富"
         ],
@@ -1356,7 +3577,7 @@
         "date": "08/21",
         "summary": "上银国际亏损后由母行提级收编，显示银行子公司治理重要性。对分行提示综合化经营需强化风险隔离、并表管控和境外业务审慎评估。",
         "importance": 2,
-        "rank": 44,
+        "rank": 142,
         "tags": [],
         "locale": "gz"
       },
@@ -1369,7 +3590,7 @@
         "date": "08/21",
         "summary": "日本核心CPI连续59个月上涨，通胀黏性强化货币政策正常化预期。影响全球资金流向和日元资产回报，私行客户配置日本市场需关注汇率与利率风险。",
         "importance": 2,
-        "rank": 45,
+        "rank": 143,
         "tags": [],
         "locale": "national"
       },
@@ -1382,7 +3603,7 @@
         "date": "08/21",
         "summary": "7月全社会用电量同比增长显示经济恢复平稳，企业开工活跃度有支撑。分行可参考宏观数据安排信贷投放节奏，关注区域产业用电变化挖掘客户需求。",
         "importance": 2,
-        "rank": 46,
+        "rank": 144,
         "tags": [],
         "locale": "national"
       },
@@ -1395,7 +3616,7 @@
         "date": "08/21",
         "summary": "特朗普签署重大计划的具体影响有待观察，若涉及经贸政策将扰动全球市场。分行应密切跟踪政策落地情况，提前做好风险预案与客户沟通。",
         "importance": 2,
-        "rank": 47,
+        "rank": 145,
         "tags": [],
         "locale": "national"
       },
@@ -1408,7 +3629,7 @@
         "date": "08/21",
         "summary": "毅达资本在湾区布局专精特新企业，显示科技股权投资活跃。分行可借鉴产融结合模式，挖掘本地专精特新企业主综合金融及私行服务需求。",
         "importance": 2,
-        "rank": 48,
+        "rank": 146,
         "tags": [],
         "locale": "national"
       },
@@ -1421,7 +3642,7 @@
         "date": "08/21",
         "summary": "重阳投资强调长期价值投资，对当前市场情绪具有引导作用。分行财富管理投教可传递长期配置理念，引导客户减少短期博弈，提升持有体验。",
         "importance": 2,
-        "rank": 49,
+        "rank": 147,
         "tags": [
           "财富"
         ],
@@ -1436,7 +3657,7 @@
         "date": "08/21",
         "summary": "元立光电获北交所上市委通过，反映中小企业融资活跃，提示关注科创企业信贷与上市服务机会，但非广州本地项目。",
         "importance": 2,
-        "rank": 50,
+        "rank": 148,
         "tags": [],
         "locale": "national"
       },
@@ -1449,7 +3670,7 @@
         "date": "08/21",
         "summary": "央行发行央票属流动性管理工具，影响市场利率与资金面，提示分行关注货币政策导向，合理安排资产负债和理财定价。",
         "importance": 2,
-        "rank": 51,
+        "rank": 149,
         "tags": [],
         "locale": "national"
       },
@@ -1462,7 +3683,7 @@
         "date": "08/21",
         "summary": "央行开展950亿元逆回购操作传递呵护流动性信号，启示分行关注资金利率走势，优化负债成本与信贷投放节奏。",
         "importance": 2,
-        "rank": 52,
+        "rank": 150,
         "tags": [],
         "locale": "national"
       },
@@ -1475,7 +3696,7 @@
         "date": "08/21",
         "summary": "江阴银行净利润增长并拟参与新设机构，反映中小银行扩张态势，提示分行关注同业竞争格局，稳固本地零售客群优势。",
         "importance": 2,
-        "rank": 53,
+        "rank": 151,
         "tags": [],
         "locale": "national"
       },
@@ -1488,7 +3709,7 @@
         "date": "08/21",
         "summary": "江苏银行中报显示净息差尚未止跌，印证行业息差压力，启示分行强化存款成本管控，优化贷款风险定价与结构。",
         "importance": 2,
-        "rank": 54,
+        "rank": 152,
         "tags": [],
         "locale": "national"
       },
@@ -1501,7 +3722,7 @@
         "date": "08/21",
         "summary": "银行代理保险升温、中年客群成主力，保险代销竞争加剧，分行需强化理财经理保险专业能力与合规销售。",
         "importance": 2,
-        "rank": 55,
+        "rank": 153,
         "tags": [
           "财富"
         ],
@@ -1516,7 +3737,7 @@
         "date": "08/21",
         "summary": "财政部公布1-7月财政收支，一般公共预算收入同比增长，财政发力空间与节奏影响基建与消费信贷投放，分行可跟踪政策窗口。",
         "importance": 2,
-        "rank": 56,
+        "rank": 154,
         "tags": [],
         "locale": "national"
       },
@@ -1529,7 +3750,7 @@
         "date": "08/21",
         "summary": "定存利率扁平化至全期限1.65%，客户收益预期走低、存款搬家风险上升，分行需以固收+与期交保险承接到期资金。",
         "importance": 2,
-        "rank": 57,
+        "rank": 155,
         "tags": [
           "财富"
         ],
@@ -1544,7 +3765,7 @@
         "date": "08/21",
         "summary": "宁波银行营收净利双提速，中小银行经营标杆，分行可借鉴其零售与财富业务打法，关注同业竞争动态。",
         "importance": 2,
-        "rank": 58,
+        "rank": 156,
         "tags": [],
         "locale": "national"
       },
@@ -1557,7 +3778,7 @@
         "date": "08/21",
         "summary": "上海外环外二套首付降至15%，一线城市信贷政策松动信号，广州房贷政策预期值得跟踪，分行需预判按揭投放节奏。",
         "importance": 2,
-        "rank": 59,
+        "rank": 157,
         "tags": [
           "信贷"
         ],
@@ -1572,7 +3793,7 @@
         "date": "08/21",
         "summary": "财政金融协同促内需通知发布，消费贷贴息扩容，直接利好零售信贷投放，分行应加快贴息类产品落地与客户触达。",
         "importance": 2,
-        "rank": 60,
+        "rank": 158,
         "tags": [
           "信贷"
         ],
@@ -1587,7 +3808,7 @@
         "date": "08/21",
         "summary": "1-7月财政收入同比增长5.8%，财政政策空间打开，扩内需与贴息政策可期，分行可关注消费贷贴息申报窗口。",
         "importance": 2,
-        "rank": 61,
+        "rank": 159,
         "tags": [],
         "locale": "national"
       },
@@ -1600,7 +3821,7 @@
         "date": "08/21",
         "summary": "债市日报显示债券市场走势，利率环境直接影响固收理财净值与存款成本，财富条线需跟踪债市变化。",
         "importance": 2,
-        "rank": 62,
+        "rank": 160,
         "tags": [],
         "locale": "national"
       },
@@ -1613,7 +3834,7 @@
         "date": "08/21",
         "summary": "A股三大指数探底回升但成交额跌破2万亿，市场情绪偏谨慎，影响基金代销与客户风险偏好，需做好客户预期管理。",
         "importance": 2,
-        "rank": 63,
+        "rank": 161,
         "tags": [],
         "locale": "national"
       },
@@ -1626,7 +3847,7 @@
         "date": "08/21",
         "summary": "新华500指数小幅上涨，市场整体平稳，权益类资产表现影响代销基金净值，可作为市场背景参考。",
         "importance": 2,
-        "rank": 64,
+        "rank": 162,
         "tags": [],
         "locale": "national"
       },
@@ -1639,7 +3860,7 @@
         "date": "08/21",
         "summary": "财政部详解十五五财政宏观调控，财政金融协同方向明确，为分行信贷与财富业务提供中长期政策背景。",
         "importance": 2,
-        "rank": 65,
+        "rank": 163,
         "tags": [],
         "locale": "national"
       },
@@ -1652,7 +3873,7 @@
         "date": "08/21",
         "summary": "宠物保险渗透率提升、向刚需配置转变，年轻客群保险需求扩容，分行可探索宠物险等细分保险代销机会。",
         "importance": 2,
-        "rank": 66,
+        "rank": 164,
         "tags": [
           "财富"
         ],
@@ -1667,7 +3888,7 @@
         "date": "08/21",
         "summary": "广东1-7月CPI同比上涨0.8%，通胀温和，居民消费平稳，为消费信贷投放提供稳定宏观环境。",
         "importance": 2,
-        "rank": 67,
+        "rank": 165,
         "tags": [
           "客群"
         ],
@@ -1682,10 +3903,88 @@
         "date": "08/21",
         "summary": "广东1-7月CPI同比上涨0.8%，通胀温和，居民消费平稳，为消费信贷投放提供稳定宏观环境。",
         "importance": 2,
-        "rank": 68,
+        "rank": 166,
         "tags": [
           "客群"
         ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458603_1.html",
+        "title_cn": "上海市商务委：支持临港进一步优化“走出去”和“引进来”双向投资服务",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 167,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458600_1.html",
+        "title_cn": "一图读懂《上海市城市更新和住房发展“十五五”规划》",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 168,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458521_1.html",
+        "title_cn": "上海静安探索破解骑手“进门难、停车难、取餐难”",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 169,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/qy-lb/detail/20260821/4458471_1.html",
+        "title_cn": "临港新片区“十五五”规划：开放更前沿、产业更硬核、城市更年轻",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 170,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458572_1.html",
+        "title_cn": "APEC能源智库论坛在大连成功举办",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 171,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458494_1.html",
+        "title_cn": "智库报告：四方面加快推进制造业与服务业深度融合",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 172,
+        "tags": [],
         "locale": "national"
       },
       {
@@ -1697,7 +3996,7 @@
         "date": "08/21",
         "summary": "近30位机构投资者调研9家科创板公司，科创板投资关注度提升，科创客群融资与代销机会显现。",
         "importance": 2,
-        "rank": 69,
+        "rank": 173,
         "tags": [],
         "locale": "national"
       },
@@ -1710,7 +4009,7 @@
         "date": "08/21",
         "summary": "临港新片区率先开展离岸金融先行先试，跨境金融创新加速，私行与对公条线可关注离岸业务机会。",
         "importance": 2,
-        "rank": 70,
+        "rank": 174,
         "tags": [
           "私行"
         ],
@@ -1725,7 +4024,7 @@
         "date": "08/21",
         "summary": "青岛证监局召开拟上市企业座谈会，区域IPO培育机制活跃，分行可借鉴服务拟上市企业的政银合作模式。",
         "importance": 2,
-        "rank": 71,
+        "rank": 175,
         "tags": [],
         "locale": "national"
       },
@@ -1738,7 +4037,7 @@
         "date": "08/21",
         "summary": "前海综保区前7月进出口破4000亿，大湾区贸易活跃，外贸客群结算与融资需求上升，分行可跟进跨境金融。",
         "importance": 2,
-        "rank": 72,
+        "rank": 176,
         "tags": [
           "信贷"
         ],
@@ -1753,7 +4052,7 @@
         "date": "08/21",
         "summary": "广东1-7月固投同比下降11.3%，投资端承压，基建与地产链条信贷需求偏弱，分行需关注资产质量与投放结构。",
         "importance": 2,
-        "rank": 73,
+        "rank": 177,
         "tags": [
           "客群"
         ],
@@ -1768,7 +4067,7 @@
         "date": "08/21",
         "summary": "广东1-7月社零同比增长1.2%，消费温和复苏，居民消费信贷与信用卡业务环境平稳。",
         "importance": 2,
-        "rank": 74,
+        "rank": 178,
         "tags": [
           "客群"
         ],
@@ -1783,7 +4082,7 @@
         "date": "08/21",
         "summary": "广东1-7月规上工业增加值增长5.7%，制造业韧性较强，产业链企业信贷需求稳定，分行可深耕制造业客群。",
         "importance": 2,
-        "rank": 75,
+        "rank": 179,
         "tags": [
           "客群"
         ],
@@ -1798,7 +4097,33 @@
         "date": "08/21",
         "summary": "年内新股募资1828亿、科创板占比近半，科创企业上市融资活跃，科创客群金融服务需求上升。",
         "importance": 2,
-        "rank": 76,
+        "rank": 180,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-inipaenv1613121.shtml",
+        "title_cn": "吴威：金融服务要跟上全球化步伐",
+        "source": "新浪财经·银行频道",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 181,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/money/bank/bank_hydt/2026-08-21/doc-ininzyex1566597.shtml",
+        "title_cn": "长三角城商行的“三国杀”",
+        "source": "新浪财经·银行频道",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 182,
         "tags": [],
         "locale": "national"
       },
@@ -1811,7 +4136,7 @@
         "date": "08/21",
         "summary": "北京现代艾尼氪V以双AI大模型为卖点开启预售，智能汽车成消费新热点；分行可联动汽车分期与信用卡权益，捕捉新能源车主客群。",
         "importance": 2,
-        "rank": 77,
+        "rank": 183,
         "tags": [
           "信贷"
         ],
@@ -1826,7 +4151,7 @@
         "date": "08/21",
         "summary": "美财长回购未消市场疑虑，30年美债持稳5.24%、美元走软、金价涨油价跌；分行结售汇与贵金属窗口可提示客户关注汇率与避险资产波动。",
         "importance": 2,
-        "rank": 78,
+        "rank": 184,
         "tags": [],
         "locale": "national"
       },
@@ -1839,7 +4164,7 @@
         "date": "08/21",
         "summary": "碳酸锂与贵金属走强、集运欧线涨超11%，大宗商品波动加剧；分行可提示客户关注贵金属配置与汇率风险，财富条线把握贵金属销售窗口。",
         "importance": 2,
-        "rank": 79,
+        "rank": 185,
         "tags": [],
         "locale": "national"
       },
@@ -1852,7 +4177,7 @@
         "date": "08/21",
         "summary": "金融监管总局出台非车险综合治理行动方案，整治车险以外财险乱象；分行代理保险业务需关注合规与产品结构优化，防范销售风险。",
         "importance": 2,
-        "rank": 80,
+        "rank": 186,
         "tags": [],
         "locale": "national"
       },
@@ -1865,7 +4190,7 @@
         "date": "08/21",
         "summary": "前7月全国实际吸收外资4383亿元，外资企稳；利好外向型企业信心，分行可关注外贸与跨境客群的结算及融资需求。",
         "importance": 2,
-        "rank": 81,
+        "rank": 187,
         "tags": [],
         "locale": "national"
       },
@@ -1878,7 +4203,7 @@
         "date": "08/21",
         "summary": "服贸会将于9月9日启幕，多家银行展示AI最新应用；反映银行业AI落地加速，分行可借鉴同业智能客服与风控成果，提速自身数字化。",
         "importance": 2,
-        "rank": 82,
+        "rank": 188,
         "tags": [],
         "locale": "national"
       },
@@ -1891,7 +4216,7 @@
         "date": "08/21",
         "summary": "浙商期货协助上期所完成首次跨境交割，期货国际化提速；分行可关注外贸企业套保与跨境结算需求。",
         "importance": 2,
-        "rank": 83,
+        "rank": 189,
         "tags": [],
         "locale": "national"
       },
@@ -1904,7 +4229,7 @@
         "date": "08/21",
         "summary": "监管总局公布新一批行政处罚，覆盖机构合规问题；分行应举一反三排查代销、消保等合规短板，守住风控底线。",
         "importance": 2,
-        "rank": 84,
+        "rank": 190,
         "tags": [],
         "locale": "national"
       },
@@ -1917,7 +4242,7 @@
         "date": "08/21",
         "summary": "监管总局办公厅印发非车险综合治理行动方案，明确车险外财险治理路径；分行代理保险条线须同步规范销售与披露。",
         "importance": 2,
-        "rank": 85,
+        "rank": 191,
         "tags": [],
         "locale": "national"
       },
@@ -1930,7 +4255,7 @@
         "date": "08/21",
         "summary": "前7月证券交易印花税1864亿、同比增99.2%，股市活跃度显著提升；分行财富管理可借市场情绪回暖加大客户激活与配置转化。",
         "importance": 2,
-        "rank": 86,
+        "rank": 192,
         "tags": [],
         "locale": "national"
       },
@@ -1943,7 +4268,7 @@
         "date": "08/21",
         "summary": "大宗商品多头旗手连续发声看多商品结构性牛市，实物紧缺与货币贬值共振；分行提示客户关注贵金属与商品基金配置机会及波动风险。",
         "importance": 2,
-        "rank": 87,
+        "rank": 193,
         "tags": [],
         "locale": "national"
       },
@@ -1956,7 +4281,7 @@
         "date": "08/21",
         "summary": "美债避险光环减弱，长端抛压持续；分行需重估客户外币资产配置，结售汇与避险建议应更审慎。",
         "importance": 2,
-        "rank": 88,
+        "rank": 194,
         "tags": [],
         "locale": "national"
       },
@@ -1969,7 +4294,7 @@
         "date": "08/21",
         "summary": "万科年内到期公开债全部展期、南京公用涉借款违约诉讼；地产链信用风险仍存，分行需排查相关授信与理财持仓敞口。",
         "importance": 2,
-        "rank": 89,
+        "rank": 195,
         "tags": [],
         "locale": "national"
       },
@@ -1982,7 +4307,7 @@
         "date": "08/21",
         "summary": "三部门扩围促内需财政金融协同：小微新流贷及信用卡分期纳入贴息、中央财政年贴息1%，限2年；分行应抢抓小微与消费信贷贴息红利，扩量提质。",
         "importance": 2,
-        "rank": 90,
+        "rank": 196,
         "tags": [
           "信贷"
         ],
@@ -1997,7 +4322,7 @@
         "date": "08/21",
         "summary": "美财长救市工具效力有限，市场信心偏弱；对分行主要影响在美元与美债波动，结售汇客户需关注。",
         "importance": 2,
-        "rank": 91,
+        "rank": 197,
         "tags": [],
         "locale": "national"
       },
@@ -2010,7 +4335,7 @@
         "date": "08/21",
         "summary": "16家公募上半年营收净利普增，头部领跑；资管回暖利好代销与财富中收，分行可优选合作产品、强化客户配置。",
         "importance": 2,
-        "rank": 92,
+        "rank": 198,
         "tags": [
           "财富"
         ],
@@ -2025,7 +4350,7 @@
         "date": "08/21",
         "summary": "美财长回购仅撑一日，股债双杀再现；全球风险偏好受压，分行提示客户分散配置、关注黄金与美元波动。",
         "importance": 2,
-        "rank": 93,
+        "rank": 199,
         "tags": [],
         "locale": "national"
       },
@@ -2038,7 +4363,7 @@
         "date": "08/21",
         "summary": "10家券商上半年承销科创债超百亿，恒大案一审宣判；科创债扩容利好科技客群债融，地产风险出清仍需时，分行审慎。",
         "importance": 2,
-        "rank": 94,
+        "rank": 200,
         "tags": [],
         "locale": "national"
       },
@@ -2051,7 +4376,7 @@
         "date": "08/21",
         "summary": "市场监管总局公布经营者集中审查案例，反内卷监管加强，影响企业并购融资，对公业务需关注合规口径。",
         "importance": 2,
-        "rank": 95,
+        "rank": 201,
         "tags": [],
         "locale": "national"
       },
@@ -2064,7 +4389,7 @@
         "date": "08/21",
         "summary": "美财政部干预美债引发争议，美债利率波动加大，影响全球资产定价与固收理财净值，需提示客群波动风险。",
         "importance": 2,
-        "rank": 96,
+        "rank": 202,
         "tags": [],
         "locale": "national"
       },
@@ -2077,7 +4402,7 @@
         "date": "08/21",
         "summary": "金融监管总局规范互联网平台不合理收费，金融业务获客合规趋严，分行线上获客需确保渠道合规。",
         "importance": 2,
-        "rank": 97,
+        "rank": 203,
         "tags": [],
         "locale": "national"
       },
@@ -2090,9 +4415,39 @@
         "date": "08/21",
         "summary": "发改委就对外投资管理办法征求意见，跨境投资监管趋严，影响私行跨境配置客群预期，需关注政策落地。",
         "importance": 2,
-        "rank": 98,
+        "rank": 204,
         "tags": [
           "私行"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jinrong/bx/2026-08-21/doc-iniparan1309618.shtml",
+        "title_cn": "民生人寿“生肖不合裁员”？多名属蛇员工被辞，组织资源会常开至凌晨",
+        "source": "新浪财经·银行频道",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 205,
+        "tags": [
+          "客群"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.guancha.cn/GuanJinRong/2026_08_21_828147.shtml",
+        "title_cn": "网传民生人寿董事长因生肖不合裁员",
+        "source": "观察者网·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 206,
+        "tags": [
+          "客群"
         ],
         "locale": "national"
       },
@@ -2105,7 +4460,7 @@
         "date": "08/21",
         "summary": "平安日赚5.1亿但主业增速放缓，险企经营分化，保险代销需关注产品竞争力与客户接受度。",
         "importance": 2,
-        "rank": 99,
+        "rank": 207,
         "tags": [],
         "locale": "national"
       },
@@ -2118,7 +4473,7 @@
         "date": "08/21",
         "summary": "美财政部干预美债一日游，美债市场波动，全球资产重估风险积聚，财富条线需加强净值波动提示。",
         "importance": 2,
-        "rank": 100,
+        "rank": 208,
         "tags": [],
         "locale": "national"
       },
@@ -2131,7 +4486,7 @@
         "date": "08/21",
         "summary": "港交所上市申请有效期翻倍至12个月，港股IPO制度优化，广东拟上市企业赴港融资窗口扩大。",
         "importance": 2,
-        "rank": 101,
+        "rank": 209,
         "tags": [],
         "locale": "national"
       },
@@ -2144,10 +4499,8 @@
         "date": "08/21",
         "summary": "理财子公司规模冷热不均，渤银理财增长12%，行业分化加剧，分行可参考头部理财子产品策略优化代销结构。",
         "importance": 2,
-        "rank": 102,
-        "tags": [
-          "财富"
-        ],
+        "rank": 210,
+        "tags": [],
         "locale": "national"
       },
       {
@@ -2159,7 +4512,7 @@
         "date": "08/21",
         "summary": "广东17条升级小微企业融资协调机制，普惠金融政策加码，分行可对接本地小微融资需求，用好政府协调机制。",
         "importance": 2,
-        "rank": 103,
+        "rank": 211,
         "tags": [
           "信贷"
         ],
@@ -2174,7 +4527,7 @@
         "date": "08/21",
         "summary": "财政金融协同政策组合拳优化，贴息+再贷款工具加码，零售信贷与普惠投放环境改善，分行应加快产品落地。",
         "importance": 2,
-        "rank": 104,
+        "rank": 212,
         "tags": [
           "信贷"
         ],
@@ -2189,7 +4542,7 @@
         "date": "08/21",
         "summary": "天津落地意定监护+养老信托创新项目，养老金融产品创新提速，私行与财富条线可研究养老信托场景。",
         "importance": 2,
-        "rank": 105,
+        "rank": 213,
         "tags": [
           "财富",
           "私行"
@@ -2205,7 +4558,7 @@
         "date": "08/21",
         "summary": "平安银行董事任职获批，银行人事变动，同业治理动态，作为银行业经营环境参考。",
         "importance": 2,
-        "rank": 106,
+        "rank": 214,
         "tags": [],
         "locale": "national"
       },
@@ -2218,7 +4571,7 @@
         "date": "08/21",
         "summary": "兴业银行发行绿色金融债，绿色金融产品创新，分行可参考绿债发行服务绿色客群融资。",
         "importance": 2,
-        "rank": 107,
+        "rank": 215,
         "tags": [],
         "locale": "national"
       },
@@ -2231,7 +4584,7 @@
         "date": "08/21",
         "summary": "公募摊余债基定向开放，债基供给与收益环境变化，影响固收理财净值表现，财富条线需关注债市配置环境。",
         "importance": 2,
-        "rank": 108,
+        "rank": 216,
         "tags": [
           "财富"
         ],
@@ -2246,7 +4599,7 @@
         "date": "08/21",
         "summary": "宠物险渗透率从1%升至近5%，细分保险赛道扩容，年轻客群保险需求上升，分行可探索宠物险代销。",
         "importance": 2,
-        "rank": 109,
+        "rank": 217,
         "tags": [
           "财富"
         ],
@@ -2261,7 +4614,7 @@
         "date": "08/21",
         "summary": "国务院常务会议研究近期重点工作，宏观政策方向延续稳增长，为分行信贷投放提供政策环境参考。",
         "importance": 2,
-        "rank": 110,
+        "rank": 218,
         "tags": [],
         "locale": "national"
       },
@@ -2274,7 +4627,7 @@
         "date": "08/21",
         "summary": "广东省发改委召开民企座谈会聚焦平台经济，广东平台经济政策活跃，分行可关注平台企业金融合作机会。",
         "importance": 2,
-        "rank": 111,
+        "rank": 219,
         "tags": [
           "客群",
           "信贷"
@@ -2290,7 +4643,7 @@
         "date": "08/21",
         "summary": "第三批公募业绩基准调整涉及千余只产品，基金业绩考核口径变化，影响代销基金评价，财富条线需同步调整销售话术。",
         "importance": 2,
-        "rank": 112,
+        "rank": 220,
         "tags": [
           "财富"
         ],
@@ -2305,7 +4658,7 @@
         "date": "08/21",
         "summary": "宁夏银行高管任职获批，银行合规架构动态，作为银行业人事与治理参考。",
         "importance": 2,
-        "rank": 113,
+        "rank": 221,
         "tags": [],
         "locale": "national"
       },
@@ -2318,7 +4671,7 @@
         "date": "08/21",
         "summary": "申能财险高管任职获批，保险业人事动态，作为保险代销行业背景参考。",
         "importance": 2,
-        "rank": 114,
+        "rank": 222,
         "tags": [],
         "locale": "national"
       },
@@ -2331,7 +4684,7 @@
         "date": "08/21",
         "summary": "浦发信用卡中心高管任职获批，信用卡行业竞争动态，分行可参考同业信用卡业务布局。",
         "importance": 2,
-        "rank": 115,
+        "rank": 223,
         "tags": [],
         "locale": "national"
       },
@@ -2344,7 +4697,7 @@
         "date": "08/21",
         "summary": "中关村银行行长获批，民营银行人事动态，作为银行业经营环境参考。",
         "importance": 2,
-        "rank": 116,
+        "rank": 224,
         "tags": [],
         "locale": "national"
       },
@@ -2357,8 +4710,10 @@
         "date": "08/21",
         "summary": "相互保险社高管任职获批，保险业治理动态，作为行业背景参考。",
         "importance": 2,
-        "rank": 117,
-        "tags": [],
+        "rank": 225,
+        "tags": [
+          "财富"
+        ],
         "locale": "national"
       },
       {
@@ -2370,11 +4725,50 @@
         "date": "08/21",
         "summary": "万亿资管巨头回应退出中国传闻，外资资管动向影响市场信心，财富条线需关注跨境配置客群的预期管理。",
         "importance": 2,
-        "rank": 118,
+        "rank": 226,
         "tags": [
           "财富"
         ],
         "locale": "national"
+      },
+      {
+        "url": "https://news.southcn.com/node_812903b83a/53380d276b.shtml",
+        "title_cn": "佛山顺德大型产业园主体结构封顶 赋能大湾区制造业高质量发展",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "佛山产业园建设动态，非广州辖区，与分行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 227,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_17f55ea8c0/c30523ec8c.shtml",
+        "title_cn": "佛山“十四五” | 数读成绩单，亮点满满！",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "佛山十四五成绩单，非广州辖区，与分行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 228,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://economy.southcn.com/node_17f55ea8c0/f059d34116.shtml",
+        "title_cn": "国企担当·“百千万工程”之岭南答卷｜四百余年老字号驶入智造新赛道，致美斋阳江基地激活县域发展新动能",
+        "source": "南方网·经济",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "老字号智造县域发展报道，与银行零售业务无直接关联。",
+        "importance": 2,
+        "rank": 229,
+        "tags": [],
+        "locale": "gz"
       },
       {
         "url": "https://www.cnr.cn/gd/xgyxgd/20260821/t20260821_527785637.shtml",
@@ -2385,7 +4779,7 @@
         "date": "08/21",
         "summary": "农行广东分行对接农业农村现代化，普惠金融竞争加剧，分行可关注乡村振兴与涉农信贷产品差异化。",
         "importance": 2,
-        "rank": 119,
+        "rank": 230,
         "tags": [
           "信贷"
         ],
@@ -2400,7 +4794,7 @@
         "date": "08/21",
         "summary": "华融金租因直租回租不审慎被罚100万，监管对租赁业务审慎性要求提升，分行融资租赁合作需关注合规。",
         "importance": 2,
-        "rank": 120,
+        "rank": 231,
         "tags": [],
         "locale": "national"
       },
@@ -2413,7 +4807,7 @@
         "date": "08/21",
         "summary": "中信金融资产被罚135万，不良资产收购业务监管趋严，分行不良处置合作需关注合规边界。",
         "importance": 2,
-        "rank": 121,
+        "rank": 232,
         "tags": [],
         "locale": "national"
       },
@@ -2426,7 +4820,7 @@
         "date": "08/21",
         "summary": "恒大人寿因资金运用不合规被吊销许可证，保险业高风险机构处置推进，保险代销需关注客户保单服务。",
         "importance": 2,
-        "rank": 122,
+        "rank": 233,
         "tags": [],
         "locale": "national"
       },
@@ -2439,7 +4833,7 @@
         "date": "08/21",
         "summary": "新华人寿被罚327万，保险资金运用监管从严，保险代销与资金运用合规要求提升。",
         "importance": 2,
-        "rank": 123,
+        "rank": 234,
         "tags": [],
         "locale": "national"
       },
@@ -2452,7 +4846,7 @@
         "date": "08/21",
         "summary": "FOF基金8月全面反弹，市场风险偏好回升，权益类基金代销窗口打开，财富条线可借势推荐优质FOF产品。",
         "importance": 2,
-        "rank": 124,
+        "rank": 235,
         "tags": [
           "财富"
         ],
@@ -2467,7 +4861,7 @@
         "date": "08/21",
         "summary": "财政部明确信用卡分期消费均可享受贴息，信用卡分期业务迎来政策窗口，分行可强化分期营销与场景拓展。",
         "importance": 2,
-        "rank": 125,
+        "rank": 236,
         "tags": [
           "信贷"
         ],
@@ -2482,10 +4876,23 @@
         "date": "08/21",
         "summary": "网信企业高质量发展行动计划印发，数字产业政策加码，科创与数字经济客群融资需求上升，分行可关注相关机会。",
         "importance": 2,
-        "rank": 126,
+        "rank": 237,
         "tags": [
           "信贷"
         ],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458844_1.html",
+        "title_cn": "新华指数监测：香蕉产地价格指数大幅回落 各品级皇帝蕉价格指数同步下行",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "与银行零售业务无直接关联，不纳入商机。",
+        "importance": 2,
+        "rank": 238,
+        "tags": [],
         "locale": "national"
       },
       {
@@ -2497,7 +4904,7 @@
         "date": "08/21",
         "summary": "财政部、央行等三部门发布财政金融协同新举措，财政贴息嵌入企业经营与居民消费场景，消费贷与普惠信贷政策窗口打开，分行可加快产品落地。",
         "importance": 2,
-        "rank": 127,
+        "rank": 239,
         "tags": [
           "信贷"
         ],
@@ -2512,7 +4919,7 @@
         "date": "08/21",
         "summary": "网信企业高质量发展行动计划印发，数字产业政策加码，科创与数字经济客群融资需求上升，分行可关注相关机会。",
         "importance": 2,
-        "rank": 128,
+        "rank": 240,
         "tags": [
           "信贷"
         ],
@@ -2527,7 +4934,7 @@
         "date": "08/21",
         "summary": "国际机构预警粮食危机风险，全球通胀与供应链扰动对资产配置有间接影响，财富条线可提示客群均衡配置。",
         "importance": 2,
-        "rank": 129,
+        "rank": 241,
         "tags": [],
         "locale": "national"
       },
@@ -2540,7 +4947,7 @@
         "date": "08/21",
         "summary": "监管为钱币交易划红线，人民币流通管理趋严，涉及现金与反洗钱合规，分行需配合异常交易监测。",
         "importance": 2,
-        "rank": 130,
+        "rank": 242,
         "tags": [],
         "locale": "national"
       },
@@ -2553,7 +4960,7 @@
         "date": "08/21",
         "summary": "东方财富中报双增，市场活跃度提升利好财富管理赛道，代销与基金业务环境参考。",
         "importance": 2,
-        "rank": 131,
+        "rank": 243,
         "tags": [],
         "locale": "national"
       },
@@ -2566,7 +4973,7 @@
         "date": "08/21",
         "summary": "现货黄金再上4600美元，避险配置价值凸显，黄金理财与积存金营销窗口延续。",
         "importance": 2,
-        "rank": 132,
+        "rank": 244,
         "tags": [
           "财富"
         ],
@@ -2581,7 +4988,7 @@
         "date": "08/21",
         "summary": "四大交易所齐聚共商资本市场改革，多层次资本市场建设提速，广东企业上市融资环境向好。",
         "importance": 2,
-        "rank": 133,
+        "rank": 245,
         "tags": [],
         "locale": "national"
       },
@@ -2594,7 +5001,7 @@
         "date": "08/21",
         "summary": "两部门专项清理非法买卖人民币，现金流通监管从严，分行需配合做好反洗钱与现金业务合规。",
         "importance": 2,
-        "rank": 134,
+        "rank": 246,
         "tags": [],
         "locale": "national"
       },
@@ -2607,7 +5014,7 @@
         "date": "08/21",
         "summary": "江苏/南京银行中报净利增速超8%，区域银行经营向好，同业竞争动态参考。",
         "importance": 2,
-        "rank": 135,
+        "rank": 247,
         "tags": [],
         "locale": "national"
       },
@@ -2620,7 +5027,347 @@
         "date": "08/21",
         "summary": "金融监管总局发布保险公司资产负债管理办法，保险业监管细化，保险代销合规要求提升。",
         "importance": 2,
-        "rank": 136,
+        "rank": 248,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260821/herald/8433b14512b389c5cf5fa241be5ff924.html",
+        "title_cn": "打击非法买卖人民币 两部门将开展专项清理整顿工作",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "打击非法买卖人民币 两部门将开展专项清理整顿工作。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 249,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nbd.com.cn/articles/2026-08-21/4550896.html",
+        "title_cn": "加快加力清理拖欠企业账款行动 国常会：督促指导地方用好专项债券、专项再贷款等政策，打通“连环清”链条",
+        "source": "每日经济新闻",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "加快加力清理拖欠企业账款行动 国常会：督促指导地方用好专项债券、专项再贷款等政策…。对广州分行研判宏观政策与监管导向具参考",
+        "importance": 2,
+        "rank": 250,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nbd.com.cn/articles/2026-08-21/4550983.html",
+        "title_cn": "管涛出任华福证券首席经济学家",
+        "source": "每日经济新闻",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "管涛出任华福证券首席经济学家。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 251,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260821/herald/0a9203b0bebfdc016240b9dd93deb78f.html",
+        "title_cn": "服贸会金融展前瞻！四大行齐秀AI“肌肉”，人保将推“算力保”",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "服贸会金融展前瞻！四大行齐秀AI“肌肉”，人保将推“算力保”。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 252,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260821/herald/aca7edd55442b1495423b36973c015fc.html",
+        "title_cn": "禁止任何单位和个人非法买卖人民币！央行等部门重磅发文",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "禁止任何单位和个人非法买卖人民币！央行等部门重磅发文。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 253,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://m.21jingji.com/article/20260821/herald/95176312612733e7890581e926446481.html",
+        "title_cn": "存1年期利率等于存3年，银行存款利率首现“一条直线”",
+        "source": "21世纪经济报道·金融",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "存1年期利率等于存3年，银行存款利率首现“一条直线”。对广州分行研判市场与同业动态具参考；利率动向直接影响房贷定价与存款成本",
+        "importance": 2,
+        "rank": 254,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458903_1.html",
+        "title_cn": "东方甄选2026财年营收增长36.3% 经营利润达6.6亿元",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "东方甄选2026财年营收增长36.3% 经营利润达6.6亿元。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 255,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/yw-lb/detail/20260821/4458891_1.html",
+        "title_cn": "受益于主营业务收入结构持续优化 长飞光纤上半年扣非净利润同比增长1680.48%",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "受益于主营业务收入结构持续优化 长飞光纤上半年扣非净利润同比增长1680.48%。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 256,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458888_1.html",
+        "title_cn": "刘国中在安排部署秋粮生产和农业防灾减灾工作时强调 扎实做好农业防灾减灾工作 全力以赴夺取全年粮食丰收",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "刘国中在安排部署秋粮生产和农业防灾减灾工作时强调 扎实做好农业防灾减灾工作 全力…。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 257,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/hg-lb/detail/20260821/4458879_1.html",
+        "title_cn": "破瓶颈 强联动 质量强链“成绩单”公布",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "破瓶颈 强联动 质量强链“成绩单”公布。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 258,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://news.dayoo.com/guangzhou/202608/21/139995_54993515.htm",
+        "title_cn": "广东实验中学国际部预计明年一季度完工",
+        "source": "广州日报·大洋网",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "广东实验中学国际部预计明年一季度完工。对广州分行研判外部环境与大类资产走势具参考；立足湾区区位，兼具政策与客群红利",
+        "importance": 2,
+        "rank": 259,
+        "tags": [],
+        "locale": "gz"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458830_1.html",
+        "title_cn": "新华指数监测：8月21日中国能化现货估价指数环比上涨1.47%",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "新华指数监测：8月21日中国能化现货估价指数环比上涨1.47%。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 260,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458757_1.html",
+        "title_cn": "新华指数监测：8月21日山东港口石油焦现货交易价格环比持平",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "新华指数监测：8月21日山东港口石油焦现货交易价格环比持平。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 261,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458644_1.html",
+        "title_cn": "新华指数监测：8月21日山东港口大商中心钢坯、热轧C料价格微幅上涨",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "新华指数监测：8月21日山东港口大商中心钢坯、热轧C料价格微幅上涨。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 262,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458501_1.html",
+        "title_cn": "新华指数监测：8月20日山东港口原油价格指数环比上涨2.27%",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "新华指数监测：8月20日山东港口原油价格指数环比上涨2.27%。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 263,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cnfin.com/cy-lb/detail/20260821/4458427_1.html",
+        "title_cn": "8月20日中国汽、柴油批发价格分别为8997、7922元／吨",
+        "source": "新华财经",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "8月20日中国汽、柴油批发价格分别为8997、7922元／吨。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 264,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268766",
+        "title_cn": "国家金融监督管理总局贵州监管局行政处罚信息公开表\n（贵金罚决字〔2026〕30-31号）",
+        "source": "国家金融监督管理总局",
+        "source_type": "official",
+        "tier": "T1",
+        "date": "08/21",
+        "summary": "国家金融监督管理总局贵州监管局行政处罚信息公开表\n（贵金罚决字〔2026〕30-…。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 265,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268808",
+        "title_cn": "深圳金融监管局行政处罚信息公示表",
+        "source": "国家金融监督管理总局",
+        "source_type": "official",
+        "tier": "T1",
+        "date": "08/21",
+        "summary": "深圳金融监管局行政处罚信息公示表。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 266,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cls.cn/detail/2460801",
+        "title_cn": "债市收盘| 央行终结7天期逆回购连续8日的“零投放”，债市仍整体回调",
+        "source": "财联社",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "债市收盘| 央行终结7天期逆回购连续8日的“零投放”，债市仍整体回调。对广州分行研判宏观政策与监管导向具参考",
+        "importance": 2,
+        "rank": 267,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268958",
+        "title_cn": "国家金融监督管理总局有关司局就《保险公司资产负债管理办法》答记者问",
+        "source": "国家金融监督管理总局",
+        "source_type": "official",
+        "tier": "T1",
+        "date": "08/21",
+        "summary": "国家金融监督管理总局有关司局就《保险公司资产负债管理办法》答记者问。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 268,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1268949",
+        "title_cn": "国家金融监督管理总局关于实施《保险公司资产负债管理办法》有关事项的通知",
+        "source": "国家金融监督管理总局",
+        "source_type": "official",
+        "tier": "T1",
+        "date": "08/21",
+        "summary": "国家金融监督管理总局关于实施《保险公司资产负债管理办法》有关事项的通知。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 269,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cls.cn/detail/2461195",
+        "title_cn": "罕见！贵阳银行取消一款理财产品业绩比较基准，新规倒计时多数机构仍在密集“换锚”",
+        "source": "财联社",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "罕见！贵阳银行取消一款理财产品业绩比较基准，新规倒计时多数机构仍在密集“换锚”。对广州分行研判市场与同业动态具参考；影响财富产品配置与投资者教育",
+        "importance": 2,
+        "rank": 270,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.cls.cn/detail/2460843",
+        "title_cn": "首批6家银行中报透视：净息差分化，计息负债成本普降30BP；投资、财富管理各谋突围",
+        "source": "财联社",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "首批6家银行中报透视：净息差分化，计息负债成本普降30BP；投资、财富管理各谋突围。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 271,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininywti8561099.shtml",
+        "title_cn": "年内上市银行股价走势分化 部分城商行表现亮眼",
+        "source": "新浪财经·银行频道",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "年内上市银行股价走势分化 部分城商行表现亮眼。对广州分行企业金融（IPO/投贷联动）获客具参考",
+        "importance": 2,
+        "rank": 272,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/jjxw/2026-08-21/doc-ininzpqz8282320.shtml",
+        "title_cn": "27家中小金融机构获批解散 贵州农信改革迎来新进展",
+        "source": "新浪财经·银行频道",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "27家中小金融机构获批解散 贵州农信改革迎来新进展。对广州分行个人信贷（房贷/消费贷/经营贷）拓客与风控具参考",
+        "importance": 2,
+        "rank": 273,
+        "tags": [
+          "信贷"
+        ],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.sina.com.cn/roll/2026-08-21/doc-ininzyev8210151.shtml",
+        "title_cn": "连续五年下降 险资配置信托存量规模不足万亿",
+        "source": "新浪理财保险",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "连续五年下降 险资配置信托存量规模不足万亿。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 274,
         "tags": [],
         "locale": "national"
       },
@@ -2633,7 +5380,7 @@
         "date": "08/20",
         "summary": "美国对伊朗经济施压可能推升地缘风险和能源价格，影响全球通胀与市场情绪。财富管理需重视黄金、能源类资产配置价值，做好客户风险提示。",
         "importance": 2,
-        "rank": 137,
+        "rank": 275,
         "tags": [],
         "locale": "national"
       },
@@ -2646,7 +5393,7 @@
         "date": "08/20",
         "summary": "美国经济衰退警报增强，可能引发全球风险资产波动。分行应关注客户避险需求，加大存款、黄金、稳健理财配置，同时提示海外投资不确定性。",
         "importance": 2,
-        "rank": 138,
+        "rank": 276,
         "tags": [],
         "locale": "national"
       },
@@ -2659,7 +5406,20 @@
         "date": "08/20",
         "summary": "美财长Bessent介入美联储人事引发独立性担忧；海外货币政策不确定性上升，分行可提示客户关注美元资产与黄金配置平衡。",
         "importance": 2,
-        "rank": 139,
+        "rank": 277,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://finance.yahoo.com/technology/ai/articles/coatue-management-opens-position-amd-214733476.html",
+        "title_cn": "Coatue Management Opens New Position in AMD Stock. View This as a Renewed Bet on the AI Trade.",
+        "source": "Yahoo Finance",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/20",
+        "summary": "Coatue Management Opens New Position in …。对广州分行研判外部环境与大类资产走势具参考",
+        "importance": 2,
+        "rank": 278,
         "tags": [],
         "locale": "national"
       },
@@ -2672,7 +5432,7 @@
         "date": "08/20",
         "summary": "Anthropic拟上市并扩容投行阵容，显示全球AI赛道一级市场持续升温。私行客户可关注科技企业Pre-IPO及股权配置机会，但需提示高风险与流动性。",
         "importance": 2,
-        "rank": 140,
+        "rank": 279,
         "tags": [],
         "locale": "national"
       },
@@ -2685,7 +5445,7 @@
         "date": "08/20",
         "summary": "美联储批准相关机构申请（T1官方发布）；海外监管审批动态，体现美联储政策节奏，对分行零售业务影响有限，作宏观背景参考。",
         "importance": 2,
-        "rank": 141,
+        "rank": 280,
         "tags": [],
         "locale": "national"
       },
@@ -2698,7 +5458,7 @@
         "date": "08/20",
         "summary": "Guggenheim贷款交易陷入困境，提示海外信用市场风险升温。分行在代销固收、债券类产品时应加强底层资产审查，做好客户适当性管理和风险收益提示。",
         "importance": 2,
-        "rank": 142,
+        "rank": 281,
         "tags": [],
         "locale": "national"
       },
@@ -2711,7 +5471,7 @@
         "date": "08/20",
         "summary": "美债回购与个股异动冲击量化策略，全球市场波动加大。对财富管理而言，需提示权益类产品回撤风险，引导客户分散配置并坚持长期投资。",
         "importance": 2,
-        "rank": 143,
+        "rank": 282,
         "tags": [],
         "locale": "national"
       },
@@ -2724,7 +5484,7 @@
         "date": "08/20",
         "summary": "沃尔玛销售承压显示美国消费动能减弱，全球需求或受拖累。对零售客群经营有借鉴意义，分行可关注消费信贷资产质量和促消费政策节奏。",
         "importance": 2,
-        "rank": 144,
+        "rank": 283,
         "tags": [],
         "locale": "national"
       },
@@ -2737,7 +5497,7 @@
         "date": "08/20",
         "summary": "意大利银行并购整合升温，反映欧洲银行业低利率下的规模竞争。分行可借鉴同业零售与财富管理协同经验，关注跨境市场动态对客户资产配置的影响。",
         "importance": 2,
-        "rank": 145,
+        "rank": 284,
         "tags": [],
         "locale": "national"
       },
@@ -2750,7 +5510,7 @@
         "date": "08/20",
         "summary": "特朗普政策引发美债市场动荡并传导全球，利率与汇率风险加大。分行应关注代销固收产品波动，引导客户多元化资产配置并加强压力测试。",
         "importance": 2,
-        "rank": 146,
+        "rank": 285,
         "tags": [],
         "locale": "national"
       },
@@ -2763,7 +5523,7 @@
         "date": "08/20",
         "summary": "美国债务扩张与减支承诺矛盾加剧财政可持续性担忧，利率与美元波动或上升。对分行研判全球市场、管理客户海外资产配置风险有参考。",
         "importance": 2,
-        "rank": 147,
+        "rank": 286,
         "tags": [],
         "locale": "national"
       },
@@ -2776,7 +5536,7 @@
         "date": "08/20",
         "summary": "美联储对相关机构采取执法行动（T1官方发布）；海外银行监管趋严信号，分行可参考其合规风控口径。",
         "importance": 2,
-        "rank": 148,
+        "rank": 287,
         "tags": [],
         "locale": "national"
       },
@@ -2789,7 +5549,7 @@
         "date": "08/20",
         "summary": "美联储对前任职员等采取执法行动；海外监管执法常态化，提示银行业合规与内控风险管理的重要性。",
         "importance": 2,
-        "rank": 149,
+        "rank": 288,
         "tags": [],
         "locale": "national"
       },
@@ -2802,38 +5562,38 @@
         "date": "08/20",
         "summary": "分析师指美财政部国债回购不改9月美联储政策路径，市场降息预期趋稳；海外利率环境平稳利好资产配置，分行可关注客户对美元债与黄金的配置需求。",
         "importance": 2,
-        "rank": 150,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.economist.com/finance-and-economics/2026/08/20/however-you-measure-it-chinas-job-market-is-weak",
-        "title_cn": "However you measure it, China’s job market is weak",
-        "source": "The Economist Finance",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "经济学人指中国就业市场持续偏弱，青年与服务业就业压力凸显；就业疲软影响居民收入与消费贷需求，分行零售信贷可关注风险防控与客群变化。",
-        "importance": 2,
-        "rank": 151,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.bbc.co.uk/news/articles/c70gp8252ejo?at_medium=RSS&at_campaign=rss",
-        "title_cn": "US national debt passes $40tn after doubling in a decade",
-        "source": "BBC Business",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "美国国债突破40万亿美元、十年翻番；美债规模高企推升全球利率与避险资产配置需求，分行财富业务可关注黄金等避险配置与海外资产波动提示。",
-        "importance": 2,
-        "rank": 152,
+        "rank": 289,
         "tags": [],
         "locale": "national"
       }
     ],
     "tech": [
+      {
+        "url": "https://www.infoq.cn/article/fPGPEF2hwCKtz3PTg69C?utm_source=rss&utm_medium=article",
+        "title_cn": "npm 终于动手了：默认封杀 postinstall 脚本",
+        "source": "InfoQ 中国",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "npm 终于动手了：默认封杀 postinstall 脚本。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 1,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www.infoq.cn/article/CQhb4TOREpEZshtqWZMy?utm_source=rss&utm_medium=article",
+        "title_cn": "JetBrains详细阐述了控制AI支出快速增长的首批举措",
+        "source": "InfoQ 中国",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/22",
+        "summary": "JetBrains详细阐述了控制AI支出快速增长的首批举措。对广州分行研判市场与同业动态具参考",
+        "importance": 2,
+        "rank": 2,
+        "tags": [],
+        "locale": "national"
+      },
       {
         "url": "https://www.infoq.cn/article/D6IBeGO6rqVCjBDv1qwj?utm_source=rss&utm_medium=article",
         "title_cn": "Rust 再下一城：Astro 7 重写编译器与 Markdown 流水线",
@@ -2843,7 +5603,7 @@
         "date": "08/21",
         "summary": "Astro用Rust重写编译器，反映开源高性能技术栈趋势。对分行技术团队具有性能优化借鉴意义，可支撑手机银行和数字化经营体验升级。",
         "importance": 2,
-        "rank": 1,
+        "rank": 3,
         "tags": [],
         "locale": "national"
       },
@@ -2856,7 +5616,7 @@
         "date": "08/21",
         "summary": "雷鸟发布全天候主动式AI眼镜，消费级AR续航与重量突破；智能终端换新潮利好信用卡分期与年轻客群运营。",
         "importance": 2,
-        "rank": 2,
+        "rank": 4,
         "tags": [],
         "locale": "national"
       },
@@ -2869,7 +5629,7 @@
         "date": "08/20",
         "summary": "AI Infra算力开始被华尔街当作可交易资产，算力金融化趋势浮现，对分行科技金融与AI基础设施信贷布局有前沿参考。",
         "importance": 2,
-        "rank": 3,
+        "rank": 5,
         "tags": [],
         "locale": "national"
       },
@@ -2882,59 +5642,7 @@
         "date": "08/20",
         "summary": "Coding Agent价值取决于对企业数据的理解，属AI工程实践，对分行AI应用与数据治理有参考。",
         "importance": 2,
-        "rank": 4,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.infoq.cn/article/FjAtSWXLEfY3Iu4ThvJM?utm_source=rss&utm_medium=article",
-        "title_cn": "蚂蚁 AI 驱动的生产级软件交付基建和实践｜AICon深圳",
-        "source": "InfoQ 中国",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "蚂蚁AI驱动生产级软件交付实践，金融科技同业AI工程经验，对分行研发效能与AI落地有参考。",
-        "importance": 2,
-        "rank": 5,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.qbitai.com/2026/08/476199.html",
-        "title_cn": "闭源RSI的严父：18个Agent自主科研，Kimi K3靠Harness逼近Opus 5",
-        "source": "量子位",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "Kimi K3以18个Agent自主科研逼近前沿模型，AI Agent自主能力跃升，对银行数智化与智能服务应用有前沿参考。",
-        "importance": 2,
         "rank": 6,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://www.qbitai.com/2026/08/476120.html",
-        "title_cn": "宇树科技上市首日大涨629%，世界机器人大会里谁是“下一个宇树”？",
-        "source": "量子位",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "宇树科技上市首日大涨629%，人形机器人产业资本热度高，对科技产业客群与股权投资参考。",
-        "importance": 2,
-        "rank": 7,
-        "tags": [],
-        "locale": "national"
-      },
-      {
-        "url": "https://arxiv.org/abs/2608.18136",
-        "title_cn": "FraudBench: Stress-Testing Policy-Grounded Banking Agents Against Adaptive Fraud",
-        "source": "arXiv 金融科技论文 (cs.AI·cs.LG·q-fin)",
-        "source_type": "media",
-        "tier": "T2",
-        "date": "08/20",
-        "summary": "面向银行智能体的反欺诈压力测试基准FraudBench发布；银行AI风控可评估性与合规边界受关注，分行可关注智能风控与反欺诈技术演进。",
-        "importance": 2,
-        "rank": 8,
         "tags": [],
         "locale": "national"
       }
@@ -3041,6 +5749,97 @@
         "summary": "北交所广东企业康美特相关公告，北交所上市/信披动态，广东企业资本市场活动参考。",
         "importance": 2,
         "rank": 8,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082101751.pdf",
+        "title_cn": "BAIYUNSHAN PH (00874) — SUMMARY OF THE 2026 INTERIM REPORT",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "BAIYUNSHAN PH (00874) — SUMMARY OF THE 2…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 9,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082101457.pdf",
+        "title_cn": "ZHONGTAIFUTURES (01461) — ANNOUNCEMENT OF INTERIM RESULTS\nFOR THE SIX MONTHS ENDED 30 JUNE 2026",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "ZHONGTAIFUTURES (01461) — ANNOUNCEMENT O…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 10,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082100686.pdf",
+        "title_cn": "OCT (ASIA) (03366) — POLL RESULTS OF THE EXTRAORDINARY GENERAL MEETING\nHELD ON 21 AUGUST 2026",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "OCT (ASIA) (03366) — POLL RESULTS OF THE…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 11,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://data.eastmoney.com/xg/ipo/fd/10000218952.html",
+        "title_cn": "辉芒微电子(深圳)股份有限公司 (辅导备案) [深圳证监局]",
+        "source": "东方财富IPO辅导",
+        "source_type": "media",
+        "tier": "T2",
+        "date": "08/21",
+        "summary": "辉芒微电子(深圳)股份有限公司 (辅导备案) [深圳证监局]。对广州分行企业金融（IPO/投贷联动）获客具参考",
+        "importance": 2,
+        "rank": 12,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082100843.pdf",
+        "title_cn": "ZTE (00763) — 2026 INTERIM RESULTS ANNOUNCEMENT",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "ZTE (00763) — 2026 INTERIM RESULTS ANNOU…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 13,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082100812.pdf",
+        "title_cn": "LIVZON PHARMA (01513) — UNAUDITED INTERIM RESULTS ANNOUNCEMENT FOR THE SIX MONTHS ENDED 30 JUNE 2026",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "LIVZON PHARMA (01513) — UNAUDITED INTERI…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 14,
+        "tags": [],
+        "locale": "national"
+      },
+      {
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0821/2026082100592.pdf",
+        "title_cn": "DOWELL SERVICE (02352) — INTERIM RESULTS ANNOUNCEMENT FOR THE\nSIX MONTHS ENDED 30 JUNE 2026",
+        "source": "港交所IPO公告",
+        "source_type": "official",
+        "tier": "T1.5",
+        "date": "08/21",
+        "summary": "DOWELL SERVICE (02352) — INTERIM RESULTS…。对广州分行跟踪港交所IPO与跨境资本具参考",
+        "importance": 2,
+        "rank": 15,
         "tags": [],
         "locale": "national"
       }
