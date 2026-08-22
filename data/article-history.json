@@ -111,34 +111,6 @@
     "summary": "Pod作为worker部署AI智能体，属云原生AI工程实践，与银行零售业务无直接关联。",
     "ai_relevant": false
   },
-  "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article": {
-    "title": "从中文到小语种都能无痕修改，美图影像研究院（MT Lab）提出全新场景文本编辑方案 | ICML 2026",
-    "url": "https://www.infoq.cn/article/PuaPuRIjd35ItQSVCOK1?utm_source=rss&utm_medium=article",
-    "sourceId": "infoq-cn",
-    "source": "InfoQ 中国",
-    "category": "tech",
-    "subcategory": "cn-tech",
-    "excerpt": "点击查看原文>",
-    "publishedAt": "2026-08-20T11:10:13.000Z",
-    "firstSeenAt": "2026-08-20T12:26:15.584Z",
-    "lastSeenAt": "2026-08-20T12:26:15.584Z",
-    "summary": "美图影像研究院提出场景文本编辑方案，属CV技术研究，与银行零售业务无直接关联。",
-    "ai_relevant": false
-  },
-  "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video": {
-    "title": "Treasury Action Not a Fed Game Changer for September, Says Evercore’s Guha",
-    "url": "https://www.bloomberg.com/news/videos/2026-08-20/treasury-move-not-a-fed-game-changer-for-september-guha-video",
-    "sourceId": "bloomberg-markets",
-    "source": "Bloomberg Markets",
-    "category": "finance",
-    "subcategory": "news",
-    "excerpt": "Krishna Guha, vice chair and head of central bank strategy at Evercore ISI, says the US Treasury Department’s move to increase its planned purchases of outstanding 10-year to 30-year debt “certainly complicates things” for Federal Reserve Chairman Kevin Warsh, but won’t impact the central bank’s Sep",
-    "publishedAt": "2026-08-20T11:30:45.000Z",
-    "firstSeenAt": "2026-08-20T12:32:59.612Z",
-    "lastSeenAt": "2026-08-20T12:32:59.612Z",
-    "summary": "分析师指美财政部国债回购不改9月美联储政策路径，市场降息预期趋稳；海外利率环境平稳利好资产配置，分行可关注客户对美元债与黄金的配置需求。",
-    "ai_relevant": true
-  },
   "https://www.ft.com/content/79f1f638-1fd5-40e1-845b-b4a787a12883?syn-25a6b1a6=1": {
     "title": "Walmart pledges price cuts as sales growth slows to six-year low",
     "url": "https://www.ft.com/content/79f1f638-1fd5-40e1-845b-b4a787a12883?syn-25a6b1a6=1",
@@ -167,20 +139,6 @@
     "summary": "达能10亿欧元收购Huel获监管批准；海外消费品牌并购，与分行零售业务无关联。",
     "ai_relevant": false
   },
-  "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss": {
-    "title": "Carney asks for end to US alcohol ban, province leader says, as trade deal nears",
-    "url": "https://www.bbc.co.uk/news/articles/c3ekl74jnk5o?at_medium=RSS&at_campaign=rss",
-    "sourceId": "bbc-business",
-    "source": "BBC Business",
-    "category": "finance",
-    "subcategory": "news",
-    "excerpt": "An agreement preventing a new wave of US tariffs is close and could include an end to Canada's boycott of US whiskey.",
-    "publishedAt": "2026-08-20T11:10:25.000Z",
-    "firstSeenAt": "2026-08-20T12:32:59.612Z",
-    "lastSeenAt": "2026-08-20T12:32:59.612Z",
-    "summary": "加拿大省长卡尼呼吁结束美国酒类禁令；北美贸易议题，与银行零售业务无关。",
-    "ai_relevant": false
-  },
   "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates": {
     "title": "Travelodge boss resigns amid criticism over handling of assaults; oil price tops $93 a barrel – business live",
     "url": "https://www.theguardian.com/business/live/2026/aug/20/rising-uk-consumer-confidence-economy-andy-burnham-latest-news-updates",
@@ -193,20 +151,6 @@
     "firstSeenAt": "2026-08-20T12:32:59.612Z",
     "lastSeenAt": "2026-08-20T12:32:59.612Z",
     "summary": "Travelodge老板因性侵事件处理争议辞职；英国企业治理事件，与银行零售业务无关。",
-    "ai_relevant": false
-  },
-  "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats": {
-    "title": "From McDonald’s to Congress: can a former fry cook flip a key district for Democrats?",
-    "url": "https://www.theguardian.com/us-news/2026/aug/20/mcdonalds-congress-affordability-democrats",
-    "sourceId": "guardian-business",
-    "source": "The Guardian Business",
-    "category": "finance",
-    "subcategory": "news",
-    "excerpt": "Manny Rutinel hopes price-tag politics can win key voters in Colorado House race During his presidential campaign in October 2024, Donald Trump staged a photo op at a McDonald’s franchise in Pennsylvania, where he was briefly taught how to work the fryer and drive-thru window at the closed restauran",
-    "publishedAt": "2026-08-20T11:00:50.000Z",
-    "firstSeenAt": "2026-08-20T12:32:59.612Z",
-    "lastSeenAt": "2026-08-20T12:32:59.612Z",
-    "summary": "从麦当劳员工到国会：前炸薯条工能否翻转关键选区；美国政治新闻，与银行业务无关。",
     "ai_relevant": false
   },
   "https://www.cnfin.com/qy-lb/detail/20260821/4458202_1.html": {
@@ -9416,5 +9360,65 @@
     "publishedAt": "2026-08-22T00:00:00.000Z",
     "firstSeenAt": "2026-08-22T11:14:43.113Z",
     "lastSeenAt": "2026-08-22T11:14:43.113Z"
+  },
+  "https://m.21jingji.com/article/20260822/herald/7ef188b4e8122b39f44074dc90a5b3f5.html": {
+    "title": "太罕见！有银行一年期、两年期和三年期存款利率竟均为1.65%，什么信号？",
+    "url": "https://m.21jingji.com/article/20260822/herald/7ef188b4e8122b39f44074dc90a5b3f5.html",
+    "sourceId": "21jingji-finance",
+    "source": "21世纪经济报道·金融",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【21财经·金融】太罕见！有银行一年期、两年期和三年期存款利率竟均为1.65%，什么信号？",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:31:30.133Z",
+    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+  },
+  "https://m.21jingji.com/article/20260822/herald/cb1ebbc36420fc52692c11cf36d09ac9.html": {
+    "title": "存1年=存2年=存3年，存款利率罕见“持平”",
+    "url": "https://m.21jingji.com/article/20260822/herald/cb1ebbc36420fc52692c11cf36d09ac9.html",
+    "sourceId": "21jingji-finance",
+    "source": "21世纪经济报道·金融",
+    "category": "gz",
+    "subcategory": "cn-finance",
+    "excerpt": "【21财经·金融】存1年=存2年=存3年，存款利率罕见“持平”",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:31:30.133Z",
+    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+  },
+  "https://www.cnfin.com/yw-lb/detail/20260822/4459049_1.html": {
+    "title": "算电协同筑底座 词元经济开新局——2026绿色算力（人工智能）大会召开",
+    "url": "https://www.cnfin.com/yw-lb/detail/20260822/4459049_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:31:30.133Z",
+    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260822/4459050_1.html": {
+    "title": "报告显示：我国算力全链条绿色化成效初显",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459050_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:31:30.133Z",
+    "lastSeenAt": "2026-08-22T11:31:30.133Z"
+  },
+  "https://www.cnfin.com/hg-lb/detail/20260822/4459047_1.html": {
+    "title": "“创新培育新动能 壮大绿色算力产业链”专项活动在呼和浩特举行",
+    "url": "https://www.cnfin.com/hg-lb/detail/20260822/4459047_1.html",
+    "sourceId": "cnfin",
+    "source": "新华财经",
+    "category": "finance",
+    "subcategory": "cn-finance",
+    "excerpt": "",
+    "publishedAt": "2026-08-22T00:00:00.000Z",
+    "firstSeenAt": "2026-08-22T11:31:30.133Z",
+    "lastSeenAt": "2026-08-22T11:31:30.133Z"
   }
 }
